@@ -1,4 +1,4 @@
 as yet unclassified
 delta
-	<MSEProperty: #delta type: #Float>
+	<MSEProperty: #delta type: #Number>
 	^ delta

@@ -1,4 +1,4 @@
 as yet unclassified
 max
-	<MSEProperty: #max type: #Float>
+	<MSEProperty: #max type: #Number>
 	^ max

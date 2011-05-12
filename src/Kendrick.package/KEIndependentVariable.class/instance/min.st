@@ -1,4 +1,4 @@
 as yet unclassified
 min
-	<MSEProperty: #min type: #Float>
+	<MSEProperty: #min type: #Number>
 	^ min

@@ -1,4 +1,4 @@
 as yet unclassified
 annotation
-	<MSEClass: 'BinaryExpression' super: #Expression >
+	<MSEClass: 'BinaryExpression' super: 'KE.Expression' >
 	<package: #KE>

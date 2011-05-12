@@ -1,4 +1,4 @@
 as yet unclassified
 value
-	<MSEProperty: #value type: #Float>
+	<MSEProperty: #value type: #Number>
 	^value
