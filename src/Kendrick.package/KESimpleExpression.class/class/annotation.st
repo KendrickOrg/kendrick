@@ -1,5 +1,5 @@
 as yet unclassified
 annotation
-	<MSEClass: #SimpleExpression super: 'KE.Expression'>
+	<MSEClass: #SimpleExpression super: #KEExpression>
 	<package: #KE>
 	<abstract>

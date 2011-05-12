@@ -1,4 +1,4 @@
 as yet unclassified
 leftHandSide
-	<MSEProperty: #leftHandSide  type: #Expression>
+	<MSEProperty: #leftHandSide  type: 'KE.Expression'>
 	^ leftHandSide 

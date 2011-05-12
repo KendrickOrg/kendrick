@@ -21,4 +21,4 @@ testBuildABynaryExpression
 		op: o;
 		leftHandSide: a;
 		rightHandSide: b.
-	self assert: e op equals: #+
+	self assert: e op symbol equals: #+

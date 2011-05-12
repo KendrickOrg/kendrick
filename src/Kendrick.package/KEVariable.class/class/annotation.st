@@ -1,4 +1,4 @@
 as yet unclassified
 annotation
-	<MSEClass: #Variable super: 'Object'>
+	<MSEClass: #Variable super: #KESimpleExpression>
 	<package: #KE>

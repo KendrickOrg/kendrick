@@ -1,4 +1,4 @@
 as yet unclassified
 annotation
-	<MSEClass: #Numerical super: 'KE.SimpleExpression'>
+	<MSEClass: #Numerical super: #KESimpleExpression>
 	<package: #KE>

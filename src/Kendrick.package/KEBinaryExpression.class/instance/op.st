@@ -1,4 +1,4 @@
 as yet unclassified
 op
-	<MSEProperty: #op type: #Operator>
+	<MSEProperty: #op type: 'KE.Operator'>
 	^ op
