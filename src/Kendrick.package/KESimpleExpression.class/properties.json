@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "KEExpression",
+	"category" : "Kendrick-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"op"
+	],
+	"name" : "KESimpleExpression",
+	"type" : "normal"
+}

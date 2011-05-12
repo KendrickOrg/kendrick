@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "KEExpression",
+	"category" : "Kendrick-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"op",
+		"leftHandSide",
+		"rightHandSide"
+	],
+	"name" : "KEBinaryExpression",
+	"type" : "normal"
+}

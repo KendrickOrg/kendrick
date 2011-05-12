@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "KEVariable",
+	"category" : "Kendrick-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"min",
+		"max",
+		"delta"
+	],
+	"name" : "KEIndependentVariable",
+	"type" : "normal"
+}
