@@ -1,5 +1,5 @@
 as yet unclassified
-testBuildABynaryExpression
+testBuildABinaryExpression
 	| t e a b o |
 	t := FMTower new.
 	t metamodel
