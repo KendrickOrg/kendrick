@@ -1,11 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "TestCase",
-	"category" : "Kendrick-Tests-SemanticModel",
+	"super" : "PPCompositeParserTest",
+	"category" : "Kendrick-Tests-ExternalDSL",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "KEVariableTest",
+	"name" : "PPODEGrammarTest",
 	"type" : "normal"
 }

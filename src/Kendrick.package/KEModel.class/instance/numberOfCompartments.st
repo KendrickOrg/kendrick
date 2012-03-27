@@ -1,4 +1,4 @@
 as yet unclassified
 numberOfCompartments
 
-^1
+^ compartments size

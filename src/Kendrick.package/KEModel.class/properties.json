@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"compartments"
+		"compartments",
+		"parameters"
 	],
 	"name" : "KEModel",
 	"type" : "normal"
