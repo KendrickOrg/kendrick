@@ -4,9 +4,9 @@ testBuildABinaryExpression
 	
 	e := KEBinaryExpression new.
 	a := KENumerical new.
-	a value: 3.
+	a number: 3.
 	b := KENumerical new.
-	b value: 7.
+	b number: 7.
 	o := KEOperator new.
 	o symbol: #+.
 	e
