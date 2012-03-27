@@ -15,7 +15,8 @@
 		"addition",
 		"factors",
 		"primary",
-		"unary"
+		"unary",
+		"equation"
 	],
 	"name" : "PPODEGrammar",
 	"type" : "normal"
