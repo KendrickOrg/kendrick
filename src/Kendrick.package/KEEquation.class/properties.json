@@ -6,10 +6,9 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"compartments",
-		"parameters",
-		"equations"
+		"variable",
+		"expression"
 	],
-	"name" : "KEModel",
+	"name" : "KEEquation",
 	"type" : "normal"
 }

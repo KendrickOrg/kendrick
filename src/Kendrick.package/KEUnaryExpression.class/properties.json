@@ -1,15 +1,14 @@
 {
 	"commentStamp" : "",
-	"super" : "Object",
+	"super" : "KEExpression",
 	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"compartments",
-		"parameters",
-		"equations"
+		"op",
+		"expression"
 	],
-	"name" : "KEModel",
+	"name" : "KEUnaryExpression",
 	"type" : "normal"
 }

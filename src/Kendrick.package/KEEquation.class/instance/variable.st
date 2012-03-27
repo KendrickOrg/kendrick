@@ -1,3 +1,3 @@
 as yet unclassified
-value
-	^value
+variable
+^variable

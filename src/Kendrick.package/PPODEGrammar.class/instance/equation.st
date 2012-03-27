@@ -1,3 +1,3 @@
 grammar
 equation
-   ^identifier, $: asParser trim , $t asParser trim , $= asParser trim, terms
+   ^identifier trim, $: asParser trim , $t asParser trim , $= asParser trim, terms

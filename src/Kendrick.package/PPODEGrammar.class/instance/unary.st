@@ -1,3 +1,3 @@
 grammar
 unary
-   ^ $- asParser trim , identifier
+   ^ $- asParser trim , primary

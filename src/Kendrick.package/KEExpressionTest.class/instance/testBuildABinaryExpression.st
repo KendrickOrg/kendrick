@@ -1,21 +1,13 @@
 as yet unclassified
 testBuildABinaryExpression
-	| t e a b o |
-	t := FMTower new.
-	t metamodel
-		addSmalltalkClasses:
-			(Array
-				with: KEExpression
-				with: KEBinaryExpression
-				with: KESimpleExpression
-				with: KENumerical
-				with: KEOperator).
-	e := (t metamodel elementNamed: 'KE.BinaryExpression') createInstance.
-	a := (t metamodel elementNamed: 'KE.Numerical') createInstance.
+	| e a b o |
+	
+	e := KEBinaryExpression new.
+	a := KENumerical new.
 	a value: 3.
-	b := (t metamodel elementNamed: 'KE.Numerical') createInstance.
+	b := KENumerical new.
 	b value: 7.
-	o := (t metamodel elementNamed: 'KE.Operator') createInstance.
+	o := KEOperator new.
 	o symbol: #+.
 	e
 		op: o;

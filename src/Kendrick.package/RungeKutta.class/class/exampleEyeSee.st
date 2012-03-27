@@ -5,9 +5,10 @@ exampleEyeSee
 diag := ESDiagramRenderer new.
 (diag lineDiagram)
        y: [:x | x*x];
-       yAxisLabel: '';
+       yAxisLabel: 'X^2';
        rotatedLabels: true;
        regularAxis;
-       defaultColor: Color red;
+	xAxisLabel:'X';
+       defaultColor: Color green;
        models: (0 to: 10 by: 0.1).
 diag open.
