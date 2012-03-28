@@ -6,7 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"name"
+		"symbol"
 	],
 	"name" : "KEVariable",
 	"type" : "normal"

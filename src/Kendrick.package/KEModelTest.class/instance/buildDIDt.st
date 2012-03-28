@@ -8,9 +8,9 @@ expbin2 := KEBinaryExpression new.
 
 m1 := (KEOperator new) symbol:#*.
 m2 := (KEOperator new) symbol:#*.
-vars := (KEVariable new) name:'S'.
-vari := (KEVariable new) name:'I'.
-beta := (KEVariable new) name:'beta'.
+vars := (KEVariable new) symbol:#S.
+vari := (KEVariable new) symbol:#I.
+beta := (KEVariable new) symbol:#beta.
 
 expbin2 op:m1; leftHandSide: vars; rightHandSide: vari.
 expbin1 op:m2; leftHandSide: beta; rightHandSide: expbin2.
@@ -20,7 +20,7 @@ s leftHandSide: expbin1.
 s op:#-.
 
 m3 := (KEOperator new) symbol:#*.
-gamma := (KEVariable new) name:'gamma'.
+gamma := (KEVariable new) symbol:'gamma'.
 
 gammaI := KEBinaryExpression new.
 gammaI op: m3; leftHandSide: gamma; rightHandSide:vari.

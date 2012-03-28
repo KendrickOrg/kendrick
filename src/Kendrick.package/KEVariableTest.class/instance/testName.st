@@ -1,6 +1,7 @@
-as yet unclassified
+tests
 testName
-	| g |
+
+| g |
 	g := KEVariable new.
-	g name: 'gamma'.
-	self assert: g name equals: 'gamma'
+	g symbol: #gamma.
+	self assert: g symbol equals: #gamma

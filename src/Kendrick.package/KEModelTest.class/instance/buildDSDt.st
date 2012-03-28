@@ -8,9 +8,9 @@ expbin2 := KEBinaryExpression new.
 
 m1 := (KEOperator new) symbol:#*.
 m2 := (KEOperator new) symbol:#*.
-vars := (KEVariable new) name:'S'.
-vari := (KEVariable new) name:'I'.
-beta := (KEVariable new) name:'beta'.
+vars := (KEVariable new) symbol:#S.
+vari := (KEVariable new) symbol:#I.
+beta := (KEVariable new) symbol:#beta.
 u := (KEUnaryExpression new).
 u op:#-; expression: beta.
 
