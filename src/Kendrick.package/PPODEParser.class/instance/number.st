@@ -1,4 +1,4 @@
-as yet unclassified
+grammar
 number 
 
-^ super number ==> [:string | (KENumerical new) value:string asNumber]
+^ super number flatten ==> [:string | (KENumerical new) number: string asNumber]

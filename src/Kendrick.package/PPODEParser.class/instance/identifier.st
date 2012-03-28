@@ -1,4 +1,4 @@
-as yet unclassified
+grammar
 identifier
 
-^ super identifier token ==> [:token | (KEVariable new) name: token asString]
+^ super identifier flatten ==> [:string | (KEVariable new) symbol: string asSymbol]

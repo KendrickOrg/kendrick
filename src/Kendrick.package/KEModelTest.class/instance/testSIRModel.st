@@ -1,5 +1,5 @@
 as yet unclassified
-testKESIR
+testSIRModel
 
 | model s i r dsdt m1 m2 vars vari beta expbin1 expbin2 u |
 model := KEModel new.
