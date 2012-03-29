@@ -1,13 +1,14 @@
 {
 	"commentStamp" : "",
-	"super" : "KEExpression",
+	"super" : "Object",
 	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"symbol"
+		"rate",
+		"actions"
 	],
-	"name" : "KEOperator",
+	"name" : "KEEvent",
 	"type" : "normal"
 }

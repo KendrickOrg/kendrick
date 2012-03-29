@@ -3,6 +3,6 @@ equation
 
 ^ super equation ==> [:nodes |
 	(KEEquation new)
-		variable: nodes first;
+		variable: ((KEVariable new) symbol: (nodes first));
 		expression: nodes last
 	]
