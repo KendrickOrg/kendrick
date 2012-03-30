@@ -2,4 +2,4 @@
 !KEBinaryExpression methodsFor: 'as yet unclassified'!
 sign
 
-(op value = '*') ifTrue: [^(rightHandSide sign) * (leftHandSide sign)] ifFalse:[^0]! !
+(op symbol value = '*') ifTrue: [^(rightHandSide sign) * (leftHandSide sign)] ifFalse:[^0]! !

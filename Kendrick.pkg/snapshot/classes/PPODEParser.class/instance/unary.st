@@ -4,5 +4,5 @@ unary
 
 ^ super unary ==> [:nodes |
 	(KEUnaryExpression new)
-		op: nodes first
+		op: ((KEOperator new) symbol: (PPToken on: (nodes first) asString))
 		; expression: nodes last]! !
