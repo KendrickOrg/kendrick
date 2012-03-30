@@ -2,5 +2,5 @@
 !KEEvent methodsFor: 'as yet unclassified'!
 initialize
 
- actions := #().
+ actions := Dictionary new.
  rate := 0! !

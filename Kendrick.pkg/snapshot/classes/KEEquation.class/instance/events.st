@@ -4,6 +4,10 @@ events
 
 | l |
 l := expression events.
-l do: [:each | 
-	each actions: { variable symbol. each rate sign}].
+l do: [:each | | status|
+	status := variable symbol value.
+	(each rate sign positive)
+	ifTrue:[	each addOneIndividualTo: status]
+	ifFalse:[ each removeOneIndividualFrom:  status]
+	].
 ^l! !
