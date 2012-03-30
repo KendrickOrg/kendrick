@@ -1,5 +1,5 @@
 
 !KENumerical methodsFor: 'evaluating'!
-evaluateWithModel: m
+evaluateWithModel: aModel
 
 ^ number! !

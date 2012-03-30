@@ -1,5 +1,5 @@
 
 !KEModel methodsFor: 'as yet unclassified'!
-add: aCompartment
+addCompartment: aCompartment
 
 compartments add: aCompartment! !

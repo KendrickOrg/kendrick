@@ -1,5 +1,5 @@
 
 !KEExpression methodsFor: 'as yet unclassified'!
-evaluateWithModel:m
+evaluateWithModel: aModel
 
 self subclassResponsibility! !

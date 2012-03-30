@@ -1,12 +1,16 @@
 
 !KEBinaryExpression methodsFor: 'as yet unclassified'!
-evaluateWithModel:m
+evaluateWithModel: aModel
 
-| e1 e2 |
-e1 := leftHandSide evaluateWithModel:m..
-e2 := rightHandSide evaluateWithModel:m.
+| left right |
+left := leftHandSide evaluateWithModel: aModel.
+right := rightHandSide evaluateWithModel: aModel.
 
-(op = #+) ifTrue:[
-		^e1+e2].
-(op = #*) ifTrue:[
-		^e1*e2]! !
+op = #+ ifTrue:[
+		^left+right].
+op = #* ifTrue:[
+		^left*right].
+op = #/ ifTrue:[
+		^left/right].
+op = #^ ifTrue:[
+		^left raisedTo: right]! !

@@ -7,7 +7,7 @@ testSMultiplyByI
 	s := (KECompartment new) status: #S; numberOfIndividuals: 5.
      i := (KECompartment new) status: #I; numberOfIndividuals: 6.
 
-	m add: s; add: i.
+	m addCompartment: s; addCompartment: i.
 	
 	e := KEBinaryExpression new.
 	a := KEVariable new.
