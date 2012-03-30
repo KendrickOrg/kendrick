@@ -2,5 +2,5 @@
 !KEBinaryExpression methodsFor: 'as yet unclassified'!
 negated
 
-^ (KEUnaryExpression new) op: ((KEOperator new) symbol: (PPToken on:'-'));
+^ (KEUnaryExpression new) op: #-;
 		expression:self.! !

@@ -6,7 +6,7 @@ buildDRDt
 drdt := KEEquation new.
 
 vari := (KEVariable new) symbol:'I'.
-m3 := (KEOperator new) symbol:#*.
+m3 := #*.
 gamma := (KEVariable new) symbol:#gamma.
 
 gammaI := KEBinaryExpression new.

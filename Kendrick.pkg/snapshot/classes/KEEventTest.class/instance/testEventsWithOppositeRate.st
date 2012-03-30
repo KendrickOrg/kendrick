@@ -7,8 +7,8 @@ e1 := KEEvent new.
 e2 := KEEvent new.
 
 si := KEBinaryExpression new.
-opMul := (KEOperator new) symbol:#*.
-opMin := (KEOperator new) symbol:#-.
+opMul := #*.
+opMin := #-.
 varS := (KEVariable new) symbol:#S.
 varI := (KEVariable new) symbol:#I.
 varBeta := (KEVariable new) symbol:#beta.

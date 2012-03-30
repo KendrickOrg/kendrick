@@ -3,13 +3,13 @@
 events
 |list |
 list := Bag new.
-(op symbol value = '*')|(op symbol value = '/')|(op symbol value = '^') ifTrue:[
+(op = #*)|(op  = #/)|(op   = #^) ifTrue:[
 	|e|
 	e := KEEvent new.
 	e rate: self.
 	list add:e].
 
-(op symbol value = '+')
+(op   = #+)
 ifTrue:[
 	|l1 l2|
 l1 := leftHandSide events.	
@@ -18,12 +18,11 @@ list addAll:l1.
 list addAll:l2.
 ].
 
-(op symbol value = '-')
+(op   = #-)
 ifTrue:[
 	|l1 l2 o|
 	l1 := leftHandSide events.
-	o := (KEOperator new) symbol: (PPToken on:#-).
-	l2 := ((KEUnaryExpression new) op: o; expression: rightHandSide) events.
+	l2 := ((KEUnaryExpression new) op: #-; expression: rightHandSide) events.
 	list addAll:l1.
 	list addAll:l2.
 	].

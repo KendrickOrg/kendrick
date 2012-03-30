@@ -7,8 +7,8 @@ dsdt := KEEquation new.
 expbin1 := KEBinaryExpression new.
 expbin2 := KEBinaryExpression new.
 
-m1 := (KEOperator new) symbol:#*.
-m2 := (KEOperator new) symbol:#*.
+m1 := #*.
+m2 := #*.
 vars := (KEVariable new) symbol:#S.
 vari := (KEVariable new) symbol:#I.
 beta := (KEVariable new) symbol:#beta.

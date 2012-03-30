@@ -1,5 +1,5 @@
 
-!KEModel methodsFor: 'as yet unclassified'!
+!KEModel methodsFor: 'initialize-release'!
 initialize
 
 compartments := Bag new.

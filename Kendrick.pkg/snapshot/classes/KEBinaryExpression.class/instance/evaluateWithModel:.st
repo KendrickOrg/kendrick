@@ -6,7 +6,7 @@ evaluateWithModel:m
 e1 := leftHandSide evaluateWithModel:m..
 e2 := rightHandSide evaluateWithModel:m.
 
-(op symbol value = '+') ifTrue:[
+(op = #+) ifTrue:[
 		^e1+e2].
-(op symbol value = '*') ifTrue:[
+(op = #*) ifTrue:[
 		^e1*e2]! !

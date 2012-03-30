@@ -9,8 +9,7 @@ test3Plus7Is10
 	a number: 3.
 	b := KENumerical new.
 	b number: 7.
-	o := KEOperator new.
-	o symbol: #+.
+	o := #+.
 	e
 		op: o;
 		leftHandSide: a;

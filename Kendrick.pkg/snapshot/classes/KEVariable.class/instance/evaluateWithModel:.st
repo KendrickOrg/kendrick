@@ -4,7 +4,7 @@ evaluateWithModel: m
 |x|
 x := m atParameter:symbol.
 x ifNil:[
-	^ (m atCompartment: symbol) initialValue.
+	^ (m atCompartment: symbol) numberOfIndividuals.
 	].
 ^x 
 ! !

@@ -10,8 +10,7 @@ testBetaPlusOne
 	beta symbol:'beta'.
 	b := KENumerical new.
 	b number: 1.
-	o := KEOperator new.
-	o symbol: #+.
+	o := #+.
 	e
 		op: o;
 		leftHandSide: beta;

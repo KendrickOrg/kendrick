@@ -8,10 +8,9 @@ testBuildABinaryExpression
 	a number: 3.
 	b := KENumerical new.
 	b number: 7.
-	o := KEOperator new.
-	o symbol: #+.
+	o := #+.
 	e
 		op: o;
 		leftHandSide: a;
 		rightHandSide: b.
-	self assert: e op symbol equals: #+! !
+	self assert: e op equals: #+! !

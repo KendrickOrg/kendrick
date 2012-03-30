@@ -1,5 +1,5 @@
 
-!KEEvent methodsFor: 'as yet unclassified'!
+!KEEvent methodsFor: 'initialize-release'!
 initialize
 
  actions := Dictionary new! !
