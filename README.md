@@ -14,7 +14,11 @@
 
 * Clone this repository:
 
-git clone git@github.com:SergeStinckwich/Kendrick.git
+```shell
+  mkdir Kendrick
+  cd Kendrick
+  git clone https://github.com/SergeStinckwich/Kendrick.git
+```
 
 * Attach to filetree repository and load latest packages (use correct path to your filetree download/clone):
 
