@@ -19,7 +19,7 @@ git clone git@github.com:SergeStinckwich/Kendrick.git
 * Attach to filetree repository and load latest packages (use correct path to your filetree download/clone):
 
 ```Smalltalk
-repo := 'XXXX'
+repo := 'Add you repo path here'.
 Gofer new
     repository: (MCFileTreeRepository new directory: 
                     (FileDirectory on: repo));
