@@ -4,10 +4,9 @@ testKEModelWithParameters
 
 | model s i r |
 model := KEModel new.
-s := (KECompartment new) status: #S; numberOfIndividuals: 1-1e-6.
-i := (KECompartment new) status: #I; numberOfIndividuals: 1e-6.
-r := (KECompartment new) status: #R; numberOfIndividuals: 0.
-model addCompartment: s; addCompartment:i; addCompartment:r.
+model atCompartment:#S putNumberOfIndividuals: 1-1e-6.
+model atCompartment:#I putNumberOfIndividuals: 1e-6.
+model atCompartment:#R putNumberOfIndividuals: 0.
 model atParameter:#beta put: 520.
 model atParameter: #gamma put: 365/7.
 self assert: (model atParameter:#beta) equals: 520.

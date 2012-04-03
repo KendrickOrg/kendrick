@@ -4,6 +4,5 @@ testKEModelWith1Compartment
 
 | model compartment |
 model := KEModel new.
-compartment := (KECompartment new) status: #S; numberOfIndividuals: 1-1e-6.
-model addCompartment: compartment.
+model atCompartment: #S putNumberOfIndividuals: 1-1e6.
 self assert: model numberOfCompartments equals:1! !
