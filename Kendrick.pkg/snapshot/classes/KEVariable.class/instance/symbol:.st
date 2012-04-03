@@ -1,4 +1,4 @@
 
 !KEVariable methodsFor: 'as yet unclassified'!
-symbol: aString 
-	symbol := aString! !
+symbol: aSymbol 
+	symbol := aSymbol! !

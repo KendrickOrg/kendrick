@@ -3,5 +3,5 @@
 testEquationCreateAnEventThatAddOneIndividual
 
 | e |
-e := PPODEParser parse:'S:t=beta*S*I'.
+e := 'S:t=beta*S*I' parseAsODEEquation.
 self assert:(e events any isAddingOneIndividualFrom: #S) equals:true! !

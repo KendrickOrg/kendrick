@@ -4,10 +4,10 @@ testBetaPlusOne
 	|  m e beta b o |
 	
 	m := KEModel new.
-	m atParameter:#beta put: 2.
+	m atParameter: #beta put: 2.
 	e := KEBinaryExpression new.
 	beta := KEVariable new.
-	beta symbol:'beta'.
+	beta symbol: #beta.
 	b := KENumerical new.
 	b number: 1.
 	o := #+.

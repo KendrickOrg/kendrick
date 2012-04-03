@@ -5,7 +5,7 @@ buildDRDt
 | drdt vari m3 gamma gammaI |
 drdt := KEEquation new.
 
-vari := (KEVariable new) symbol:'I'.
+vari := (KEVariable new) symbol: #I.
 m3 := #*.
 gamma := (KEVariable new) symbol:#gamma.
 
