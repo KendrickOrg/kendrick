@@ -21,4 +21,4 @@ model addEquation: dsdt.
 model addEquation: didt.
 model addEquation: drdt.
 
-self assert: model events size equals: 2! !
+self assert: 2  equals: model events size! !

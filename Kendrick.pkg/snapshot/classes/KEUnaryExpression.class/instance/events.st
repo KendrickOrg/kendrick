@@ -4,6 +4,6 @@ events
 |list e|
 list := Bag new.
 e := KEEvent new.
-e rate: self.
+e rate: (self expression).
 list add:e.
 ^list! !
