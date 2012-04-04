@@ -1,3 +1,3 @@
 as yet unclassified
-symbol
-	^symbol
+normalize
+^self

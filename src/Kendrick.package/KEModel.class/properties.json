@@ -8,7 +8,8 @@
 	"instvars" : [
 		"compartments",
 		"parameters",
-		"equations"
+		"equations",
+		"eventList"
 	],
 	"name" : "KEModel",
 	"type" : "normal"

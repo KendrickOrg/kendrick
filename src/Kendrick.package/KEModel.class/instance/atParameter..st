@@ -1,4 +1,4 @@
 as yet unclassified
 atParameter: aParameter
 
-^ parameters at: aParameter
+^ parameters at: aParameter ifAbsent:[^nil]

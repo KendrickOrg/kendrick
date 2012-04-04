@@ -1,4 +1,4 @@
 as yet unclassified
 sign
 
-(op value = '*') ifTrue: [^(rightHandSide sign) * (leftHandSide sign)] ifFalse:[^0]
+(op = #*) ifTrue: [^(rightHandSide sign) * (leftHandSide sign)] ifFalse:[^0]

@@ -1,5 +1,4 @@
-as yet unclassified
+initialize-release
 initialize
 
- actions := #().
- rate := 0
+ actions := Dictionary new

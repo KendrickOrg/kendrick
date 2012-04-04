@@ -1,3 +1,3 @@
 as yet unclassified
-op: aString
-	op := aString
+op: anOperator
+	op := anOperator
