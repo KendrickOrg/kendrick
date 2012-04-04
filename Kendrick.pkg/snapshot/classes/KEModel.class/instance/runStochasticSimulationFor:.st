@@ -2,10 +2,10 @@
 !KEModel methodsFor: 'as yet unclassified'!
 runStochasticSimulationFor: tMax
 	|  rTotal rand1 deltaT rand2 p selectedEvent t |
-	eventList := self events.
+	eventList := self generateEvents.
 	t := 0.
 	[t < tMax] whileTrue: [
-		rTotal := self sumOfRateWith.
+		rTotal := self sumOfRate.
 		rand1 := Random new.
 		deltaT := ((rand1 next) log) negated / rTotal.
 		rand2 := Random new.

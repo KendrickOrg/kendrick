@@ -1,8 +1,8 @@
 
 !KEModel methodsFor: 'as yet unclassified'!
-sumOfRateWith
+sumOfRate
 	| rateTotal |
 	rateTotal := 0.
-	eventList do: [ :each | rateTotal := rateTotal + (each evaluateWithModel: self).
+	eventList do:[:each | rateTotal := rateTotal + (each evaluateWithModel: self).
 		].
 	^rateTotal! !

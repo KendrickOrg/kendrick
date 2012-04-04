@@ -2,25 +2,25 @@
 !KEEventTest methodsFor: 'as yet unclassified'!
 testEventsWithOppositeRate
 
-|  e1 e2 si opMul varS varI varBeta minusBetaSI betaSI beta  listEvents opMin |
+|  e1 e2 si opMul opMin s i beta minusBetaSI betaSI listEvents |
 e1 := KEEvent new.
 e2 := KEEvent new.
 
 si := KEBinaryExpression new.
 opMul := #*.
 opMin := #-.
-varS := (KEVariable new) symbol:#S.
-varI := (KEVariable new) symbol:#I.
-varBeta := (KEVariable new) symbol:#beta.
+s := (KEVariable new) symbol: #S.
+i := (KEVariable new) symbol: #I.
+beta := (KEVariable new) symbol:#beta.
 minusBetaSI := (KEUnaryExpression new).
-si op:opMul; leftHandSide: varS; rightHandSide: varI.
+si op: opMul; leftHandSide: s; rightHandSide: i.
 betaSI := KEBinaryExpression new.
 betaSI op:opMul; leftHandSide: beta; rightHandSide: si. 
 minusBetaSI op:opMin ; expression: betaSI..
 
-e1 rate: minusBetaSI.
-e2 rate: betaSI.
+e1 rate: minusBetaSI normalize.
+e2 rate: betaSI normalize.
 
 listEvents := Bag new.
 listEvents add: e1.
-self assert: (e2 hasAnEventWithOppositeRateIn: listEvents) equals: true.! !
+self assert: true equals: (e2 hasAnEventWithOppositeRateIn: listEvents)! !

@@ -1,6 +1,6 @@
 
 !KEEquation methodsFor: 'as yet unclassified'!
-events
+generateEvents
 
 | l |
 l := expression events.

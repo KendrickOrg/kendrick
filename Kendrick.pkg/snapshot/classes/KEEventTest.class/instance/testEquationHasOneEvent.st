@@ -4,4 +4,4 @@ testEquationHasOneEvent
 
 | equation |
 equation := PPODEParser parse:'S:t=beta*S*I'.
-self assert:(equation events size) equals:1! !
+self assert:(equation generateEvents size) equals:1! !

@@ -18,4 +18,4 @@ model addEquation: (PPODEParser parse: 'R:t=gamma*I').
 
 model runStochasticSimulationFor: 0.05.
 
-self assert: 1e6 equals: ((model atCompartment: #S) numberOfIndividuals + (model atCompartment: #I) numberOfIndividuals + (model atCompartment: #R) numberOfIndividuals)! !
+self assert: 1e6 equals: ( model numberOfIndividualsAtCompartment: #S )+ (model numberOfIndividualsAtCompartment: #I) + (model numberOfIndividualsAtCompartment: #R)! !

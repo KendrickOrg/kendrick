@@ -6,7 +6,7 @@ list := Bag new.
 (op = #*)|(op  = #/)|(op   = #^) ifTrue:[
 	|e|
 	e := KEEvent new.
-	e rate: self.
+	e rate: self normalize.
 	list add:e].
 
 (op   = #+)
@@ -23,7 +23,7 @@ ifTrue:[
 	|l1 l2 o|
 	l1 := leftHandSide events.
 	l2 := ((KEUnaryExpression new) op: #-; expression: rightHandSide) events.
-	list addAll:l1.
+	l1 ifNotNil:[list addAll:l1].
 	list addAll:l2.
 	].
 ^list! !

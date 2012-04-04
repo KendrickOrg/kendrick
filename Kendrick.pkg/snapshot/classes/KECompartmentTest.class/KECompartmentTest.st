@@ -3,4 +3,4 @@ TestCase subclass: #KECompartmentTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Kendrick-Tests-SemanticModel'!
+	category: 'Kendrick-Math-ODE'!

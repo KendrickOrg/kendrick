@@ -1,12 +1,10 @@
 
 !KEModel methodsFor: 'as yet unclassified'!
-events
+generateEvents
 
-| eventList |
 eventList := Bag new.
-
 equations do:[:each | |list| 
-	list := each events.
+	list := each generateEvents.
 	list do:[:e |
 		(e hasAnEventWithOppositeRateIn: eventList)
 		ifTrue:[ |f|
