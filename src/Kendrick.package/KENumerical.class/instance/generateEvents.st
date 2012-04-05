@@ -1,4 +1,4 @@
 evaluating
-events
+generateEvents
 
 ^ nil

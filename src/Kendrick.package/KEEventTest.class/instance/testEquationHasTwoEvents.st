@@ -2,5 +2,5 @@ as yet unclassified
 testEquationHasTwoEvents
 
 | equation |
-equation := PPODEParser parse: 'I:t=beta*S*I-gamma*I'.
+equation := 'I:t=beta*S*I-gamma*I' parseAsODEEquation.
 self assert: (equation generateEvents size) equals: 2

@@ -2,7 +2,7 @@ as yet unclassified
 generateEvents
 
 | l |
-l := expression events.
+l := expression generateEvents.
 l do: [:each | | status|
 	status := variable symbol.
 	(each rate sign positive)

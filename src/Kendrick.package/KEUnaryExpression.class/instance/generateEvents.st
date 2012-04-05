@@ -1,5 +1,6 @@
 as yet unclassified
-events
+generateEvents
+
 |list e|
 list := Bag new.
 e := KEEvent new.
