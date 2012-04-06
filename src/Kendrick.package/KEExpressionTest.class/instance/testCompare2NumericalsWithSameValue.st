@@ -1,5 +1,5 @@
 as yet unclassified
-testCompare2Numericals
+testCompare2NumericalsWithSameValue
 
 | a b |
 a := KENumerical number:6.

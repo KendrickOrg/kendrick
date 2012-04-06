@@ -1,4 +1,5 @@
-as yet unclassified
+printing
 printOn: aStream
+
 	aStream 
 		nextPutAll: number asString
