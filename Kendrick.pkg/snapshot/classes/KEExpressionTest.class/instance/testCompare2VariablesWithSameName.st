@@ -1,10 +1,10 @@
 
 !KEExpressionTest methodsFor: 'as yet unclassified'!
-testCompare2Numericals
+testCompare2VariablesWithSameName
 
 | a b |
-a := KENumerical number:6.
-b := KENumerical number:6.
+a := KEVariable symbol: #S.
+b := KEVariable symbol: #S.
 
 self assert:true equals: (a = b)
 	! !

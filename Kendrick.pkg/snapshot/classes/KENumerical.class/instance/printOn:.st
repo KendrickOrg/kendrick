@@ -1,5 +1,6 @@
 
-!KENumerical methodsFor: 'as yet unclassified'!
+!KENumerical methodsFor: 'printing'!
 printOn: aStream
+
 	aStream 
 		nextPutAll: number asString! !
