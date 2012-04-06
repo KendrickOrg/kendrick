@@ -11,8 +11,7 @@ runStochasticSimulationFor: tMax
 		p := rand2 next * rTotal.
 		selectedEvent := self selectEventWith: p.
 		t := t + deltaT.
-		selectedEvent executeOn: self.
-		Transcript show: (self atCompartment: #I) numberOfIndividuals; cr.
+		selectedEvent ifNotNil: [selectedEvent executeOn: self].
 		]
 
 	
