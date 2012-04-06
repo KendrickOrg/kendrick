@@ -6,8 +6,7 @@ normalize
 |l1 l2 k | 
 l1 := leftHandSide normalize.
 l2 := rightHandSide normalize.
-k := KEUnaryExpression new.
-k op:#-.
+
 l1 isUnaryExpression ifTrue:[
 	l2 isUnaryExpression ifTrue:[
 		self leftHandSide: l1 expression.
@@ -15,20 +14,20 @@ l1 isUnaryExpression ifTrue:[
 		^self
 		]
 	ifFalse:[
+		k := KEUnaryExpression new.
+		k op:#-.
 		self leftHandSide: l1 expression.
 		self rightHandSide: l2.
 		k expression: self.
 		^k	
 		].
-	]
-    ifFalse:[
-		l2 isUnaryExpression ifTrue:[
-			self leftHandSide: l1.
-			self rightHandSide: l2 expression.
-			k expression: self.
-			^k	
-	    ]
-		ifFalse:[
-			^self
-	 	].
-	]
+	].
+
+l2 isUnaryExpression ifTrue:[
+		k := KEUnaryExpression new.
+		k op:#-.
+		self leftHandSide: l1.
+		self rightHandSide: l2 expression.
+		k expression: self.
+		^k	
+	].
