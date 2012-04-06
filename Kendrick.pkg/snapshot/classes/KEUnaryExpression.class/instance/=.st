@@ -1,6 +1,6 @@
 
 !KEUnaryExpression methodsFor: 'as yet unclassified'!
-compareWith: aExpression
+= aExpression
 
 (aExpression isUnaryExpression) ifTrue: [
 	^(self expression compareWith: aExpression expression).

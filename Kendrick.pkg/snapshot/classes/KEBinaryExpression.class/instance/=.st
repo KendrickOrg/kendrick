@@ -1,6 +1,6 @@
 
 !KEBinaryExpression methodsFor: 'as yet unclassified'!
-compareWith: aBinaryExpression
+= aBinaryExpression
 
 | self_left self_right left right t1 t2 |
 self_left := self leftHandSide.
