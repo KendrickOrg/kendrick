@@ -2,7 +2,7 @@
 !KEModelTest methodsFor: 'as yet unclassified'!
 testKEModelWithParameters
 
-| model s i r |
+| model|
 model := KEModel new.
 model atCompartment:#S putNumberOfIndividuals: 1-1e-6.
 model atCompartment:#I putNumberOfIndividuals: 1e-6.
