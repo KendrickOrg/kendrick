@@ -1,5 +1,5 @@
 evaluating
-compareWith: aNumerical
+= aNumerical
 
 (self number = aNumerical number) ifTrue:[^true].
 ^false
