@@ -3,6 +3,6 @@
 = aExpression
 
 (aExpression isUnaryExpression) ifTrue: [
-	^(self expression compareWith: aExpression expression).
+	^(self expression = aExpression expression).
 ]
 ifFalse:[^false]! !

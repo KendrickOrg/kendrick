@@ -20,22 +20,4 @@ model addEquation: dsdt.
 model addEquation: didt.
 model addEquation: drdt.
 l := model generateEvents.
-count := 0.
-l do:[:each|
-	ex := each rate.
-	count = 0 ifTrue:[a := ex].
-	count = 1 ifTrue:[b := ex].
-	count = 2 ifTrue:[c := ex].
-	count = 3 ifTrue:[d := ex]. 
-	count := count + 1.	
-	].
-a isUnaryExpression ifTrue:[a := a negated].
-b isUnaryExpression ifTrue:[b := b negated].
-c isUnaryExpression ifTrue:[c := c negated].
-d isUnaryExpression ifTrue:[d := d negated].
-t := false.
-(a = b) ifTrue:[t := true].
-(a = c) ifTrue:[t := true].
-(a = d) ifTrue:[t := true].
-self assert: true equals: t
-"self assert: 2  equals: l size"! !
+self assert: 2  equals: l size! !
