@@ -6,5 +6,4 @@ testCompare2VariablesWithSameName
 a := KEVariable symbol: #S.
 b := KEVariable symbol: #S.
 
-self assert:true equals: (a = b)
-	! !
+self assert:true equals: (a = b)! !

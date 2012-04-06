@@ -7,9 +7,10 @@ self_left := self leftHandSide.
 self_right := self rightHandSide.
 left  := aBinaryExpression leftHandSide.
 right := aBinaryExpression rightHandSide.
-(self op symbol value = aBinaryExpression op symbol value) ifTrue:[
-	t1 := self_left compareWith: left.
-	t2 := self_right compareWith: right. 
+(self op = aBinaryExpression op) ifTrue:[
+	t1 := self_left = left.
+	t2 := self_right = right. 
 	(t1 = true)
 	]
-ifFalse: [^false]! !
+ifFalse: [^false].
+^true! !

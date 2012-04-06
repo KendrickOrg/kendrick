@@ -1,5 +1,7 @@
 
 !KEVariable methodsFor: 'as yet unclassified'!
-= aKEVariable
+= anExpression
 
-^self symbol = aKEVariable symbol! !
+anExpression isAVariable
+	ifTrue:[^self symbol = anExpression symbol].
+^false.! !
