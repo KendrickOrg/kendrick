@@ -9,7 +9,9 @@
 		"compartments",
 		"parameters",
 		"equations",
-		"eventList"
+		"eventList",
+		"i",
+		"result"
 	],
 	"name" : "KEModel",
 	"type" : "normal"
