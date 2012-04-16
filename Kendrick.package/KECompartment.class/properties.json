@@ -1,0 +1,17 @@
+{
+	"category" : "Kendrick-SemanticModel",
+	"classinstvars" : [
+		 ],
+	"classtraitcomposition" : "{}",
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"status",
+		"numberOfIndividuals" ],
+	"name" : "KECompartment",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"traitcomposition" : "{}",
+	"type" : "normal" }

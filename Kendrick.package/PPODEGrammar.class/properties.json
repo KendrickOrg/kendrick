@@ -1,0 +1,26 @@
+{
+	"category" : "Kendrick-ExternalDSL",
+	"classinstvars" : [
+		 ],
+	"classtraitcomposition" : "{}",
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"number",
+		"terms",
+		"parenthesis",
+		"identifier",
+		"multiplication",
+		"power",
+		"addition",
+		"factors",
+		"primary",
+		"unary",
+		"equation" ],
+	"name" : "PPODEGrammar",
+	"pools" : [
+		 ],
+	"super" : "PPCompositeParser",
+	"traitcomposition" : "{}",
+	"type" : "normal" }

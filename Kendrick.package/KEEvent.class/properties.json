@@ -1,0 +1,17 @@
+{
+	"category" : "Kendrick-SemanticModel",
+	"classinstvars" : [
+		 ],
+	"classtraitcomposition" : "{}",
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"rate",
+		"actions" ],
+	"name" : "KEEvent",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"traitcomposition" : "{}",
+	"type" : "normal" }

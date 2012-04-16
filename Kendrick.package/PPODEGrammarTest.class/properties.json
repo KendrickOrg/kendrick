@@ -1,0 +1,16 @@
+{
+	"category" : "Kendrick-Tests-ExternalDSL",
+	"classinstvars" : [
+		 ],
+	"classtraitcomposition" : "{}",
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "PPODEGrammarTest",
+	"pools" : [
+		 ],
+	"super" : "PPCompositeParserTest",
+	"traitcomposition" : "{}",
+	"type" : "normal" }

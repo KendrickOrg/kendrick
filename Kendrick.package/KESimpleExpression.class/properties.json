@@ -1,0 +1,16 @@
+{
+	"category" : "Kendrick-SemanticModel",
+	"classinstvars" : [
+		 ],
+	"classtraitcomposition" : "{}",
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "KESimpleExpression",
+	"pools" : [
+		 ],
+	"super" : "KEExpression",
+	"traitcomposition" : "{}",
+	"type" : "normal" }

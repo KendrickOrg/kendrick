@@ -1,0 +1,18 @@
+{
+	"category" : "Kendrick-SemanticModel",
+	"classinstvars" : [
+		 ],
+	"classtraitcomposition" : "{}",
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"op",
+		"leftHandSide",
+		"rightHandSide" ],
+	"name" : "KEBinaryExpression",
+	"pools" : [
+		 ],
+	"super" : "KEExpression",
+	"traitcomposition" : "{}",
+	"type" : "normal" }

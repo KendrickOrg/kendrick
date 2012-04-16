@@ -1,0 +1,16 @@
+{
+	"category" : "Kendrick-ExternalDSL",
+	"classinstvars" : [
+		 ],
+	"classtraitcomposition" : "{}",
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "PPODEParser",
+	"pools" : [
+		 ],
+	"super" : "PPODEGrammar",
+	"traitcomposition" : "{}",
+	"type" : "normal" }
