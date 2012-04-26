@@ -10,7 +10,8 @@
 		"xn",
 		"step",
 		"relTol",
-		"nbIterations"
+		"nbIterations",
+		"listOfEquations"
 	],
 	"name" : "RungeKuttaSolver",
 	"type" : "normal"

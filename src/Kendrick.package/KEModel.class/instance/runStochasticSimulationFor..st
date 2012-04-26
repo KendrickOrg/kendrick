@@ -1,7 +1,7 @@
 as yet unclassified
 runStochasticSimulationFor: tMax
 	|  rTotal rand1 deltaT rand2 p selectedEvent t |
-	result := Array new:10000.
+	result := Array new:200000.
 	eventList := self generateEvents.
 	t := 0.
 	i := 1.

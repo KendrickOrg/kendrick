@@ -1,7 +1,7 @@
 as yet unclassified
-testRunSIRStochasticModel
+testCalculateDerivation
 
-| model |
+| model solverRK dydx j listOfEquations |
 model := KEModel new.
 model atCompartment:#S putNumberOfIndividuals: 1e5-1.
 model atCompartment:#I putNumberOfIndividuals: 1.
@@ -15,8 +15,12 @@ model addEquation: (PPODEParser parse:'S:t=-beta*S*I').
 model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I').
 model addEquation: (PPODEParser parse: 'R:t=gamma*I').
 
-model runStochasticSimulationFor: 0.01.
+solverRK := RungeKuttaSolver new.
+solverRK getListOfEquationsOf: model.
+dydx := solverRK calculateDerivation: model.
 
-model plot.
+self assert: (dydx size) equals: 3.
+Transcript show: (dydx at: 1);cr.
+Transcript show: (dydx at: 2);cr.
+Transcript show: (dydx at: 3);cr.
 
-self assert: 1e5 equals: ( model numberOfIndividualsAtCompartment: #S )+ (model numberOfIndividualsAtCompartment: #I) + (model numberOfIndividualsAtCompartment: #R)
