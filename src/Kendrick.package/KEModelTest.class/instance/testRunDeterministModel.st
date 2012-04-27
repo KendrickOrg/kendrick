@@ -1,5 +1,5 @@
 as yet unclassified
-testRunDeterministeModel
+testRunDeterministModel
 
 | model solverRK dydx j listOfEquations nbIterations result |
 model := KEModel new.
@@ -13,7 +13,7 @@ model addEquation: (PPODEParser parse:'S:t=-beta*S*I').
 model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I').
 model addEquation: (PPODEParser parse: 'R:t=gamma*I').
 
-model runDeterministeSimulationFrom: 0.0 To: 1.0 With: 0.001.
+model runDeterministSimulationFrom: 0.0 to: 1.0 with: 0.001.
 
 
 
