@@ -1,3 +1,5 @@
+SqueakSource repository: http://www.squeaksource.com/Kendrick.html
+
 ## How to install Kendrick
 
 * Download the last dev MOOSE 4.7 image here: http://ci.moosetechnology.org/job/moose-latest-dev/lastSuccessfulBuild/artifact/moose_suite-4_7_dev.zip
