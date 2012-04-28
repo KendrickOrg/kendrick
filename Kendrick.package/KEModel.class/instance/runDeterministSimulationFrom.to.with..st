@@ -1,5 +1,5 @@
 as yet unclassified
-runDeterministeSimulationFrom: x0 To: xn With: step
+runDeterministSimulationFrom: x0 to: xn with: step
 
 | solverRK yy diag xValue |
 solverRK := RungeKuttaSolver new.
