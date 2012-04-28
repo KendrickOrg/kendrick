@@ -4,13 +4,15 @@ plot
 |diag|
 
 diag := ESDiagramRenderer new.
-	(diag scatterplot)
+	(diag lineDiagram)
 		y: #second;
-		x: #first;
-		smallObjects;
+		identifier: #first;
+		yAxisLabel: 'Infected';
+		xAxisLabel:'Time';
+	"	smallObjects;"
 		width: 1000;
-		height: 300;
-		valueAxis;
+		height: 1000;
+		regularAxis;
 		rotatedLabels: true;
 		models: result.
 ^ diag open
