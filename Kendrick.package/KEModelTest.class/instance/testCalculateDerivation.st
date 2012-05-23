@@ -19,8 +19,5 @@ solverRK := RungeKuttaSolver new.
 solverRK getListOfEquationsOf: model.
 dydx := solverRK calculateDerivation: model.
 
-self assert: (dydx size) equals: 3.
-Transcript show: (dydx at: 1);cr.
-Transcript show: (dydx at: 2);cr.
-Transcript show: (dydx at: 3);cr.
+self assert: (dydx size) equals: 3
 

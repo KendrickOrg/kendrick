@@ -22,10 +22,7 @@ nbIterations := ((1.0 - 0.0) / 0.001) rounded.
 self assert: (solverRK calculateNbOfIterations) equals: nbIterations.
 
 result := solverRK solver: model.
-self assert: (result size) equals: nbIterations.
-1 to: nbIterations do: [:i|
-	Transcript show: (result at: i); cr.
-	].
+self assert: (result size) equals: nbIterations
 
 
 

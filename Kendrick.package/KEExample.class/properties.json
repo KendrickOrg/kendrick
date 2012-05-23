@@ -7,11 +7,10 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"op",
-		"expression" ],
-	"name" : "KEUnaryExpression",
+		 ],
+	"name" : "KEExample",
 	"pools" : [
 		 ],
-	"super" : "KEExpression",
+	"super" : "Object",
 	"traitcomposition" : "{}",
 	"type" : "normal" }

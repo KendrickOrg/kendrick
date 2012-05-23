@@ -17,8 +17,7 @@ equations do:[:each|
 	self assert: (each variable symbol) equals: #I.
 	self assert: (each expression op) equals: #-.
 	left := (each expression) leftHandSide evaluateWithModel: model.
-	right := (each expression) rightHandSide evaluateWithModel: model.
-	Transcript show: ((each expression) evaluateWithModel: model); cr.
+	right := (each expression) rightHandSide evaluateWithModel: model
 	].
 model atCompartment: #S modifyNumberOfIndividuals: 1000.
 self assert: (model numberOfIndividualsAtCompartment: #S) equals: 1000.
