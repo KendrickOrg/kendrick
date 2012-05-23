@@ -2,7 +2,6 @@
 	"category" : "Kendrick-Math-ODE",
 	"classinstvars" : [
 		 ],
-	"classtraitcomposition" : "{}",
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
@@ -12,5 +11,4 @@
 	"pools" : [
 		 ],
 	"super" : "SortedCollection",
-	"traitcomposition" : "{}",
 	"type" : "normal" }

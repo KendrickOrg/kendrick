@@ -1,5 +1,5 @@
 as yet unclassified
-testRunDeterministModel
+testRunDeterministModelSIR
 
 | model solverRK dydx j listOfEquations nbIterations result |
 model := KEModel new.
