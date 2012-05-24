@@ -1,7 +1,7 @@
 as yet unclassified
-runDeterministModelSEIR
+runDeterministSEIRModel
 
-"self runDeterministModelSEIR"
+"self runDeterministSEIRModel"
 
 | model solverRK dydx j listOfEquations nbIterations result |
 model := KEModel new.
@@ -21,7 +21,7 @@ model addEquation: (PPODEParser parse: 'I:t=sigma*E-gamma*I-mu*I').
 model addEquation: (PPODEParser parse: 'R:t=gamma*I-mu*R').
 
 model runDeterministSimulationFrom: 0.0 to: 1.0 with: 0.001.
-
+model plot
 
 
 

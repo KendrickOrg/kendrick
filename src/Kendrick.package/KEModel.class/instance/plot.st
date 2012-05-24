@@ -9,10 +9,10 @@ diag := ESDiagramRenderer new.
 		identifier: #first;
 		yAxisLabel: 'Infected';
 		xAxisLabel:'Time';
-	"	smallObjects;"
-		width: 1000;
-		height: 1000;
+		defaultColor: Color blue;
+		width: 800;
+		height: 400;
 		regularAxis;
-		rotatedLabels: true;
+		rotatedLabels;
 		models: result.
 ^ diag open

@@ -1,7 +1,8 @@
 as yet unclassified
-runDeterministModelSIRDemographic
+runDeterministSIRModelWithDemography
 
-"self runDeterministModelSIRDemographic"
+"self runDeterministSIRModelWithDemography"
+
 | model |
 model := KEModel new.
 model atCompartment:#S putNumberOfIndividuals: 99999.
@@ -17,6 +18,7 @@ model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I-mu*I').
 model addEquation: (PPODEParser parse: 'R:t=gamma*I-mu*R').
 
 model runDeterministSimulationFrom: 0.0 to: 1.0 with: 0.001.
+model plot.
 
 
 
