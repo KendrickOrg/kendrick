@@ -15,7 +15,8 @@ nbIteration := ((xn - x0)/step) rounded.
 		yy at: j put: ((yy at: j) log).
 		].
 	].
-"Dessiner le diagramme"
+
+"Draw diagram"
 diag := ESDiagramRenderer new.
 	(diag lineDiagram)
 		y: #second;		

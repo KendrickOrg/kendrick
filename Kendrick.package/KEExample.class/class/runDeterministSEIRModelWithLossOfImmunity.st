@@ -1,7 +1,9 @@
 as yet unclassified
-runDeterministModelSEIRWithVaccination
+runDeterministSEIRModelWithLossOfImmunity
 
-| model |
+"self runDeterministSEIRModelWithLossOfImmunity"
+
+| model solverRK dydx j listOfEquations nbIterations result |
 model := KEModel new.
 model atCompartment:#S putNumberOfIndividuals: 99999.
 model atCompartment:#E putNumberOfIndividuals: 1.
@@ -11,16 +13,16 @@ model atParameter:#beta put: 0.0052.
 model atParameter: #gamma put: 365/7.
 model atParameter: #sigma put: 365/7.
 model atParameter: #mu put: 1/80.
-model atParameter: #p put: 0.7.
+model atParameter: #to put: 2.
 model atParameter: #N put: 100000.
 
-model addEquation: (PPODEParser parse:'S:t=mu*(1-p)*N-beta*S*I-mu*S').
+model addEquation: (PPODEParser parse:'S:t=mu*N-beta*S*I-mu*S+to*R').
 model addEquation: (PPODEParser parse:'E:t=beta*S*I-sigma*E-mu*E').
 model addEquation: (PPODEParser parse: 'I:t=sigma*E-gamma*I-mu*I').
-model addEquation: (PPODEParser parse: 'R:t=mu*p*N*gamma*I-mu*R').
+model addEquation: (PPODEParser parse: 'R:t=gamma*I-mu*R-to*R').
 
-model runDeterministSimulationFrom: 0 to: 100 with: 0.01 logTransform: true.
-
+model runDeterministSimulationFrom: 0.0 to: 1.0 with: 0.0001.
+model plot
 
 
 
