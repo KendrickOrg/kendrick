@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testCompare2NumericalsWithSameValue
 
 | a b |

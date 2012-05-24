@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testNormalizeKEExpression
 	| e s beta minusBeta k minusS |
 	

@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testNegatedABinaryExpression
 	| e a b o |
 	

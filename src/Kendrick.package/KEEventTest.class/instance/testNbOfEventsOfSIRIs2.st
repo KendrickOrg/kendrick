@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testNbOfEventsOfSIRIs2
 
 |  model s i r dsdt didt drdt l ex a c b d count t |

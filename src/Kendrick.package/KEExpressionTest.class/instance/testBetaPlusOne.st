@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testBetaPlusOne
 	|  m e beta b o |
 	

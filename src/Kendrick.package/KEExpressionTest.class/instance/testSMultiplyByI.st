@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testSMultiplyByI
 	|  m e a b o s i |
 	

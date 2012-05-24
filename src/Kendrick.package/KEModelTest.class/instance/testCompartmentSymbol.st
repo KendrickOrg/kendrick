@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testCompartmentSymbol
 
 | model equations left right |
