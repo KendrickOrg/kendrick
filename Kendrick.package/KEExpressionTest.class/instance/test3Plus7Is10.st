@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 test3Plus7Is10
 	| e a b o m |
 	

@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testIsUnaryExpression
 	| beta minusBeta s betaS |
 	

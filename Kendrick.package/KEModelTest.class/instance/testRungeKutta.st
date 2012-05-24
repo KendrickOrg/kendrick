@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testRungeKutta
 
 | model solverRK dydx j listOfEquations nbIterations result |

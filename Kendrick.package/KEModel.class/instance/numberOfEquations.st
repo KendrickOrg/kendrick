@@ -1,4 +1,4 @@
 initialize-release
 numberOfEquations
 
-^equations size
+^ equations size
