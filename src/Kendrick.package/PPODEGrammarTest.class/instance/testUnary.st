@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testUnary
 
 self parse:'-beta' rule: #unary.

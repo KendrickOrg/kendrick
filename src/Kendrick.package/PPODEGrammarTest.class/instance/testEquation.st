@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testEquation
 
 self parse:'S:t = -beta * S * I' rule:#equation.
