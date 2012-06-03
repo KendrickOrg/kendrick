@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testIdentifier
 
 self parse: 'beta' rule: #identifier.

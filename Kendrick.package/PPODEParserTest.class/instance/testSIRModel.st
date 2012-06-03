@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testSIRModel
 
 |  model s i r dsdt didt drdt |
