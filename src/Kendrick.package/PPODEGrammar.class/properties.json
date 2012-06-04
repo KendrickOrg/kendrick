@@ -16,7 +16,10 @@
 		"factors",
 		"primary",
 		"unary",
-		"equation"
+		"equation",
+		"sin",
+		"cos",
+		"log"
 	],
 	"name" : "PPODEGrammar",
 	"type" : "normal"

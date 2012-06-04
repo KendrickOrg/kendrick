@@ -6,14 +6,9 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"compartments",
-		"parameters",
-		"equations",
-		"eventList",
-		"i",
-		"result",
-		"timeValue"
+		"function",
+		"exprInFunction"
 	],
-	"name" : "KEModel",
+	"name" : "KEMathFunction",
 	"type" : "normal"
 }

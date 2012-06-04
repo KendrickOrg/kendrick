@@ -1,4 +1,4 @@
-comparing
+as yet unclassified
 = anExpression
 
 anExpression isBinaryExpression ifTrue:[
