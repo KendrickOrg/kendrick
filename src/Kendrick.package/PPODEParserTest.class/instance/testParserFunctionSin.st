@@ -16,8 +16,4 @@ model addEquation: dsdt.
 
 self assert: (dsdt variable symbol) equals: #S.
 self assert: (dsdt tVariable symbol) equals: #t.
-self assert: (dsdt expression evaluateWithModel: model) equals: ((20 sin) + (0.0052*99999)).
-
-
-
-
+self assert: (dsdt expression evaluateWithModel: model) equals: (model atParameter: #beta) * s numberOfIndividuals + (2 * model timeValue) sin

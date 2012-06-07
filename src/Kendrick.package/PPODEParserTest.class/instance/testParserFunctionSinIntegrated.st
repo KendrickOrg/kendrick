@@ -19,7 +19,7 @@ model addEquation: dsdt.
 
 self assert: (dsdt variable symbol) equals: #S.
 self assert: (dsdt tVariable symbol) equals: #t.
-self assert: (dsdt expression evaluateWithModel: model) equals: (0).
+self assert: (dsdt expression evaluateWithModel: model) equals: 0.
 
 
 
