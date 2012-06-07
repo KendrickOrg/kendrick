@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testPrimary
 
 self parse:'(0)' rule: #primary.

@@ -2,6 +2,7 @@
 	"category" : "Kendrick-ExternalDSL",
 	"classinstvars" : [
 		 ],
+	"classtraitcomposition" : "{}",
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
@@ -24,4 +25,5 @@
 	"pools" : [
 		 ],
 	"super" : "PPCompositeParser",
+	"traitcomposition" : "{}",
 	"type" : "normal" }

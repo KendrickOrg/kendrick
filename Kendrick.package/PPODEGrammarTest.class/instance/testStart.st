@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testStart
 
 self parse:'S:t = -beta * S * I' rule:#start.
