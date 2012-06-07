@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testParenthesis
 
 	self parse: '(0)' rule:#parenthesis.

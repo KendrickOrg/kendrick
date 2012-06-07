@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testPower
 
 self parse: '3^4' rule: #power.
