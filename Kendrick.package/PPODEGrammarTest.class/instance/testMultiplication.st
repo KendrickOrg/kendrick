@@ -1,4 +1,4 @@
-tests
+as yet unclassified
 testMultiplication
 
 self parse: '3*4' rule: #multiplication.

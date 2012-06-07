@@ -1,0 +1,15 @@
+{
+	"category" : "Kendrick-SemanticModel",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"function",
+		"exprInFunction" ],
+	"name" : "KEMathFunction",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

@@ -2,16 +2,15 @@
 	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [
 		 ],
-	"classtraitcomposition" : "{}",
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
 		"variable",
+		"tVariable",
 		"expression" ],
 	"name" : "KEEquation",
 	"pools" : [
 		 ],
 	"super" : "Object",
-	"traitcomposition" : "{}",
 	"type" : "normal" }

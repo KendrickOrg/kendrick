@@ -24,6 +24,9 @@ result := Array new: nbIterations.
 "Runge Kutta Algorithme"
 1 to: nbIterations do: [:j|
 	x := x0 + (j * step).
+	"Update time value for the model"
+	model timeValue: x.
+	
 	"Calculate k1"
 	dydx := self calculateDerivation: model.
 	1 to: nbEquations do: [:i|

@@ -2,7 +2,6 @@
 	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [
 		 ],
-	"classtraitcomposition" : "{}",
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
@@ -12,10 +11,10 @@
 		"equations",
 		"eventList",
 		"i",
-		"result" ],
+		"result",
+		"timeValue" ],
 	"name" : "KEModel",
 	"pools" : [
 		 ],
 	"super" : "Object",
-	"traitcomposition" : "{}",
 	"type" : "normal" }

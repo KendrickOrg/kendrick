@@ -1,4 +1,4 @@
-comparing
+as yet unclassified
 = aExpression
 
 (aExpression isUnaryExpression) ifTrue: [

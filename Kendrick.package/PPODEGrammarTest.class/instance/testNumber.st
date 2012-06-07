@@ -1,4 +1,4 @@
-tests
+as yet unclassified
 testNumber
 
 self parse:'0' rule: #number.

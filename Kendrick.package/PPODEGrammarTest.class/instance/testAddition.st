@@ -1,4 +1,4 @@
-tests
+as yet unclassified
 testAddition
 
 self parse: '3+4' rule: #addition.
