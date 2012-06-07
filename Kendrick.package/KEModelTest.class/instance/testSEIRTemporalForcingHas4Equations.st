@@ -1,5 +1,5 @@
 tests
-testSEIRTemporalForcing
+testSEIRTemporalForcingHas4Equations
 
 | model |
 model := KEModel new.
@@ -19,6 +19,4 @@ model addEquation: (PPODEParser parse:'E:t=beta*(1+betaAmp*cos(t))*S*I-sigma*E-m
 model addEquation: (PPODEParser parse:'I:t=sigma*E-gamma*I-mu*I').
 model addEquation: (PPODEParser parse:'R:t=gamma*I-mu*R').
 
-self assert: 4 equals: model numberOfEquations.
-"Run deterministic for the model temporal forcing"
-model runDeterministSimulationFrom: 0 to: 400 with: 0.01 logTransform: true.
+self assert: 4 equals: model numberOfEquations
