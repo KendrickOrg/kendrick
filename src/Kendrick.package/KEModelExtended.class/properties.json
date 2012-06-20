@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "KEModel",
+	"category" : "Kendrick-SemanticModel",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"eqIdVariable",
+		"eqIdValue",
+		"fnIdVariable",
+		"fnIdValue"
+	],
+	"name" : "KEModelExtended",
+	"type" : "normal"
+}

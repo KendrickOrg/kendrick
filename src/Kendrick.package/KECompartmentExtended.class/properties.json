@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "KECompartment",
+	"category" : "Kendrick-SemanticModel",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"numberOfSpecies"
+	],
+	"name" : "KECompartmentExtended",
+	"type" : "normal"
+}

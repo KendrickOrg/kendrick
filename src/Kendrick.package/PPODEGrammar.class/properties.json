@@ -10,6 +10,7 @@
 		"terms",
 		"parenthesis",
 		"identifier",
+		"identifier2",
 		"multiplication",
 		"power",
 		"addition",
@@ -19,7 +20,10 @@
 		"equation",
 		"sin",
 		"cos",
-		"log"
+		"log",
+		"squarebrackets",
+		"index",
+		"sum"
 	],
 	"name" : "PPODEGrammar",
 	"type" : "normal"

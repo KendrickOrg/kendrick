@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "KEEquation",
+	"category" : "Kendrick-SemanticModel",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"eqIndex",
+		"idVariable"
+	],
+	"name" : "KEEquationExtended",
+	"type" : "normal"
+}
