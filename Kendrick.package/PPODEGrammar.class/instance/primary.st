@@ -1,3 +1,3 @@
 grammar
 primary
-	^ sin / cos / log / number / identifier / unary / parenthesis
+	^ sum / sin / cos / log / number / identifier2 / unary / parenthesis

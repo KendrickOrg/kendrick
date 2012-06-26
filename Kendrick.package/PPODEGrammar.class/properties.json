@@ -2,7 +2,6 @@
 	"category" : "Kendrick-ExternalDSL",
 	"classinstvars" : [
 		 ],
-	"classtraitcomposition" : "{}",
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
@@ -11,6 +10,7 @@
 		"terms",
 		"parenthesis",
 		"identifier",
+		"identifier2",
 		"multiplication",
 		"power",
 		"addition",
@@ -20,10 +20,12 @@
 		"equation",
 		"sin",
 		"cos",
-		"log" ],
+		"log",
+		"squarebrackets",
+		"index",
+		"sum" ],
 	"name" : "PPODEGrammar",
 	"pools" : [
 		 ],
 	"super" : "PPCompositeParser",
-	"traitcomposition" : "{}",
 	"type" : "normal" }

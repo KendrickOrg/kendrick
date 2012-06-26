@@ -1,0 +1,15 @@
+{
+	"category" : "Kendrick-SemanticModel",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"eqIndex",
+		"idVariable" ],
+	"name" : "KEEquationExtended",
+	"pools" : [
+		 ],
+	"super" : "KEEquation",
+	"type" : "normal" }
