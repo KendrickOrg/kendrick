@@ -8,4 +8,5 @@ testSquareBrackets
 	self parse: 'S[1]' rule:#squarebrackets.
 	self parse: 'S[1, 3]' rule:#squarebrackets.
 	self parse: 'S[1, i]' rule:#squarebrackets.
+	self parse: 'S[i-1, j+1]' rule:#squarebrackets.
 	
