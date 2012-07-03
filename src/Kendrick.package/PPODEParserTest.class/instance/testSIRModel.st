@@ -12,9 +12,9 @@ model atParameter: #gamma put: 365/7.
 self assert: (model atParameter: #beta) equals: 520.
 self assert: (model atParameter: #gamma) equals: 365/7.
 
-dsdt := 'S:t=-beta*S*I' parseAsODEEquation.
-didt :=  'I:t=beta*S*I-gamma*I' parseAsODEEquation.
-drdt :=  'R:t=gamma*I' parseAsODEEquation.
+dsdt := 'S:t=-beta*S*I' parseAsAnEquation.
+didt :=  'I:t=beta*S*I-gamma*I' parseAsAnEquation.
+drdt :=  'R:t=gamma*I' parseAsAnEquation.
 model addEquation: dsdt.
 model addEquation: didt.
 model addEquation: drdt.
