@@ -14,7 +14,7 @@ model atParameter: #betaAmp put: 0.3.
 model atParameter: #N put: 100000.
 model timeValue: 1.
 
-dsdt := 'S:t=mu*N-beta*(1+betaAmp*cos(t))*S*I-mu*S' parseAsODEEquation.
+dsdt := 'S:t=mu*N-beta*(1+betaAmp*cos(t))*S*I-mu*S' parseAsAnEquation.
 model addEquation: dsdt.
 
 self assert: (dsdt variable symbol) equals: #S.
