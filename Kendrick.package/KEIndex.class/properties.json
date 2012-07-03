@@ -6,10 +6,11 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"eqIndex",
-		"idVariable" ],
-	"name" : "KEEquationExtended",
+		"symbol",
+		"idExpression1",
+		"idExpression2" ],
+	"name" : "KEIndex",
 	"pools" : [
 		 ],
-	"super" : "KEEquation",
+	"super" : "KESimpleExpression",
 	"type" : "normal" }
