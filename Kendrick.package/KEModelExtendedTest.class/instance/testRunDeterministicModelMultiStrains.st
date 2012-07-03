@@ -4,28 +4,34 @@ testRunDeterministicModelMultiStrains
 |model compartment dsdt didt|
 
 model := KEModelExtended new.
-model atCompartment: #S putNumberOfIndividuals: #(9999 1000 2000).
-model atCompartment: #I putNumberOfIndividuals: #(1 0 0).
+"Each compartment composes 100 strains"
+model atCompartment: #S numberOfSpecies: 100.
+model withCompartment: #S from: 2 to: 100  numberOfIndividuals: 1.
+model withCompartment: #S withIndex: 1  numberOfIndividuals: 0.98.
+model atCompartment: #I numberOfSpecies: 100.
+model withCompartment: #I from: 2 to: 100  numberOfIndividuals: 0.
+model withCompartment: #I withIndex: 1  numberOfIndividuals: 0.02.
 
-model atParameter: #beta put: {{0 . 0.02 . 0.02} . {0.02 . 0 . 0} . {0.02 . 0 . 0}}.
-model atParameter: #N put: #(10000 1000 2000).
-model atParameter: #mu put: {365/30 . 1/20 . 1/20}.
+model atParameter: #beta putExpression: 'beta=3*v' parseAsAnEquation.
+model atParameter: #n put: 100.
+model atParameter: #mu put: 1/80.
 model atParameter: #v put: 52.
-model atParameter: #j put: (1 to: 3). 
-model atParameter: #i put: (1 to: 3).
-self assert: (model atParameter: #j at: 2) equals: 2. "j is an interval"
-self assert: (model atParameter: #beta at: 2 at: 3 ) equals: 0.
+model atParameter: #d put: 5.
+model atParameter: #m put: 0.01.
+model atParameter: #sigma putExpression: 'sigma[i,j]=exp(-(((i-j)/d)^2))' parseAsAnEquation.
+model atParameter: #j put: (1 to: 100). 
+model atParameter: #i put: (1 to: 100).
 
-dsdt := 'S[i]:t=mu[i]*N[i]-sum(j, beta[i, j]*I[j])*S[i]-mu[i]*S[i]' parseAsAnEquation.
-didt := 'I[i]:t=sum(j, beta[i,j]*I[j])*S[i]-(mu[i]+v)*I[i]' parseAsAnEquation.
+dsdt := 'S[i]:t=mu-sum(j, sigma[i, j]*I[j])*S[i]*beta-mu*S[i]' parseAsAnEquation.
+didt := 'I[i]:t=beta*S[i]*I[i]-(mu+v)*I[i]+m*(I[i-1]+I[i+1]-2*I[i])' parseAsAnEquation.
 model addEquation: dsdt.
 model addEquation: didt.
 
-self assert: ((model getEquationsList) size) equals: 6.
+self assert: ((model getEquationsList) size) equals: 200.
 self assert: (dsdt variable symbol) equals: #S.
 self assert: (dsdt tVariable symbol) equals: #t.
 self assert: (dsdt idVariable) equals: #i.
 self assert: (didt idVariable) equals: #i.
-model runDeterministSimulationFrom: 0 to: 40  with: 0.01  function: #sqrt.
+model runDeterministSimulationFrom: 0 to: 8  with: 0.01  function: nil.
 
 
