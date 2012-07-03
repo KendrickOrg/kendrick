@@ -1,0 +1,16 @@
+{
+	"category" : "Kendrick-SemanticModel",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"symbol",
+		"value",
+		"expression" ],
+	"name" : "KEParameter",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

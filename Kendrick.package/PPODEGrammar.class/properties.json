@@ -23,7 +23,8 @@
 		"log",
 		"squarebrackets",
 		"index",
-		"sum" ],
+		"sum",
+		"exp" ],
 	"name" : "PPODEGrammar",
 	"pools" : [
 		 ],

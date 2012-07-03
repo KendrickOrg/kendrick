@@ -7,7 +7,9 @@
 	"commentStamp" : "",
 	"instvars" : [
 		"eqIndex",
-		"idVariable" ],
+		"idVariable",
+		"eqIndex2",
+		"idVariable2" ],
 	"name" : "KEEquationExtended",
 	"pools" : [
 		 ],

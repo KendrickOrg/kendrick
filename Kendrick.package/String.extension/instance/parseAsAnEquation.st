@@ -1,4 +1,4 @@
 *Kendrick-ExternalDSL
-parseAsODEEquation
+parseAsAnEquation
 
 ^PPODEParser parse: self
