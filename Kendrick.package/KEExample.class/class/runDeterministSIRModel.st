@@ -3,9 +3,9 @@ runDeterministSIRModel
 
 "self runDeterministSIRModel"
 
-| model solverRK dydx j listOfEquations nbIterations result |
+| model   |
 model := KEModel new.
-model atCompartment:#S putNumberOfIndividuals: 99999.
+model atCompartment:#S putNumberOfIndividuals: 1e5-1.
 model atCompartment:#I putNumberOfIndividuals: 1.
 model atCompartment:#R putNumberOfIndividuals: 0.
 model atParameter:#beta put: 0.0052.
