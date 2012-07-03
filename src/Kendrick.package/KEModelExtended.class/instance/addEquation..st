@@ -2,7 +2,7 @@ as yet unclassified
 addEquation: anEquation
 
 | index equation|
-(anEquation idVariable) ifNotNil: [index := (self atParameter: (anEquation idVariable))].
+(anEquation idVariable) ifNotNil: [index := (parameters at: (anEquation idVariable) ifAbsent: nil)].
 "self halt."
 index ifNotNil: [
 	"index is an interval, ex: index := (1 to: 10)"

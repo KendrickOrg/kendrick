@@ -4,14 +4,14 @@ squarebrackets
 ^ super squarebrackets ==> [:nodes |
 	(nodes at: 4) 
 	ifNotNil: [
-		(KEIndex new)
+		(KEVariableExtended new)
 		symbol: (nodes first) value asSymbol;
-		idExpression1: (nodes at: 3) value; 
-		idExpression2: (((nodes at: 4) at: 1) at: 2) value] 
+		index1: (nodes at: 3) value asSymbol; 
+		index2: (((nodes at: 4) at: 1) at: 2) value asSymbol] 
 	ifNil: [
-		(KEIndex new)
+		(KEVariableExtended new)
 		symbol: (nodes first) value asSymbol;
-		idExpression1: (nodes at: 3) value;
-		idExpression2: -1
+		index1: (nodes at: 3) value asSymbol;
+		index2: -1
 		]		
 	]

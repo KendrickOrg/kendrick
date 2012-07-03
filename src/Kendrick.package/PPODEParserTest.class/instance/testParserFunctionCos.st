@@ -11,7 +11,7 @@ model atParameter: #beta put: 0.0052.
 model atParameter: #gamma put: 365/7.
 model timeValue: 10.
 
-dsdt := 'S:t=cos(2*t)' parseAsAnEquation.
+dsdt := 'S:t=cos(2*t)' parseAsODEEquation.
 model addEquation: dsdt.
 
 self assert: (dsdt variable symbol) equals: #S.

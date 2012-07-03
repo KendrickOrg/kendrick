@@ -16,8 +16,8 @@ model atParameter: #i put: (1 to: 3).
 self assert: (model atParameter: #j at: 2) equals: 2. "j is an interval"
 self assert: (model atParameter: #beta at: 2 at: 3 ) equals: 0.
 
-dsdt := 'S[i]:t=mu[i]*N[i]-sum(j, beta[i, j]*I[j])*S[i]-mu[i]*S[i]' parseAsAnEquation.
-didt := 'I[i]:t=sum(j, beta[i,j]*I[j])*S[i]-(mu[i]+v[i])*I[i]' parseAsAnEquation.
+dsdt := 'S[i]:t=mu[i]*N[i]-sum(j, beta[i, j]*I[j])*S[i]-mu[i]*S[i]' parseAsODEEquation.
+didt := 'I[i]:t=sum(j, beta[i,j]*I[j])*S[i]-(mu[i]+v[i])*I[i]' parseAsODEEquation.
 model addEquation: dsdt.
 model addEquation: didt.
 model eqIdVariable: #i.

@@ -7,9 +7,7 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"eqIndex",
-		"idVariable",
-		"eqIndex2",
-		"idVariable2"
+		"idVariable"
 	],
 	"name" : "KEEquationExtended",
 	"type" : "normal"

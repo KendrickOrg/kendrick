@@ -23,8 +23,7 @@
 		"log",
 		"squarebrackets",
 		"index",
-		"sum",
-		"exp"
+		"sum"
 	],
 	"name" : "PPODEGrammar",
 	"type" : "normal"

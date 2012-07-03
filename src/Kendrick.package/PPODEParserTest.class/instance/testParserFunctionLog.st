@@ -11,7 +11,7 @@ model atParameter: #beta put: 0.0052.
 model atParameter: #gamma put: 365/7.
 model timeValue: 10.
 
-dsdt := 'S:t=beta*log(2*t)*S*I' parseAsAnEquation.
+dsdt := 'S:t=beta*log(2*t)*S*I' parseAsODEEquation.
 model addEquation: dsdt.
 
 self assert: (dsdt variable symbol) equals: #S.

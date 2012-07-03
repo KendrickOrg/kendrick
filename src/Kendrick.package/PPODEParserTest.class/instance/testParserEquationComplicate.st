@@ -10,7 +10,7 @@ model addCompartment: s; addCompartment: i; addCompartment: r.
 model atParameter: #beta put:#((520 260) (1 1)).
 model atParameter: #gamma put: 365/7.
 
-dsdt := 'S[j]:t=-beta[1, 1]*S*I' parseAsAnEquation.
+dsdt := 'S[j]:t=-beta[1, 1]*S*I' parseAsODEEquation.
 model addEquation: dsdt.
 
 self assert: (dsdt variable symbol) equals: #S.
