@@ -23,8 +23,14 @@ ifFalse: [
 		idRighEx = (aModel fnIdVariable) ifTrue: [b :=(aModel fnIdValue)].
 		b isNil ifTrue:[b:=(idRighEx asNumber)].
 		
-		op = #+ ifTrue: [idValue := (a + b)].
-		op = #- ifTrue: [idValue := (a - b)].	
+		op = #+ ifTrue: [
+			idValue := (a + b).
+			(idValue > (aModel getNumberOfSpecies)) ifTrue: [idValue := 0].
+			].
+		op = #- ifTrue: [
+			idValue := (a - b).
+			idValue < 0 ifTrue: [idValue :=0]
+			].	
 		]
 	].
 
