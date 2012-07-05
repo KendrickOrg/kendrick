@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "KEEvent",
+	"category" : "Kendrick-SemanticModel",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"fromStatus",
+		"toStatus"
+	],
+	"name" : "KEEventExtended",
+	"type" : "normal"
+}
