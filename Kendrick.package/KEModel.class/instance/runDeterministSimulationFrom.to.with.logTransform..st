@@ -12,7 +12,7 @@ nbIteration := ((xn - x0)/step) rounded.
 "Get log10 of yy"
 (lo) ifTrue:[
 	1 to: nbIteration do:[:j|
-		yy at: j put: ((yy at: j) log).
+		(yy at: j) at: 2 put: (((yy at: j) at: 2) log).
 		].
 	].
 

@@ -39,8 +39,9 @@ runIndividualBasedSimulationFor: tMax withStep: dT
 		].	
 	"Do a loop from 0 to tMax with time step = dT"
 	listOfProbabilities := Array new: (listOfNewEvents size).
-	count:=1.
-	(0 to: tMax by: dT) do: [:t|
+	result at: 1 put: (Array with: 0 with: (self numberOfIndividualsAtCompartment: #I)).
+	count:=2.
+	(dT to: tMax by: dT) do: [:t|
 		"Calculate rate of each event in the eventList and transform it into probability"
 		1 to: (listOfNewEvents size) do: [:id|
 			|rateValue proba|
@@ -48,15 +49,13 @@ runIndividualBasedSimulationFor: tMax withStep: dT
 			proba := 1 - ((dT*rateValue*(-1)) exp).
 			listOfProbabilities at: id put: proba.
 			].
+		"self halt."
 		"For each individual in the listOfIndividuals, calculate the nextStatus"
 		1 to: (listOfIndividuals size) do: [:id|
 			"For each event in the list of events"			
 			1 to: (listOfNewEvents size) do: [:id2|
 				((listOfIndividuals at: id) currentStatus = (listOfNewEvents at: id2) fromStatus) ifTrue: [					
-					((listOfProbabilities at: id2) > (rand next)) ifTrue: [
-						"|anIndividual|
-						anIndividual := (KEIndividual new) currentStatus: (listOfNewEvents at: id2) toStatus; nextStatus: nil."
-						"listOfIndividuals at: id put: anIndividual."
+					(((listOfProbabilities at: id2) > (rand next)) & ((listOfProbabilities at: id2) > 0)) ifTrue: [						
 						(listOfIndividuals at: id) currentStatus: (listOfNewEvents at: id2) toStatus.
 						] 						
 					]
@@ -71,11 +70,16 @@ runIndividualBasedSimulationFor: tMax withStep: dT
 				].
 			each numberOfIndividuals: ct.
 			].
+		"Debug: print the number of individuals of each compartment"
+		Transcript show: (self numberOfIndividualsAtCompartment: #S); cr.
+		Transcript show: (self numberOfIndividualsAtCompartment: #I); cr.
+		Transcript show: (self numberOfIndividualsAtCompartment: #R); cr.
+		Transcript show: '------------------------'; cr.
 		"Update result"
 		result at: count put: (Array with: t with: (self numberOfIndividualsAtCompartment: #I)).
 		count := count + 1.
 		].
-"	self halt."
+	"self halt."
 	self plot.
 	
 
