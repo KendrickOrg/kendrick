@@ -1,5 +1,5 @@
 as yet unclassified
-testRunDeterministicModelMultiHost
+runDeterministicModelMultiHost
 
 |model compartment dsdt didt|
 
@@ -21,11 +21,4 @@ didt := 'I[i]:t=sum(j, beta[i,j]*I[j])*S[i]-(mu[i]+v)*I[i]' parseAsAnEquation.
 model addEquation: dsdt.
 model addEquation: didt.
 
-self assert: ((model getEquationsList) size) equals: 6.
-self assert: (dsdt variable symbol) equals: #S.
-self assert: (dsdt tVariable symbol) equals: #t.
-self assert: (dsdt idVariable) equals: #i.
-self assert: (didt idVariable) equals: #i.
-"model runDeterministSimulationFrom: 0 to: 40  with: 0.01  function: #sqrt."
-
-
+model runDeterministSimulationFrom: 0 to: 40  with: 0.01  function: #sqrt.

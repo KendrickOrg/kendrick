@@ -25,20 +25,7 @@ func ifNotNil: [
 			].		
 		].
 	].
-	"diag1 := ESDiagramRenderer new.
-	(diag1 lineDiagram) 
-		y: #second;
-		defaultColor: (Color r: (r next) g: (g next) b: (b next));
-		regularAxis;
-		yAxisLabel: 'Infected';
-		lineWidth: 2;		
-		startLineAtZero;			
-		width: 1000;
-		height: 300;
-		models: (yy at: 3).
-	^diag1 open."
 	
-	"self halt."
 "Draw a composite diagram"
 	diag1 := (ESDiagramRenderer new lineDiagram)	
 		y: #second;					
@@ -69,7 +56,7 @@ diagComposite := ESDiagramRenderer new.
 	width: 1200;
 	height: 500;
 	preferredAxisMaxY: 50.
-^diagComposite open.
+ ^diagComposite open.
 		
 
 
