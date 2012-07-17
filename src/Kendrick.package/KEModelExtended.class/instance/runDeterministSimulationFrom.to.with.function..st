@@ -5,7 +5,7 @@ runDeterministSimulationFrom: x0 to: xn with: step function: func
 solverRK := RungeKuttaSolver new.
 solverRK finalValueOfX: xn.
 solverRK initialValueOfX: x0.
-solverRK stepSize: step.
+solverRK stepSize: step. 
 
 yy := solverRK solver2: self.
 nbIteration := ((xn - x0)/step) rounded.
@@ -18,14 +18,14 @@ func ifNotNil: [
 	1 to: nbSpecies do:[:id|
 		1 to: nbIteration do: [:j|
 			(func = #sqrt) ifTrue:[
-				(yy at: id) at: j put: (((yy at: id) at: j) sqrt)].
+				((yy at: id) at: j) at: 2 put: ((((yy at: id) at: j) at: 2) sqrt)].
 			(func = #log) ifTrue: [
-				(yy at: id) at: j put: (((yy at: id) at: j) log).
+				((yy at: id) at: j) at: 2 put: ((((yy at: id) at: j) at: 2) log).
 				].
 			].		
 		].
 	].
-	diag1 := ESDiagramRenderer new.
+	"diag1 := ESDiagramRenderer new.
 	(diag1 lineDiagram) 
 		y: #second;
 		defaultColor: (Color r: (r next) g: (g next) b: (b next));
@@ -35,39 +35,41 @@ func ifNotNil: [
 		startLineAtZero;			
 		width: 1000;
 		height: 300;
-		models: (yy at: 1).
-	^diag1 open.
+		models: (yy at: 3).
+	^diag1 open."
 	
-	
+	"self halt."
 "Draw a composite diagram"
-	"diag1 := ESDiagramRenderer new.
-	(diag1 lineDiagram)
+	diag1 := (ESDiagramRenderer new lineDiagram)	
 		y: #second;					
-		defaultColor: (Color r: (r next) g: (g next) b: (b next));
-		regularAxis;
-		yAxisLabel: 'Infected';
-		lineWidth: 2;		
-		startLineAtZero;			
-		models: (yy at: 1);			
+		defaultColor: (Color r: (r next) g: (g next) b: (b next));		
+		yAxisLabel: 'Infected';		
+		regularAxis;		
+		startLineAtZero;		
+		models: (yy at: 1);
+		yourself.		
+		
+	diag2 := (ESDiagramRenderer new lineDiagram)	
+		y: #second;		
+		defaultColor: (Color r: (r next) g: (g next) b: (b next));			
+		models: (yy at: 2);
 		yourself.
-	diag2 := ESDiagramRenderer new.
-	(diag2 lineDiagram)
-		y: #second;					
-		defaultColor: (Color r: (r next) g: (g next) b: (b next));				
-		models: (yy at: 2);			
-		yourself.
-	diag3 := ESDiagramRenderer new.
-	(diag3 lineDiagram)
+		
+	diag3 := (ESDiagramRenderer new lineDiagram)	
 		y: #second;					
 		defaultColor: (Color r: (r next) g: (g next) b: (b next));				
-		models: (yy at: 3);			
-		yourself.
+		models: (yy at: 3);
+		yourself.		
+		
 diagComposite := ESDiagramRenderer new.
 (diagComposite compositeDiagram)
 	add: diag1;
 	add: diag2;
-	add: diag3.	
-^diagComposite open."
+	add: diag3;
+	width: 1200;
+	height: 500;
+	preferredAxisMaxY: 50.
+^diagComposite open.
 		
 
 
