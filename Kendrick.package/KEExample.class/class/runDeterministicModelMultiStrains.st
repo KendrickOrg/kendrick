@@ -1,5 +1,5 @@
 as yet unclassified
-testRunDeterministicModelMultiStrains
+runDeterministicModelMultiStrains
 
 |model compartment dsdt didt|
 
@@ -32,6 +32,4 @@ self assert: (dsdt variable symbol) equals: #S.
 self assert: (dsdt tVariable symbol) equals: #t.
 self assert: (dsdt idVariable) equals: #i.
 self assert: (didt idVariable) equals: #i.
-"model runDeterministSimulationFrom: 0 to: 8  with: 0.01  function: nil."
-
-
+model runDeterministSimulationFrom: 0 to: 8  with: 0.01  function: nil.
