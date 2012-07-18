@@ -1,0 +1,27 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"addCompartment:" : "btmanh 5/18/2012 12:36:43.572",
+		"addEquation:" : "btmanh 5/18/2012 12:36:43.572",
+		"atCompartment:" : "btmanh 5/18/2012 12:36:43.572",
+		"atCompartment:modifyNumberOfIndividuals:" : "btmanh 5/18/2012 12:36:43.572",
+		"atCompartment:putNumberOfIndividuals:" : "btmanh 5/18/2012 12:36:43.572",
+		"atParameter:" : "btmanh 6/28/2012 16:20",
+		"atParameter:put:" : "btmanh 6/28/2012 16:13",
+		"atParameter:putExpression:" : "btmanh 6/28/2012 16:12",
+		"generateEvents" : "btmanh 5/18/2012 12:36:43.572",
+		"getEquationsList" : "btmanh 5/18/2012 12:36:43.572",
+		"initialize" : "btmanh 5/18/2012 12:36:43.572",
+		"numberOfCompartments" : "btmanh 5/18/2012 12:36:43.572",
+		"numberOfEquations" : "SergeStinckwich 5/24/2012 12:12",
+		"numberOfIndividualsAtCompartment:" : "btmanh 5/18/2012 12:36:43.572",
+		"plot" : "SergeStinckwich 5/25/2012 14:13",
+		"runDeterministSimulationFrom:to:with:" : "SergeStinckwich 5/24/2012 14:25",
+		"runDeterministSimulationFrom:to:with:logTransform:" : "btmanh 7/16/2012 17:32",
+		"runIndividualBasedSimulationFor:withStep:" : "btmanh 7/5/2012 12:00",
+		"runStochasticSimulationFor:" : "btmanh 7/5/2012 09:34",
+		"selectEventWith:" : "btmanh 5/18/2012 12:36:43.572",
+		"sumOfRate" : "btmanh 5/18/2012 12:36:43.572",
+		"timeValue" : "btmanh 5/30/2012 16:43",
+		"timeValue:" : "btmanh 5/30/2012 16:42" } }

@@ -1,0 +1,17 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"actions" : "btmanh 5/18/2012 12:36:43.572",
+		"actions:" : "btmanh 7/4/2012 17:32",
+		"addOneIndividualTo:" : "btmanh 5/18/2012 12:36:43.572",
+		"evaluateWithModel:" : "btmanh 5/18/2012 12:36:43.572",
+		"executeOn:" : "btmanh 5/18/2012 12:36:43.572",
+		"findEventWithAnOppositeRateIn:" : "btmanh 5/18/2012 12:36:43.572",
+		"hasAnEventWithOppositeRateIn:" : "btmanh 5/18/2012 12:36:43.572",
+		"initialize" : "btmanh 5/18/2012 12:36:43.572",
+		"isAddingOneIndividualFrom:" : "btmanh 5/18/2012 12:36:43.572",
+		"isRemovingOneIndividualFrom:" : "btmanh 5/18/2012 12:36:43.572",
+		"rate" : "btmanh 5/18/2012 12:36:43.572",
+		"rate:" : "btmanh 5/18/2012 12:36:43.572",
+		"removeOneIndividualFrom:" : "btmanh 5/18/2012 12:36:43.572" } }

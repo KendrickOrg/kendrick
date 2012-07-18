@@ -2,6 +2,7 @@
 	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [
 		 ],
+	"classtraitcomposition" : "{}",
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
@@ -10,5 +11,6 @@
 	"name" : "KEExpression",
 	"pools" : [
 		 ],
-	"super" : "Object",
+	"super" : "KEObject",
+	"traitcomposition" : "{}",
 	"type" : "normal" }

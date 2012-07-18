@@ -1,0 +1,14 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"parserClass" : "btmanh 5/18/2012 12:36:43.572",
+		"testParserEquationComplicate" : "btmanh 7/3/2012 12:01",
+		"testParserFunctionCos" : "btmanh 7/3/2012 12:01",
+		"testParserFunctionExp" : "btmanh 7/3/2012 14:26",
+		"testParserFunctionLog" : "btmanh 7/3/2012 12:01",
+		"testParserFunctionSin" : "btmanh 7/3/2012 12:01",
+		"testParserFunctionSinIntegrated" : "btmanh 7/3/2012 12:01",
+		"testParserIndexInEquation" : "btmanh 7/3/2012 12:01",
+		"testParserVariable" : "btmanh 7/3/2012 12:01",
+		"testSIRModel" : "btmanh 7/3/2012 12:01" } }

@@ -1,0 +1,21 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"parserClass" : "btmanh 5/18/2012 12:36:43.572",
+		"testAddition" : "btmanh 5/18/2012 12:36:43.572",
+		"testCos" : "btmanh 6/4/2012 10:30",
+		"testEquation" : "btmanh 5/18/2012 12:36:43.572",
+		"testExp" : "btmanh 7/3/2012 14:18",
+		"testIdentifier" : "btmanh 5/18/2012 12:36:43.572",
+		"testLog" : "btmanh 6/4/2012 14:16",
+		"testMultiplication" : "btmanh 5/18/2012 12:36:43.572",
+		"testNumber" : "btmanh 5/18/2012 12:36:43.572",
+		"testParenthesis" : "btmanh 5/18/2012 12:36:43.572",
+		"testPower" : "btmanh 5/18/2012 12:36:43.572",
+		"testPrimary" : "btmanh 5/18/2012 12:36:43.572",
+		"testSin" : "btmanh 6/4/2012 10:16",
+		"testSquareBrackets" : "btmanh 6/27/2012 16:49",
+		"testStart" : "btmanh 5/18/2012 12:36:43.572",
+		"testSum" : "btmanh 6/20/2012 22:28",
+		"testUnary" : "btmanh 5/18/2012 12:36:43.572" } }
