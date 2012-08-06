@@ -2,5 +2,5 @@ as yet unclassified
 atCompartment: aStatus numberOfSpecies: nbSpecies
 "Use this method in the case of large number of host, ex: 100"
 | compartment |
-compartment := (KECompartmentExtended new) status: aStatus; numberOfIndividuals: nil; numberOfSpecies: nbSpecies.
+compartment := (KECompartmentVector new) status: aStatus; numberOfIndividuals: nil; numberOfSpecies: nbSpecies.
 self addCompartment: compartment

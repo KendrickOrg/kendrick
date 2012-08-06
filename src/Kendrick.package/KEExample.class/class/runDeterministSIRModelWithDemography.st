@@ -3,7 +3,7 @@ runDeterministSIRModelWithDemography
 
 "self runDeterministSIRModelWithDemography"
 
-| model |
+| model result |
 model := KEModel new.
 model atCompartment:#S putNumberOfIndividuals: 99999.
 model atCompartment:#I putNumberOfIndividuals: 1.
@@ -17,8 +17,8 @@ model addEquation: (PPODEParser parse:'S:t= mu*N-beta*S*I-mu*S').
 model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I-mu*I').
 model addEquation: (PPODEParser parse: 'R:t=gamma*I-mu*R').
 
-model runDeterministSimulationFrom: 0.0 to: 1.0 with: 0.001.
-model plot.
+result := model runDeterministSimulationFrom: 0.0 to: 1.0 with: 0.001.
+result plot: #I in: model.
 
 
 

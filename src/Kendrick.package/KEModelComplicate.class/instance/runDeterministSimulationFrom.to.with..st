@@ -1,10 +1,15 @@
 as yet unclassified
 runDeterministSimulationFrom: x0 to: xn with: step
 
-| solverRK diag xValue |
+| solverRK yy|
 solverRK := RungeKuttaSolver new.
 solverRK finalValueOfX: xn.
 solverRK initialValueOfX: x0.
-solverRK stepSize: step.
-result := solverRK solver: self.
-^result.
+solverRK stepSize: step. 
+
+yy := solverRK solver2: self.
+^ yy
+		
+
+
+ 

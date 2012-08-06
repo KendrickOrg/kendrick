@@ -8,6 +8,6 @@
 	"instvars" : [
 		"numberOfSpecies"
 	],
-	"name" : "KECompartmentExtended",
+	"name" : "KECompartmentVector",
 	"type" : "normal"
 }

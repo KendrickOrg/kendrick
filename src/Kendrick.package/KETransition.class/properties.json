@@ -1,13 +1,14 @@
 {
 	"commentStamp" : "",
-	"super" : "KEMathFunction",
+	"super" : "KEEvent",
 	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"idVariable"
+		"fromStatus",
+		"toStatus"
 	],
-	"name" : "KEMathFunctionExtended",
+	"name" : "KETransition",
 	"type" : "normal"
 }

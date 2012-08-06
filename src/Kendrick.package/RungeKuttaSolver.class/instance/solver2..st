@@ -1,13 +1,14 @@
 as yet unclassified
 solver2: model
 "This function is for finding solution for the model with multi host in which each compartment is a vector, not a value."
-| nbSpecies nbEquations dydx k1 k2 k3 k4 y k result x|
+| nbSpecies nbEquations dydx k1 k2 k3 k4 y k result x results nbCompartements listCompartmentSymbol |
 
 listOfEquations := model getEquationsList.
 nbIterations := ((xn - x0) / step) rounded.
 nbEquations := listOfEquations size.
 nbSpecies := model getNumberOfSpecies.
-
+nbCompartements := nbEquations / nbSpecies.
+listCompartmentSymbol := model getListCompartmentSymbol.
 dydx := Array new: nbEquations.
 k1 := Array new: nbEquations.
 k2 := Array new: nbEquations.
@@ -15,9 +16,10 @@ k3 := Array new: nbEquations.
 k4 := Array new: nbEquations. 
 y := Array new: nbEquations.
 "In this case, the result will be an array of two dimensions."
-result := Array new: nbSpecies. "ex: (I[1] I[2] I[3])"
-(1 to: nbSpecies) do: [:id|
-	result at: id put: (Array new: nbIterations)
+result := Array new: nbCompartements. "ex: (I[1] I[2] I[3])"
+(1 to: nbCompartements) do: [:id1|
+	result at: id1 put: (Array new: nbSpecies).
+	1 to: nbSpecies do: [:id2|(result at: id1) at: id2 put: (Array new: nbIterations)]
 	].
 
 "Initialize value for y"
@@ -88,11 +90,16 @@ result := Array new: nbSpecies. "ex: (I[1] I[2] I[3])"
 	k := 1.
     listOfEquations do:[:each|		
 		model atCompartment: (each variable symbol) at: (each eqIndex) modifyNumberOfIndividuals: (y at: k).
-		(each variable symbol) = #I ifTrue: [(result at: (each eqIndex)) at: j put: (Array with:x with:(y at: k))].
+		"(each variable symbol) = #I ifTrue: [(result at: (each eqIndex)) at: j put: (Array with:x with:(y at: k))]."
+		1 to: nbCompartements do: [:cId|
+			(each variable symbol) = (listCompartmentSymbol at: cId) ifTrue: [((result at: cId) at: (each eqIndex)) at: j put: (Array with:x with:(y at: k))].
+			].		
 		k := k + 1.		
 		].		
 	"self halt."
 	].
-
-^result
+"Return a KEResult of all compartment in the model"
+results := KEResult new.
+1 to: nbCompartements do: [:cID|results add: (listCompartmentSymbol at: cID) value: (result at: cID)].
+^results
 

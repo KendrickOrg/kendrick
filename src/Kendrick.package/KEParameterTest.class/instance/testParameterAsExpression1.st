@@ -2,7 +2,7 @@ as yet unclassified
 testParameterAsExpression1
 
 |  model s i r dsdt didt drdt |
-model := KEModelExtended new.
+model := KEModelComplicate new.
 s := (KECompartment new) status: #S; numberOfIndividuals: 1.
 i := (KECompartment new) status: #I; numberOfIndividuals: 1.
 r := (KECompartment new) status: #R; numberOfIndividuals: 0.

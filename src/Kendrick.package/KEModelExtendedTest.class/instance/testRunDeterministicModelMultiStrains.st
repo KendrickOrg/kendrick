@@ -3,7 +3,7 @@ testRunDeterministicModelMultiStrains
 
 |model compartment dsdt didt|
 
-model := KEModelExtended new.
+model := KEModelComplicate new.
 "Each compartment composes 100 strains"
 model atCompartment: #S numberOfSpecies: 100.
 model withCompartment: #S from: 2 to: 100  numberOfIndividuals: 1.

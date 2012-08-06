@@ -7,5 +7,5 @@ arrayOfIndividuals := Array new: numberOfSpecies.
 1 to: (anArray size) do: [:id|
 	arrayOfIndividuals at:id put: (anArray at:id).	
 	].
-compartment := (KECompartmentExtended new) status: aStatus; numberOfIndividuals: arrayOfIndividuals; numberOfSpecies: numberOfSpecies.
+compartment := (KECompartmentVector new) status: aStatus; numberOfIndividuals: arrayOfIndividuals; numberOfSpecies: numberOfSpecies.
 self addCompartment: compartment
