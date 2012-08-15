@@ -4,8 +4,7 @@ plot
 |diag|
 diag := ESDiagramRenderer new.
 	(diag lineDiagram)
-		y: #second;
-		identifier: #first;
+		y: #second;		
 		yAxisLabel: 'Infected';
 		xAxisLabel: 'Time';
 		defaultColor: Color blue;

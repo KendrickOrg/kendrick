@@ -11,7 +11,8 @@
 		"equations",
 		"eventList",
 		"result",
-		"timeValue"
+		"timeValue",
+		"listOfIndividuals"
 	],
 	"name" : "KEModel",
 	"type" : "normal"
