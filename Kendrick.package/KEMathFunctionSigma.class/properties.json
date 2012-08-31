@@ -2,15 +2,13 @@
 	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [
 		 ],
-	"classtraitcomposition" : "{}",
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
 		"idVariable" ],
-	"name" : "KEMathFunctionExtended",
+	"name" : "KEMathFunctionSigma",
 	"pools" : [
 		 ],
 	"super" : "KEMathFunction",
-	"traitcomposition" : "{}",
 	"type" : "normal" }

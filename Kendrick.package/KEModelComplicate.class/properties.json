@@ -2,16 +2,16 @@
 	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [
 		 ],
-	"classtraitcomposition" : "{}",
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"fromStatus",
-		"toStatus" ],
-	"name" : "KEEventExtended",
+		"eqIdVariable",
+		"eqIdValue",
+		"fnIdVariable",
+		"fnIdValue" ],
+	"name" : "KEModelComplicate",
 	"pools" : [
 		 ],
-	"super" : "KEEvent",
-	"traitcomposition" : "{}",
+	"super" : "KEModel",
 	"type" : "normal" }

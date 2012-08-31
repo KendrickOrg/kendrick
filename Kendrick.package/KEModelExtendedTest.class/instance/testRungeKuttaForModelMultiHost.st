@@ -3,7 +3,7 @@ testRungeKuttaForModelMultiHost
 
 |model compartment dsdt didt solverRK nbIterations result |
 
-model := KEModelExtended new.
+model := KEModelComplicate new.
 model atCompartment: #S putNumberOfIndividuals: #(9999 1000 2000).
 model atCompartment: #I putNumberOfIndividuals: #(1 0 0).
 

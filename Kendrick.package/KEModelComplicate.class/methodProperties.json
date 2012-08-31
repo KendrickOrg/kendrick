@@ -2,10 +2,10 @@
 	"class" : {
 		 },
 	"instance" : {
-		"addEquation:" : "btmanh 6/28/2012 16:37",
+		"addEquation:" : "btmanh 7/26/2012 16:29",
 		"atCompartment:at:modifyNumberOfIndividuals:" : "btmanh 6/20/2012 22:23",
-		"atCompartment:numberOfSpecies:" : "btmanh 6/20/2012 22:24",
-		"atCompartment:putNumberOfIndividuals:" : "btmanh 6/20/2012 22:24",
+		"atCompartment:numberOfSpecies:" : "btmanh 7/26/2012 14:37",
+		"atCompartment:putNumberOfIndividuals:" : "btmanh 7/26/2012 14:37",
 		"atParameter:at:" : "btmanh 7/2/2012 19:29",
 		"atParameter:at:at:" : "btmanh 7/2/2012 19:30",
 		"eqIdValue" : "btmanh 6/20/2012 22:24",
@@ -17,6 +17,7 @@
 		"fnIdVariable" : "btmanh 6/20/2012 22:25",
 		"fnIdVariable:" : "btmanh 6/20/2012 22:25",
 		"getNumberOfSpecies" : "btmanh 6/20/2012 22:26",
+		"runDeterministSimulationFrom:to:with:" : "btmanh 7/31/2012 16:58",
 		"runDeterministSimulationFrom:to:with:function:" : "btmanh 7/17/2012 14:07",
 		"withCompartment:from:to:numberOfIndividuals:" : "btmanh 6/20/2012 22:26",
 		"withCompartment:withIndex:numberOfIndividuals:" : "btmanh 6/20/2012 22:26" } }

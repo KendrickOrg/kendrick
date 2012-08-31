@@ -3,7 +3,7 @@ testCompartmentAsVector2
 "This test is for constructing a compartment as a vector with large number of host"
 |model compartment|
 
-model := KEModelExtended new.
+model := KEModelComplicate new.
 model atCompartment: #S numberOfSpecies: 10.
 model withCompartment: #S from: 2 to: 10  numberOfIndividuals: 10000.
 model withCompartment: #S withIndex: 1  numberOfIndividuals: 20000.

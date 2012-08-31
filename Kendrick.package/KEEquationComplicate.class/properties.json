@@ -2,7 +2,6 @@
 	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [
 		 ],
-	"classtraitcomposition" : "{}",
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
@@ -11,9 +10,8 @@
 		"idVariable",
 		"eqIndex2",
 		"idVariable2" ],
-	"name" : "KEEquationExtended",
+	"name" : "KEEquationComplicate",
 	"pools" : [
 		 ],
 	"super" : "KEEquation",
-	"traitcomposition" : "{}",
 	"type" : "normal" }

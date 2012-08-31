@@ -2,16 +2,14 @@
 	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [
 		 ],
-	"classtraitcomposition" : "{}",
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"index1",
-		"index2" ],
-	"name" : "KEVariableExtended",
+		"fromStatus",
+		"toStatus" ],
+	"name" : "KETransition",
 	"pools" : [
 		 ],
-	"super" : "KEVariable",
-	"traitcomposition" : "{}",
+	"super" : "KEEvent",
 	"type" : "normal" }

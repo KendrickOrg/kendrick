@@ -1,0 +1,14 @@
+{
+	"category" : "Kendrick-SemanticModel",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		"result" ],
+	"name" : "KEResult",
+	"pools" : [
+		 ],
+	"super" : "KEObject",
+	"type" : "normal" }

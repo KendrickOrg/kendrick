@@ -1,7 +1,7 @@
 as yet unclassified
 solver: model
 
-|  nbEquations dydx k1 k2 k3 k4 y k result x|
+|  nbEquations dydx k1 k2 k3 k4 y k result x results|
 
 listOfEquations := model getEquationsList.
 nbIterations := ((xn - x0) / step) rounded.
@@ -13,8 +13,8 @@ k2 := Array new: nbEquations.
 k3 := Array new: nbEquations.
 k4 := Array new: nbEquations.
 y := Array new: nbEquations.
-result := Array new: nbIterations.
-
+result := Array new: (listOfEquations size).
+1 to: (listOfEquations size) do: [:index| result at: index put: (Array new: nbIterations)].
 "Initialize value for y"
 	k := 1.
     listOfEquations do:[:each|
@@ -75,10 +75,15 @@ result := Array new: nbIterations.
 	k := 1.
     listOfEquations do:[:each|		
 		model atCompartment: (each variable symbol) modifyNumberOfIndividuals: (y at: k).
-		(each variable symbol) = #I ifTrue: [result at: j put: (Array with:x with:(y at: k))].
+		"(each variable symbol) = #I ifTrue: [result at: j put: (Array with:x with:(y at: k))]."
+		(result at: k) at: j put: (Array with:x with:(y at: k)).
 		k := k + 1.
 		].
 	].
-
-^result
+"Return a KEResult for saving the results of all compartments"
+results := KEResult new.
+k := 1.
+listOfEquations do: [:each|results add: (each variable symbol) value: (result at: k).
+	k:=k+1].
+^results
 

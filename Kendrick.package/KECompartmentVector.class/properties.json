@@ -2,15 +2,13 @@
 	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [
 		 ],
-	"classtraitcomposition" : "{}",
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
 		"numberOfSpecies" ],
-	"name" : "KECompartmentExtended",
+	"name" : "KECompartmentVector",
 	"pools" : [
 		 ],
 	"super" : "KECompartment",
-	"traitcomposition" : "{}",
 	"type" : "normal" }
