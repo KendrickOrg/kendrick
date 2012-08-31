@@ -22,11 +22,11 @@
 		"plot" : "btmanh 8/9/2012 14:17",
 		"runDeterministSimulationFrom:to:with:" : "btmanh 7/30/2012 17:28",
 		"runDeterministSimulationFrom:to:with:logTransform:" : "btmanh 7/16/2012 17:32",
-		"runIndividualBasedSimulationFor:withStep:" : "btmanh 8/31/2012 14:08",
+		"runIndividualBasedSimulationFor:withStep:" : "btmanh 8/31/2012 14:18",
 		"runStochasticSimulationFor:" : "btmanh 7/5/2012 09:34",
 		"selectEventWith:" : "btmanh 5/18/2012 12:36:43.572",
 		"sumOfRate" : "btmanh 5/18/2012 12:36:43.572",
 		"timeValue" : "btmanh 5/30/2012 16:43",
 		"timeValue:" : "btmanh 5/30/2012 16:42",
-		"updateCompartment" : "btmanh 8/15/2012 11:13",
+		"updateNbIndividualsForCompartments" : "btmanh 8/31/2012 14:18",
 		"updateStatusForListIndividuals" : "btmanh 8/15/2012 11:14" } }
