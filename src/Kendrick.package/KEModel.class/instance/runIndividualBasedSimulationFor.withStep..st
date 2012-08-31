@@ -38,7 +38,7 @@ runIndividualBasedSimulationFor: tMax withStep: dT
 				    ]]
 				].						
 		"Update the number of Individuals for each classe"		
-		self updateCompartment.	
+		self updateNbIndividualsForCompartments.	
 		count := count + 1.
 		t := t + dT.
 		].		
