@@ -12,18 +12,17 @@ runIndividualBasedSimulationFor: tMax withStep: dT
 	"Initializing a list of individuals in the population"
 	self initializeListIndividuals.	
 		
-	listOfProbabilities := Array new: (listOfTransitions size).	
 	t := 0.
 	count := 1.
 	[t <= tMax] whileTrue: [
 		"Put in result"
 		result at: count put: (Array with: t with: (self numberOfIndividualsAtCompartment: #I)).
 		"Calculate rate of each event in the eventList and transform it into probability"
-		1 to: (listOfTransitions size) do: [:id|
+		listOfTransitions do: [:each|
 			|rateValue proba|
-			rateValue := ((listOfTransitions at: id) evaluateWithModel: self) abs.
+			rateValue := (each evaluateWithModel: self) abs.
 			proba := 1 - ((dT*rateValue*(-1)) exp).			
-			listOfProbabilities at: id put: proba.
+			each prob: proba.
 			].					
 		"For each individual in the listOfIndividuals, calculate the nextStatus"
 		listOfIndividuals do: [:each|			
@@ -42,6 +41,7 @@ runIndividualBasedSimulationFor: tMax withStep: dT
 		count := count + 1.
 		t := t + dT.
 		].	
+	self halt.
 	self plot.
 	
 
