@@ -14,8 +14,8 @@ model addEquation: (PPODEParser parse:'S:t=-beta*S*I').
 model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I').
 model addEquation: (PPODEParser parse: 'R:t=gamma*I').
 
-result := model runDeterministSimulationFrom: 0.0 to: 1.0 with: 0.001.
-result plots: #(#S #I #R) in: model.
+result := model runDeterministSimulationFrom: 0.0 to: 1.0 with: 0.0001.
+result plot: #I in: model.
 
 
 
