@@ -3,3 +3,4 @@ SystemOrganization addCategory: #'Kendrick-Tests-SemanticModel'!
 SystemOrganization addCategory: #'Kendrick-SemanticModel'!
 SystemOrganization addCategory: #'Kendrick-ExternalDSL'!
 SystemOrganization addCategory: #'Kendrick-Tests-ExternalDSL'!
+SystemOrganization addCategory: #'Kendrick-SemanticModel-Tests'!

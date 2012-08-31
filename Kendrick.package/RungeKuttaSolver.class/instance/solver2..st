@@ -99,7 +99,7 @@ result := Array new: nbCompartements. "ex: (I[1] I[2] I[3])"
 	"self halt."
 	].
 "Return a KEResult of all compartment in the model"
-results := KEResult new.
+results := KETimeSeriesCollection new.
 1 to: nbCompartements do: [:cID|results add: (listCompartmentSymbol at: cID) value: (result at: cID)].
 ^results
 

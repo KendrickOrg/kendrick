@@ -1,0 +1,14 @@
+{
+	"category" : "Kendrick-SemanticModel",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		"timeSeries" ],
+	"name" : "KETimeSeriesCollection",
+	"pools" : [
+		 ],
+	"super" : "KEObject",
+	"type" : "normal" }

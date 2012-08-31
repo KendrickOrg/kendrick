@@ -10,18 +10,18 @@ plot: aSymbol in: aModel
 		yAxisLabel: 'Number of individuals';		
 		regularAxis;		
 		startLineAtZero;		
-		models: ((result at: aSymbol) at: 1);
+		models: ((timeSeries at: aSymbol) at: 1);
 		yourself.				
 	diag2 := (ESDiagramRenderer new lineDiagram)	
 		y: #second;		
 		defaultColor: (Color green);			
-		models: ((result at: aSymbol) at: 2);
+		models: ((timeSeries at: aSymbol) at: 2);
 		yourself.
-	(result at: aSymbol) size >= 3 ifTrue: [	
+	(timeSeries at: aSymbol) size >= 3 ifTrue: [	
 	diag3 := (ESDiagramRenderer new lineDiagram)	
 		y: #second;					
 		defaultColor: (Color blue);				
-		models: ((result at: aSymbol) at: 3);
+		models: ((timeSeries at: aSymbol) at: 3);
 		yourself].
 	cpDiag := ESDiagramRenderer new.
 	diag3 ifNotNil: [(cpDiag compositeDiagram)
@@ -40,7 +40,7 @@ plot: aSymbol in: aModel
 		startLineAtZero;		
 		width: 1000;
 		height: 500;
-		models: (result at: aSymbol)	.
+		models: (timeSeries at: aSymbol)	.
 	^ diag open.
 	]
  

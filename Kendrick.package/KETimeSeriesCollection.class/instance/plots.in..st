@@ -25,7 +25,7 @@ compDiag compositeDiagram.
 		defaultColor: (listOfColor at: i);
 		width: 1000;
 		height: 400;
-		models: (result at: (aListOfSymbol at: i)).
+		models: (timeSeries at: (aListOfSymbol at: i)).
 	compDiag diagram add: diag. 	
 	].
 ^compDiag open.
