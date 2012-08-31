@@ -2,7 +2,7 @@ as yet unclassified
 runDeterministicModelMultiStrains
 "self runDeterministicModelMultiStrains"
 
-|model compartment dsdt didt result |
+| compartment dsdt didt result model |
 
 model := KEModelComplicate new.
 "Each compartment composes 100 strains"
