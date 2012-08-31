@@ -26,22 +26,22 @@ runIndividualBasedSimulationFor: tMax withStep: dT
 			].					
 		"For each individual in the listOfIndividuals, calculate the nextStatus"
 		listOfIndividuals do: [:each|			
-			"For each event in the list of events"			
-			1 to: (listOfTransitions size) do: [:id|
-				(each currentStatus = (listOfTransitions at: id) fromStatus) ifTrue: [							
-					rand := Random new.				
-					((listOfProbabilities at: id) > (rand next)) ifTrue: [						
-						each currentStatus: (listOfTransitions at: id) toStatus.
-						] 						
-					]
-				]
-			].			
+			"For each event in the list of events"
+			|current transition|
+			current := each currentStatus.
+			transition := (listOfTransitions select: [:tr|tr fromStatus = current]).
+			transition ifNotEmpty: [
+			transition := transition first.
+			rand := Random new.				
+			(transition prob > (rand next)) ifTrue: [						
+				    each currentStatus: (transition toStatus).
+				    ]]
+				].						
 		"Update the number of Individuals for each classe"		
 		self updateCompartment.	
 		count := count + 1.
 		t := t + dT.
-		].	
-	self halt.
+		].		
 	self plot.
 	
 
