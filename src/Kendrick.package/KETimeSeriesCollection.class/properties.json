@@ -6,8 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"result"
+		"timeSeries"
 	],
-	"name" : "KEResult",
+	"name" : "KETimeSeriesCollection",
 	"type" : "normal"
 }

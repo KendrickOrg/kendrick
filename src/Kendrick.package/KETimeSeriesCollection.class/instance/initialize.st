@@ -1,4 +1,4 @@
 as yet unclassified
 initialize
 
- result := Dictionary new
+ timeSeries := Dictionary new

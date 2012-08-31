@@ -1,11 +1,11 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "<historical>",
 	"super" : "TestCase",
 	"category" : "Kendrick-SemanticModel-Tests",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "KEVariableTest",
+	"name" : "KETimeSeriesCollectionTest",
 	"type" : "normal"
 }

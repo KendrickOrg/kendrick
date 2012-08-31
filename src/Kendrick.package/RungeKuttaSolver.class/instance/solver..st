@@ -81,7 +81,7 @@ result := Array new: (listOfEquations size).
 		].
 	].
 "Return a KEResult for saving the results of all compartments"
-results := KEResult new.
+results := KETimeSeriesCollection new.
 k := 1.
 listOfEquations do: [:each|results add: (each variable symbol) value: (result at: k).
 	k:=k+1].
