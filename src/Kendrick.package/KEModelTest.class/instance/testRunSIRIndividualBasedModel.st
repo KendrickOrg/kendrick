@@ -15,6 +15,6 @@ model addEquation: (PPODEParser parse: 'S:t=-beta*S*I').
 model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I').
 model addEquation: (PPODEParser parse: 'R:t=gamma*I').
 
-model runIndividualBasedSimulationFor: 0.01 withStep: 0.00027.
+model runIndividualBasedSimulationFor: 1.0 withStep: 0.0027.
 
 self assert: 1e5 equals: ( model numberOfIndividualsAtCompartment: #S )+ (model numberOfIndividualsAtCompartment: #I) + (model numberOfIndividualsAtCompartment: #R)
