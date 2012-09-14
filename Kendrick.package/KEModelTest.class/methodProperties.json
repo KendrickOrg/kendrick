@@ -10,7 +10,7 @@
 		"testKEModelWith1Compartment" : "btmanh 5/18/2012 12:36:43.572",
 		"testKEModelWith3Compartments" : "btmanh 5/18/2012 12:36:43.572",
 		"testKEModelWithParameters" : "btmanh 5/18/2012 12:36:43.572",
-		"testRunSIRIndividualBasedModel" : "btmanh 8/15/2012 11:32",
+		"testRunSIRIndividualBasedModel" : "btmanh 9/14/2012 13:57",
 		"testRunSIRStochasticModel" : "SergeStinckwich 5/24/2012 12:29",
 		"testRungeKutta" : "SergeStinckwich 5/23/2012 12:30:01.859",
 		"testSEIRModelHas4Equations" : "SergeStinckwich 5/24/2012 12:09",

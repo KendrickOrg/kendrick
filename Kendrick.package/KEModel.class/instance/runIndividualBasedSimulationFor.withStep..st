@@ -17,26 +17,25 @@ runIndividualBasedSimulationFor: tMax withStep: dT
 	[t <= tMax] whileTrue: [
 		"Put in result"
 		result at: count put: (Array with: t with: (self numberOfIndividualsAtCompartment: #I)).
-		"Calculate rate of each event in the eventList and transform it into probability"
-		listOfTransitions do: [:each|
-			|rateValue proba|
-			rateValue := (each evaluateWithModel: self) abs.
-			proba := 1 - ((dT*rateValue*(-1)) exp).			
-			each prob: proba.
-			].					
-		"For each individual in the listOfIndividuals, calculate the nextStatus"
-		listOfIndividuals do: [:each|			
-			"For each event in the list of events"
-			|current transition|
+		"Calculate the state of all individuals in the list"
+		listOfIndividuals do: [:each|
+			|current transition rateValue|
 			current := each currentStatus.
 			transition := (listOfTransitions select: [:tr|tr fromStatus = current]).
 			transition ifNotEmpty: [
-			transition := transition first.
-			rand := Random new.				
-			(transition prob > (rand next)) ifTrue: [						
-				    each currentStatus: (transition toStatus).
-				    ]]
-				].						
+				transition := transition first.
+				rateValue := ((transition evaluateWithModel: self) abs) / ((self atCompartment: current) numberOfIndividuals).		
+			transition prob: (1 - ((dT*rateValue*(-1)) exp)).
+			rand := Random new.	
+			(transition prob > (rand next)) ifTrue: [each nextStatus: (transition toStatus)]
+				]			
+			].
+		"Update state for all individuals in the list"
+		listOfIndividuals do: [:each|
+			(each nextStatus) ifNotNil: [
+				each currentStatus: (each nextStatus).
+				each nextStatus: nil]
+			].		
 		"Update the number of Individuals for each classe"		
 		self updateNbIndividualsForCompartments.	
 		count := count + 1.
