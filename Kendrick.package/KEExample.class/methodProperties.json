@@ -5,6 +5,7 @@
 		"runDeterministSEIRModelWithVaccination" : "btmanh 7/31/2012 13:11",
 		"runDeterministSIRModel" : "btmanh 8/9/2012 14:19",
 		"runDeterministSIRModelWithDemography" : "btmanh 7/31/2012 13:31",
+		"runDeterministicModelMultiDesease" : "btmanh 9/27/2012 13:51",
 		"runDeterministicModelMultiHost" : "btmanh 7/31/2012 16:19",
 		"runDeterministicModelMultiStrains" : "btmanh 8/15/2012 15:16",
 		"runSEIRTemporalForcing" : "btmanh 7/31/2012 13:32",
