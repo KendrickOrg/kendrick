@@ -6,10 +6,9 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"function",
-		"exprInFunction" ],
-	"name" : "KEMathFunction",
+		"idVariable" ],
+	"name" : "KEMathExpressionSigma",
 	"pools" : [
 		 ],
-	"super" : "KEObject",
+	"super" : "KEMathExpression",
 	"type" : "normal" }

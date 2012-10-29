@@ -1,8 +1,11 @@
 as yet unclassified
 selectEventWith: p
- | sum |
+ | sum count |
 sum := 0.
-	eventList do:[:each | sum := sum + ((each rate) evaluateWithModel: self) abs.
-		sum >= p ifTrue:[ ^each].
+count := 0.
+	eventList do:[:each | sum := sum + (each rateValue)"((each rate) evaluateWithModel: self) abs".
+		count := count + 1.
+		sum >= p ifTrue:[ 	^each].
 		].
+self halt.
 ^ nil

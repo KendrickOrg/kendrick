@@ -3,7 +3,7 @@ runStochasticSIRModel
 
 "self runStochasticSIRModel"
 
-| model |
+| model result |
 model := KEModel new.
 model atCompartment:#S putNumberOfIndividuals: 1e5-1.
 model atCompartment:#I putNumberOfIndividuals: 1.
@@ -15,5 +15,5 @@ model addEquation: (PPODEParser parse:'S:t=-beta*S*I').
 model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I').
 model addEquation: (PPODEParser parse: 'R:t=gamma*I').
 
-model runStochasticSimulationFor: (50/365).
-model plot.
+result := model runStochasticSimulationFor: (50/365).
+result plot: #I in: model.

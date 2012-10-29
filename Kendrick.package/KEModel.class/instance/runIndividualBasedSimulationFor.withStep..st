@@ -21,7 +21,8 @@ runIndividualBasedSimulationFor: tMax withStep: dT
 		listOfIndividuals do: [:each|
 			|current transitions rateValue|
 			current := each currentStatus.
-			transitions := (listOfTransitions select: [:tr|tr fromStatus = current]).
+			"transitions := (listOfTransitions select: [:tr|tr fromStatus = current])."
+			transitions := self selectTransitionIn: listOfTransitions  have: current.
 			transitions ifNotEmpty: [
 				transitions do:[:eachTransition|
 					rateValue := ((eachTransition evaluateWithModel: self) abs) / ((self atCompartment: current) numberOfIndividuals).

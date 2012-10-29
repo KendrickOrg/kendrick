@@ -55,24 +55,24 @@ equation
 	ifNil: [
 		(nodes at: 3) ifNotNil: [
 			"S:t=exp"
-			(KEEquationComplicate new)
+			(KEEquation new)
 			variable: ((KEVariable new) symbol: (nodes first) value asSymbol);
 			tVariable: ((KEVariable new) symbol: ((nodes at: 3) at: 2) value asSymbol);
-			idVariable: nil;
+			"idVariable: nil;
 			idVariable2: nil;
 			eqIndex: nil;
-			eqIndex2: nil;
+			eqIndex2: nil;"
 			expression: nodes last
 			]
 		ifNil: [
 			"S=exp"
-			(KEEquationComplicate new)
+			(KEEquation new)
 			variable: ((KEVariable new) symbol: (nodes first) value asSymbol);
 			tVariable: nil;
-			idVariable: nil;
+			"idVariable: nil;
 			idVariable2: nil;
 			eqIndex: nil;
-			eqIndex2: nil;
+			eqIndex2: nil;"
 			expression: nodes last
 			]
 		] 	
