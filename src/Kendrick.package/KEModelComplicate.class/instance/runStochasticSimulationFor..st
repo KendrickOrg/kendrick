@@ -34,7 +34,7 @@ runStochasticSimulationFor: tMax
 		"self halt."
 		t := t + deltaT.
 		selectedEvent executeOn: self.
-		t > (previousTime+(0.5/365)) ifTrue: [			
+		t > (previousTime+(4/365)) ifTrue: [			
 			self getEquationsList do: [:eachEq|
 				1 to: nbComp do: [:cId|
 					(eachEq variable symbol) = (listCompSym at: cId) ifTrue: [

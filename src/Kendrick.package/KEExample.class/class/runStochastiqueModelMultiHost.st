@@ -21,6 +21,6 @@ didt := 'I[i]:t=sum(j, beta[i,j]*I[j])*S[i]-(mu[i]+v)*I[i]' parseAsAnEquation.
 model addEquation: dsdt.
 model addEquation: didt.
 
-result := model runStochasticSimulationFor: 5.
+result := model runStochasticSimulationFor: 2.
 result plot: #I in: model do: #sqrt.
 
