@@ -1,4 +1,5 @@
 initialize-release
 initialize
 
- actions := Dictionary new
+super initialize.
+actions := Dictionary new

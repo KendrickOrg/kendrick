@@ -1,4 +1,5 @@
 as yet unclassified
 initialize
 
- timeSeries := Dictionary new
+super initialize.
+timeSeries := Dictionary new
