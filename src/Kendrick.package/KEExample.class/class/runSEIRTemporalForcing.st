@@ -21,5 +21,7 @@ model addEquation: (PPODEParser parse:'E:t=beta*(1+betaAmp*cos(t))*S*I-sigma*E-m
 model addEquation: (PPODEParser parse:'I:t=sigma*E-gamma*I-mu*I').
 model addEquation: (PPODEParser parse:'R:t=gamma*I-mu*R').
 
-result := model runDeterministSimulationFrom: 0 to: 400 with: 0.01.
-result plot: #I in: model do: #log.
+"result := model runDeterministSimulationFrom: 0 to: 400 with: 0.01.
+result plot: #I in: model do: #log."
+model runStochasticSimulationFor: (10/365).
+model plot.

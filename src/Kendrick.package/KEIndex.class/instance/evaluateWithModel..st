@@ -17,5 +17,5 @@ idExpression2 = -1 ifTrue: [index2 := -1] ifFalse: [
 	((index1 <= 0) | (index2 <= 0)) ifTrue: [^0].
 	x := (aModel atParameter: symbol at: index1 at: index2).
 	].
-
+"self halt."
 ^x.
