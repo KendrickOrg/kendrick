@@ -1,4 +1,3 @@
-as yet unclassified
+accessing
 eqIdValue
-
-^eqIdValue 
+	^ eqIdValue

@@ -1,5 +1,3 @@
-as yet unclassified
-fnIdValue 
-
-^fnIdValue
-
+accessing
+fnIdValue
+	^ fnIdValue
