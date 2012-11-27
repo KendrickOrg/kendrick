@@ -1,4 +1,3 @@
-as yet unclassified
+accessing
 fnIdValue: aValue
-
-fnIdValue := aValue
+	fnIdValue := aValue

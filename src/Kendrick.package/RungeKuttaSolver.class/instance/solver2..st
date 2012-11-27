@@ -6,7 +6,7 @@ solver2: model
 listOfEquations := model getEquationsList.
 nbIterations := ((xn - x0) / step) rounded.
 nbEquations := listOfEquations size.
-nbSpecies := model getNumberOfSpecies.
+nbSpecies := model numberOfSpecies.
 nbCompartements := nbEquations / nbSpecies.
 listCompartmentSymbol := model getListCompartmentSymbol.
 dydx := Array new: nbEquations.
