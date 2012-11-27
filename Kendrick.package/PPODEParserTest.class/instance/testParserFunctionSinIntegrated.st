@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testParserFunctionSinIntegrated
 
 |  model s i r dsdt didt drdt |
