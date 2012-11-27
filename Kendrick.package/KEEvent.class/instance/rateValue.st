@@ -1,4 +1,3 @@
-as yet unclassified
-rateValue 
-
-^ rateValue 
+accessing
+rateValue
+	^ rateValue

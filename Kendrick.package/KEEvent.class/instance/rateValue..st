@@ -1,4 +1,3 @@
-as yet unclassified
+accessing
 rateValue: anExpression
-
-rateValue := anExpression
+	rateValue := anExpression

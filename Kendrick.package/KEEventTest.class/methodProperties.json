@@ -2,11 +2,11 @@
 	"class" : {
 		 },
 	"instance" : {
+		"testAnEquationWhereAllEventsAreAddingEvents" : "SergeStinckwich 11/27/2012 21:12",
 		"testCreateAnEventThatRemoveAnIndividualFromStatusS" : "btmanh 5/18/2012 12:36:43.572",
-		"testEquationAllEventsAreAddingEvents" : "btmanh 7/3/2012 12:01",
 		"testEquationAllEventsAreRemovingEvents" : "btmanh 7/3/2012 12:01",
 		"testEquationCreateAnEventThatAddOneIndividual" : "btmanh 7/3/2012 12:01",
 		"testEquationHasOneEvent" : "btmanh 7/3/2012 12:01",
 		"testEquationHasTwoEvents" : "btmanh 7/3/2012 12:01",
 		"testEventsWithOppositeRate" : "btmanh 5/18/2012 12:36:43.572",
-		"testNbOfEventsOfSIRIs2" : "btmanh 7/3/2012 12:01" } }
+		"testNbOfEventsOfSIRModelIs2" : "SergeStinckwich 11/27/2012 21:24" } }
