@@ -3,7 +3,7 @@ testParameterAsArray
 
 |model|
 
-model := KEModelComplicate new.
+model := KEIndexedModel new.
 model atParameter: #gamma put: #(1 2 3). 
 model atParameter:#beta put: #((80 90 100) (110 120 130)).
 self assert: (model atParameter: #gamma at: 2) equals: 2.

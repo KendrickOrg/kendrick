@@ -3,7 +3,7 @@ testEvaluateExpressionWithCompartmentAsVector
 "This test is for evaluating an expression in which each compartment is a vector"
 |model compartment dsdt didt|
 
-model := KEModelComplicate new.
+model := KEIndexedModel new.
 model atCompartment: #S putNumberOfIndividuals: #(10000 9000 12000).
 model atCompartment: #I putNumberOfIndividuals: #(1 0 0).
 
