@@ -4,7 +4,7 @@ evaluateWithModel: m
 x := m atParameter:symbol.
 x ifNotNil: [	
 	x isNumber ifTrue: [^x].
-	symbol = (m eqIdVariable) ifTrue: [x:=(m eqIdValue)] ifFalse: [symbol = (m fnIdVariable) ifTrue: [x:=(m fnIdValue)]]		
+	symbol = (m indexName) ifTrue: [x:=(m eqIdValue)] ifFalse: [symbol = (m fnIdVariable) ifTrue: [x:=(m fnIdValue)]]		
 	].
 x ifNil:[
 	((symbol value) = #t) ifTrue: [^(m timeValue)].

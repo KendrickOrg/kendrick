@@ -13,7 +13,7 @@ model atParameter: #j put: (50 to: 100).
 
 dsdt := 'S:t=-beta[i, j]*S*I' parseAsAnEquation.
 model addEquation: dsdt.
-model eqIdVariable: #i.
+model indexName: #i.
 model eqIdValue: 50.
 model fnIdVariable: #j.
 model fnIdValue: 70.

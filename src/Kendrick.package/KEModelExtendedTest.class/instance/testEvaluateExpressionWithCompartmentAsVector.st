@@ -17,7 +17,7 @@ dsdt := 'S[i]:t=-sum(j, beta[i, j]*I[j])*S[i]' parseAsAnEquation.
 didt := 'I[i]:t=sum(j, beta[i,j]*I[j])*S[i]' parseAsAnEquation.
 model addEquation: dsdt.
 model addEquation: didt.
-model eqIdVariable: #i.
+model indexName: #i.
 model eqIdValue: 2.
 
 self assert: ((model getEquationsList) size) equals: 6.

@@ -6,10 +6,10 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"eqIdVariable",
 		"eqIdValue",
 		"fnIdVariable",
-		"fnIdValue"
+		"fnIdValue",
+		"indexName"
 	],
 	"name" : "KEModelComplicate",
 	"type" : "normal"
