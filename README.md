@@ -1,4 +1,4 @@
-SqueakSource repository: http://www.squeaksource.com/Kendrick.html
+Monticello repository on SmalltalkHub: http://smalltalkhub.com/#!/~SergeStinckwich/Kendrick
 
 ## How to install Kendrick
 
