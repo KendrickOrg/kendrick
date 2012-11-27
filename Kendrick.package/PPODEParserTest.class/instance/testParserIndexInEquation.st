@@ -20,7 +20,7 @@ dsdt := 'S[i]:t=mu[i]*N[i]-I[i-1]*S[i]-mu[i]*S[i]' parseAsAnEquation.
 didt := 'I[i]:t=I[i-1]*S[i]-(mu[i]+v)*I[i]' parseAsAnEquation.
 model addEquation: dsdt.
 model addEquation: didt.
-model eqIdVariable: #i.
+model indexName: #i.
 model eqIdValue: 1.
 
 self assert: ((model getEquationsList) size) equals: 6.

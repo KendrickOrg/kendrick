@@ -4,8 +4,8 @@
 	"instance" : {
 		"testCompartmentAsVector" : "btmanh 7/30/2012 14:54",
 		"testCompartmentAsVector2" : "btmanh 7/30/2012 14:53",
-		"testEvaluateExpressionWithCompartmentAsVector" : "btmanh 7/30/2012 14:53",
+		"testEvaluateExpressionWithCompartmentAsVector" : "SergeStinckwich 11/27/2012 19:29",
 		"testModifyCompartmentAsVector" : "btmanh 7/30/2012 14:54",
 		"testRunDeterministicModelMultiHost" : "btmanh 7/30/2012 14:53",
 		"testRunDeterministicModelMultiStrains" : "btmanh 7/30/2012 14:53",
-		"testRungeKuttaForModelMultiHost" : "btmanh 7/30/2012 14:53" } }
+		"testRungeKuttaForModelMultiHost" : "SergeStinckwich 11/27/2012 19:29" } }
