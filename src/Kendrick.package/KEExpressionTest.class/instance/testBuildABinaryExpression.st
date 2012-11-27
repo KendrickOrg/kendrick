@@ -1,7 +1,6 @@
 tests
 testBuildABinaryExpression
 	| e a b o |
-	
 	e := KEBinaryExpression new.
 	a := KENumerical new.
 	a number: 3.
