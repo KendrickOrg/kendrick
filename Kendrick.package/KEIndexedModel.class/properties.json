@@ -10,7 +10,7 @@
 		"fnIdVariable",
 		"fnIdValue",
 		"indexName" ],
-	"name" : "KEModelComplicate",
+	"name" : "KEIndexedModel",
 	"pools" : [
 		 ],
 	"super" : "KEModel",
