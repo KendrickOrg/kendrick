@@ -1,3 +1,3 @@
 as yet unclassified
-timeValue: aValue 
-timeValue := aValue.
+timeValue: aValue
+	timeValue := aValue

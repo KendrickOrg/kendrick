@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testParserIndexInEquation
 
 |model compartment dsdt didt|

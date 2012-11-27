@@ -1,7 +1,7 @@
-as yet unclassified
+tests
 testParserFunctionLog
 
-|  model s i r dsdt didt drdt |
+|  model s i r dsdt |
 model := KEModel new.
 s := (KECompartment new) status: #S; numberOfIndividuals: 99999.
 i := (KECompartment new) status: #I; numberOfIndividuals: 1.

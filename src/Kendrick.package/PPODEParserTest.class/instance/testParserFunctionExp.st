@@ -1,7 +1,7 @@
-as yet unclassified
+tests
 testParserFunctionExp
 
-|  model s i r dsdt didt drdt |
+|  model s i r dsdt |
 model := KEModel new.
 s := (KECompartment new) status: #S; numberOfIndividuals: 99999.
 i := (KECompartment new) status: #I; numberOfIndividuals: 1.
@@ -15,7 +15,7 @@ dsdt := 'S:t=exp(2*t)' parseAsAnEquation.
 model addEquation: dsdt.
 self assert: (dsdt variable symbol) equals: #S.
 self assert: (dsdt tVariable symbol) equals: #t.
-self assert: (dsdt expression evaluateWithModel: model) equals: (20 exp).
+self assert: (dsdt expression evaluateWithModel: model) equals: 20 exp
 
 
 
