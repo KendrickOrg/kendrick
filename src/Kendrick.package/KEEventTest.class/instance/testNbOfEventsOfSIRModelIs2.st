@@ -1,7 +1,7 @@
 tests
-testNbOfEventsOfSIRIs2
+testNbOfEventsOfSIRModelIs2
 
-|  model s i r dsdt didt drdt l ex a c b d count t |
+|  model s i r dsdt didt drdt l t |
 model := KEModel new.
 
 model atCompartment:#S putNumberOfIndividuals: 1-1e-6.
@@ -15,8 +15,8 @@ dsdt := 'S:t=-beta*S*I' parseAsAnEquation.
 didt := 'I:t=beta*S*I-gamma*I' parseAsAnEquation.
 drdt := 'R:t=gamma*I' parseAsAnEquation.
 
-model addEquation: dsdt.
-model addEquation: didt.
-model addEquation: drdt.
+model addEquation: dsdt; 
+	addEquation: didt;
+	addEquation: drdt.
 l := model generateEvents.
-self assert: 2  equals: l size
+self assert: l size equals: 2

@@ -1,4 +1,3 @@
-as yet unclassified
+accessing
 rate: anExpression
-
-rate := anExpression
+	rate := anExpression

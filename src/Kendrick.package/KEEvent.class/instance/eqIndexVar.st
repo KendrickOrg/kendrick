@@ -1,4 +1,3 @@
-as yet unclassified
-eqIndexVar 
-
-^ eqIndexVar 
+accessing
+eqIndexVar
+	^ eqIndexVar

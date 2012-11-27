@@ -1,4 +1,3 @@
-as yet unclassified
+accessing
 eqIndexVar: aValue
-
-eqIndexVar := aValue
+	eqIndexVar := aValue

@@ -1,4 +1,4 @@
-as yet unclassified
+testing
 hasAnEventWithOppositeRateIn: aListOfEvents
 
 aListOfEvents do: [:each |
