@@ -1,3 +1,3 @@
-as yet unclassified
+accessing
 timeValue: aValue
 	timeValue := aValue

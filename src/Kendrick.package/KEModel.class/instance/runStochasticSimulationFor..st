@@ -6,7 +6,7 @@ runStochasticSimulationFor: tMax
 	"Modify the result of this algorithm: KETimeSeriesCollection"
 	result := Array new: nbEquations.
 	1 to: (nbEquations) do: [:index| result at: index put: (Array new: 200000)].
-	eventList := self generateEvents.
+	events := self generateEvents.
 	t := 0.
 	i := 1.
 	rand1 := Random new.

@@ -2,6 +2,6 @@ as yet unclassified
 sumOfRate
 	| rateTotal |
 	rateTotal := 0.
-	eventList do:[:each | rateTotal := rateTotal + (each evaluateWithModel: self) abs.
+	events do:[:each | rateTotal := rateTotal + (each evaluateWithModel: self) abs.
 		].
 	^rateTotal

@@ -1,4 +1,4 @@
-as yet unclassified
+adding
 addEquation: anEquation
 
 equations add:anEquation.

@@ -1,15 +1,15 @@
 as yet unclassified
 generateEvents
 
-eventList := Bag new.
+events := Bag new.
 equations do:[:each | |list| 
 	list := each generateEvents.
 	list do:[:e |
-		(e hasAnEventWithOppositeRateIn: eventList)
+		(e hasAnEventWithOppositeRateIn: events)
 		ifTrue:[ |f|
-			f := e findEventWithAnOppositeRateIn: eventList.
-			(f actions) addAll: (e actions)]
-		 ifFalse:[ eventList add:e]
+			f := e findEventWithAnOppositeRateIn: events.
+			(f actions) addAll: e actions]
+		 ifFalse:[ events add:e]
 		].
 	].
-^eventList
+^events
