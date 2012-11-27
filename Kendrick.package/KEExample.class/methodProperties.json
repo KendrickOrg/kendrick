@@ -10,7 +10,7 @@
 		"runDeterministicModelMultiStrains" : "SergeStinckwich 11/27/2012 19:38",
 		"runIndividualBasedSIRModel" : "btmanh 10/16/2012 17:14",
 		"runSEIRTemporalForcing" : "btmanh 10/26/2012 21:23",
-		"runStochasticSIRModel" : "SergeStinckwich 10/29/2012 11:24",
+		"runStochasticSIRModel" : "SergeStinckwich 11/27/2012 22:38",
 		"runStochasticSIRModelWithDemography" : "btmanh 10/24/2012 11:13",
 		"runStochastiqueModelMultiDisease" : "btmanh 10/29/2012 16:19",
 		"runStochastiqueModelMultiHost" : "SergeStinckwich 11/27/2012 19:38" },
