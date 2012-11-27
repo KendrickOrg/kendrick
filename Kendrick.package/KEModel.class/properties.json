@@ -9,10 +9,10 @@
 		"compartments",
 		"parameters",
 		"equations",
-		"eventList",
 		"result",
 		"timeValue",
-		"listOfIndividuals" ],
+		"listOfIndividuals",
+		"events" ],
 	"name" : "KEModel",
 	"pools" : [
 		 ],

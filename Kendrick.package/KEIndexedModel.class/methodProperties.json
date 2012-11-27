@@ -19,6 +19,6 @@
 		"numberOfSpecies" : "SergeStinckwich 11/27/2012 19:51",
 		"runDeterministSimulationFrom:to:with:" : "btmanh 7/31/2012 16:58",
 		"runDeterministSimulationFrom:to:with:function:" : "SergeStinckwich 11/27/2012 19:51",
-		"runStochasticSimulationFor:" : "SergeStinckwich 11/27/2012 19:51",
+		"runStochasticSimulationFor:" : "SergeStinckwich 11/27/2012 21:31",
 		"withCompartment:from:to:numberOfIndividuals:" : "btmanh 6/20/2012 22:26",
 		"withCompartment:withIndex:numberOfIndividuals:" : "btmanh 6/20/2012 22:26" } }

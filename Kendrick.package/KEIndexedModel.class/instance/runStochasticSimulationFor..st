@@ -15,7 +15,7 @@ runStochasticSimulationFor: tMax
 		result at: id1 put: (Array new: nbSpecies).
 		1 to: nbSpecies do: [:id2|(result at: id1) at: id2 put: (Array new: 200000)]
 		].	
-	eventList := self generateEvents.
+	events := self generateEvents.
 	"self halt."
 	t := 0.
 	i := 1.
