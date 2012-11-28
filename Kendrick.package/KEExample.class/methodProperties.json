@@ -6,13 +6,13 @@
 		"runDeterministSIRModel" : "SergeStinckwich 11/28/2012 21:06",
 		"runDeterministSIRModelWithDemography" : "btmanh 7/31/2012 13:31",
 		"runDeterministicModelMultiDisease" : "btmanh 10/29/2012 16:18",
-		"runDeterministicModelMultiHost" : "SergeStinckwich 11/28/2012 20:49",
 		"runDeterministicModelMultiStrains" : "SergeStinckwich 11/27/2012 19:38",
+		"runDeterministicMultiHostModel" : "SergeStinckwich 11/28/2012 21:18",
 		"runIndividualBasedSIRModel" : "SergeStinckwich 11/28/2012 21:05",
-		"runSEIRTemporalForcing" : "btmanh 10/26/2012 21:23",
+		"runStochasticMultiDiseaseModel" : "SergeStinckwich 11/28/2012 21:18",
+		"runStochasticMultiHostModel" : "SergeStinckwich 11/28/2012 21:19",
+		"runStochasticSEIRTemporalForcing" : "SergeStinckwich 11/28/2012 21:19",
 		"runStochasticSIRModel" : "SergeStinckwich 11/28/2012 15:03",
-		"runStochasticSIRModelWithDemography" : "btmanh 10/24/2012 11:13",
-		"runStochastiqueModelMultiDisease" : "btmanh 10/29/2012 16:19",
-		"runStochastiqueModelMultiHost" : "SergeStinckwich 11/27/2012 19:38" },
+		"runStochasticSIRModelWithDemography" : "btmanh 10/24/2012 11:13" },
 	"instance" : {
 		 } }

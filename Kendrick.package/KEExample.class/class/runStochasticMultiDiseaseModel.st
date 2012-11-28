@@ -1,5 +1,5 @@
 as yet unclassified
-runStochastiqueModelMultiDisease
+runStochasticMultiDiseaseModel
 
 "self runStochastiqueModelMultiDisease"
 
