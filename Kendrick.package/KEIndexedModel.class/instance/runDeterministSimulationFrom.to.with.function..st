@@ -2,12 +2,12 @@ as yet unclassified
 runDeterministSimulationFrom: x0 to: xn with: step function: func
 
 | solverRK yy diag1 diag2 diag3 diagComposite xValue nbIteration nbSpecies r g b|
-solverRK := RungeKuttaSolver new.
+solverRK := RungeKuttaSolver on:self.
 solverRK finalValueOfX: xn.
 solverRK initialValueOfX: x0.
 solverRK stepSize: step. 
 
-yy := solverRK solver2: self.
+yy := solverRK rk4Solve2.
 nbIteration := ((xn - x0)/step) rounded.
 nbSpecies := self numberOfSpecies.
 r:=Random new.

@@ -2,6 +2,7 @@
 	"class" : {
 		 },
 	"instance" : {
+		"addAllEquations:" : "SergeStinckwich 11/28/2012 21:03",
 		"addEquation:" : "btmanh 7/26/2012 16:29",
 		"atCompartment:at:modifyNumberOfIndividuals:" : "btmanh 6/20/2012 22:23",
 		"atCompartment:numberOfSpecies:" : "btmanh 7/26/2012 14:37",
@@ -17,8 +18,8 @@
 		"indexName" : "SergeStinckwich 11/27/2012 19:30",
 		"indexName:" : "SergeStinckwich 11/27/2012 19:30",
 		"numberOfSpecies" : "SergeStinckwich 11/27/2012 19:51",
-		"runDeterministSimulationFrom:to:with:" : "btmanh 7/31/2012 16:58",
-		"runDeterministSimulationFrom:to:with:function:" : "SergeStinckwich 11/27/2012 19:51",
+		"runDeterministSimulationFrom:to:with:" : "SergeStinckwich 11/28/2012 19:55",
+		"runDeterministSimulationFrom:to:with:function:" : "SergeStinckwich 11/28/2012 19:56",
 		"runStochasticSimulationFor:" : "SergeStinckwich 11/28/2012 15:39",
 		"withCompartment:from:to:numberOfIndividuals:" : "btmanh 6/20/2012 22:26",
 		"withCompartment:withIndex:numberOfIndividuals:" : "btmanh 6/20/2012 22:26" } }

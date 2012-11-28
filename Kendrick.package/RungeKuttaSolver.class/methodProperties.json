@@ -2,6 +2,7 @@
 	"class" : {
 		"on:" : "SergeStinckwich 11/28/2012 19:20" },
 	"instance" : {
+		"calculateDerivation2" : "SergeStinckwich 11/28/2012 19:54",
 		"calculateDerivation2:" : "SergeStinckwich 11/28/2012 19:28",
 		"calculateDerivatives" : "SergeStinckwich 11/28/2012 19:36",
 		"finalValueOfX:" : "SergeStinckwich 11/28/2012 15:07",
@@ -10,6 +11,6 @@
 		"model:" : "SergeStinckwich 11/28/2012 19:34",
 		"nbIterations" : "SergeStinckwich 11/28/2012 15:26",
 		"rk4Solve" : "SergeStinckwich 11/28/2012 19:26",
-		"solver2:" : "SergeStinckwich 11/28/2012 16:05",
+		"rk4Solve2" : "SergeStinckwich 11/28/2012 19:59",
 		"stepSize:" : "SergeStinckwich 11/28/2012 15:08",
 		"toleranceScalingFactor:" : "SergeStinckwich 11/28/2012 15:15" } }

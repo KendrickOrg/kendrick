@@ -15,7 +15,6 @@ dsdt := 'S:t=-beta*S*I' parseAsAnEquation.
 didt := 'I:t=beta*S*I-gamma*I' parseAsAnEquation.
 drdt := 'R:t=gamma*I' parseAsAnEquation.
 
-model addEquation: dsdt; 
-	addEquation: didt;
-	addEquation: drdt.
+model addAllEquations: {dsdt. didt. drdt}.
+
 self assert: model generateEvents size equals: 2

@@ -2,7 +2,8 @@
 	"class" : {
 		 },
 	"instance" : {
-		"addCompartment:" : "btmanh 5/18/2012 12:36:43.572",
+		"addAllEquations:" : "SergeStinckwich 11/28/2012 20:52",
+		"addCompartment:" : "SergeStinckwich 11/28/2012 20:56",
 		"addEquation:" : "SergeStinckwich 11/28/2012 19:34",
 		"atCompartment:" : "btmanh 5/18/2012 12:36:43.572",
 		"atCompartment:modifyNumberOfIndividuals:" : "btmanh 5/18/2012 12:36:43.572",

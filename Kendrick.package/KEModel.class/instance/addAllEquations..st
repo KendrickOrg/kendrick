@@ -1,0 +1,3 @@
+adding
+addAllEquations: aCollectionOfEquations
+	equations addAll: aCollectionOfEquations
