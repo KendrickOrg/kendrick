@@ -3,9 +3,9 @@ solver2: model
 "This function is for finding solution for the model with multi host in which each compartment is a vector, not a value."
 | nbSpecies nbEquations dydx k1 k2 k3 k4 y k result x results nbCompartements listCompartmentSymbol |
 
-listOfEquations := model equations.
+equations := model equations.
 nbIterations := ((xn - x0) / step) rounded.
-nbEquations := listOfEquations size.
+nbEquations := equations size.
 nbSpecies := model numberOfSpecies.
 nbCompartements := nbEquations / nbSpecies.
 listCompartmentSymbol := model getListCompartmentSymbol.
@@ -24,7 +24,7 @@ result := Array new: nbCompartements. "ex: (I[1] I[2] I[3])"
 
 "Initialize value for y"
 	k := 1.
-    listOfEquations do:[:each|
+    equations do:[:each|
 		"each compartment is a vector, so, numberOfIndividuals of each compartment is an array of 1 dimension"
 		y at: k put:(((model atCompartment: (each variable symbol)) numberOfIndividuals) at: (each eqIndex)).
 		k := k + 1.		
@@ -45,7 +45,7 @@ result := Array new: nbCompartements. "ex: (I[1] I[2] I[3])"
 	"j = 4 ifTrue: [self halt]."
 	"Update number of individuals for each compartments of model"
 	k := 1.
-    listOfEquations do:[:each|
+    equations do:[:each|
 		model atCompartment: (each variable symbol) at: (each eqIndex) modifyNumberOfIndividuals: (((k1 at: k) / 2) + (y at: k)).
 		k := k + 1.
 		].
@@ -57,7 +57,7 @@ result := Array new: nbCompartements. "ex: (I[1] I[2] I[3])"
 		].
 	"Update number of individuals for each compartments of model"
 	k := 1.
-    listOfEquations do:[:each|		
+    equations do:[:each|		
 		model atCompartment: (each variable symbol) at: (each eqIndex) modifyNumberOfIndividuals: (((k2 at: k) / 2) + (y at: k)).
 		k := k + 1.
 		].
@@ -69,7 +69,7 @@ result := Array new: nbCompartements. "ex: (I[1] I[2] I[3])"
 		].
 	"Update number of individuals for each compartments of model"
 	k := 1.
-    listOfEquations do:[:each|		
+    equations do:[:each|		
 		model atCompartment: (each variable symbol) at: (each eqIndex) modifyNumberOfIndividuals: ((k3 at: k) + (y at: k)).
 		k := k + 1.
 		].
@@ -88,7 +88,7 @@ result := Array new: nbCompartements. "ex: (I[1] I[2] I[3])"
 	"self halt."
 	"Update number of individuals for each compartments of model"
 	k := 1.
-    listOfEquations do:[:each|		
+    equations do:[:each|		
 		model atCompartment: (each variable symbol) at: (each eqIndex) modifyNumberOfIndividuals: (y at: k).
 		"(each variable symbol) = #I ifTrue: [(result at: (each eqIndex)) at: j put: (Array with:x with:(y at: k))]."
 		1 to: nbCompartements do: [:cId|

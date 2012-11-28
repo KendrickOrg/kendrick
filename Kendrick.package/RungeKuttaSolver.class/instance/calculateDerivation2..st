@@ -2,10 +2,10 @@ as yet unclassified
 calculateDerivation2: model
 
 | nbOfExpression dydx id |
-nbOfExpression := listOfEquations size.
+nbOfExpression := equations size.
 dydx := Array new: nbOfExpression.
 id := 1.
-listOfEquations do:[:each| 
+equations do:[:each| 
 	"Update equation index variable and equation index value of each equation for the model"
 	model indexName: (each idVariable).
 	model eqIdValue: (each eqIndex).

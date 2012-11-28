@@ -1,3 +1,3 @@
 as yet unclassified
-symbol: aSymbol 
+symbol: aSymbol
 	symbol := aSymbol

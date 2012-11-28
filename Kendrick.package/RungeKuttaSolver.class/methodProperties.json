@@ -2,14 +2,13 @@
 	"class" : {
 		"toto" : "btmanh 5/18/2012 12:36:43.572" },
 	"instance" : {
-		"calculateDerivation2:" : "SergeStinckwich 11/28/2012 15:35",
-		"calculateDerivation:" : "SergeStinckwich 11/28/2012 15:35",
+		"calculateDerivation2:" : "SergeStinckwich 11/28/2012 16:05",
+		"calculateDerivation:" : "SergeStinckwich 11/28/2012 16:05",
 		"finalValueOfX:" : "SergeStinckwich 11/28/2012 15:07",
-		"getListOfEquationsOf:" : "SergeStinckwich 11/28/2012 15:39",
+		"getListOfEquationsOf:" : "SergeStinckwich 11/28/2012 16:05",
 		"initialValueOfX:" : "SergeStinckwich 11/28/2012 15:07",
-		"listOfEquations" : "SergeStinckwich 11/28/2012 15:08",
 		"nbIterations" : "SergeStinckwich 11/28/2012 15:26",
-		"solve:" : "SergeStinckwich 11/28/2012 15:39",
-		"solver2:" : "SergeStinckwich 11/28/2012 15:39",
+		"solve:" : "SergeStinckwich 11/28/2012 16:11",
+		"solver2:" : "SergeStinckwich 11/28/2012 16:05",
 		"stepSize:" : "SergeStinckwich 11/28/2012 15:08",
 		"toleranceScalingFactor:" : "SergeStinckwich 11/28/2012 15:15" } }

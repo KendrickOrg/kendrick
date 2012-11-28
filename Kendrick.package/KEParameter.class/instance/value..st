@@ -1,4 +1,3 @@
-as yet unclassified
-value: aValue  
-
-value := aValue 
+accessing
+value: aValue
+	value := aValue

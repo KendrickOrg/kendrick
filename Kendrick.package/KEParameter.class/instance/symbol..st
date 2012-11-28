@@ -1,4 +1,3 @@
-as yet unclassified
-symbol:aSym
-
-symbol := aSym  
+accessing
+symbol: aSymbol
+	symbol := aSymbol
