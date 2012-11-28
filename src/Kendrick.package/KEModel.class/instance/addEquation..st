@@ -1,4 +1,3 @@
 adding
 addEquation: anEquation
-
-equations add:anEquation.
+	equations add: anEquation

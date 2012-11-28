@@ -13,13 +13,13 @@ model addEquation: (PPODEParser parse:'S:t=-beta*S*I').
 model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I').
 model addEquation: (PPODEParser parse: 'R:t=gamma*I').
 
-solverRK := RungeKuttaSolver new.
+solverRK := RungeKuttaSolver on: model.
 solverRK initialValueOfX: 0.0.
 solverRK finalValueOfX: 1.0.
 solverRK stepSize: 0.001.
 
 nbIterations := ((1.0 - 0.0) / 0.001) rounded.
-result := solverRK solve: model.
+result := solverRK rk4Solve.
 
 self assert: ((result getResultAt: #S) size) equals: nbIterations.
 self assert: (solverRK nbIterations) equals: nbIterations

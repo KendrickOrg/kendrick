@@ -1,17 +1,15 @@
 as yet unclassified
-calculateDerivation2: model
+calculateDerivation2:  aModel
 
-| nbOfExpression dydx id |
+| nbOfExpression  id derivativeResults |
 nbOfExpression := equations size.
-dydx := Array new: nbOfExpression.
+derivativeResults := Array new: nbOfExpression.
 id := 1.
 equations do:[:each| 
 	"Update equation index variable and equation index value of each equation for the model"
 	model indexName: (each idVariable).
 	model eqIdValue: (each eqIndex).
-	dydx at: id put: ((each expression) evaluateWithModel: model).
+	derivativeResults at: id put: ((each expression) evaluateWithModel: aModel).
 	id := id+ 1.	
 	].
-^dydx
-
-
+^derivativeResults
