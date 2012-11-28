@@ -1,4 +1,3 @@
 as yet unclassified
 isAVariable
-
-^true
+	^ true

@@ -1,9 +1,6 @@
 as yet unclassified
 generateEvents
-
-|list e|
-list := Bag new.
-e := KEEvent new.
-e rate: self normalize.
-list add:e.
-^list
+	| e |
+	e := KEEvent new.
+	e rate: self normalize.
+	^ Bag with: e

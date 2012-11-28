@@ -1,4 +1,3 @@
-as yet unclassified
-value 
-
-^value 
+evaluating
+value
+	^ value

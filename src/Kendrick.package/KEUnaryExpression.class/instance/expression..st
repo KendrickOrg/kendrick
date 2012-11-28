@@ -1,4 +1,3 @@
 as yet unclassified
 expression: anExpression
-
-expression := anExpression
+	expression := anExpression
