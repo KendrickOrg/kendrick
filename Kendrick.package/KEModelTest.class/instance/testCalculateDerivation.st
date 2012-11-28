@@ -15,9 +15,8 @@ model addEquation: (PPODEParser parse:'S:t=-beta*S*I').
 model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I').
 model addEquation: (PPODEParser parse: 'R:t=gamma*I').
 
-solverRK := RungeKuttaSolver new.
-solverRK getListOfEquationsOf: model.
-dydx := solverRK calculateDerivation: model.
+solverRK := RungeKuttaSolver on: model.
+dydx := solverRK calculateDerivatives.
 
 self assert: (dydx size) equals: 3
 

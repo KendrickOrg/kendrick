@@ -1,14 +1,15 @@
 {
 	"class" : {
-		"toto" : "btmanh 5/18/2012 12:36:43.572" },
+		"on:" : "SergeStinckwich 11/28/2012 19:20" },
 	"instance" : {
-		"calculateDerivation2:" : "SergeStinckwich 11/28/2012 16:05",
-		"calculateDerivation:" : "SergeStinckwich 11/28/2012 16:05",
+		"calculateDerivation2:" : "SergeStinckwich 11/28/2012 19:28",
+		"calculateDerivatives" : "SergeStinckwich 11/28/2012 19:36",
 		"finalValueOfX:" : "SergeStinckwich 11/28/2012 15:07",
-		"getListOfEquationsOf:" : "SergeStinckwich 11/28/2012 16:05",
 		"initialValueOfX:" : "SergeStinckwich 11/28/2012 15:07",
+		"initializeArraysWithSize:" : "SergeStinckwich 11/28/2012 19:45",
+		"model:" : "SergeStinckwich 11/28/2012 19:34",
 		"nbIterations" : "SergeStinckwich 11/28/2012 15:26",
-		"solve:" : "SergeStinckwich 11/28/2012 16:11",
+		"rk4Solve" : "SergeStinckwich 11/28/2012 19:26",
 		"solver2:" : "SergeStinckwich 11/28/2012 16:05",
 		"stepSize:" : "SergeStinckwich 11/28/2012 15:08",
 		"toleranceScalingFactor:" : "SergeStinckwich 11/28/2012 15:15" } }
