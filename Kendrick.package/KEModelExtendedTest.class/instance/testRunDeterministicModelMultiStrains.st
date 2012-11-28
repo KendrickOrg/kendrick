@@ -27,7 +27,7 @@ didt := 'I[i]:t=beta*S[i]*I[i]-(mu+v)*I[i]+m*(I[i-1]+I[i+1]-2*I[i])' parseAsAnEq
 model addEquation: dsdt.
 model addEquation: didt.
 
-self assert: ((model getEquationsList) size) equals: 200.
+self assert: ((model equations) size) equals: 200.
 self assert: (dsdt variable symbol) equals: #S.
 self assert: (dsdt tVariable symbol) equals: #t.
 self assert: (dsdt idVariable) equals: #i.

@@ -12,7 +12,7 @@ self assert: (model atParameter:#beta) equals: 0.0052.
 self assert: (model atParameter:#gamma) equals: 365/7.
 
 model addEquation: (PPODEParser parse:'I:t=beta*S*I-gamma*I').
-equations := model getEquationsList.
+equations := model equations.
 equations do:[:each|
 	self assert: (each variable symbol) equals: #I.
 	self assert: (each expression op) equals: #-.
