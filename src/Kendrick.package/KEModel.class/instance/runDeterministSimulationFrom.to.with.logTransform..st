@@ -7,7 +7,7 @@ solverRK finalValueOfX: xn.
 solverRK initialValueOfX: x0.
 solverRK stepSize: step.
 
-yy := solverRK solver: self.
+yy := solverRK solve: self.
 nbIteration := ((xn - x0)/step) rounded.
 "Get log10 of yy"
 (lo) ifTrue:[
