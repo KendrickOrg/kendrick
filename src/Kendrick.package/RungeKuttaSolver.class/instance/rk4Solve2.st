@@ -1,7 +1,9 @@
 as yet unclassified
-solver2: model
+rk4Solve2
+
 "This function is for finding solution for the model with multi host in which each compartment is a vector, not a value."
-| nbSpecies nbEquations dydx k1 k2 k3 k4 y k result x results nbCompartements listCompartmentSymbol |
+
+| nbSpecies nbEquations k x results nbCompartements listCompartmentSymbol |
 
 equations := model equations.
 nbIterations := ((xn - x0) / step) rounded.

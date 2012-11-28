@@ -13,13 +13,14 @@ model atParameter: #mu put: {365/30 . 1/20 . 1/20}.
 model atParameter: #v put: #(52 52 52).
 model atParameter: #j put: (1 to: 3). 
 model atParameter: #i put: (1 to: 3).
-self assert: (model atParameter: #j at: 2) equals: 2. "j is an interval"
+
+self assert: (model atParameter: #j at: 2) equals: 2. 
 self assert: (model atParameter: #beta at: 2 at: 3 ) equals: 0.
 
 dsdt := 'S[i]:t=mu[i]*N[i]-sum(j, beta[i, j]*I[j])*S[i]-mu[i]*S[i]' parseAsAnEquation.
 didt := 'I[i]:t=sum(j, beta[i,j]*I[j])*S[i]-(mu[i]+v[i])*I[i]' parseAsAnEquation.
-model addEquation: dsdt.
-model addEquation: didt.
+model addAllEquations: {dsdt. didt}.
+
 model indexName: #i.
 model eqIdValue: 2.
 
@@ -29,14 +30,14 @@ self assert: (dsdt tVariable symbol) equals: #t.
 self assert: (dsdt idVariable) equals: #i.
 self assert: (didt idVariable) equals: #i.
 
-solverRK := RungeKuttaSolver new.
+solverRK := RungeKuttaSolver on: model.
 solverRK finalValueOfX: 40.
 solverRK initialValueOfX: 0.
 solverRK stepSize: 0.1.
 
 nbIterations := ((40 - 0) / 0.1) rounded.
 
-result := solverRK solver2: model.
+result := solverRK rk4Solve2.
 self assert: (result size) equals: 3.
 self assert: ((result at: 1) size) equals: nbIterations.
 self assert: ((result at: 1) size) equals: nbIterations.
@@ -44,4 +45,3 @@ self assert: ((result at: 2) size) equals: nbIterations.
 self assert: ((result at: 3) size) equals: nbIterations.
 
 self assert: (solverRK nbIterations) equals: nbIterations
-
