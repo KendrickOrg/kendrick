@@ -1,7 +1,7 @@
 tests
-testRungeKutta
+testRungeKuttaSolverOnSIRModel
 
-| model solverRK dydx j listOfEquations nbIterations result |
+| model solverRK nbIterations result |
 model := KEModel new.
 model atCompartment:#S putNumberOfIndividuals: 99999.
 model atCompartment:#I putNumberOfIndividuals: 1.
@@ -14,15 +14,15 @@ model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I').
 model addEquation: (PPODEParser parse: 'R:t=gamma*I').
 
 solverRK := RungeKuttaSolver new.
-solverRK finalValueOfX: 1.0.
 solverRK initialValueOfX: 0.0.
+solverRK finalValueOfX: 1.0.
 solverRK stepSize: 0.001.
 
 nbIterations := ((1.0 - 0.0) / 0.001) rounded.
-self assert: (solverRK calculateNbOfIterations) equals: nbIterations.
+result := solverRK solve: model.
 
-result := solverRK solver: model.
-self assert: ((result getResultAt: #S) size) equals: nbIterations
+self assert: ((result getResultAt: #S) size) equals: nbIterations.
+self assert: (solverRK nbIterations) equals: nbIterations.
 
 
 

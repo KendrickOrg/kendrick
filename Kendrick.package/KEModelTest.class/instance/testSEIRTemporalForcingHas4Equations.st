@@ -19,4 +19,4 @@ model addEquation: (PPODEParser parse:'E:t=beta*(1+betaAmp*cos(t))*S*I-sigma*E-m
 model addEquation: (PPODEParser parse:'I:t=sigma*E-gamma*I-mu*I').
 model addEquation: (PPODEParser parse:'R:t=gamma*I-mu*R').
 
-self assert: 4 equals: model numberOfEquations
+self assert: model numberOfEquations equals:4
