@@ -1,5 +1,5 @@
 as yet unclassified
-runSEIRTemporalForcing
+runStochasticSEIRTemporalForcing
 
 "self runSEIRTemporalForcing"
 
