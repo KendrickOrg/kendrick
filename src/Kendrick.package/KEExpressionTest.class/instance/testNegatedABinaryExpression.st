@@ -3,10 +3,8 @@ testNegatedABinaryExpression
 	| e a b o |
 	
 	e := KEBinaryExpression new.
-	a := KENumerical new.
-	a number: 3.
-	b := KENumerical new.
-	b number: 7.
+	a := KENumerical number: 3.
+	b := KENumerical number: 7.
 	o := #+.
 	e
 		op: o;

@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testRungeKuttaForModelMultiHost
 
 |model compartment dsdt didt solverRK nbIterations result |
