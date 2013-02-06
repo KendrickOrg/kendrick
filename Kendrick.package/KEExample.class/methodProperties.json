@@ -1,6 +1,6 @@
 {
 	"class" : {
-		"runDeterministSEIRModel" : "SergeStinckwich 10/29/2012 11:16",
+		"runDeterministSEIRModel" : "SergeStinckwich 2/6/2013 15:37",
 		"runDeterministSEIRModelWithLossOfImmunity" : "SergeStinckwich 11/28/2012 21:23",
 		"runDeterministSEIRModelWithVaccination" : "SergeStinckwich 11/28/2012 21:23",
 		"runDeterministSIRModel" : "SergeStinckwich 11/28/2012 22:04",

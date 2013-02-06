@@ -33,7 +33,7 @@ equations do:[:each|
 	"Update number of individuals for each compartments of model"
 	k := 1.
     equations do:[:each|
-		model atCompartment: (each variable symbol) modifyNumberOfIndividuals: (((k1 at: k) / 2) + (y at: k)).
+		(model atCompartment: (each variable symbol)) numberOfIndividuals:  (((k1 at: k) / 2) + (y at: k)).
 		k := k + 1.
 		].
 	
@@ -47,7 +47,7 @@ equations do:[:each|
 	"Update number of individuals for each compartments of model"
 	k := 1.
     equations do:[:each|		
-		model atCompartment: (each variable symbol) modifyNumberOfIndividuals: (((k2 at: k) / 2) + (y at: k)).
+		(model atCompartment: (each variable symbol)) numberOfIndividuals:  (((k2 at: k) / 2) + (y at: k)).
 		k := k + 1.
 		].
 	"Calculate k3"
@@ -59,7 +59,7 @@ equations do:[:each|
 	"Update number of individuals for each compartments of model"
 	k := 1.
     equations do:[:each|		
-		model atCompartment: (each variable symbol) modifyNumberOfIndividuals: ((k3 at: k) + (y at: k)).
+		(model atCompartment: (each variable symbol)) numberOfIndividuals:  ((k3 at: k) + (y at: k)).
 		k := k + 1.
 		].
 	"Caculate k4"
@@ -76,7 +76,7 @@ equations do:[:each|
 	"Update number of individuals for each compartments of model"
 	k := 1.
     equations do:[:each|		
-		model atCompartment: (each variable symbol) modifyNumberOfIndividuals: (y at: k).
+		(model atCompartment: (each variable symbol)) numberOfIndividuals:  (y at: k).
 		"(each variable symbol) = #I ifTrue: [result at: j put: (Array with:x with:(y at: k))]."
 		(result at: k) at: j put: (Array with:x with:(y at: k)).
 		k := k + 1.

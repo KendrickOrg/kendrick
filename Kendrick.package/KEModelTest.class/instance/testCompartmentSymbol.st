@@ -19,7 +19,7 @@ equations do:[:each|
 	left := (each expression) leftHandSide evaluateWithModel: model.
 	right := (each expression) rightHandSide evaluateWithModel: model
 	].
-model atCompartment: #S modifyNumberOfIndividuals: 1000.
+(model atCompartment: #S) numberOfIndividuals: 1000.
 self assert: (model numberOfIndividualsAtCompartment: #S) equals: 1000.
 
 
