@@ -1,7 +1,7 @@
 as yet unclassified
 runDeterministicMultiHostModel
 
-"self runDeterministicModelMultiHost"
+"self runDeterministicMultiHostModel"
 
 |model dsdt didt result|
 
@@ -19,6 +19,6 @@ dsdt := 'S[i]:t=mu[i]-sum(j, beta[i, j]*I[j])*S[i]-mu[i]*S[i]' parseAsAnEquation
 didt := 'I[i]:t=sum(j, beta[i,j]*I[j])*S[i]-(mu[i]+v)*I[i]' parseAsAnEquation.
 model addAllEquations: {dsdt. didt}.
 
-result := model runDeterministSimulationFrom: 0 to: 5  with: 0.01.
-result plot: #I in: model do: #sqrt.
+result := model runDeterministSimulationFrom: 0 to: 20 with: 0.01.
+result plot: #I in: model do: #sqrt
 

@@ -15,4 +15,4 @@ runDeterministSIRModel
 	model addEquation: ('R:t=gamma*I' parseAsAnEquation).
 	
 	result := model runDeterministSimulationFrom: 0.0 to: 0.2 with: 0.001.
-	result plots: #(#S #I #R) in: model
+	result plot: #I in:model
