@@ -1,4 +1,4 @@
-Monticello repository on SmalltalkHub: http://smalltalkhub.com/#!/~SergeStinckwich/Kendrick
+Monticello repository on SmalltalkHub: [http://smalltalkhub.com/#!/~SergeStinckwich/Kendrick](http://smalltalkhub.com/#!/~SergeStinckwich/Kendrick)
 
 ## How to install Kendrick
 
