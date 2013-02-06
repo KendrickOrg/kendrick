@@ -1,7 +1,7 @@
 as yet unclassified
 runStochasticMultiDiseaseModel
 
-"self runStochastiqueModelMultiDisease"
+"self runStochasticMultiDiseaseModel"
 
 |model compartment dsdt didt result|
 
@@ -33,5 +33,5 @@ model addEquation: (PPODEParser parse:'RI:t=sigma1*II-(mu+sigma2)*RI').
 model addEquation: (PPODEParser parse:'IR:t=sigma2*II-(mu+sigma1)*IR').
 model addEquation: (PPODEParser parse:'RR:t=sigma1*IR+sigma2*RI-mu*RR').
 
-result := model runStochasticSimulationFor: (150).
-result plot: #SR in: model.
+result := model runStochasticSimulationFor: 150.
+result plot: #SR in: model

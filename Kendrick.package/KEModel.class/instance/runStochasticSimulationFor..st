@@ -1,6 +1,7 @@
 as yet unclassified
 runStochasticSimulationFor: tMax
-	|  rTotal rand1 deltaT rand2 p selectedEvent t  previousTime i nbEquations k results|	
+	
+	| nbEquations t i rand1 rand2 previousTime rTotal deltaT p selectedEvent results k |
 	nbEquations := self equations size.
 "	result := Array new:200000."
 	"Modify the result of this algorithm: KETimeSeriesCollection"

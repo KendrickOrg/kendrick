@@ -28,5 +28,5 @@ didt := 'I[i]:t=beta*S[i]*I[i]-(mu+v)*I[i]+m*(I[i-1]+I[i+1]-2*I[i])' parseAsAnEq
 model addEquation: dsdt.
 model addEquation: didt.
 
-result := model runDeterministSimulationFrom: 0 to: 8  with: 0.01.
-result plot: #I in: model.
+result := model runDeterministSimulationFrom: 0 to: 8 with: 0.01.
+result plot: #I in: model
