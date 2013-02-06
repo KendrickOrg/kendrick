@@ -8,7 +8,7 @@ runStochasticSimulationFor: tMax
 	"Number of compartments "
 	nbComp := nbEquations / nbSpecies.
 	"List all symbols of compartments"
-	listCompSym := self getListCompartmentSymbol.
+	listCompSym := self compartmentSymbols.
 	
 	result := Array new: nbComp.
 	1 to: nbComp do:[:id1|
