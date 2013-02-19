@@ -7,8 +7,8 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"symbol",
-		"value",
-		"expression"
+		"expression",
+		"expressionValue"
 	],
 	"name" : "KEParameter",
 	"type" : "normal"
