@@ -9,7 +9,7 @@ r := (KECompartment new) status: #R; numberOfIndividuals: 0.
 model addCompartment: s;
 	addCompartment: i;
 	addCompartment: r.
-model atParameter: #beta putExpression: 'beta[i,j]=(i-j)^2' parseAsAnEquation. 
+model atParameter: #beta put: 'beta[i,j]=(i-j)^2' parseAsAnEquation. 
 model atParameter: #i put: (50 to: 100).
 model atParameter: #j put: (50 to: 100).
 
