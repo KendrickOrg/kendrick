@@ -12,5 +12,5 @@ testIsUnaryExpression
 	betaS rightHandSide: s.
 	betaS leftHandSide: beta.
 	
-	self assert: minusBeta isUnaryExpression.
+	self assert: true equals: minusBeta isUnaryExpression.
 	self assert: false equals: betaS isUnaryExpression.

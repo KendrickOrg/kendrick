@@ -1,7 +1,7 @@
 tests
 testParserFunctionSin
 
-|  model s i r dsdt |
+|  model s i r dsdt didt drdt |
 model := KEModel new.
 s := (KECompartment new) status: #S; numberOfIndividuals: 99999.
 i := (KECompartment new) status: #I; numberOfIndividuals: 1.

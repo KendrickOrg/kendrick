@@ -1,15 +1,19 @@
 as yet unclassified
-calculateDerivation2:  aModel
+calculateDerivation2: model
 
-| nbOfExpression  id derivativeResults |
-nbOfExpression := equations size.
-derivativeResults := Array new: nbOfExpression.
+| nbOfExpression dydx id |
+nbOfExpression := listOfEquations size.
+dydx := Array new: nbOfExpression.
 id := 1.
-equations do:[:each| 
+listOfEquations do:[:each| 
 	"Update equation index variable and equation index value of each equation for the model"
-	model indexName: (each idVariable).
+	model eqIdVariable: (each idVariable).
 	model eqIdValue: (each eqIndex).
-	derivativeResults at: id put: ((each expression) evaluateWithModel: aModel).
+	dydx at: id put: ((each expression) evaluateWithModel: model).
 	id := id+ 1.	
 	].
-^derivativeResults
+"self halt."
+^dydx.
+
+
+

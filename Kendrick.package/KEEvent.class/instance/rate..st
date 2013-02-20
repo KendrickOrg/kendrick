@@ -1,3 +1,4 @@
 accessing
 rate: anExpression
-	rate := anExpression
+
+rate := anExpression

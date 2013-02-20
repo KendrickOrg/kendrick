@@ -2,10 +2,10 @@
 	"class" : {
 		 },
 	"instance" : {
-		"add:value:" : "SergeStinckwich 11/28/2012 15:57",
-		"getResultAt:" : "SergeStinckwich 11/28/2012 15:57",
-		"initialize" : "SergeStinckwich 11/28/2012 15:57",
-		"isEmpty" : "SergeStinckwich 11/28/2012 15:57",
+		"add:value:" : "btmanh 8/31/2012 13:08",
+		"getResultAt:" : "btmanh 8/31/2012 13:08",
+		"initialize" : "SergeStinckwich 10/29/2012 11:27",
+		"isEmpty" : "btmanh 8/31/2012 13:24",
 		"log:in:" : "btmanh 8/31/2012 13:08",
 		"plot:at:in:" : "btmanh 10/29/2012 18:05",
 		"plot:at:in:do:" : "btmanh 10/29/2012 18:07",

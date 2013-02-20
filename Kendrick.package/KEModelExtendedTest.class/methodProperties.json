@@ -2,10 +2,10 @@
 	"class" : {
 		 },
 	"instance" : {
-		"testBuildingACompartmentWithAnArray" : "SergeStinckwich 11/28/2012 20:19",
-		"testCompartmentAsVector2" : "SergeStinckwich 11/28/2012 20:23",
-		"testEvaluateExpressionWithCompartmentAsVector" : "SergeStinckwich 11/28/2012 20:58",
+		"testCompartmentAsVector" : "SergeStinckwich 11/27/2012 19:38",
+		"testCompartmentAsVector2" : "SergeStinckwich 11/27/2012 19:38",
+		"testEvaluateExpressionWithCompartmentAsVector" : "SergeStinckwich 2/20/2013 17:33",
 		"testModifyCompartmentAsVector" : "SergeStinckwich 11/27/2012 19:38",
-		"testMultiHostModelWith3HostSpeciesAnd6Compartiments" : "SergeStinckwich 11/28/2012 20:55",
-		"testMultiStrainsModelWith200Compartiments" : "SergeStinckwich 2/19/2013 20:02",
-		"testRungeKuttaForModelMultiHost" : "SergeStinckwich 11/28/2012 21:04" } }
+		"testRunDeterministicModelMultiHost" : "SergeStinckwich 11/27/2012 19:38",
+		"testRunDeterministicModelMultiStrains" : "SergeStinckwich 11/27/2012 19:38",
+		"testRungeKuttaForModelMultiHost" : "SergeStinckwich 2/20/2013 17:33" } }

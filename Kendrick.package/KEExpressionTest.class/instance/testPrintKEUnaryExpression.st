@@ -7,4 +7,4 @@ beta := KEVariable symbol:#beta.
 minusBeta := KEUnaryExpression op:#-.
 minusBeta expression: beta.
 
-self assert: '-beta' equals: minusBeta asString
+self assert: '-beta' equals: minusBeta asString.

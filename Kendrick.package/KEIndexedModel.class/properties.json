@@ -9,7 +9,7 @@
 		"eqIdValue",
 		"fnIdVariable",
 		"fnIdValue",
-		"indexName" ],
+		"eqIdVariable" ],
 	"name" : "KEIndexedModel",
 	"pools" : [
 		 ],

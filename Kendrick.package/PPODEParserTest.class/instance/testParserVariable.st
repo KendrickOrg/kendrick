@@ -1,7 +1,7 @@
 tests
 testParserVariable
 
-|  model s i r dsdt   |
+|  model s i r dsdt didt drdt |
 model := KEModel new.
 s := (KECompartment new) status: #S; numberOfIndividuals: 1-1e-6.
 i := (KECompartment new) status: #I; numberOfIndividuals: 1e-6.

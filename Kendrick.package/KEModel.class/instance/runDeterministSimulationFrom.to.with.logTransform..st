@@ -2,12 +2,12 @@ as yet unclassified
 runDeterministSimulationFrom: x0 to: xn with: step logTransform: lo
 
 | solverRK yy diag xValue nbIteration |
-solverRK := RungeKuttaSolver on/self.
+solverRK := RungeKuttaSolver new.
 solverRK finalValueOfX: xn.
 solverRK initialValueOfX: x0.
 solverRK stepSize: step.
 
-yy := solverRK rk4Solve.
+yy := solverRK solver: self.
 nbIteration := ((xn - x0)/step) rounded.
 "Get log10 of yy"
 (lo) ifTrue:[

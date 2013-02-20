@@ -1,3 +1,4 @@
 adding
 addCompartment: aCompartment
-	compartments add: aCompartment
+
+compartments add: aCompartment

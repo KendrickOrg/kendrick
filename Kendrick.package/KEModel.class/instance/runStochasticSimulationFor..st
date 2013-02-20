@@ -1,13 +1,12 @@
 as yet unclassified
 runStochasticSimulationFor: tMax
-	
-	| nbEquations t i rand1 rand2 previousTime rTotal deltaT p selectedEvent results k |
-	nbEquations := self equations size.
+	|  rTotal rand1 deltaT rand2 p selectedEvent t  previousTime i nbEquations k results|	
+	nbEquations := self getEquationsList size.
 "	result := Array new:200000."
 	"Modify the result of this algorithm: KETimeSeriesCollection"
 	result := Array new: nbEquations.
 	1 to: (nbEquations) do: [:index| result at: index put: (Array new: 200000)].
-	events := self generateEvents.
+	eventList := self generateEvents.
 	t := 0.
 	i := 1.
 	rand1 := Random new.
@@ -26,7 +25,7 @@ runStochasticSimulationFor: tMax
 		t > (previousTime+(0.5/365)) ifTrue: [
 			|id|
 			id := 1.
-			self equations do: [:eachEq|
+			self getEquationsList do: [:eachEq|
 				(result at: id) at:i put: (Array with:t with: (self numberOfIndividualsAtCompartment: (eachEq variable symbol))).
 				id := id + 1.
 				].			
@@ -36,7 +35,7 @@ runStochasticSimulationFor: tMax
 			].
 	results := KETimeSeriesCollection new.
 	k := 1.
-	self equations do: [:each|
+	self getEquationsList do: [:each|
 		result at: k put: ((result at: k) select: [:e| e ~= nil]).
 		results add: (each variable symbol) value: (result at: k).
 		k := k+1].

@@ -12,14 +12,14 @@ self assert: (model atParameter:#beta) equals: 0.0052.
 self assert: (model atParameter:#gamma) equals: 365/7.
 
 model addEquation: (PPODEParser parse:'I:t=beta*S*I-gamma*I').
-equations := model equations.
+equations := model getEquationsList.
 equations do:[:each|
 	self assert: (each variable symbol) equals: #I.
 	self assert: (each expression op) equals: #-.
 	left := (each expression) leftHandSide evaluateWithModel: model.
 	right := (each expression) rightHandSide evaluateWithModel: model
 	].
-(model atCompartment: #S) numberOfIndividuals: 1000.
+model atCompartment: #S modifyNumberOfIndividuals: 1000.
 self assert: (model numberOfIndividualsAtCompartment: #S) equals: 1000.
 
 

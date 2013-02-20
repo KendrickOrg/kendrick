@@ -1,4 +1,4 @@
-tests
+as yet unclassified
 testNewTimeSeriesCollectionIsEmpty
 
 | c |

@@ -1,0 +1,14 @@
+{
+	"category" : "Kendrick-Math-ODE",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"b" ],
+	"name" : "RungeKutta",
+	"pools" : [
+		 ],
+	"super" : "Solution",
+	"type" : "normal" }

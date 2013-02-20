@@ -18,4 +18,4 @@ model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I-mu*I').
 model addEquation: (PPODEParser parse: 'R:t=gamma*I-mu*R').
 
 model runStochasticSimulationFor: (50/365).
-model plot
+model plot.

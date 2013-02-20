@@ -1,3 +1,4 @@
 removing
 removeOneIndividualFrom: aStatus
-	actions at: aStatus put: -1
+
+actions at: aStatus put: -1.

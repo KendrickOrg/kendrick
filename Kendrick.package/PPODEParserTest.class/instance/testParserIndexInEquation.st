@@ -1,4 +1,4 @@
-tests
+as yet unclassified
 testParserIndexInEquation
 
 |model compartment dsdt didt|
@@ -20,10 +20,10 @@ dsdt := 'S[i]:t=mu[i]*N[i]-I[i-1]*S[i]-mu[i]*S[i]' parseAsAnEquation.
 didt := 'I[i]:t=I[i-1]*S[i]-(mu[i]+v)*I[i]' parseAsAnEquation.
 model addEquation: dsdt.
 model addEquation: didt.
-model indexName: #i.
+model eqIdVariable: #i.
 model eqIdValue: 1.
 
-self assert: ((model equations) size) equals: 6.
+self assert: ((model getEquationsList) size) equals: 6.
 self assert: (dsdt variable symbol) equals: #S.
 self assert: (dsdt tVariable symbol) equals: #t.
 self assert: (dsdt idVariable) equals: #i.

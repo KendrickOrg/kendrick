@@ -1,4 +1,4 @@
-adding
+as yet unclassified
 addEquation: anEquation
 
 | index equation|

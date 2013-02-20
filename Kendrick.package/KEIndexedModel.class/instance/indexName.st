@@ -1,3 +1,0 @@
-accessing
-indexName
-	^ indexName

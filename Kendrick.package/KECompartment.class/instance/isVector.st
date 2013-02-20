@@ -1,3 +1,4 @@
 accessing
 isVector
-	^ false
+
+^false
