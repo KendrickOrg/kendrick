@@ -1,4 +1,4 @@
-initialization
+as yet unclassified
 initializeListIndividuals
 
 listOfIndividuals := Bag new.	

@@ -1,5 +1,5 @@
 printing
 printOn: aStream
-	aStream
+	aStream 
 		nextPutAll: '-';
 		nextPutAll: expression asString

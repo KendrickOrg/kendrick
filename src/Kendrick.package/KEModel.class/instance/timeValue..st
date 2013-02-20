@@ -1,3 +1,3 @@
 accessing
-timeValue: aValue
-	timeValue := aValue
+timeValue: aValue 
+timeValue := aValue.

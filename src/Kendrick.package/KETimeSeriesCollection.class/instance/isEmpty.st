@@ -1,3 +1,4 @@
 as yet unclassified
-isEmpty
-	^ timeSeries isEmpty
+isEmpty 
+
+^timeSeries isEmpty

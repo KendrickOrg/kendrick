@@ -1,3 +1,4 @@
 printing
 printOn: aStream
-	aStream nextPutAll: symbol asString
+	aStream 
+		nextPutAll: symbol asString

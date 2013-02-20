@@ -11,15 +11,7 @@
 		"step",
 		"relTol",
 		"nbIterations",
-		"equations",
-		"dydx",
-		"k1",
-		"k2",
-		"k3",
-		"k4",
-		"y",
-		"result",
-		"model"
+		"listOfEquations"
 	],
 	"name" : "RungeKuttaSolver",
 	"type" : "normal"

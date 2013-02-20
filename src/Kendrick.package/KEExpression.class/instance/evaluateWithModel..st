@@ -1,3 +1,4 @@
 as yet unclassified
 evaluateWithModel: aModel
-	self subclassResponsibility
+
+self subclassResponsibility

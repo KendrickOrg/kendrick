@@ -17,6 +17,6 @@ testNormalizeKEExpression
 	k := e normalize.
 	self assert: true equals: ((k negated) = e).
 	
-	self assert: (k normalize) isUnaryExpression.
-	self assert: (k normalize) isUnaryExpression		
+	self assert: true equals: (k normalize) isUnaryExpression.
+	self assert: true equals: (k normalize) isUnaryExpression		
 	

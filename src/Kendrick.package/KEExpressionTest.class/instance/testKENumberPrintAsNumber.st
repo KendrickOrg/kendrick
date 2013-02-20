@@ -1,5 +1,6 @@
 tests
 testKENumberPrintAsNumber
-	| n |
-	n := KENumerical number: 10.
-	self assert: n asString equals: '10'
+
+|n|
+n := KENumerical number: 10.
+self assert: '10' equals: n asString.

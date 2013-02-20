@@ -14,11 +14,11 @@ si := KEBinaryExpression new.
 si op: #*; leftHandSide: s; rightHandSide: i.
 betaSI := KEBinaryExpression new.
 betaSI op:#*; leftHandSide: beta; rightHandSide: si. 
-minusBetaSI op:#- ; expression: betaSI.
+minusBetaSI op:#- ; expression: betaSI..
 
 e1 rate: minusBetaSI normalize.
 e2 rate: betaSI normalize.
 
 listEvents := Bag new.
 listEvents add: e1.
-self assert: (e2 hasAnEventWithOppositeRateIn: listEvents)
+self assert: true equals: (e2 hasAnEventWithOppositeRateIn: listEvents)
