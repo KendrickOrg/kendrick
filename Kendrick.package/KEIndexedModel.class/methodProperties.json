@@ -16,9 +16,9 @@
 		"fnIdValue:" : "btmanh 6/20/2012 22:25",
 		"fnIdVariable" : "btmanh 6/20/2012 22:25",
 		"fnIdVariable:" : "btmanh 6/20/2012 22:25",
-		"getNumberOfSpecies" : "btmanh 6/20/2012 22:26",
+		"numberOfSpecies" : "SergeStinckwich 2/21/2013 10:29",
 		"runDeterministSimulationFrom:to:with:" : "btmanh 7/31/2012 16:58",
-		"runDeterministSimulationFrom:to:with:function:" : "btmanh 7/17/2012 14:07",
-		"runStochasticSimulationFor:" : "btmanh 10/29/2012 18:08",
+		"runDeterministSimulationFrom:to:with:function:" : "SergeStinckwich 2/21/2013 10:29",
+		"runStochasticSimulationFor:" : "SergeStinckwich 2/21/2013 10:29",
 		"withCompartment:from:to:numberOfIndividuals:" : "btmanh 6/20/2012 22:26",
 		"withCompartment:withIndex:numberOfIndividuals:" : "btmanh 6/20/2012 22:26" } }

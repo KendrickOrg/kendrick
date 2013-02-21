@@ -9,7 +9,7 @@ solverRK stepSize: step.
 
 yy := solverRK solver2: self.
 nbIteration := ((xn - x0)/step) rounded.
-nbSpecies := self getNumberOfSpecies.
+nbSpecies := self numberOfSpecies.
 r:=Random new.
 g:=Random new.
 b:=Random new.
