@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testASeriesAt
 	| s1 s2 |
 	s1 := KESeries from: #(2 2 2 2 2).
