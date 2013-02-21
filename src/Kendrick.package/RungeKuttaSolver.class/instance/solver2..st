@@ -6,7 +6,7 @@ solver2: model
 listOfEquations := model getEquationsList.
 nbIterations := ((xn - x0) / step) rounded.
 nbEquations := listOfEquations size.
-nbSpecies := model getNumberOfSpecies.
+nbSpecies := model numberOfSpecies.
 nbCompartements := nbEquations / nbSpecies.
 listCompartmentSymbol := model getListCompartmentSymbol.
 dydx := Array new: nbEquations.
@@ -92,7 +92,6 @@ result := Array new: nbCompartements. "ex: (I[1] I[2] I[3])"
 		model atCompartment: (each variable symbol) at: (each eqIndex) modifyNumberOfIndividuals: (y at: k).
 		"(each variable symbol) = #I ifTrue: [(result at: (each eqIndex)) at: j put: (Array with:x with:(y at: k))]."
 		1 to: nbCompartements do: [:cId|
-			"cId: compartement id (1, 2, 3)"
 			(each variable symbol) = (listCompartmentSymbol at: cId) ifTrue: [((result at: cId) at: (each eqIndex)) at: j put: (Array with:x with:(y at: k))].
 			].		
 		k := k + 1.		

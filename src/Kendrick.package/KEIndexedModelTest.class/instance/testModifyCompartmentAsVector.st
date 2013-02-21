@@ -1,4 +1,4 @@
-tests
+as yet unclassified
 testModifyCompartmentAsVector
 "This test is for modifying the number of individuals of a compartment as a vector with small number of host"
 |model compartment|

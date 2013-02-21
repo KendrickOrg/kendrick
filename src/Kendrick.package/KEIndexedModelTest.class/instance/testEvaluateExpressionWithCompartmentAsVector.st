@@ -1,4 +1,4 @@
-tests
+as yet unclassified
 testEvaluateExpressionWithCompartmentAsVector
 "This test is for evaluating an expression in which each compartment is a vector"
 |model compartment dsdt didt|
