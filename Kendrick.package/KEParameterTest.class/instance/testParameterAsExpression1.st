@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testParameterAsExpression1
 
 |  model s i r dsdt didt drdt |
