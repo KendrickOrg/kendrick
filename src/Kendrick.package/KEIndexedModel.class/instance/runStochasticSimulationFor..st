@@ -4,7 +4,7 @@ runStochasticSimulationFor: tMax
 	"Number of equations"
 	nbEquations := self getEquationsList size.
 	"Number of host"
-	nbSpecies := self numberOfSpecies.
+	nbSpecies := self getNumberOfSpecies.
 	"Number of compartments "
 	nbComp := nbEquations / nbSpecies.
 	"List all symbols of compartments"

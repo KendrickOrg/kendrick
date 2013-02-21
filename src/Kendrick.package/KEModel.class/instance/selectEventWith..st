@@ -7,5 +7,4 @@ count := 0.
 		count := count + 1.
 		sum >= p ifTrue:[ 	^each].
 		].
-self halt.
 ^ nil

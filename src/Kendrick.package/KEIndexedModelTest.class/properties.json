@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "KEModelExtendedTest",
+	"name" : "KEIndexedModelTest",
 	"type" : "normal"
 }

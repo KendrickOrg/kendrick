@@ -25,7 +25,7 @@ ifFalse: [
 		
 		op = #+ ifTrue: [
 			idValue := (a + b).
-			(idValue > (aModel numberOfSpecies)) ifTrue: [idValue := 0].
+			(idValue > (aModel getNumberOfSpecies)) ifTrue: [idValue := 0].
 			].
 		op = #- ifTrue: [
 			idValue := (a - b).

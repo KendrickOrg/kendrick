@@ -1,4 +1,4 @@
 as yet unclassified
-numberOfSpecies
+getNumberOfSpecies
 
 ^((equations size) / (compartments size))

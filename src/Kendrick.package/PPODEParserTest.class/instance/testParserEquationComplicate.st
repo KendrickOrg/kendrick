@@ -1,5 +1,5 @@
 as yet unclassified
-testParserIndexedEquation
+testParserEquationComplicate
 
 |  model s i r dsdt didt drdt |
 model := KEIndexedModel new.

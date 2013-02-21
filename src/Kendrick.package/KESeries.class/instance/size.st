@@ -1,3 +1,0 @@
-accessing
-size
-	^ data size

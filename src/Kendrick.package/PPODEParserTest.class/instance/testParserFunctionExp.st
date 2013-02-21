@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testParserFunctionExp
 
 |  model s i r dsdt didt drdt |
