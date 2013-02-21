@@ -1,9 +1,18 @@
-Monticello repository on SmalltalkHub: http://bit.ly/WxePYq
+Kendrick is a Domain-Specific Language and Simulation Plaform for mathematical epidemiology modeling. All the development happens on SmalltalkHub: http://bit.ly/XrpsL2
+
+
+Github is only used to sync the development en files, for doing CI and store the [issues](https://github.com/SergeStinckwich/Kendrick/issues) list.
 
 ## How to install Kendrick
 
-* Download the last dev MOOSE 4.7 image here: http://ci.moosetechnology.org/job/moose-latest-dev/lastSuccessfulBuild/artifact/moose_suite-4_7_dev.zip
+* Download the last dev MOOSE 4.7 image : http://ci.moosetechnology.org/job/moose-latest-dev/
 
+* Load last version Kendrick :
+
+```Smalltalk
+Gofer iturl: 'http://smalltalkhub.com/mc/UMMISCO/Kendrick/main';package: 'Kendrick';load.````
+
+## How to sync SmalltalkHub repository with github (only for developers)
 * Bootstrap FileTree:
 
 ```Smalltalk
