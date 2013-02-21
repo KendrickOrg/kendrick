@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testASeriesHasSize5WhenCreatedWithAnArrayOfSize5
 	| s1 s2|
 	s1 := KESeries from: #(1 2 3 4 5).

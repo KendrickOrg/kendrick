@@ -10,7 +10,7 @@
 		"idVariable",
 		"eqIndex2",
 		"idVariable2" ],
-	"name" : "KEEquationComplicate",
+	"name" : "KEIndexedEquation",
 	"pools" : [
 		 ],
 	"super" : "KEEquation",
