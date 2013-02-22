@@ -2,7 +2,7 @@ as yet unclassified
 runStochasticSimulationFor: tMax
 	|  rTotal rand1 deltaT rand2 p selectedEvent t  previousTime i nbEquations k results nbSpecies nbComp listCompSym |	
 	"Number of equations"
-	nbEquations := self getEquationsList size.
+	nbEquations := self equations size.
 	"Number of host"
 	nbSpecies := self numberOfSpecies.
 	"Number of compartments "
@@ -35,7 +35,7 @@ runStochasticSimulationFor: tMax
 		t := t + deltaT.
 		selectedEvent executeOn: self.
 		t > (previousTime+(0.5/365)) ifTrue: [			
-			self getEquationsList do: [:eachEq|
+			self equations do: [:eachEq|
 				1 to: nbComp do: [:cId|
 					(eachEq variable symbol) = (listCompSym at: cId) ifTrue: [
 						((result at: cId) at: (eachEq eqIndex)) at: i put: (Array with: t with: (((self atCompartment: (eachEq variable symbol)) numberOfIndividuals) at: (eachEq eqIndex)))
