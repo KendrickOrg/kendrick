@@ -3,7 +3,7 @@ solver: model
 
 |nbEquations dydx k1 k2 k3 k4 k data results x y timeIndex |
 
-listOfEquations := model getEquationsList.
+listOfEquations := model equations.
 nbIterations := ((xn - x0) / step) rounded.
 nbEquations := listOfEquations size.
 

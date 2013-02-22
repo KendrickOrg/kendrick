@@ -23,7 +23,7 @@ model addEquation: didt.
 model eqIdVariable: #i.
 model eqIdValue: 2.
 
-self assert: ((model getEquationsList) size) equals: 6.
+self assert: ((model equations) size) equals: 6.
 self assert: (dsdt variable symbol) equals: #S.
 self assert: (dsdt tVariable symbol) equals: #t.
 self assert: (dsdt idVariable) equals: #i.

@@ -3,7 +3,7 @@ solver2: model
 "This function is for finding solution for the model with multi host in which each compartment is a vector, not a value."
 | nbSpecies nbEquations dydx k1 k2 k3 k4 y k result x results nbCompartements listCompartmentSymbol |
 
-listOfEquations := model getEquationsList.
+listOfEquations := model equations.
 nbIterations := ((xn - x0) / step) rounded.
 nbEquations := listOfEquations size.
 nbSpecies := model numberOfSpecies.
