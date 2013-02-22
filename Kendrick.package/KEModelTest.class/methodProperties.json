@@ -11,7 +11,7 @@
 		"testKEModelWith3Compartments" : "btmanh 5/18/2012 12:36:43.572",
 		"testKEModelWithParameters" : "btmanh 5/18/2012 12:36:43.572",
 		"testRunSIRStochasticModel" : "SergeStinckwich 5/24/2012 12:29",
-		"testRungeKutta" : "btmanh 11/15/2012 20:20",
+		"testRungeKutta" : "SergeStinckwich 2/22/2013 17:18",
 		"testSEIRModelHas4Equations" : "SergeStinckwich 5/24/2012 12:09",
 		"testSEIRModelWithLossOfImmunityHas4Equations" : "SergeStinckwich 5/24/2012 12:18",
 		"testSEIRTemporalForcingHas4Equations" : "SergeStinckwich 6/7/2012 09:04",
