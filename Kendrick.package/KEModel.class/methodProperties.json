@@ -21,7 +21,7 @@
 		"numberOfIndividualsAtCompartment:" : "btmanh 5/18/2012 12:36:43.572",
 		"plot" : "btmanh 8/9/2012 14:17",
 		"runDeterministSimulationFrom:to:with:" : "btmanh 7/30/2012 17:28",
-		"runDeterministSimulationFrom:to:with:logTransform:" : "btmanh 7/16/2012 17:32",
+		"runDeterministSimulationFrom:to:with:logTransform:" : "SergeStinckwich 2/24/2013 21:16",
 		"runIndividualBasedSimulationFor:withStep:" : "btmanh 10/10/2012 15:20",
 		"runStochasticSimulationFor:" : "SergeStinckwich 2/22/2013 18:31",
 		"selectEventWith:" : "btmanh 10/29/2012 00:15",

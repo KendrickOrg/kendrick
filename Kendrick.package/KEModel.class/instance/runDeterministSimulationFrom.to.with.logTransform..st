@@ -1,18 +1,18 @@
 as yet unclassified
 runDeterministSimulationFrom: x0 to: xn with: step logTransform: lo
 
-| solverRK yy diag xValue nbIteration |
+| solverRK results diag xValue nbIteration |
 solverRK := RungeKuttaSolver new.
 solverRK finalValueOfX: xn.
 solverRK initialValueOfX: x0.
 solverRK stepSize: step.
 
-yy := solverRK solver: self.
+results := solverRK solver: self.
 nbIteration := ((xn - x0)/step) rounded.
 "Get log10 of yy"
-(lo) ifTrue:[
+lo ifTrue:[
 	1 to: nbIteration do:[:j|
-		(yy at: j) at: 2 put: (((yy at: j) at: 2) log).
+		(results at: j) at: 2 put: (((results at: j) at: 2) log).
 		].
 	].
 
@@ -28,7 +28,7 @@ diag := ESDiagramRenderer new.
 		width: 1000;
 		height: 300;
 		startLineAtZero;			
-		models: yy.
+		models: results.
 	^ diag open
 	
 

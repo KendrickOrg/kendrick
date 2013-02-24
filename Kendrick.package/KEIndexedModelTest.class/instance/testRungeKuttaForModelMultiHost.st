@@ -1,7 +1,7 @@
 as yet unclassified
 testRungeKuttaForModelMultiHost
 
-|model compartment dsdt didt solverRK nbIterations result |
+|model compartment dsdt didt solverRK result nbIterations |
 
 model := KEIndexedModel new.
 model atCompartment: #S putNumberOfIndividuals: #(9999 1000 2000).
@@ -23,7 +23,7 @@ model addEquation: didt.
 model eqIdVariable: #i.
 model eqIdValue: 2.
 
-self assert: ((model equations) size) equals: 6.
+self assert: (model equations size) equals: 6.
 self assert: (dsdt variable symbol) equals: #S.
 self assert: (dsdt tVariable symbol) equals: #t.
 self assert: (dsdt idVariable) equals: #i.
@@ -34,11 +34,10 @@ solverRK finalValueOfX: 40.
 solverRK initialValueOfX: 0.
 solverRK stepSize: 0.1.
 
-nbIterations := ((40 - 0) / 0.1) rounded.
-self assert: (solverRK calculateNbOfIterations) equals: nbIterations.
+nbIterations := solverRK nbOfIterations.
+self assert:  nbIterations equals: ((40-0) / 0.1) rounded.
 
 result := solverRK solver2: model.
-self assert: (((result getResultAt: #S) at: 1) size) equals: nbIterations.
-self assert: (((result getResultAt: #I) at: 1) size) equals: nbIterations.
 
-
+self assert: ((result at: #S) size) equals: nbIterations.
+self assert: ((result at: #I) size) equals: nbIterations

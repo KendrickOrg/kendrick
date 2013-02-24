@@ -1,3 +1,3 @@
 as yet unclassified
 nbOfIterations
-^ nbIterations
+	^ ((xn - x0) / step) rounded
