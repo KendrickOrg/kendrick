@@ -9,7 +9,6 @@ solverRK stepSize: step.
 
 yy := solverRK solver2: self.
 ^ yy
-		
 
 
  
