@@ -1,4 +1,4 @@
-as yet unclassified
+comparing
 = aMathExpSigma
 
 aMathExpSigma isMathExpressionSigma ifTrue:[

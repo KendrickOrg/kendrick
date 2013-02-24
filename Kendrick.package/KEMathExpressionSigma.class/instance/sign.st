@@ -1,4 +1,3 @@
 as yet unclassified
 sign
-
-^ (exprInFunction sign)
+	^ exprInFunction sign

@@ -1,6 +1,6 @@
 printing
 printOn: aStream
-	aStream 
+	aStream
 		nextPutAll: leftHandSide asString;
 		nextPutAll: op asString;
 		nextPutAll: rightHandSide asString

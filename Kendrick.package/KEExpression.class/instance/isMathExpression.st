@@ -1,4 +1,3 @@
 testing
 isMathExpression
-
-^false
+	^ false

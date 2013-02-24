@@ -1,4 +1,3 @@
 testing
 isBinaryExpression
-
-^false
+	^ false
