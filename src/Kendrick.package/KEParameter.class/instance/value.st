@@ -1,4 +1,3 @@
 evaluating
-value 
-
-^value 
+value
+	^ value
