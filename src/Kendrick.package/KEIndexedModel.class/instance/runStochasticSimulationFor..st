@@ -1,22 +1,23 @@
 as yet unclassified
 runStochasticSimulationFor: tMax
-	|  rTotal rand1 deltaT rand2 p selectedEvent t  previousTime i nbEquations k results nbSpecies nbComp listCompSym |	
-	"Number of equations"
+	|  rTotal rand1 deltaT rand2 p selectedEvent t  previousTime i nbEquations k results nbSpecies nbCompartment listCompSym timeIndex |	
+	
 	nbEquations := self equations size.
-	"Number of host"
 	nbSpecies := self numberOfSpecies.
-	"Number of compartments "
-	nbComp := nbEquations / nbSpecies.
-	"List all symbols of compartments"
+	nbCompartment := nbEquations / nbSpecies.
 	listCompSym := self getListCompartmentSymbol.
 	
-	data := Array new: nbComp.
-	1 to: nbComp do:[:id1|
-		data at: id1 put: (Array new: nbSpecies).
-		1 to: nbSpecies do: [:id2|(data at: id1) at: id2 put: (Array new: 200000)]
-		].	
+	data := Array new: nbCompartment.
+	timeIndex := Array new: nbCompartment.
+
+	1 to: nbCompartment do:[:id1|
+		data at: id1 put: (Array new: 200000).
+		1 to: 200000 do: [:id2|(data at: id1) at: id2 put: (Array new: nbSpecies)]
+		].
+	1 to: nbCompartment do: [:index| timeIndex at:index put:(Array new: 200000)].
+	
 	eventList := self generateEvents.
-	"self halt."
+	
 	t := 0.
 	i := 1.
 	rand1 := Random new.
@@ -31,14 +32,15 @@ runStochasticSimulationFor: tMax
 		[deltaT := ((rand1 next) log) negated / rTotal].
 		p := rand2 next * rTotal.
 		selectedEvent := self selectEventWith: p.
-		"self halt."
+
 		t := t + deltaT.
 		selectedEvent executeOn: self.
 		t > (previousTime+(0.5/365)) ifTrue: [			
 			self equations do: [:eachEq|
-				1 to: nbComp do: [:cId|
+				1 to: nbCompartment  do: [:cId|
 					(eachEq variable symbol) = (listCompSym at: cId) ifTrue: [
-						((data at: cId) at: (eachEq eqIndex)) at: i put: (Array with: t with: (((self atCompartment: (eachEq variable symbol)) numberOfIndividuals) at: (eachEq eqIndex)))
+						((data at: cId) at:i) at: (eachEq eqIndex) put: (((self atCompartment: (eachEq variable symbol)) numberOfIndividuals) at: (eachEq eqIndex)).
+						(timeIndex at: cId) at:i put:t.
 						]
 					].				
 				].			
@@ -46,14 +48,15 @@ runStochasticSimulationFor: tMax
 			previousTime := t.
 			].
 			].
-	"self halt."
-	results := KETimeSeriesCollection new.
-	1 to: nbComp do: [:cID|
+	results := Dictionary new.
+	
+	1 to: nbCompartment do: [:cID|
+		|series |
+		series := KESeries from: ((data at:cID) select:[:e| e ~= nil]) withIndex: (timeIndex at: cID).
+		
 		1 to: nbSpecies do: [:id|(data at: cID) at: id put: (((data at: cID) at: id) select: [:e| e ~= nil])].
-		results add: (listCompSym at: cID) value: (data at: cID)
+		results at: (listCompSym at: cID) put: series.
 		].
-	"self halt."
+	self halt.	
 	^results.
-	"result := result select:[:each | each ~= nil]"
-
  

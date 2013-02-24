@@ -23,7 +23,6 @@ data := Array new: nbCompartments. "ex: (I[1] I[2] I[3])"
 timeIndex := Array new: nbCompartments.
 
 (1 to: nbCompartments) do: [:indexCompartment|
-	
 	data at: indexCompartment put: (Array new: nbIterations).
 	1 to: nbIterations  do: [:index|(data at: indexCompartment) at: index put: (Array new: nbSpecies)]
 	].
@@ -37,7 +36,7 @@ timeIndex := Array new: nbCompartments.
 		y at: k put:(((model atCompartment: (each variable symbol)) numberOfIndividuals) at: (each eqIndex)).
 		k := k + 1.		
 		].	
-		"self halt."
+
 "Runge Kutta Algorithme"
 1 to: nbIterations do: [:j|
 	x := x0 + (j * step).
@@ -107,11 +106,10 @@ timeIndex := Array new: nbCompartments.
 
 "Return a KEResult of all compartment in the model"
 results := Dictionary  new.
-k := 1.
 1 to: nbCompartments do: [:cID|
 	|series|
 	series := KESeries from: (data at:cID) withIndex: (timeIndex at: cID).
 	results at: (listCompartmentSymbol at: cID) put: series.
-	k := k+1].
+	].
 ^results
 
