@@ -10,9 +10,9 @@
 		"parameters",
 		"equations",
 		"eventList",
-		"result",
 		"timeValue",
-		"listOfIndividuals" ],
+		"listOfIndividuals",
+		"data" ],
 	"name" : "KEModel",
 	"pools" : [
 		 ],

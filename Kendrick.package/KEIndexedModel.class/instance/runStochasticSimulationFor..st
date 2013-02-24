@@ -10,10 +10,10 @@ runStochasticSimulationFor: tMax
 	"List all symbols of compartments"
 	listCompSym := self getListCompartmentSymbol.
 	
-	result := Array new: nbComp.
+	data := Array new: nbComp.
 	1 to: nbComp do:[:id1|
-		result at: id1 put: (Array new: nbSpecies).
-		1 to: nbSpecies do: [:id2|(result at: id1) at: id2 put: (Array new: 200000)]
+		data at: id1 put: (Array new: nbSpecies).
+		1 to: nbSpecies do: [:id2|(data at: id1) at: id2 put: (Array new: 200000)]
 		].	
 	eventList := self generateEvents.
 	"self halt."
@@ -38,7 +38,7 @@ runStochasticSimulationFor: tMax
 			self equations do: [:eachEq|
 				1 to: nbComp do: [:cId|
 					(eachEq variable symbol) = (listCompSym at: cId) ifTrue: [
-						((result at: cId) at: (eachEq eqIndex)) at: i put: (Array with: t with: (((self atCompartment: (eachEq variable symbol)) numberOfIndividuals) at: (eachEq eqIndex)))
+						((data at: cId) at: (eachEq eqIndex)) at: i put: (Array with: t with: (((self atCompartment: (eachEq variable symbol)) numberOfIndividuals) at: (eachEq eqIndex)))
 						]
 					].				
 				].			
@@ -49,8 +49,8 @@ runStochasticSimulationFor: tMax
 	"self halt."
 	results := KETimeSeriesCollection new.
 	1 to: nbComp do: [:cID|
-		1 to: nbSpecies do: [:id|(result at: cID) at: id put: (((result at: cID) at: id) select: [:e| e ~= nil])].
-		results add: (listCompSym at: cID) value: (result at: cID)
+		1 to: nbSpecies do: [:id|(data at: cID) at: id put: (((data at: cID) at: id) select: [:e| e ~= nil])].
+		results add: (listCompSym at: cID) value: (data at: cID)
 		].
 	"self halt."
 	^results.
