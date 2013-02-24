@@ -1,4 +1,3 @@
 as yet unclassified
 leftHandSide
-
-	^ leftHandSide 
+	^ leftHandSide

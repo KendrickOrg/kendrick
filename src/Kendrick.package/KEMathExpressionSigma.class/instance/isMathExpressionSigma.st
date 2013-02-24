@@ -1,4 +1,3 @@
-as yet unclassified
-isMathExpressionSigma 
-
-^true
+testing
+isMathExpressionSigma
+	^ true

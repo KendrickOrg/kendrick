@@ -1,4 +1,3 @@
-as yet unclassified
-idVariable: aValue 
-	
-idVariable := aValue
+accessing
+idVariable: aValue
+	idVariable := aValue

@@ -1,4 +1,3 @@
 testing
 isAVariable
-
-^false
+	^ false

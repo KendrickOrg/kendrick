@@ -1,4 +1,3 @@
 testing
 isUnaryExpression
-
-^false
+	^ false

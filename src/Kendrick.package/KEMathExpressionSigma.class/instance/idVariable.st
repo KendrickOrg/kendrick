@@ -1,4 +1,3 @@
-as yet unclassified
-idVariable 
-
-^idVariable 
+accessing
+idVariable
+	^ idVariable

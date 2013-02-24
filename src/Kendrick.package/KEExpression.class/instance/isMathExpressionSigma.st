@@ -1,4 +1,3 @@
 testing
 isMathExpressionSigma
-
-^false
+	^ false
