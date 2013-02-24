@@ -4,7 +4,7 @@ solver: model
 |nbEquations dydx k1 k2 k3 k4 k data results x y timeIndex |
 
 listOfEquations := model equations.
-nbIterations := ((xn - x0) / step) rounded.
+nbIterations := self nbOfIterations.
 nbEquations := listOfEquations size.
 
 dydx := Array new: nbEquations.
@@ -79,15 +79,15 @@ listOfEquations do:[:each|
 		].
 	"Update number of individuals for each compartments of model"
 	k := 1.
-    listOfEquations do:[:each|		
+    listOfEquations do:[:each|
 		model atCompartment: (each variable symbol) modifyNumberOfIndividuals: (y at: k).
-		"(each variable symbol) = #I ifTrue: [result at: j put: (Array with:x with:(y at: k))]."
 		(data at: k) at: j put: (y at: k).
 		(timeIndex at:k) at: j put: x.
 		k := k + 1.
 		].
 	].
 
+"TODO : change iteration on  listOfequations with nbOfCompartments"
 results := Dictionary new.
 k := 1.
 listOfEquations do: [:each|

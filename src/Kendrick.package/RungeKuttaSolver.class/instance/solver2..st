@@ -1,13 +1,14 @@
 as yet unclassified
 solver2: model
 "This function is for finding solution for the model with multi host in which each compartment is a vector, not a value."
-| nbSpecies nbEquations dydx k1 k2 k3 k4 y k result x results nbCompartements listCompartmentSymbol |
+
+| nbSpecies nbEquations dydx k1 k2 k3 k4 y k data x results listCompartmentSymbol nbCompartments timeIndex |
 
 listOfEquations := model equations.
-nbIterations := ((xn - x0) / step) rounded.
+nbIterations := self nbOfIterations. 
 nbEquations := listOfEquations size.
 nbSpecies := model numberOfSpecies.
-nbCompartements := nbEquations / nbSpecies.
+nbCompartments := nbEquations / nbSpecies.
 listCompartmentSymbol := model getListCompartmentSymbol.
 dydx := Array new: nbEquations.
 k1 := Array new: nbEquations.
@@ -15,12 +16,19 @@ k2 := Array new: nbEquations.
 k3 := Array new: nbEquations.
 k4 := Array new: nbEquations. 
 y := Array new: nbEquations.
+
 "In this case, the result will be an array of two dimensions."
-result := Array new: nbCompartements. "ex: (I[1] I[2] I[3])"
-(1 to: nbCompartements) do: [:id1|
-	result at: id1 put: (Array new: nbSpecies).
-	1 to: nbSpecies do: [:id2|(result at: id1) at: id2 put: (Array new: nbIterations)]
+
+data := Array new: nbCompartments. "ex: (I[1] I[2] I[3])"
+timeIndex := Array new: nbCompartments.
+
+(1 to: nbCompartments) do: [:indexCompartment|
+	
+	data at: indexCompartment put: (Array new: nbIterations).
+	1 to: nbIterations  do: [:index|(data at: indexCompartment) at: index put: (Array new: nbSpecies)]
 	].
+
+1 to: nbCompartments do: [:index| timeIndex at:index put:(Array new: nbIterations)].
 
 "Initialize value for y"
 	k := 1.
@@ -42,7 +50,6 @@ result := Array new: nbCompartements. "ex: (I[1] I[2] I[3])"
 	1 to: nbEquations do: [:i|
 		k1 at: i put: ((dydx at: i) * step).		
 		].
-	"j = 4 ifTrue: [self halt]."
 	"Update number of individuals for each compartments of model"
 	k := 1.
     listOfEquations do:[:each|
@@ -75,7 +82,6 @@ result := Array new: nbCompartements. "ex: (I[1] I[2] I[3])"
 		].
 	"Caculate k4"
 	dydx := self calculateDerivation2: model.
-	"self halt."
 	1 to: nbEquations do: [:i|
 		k4 at: i put: ((dydx at: i) * step).		
 		].
@@ -85,21 +91,27 @@ result := Array new: nbCompartements. "ex: (I[1] I[2] I[3])"
 		oldValue := y at: i.
 		y at: i put: ((((k1 at: i)/6) + ((k2 at: i)/3) + ((k3 at: i)/3) + ((k4 at: i)/6)) + oldValue).		
 		].
-	"self halt."
 	"Update number of individuals for each compartments of model"
 	k := 1.
     listOfEquations do:[:each|		
 		model atCompartment: (each variable symbol) at: (each eqIndex) modifyNumberOfIndividuals: (y at: k).
-		"(each variable symbol) = #I ifTrue: [(result at: (each eqIndex)) at: j put: (Array with:x with:(y at: k))]."
-		1 to: nbCompartements do: [:cId|
-			(each variable symbol) = (listCompartmentSymbol at: cId) ifTrue: [((result at: cId) at: (each eqIndex)) at: j put: (Array with:x with:(y at: k))].
-			].		
+		1 to: nbCompartments do: [:cId|
+			(each variable symbol) = (listCompartmentSymbol at: cId) ifTrue: [
+				((data at: cId) at:j) at: (each eqIndex) put: (y at: k).
+				(timeIndex at: cId) at:j put: x.
+				].
+			].
 		k := k + 1.		
-		].		
-	"self halt."
+		].
 	].
+
 "Return a KEResult of all compartment in the model"
-results := KETimeSeriesCollection new.
-1 to: nbCompartements do: [:cID|results add: (listCompartmentSymbol at: cID) value: (result at: cID)].
+results := Dictionary  new.
+k := 1.
+1 to: nbCompartments do: [:cID|
+	|series|
+	series := KESeries from: (data at:cID) withIndex: (timeIndex at: cID).
+	results at: (listCompartmentSymbol at: cID) put: series.
+	k := k+1].
 ^results
 
