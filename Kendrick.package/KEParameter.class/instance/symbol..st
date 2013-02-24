@@ -1,4 +1,3 @@
 accessing
-symbol:aSym
-
-symbol := aSym  
+symbol: aSymbol
+	symbol := aSymbol

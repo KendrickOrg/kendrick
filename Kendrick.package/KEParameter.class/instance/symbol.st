@@ -1,3 +1,3 @@
 accessing
 symbol
-^symbol 
+	^ symbol
