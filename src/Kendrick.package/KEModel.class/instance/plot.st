@@ -11,5 +11,5 @@ diag := ESDiagramRenderer new.
 		width: 800;
 		height: 400;
 		regularAxis ;
-		models: result.
+		models: data.
 ^ diag open

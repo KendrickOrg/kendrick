@@ -4,7 +4,7 @@ runIndividualBasedSimulationFor: tMax withStep: dT
 	
 	"Initializing"
 	nbStep := (0 to: tMax by: dT) size.
-	result := Array new: nbStep.	
+	data := Array new: nbStep.	
 		
 	"Finding transition of each event in eventList. If event has no transition, toStatus: nil"
 	listOfTransitions := self generateTransitionOfEvents.	
@@ -16,7 +16,7 @@ runIndividualBasedSimulationFor: tMax withStep: dT
 	count := 1.
 	[t <= tMax] whileTrue: [
 		"Put in result"
-		result at: count put: (Array with: t with: (self numberOfIndividualsAtCompartment: #I)).
+		data at: count put: (Array with: t with: (self numberOfIndividualsAtCompartment: #I)).
 		"Calculate the state of all individuals in the list"
 		listOfIndividuals do: [:each|
 			|current transitions rateValue|
