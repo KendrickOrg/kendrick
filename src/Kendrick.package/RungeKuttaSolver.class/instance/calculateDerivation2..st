@@ -12,8 +12,7 @@ listOfEquations do:[:each|
 	dydx at: id put: ((each expression) evaluateWithModel: model).
 	id := id+ 1.	
 	].
-"self halt."
-^dydx.
+^dydx
 
 
 

@@ -1,18 +1,10 @@
 as yet unclassified
 runIndividualBasedSimulationFor: tMax withStep: dT
-	| nbStep count listOfProbabilities rand listOfTransitions t nbEquations results k compartmentIndex |
+	| nbStep count listOfProbabilities rand listOfTransitions t|
 	
 	"Initializing"
 	nbStep := (0 to: tMax by: dT) size.
-	nbEquations := self equations size.
-	data := Array new: nbEquations.
-	compartmentIndex := Array new:nbEquations.
-	1 to: nbEquations do: [:index| data at: index put: (Array new: nbStep)].
-	k := 1.
-	self equations do:[:each|
-		compartmentIndex at: k put: (each variable symbol).
-		k := k+1.
-		].
+	data := Array new: nbStep.	
 		
 	"Finding transition of each event in eventList. If event has no transition, toStatus: nil"
 	listOfTransitions := self generateTransitionOfEvents.	
@@ -24,12 +16,7 @@ runIndividualBasedSimulationFor: tMax withStep: dT
 	count := 1.
 	[t <= tMax] whileTrue: [
 		"Put in result"
-		|id|
-		id := 1.
-		self equations do: [:eachEq|
-			(data at: id) at: count put: (Array with:t with: (self numberOfIndividualsAtCompartment: (eachEq variable symbol))).
-			id := id+1.
-			].		
+		data at: count put: (Array with: t with: (self numberOfIndividualsAtCompartment: #I)).
 		"Calculate the state of all individuals in the list"
 		listOfIndividuals do: [:each|
 			|current transitions rateValue|
@@ -55,9 +42,8 @@ runIndividualBasedSimulationFor: tMax withStep: dT
 		self updateNbIndividualsForCompartments.	
 		count := count + 1.
 		t := t + dT.
-		].
-	results := KESeries from: data withIndex: compartmentIndex.
-	^results		
+		].		
+	self plot.
 	
 
 	

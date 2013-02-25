@@ -2,7 +2,7 @@ as yet unclassified
 solver2: model
 "This function is for finding solution for the model with multi host in which each compartment is a vector, not a value."
 
-| nbSpecies nbEquations dydx k1 k2 k3 k4 y k data x results listCompartmentSymbol nbCompartments compartmentIndex |
+| nbSpecies nbEquations dydx k1 k2 k3 k4 y k data x results listCompartmentSymbol nbCompartments timeIndex |
 
 listOfEquations := model equations.
 nbIterations := self nbOfIterations. 
@@ -20,14 +20,14 @@ y := Array new: nbEquations.
 "In this case, the result will be an array of two dimensions."
 
 data := Array new: nbCompartments. "ex: (I[1] I[2] I[3])"
-compartmentIndex := Array new: nbCompartments.
+timeIndex := Array new: nbCompartments.
 
 (1 to: nbCompartments) do: [:indexCompartment|
-	data at: indexCompartment put: (Array new: nbSpecies).
-	1 to: nbSpecies  do: [:index|(data at: indexCompartment) at: index put: (Array new: nbIterations)]
+	data at: indexCompartment put: (Array new: nbIterations).
+	1 to: nbIterations  do: [:index|(data at: indexCompartment) at: index put: (Array new: nbSpecies)]
 	].
 
-1 to: nbCompartments do: [:index| compartmentIndex at:index put:(listCompartmentSymbol at: index)].
+1 to: nbCompartments do: [:index| timeIndex at:index put:(Array new: nbIterations)].
 
 "Initialize value for y"
 	k := 1.
@@ -96,7 +96,8 @@ compartmentIndex := Array new: nbCompartments.
 		model atCompartment: (each variable symbol) at: (each eqIndex) modifyNumberOfIndividuals: (y at: k).
 		1 to: nbCompartments do: [:cId|
 			(each variable symbol) = (listCompartmentSymbol at: cId) ifTrue: [
-				((data at: cId) at: (each eqIndex)) at: j put: (Array with:x with:(y at: k)).				
+				((data at: cId) at:j) at: (each eqIndex) put: (y at: k).
+				(timeIndex at: cId) at:j put: x.
 				].
 			].
 		k := k + 1.		
@@ -104,6 +105,11 @@ compartmentIndex := Array new: nbCompartments.
 	].
 
 "Return a KEResult of all compartment in the model"
-results := KESeries from: data withIndex: compartmentIndex. 
+results := Dictionary  new.
+1 to: nbCompartments do: [:cID|
+	|series|
+	series := KESeries from: (data at:cID) withIndex: (timeIndex at: cID).
+	results at: (listCompartmentSymbol at: cID) put: series.
+	].
 ^results
 

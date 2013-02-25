@@ -9,7 +9,7 @@ model := KEIndexedModel new.
 model atCompartment: #S putNumberOfIndividuals: #(9999 1000 2000).
 model atCompartment: #I putNumberOfIndividuals: #(1 0 0).
 
-model atParameter: #beta put: {{0 . 0.02 . 0.02} . {0.02 . 0 . 0} . {0.02 . 0 . 0}}.
+model atParameter: #beta put: #(#(0 0.02 0.02) #(0.02 0.0 0.0)  #(0.02 0.0 0.0)).
 model atParameter: #N put: #(10000 1000 2000).
 model atParameter: #mu put: {365/30 . 1/20 . 1/20}.
 model atParameter: #v put: 52.
@@ -22,4 +22,5 @@ model addEquation: dsdt.
 model addEquation: didt.
 
 result := model runDeterministSimulationFrom: 0 to: 5  with: 0.01.
-result plot: #I withDoingFunction: #sqrt
+result do:[:eachSeries| eachSeries sqrt plot]
+
