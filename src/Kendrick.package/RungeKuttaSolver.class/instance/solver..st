@@ -81,7 +81,7 @@ listOfEquations do:[:each|
 	k := 1.
     listOfEquations do:[:each|
 		model atCompartment: (each variable symbol) modifyNumberOfIndividuals: (y at: k).
-		(data at: k) at: j put: (y at: k).
+		(data at: k) at: j put: (Array with:x with:(y at: k)).
 		(timeIndex at:k) at: j put: x.
 		k := k + 1.
 		].

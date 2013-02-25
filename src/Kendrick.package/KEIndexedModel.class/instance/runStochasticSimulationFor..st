@@ -11,8 +11,8 @@ runStochasticSimulationFor: tMax
 	timeIndex := Array new: nbCompartment.
 
 	1 to: nbCompartment do:[:id1|
-		data at: id1 put: (Array new: 200000).
-		1 to: 200000 do: [:id2|(data at: id1) at: id2 put: (Array new: nbSpecies)]
+		data at: id1 put: (Array new: nbSpecies).
+		1 to: nbSpecies do: [:id2|(data at: id1) at: id2 put: (Array new: 200000)]
 		].
 	1 to: nbCompartment do: [:index| timeIndex at:index put:(Array new: 200000)].
 	
@@ -39,7 +39,7 @@ runStochasticSimulationFor: tMax
 			self equations do: [:eachEq|
 				1 to: nbCompartment  do: [:cId|
 					(eachEq variable symbol) = (listCompSym at: cId) ifTrue: [
-						((data at: cId) at:i) at: (eachEq eqIndex) put: (((self atCompartment: (eachEq variable symbol)) numberOfIndividuals) at: (eachEq eqIndex)).
+						((data at: cId) at: (eachEq eqIndex)) at: i put: (Array with: t with: (((self atCompartment: (eachEq variable symbol)) numberOfIndividuals) at: (eachEq eqIndex))).
 						(timeIndex at: cId) at:i put:t.
 						]
 					].				
@@ -57,6 +57,5 @@ runStochasticSimulationFor: tMax
 		1 to: nbSpecies do: [:id|(data at: cID) at: id put: (((data at: cID) at: id) select: [:e| e ~= nil])].
 		results at: (listCompSym at: cID) put: series.
 		].
-	self halt.	
 	^results.
  
