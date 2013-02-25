@@ -16,5 +16,4 @@ model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I').
 model addEquation: (PPODEParser parse: 'R:t=gamma*I').
 
 result := model runStochasticSimulationFor: (50/365).
-"result inspect."
-(result at: #I) plot.
+result do:[:eachSeries| eachSeries plot]

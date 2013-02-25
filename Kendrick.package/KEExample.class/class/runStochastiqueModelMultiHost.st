@@ -22,6 +22,5 @@ model addEquation: dsdt.
 model addEquation: didt.
 
 result := model runStochasticSimulationFor: 10.
-(result at: #I) plotWithDoingFunction: #sqrt.
-
+result do:[:eachSeries| eachSeries sqrt plot]
 

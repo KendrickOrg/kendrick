@@ -57,6 +57,5 @@ runStochasticSimulationFor: tMax
 		1 to: nbSpecies do: [:id|(data at: cID) at: id put: (((data at: cID) at: id) select: [:e| e ~= nil])].
 		results at: (listCompSym at: cID) put: series.
 		].
-	self halt.	
 	^results.
  
