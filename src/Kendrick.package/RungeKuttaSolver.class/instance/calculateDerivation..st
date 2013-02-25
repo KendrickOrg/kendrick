@@ -9,7 +9,8 @@ listOfEquations do:[:each|
 	 dydx at: i put: ((each expression) evaluateWithModel: model).
 	 i := i + 1.
 	].
-^dydx
+
+^dydx.
 
 
 

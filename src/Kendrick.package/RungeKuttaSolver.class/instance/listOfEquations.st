@@ -1,3 +1,3 @@
 as yet unclassified
 listOfEquations
-	^ listOfEquations
+^ listOfEquations

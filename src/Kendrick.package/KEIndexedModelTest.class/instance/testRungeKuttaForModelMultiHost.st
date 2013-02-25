@@ -39,5 +39,5 @@ self assert:  nbIterations equals: ((40-0) / 0.1) rounded.
 
 result := solverRK solver2: model.
 
-self assert: ((result at: #S) size) equals: nbIterations.
-self assert: ((result at: #I) size) equals: nbIterations
+self assert: (((result atIndex: #S) at: 1) size) equals: nbIterations.
+self assert: (((result atIndex: #I) at: 1) size) equals: nbIterations

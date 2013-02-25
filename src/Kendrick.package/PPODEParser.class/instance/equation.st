@@ -6,7 +6,7 @@ equation
 		(nodes at: 3) ifNotNil: [
 			((nodes at: 2) at: 3) ifNil: [
 				"S[i]:t=ex"
-				(KEIndexedEquation new)
+				(KEEquation new)
 				variable: ((KEVariable new) symbol: (nodes first) value asSymbol);
 				tVariable: ((KEVariable new) symbol: ((nodes at: 3) at: 2) value asSymbol);
 				idVariable: ((nodes at: 2) at: 2) value asSymbol;
@@ -17,7 +17,7 @@ equation
 				]
 			ifNotNil: [
 				"S[i,j]:t=ex"
-				(KEIndexedEquation new)
+				(KEEquation new)
 				variable: ((KEVariable new) symbol: (nodes first) value asSymbol);
 				tVariable: ((KEVariable new) symbol: ((nodes at: 3) at: 2) value asSymbol);
 				idVariable: ((nodes at: 2) at: 2) value asSymbol;
@@ -30,7 +30,7 @@ equation
 		ifNil: [
 			((nodes at: 2) at: 3) ifNil: [
 				"S[i]=ex"
-				(KEIndexedEquation new)
+				(KEEquation new)
 				variable: ((KEVariable new) symbol: (nodes first) value asSymbol);
 				tVariable: nil;
 				idVariable: ((nodes at: 2) at: 2) value asSymbol;
@@ -41,7 +41,7 @@ equation
 				]
 			ifNotNil: [
 				"S[i,j]=exp"
-				(KEIndexedEquation new)
+				(KEEquation new)
 				variable: ((KEVariable new) symbol: (nodes first) value asSymbol);
 				tVariable: nil;
 				idVariable: ((nodes at: 2) at: 2) value asSymbol;
@@ -55,7 +55,7 @@ equation
 	ifNil: [
 		(nodes at: 3) ifNotNil: [
 			"S:t=exp"
-			(KEIndexedEquation new)
+			(KEEquation new)
 			variable: ((KEVariable new) symbol: (nodes first) value asSymbol);
 			tVariable: ((KEVariable new) symbol: ((nodes at: 3) at: 2) value asSymbol);
 			idVariable: nil;
@@ -66,7 +66,7 @@ equation
 			]
 		ifNil: [
 			"S=exp"
-			(KEIndexedEquation new)
+			(KEEquation new)
 			variable: ((KEVariable new) symbol: (nodes first) value asSymbol);
 			tVariable: nil;
 			idVariable: nil;

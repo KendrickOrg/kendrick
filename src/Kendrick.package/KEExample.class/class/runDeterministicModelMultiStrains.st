@@ -5,6 +5,7 @@ runDeterministicModelMultiStrains
 | compartment dsdt didt result model |
 
 model := KEIndexedModel new.
+"Each compartment composes 100 strains"
 model atCompartment: #S numberOfSpecies: 100.
 model withCompartment: #S from: 2 to: 100  numberOfIndividuals: 1.
 model withCompartment: #S withIndex: 1  numberOfIndividuals: 0.98.
@@ -28,4 +29,4 @@ model addEquation: dsdt.
 model addEquation: didt.
 
 result := model runDeterministSimulationFrom: 0 to: 8  with: 0.01.
-result do:[:eachSeries| eachSeries plot]
+result plot: #I

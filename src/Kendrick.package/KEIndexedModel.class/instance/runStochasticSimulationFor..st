@@ -1,6 +1,6 @@
 as yet unclassified
 runStochasticSimulationFor: tMax
-	|  rTotal rand1 deltaT rand2 p selectedEvent t  previousTime i nbEquations k results nbSpecies nbCompartment listCompSym timeIndex |	
+	|  rTotal rand1 deltaT rand2 p selectedEvent t  previousTime i nbEquations k results nbSpecies nbCompartment listCompSym compartmentIndex |	
 	
 	nbEquations := self equations size.
 	nbSpecies := self numberOfSpecies.
@@ -8,13 +8,13 @@ runStochasticSimulationFor: tMax
 	listCompSym := self getListCompartmentSymbol.
 	
 	data := Array new: nbCompartment.
-	timeIndex := Array new: nbCompartment.
+	compartmentIndex := Array new: nbCompartment.
 
 	1 to: nbCompartment do:[:id1|
-		data at: id1 put: (Array new: 200000).
-		1 to: 200000 do: [:id2|(data at: id1) at: id2 put: (Array new: nbSpecies)]
+		data at: id1 put: (Array new: nbSpecies).
+		1 to: nbSpecies do: [:id2|(data at: id1) at: id2 put: (Array new: 200000)]
 		].
-	1 to: nbCompartment do: [:index| timeIndex at:index put:(Array new: 200000)].
+	1 to: nbCompartment do: [:index| compartmentIndex at:index put:(listCompSym at: index)].
 	
 	eventList := self generateEvents.
 	
@@ -39,23 +39,17 @@ runStochasticSimulationFor: tMax
 			self equations do: [:eachEq|
 				1 to: nbCompartment  do: [:cId|
 					(eachEq variable symbol) = (listCompSym at: cId) ifTrue: [
-						((data at: cId) at:i) at: (eachEq eqIndex) put: (((self atCompartment: (eachEq variable symbol)) numberOfIndividuals) at: (eachEq eqIndex)).
-						(timeIndex at: cId) at:i put:t.
+						((data at: cId) at: (eachEq eqIndex)) at: i put: (Array with: t with: (((self atCompartment: (eachEq variable symbol)) numberOfIndividuals) at: (eachEq eqIndex))).
 						]
 					].				
 				].			
 			i := i +1.
 			previousTime := t.
 			].
-			].
-	results := Dictionary new.
-	
-	1 to: nbCompartment do: [:cID|
-		|series |
-		series := KESeries from: ((data at:cID) select:[:e| e ~= nil]) withIndex: (timeIndex at: cID).
-		
-		1 to: nbSpecies do: [:id|(data at: cID) at: id put: (((data at: cID) at: id) select: [:e| e ~= nil])].
-		results at: (listCompSym at: cID) put: series.
+			].	
+	1 to: nbCompartment do: [:cID|			
+		1 to: nbSpecies do: [:id|(data at: cID) at: id put: (((data at: cID) at: id) select: [:e| e ~= nil])].		
 		].
+	results := KESeries from: data withIndex: compartmentIndex.
 	^results.
  

@@ -1,3 +1,7 @@
 as yet unclassified
 atIndex: anElement
-	^ self at: (index indexOf: anElement)
+
+|id|
+	id := index indexOf: anElement ifAbsent: nil.
+	id isNil ifTrue: [^nil] ifFalse: [^ self at: id]
+	
