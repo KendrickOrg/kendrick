@@ -1,7 +1,7 @@
 as yet unclassified
 solver: model
 
-|nbEquations dydx k1 k2 k3 k4 k data results x y timeIndex |
+|nbEquations dydx k1 k2 k3 k4 k data results x y compartmentIndex |
 
 listOfEquations := model equations.
 nbIterations := self nbOfIterations.
@@ -15,15 +15,15 @@ k4 := Array new: nbEquations.
 y := Array new: nbEquations.
 
 data := Array new: nbEquations.
-timeIndex := Array new:nbEquations.
+compartmentIndex := Array new:nbEquations.
 
 1 to: nbEquations do: [:index| data at: index put: (Array new: nbIterations)].
-1 to: nbEquations do: [:index| timeIndex at: index put: (Array new: nbIterations)].
 
 "Initialize value for y"
 k := 1.
 listOfEquations do:[:each|
 		y at: k put:(model numberOfIndividualsAtCompartment:(each variable symbol)).
+		compartmentIndex at:k put: (each variable symbol).
 		k := k + 1.
 		].
 
@@ -81,18 +81,11 @@ listOfEquations do:[:each|
 	k := 1.
     listOfEquations do:[:each|
 		model atCompartment: (each variable symbol) modifyNumberOfIndividuals: (y at: k).
-		(data at: k) at: j put: (y at: k).
-		(timeIndex at:k) at: j put: x.
+		(data at: k) at: j put: (Array with:x with:(y at: k)).
 		k := k + 1.
 		].
 	].
 
 "TODO : change iteration on  listOfequations with nbOfCompartments"
-results := Dictionary new.
-k := 1.
-listOfEquations do: [:each|
-	|series|
-	series := KESeries from: (data at:k) withIndex: (timeIndex at:k).
-	results at: (each variable symbol) put: series.
-	k:=k+1].
+results := KESeries from: data withIndex: compartmentIndex.
 ^results

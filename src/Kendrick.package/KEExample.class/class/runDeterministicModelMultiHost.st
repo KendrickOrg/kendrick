@@ -22,5 +22,4 @@ model addEquation: dsdt.
 model addEquation: didt.
 
 result := model runDeterministSimulationFrom: 0 to: 5  with: 0.01.
-result do:[:eachSeries| eachSeries sqrt plot]
-
+result plot: #I withDoingFunction: #sqrt

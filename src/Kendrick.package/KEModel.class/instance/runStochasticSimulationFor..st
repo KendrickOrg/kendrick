@@ -1,12 +1,16 @@
 as yet unclassified
 runStochasticSimulationFor: tMax
-	|  rTotal rand1 deltaT rand2 p selectedEvent t  previousTime i nbEquations k results timeIndex |	
+	|  rTotal rand1 deltaT rand2 p selectedEvent t  previousTime i nbEquations k results compartmentIndex |	
 	nbEquations := self equations size.
 	data := Array new: nbEquations.
-	timeIndex := Array new:nbEquations.
+	compartmentIndex := Array new:nbEquations.
 	1 to: nbEquations do: [:index| data at: index put: (Array new: 200000)].
-	1 to: nbEquations do: [:index| timeIndex at: index put: (Array new: 200000)].
-	
+	k := 1.
+	self equations do:[:each|
+		compartmentIndex at: k put: (each variable symbol).
+		k := k+1.
+		].
+		
 	eventList := self generateEvents.
 	t := 0.
 	i := 1.
@@ -27,23 +31,19 @@ runStochasticSimulationFor: tMax
 			|id|
 			id := 1.
 			self equations do: [:eachEq|
-				(data at: id) at:i put: (self numberOfIndividualsAtCompartment: (eachEq variable symbol)).
-				(timeIndex at:id) at:i put:t.
+				(data at: id) at:i put: (Array with:t with: (self numberOfIndividualsAtCompartment: (eachEq variable symbol))).				
 				id := id + 1.
 				].			
 			i := i +1.
 			previousTime := t.
 			].
 			].
-	
-	results := Dictionary new.
 	k := 1.
 	self equations do: [:each|
-		|series|
-		series := KESeries from: ((data at:k) select:[:e| e ~= nil]) withIndex: ((timeIndex at:k) select:[:e| e ~= nil]).
-		results at: (each variable symbol) put: series.
-		k := k+1
+		data at: k put: ((data at:k) select: [:e| e~= nil]).		
+		k := k+1.
 		].
+	results := KESeries from: data withIndex: compartmentIndex.
 	^results
 	
 		
