@@ -15,7 +15,7 @@ k4 := Array new: nbEquations.
 y := Array new: nbEquations.
 
 data := Array new: nbEquations.
-timeIndex := Array new:nbEquations.
+timeIndex := Array new: nbEquations.
 
 1 to: nbEquations do: [:index| data at: index put: (Array new: nbIterations)].
 1 to: nbEquations do: [:index| timeIndex at: index put: (Array new: nbIterations)].
@@ -29,18 +29,18 @@ listOfEquations do:[:each|
 
 "Runge Kutta Algorithm"
 1 to: nbIterations do: [:j|
-	x := x0 + (j * step).
+	x := j * step + x0.
 	"Update time value for the model"
 	model timeValue: x.
 	
 	"Calculate k1"
 	dydx := self calculateDerivation: model.
 	1 to: nbEquations do: [:i|
-		k1 at: i put: ((dydx at: i) * step).		
+		k1 at: i put: ((dydx at: i) * step).
 		].
 	"Update number of individuals for each compartments of model"
 	k := 1.
-    listOfEquations do:[:each|
+	listOfEquations do:[:each|
 		model atCompartment: (each variable symbol) modifyNumberOfIndividuals: (((k1 at: k) / 2) + (y at: k)).
 		k := k + 1.
 		].

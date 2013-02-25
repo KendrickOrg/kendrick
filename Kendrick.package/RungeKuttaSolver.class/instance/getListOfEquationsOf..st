@@ -1,4 +1,3 @@
 as yet unclassified
 getListOfEquationsOf: model
-
-listOfEquations := model equations.
+	listOfEquations := model equations
