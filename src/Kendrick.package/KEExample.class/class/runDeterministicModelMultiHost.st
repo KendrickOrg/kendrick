@@ -22,5 +22,5 @@ model addEquation: dsdt.
 model addEquation: didt.
 
 result := model runDeterministSimulationFrom: 0 to: 5  with: 0.01.
-result plot: #I in: model do: #sqrt.
+(result at: #I) plotWithDoingFunction: #sqrt.
 

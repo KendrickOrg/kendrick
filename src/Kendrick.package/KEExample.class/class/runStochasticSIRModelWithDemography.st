@@ -3,7 +3,7 @@ runStochasticSIRModelWithDemography
 
 "self runStochasticSIRModelWithDemography"
 
-| model |
+| model result|
 model := KEModel new.
 model atCompartment:#S putNumberOfIndividuals: 99999.
 model atCompartment:#I putNumberOfIndividuals: 1.
@@ -17,5 +17,5 @@ model addEquation: (PPODEParser parse:'S:t= mu*N-beta*S*I-mu*S').
 model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I-mu*I').
 model addEquation: (PPODEParser parse: 'R:t=gamma*I-mu*R').
 
-model runStochasticSimulationFor: (50/365).
-model plot.
+result := model runStochasticSimulationFor: (50/365).
+(result at: #I) plot.
