@@ -10,10 +10,10 @@
 		"runDeterministicModelMultiHost" : "SergeStinckwich 2/25/2013 12:20",
 		"runDeterministicModelMultiStrains" : "SergeStinckwich 2/25/2013 11:20",
 		"runIndividualBasedSIRModel" : "SergeStinckwich 2/25/2013 11:23",
-		"runSEIRTemporalForcing" : "SergeStinckwich 2/25/2013 11:28",
+		"runStochasticModelMultiDisease" : "SergeStinckwich 2/25/2013 14:20",
+		"runStochasticModelMultiHost" : "SergeStinckwich 2/25/2013 14:20",
+		"runStochasticSEIRModelWithTemporalForcing" : "SergeStinckwich 2/25/2013 14:28",
 		"runStochasticSIRModel" : "SergeStinckwich 2/25/2013 11:28",
-		"runStochasticSIRModelWithDemography" : "SergeStinckwich 2/25/2013 11:31",
-		"runStochastiqueModelMultiDisease" : "SergeStinckwich 2/25/2013 11:32",
-		"runStochastiqueModelMultiHost" : "SergeStinckwich 2/25/2013 12:20" },
+		"runStochasticSIRModelWithDemography" : "SergeStinckwich 2/25/2013 11:31" },
 	"instance" : {
 		 } }
