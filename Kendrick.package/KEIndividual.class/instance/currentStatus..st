@@ -1,4 +1,3 @@
-as yet unclassified
+accessing
 currentStatus: aStatus
-
-currentStatus := aStatus
+	currentStatus := aStatus
