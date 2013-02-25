@@ -1,5 +1,5 @@
 as yet unclassified
-runStochastiqueModelMultiHost
+runStochasticModelMultiHost
 
 "self runStochastiqueModelMultiHost"
 

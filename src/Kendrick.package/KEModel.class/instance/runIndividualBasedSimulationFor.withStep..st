@@ -6,6 +6,7 @@ runIndividualBasedSimulationFor: tMax withStep: dT
 	nbStep := (0 to: tMax by: dT) size.
 	nbEquations := self equations size.
 	data := Array new: nbEquations.
+	timeIndex := Array new:nbEquations.
 	1 to: nbEquations do: [:index| data at: index put: (Array new: nbStep)].
 	1 to: nbEquations do: [:index| timeIndex at: index put: (Array new: nbStep)].
 		
