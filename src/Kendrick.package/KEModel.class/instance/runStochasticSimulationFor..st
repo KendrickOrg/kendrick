@@ -27,7 +27,7 @@ runStochasticSimulationFor: tMax
 			|id|
 			id := 1.
 			self equations do: [:eachEq|
-				(data at: id) at:i put: (Array with:t with: (self numberOfIndividualsAtCompartment: (eachEq variable symbol))).
+				(data at: id) at:i put: (self numberOfIndividualsAtCompartment: (eachEq variable symbol)).
 				(timeIndex at:id) at:i put:t.
 				id := id + 1.
 				].			

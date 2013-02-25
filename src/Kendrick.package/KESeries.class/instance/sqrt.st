@@ -1,14 +1,5 @@
-as yet unclassified
+accessing
 sqrt
-(data size < (data at: 1) size) ifTrue: [
-	1 to: (data size) do:[:i|
-		1 to: ((data at: i) size) do:[:j|
-			((data at: i) at: j) at: 2 put: ((((data at: i) at: j) at: 2) sqrt).
-			]
-		]
-	] ifFalse: [
-	1 to: (data size) do:[:i|
-		(data at: i) at: 2 put: (((data at: i) at: 2) sqrt).
-		]
-	]
-
+	| new |
+	new := data collect: [ :each | each sqrt ].
+	^ KESeries from: new withIndex: index copy

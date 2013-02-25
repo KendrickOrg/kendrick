@@ -23,8 +23,8 @@ data := Array new: nbCompartments. "ex: (I[1] I[2] I[3])"
 timeIndex := Array new: nbCompartments.
 
 (1 to: nbCompartments) do: [:indexCompartment|
-	data at: indexCompartment put: (Array new: nbSpecies).
-	1 to: nbSpecies  do: [:index|(data at: indexCompartment) at: index put: (Array new: nbIterations)]
+	data at: indexCompartment put: (Array new: nbIterations).
+	1 to: nbIterations  do: [:index|(data at: indexCompartment) at: index put: (Array new: nbSpecies)]
 	].
 
 1 to: nbCompartments do: [:index| timeIndex at:index put:(Array new: nbIterations)].
@@ -96,7 +96,7 @@ timeIndex := Array new: nbCompartments.
 		model atCompartment: (each variable symbol) at: (each eqIndex) modifyNumberOfIndividuals: (y at: k).
 		1 to: nbCompartments do: [:cId|
 			(each variable symbol) = (listCompartmentSymbol at: cId) ifTrue: [
-				((data at: cId) at: (each eqIndex)) at: j put: (Array with:x with:(y at: k)).
+				((data at: cId) at:j) at: (each eqIndex) put: (y at: k).
 				(timeIndex at: cId) at:j put: x.
 				].
 			].

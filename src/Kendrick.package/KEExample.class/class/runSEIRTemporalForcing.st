@@ -1,7 +1,7 @@
 as yet unclassified
-runDeterministSEIRModelWithTemporalForcing
+runSEIRTemporalForcing
 
-"self runDeterministSEIRModelWithTemporalForcing"
+"self runSEIRTemporalForcing"
 
 | model result |
 model := KEModel new.
@@ -21,5 +21,5 @@ model addEquation: (PPODEParser parse:'E:t=beta*(1+betaAmp*cos(t))*S*I-sigma*E-m
 model addEquation: (PPODEParser parse:'I:t=sigma*E-gamma*I-mu*I').
 model addEquation: (PPODEParser parse:'R:t=gamma*I-mu*R').
 
-result := model runDeterministSimulationFrom: 0 to: 400 with: 0.01.
-result do:[:eachSeries| eachSeries log plot]
+result := model runStochasticSimulationFor: (10/365).
+result do:[:eachSeries| eachSeries plot]
