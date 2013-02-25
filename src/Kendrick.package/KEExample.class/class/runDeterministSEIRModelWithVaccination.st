@@ -22,7 +22,7 @@ model addEquation: (PPODEParser parse: 'I:t=sigma*E-gamma*I-mu*I').
 model addEquation: (PPODEParser parse: 'R:t=mu*p*N*gamma*I-mu*R').
 
 result := model runDeterministSimulationFrom: 0 to: 100 with: 0.01.
-result plot: #I withDoingFunction: #log
+result do:[:eachSeries| eachSeries log plot]
 
 
 

@@ -1,7 +1,7 @@
 as yet unclassified
 runStochasticModelMultiHost
 
-"self runStochastiqueModelMultiHost"
+"self runStochasticModelMultiHost"
 
 |model compartment dsdt didt result|
 
@@ -22,6 +22,5 @@ model addEquation: dsdt.
 model addEquation: didt.
 
 result := model runStochasticSimulationFor: 10.
-result plot: #I withDoingFunction: #sqrt
-
+result do:[:eachSeries| eachSeries sqrt plot]
 
