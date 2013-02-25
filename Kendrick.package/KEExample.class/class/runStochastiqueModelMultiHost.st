@@ -22,5 +22,6 @@ model addEquation: dsdt.
 model addEquation: didt.
 
 result := model runStochasticSimulationFor: 10.
-result plot: #I at: 1 in: model do: #sqrt.
+(result at: #I) plotWithDoingFunction: #sqrt.
+
 

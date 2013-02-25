@@ -2,8 +2,9 @@
 	"class" : {
 		 },
 	"instance" : {
-		"testASeriesAt" : "SergeStinckwich 2/21/2013 09:59",
+		"testASeriesAt" : "SergeStinckwich 2/25/2013 09:20",
 		"testASeriesAtIndex" : "SergeStinckwich 2/21/2013 10:11",
+		"testASeriesAtIndexNonExist" : "BUIThiMaiAnh 2/22/2013 14:08",
 		"testASeriesHasSize5WhenCreatedWithAnArrayOfSize5" : "SergeStinckwich 2/21/2013 10:02",
 		"testASeriesIndexMax" : "SergeStinckwich 2/24/2013 23:28",
 		"testASeriesIndexMin" : "SergeStinckwich 2/24/2013 23:29" } }
