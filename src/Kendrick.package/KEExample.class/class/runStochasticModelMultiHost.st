@@ -1,7 +1,7 @@
 as yet unclassified
-runStochastiqueModelMultiHost
+runStochasticModelMultiHost
 
-"self runStochastiqueModelMultiHost"
+"self runStochasticModelMultiHost"
 
 |model compartment dsdt didt result|
 

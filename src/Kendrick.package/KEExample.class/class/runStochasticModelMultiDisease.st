@@ -1,7 +1,7 @@
 as yet unclassified
-runStochastiqueModelMultiDisease
+runStochasticModelMultiDisease
 
-"self runStochastiqueModelMultiDisease"
+"self runStochasticModelMultiDisease"
 
 |model compartment dsdt didt result|
 
