@@ -13,4 +13,4 @@ runIndividualBasedSIRModel
 	model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I').
 	model addEquation: (PPODEParser parse: 'R:t=gamma*I').
 	result := model runIndividualBasedSimulationFor: 0.5 withStep: 0.0027.
-	result do: [ :eachSeries | eachSeries plot ]
+	(result at: #I) plot
