@@ -1,3 +1,3 @@
 accessing
 isVector
-	^isVector
+	^isVector.

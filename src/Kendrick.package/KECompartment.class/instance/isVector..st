@@ -1,3 +1,3 @@
 accessing
 isVector: aBoolean
-	isVector := aBoolean
+	isVector := aBoolean.

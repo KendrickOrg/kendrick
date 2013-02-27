@@ -17,6 +17,5 @@ u op:#-; expression: beta.
 expbin2 op:m1; leftHandSide: vars; rightHandSide: vari.
 expbin1 op:m2; leftHandSide: u; rightHandSide: expbin2.
 
-dsdt variable:vars; expression: expbin1.
-
+dsdt variable: vars; expression: expbin1.
 ^dsdt

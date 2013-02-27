@@ -8,8 +8,8 @@
 	"instvars" : [
 		"status",
 		"numberOfIndividuals",
-		"isVector",
-		"numberOfSpecies"
+		"numberOfSpecies",
+		"isVector"
 	],
 	"name" : "KECompartment",
 	"type" : "normal"

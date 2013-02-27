@@ -10,8 +10,8 @@
 		"tVariable",
 		"expression",
 		"eqIndex",
-		"eqIndex2",
 		"idVariable",
+		"eqIndex2",
 		"idVariable2"
 	],
 	"name" : "KEEquation",
