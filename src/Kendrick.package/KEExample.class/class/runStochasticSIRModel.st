@@ -13,4 +13,4 @@ runStochasticSIRModel
 	model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I').
 	model addEquation: (PPODEParser parse: 'R:t=gamma*I').
 	result := model runStochasticSimulationFor: 50 / 365.
-	result do: [ :eachSeries | eachSeries plot ]
+	result keysAndValuesDo: [ :key :eachSeries | eachSeries plot: key ]
