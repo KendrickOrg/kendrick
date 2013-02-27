@@ -8,7 +8,11 @@
 	"instvars" : [
 		"variable",
 		"tVariable",
-		"expression" ],
+		"expression",
+		"eqIndex",
+		"eqIndex2",
+		"idVariable",
+		"idVariable2" ],
 	"name" : "KEEquation",
 	"pools" : [
 		 ],

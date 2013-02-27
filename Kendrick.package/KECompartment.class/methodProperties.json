@@ -2,8 +2,11 @@
 	"class" : {
 		 },
 	"instance" : {
-		"isVector" : "btmanh 6/20/2012 22:17",
+		"isVector" : "BUIThiMaiAnh 2/27/2013 12:10",
+		"isVector:" : "BUIThiMaiAnh 2/27/2013 12:11",
 		"numberOfIndividuals" : "btmanh 5/18/2012 12:36:43.572",
 		"numberOfIndividuals:" : "btmanh 5/18/2012 12:36:43.572",
+		"numberOfSpecies" : "BUIThiMaiAnh 2/27/2013 12:10",
+		"numberOfSpecies:" : "BUIThiMaiAnh 2/27/2013 12:10",
 		"status" : "btmanh 5/18/2012 12:36:43.572",
 		"status:" : "btmanh 5/18/2012 12:36:43.572" } }
