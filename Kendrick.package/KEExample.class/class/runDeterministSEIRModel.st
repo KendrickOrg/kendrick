@@ -2,7 +2,7 @@ as yet unclassified
 runDeterministSEIRModel
 	"self runDeterministSEIRModel"
 
-	| model solverRK dydx j listOfEquations nbIterations result |
+	| model result |
 	model := KEModel new.
 	model atCompartment: #S putNumberOfIndividuals: 99999.
 	model atCompartment: #E putNumberOfIndividuals: 0.

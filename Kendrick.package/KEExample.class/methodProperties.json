@@ -1,7 +1,7 @@
 {
 	"class" : {
-		"runDeterministSEIRModel" : "SergeStinckwich 2/25/2013 16:49",
-		"runDeterministSEIRModelWithLossOfImmunity" : "SergeStinckwich 2/25/2013 16:49",
+		"runDeterministSEIRModel" : "SergeStinckwich 2/27/2013 14:20",
+		"runDeterministSEIRModelWithLossOfImmunity" : "SergeStinckwich 2/27/2013 14:19",
 		"runDeterministSEIRModelWithTemporalForcing" : "SergeStinckwich 2/25/2013 16:49",
 		"runDeterministSEIRModelWithVaccination" : "SergeStinckwich 2/25/2013 16:49",
 		"runDeterministSIRModel" : "SergeStinckwich 2/25/2013 16:48",
