@@ -7,7 +7,7 @@ addEquation: anEquation
 index ifNotNil: [
 	"index is an interval, ex: index := (1 to: 10)"
 	index do: [:id|
-		equation := (KEIndexedEquation new) variable: (anEquation variable); tVariable: (anEquation tVariable); expression: (anEquation expression); eqIndex: id; idVariable: (anEquation idVariable).
+		equation := (KEEquation new) variable: (anEquation variable); tVariable: (anEquation tVariable); expression: (anEquation expression); eqIndex: id; idVariable: (anEquation idVariable).
 		"Transcript show: (equation eqIndex);cr."
 		equations add: equation.
 		]	
