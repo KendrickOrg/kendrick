@@ -7,7 +7,9 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"status",
-		"numberOfIndividuals"
+		"numberOfIndividuals",
+		"isVector",
+		"numberOfSpecies"
 	],
 	"name" : "KECompartment",
 	"type" : "normal"
