@@ -7,10 +7,10 @@ model := KEIndexedModel new.
 "Each compartment composes 100 strains"
 model atCompartment: #S numberOfSpecies: 100.
 model withCompartment: #S from: 2 to: 100  numberOfIndividuals: 1.
-model withCompartment: #S withIndex: 1  numberOfIndividuals: 0.98.
+model withCompartment: #S atIndex: 1  numberOfIndividuals: 0.98.
 model atCompartment: #I numberOfSpecies: 100.
 model withCompartment: #I from: 2 to: 100  numberOfIndividuals: 0.
-model withCompartment: #I withIndex: 1  numberOfIndividuals: 0.02.
+model withCompartment: #I atIndex: 1  numberOfIndividuals: 0.02.
 
 model atParameter: #beta putExpression: 'beta=3*v' parseAsAnEquation.
 model atParameter: #n put: 100.

@@ -1,4 +1,3 @@
 as yet unclassified
 numberOfIndividualsAtCompartment: aStatus
-
-^ (self atCompartment: aStatus) numberOfIndividuals
+^self numberOfIndividualsAtCompartment: aStatus atIndex: 1.

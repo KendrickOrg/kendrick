@@ -5,7 +5,7 @@ testModifyCompartmentAsVector
 
 model := KEIndexedModel new.
 model atCompartment: #S putNumberOfIndividuals: #(10000 9000 12000).
-model withCompartment: #S withIndex: 1 numberOfIndividuals: 11000.
+model withCompartment: #S atIndex: 1 numberOfIndividuals: 11000.
 model withCompartment: #S from: 2 to: 3 numberOfIndividuals: 10000.
 
 compartment := model atCompartment: #S.

@@ -1,11 +1,11 @@
 as yet unclassified
 runDeterministicModelMultiHost
 
-"self runDeterministicModelMultiHost"
+"self runDeterministicModelMultiHost"  
 
 |model compartment dsdt didt result|
 
-model := KEIndexedModel new.
+model := KEIndexedModel new.     
 model atCompartment: #S putNumberOfIndividuals: #(9999 1000 2000).
 model atCompartment: #I putNumberOfIndividuals: #(1 0 0).
 
