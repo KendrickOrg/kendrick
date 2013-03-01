@@ -6,7 +6,7 @@ model := KEIndexedModel new.
 model atCompartment: #S putNumberOfIndividuals: 1.
 model atCompartment: #I putNumberOfIndividuals: 1.
 model atCompartment: #R putNumberOfIndividuals: 0.
-model atParameter: #beta putExpression: 'beta[i,j]=exp(-(((i-j)/d)^2))' parseAsAnEquation. 
+model atParameter: #beta put: 'beta[i,j]=exp(-(((i-j)/d)^2))' parseAsAnEquation. 
 model atParameter: #i put: (50 to: 100).
 model atParameter: #j put: (50 to: 100).
 model atParameter: #d put: 5.
