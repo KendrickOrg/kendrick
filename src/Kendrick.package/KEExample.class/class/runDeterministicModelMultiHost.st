@@ -1,11 +1,11 @@
 as yet unclassified
 runDeterministicModelMultiHost
 
-"self runDeterministicModelMultiHost"    
- 
-|model compartment dsdt didt result| 
+"self runDeterministicModelMultiHost"
 
-model := KEIndexedModel new.     
+|model compartment dsdt didt result|
+
+model := KEIndexedModel new.
 model atCompartment: #S putNumberOfIndividuals: #(9999 1000 2000).
 model atCompartment: #I putNumberOfIndividuals: #(1 0 0).
 
@@ -22,4 +22,6 @@ model addEquation: dsdt.
 model addEquation: didt.
 
 result := model runDeterministSimulationFrom: 0 to: 5  with: 0.01.
-result keysAndValuesDo: [ :key :eachSeries | eachSeries sqrt plot: key]  
+result keysAndValuesDo: [ :key :eachSeries | eachSeries sqrt plot: key ]
+
+

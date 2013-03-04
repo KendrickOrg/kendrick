@@ -1,0 +1,3 @@
+accessing
+isVector
+	^isVector

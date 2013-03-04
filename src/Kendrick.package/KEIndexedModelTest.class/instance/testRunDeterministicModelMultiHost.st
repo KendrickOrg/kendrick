@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testRunDeterministicModelMultiHost
 
 |model compartment dsdt didt|

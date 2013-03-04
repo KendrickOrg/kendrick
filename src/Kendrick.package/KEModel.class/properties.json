@@ -12,11 +12,7 @@
 		"eventList",
 		"timeValue",
 		"listOfIndividuals",
-		"data",
-		"eqIdValue",
-		"fnIdVariable",
-		"fnIdValue",
-		"eqIdVariable"
+		"data"
 	],
 	"name" : "KEModel",
 	"type" : "normal"

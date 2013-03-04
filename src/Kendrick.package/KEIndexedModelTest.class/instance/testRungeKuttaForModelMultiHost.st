@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testRungeKuttaForModelMultiHost
 
 |model compartment dsdt didt solverRK result nbIterations |
@@ -37,7 +37,7 @@ solverRK stepSize: 0.1.
 nbIterations := solverRK nbOfIterations.
 self assert:  nbIterations equals: ((40-0) / 0.1) rounded.
 
-result := solverRK solver: model.
+result := solverRK solver2: model.
 
 self assert: ((result at: #S) size) equals: nbIterations.
 self assert: ((result at: #I) size) equals: nbIterations

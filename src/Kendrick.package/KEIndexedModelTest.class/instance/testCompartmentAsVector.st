@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testCompartmentAsVector
 "This test is for constructing a compartment as a vector with small number of host"
 |model compartment|

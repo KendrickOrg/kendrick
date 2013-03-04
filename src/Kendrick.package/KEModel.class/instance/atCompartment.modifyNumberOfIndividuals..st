@@ -1,3 +1,6 @@
 as yet unclassified
 atCompartment: aStatus modifyNumberOfIndividuals: aValue
-	self atCompartment: aStatus at: 1 modifyNumberOfIndividuals: aValue.
+
+compartments do: [:each|
+	each status = aStatus ifTrue:[each numberOfIndividuals: aValue]
+	].

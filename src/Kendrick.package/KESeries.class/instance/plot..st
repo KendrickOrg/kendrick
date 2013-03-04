@@ -1,10 +1,10 @@
 as yet unclassified
 plot: aSymbol	
-	(data at: 1) size > 1 
+	(data at: 1) isArray 
 	ifTrue: [self plotVector: aSymbol]
 	ifFalse: [
 		| diag f Ylabel |
-		f := [ :x | (self atIndex: x) at: 1 ].
+		f := [ :x | self atIndex: x ].
 		Ylabel := 'Number of Individuals of ',aSymbol asString.
 		diag := ESDiagramRenderer new.
 		diag lineDiagram

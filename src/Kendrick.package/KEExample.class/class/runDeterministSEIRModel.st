@@ -2,7 +2,7 @@ as yet unclassified
 runDeterministSEIRModel
 	"self runDeterministSEIRModel"
 
-	| model solverRK dydx j listOfEquations nbIterations result |
+	| model result |
 	model := KEModel new.
 	model atCompartment: #S putNumberOfIndividuals: 99999.
 	model atCompartment: #E putNumberOfIndividuals: 0.
@@ -18,4 +18,4 @@ runDeterministSEIRModel
 	model addEquation: (PPODEParser parse: 'I:t=sigma*E-gamma*I-mu*I').
 	model addEquation: (PPODEParser parse: 'R:t=gamma*I-mu*R').
 	result := model runDeterministSimulationFrom: 0.0 to: 1.0 with: 0.001.
-	result keysAndValuesDo: [ :key :eachSeries | eachSeries plot: key ]
+	result do: [ :eachSeries | eachSeries plot ]

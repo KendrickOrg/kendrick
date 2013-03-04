@@ -8,6 +8,6 @@ x ifNotNil: [
 	].
 x ifNil:[
 	((symbol value) = #t) ifTrue: [^(m timeValue)].
-	^ ((m atCompartment: symbol) numberOfIndividuals) at: 1.
+	^ (m atCompartment: symbol) numberOfIndividuals.
 	].
 ^x 

@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testRunDeterministicModelMultiStrains
 
 |model compartment dsdt didt|
@@ -7,18 +7,18 @@ model := KEIndexedModel new.
 "Each compartment composes 100 strains"
 model atCompartment: #S numberOfSpecies: 100.
 model withCompartment: #S from: 2 to: 100  numberOfIndividuals: 1.
-model withCompartment: #S atIndex: 1  numberOfIndividuals: 0.98.
+model withCompartment: #S withIndex: 1  numberOfIndividuals: 0.98.
 model atCompartment: #I numberOfSpecies: 100.
 model withCompartment: #I from: 2 to: 100  numberOfIndividuals: 0.
-model withCompartment: #I atIndex: 1  numberOfIndividuals: 0.02.
+model withCompartment: #I withIndex: 1  numberOfIndividuals: 0.02.
 
-model atParameter: #beta put: 'beta=3*v' parseAsAnEquation.
+model atParameter: #beta putExpression: 'beta=3*v' parseAsAnEquation.
 model atParameter: #n put: 100.
 model atParameter: #mu put: 1/80.
 model atParameter: #v put: 52.
 model atParameter: #d put: 5.
 model atParameter: #m put: 0.01.
-model atParameter: #sigma put: 'sigma[i,j]=exp(-(((i-j)/d)^2))' parseAsAnEquation.
+model atParameter: #sigma putExpression: 'sigma[i,j]=exp(-(((i-j)/d)^2))' parseAsAnEquation.
 model atParameter: #j put: (1 to: 100). 
 model atParameter: #i put: (1 to: 100).
 

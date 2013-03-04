@@ -8,6 +8,7 @@
 	"instvars" : [
 		"status",
 		"numberOfIndividuals",
+		"isVector",
 		"numberOfSpecies"
 	],
 	"name" : "KECompartment",

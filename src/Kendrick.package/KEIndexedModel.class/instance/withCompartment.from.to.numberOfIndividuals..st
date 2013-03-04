@@ -5,9 +5,12 @@ withCompartment: aStatus from: index1 to: index2 numberOfIndividuals: nbIndividu
 compartments do: [:each|
 	each status = aStatus ifTrue:[
 		arrayOfIndividuals := each numberOfIndividuals.
-		arrayOfIndividuals ifNil: [each numberOfIndividuals: (Array new: (each numberOfSpecies))].
-		index1 to: index2 do: [:index | (each numberOfIndividuals) at: index put: nbIndividuals.]			
+		arrayOfIndividuals ifNil: [
+			each numberOfIndividuals: (Array new: (each numberOfSpecies)).
+			index1 to: index2 do: [:index | (each numberOfIndividuals) at: index put: nbIndividuals.]			
+			] 
+		ifNotNil: [
+			index1 to: index2 do: [:index | (each numberOfIndividuals) at: index put: nbIndividuals.]			
+			]
 		]
-	]
-
-	
+	].

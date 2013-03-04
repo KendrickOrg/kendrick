@@ -60,7 +60,7 @@ equation
 			tVariable: ((KEVariable new) symbol: ((nodes at: 3) at: 2) value asSymbol);
 			idVariable: nil;
 			idVariable2: nil;
-			eqIndex: 1;
+			eqIndex: -1;
 			eqIndex2: nil;
 			expression: nodes last
 			]
@@ -71,7 +71,7 @@ equation
 			tVariable: nil;
 			idVariable: nil;
 			idVariable2: nil;
-			eqIndex: 1;
+			eqIndex: -1;
 			eqIndex2: nil;
 			expression: nodes last
 			]

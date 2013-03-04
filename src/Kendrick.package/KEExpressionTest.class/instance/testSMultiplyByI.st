@@ -3,8 +3,10 @@ testSMultiplyByI
 	|  m e a b o s i |
 	
 	m := KEModel new.
-	m atCompartment: #S putNumberOfIndividuals: 5.
-	m atCompartment: #I putNumberOfIndividuals: 6.
+	s := (KECompartment new) status: #S; numberOfIndividuals: 5.
+     i := (KECompartment new) status: #I; numberOfIndividuals: 6.
+
+	m addCompartment: s; addCompartment: i.
 	
 	e := KEBinaryExpression new.
 	a := KEVariable new.

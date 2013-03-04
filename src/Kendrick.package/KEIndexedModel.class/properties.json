@@ -5,7 +5,12 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"eqIdValue",
+		"fnIdVariable",
+		"fnIdValue",
+		"eqIdVariable"
+	],
 	"name" : "KEIndexedModel",
 	"type" : "normal"
 }
