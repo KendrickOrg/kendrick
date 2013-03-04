@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testRunDeterministicModelMultiStrains
 
 |model compartment dsdt didt|
