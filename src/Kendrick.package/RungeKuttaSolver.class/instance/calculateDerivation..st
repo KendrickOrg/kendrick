@@ -6,8 +6,10 @@ nbOfExpression := listOfEquations size.
 dydx := Array new: nbOfExpression.
 i := 1.
 listOfEquations do:[:each| 
-	 dydx at: i put: ((each expression) evaluateWithModel: model).
-	 i := i + 1.
+	model eqIdVariable: (each idVariable).
+	model eqIdValue: (each eqIndex).
+	dydx at: i put: ((each expression) evaluateWithModel: model).
+	i := i + 1.
 	].
 ^dydx
 

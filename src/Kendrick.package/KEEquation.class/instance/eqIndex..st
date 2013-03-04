@@ -1,3 +1,3 @@
-accessing
+as yet unclassified
 eqIndex: anIndex
-	eqIndex := anIndex
+eqIndex := anIndex 
