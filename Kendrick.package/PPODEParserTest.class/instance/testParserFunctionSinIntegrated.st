@@ -3,10 +3,9 @@ testParserFunctionSinIntegrated
 
 |  model s i r dsdt didt drdt |
 model := KEModel new.
-s := (KECompartment new) status: #S; numberOfIndividuals: 100000.
-i := (KECompartment new) status: #I; numberOfIndividuals: 0.
-r := (KECompartment new) status: #R; numberOfIndividuals: 0.
-model addCompartment: s; addCompartment: i; addCompartment: r.
+model atCompartment: #S putNumberOfIndividuals: 100000.
+model atCompartment: #I putNumberOfIndividuals: 0.
+model atCompartment: #R putNumberOfIndividuals: 0.
 model atParameter: #beta put: 0.0052.
 model atParameter: #gamma put: 365/7.
 model atParameter: #mu put: 1/80.

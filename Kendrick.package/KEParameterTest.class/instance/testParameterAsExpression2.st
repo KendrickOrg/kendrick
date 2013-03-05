@@ -2,12 +2,11 @@ tests
 testParameterAsExpression2
 
 |  model s i r dsdt didt drdt |
-model := KEIndexedModel new.
-s := (KECompartment new) status: #S; numberOfIndividuals: 1.
-i := (KECompartment new) status: #I; numberOfIndividuals: 1.
-r := (KECompartment new) status: #R; numberOfIndividuals: 0.
-model addCompartment: s; addCompartment: i; addCompartment: r.
-model atParameter: #beta putExpression: 'beta[i,j]=exp(-(((i-j)/d)^2))' parseAsAnEquation. 
+model := KEModel new.
+model atCompartment: #S putNumberOfIndividuals: 1.
+model atCompartment: #I putNumberOfIndividuals: 1.
+model atCompartment: #R putNumberOfIndividuals: 0.
+model atParameter: #beta put: 'beta[i,j]=exp(-(((i-j)/d)^2))' parseAsAnEquation. 
 model atParameter: #i put: (50 to: 100).
 model atParameter: #j put: (50 to: 100).
 model atParameter: #d put: 5.

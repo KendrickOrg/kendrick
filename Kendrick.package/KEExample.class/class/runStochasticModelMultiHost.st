@@ -5,7 +5,7 @@ runStochasticModelMultiHost
 
 |model compartment dsdt didt result|
 
-model := KEIndexedModel new.
+model := KEModel new.
 model atCompartment: #S putNumberOfIndividuals: #(9999 1000 2000).
 model atCompartment: #I putNumberOfIndividuals: #(1 0 0).
 
@@ -22,5 +22,5 @@ model addEquation: dsdt.
 model addEquation: didt.
 
 result := model runStochasticSimulationFor: 10.
-result do:[:eachSeries| eachSeries sqrt plot]
+result keysAndValuesDo: [ :key :eachSeries | eachSeries sqrt plot: key ]
 

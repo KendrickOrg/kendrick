@@ -2,11 +2,10 @@ as yet unclassified
 testParserIndexedEquation
 
 |  model s i r dsdt didt drdt |
-model := KEIndexedModel new.
-s := (KECompartment new) status: #S; numberOfIndividuals: 1.
-i := (KECompartment new) status: #I; numberOfIndividuals: 1.
-r := (KECompartment new) status: #R; numberOfIndividuals: 0.
-model addCompartment: s; addCompartment: i; addCompartment: r.
+model := KEModel new.
+model atCompartment: #S putNumberOfIndividuals: 1.
+model atCompartment: #I putNumberOfIndividuals: 1.
+model atCompartment: #R putNumberOfIndividuals: 0.
 model atParameter: #beta put:#((520 260) (1 1)).
 model atParameter: #gamma put: 365/7.
 

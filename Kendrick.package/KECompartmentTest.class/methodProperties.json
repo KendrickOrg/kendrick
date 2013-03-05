@@ -2,4 +2,8 @@
 	"class" : {
 		 },
 	"instance" : {
-		"testHowtoCreateACompartment" : "btmanh 5/18/2012 12:36:43.572" } }
+		"testCompartmentAsVector" : "BUIThiMaiAnh 3/4/2013 18:07",
+		"testCompartmentAsVector2" : "BUIThiMaiAnh 3/4/2013 18:07",
+		"testEvaluateExpressionWithCompartmentAsVector" : "BUIThiMaiAnh 3/4/2013 18:07",
+		"testHowtoCreateACompartment" : "btmanh 5/18/2012 12:36:43.572",
+		"testModifyCompartmentAsVector" : "BUIThiMaiAnh 3/4/2013 18:07" } }

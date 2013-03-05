@@ -3,7 +3,7 @@ testParserIndexInEquation
 
 |model compartment dsdt didt|
 
-model := KEIndexedModel new.
+model := KEModel new.
 model atCompartment: #S putNumberOfIndividuals: #(9999 1000 2000).
 model atCompartment: #I putNumberOfIndividuals: #(1 0 0).
 

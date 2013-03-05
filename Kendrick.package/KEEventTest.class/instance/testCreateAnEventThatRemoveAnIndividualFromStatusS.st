@@ -3,5 +3,5 @@ testCreateAnEventThatRemoveAnIndividualFromStatusS
 
 |e|
 e := KEEvent new.
-e removeOneIndividualFrom: #S.
+e removeOneIndividualFrom: ((KEVariable new) symbol: #S).
 self assert: (e isRemovingOneIndividualFrom: #S) equals: true.

@@ -19,7 +19,7 @@ plotVector: aSymbol
 		].
 	cqdiag width: 1200.
 	cqdiag height: 500.
-	cqdiag preferredAxisMaxY: 50.
+	cqdiag preferredAxisMaxY: (self preferredDataMax).
 	diagRenderer := ESDiagramRenderer new.
 	diagRenderer diagram: cqdiag.
 	^ diagRenderer open

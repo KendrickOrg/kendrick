@@ -1,8 +1,8 @@
 as yet unclassified
-runDeterministSEIRModelWithVaccination
-	"self runDeterministSEIRModelWithVaccination"
+runStochasticSEIRModelWithLossOfImmunity
+	"self runStochasticSEIRModelWithLossOfImmunity"
 
-	| model result |
+	| model solverRK dydx j listOfEquations nbIterations result |
 	model := KEModel new.
 	model atCompartment: #S putNumberOfIndividuals: 99999.
 	model atCompartment: #E putNumberOfIndividuals: 1.
@@ -12,11 +12,11 @@ runDeterministSEIRModelWithVaccination
 	model atParameter: #gamma put: 365 / 7.
 	model atParameter: #sigma put: 365 / 7.
 	model atParameter: #mu put: 1 / 80.
-	model atParameter: #p put: 0.0.
+	model atParameter: #to put: 2.
 	model atParameter: #N put: 100000.
-	model addEquation: (PPODEParser parse: 'S:t=mu*(1-p)*N-beta*S*I-mu*S').
+	model addEquation: (PPODEParser parse: 'S:t=mu*N-beta*S*I-mu*S+to*R').
 	model addEquation: (PPODEParser parse: 'E:t=beta*S*I-sigma*E-mu*E').
 	model addEquation: (PPODEParser parse: 'I:t=sigma*E-gamma*I-mu*I').
-	model addEquation: (PPODEParser parse: 'R:t=mu*p*N*gamma*I-mu*R').
-	result := model runDeterministSimulationFrom: 0 to: 100 with: 0.01.
-	result keysAndValuesDo: [ :key :eachSeries | eachSeries log plot: key ]
+	model addEquation: (PPODEParser parse: 'R:t=gamma*I-mu*R-to*R').
+	result := model runStochasticSimulationFor: 50/365.
+	result keysAndValuesDo: [ :key :eachSeries | eachSeries plot: key ]

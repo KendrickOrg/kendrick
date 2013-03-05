@@ -1,4 +1,3 @@
 testing
 isAddingOneIndividualFrom: aStatus
-
-^ (actions at: aStatus) == 1
+	actions keysAndValuesDo: [:key :value| ^(key symbol == aStatus)&(value == 1)].

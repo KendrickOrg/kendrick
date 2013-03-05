@@ -1,6 +1,6 @@
 as yet unclassified
 runStochasticSEIRModelWithTemporalForcing
-	"self runSEIRTemporalForcing"
+	"self runStochasticSEIRModelWithTemporalForcing"
 
 	| model result |
 	model := KEModel new.
@@ -19,4 +19,4 @@ runStochasticSEIRModelWithTemporalForcing
 	model addEquation: (PPODEParser parse: 'I:t=sigma*E-gamma*I-mu*I').
 	model addEquation: (PPODEParser parse: 'R:t=gamma*I-mu*R').
 	result := model runStochasticSimulationFor: 10 / 365.
-	result do: [ :eachSeries | eachSeries plot ]
+	result keysAndValuesDo: [ :key :eachSeries | eachSeries plot: key ]
