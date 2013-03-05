@@ -19,7 +19,7 @@ model atParameter: #i put: (1 to: 3).
 dsdt := 'S[i]:t=mu[i]*N[i]-sum(j, beta[i, j]*I[j])*S[i]-mu[i]*S[i]' parseAsAnEquation.
 didt := 'I[i]:t=sum(j, beta[i,j]*I[j])*S[i]-(mu[i]+v)*I[i]' parseAsAnEquation.
 model addEquation: dsdt.
-model addEquation: didt.
+model addEquation: didt.   
 
 result := model runDeterministSimulationFrom: 0 to: 5  with: 0.01.
 result keysAndValuesDo: [ :key :eachSeries | eachSeries sqrt plot: key]  

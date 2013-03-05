@@ -1,8 +1,8 @@
 as yet unclassified
-runDeterministSEIRModel
-	"self runDeterministSEIRModel"
+runStochasticSEIRModel
+	"self runStochasticSEIRModel"
 
-	| model result |
+	| model solverRK dydx j listOfEquations nbIterations result |
 	model := KEModel new.
 	model atCompartment: #S putNumberOfIndividuals: 99999.
 	model atCompartment: #E putNumberOfIndividuals: 0.
@@ -17,5 +17,5 @@ runDeterministSEIRModel
 	model addEquation: (PPODEParser parse: 'E:t=beta*S*I-sigma*E-mu*E').
 	model addEquation: (PPODEParser parse: 'I:t=sigma*E-gamma*I-mu*I').
 	model addEquation: (PPODEParser parse: 'R:t=gamma*I-mu*R').
-	result := model runDeterministSimulationFrom: 0.0 to: 1.0 with: 0.001.
-	result do: [ :eachSeries | eachSeries plot ]
+	result := model runStochasticSimulationFor: 50/365.
+	result keysAndValuesDo: [ :key :eachSeries | eachSeries plot: key ]
