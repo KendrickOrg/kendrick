@@ -7,7 +7,8 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"currentStatus",
-		"nextStatus"
+		"nextStatus",
+		"specieID"
 	],
 	"name" : "KEIndividual",
 	"type" : "normal"

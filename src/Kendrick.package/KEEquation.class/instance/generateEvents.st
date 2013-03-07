@@ -11,8 +11,8 @@ l do: [:each | | status|
 		(each rate sign positive)
 		ifTrue:[ each addOneIndividualTo: status]
 		ifFalse:[ each removeOneIndividualFrom:  status]
-	] ifFalse: ["Event: S[1]-->1, S[2]-->1, I[1]-->-1, I[2]-->-1 (S[1] isClassOf: KEIndex)"
-		status := (KEIndex new) symbol: (variable symbol); idExpression1: eqIndex; idExpression2: -1.
+	] ifFalse: ["Event: S[1]-->1, S[2]-->1, I[1]-->-1, I[2]-->-1 (S[1] is instance of class KEIndex)"
+		status := (KEIndexedVariable new) symbol: (variable symbol); idExpression1: eqIndex; idExpression2: -1.
 		each eqIndex: (self eqIndex).
 		each eqIndexVar: (self idVariable).
 		(each rate sign positive)

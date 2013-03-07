@@ -1,15 +1,14 @@
 {
 	"commentStamp" : "",
-	"super" : "KESimpleExpression",
+	"super" : "KEVariable",
 	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"symbol",
 		"idExpression1",
 		"idExpression2"
 	],
-	"name" : "KEIndex",
+	"name" : "KEIndexedVariable",
 	"type" : "normal"
 }

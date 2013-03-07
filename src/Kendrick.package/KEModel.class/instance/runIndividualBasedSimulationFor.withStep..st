@@ -1,13 +1,18 @@
 as yet unclassified
 runIndividualBasedSimulationFor: tMax withStep: dT
-	| nbStep count listOfProbabilities rand listOfTransitions t nbEquations timeIndex k results |
+	| nbStep count listOfProbabilities rand listOfTransitions t nbEquations timeIndex k results nbCompartments nbSpecies listCompSym |
 	
 	"Initializing"
 	nbStep := (0 to: tMax by: dT) size.
 	nbEquations := (self equations) size.
-	data := Array new: nbEquations.
-	timeIndex := Array new:nbEquations.
-	1 to: nbEquations do: [:index| data at: index put: (Array new: nbStep)].
+	nbCompartments := compartments size.
+	nbSpecies := self numberOfSpecies.
+	listCompSym := self getListCompartmentSymbol.
+	data := Array new: nbCompartments.
+	timeIndex := Array new: nbCompartments.
+	1 to: nbEquations do: [:index| 
+		data at: index put: (Array new: nbStep).
+		1 to: nbStep do: [:id|(data at: index) at: id put: (Array new: nbSpecies)]].
 	1 to: nbEquations do: [:index| timeIndex at: index put: (Array new: nbStep)].
 		
 	"Finding transition of each event in eventList. If event has no transition, toStatus: nil"
@@ -20,24 +25,25 @@ runIndividualBasedSimulationFor: tMax withStep: dT
 	count := 1.
 	[t <= tMax] whileTrue: [
 		"Put in result"
-		k := 1.
 		self equations do:[:eachEq|
-			(data at: k) at: count put: (self numberOfIndividualsAtCompartment: (eachEq variable symbol)).
-			(timeIndex at:k) at:count put:t.
-			k := k+1.
+			1 to: nbCompartments do:[:cID|
+				(eachEq variable symbol) = (listCompSym at: cID) ifTrue: [
+					((data at: cID) at: count) at: (eachEq eqIndex) put: (((self atCompartment: (eachEq variable symbol)) numberOfIndividuals) at: (eachEq eqIndex)).
+					(timeIndex at: cID) at: count put: t.
+					]
+				].			
 			].
 		"Calculate the state of all individuals in the list"
 		listOfIndividuals do: [:each|
 			|current transitions rateValue|
 			current := each currentStatus.
-			"transitions := (listOfTransitions select: [:tr|tr fromStatus = current])."
-			transitions := self selectTransitionIn: listOfTransitions  have: current.
+			transitions := self selectTransitionIn: listOfTransitions haveStatus: current withSpecieID: (each specieID).
 			transitions ifNotEmpty: [
 				transitions do:[:eachTransition|
-					rateValue := ((eachTransition evaluateWithModel: self) abs) / ((self atCompartment: current) numberOfIndividuals).
+					rateValue := ((eachTransition evaluateWithModel: self) abs) / (((self atCompartment: current) numberOfIndividuals) at: (eachTransition eqIndex)).
 					eachTransition prob: (1 - ((dT*rateValue*(-1)) exp)).	
 					rand := Random new.	
-					(eachTransition prob > (rand next)) ifTrue: [each nextStatus: (eachTransition toStatus)]
+					(eachTransition prob > (rand next)) ifTrue: [each nextStatus: (eachTransition toStatus symbol)]
 					]
 				]			
 			].
@@ -53,13 +59,11 @@ runIndividualBasedSimulationFor: tMax withStep: dT
 		t := t + dT.
 		].		
 	results := Dictionary new.
-	k := 1.
-	self equations do: [:each|
+	1 to: nbCompartments do: [:cID|
 		|series|
-		series := KESeries from: (data at:k) withIndex: (timeIndex at:k).
-		results at: (each variable symbol) put: series.
-		k := k+1
-		].
+		series := KESeries from: (data at: cID) withIndex: (timeIndex at: cID).
+		results at: (listCompSym at: cID) put: series.
+		].	
 	^results
 	
 

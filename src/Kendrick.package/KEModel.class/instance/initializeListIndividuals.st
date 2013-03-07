@@ -3,11 +3,15 @@ initializeListIndividuals
 
 listOfIndividuals := Bag new.	
 compartments do: [:each|
-	(each numberOfIndividuals > 0) ifTrue: [
-		(each numberOfIndividuals) timesRepeat: [
-			|anIndividual|
-			anIndividual := (KEIndividual new) currentStatus: (each status); nextStatus: nil. 			
-			listOfIndividuals add: anIndividual.	
+	1 to: (each numberOfSpecies) do:[:id|
+		|nbIdv|
+		nbIdv := (each numberOfIndividuals) at: id.
+		nbIdv > 0 ifTrue: [
+			nbIdv timesRepeat: [
+				|anIndividual|
+				anIndividual := (KEIndividual new) currentStatus: (each status); nextStatus: nil; specieID: id. 			
+				listOfIndividuals add: anIndividual.	
+				]
 			]
 		]
-	].		
+	].

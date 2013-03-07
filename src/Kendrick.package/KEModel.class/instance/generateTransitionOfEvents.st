@@ -1,11 +1,10 @@
 as yet unclassified
 generateTransitionOfEvents
 
-| listOfNewEvents count |
+| listOfTransitions count |
 eventList := self generateEvents.
-
 	"Finding transition of each event in eventList. Each transition: rate, actions, fromStatus, toStatus. If event has no transition, toStatus: nil"
-	listOfNewEvents := Array new: (eventList size).
+	listOfTransitions := Array new: (eventList size).
 	count := 1.
 	eventList do:[:eachEvent|
 		|aTransition|
@@ -14,7 +13,7 @@ eventList := self generateEvents.
 			(modification > 0) ifTrue: [aTransition toStatus: status].
 			(modification < 0) ifTrue: [aTransition fromStatus: status].
 			].
-		listOfNewEvents at: count put: aTransition.
+		listOfTransitions at: count put: aTransition.
 		count := count + 1.
 		].
-	^listOfNewEvents
+	^listOfTransitions
