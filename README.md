@@ -29,7 +29,7 @@ Gofer iturl: 'http://smalltalkhub.com/mc/UMMISCO/Kendrick/main';package: 'Kend
 ```shell
   mkdir Kendrick
   cd Kendrick
-  git clone https://github.com/SergeStinckwich/Kendrick.git
+  git clone https://github.com/UMMISCO/Kendrick.git
 ```
 
 * Attach to filetree repository and load latest packages (use correct path to your filetree download/clone):
