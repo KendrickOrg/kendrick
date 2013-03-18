@@ -3,10 +3,22 @@ generateEvents
 |list |
 list := Bag new.
 (op = #*)|(op  = #/)|(op   = #^) ifTrue:[
-	|e|
-	e := KEEvent new.
-	e rate: self normalize.
-	list add:e].
+	self isSeparable ifTrue: [
+		|l|
+		l := self separateExpression.
+		l do: [:each|
+			|e|
+			e := KEEvent new.
+			e rate: each normalize.
+			list add:e
+			]
+		]
+	ifFalse: [
+		|e|
+		e := (KEEvent new) rate: self normalize.
+		list add: e.
+		]
+	].
 
 (op   = #+)
 ifTrue:[
