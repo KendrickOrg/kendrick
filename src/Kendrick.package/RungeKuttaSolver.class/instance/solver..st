@@ -19,7 +19,7 @@ y := Array new: nbEquations.
 
 "In this case, the result will be an array of two dimensions."
 
-data := Array new: nbCompartments. "ex: (I[1] I[2] I[3])"
+data := Array new: nbCompartments. 
 timeIndex := Array new: nbCompartments.
 
 (1 to: nbCompartments) do: [:indexCompartment|
@@ -33,7 +33,8 @@ timeIndex := Array new: nbCompartments.
 	k := 1.
     listOfEquations do:[:each|
 		"each compartment is a vector, so, numberOfIndividuals of each compartment is an array of 1 dimension"
-		y at: k put:(((model atCompartment: (each variable symbol)) numberOfIndividuals) at: (each eqIndex)).
+		Transcript show: each eqIndex;cr.
+		y at: k put:(((model atCompartment: (each variable symbol)) numberOfIndividuals) at: (each eqIndex)).		
 		k := k + 1.		
 		].	
 

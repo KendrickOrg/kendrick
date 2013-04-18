@@ -1,4 +1,3 @@
 accessing
 fnIdVariable
-
-^fnIdVariable 
+	^ fnIdVariable

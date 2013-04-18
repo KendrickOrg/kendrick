@@ -1,4 +1,3 @@
 accessing
-fnIdVariable: aVar
-
-fnIdVariable := aVar
+fnIdVariable: anObject
+	fnIdVariable := anObject

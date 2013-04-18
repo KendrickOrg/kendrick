@@ -1,3 +1,3 @@
-as yet unclassified
-eqIdVariable: aName
-	eqIdVariable := aName
+accessing
+eqIdVariable: anObject
+	eqIdVariable := anObject

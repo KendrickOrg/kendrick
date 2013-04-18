@@ -1,3 +1,3 @@
 accessing
-idVariable: aVar
-	idVariable := aVar
+idVariable: anObject
+	idVariable := anObject

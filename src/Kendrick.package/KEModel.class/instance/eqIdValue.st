@@ -1,4 +1,3 @@
 accessing
 eqIdValue
-
-^eqIdValue 
+	^ eqIdValue
