@@ -2,14 +2,16 @@ as yet unclassified
 mergeEventsWithSameActions
 	|oldList|
 	oldList := eventList.
-	eventList := Bag new.
-	oldList do:[:each|
-		(each hasAnEventWithSameActionsIn: eventList)
-		ifTrue: [|e oldRate|
-			e := each findEventWithSameActionsIn: eventList.
+	oldList do: [:each|
+		|e|
+		eventList remove: each.
+		e := each findEventWithSameActionsIn: eventList.
+		e ifNil: [eventList add: each] 
+		ifNotNil: [
+			|oldRate|
 			oldRate := e rate.
-			e rate: ((KEBinaryExpression new) op: #+; leftHandSide: (each rate); rightHandSide: oldRate)]
-		ifFalse: [eventList add: each]
+			e rate: ((KEBinaryExpression new) op: #+; leftHandSide: each rate; rightHandSide: oldRate)
+			]
 		].
 	^ eventList
 

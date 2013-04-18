@@ -1,3 +1,3 @@
 accessing
-numberOfSpecies: anObject
-	numberOfSpecies := anObject
+numberOfSpecies: aValue
+	numberOfSpecies := aValue

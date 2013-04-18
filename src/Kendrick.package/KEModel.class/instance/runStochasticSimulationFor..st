@@ -16,7 +16,7 @@ runStochasticSimulationFor: tMax
 		].
 	1 to: nbCompartment do: [:index| timeIndex at:index put:(Array new: 200000)].
 	
-	self generateEvents.	
+	eventList := self generateEvents.	
 	t := 0.
 	i := 1.
 	rand1 := Random new.

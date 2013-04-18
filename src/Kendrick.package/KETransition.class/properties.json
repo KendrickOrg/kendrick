@@ -1,18 +1,14 @@
 {
 	"commentStamp" : "",
-	"super" : "KEObject",
+	"super" : "KEEvent",
 	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"rate",
-		"rateValue",
 		"fromStatus",
 		"toStatus",
-		"prob",
-		"eqIndex",
-		"eqIndexVar"
+		"prob"
 	],
 	"name" : "KETransition",
 	"type" : "normal"

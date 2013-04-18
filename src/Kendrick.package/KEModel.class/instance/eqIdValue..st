@@ -1,3 +1,4 @@
 accessing
-eqIdValue: anObject
-	eqIdValue := anObject
+eqIdValue: aValue
+
+eqIdValue := aValue

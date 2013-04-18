@@ -1,3 +1,4 @@
 accessing
-fnIdValue: anObject
-	fnIdValue := anObject
+fnIdValue: aValue
+
+fnIdValue := aValue

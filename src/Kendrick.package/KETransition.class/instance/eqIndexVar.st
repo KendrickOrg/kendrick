@@ -1,3 +1,0 @@
-accessing
-eqIndexVar
-	^ eqIndexVar

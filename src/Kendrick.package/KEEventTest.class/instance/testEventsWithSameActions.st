@@ -5,8 +5,8 @@ testEventsWithSameActions
 e1 := KEEvent new.
 e2 := KEEvent new.
 
-e1 actions at: ((KEVariable new) symbol: #S) put: 1; at: ((KEVariable new) symbol: #I) put: -1.
-e2 actions at: ((KEVariable new) symbol: #S) put: 1; at: ((KEVariable new) symbol: #I) put: -1.
+e1 actions at: #S put: 1; at: #I put: -1.
+e2 actions at: #S put: 1; at: #I put: -1.
 
 listEvents := Bag new.
 listEvents add: e1.

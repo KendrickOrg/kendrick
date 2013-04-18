@@ -1,3 +1,3 @@
 accessing
-eqIndex2: anObject
-	eqIndex2 := anObject
+eqIndex2: anIndex
+	eqIndex2 := anIndex
