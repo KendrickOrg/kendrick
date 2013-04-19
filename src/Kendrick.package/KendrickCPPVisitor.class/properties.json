@@ -6,7 +6,9 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"stream"
+		"stream",
+		"compartments",
+		"nbOfCompartments"
 	],
 	"name" : "KendrickCPPVisitor",
 	"type" : "normal"
