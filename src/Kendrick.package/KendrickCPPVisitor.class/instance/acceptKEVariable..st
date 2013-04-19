@@ -1,3 +1,5 @@
 as yet unclassified
 acceptKEVariable: aNode
-	stream nextPutAll: aNode symbol
+	aNode symbol size = 1
+		ifTrue: [ stream nextPutAll: 'x[' , (compartments at: aNode symbol) asString , ']' ]
+		ifFalse: [ stream nextPutAll: aNode symbol asString ]

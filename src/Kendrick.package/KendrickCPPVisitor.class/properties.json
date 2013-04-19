@@ -2,7 +2,9 @@
 	"commentStamp" : "",
 	"super" : "Object",
 	"category" : "Kendrick-Visitors",
-	"classinstvars" : [ ],
+	"classinstvars" : [
+		"aNode"
+	],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [

@@ -6,7 +6,9 @@ visitNode: aNode
 		ifTrue: [ self acceptKEModel: aNode ].
 	aNode class == KEVariable
 		ifTrue: [ self acceptKEVariable: aNode ].
-	aNode class == KEBinaryExpression 
+	aNode class == KEBinaryExpression
 		ifTrue: [ self acceptKEBinaryExpression: aNode ].
-	aNode class == KECompartment 
-		ifTrue: [self acceptKECompartment: aNode]
+	aNode class == KECompartment
+		ifTrue: [ self acceptKECompartment: aNode ].
+	aNode class == KEEquation
+		ifTrue: [ self acceptKEEQuation: aNode ]

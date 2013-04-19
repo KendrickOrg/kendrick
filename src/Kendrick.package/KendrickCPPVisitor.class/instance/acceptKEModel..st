@@ -1,2 +1,3 @@
 as yet unclassified
-acceptKEModel: aModelNode
+acceptKEModel: aNode
+	stream nextPutAll: (aNode status ) asString.
