@@ -1,2 +1,3 @@
 as yet unclassified
-acceptKEParameter: aModelNode
+acceptKEParameter: aNode
+	stream nextPutAll: 'const double ', (aNode symbol) asString ,' = ', (aNode value) asString

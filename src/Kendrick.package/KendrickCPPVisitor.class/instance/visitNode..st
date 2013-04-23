@@ -11,4 +11,6 @@ visitNode: aNode
 	aNode class == KECompartment
 		ifTrue: [ self acceptKECompartment: aNode ].
 	aNode class == KEEquation
-		ifTrue: [ self acceptKEEQuation: aNode ]
+		ifTrue: [ self acceptKEEQuation: aNode ].
+	aNode class == KEParameter
+		ifTrue: [ self acceptKEParameter: aNode ]
