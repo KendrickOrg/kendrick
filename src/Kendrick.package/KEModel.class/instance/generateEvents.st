@@ -12,4 +12,4 @@ equations do:[:each | |list|
 		 ifFalse:[ eventList add:e]
 		].
 	].
-^eventList
+^ self mergeEventsWithSameActions

@@ -8,7 +8,5 @@ testMergeEventsWithSameActions
 	model addEquation: 'R:t=K*H' parseAsAnEquation.
 	
 	eventList := model generateEvents.
-	self assert: 6 equals: eventList size.
-	eventList := model mergeEventsWithSameActions.	
 	self assert: 5 equals: eventList size.
 	

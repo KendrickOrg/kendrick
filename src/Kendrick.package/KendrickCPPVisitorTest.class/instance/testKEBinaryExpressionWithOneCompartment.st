@@ -11,6 +11,6 @@ testKEBinaryExpressionWithOneCompartment
 		leftHandSide: a;
 		rightHandSide: b.
 	visitor := KendrickCPPVisitor new.
-	visitor visitNode: (KECompartment new status: #S).
+	visitor visitNode: (KECompartment new status: #S; numberOfIndividuals: 9999).
 	result := visitor visitNode: input.
-	self assert: result contents = 'x[0]*2'
+	self assert: result contents = '(x[0]*2)'

@@ -16,7 +16,8 @@
 		"eqIdValue",
 		"fnIdVariable",
 		"fnIdValue",
-		"eqIdVariable"
+		"eqIdVariable",
+		"simulator"
 	],
 	"name" : "KEModel",
 	"type" : "normal"

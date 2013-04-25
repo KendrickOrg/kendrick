@@ -1,5 +1,8 @@
 as yet unclassified
 acceptKEVariable: aNode
-	aNode symbol size = 1
-		ifTrue: [ stream nextPutAll: 'x[' , (compartments at: aNode symbol) asString , ']' ]
-		ifFalse: [ stream nextPutAll: aNode symbol asString ]
+	|k aStream|
+	aStream := WriteStream on: (String new: 60).
+	k := parameters at: (aNode symbol) ifAbsent: [nil]. 
+	k ifNil: [ aStream nextPutAll: 'x[' , (compartments at: aNode symbol) asString , ']' ] 
+	   ifNotNil:  [ aStream nextPutAll: aNode symbol asString ].
+	^ aStream contents

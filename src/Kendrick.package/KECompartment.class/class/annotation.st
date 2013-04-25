@@ -1,4 +1,4 @@
 meta
 annotation
-	<MSEClass: #Compartment super: #KEObject>
-	<package: #Kendrick>
+	<MSEClass: #Compartment super: #Object>
+	<package: #KE>

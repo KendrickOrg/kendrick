@@ -1,3 +1,6 @@
 as yet unclassified
 acceptKENumerical: aModelNode
-	stream nextPutAll: (aModelNode number) asString
+	| aStream |
+	aStream := WriteStream on: (String new: 60).
+	aStream nextPutAll: (aModelNode number) asString.
+	^ aStream contents

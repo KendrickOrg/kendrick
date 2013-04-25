@@ -14,5 +14,5 @@ testKEBinaryExpression
 
 	result := KendrickCPPVisitor new visitNode: input.
 	
-	self assert: result contents = '3+7'.
+	self assert: result contents = '(3+7)'.
 	

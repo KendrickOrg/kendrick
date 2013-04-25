@@ -1,4 +1,4 @@
 meta
 annotation
-	<MSEClass: #Parameter super: #KEObject>
-	<package: #Kendrick>
+	<MSEClass: #Parameter super: #Object>
+	<package: #KE>

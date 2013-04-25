@@ -1,10 +1,10 @@
 as yet unclassified
 testKECompartmentNode
 	| input result visitor |
-	input := KECompartment new status: #S.
+	input := (KECompartment new status: #S; numberOfIndividuals: 9999).
 	visitor := KendrickCPPVisitor new.
 	result := visitor visitNode: input.
-	self assert: result nbOfCompartments = 1.
-	input := KECompartment new status: #I.
+	self assert: result = ('x[0] = 9999;', String cr).
+	input := KECompartment new status: #I; numberOfIndividuals: 1.
 	result := visitor visitNode: input.
-	self assert: (result compartments at: #I) = 1
+	self assert: result = ('x[1] = 1;', String cr).

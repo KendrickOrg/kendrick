@@ -1,9 +1,11 @@
 as yet unclassified
 acceptKEEQuation:  aNode
-	|expression|
+	|expression aStream |
+	aStream := WriteStream on: (String new: 60).
 	expression := aNode expression.
-	stream nextPutAll: 'dxdt['.
-	stream nextPutAll: (compartments at: aNode variable symbol) asString, ']='.
-	self visitNode: expression.
-	stream nextPutAll: ';'
+	aStream nextPutAll: 'dxdt['.
+	aStream nextPutAll: (compartments at: aNode variable symbol) asString, ']='.
+	aStream nextPutAll: (self visitNode: expression).
+	aStream nextPutAll: ';';cr.
+	^ aStream contents
 		

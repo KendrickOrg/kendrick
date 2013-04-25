@@ -1,4 +1,4 @@
 meta
 annotation
-	<MSEClass: #Event super: #KEObject>
-	<package: #Kendrick>
+	<MSEClass: #Event super: #Object>
+	<package: #KE>

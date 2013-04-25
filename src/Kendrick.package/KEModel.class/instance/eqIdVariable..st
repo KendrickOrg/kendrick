@@ -1,3 +1,3 @@
 accessing
-eqIdVariable: aName
-	eqIdVariable := aName
+eqIdVariable: anObject
+	eqIdVariable := anObject

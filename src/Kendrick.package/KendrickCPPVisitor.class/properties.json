@@ -10,7 +10,8 @@
 	"instvars" : [
 		"stream",
 		"compartments",
-		"nbOfCompartments"
+		"nbOfCompartments",
+		"parameters"
 	],
 	"name" : "KendrickCPPVisitor",
 	"type" : "normal"

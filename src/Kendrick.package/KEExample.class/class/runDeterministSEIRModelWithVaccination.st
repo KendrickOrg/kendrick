@@ -18,5 +18,5 @@ runDeterministSEIRModelWithVaccination
 	model addEquation: (PPODEParser parse: 'E:t=beta*S*I-sigma*E-mu*E').
 	model addEquation: (PPODEParser parse: 'I:t=sigma*E-gamma*I-mu*I').
 	model addEquation: (PPODEParser parse: 'R:t=mu*p*N*gamma*I-mu*R').
-	result := model runDeterministSimulationFrom: 0 to: 100 with: 0.01.
+	result := model runDeterministSimulationFrom: 0 to: 100 withStep: 0.01.
 	result keysAndValuesDo: [ :key :eachSeries | eachSeries log plot: key ]
