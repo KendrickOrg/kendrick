@@ -11,9 +11,12 @@ acceptKEModel: aNode
 	"visit all compartments"
 	stream nextPutAll: '#define nbOfCompartment ', (aNode compartments size) asString;cr.
 	stream nextPutAll: 'double initialValue[nbOfCompartment];';cr.
+	stream nextPutAll: 'void initializeCompartments()';cr.
+	stream nextPutAll: '{';cr.
 	aNode compartments do: [:each|
 		stream nextPutAll: (self visitNode: each).
 		].
+	stream nextPutAll: '}';cr.
 	"visit all parameters"
 	aNode parameters do: [:each|
 		stream nextPutAll: (self visitNode: each).
@@ -30,6 +33,7 @@ acceptKEModel: aNode
 	aNode simulator class = KEDeterministicSimulator ifTrue: [
 		stream nextPutAll: 'int main(int argc, char **argv)';cr.
 		stream nextPutAll: '{';cr.
+		stream nextPutAll: 'initializeCompartments();';cr.
 		stream nextPutAll: 'solverDeteministe();';cr.
 		stream nextPutAll: '}';cr.
 		].
