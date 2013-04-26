@@ -16,3 +16,5 @@ visitNode: aNode
 		ifTrue: [ ^ self acceptKEParameter: aNode ].
 	aNode class == KEUnaryExpression
 		ifTrue: [ ^ self acceptKEUnaryExpression: aNode ].
+	aNode class == KEDeterministicSimulator
+		ifTrue: [ ^ self acceptKEDeterministicSimulator: aNode ].
