@@ -1,4 +1,4 @@
 evaluating
 number
-
-^number
+	<MSEProperty: #number type: #Number>
+	^number

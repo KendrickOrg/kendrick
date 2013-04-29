@@ -1,4 +1,4 @@
 accessing
 fromStatus 
-
-^fromStatus
+	<MSEProperty: #fromStatus type: #KEVariable>
+	^ fromStatus

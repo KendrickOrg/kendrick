@@ -1,4 +1,5 @@
 accessing
 actions
-
-^actions
+	<MSEProperty: #actions type: #KEVariable>
+	<multivalued>
+	^actions

@@ -11,17 +11,10 @@ acceptKEDeterministicSimulator: aNode
 	aStream nextPutAll: 'state_type x (nbOfCompartment);';cr.
 	aStream nextPutAll: 'for( size_t i = 0; i < nbOfCompartment; ++i )';cr.
 	aStream nextPutAll: 'x[i] = initialValue[i];';cr.
-	aStream nextPutAll: 'for( size_t i = tMin ; t < tMax ; ++i,t+=dt )';cr.
+	aStream nextPutAll: 'for( size_t i = tMin ; i < tMax ; ++i,t+=dt )';cr.
 	aStream nextPutAll: '{';cr.
 	aStream nextPutAll: 'rk4.do_step( modelEquations , x , t , dt );';cr.
 	aStream nextPutAll: 'std::cout<<t<<":: "<< x[0]<<" "<<x[1]<< x[2] <<  "\n";';cr.
-	
-	aStream nextPutAll: 	'for(int j = 0; j < nbOfCompartment; j++)' 	;cr.
-	aStream nextPutAll: 	'chartManager[j].addPoint(x[j]);' ;cr.
-		
-	
 	aStream nextPutAll: '}';cr.
-	aStream nextPutAll: 	'for(int j = 0; j < nbOfCompartment; j++)' 	;cr.
-	aStream nextPutAll: 	'chartManager[j].drawChart(compartmentName[j],j+1,tMin,tMax,dt);' ;cr.
 	aStream nextPutAll: '}';cr.
 	^ aStream contents.

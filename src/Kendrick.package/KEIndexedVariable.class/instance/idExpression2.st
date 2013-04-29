@@ -1,4 +1,4 @@
 as yet unclassified
 idExpression2
-
-^idExpression2
+	<MSEProperty: #idExpression2 type: #String>
+	^idExpression2

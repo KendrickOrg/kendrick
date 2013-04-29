@@ -1,4 +1,4 @@
 accessing
 toStatus
-
-^toStatus 
+	<MSEProperty: #toStatus type: #KEVariable>
+	^ toStatus 

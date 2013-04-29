@@ -1,4 +1,4 @@
 accessing
 rate
-
-^ rate
+	<MSEProperty: #rate type: #KEExpression>
+	^ rate

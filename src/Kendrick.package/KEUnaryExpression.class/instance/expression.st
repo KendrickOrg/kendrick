@@ -1,3 +1,4 @@
 as yet unclassified
 expression 
-^ expression
+	<MSEProperty: #expression type: #KEExpression>
+	^ expression

@@ -13,6 +13,6 @@
 		"nbOfCompartments",
 		"parameters"
 	],
-	"name" : "KendrickCPPVisitor",
+	"name" : "KECPPVisitor",
 	"type" : "normal"
 }

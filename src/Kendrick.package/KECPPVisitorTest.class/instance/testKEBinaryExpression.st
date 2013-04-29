@@ -12,7 +12,7 @@ testKEBinaryExpression
 		leftHandSide: a;
 		rightHandSide: b.
 
-	result := KendrickCPPVisitor new visitNode: input.
+	result := KECPPVisitor new visitNode: input.
 	
 	self assert: result contents = '(3+7)'.
 	

@@ -1,4 +1,4 @@
 accessing
 prob
-
-^prob 
+	<MSEProperty: #prob type: #Number>
+	^prob 

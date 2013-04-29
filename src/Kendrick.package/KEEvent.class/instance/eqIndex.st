@@ -1,4 +1,4 @@
 accessing
 eqIndex
-
-^ eqIndex
+	<MSEProperty: #eqIndex type: #Number>
+	^ eqIndex

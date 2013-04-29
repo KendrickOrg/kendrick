@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "KendrickCPPVisitorTest",
+	"name" : "KECPPVisitorTest",
 	"type" : "normal"
 }

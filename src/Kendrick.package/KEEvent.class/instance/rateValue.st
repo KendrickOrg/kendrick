@@ -1,4 +1,4 @@
 accessing
 rateValue 
-
-^ rateValue 
+	<MSEProperty: #rateValue type: #Number>
+	^ rateValue 
