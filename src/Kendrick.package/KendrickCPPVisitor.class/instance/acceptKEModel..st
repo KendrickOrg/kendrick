@@ -11,6 +11,10 @@ acceptKEModel: aNode
 	"visit all compartments"
 	stream nextPutAll: '#define nbOfCompartment ', (aNode compartments size) asString;cr.
 	stream nextPutAll: 'double initialValue[nbOfCompartment];';cr.
+	
+	stream nextPutAll: 'ChartManager chartManager[nbOfCompartment];';cr.
+	stream nextPutAll: 'string compartmentName[nbOfCompartment];';cr.
+	
 	stream nextPutAll: 'void initializeCompartments()';cr.
 	stream nextPutAll: '{';cr.
 	aNode compartments do: [:each|
