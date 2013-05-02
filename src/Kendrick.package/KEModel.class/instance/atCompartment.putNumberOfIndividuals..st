@@ -5,5 +5,5 @@ atCompartment: aStatus putNumberOfIndividuals: aValue
 		ifTrue: [anArray := aValue] 
 		ifFalse: [anArray := Array new: 1.
 				   anArray at: 1 put: aValue].
-	compartment := (KECompartment new) status: aStatus; numberOfIndividuals: anArray; numberOfSpecies: (anArray size).
+	compartment := (KECompartment new) status: aStatus; numberOfIndividuals: anArray; numberOfSpecies: (anArray size); initialValue: anArray.
 self addCompartment: compartment

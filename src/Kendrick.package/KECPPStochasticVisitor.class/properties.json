@@ -1,11 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "TestCase",
-	"category" : "Kendrick-Visitors-Tests",
+	"super" : "KECPPVisitor",
+	"category" : "Kendrick-Visitors",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "KECPPVisitorTest",
+	"name" : "KECPPStochasticVisitor",
 	"type" : "normal"
 }
