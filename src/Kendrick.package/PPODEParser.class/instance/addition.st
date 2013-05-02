@@ -3,6 +3,6 @@ addition
 
 ^ super addition foldLeft: [:a :op :b | 
 		(KEBinaryExpression new)
-		op: op inputValue asSymbol;
+		op: op value asSymbol;
 		leftHandSide:a;
 		rightHandSide:b]

@@ -8,7 +8,8 @@
 	"instvars" : [
 		"status",
 		"numberOfIndividuals",
-		"numberOfSpecies"
+		"numberOfSpecies",
+		"initialValue"
 	],
 	"name" : "KECompartment",
 	"type" : "normal"
