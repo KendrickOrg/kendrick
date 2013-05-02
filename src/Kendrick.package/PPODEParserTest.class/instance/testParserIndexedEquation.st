@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testParserIndexedEquation
 
 |  model s i r dsdt didt drdt |
