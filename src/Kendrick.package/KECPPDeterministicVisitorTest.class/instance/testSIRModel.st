@@ -1,5 +1,5 @@
 as yet unclassified
-testKEModelNodeInDeterministic
+testSIRModel
 	| model result visitor |
 	model := KEModel new.
 	model atCompartment: #S putNumberOfIndividuals: 1e5 - 1.
