@@ -1,6 +1,7 @@
 as yet unclassified
 acceptKEModel: aNode
 	|working fileName|
+	listCompartment :=(' ')asString .
 	"Get the name of the model as the name of cpp file"
 	fileName := self getFileName: aNode.
 	"Initialize a file in which all code cpp generated will be saved"
@@ -10,10 +11,11 @@ acceptKEModel: aNode
 	self prepareCPPFile.
 	"visit all compartments"
 	stream nextPutAll: '#define nbOfCompartment ', (aNode compartments size) asString;cr.
-	stream nextPutAll: 'double initialValue[nbOfCompartment];';cr.
+	stream nextPutAll: '#define nbOfSpecies ', (aNode numberOfSpecies  ) asString;cr.
+	stream nextPutAll: 'double initialValue[nbOfCompartment * nbOfSpecies];';cr.
 	
-	stream nextPutAll: 'ChartManager chartManager[nbOfCompartment];';cr.
-	stream nextPutAll: 'string compartmentName[nbOfCompartment];';cr.
+	stream nextPutAll: 'ChartManager chartManager[nbOfCompartment * nbOfSpecies];';cr.
+	stream nextPutAll: 'string compartmentName[nbOfCompartment * nbOfSpecies];';cr.
 	
 	stream nextPutAll: 'void initializeCompartments()';cr.
 	stream nextPutAll: '{';cr.
@@ -31,6 +33,7 @@ acceptKEModel: aNode
 	aNode equations do: [:each|
 		stream nextPutAll: (self visitNode: each).
 		].
+
 	stream nextPutAll: '}';cr.
 	"visit the mode of simulation of the model"
 	stream nextPutAll: (self visitNode: aNode simulator).
@@ -39,6 +42,7 @@ acceptKEModel: aNode
 		stream nextPutAll: '{';cr.
 		stream nextPutAll: 'initializeCompartments();';cr.
 		stream nextPutAll: 'solverDeteministe();';cr.
+		stream nextPutAll:  'cvWaitKey(0);';cr.
 		stream nextPutAll: '}';cr.
 		].
 	"Enregistrer le fichier"

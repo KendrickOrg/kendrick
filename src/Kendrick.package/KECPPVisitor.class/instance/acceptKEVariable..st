@@ -7,6 +7,7 @@ acceptKEVariable: aNode
 			aStream nextPutAll: (aNode symbol asString). 
 			^ aStream contents].
 	k := parameters at: (aNode symbol) ifAbsent: [nil]. 
-	k ifNil: [ aStream nextPutAll: 'x[' , (compartments at: aNode symbol) asString , ']' ] 
+		
+	k ifNil: [ aStream nextPutAll: 'x[' , (compartments at: aNode symbol) asString , ']'] 
 	   ifNotNil:  [ aStream nextPutAll: aNode symbol asString ].
 	^ aStream contents
