@@ -4,13 +4,10 @@
 	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [ ],
 	"pools" : [ ],
-	"classvars" : [
-		"DataModels",
-		"SampleModels",
-		"SampleModelsV2",
-		"SampleModelsV3"
+	"classvars" : [ ],
+	"instvars" : [
+		"magritteParentPrototype"
 	],
-	"instvars" : [ ],
-	"name" : "KEExample",
+	"name" : "KEGlamour",
 	"type" : "normal"
 }

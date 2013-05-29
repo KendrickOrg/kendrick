@@ -1,16 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "Object",
+	"super" : "KEGlamourSeasideExamples",
 	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [ ],
 	"pools" : [ ],
-	"classvars" : [
-		"DataModels",
-		"SampleModels",
-		"SampleModelsV2",
-		"SampleModelsV3"
-	],
+	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "KEExample",
+	"name" : "KEGLMSeasideMultiHost",
 	"type" : "normal"
 }

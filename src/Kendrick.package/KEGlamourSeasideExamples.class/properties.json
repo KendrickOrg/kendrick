@@ -1,16 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "Object",
+	"super" : "SGLComponent",
 	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [ ],
 	"pools" : [ ],
-	"classvars" : [
-		"DataModels",
-		"SampleModels",
-		"SampleModelsV2",
-		"SampleModelsV3"
-	],
+	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "KEExample",
+	"name" : "KEGlamourSeasideExamples",
 	"type" : "normal"
 }
