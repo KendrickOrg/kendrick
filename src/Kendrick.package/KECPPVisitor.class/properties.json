@@ -11,9 +11,7 @@
 		"stream",
 		"compartments",
 		"nbOfCompartments",
-		"parameters",
-		"listCompartment",
-		"bStream"
+		"parameters"
 	],
 	"name" : "KECPPVisitor",
 	"type" : "normal"

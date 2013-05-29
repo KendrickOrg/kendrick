@@ -1,5 +1,5 @@
 as yet unclassified
-testSIRModel
+testKEModelNodeInDeterministic
 	| model result visitor |
 	model := KEModel new.
 	model atCompartment: #S putNumberOfIndividuals: 1e5 - 1.
@@ -11,7 +11,7 @@ testSIRModel
 	model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I').
 	model addEquation: (PPODEParser parse: 'R:t=gamma*I').
 	model runDeterministSimulationFrom: 0.0 to: 1.0 withStep: 0.0001.
-	visitor := KECPPDeterministicVisitor new.
+	visitor := KECPPVisitor new.
 	visitor visitNode: model.
 	self assert: (visitor compartments size) = 3.
 	self assert: (visitor parameters size) = 2.

@@ -6,8 +6,7 @@ compartments do: [:each|
 	each status = aStatus ifTrue:[
 		arrayOfIndividuals := each numberOfIndividuals.
 		arrayOfIndividuals ifNil: [each numberOfIndividuals: (Array new: (each numberOfSpecies))].
-		index1 to: index2 do: [:index | (each numberOfIndividuals) at: index put: nbIndividuals].		
-		each initialValue: (each numberOfIndividuals).	
+		index1 to: index2 do: [:index | (each numberOfIndividuals) at: index put: nbIndividuals.]			
 		]
 	]
 
