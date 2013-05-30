@@ -1,5 +1,5 @@
 data
-testModelMultiHost
+sampleMultiHostModels
 "Model MultiHost"
 DataModels ifNil: 
 [
