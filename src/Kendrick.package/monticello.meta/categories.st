@@ -3,7 +3,9 @@ SystemOrganization addCategory: #'Kendrick-ExternalDSL'!
 SystemOrganization addCategory: #'Kendrick-Glamour'!
 SystemOrganization addCategory: #'Kendrick-Math-ODE'!
 SystemOrganization addCategory: #'Kendrick-SemanticModel'!
+SystemOrganization addCategory: #'Kendrick-SemanticModel-Tests'!
 SystemOrganization addCategory: #'Kendrick-Tests-ExternalDSL'!
 SystemOrganization addCategory: #'Kendrick-Tests-SemanticModel'!
 SystemOrganization addCategory: #'Kendrick-Tests-Visitors'!
 SystemOrganization addCategory: #'Kendrick-Visitors'!
+SystemOrganization addCategory: #'Kendrick-Visitors-Tests'!

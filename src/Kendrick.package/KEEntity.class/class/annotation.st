@@ -1,5 +1,5 @@
 meta
 annotation
-	<MSEClass: #Event super: #KEEntity >
+	<MSEClass: #Entity super: #Object>
 	<package: #KE>
 	^ self

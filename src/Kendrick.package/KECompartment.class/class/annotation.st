@@ -1,5 +1,5 @@
 meta
 annotation
-	<MSEClass: #Compartment super: #Object>
+	<MSEClass: #Compartment super: #KEEntity>
 	<package: #KE>
 	^self

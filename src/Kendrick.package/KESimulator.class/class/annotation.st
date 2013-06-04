@@ -1,5 +1,5 @@
 as yet unclassified
 annotation
-	<MSEClass: #Simulator super: #Object>
+	<MSEClass: #Simulator super: #KEEntity >
 	<package: #KE>
 	^ self
