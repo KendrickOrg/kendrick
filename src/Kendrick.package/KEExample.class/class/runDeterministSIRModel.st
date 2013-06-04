@@ -14,5 +14,5 @@ runDeterministSIRModel
 	model addEquation: (PPODEParser parse: 'R:t=gamma*I').
 	
 	result := model runDeterministSimulationFrom: 0.0 to: 1.0 withStep: 0.0001.
-	self halt.
+	
 	result keysAndValuesDo: [ :key :eachSeries | eachSeries plot: key ]
