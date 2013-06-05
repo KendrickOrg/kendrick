@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "KEObject",
+	"name" : "KEEntity",
 	"type" : "normal"
 }

@@ -1,5 +1,5 @@
 as yet unclassified
 annotation
-	<MSEClass: #Transition super: #Object>
+	<MSEClass: #Transition super: #KEEntity >
 	<package: #KE>
 	^ self

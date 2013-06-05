@@ -3,7 +3,7 @@ runStochasticModelMultiHost
 
 "self runStochasticModelMultiHost"
 
-|model compartment dsdt didt result|
+|model dsdt didt result|
 
 model := KEModel new.
 model atCompartment: #S putNumberOfIndividuals: #(9999 1000 2000).
@@ -22,6 +22,6 @@ model addEquation: dsdt.
 model addEquation: didt.
 
 result := model runStochasticSimulationFor: 1.
-self halt.
+
 result keysAndValuesDo: [ :key :eachSeries | eachSeries sqrt plot: key ]
 

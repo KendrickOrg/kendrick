@@ -4,7 +4,13 @@
 	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [ ],
 	"pools" : [ ],
-	"classvars" : [ ],
+	"classvars" : [
+		"DataModels",
+		"SampleModels",
+		"SampleModelsV2",
+		"SampleModelsV3",
+		"SampleStochasticModel"
+	],
 	"instvars" : [ ],
 	"name" : "KEExample",
 	"type" : "normal"

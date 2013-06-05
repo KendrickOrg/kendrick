@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "KEGlamourSeasideExamples",
+	"category" : "Kendrick-Glamour",
+	"classinstvars" : [
+		"initialize"
+	],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "KEGLMSeasideDeterminist",
+	"type" : "normal"
+}
