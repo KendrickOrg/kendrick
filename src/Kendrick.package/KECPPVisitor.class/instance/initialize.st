@@ -5,3 +5,4 @@ initialize
 	compartments := Dictionary new.
 	parameters := Dictionary new.
 	nbOfCompartments := 0.
+	listCompartment :=Set new.

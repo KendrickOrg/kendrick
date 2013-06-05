@@ -31,5 +31,6 @@ runDeterministicModelMultiStrains
 	didt := 'I[i]:t=beta*S[i]*I[i]-(mu+v)*I[i]+m*(I[i-1]+I[i+1]-2*I[i])' parseAsAnEquation.
 	model addEquation: dsdt.
 	model addEquation: didt.
+	self halt.
 	result := model runDeterministSimulationFrom: 0 to: 8 withStep: 0.01.
 	result keysAndValuesDo: [ :key :eachSeries | eachSeries plot: key ]

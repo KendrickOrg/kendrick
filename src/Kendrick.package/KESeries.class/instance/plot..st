@@ -11,7 +11,6 @@ plot: aSymbol
 			y: f;
 			defaultColor: Color blue;
 			yAxisLabel: Ylabel;
-			xAxisLabel: 'Time';
 			regularAxis;
 			startLineAtZero;
 			width: 1000;

@@ -1,7 +1,7 @@
 as yet unclassified
 acceptKEModel: aNode
 	|working fileName|
-	listCompartment :=(' ')asString .
+	
 	"Get the name of the model as the name of cpp file"
 	fileName := self getFileName: aNode.
 	"Initialize a file in which all code cpp generated will be saved"

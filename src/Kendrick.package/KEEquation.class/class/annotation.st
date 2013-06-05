@@ -1,5 +1,5 @@
 meta
 annotation
-	<MSEClass: #Equation super: #KEEntity>
+	<MSEClass: #Equation super: #Object>
 	<package: #KE>
 	^ self

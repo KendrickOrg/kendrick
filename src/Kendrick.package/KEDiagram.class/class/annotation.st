@@ -1,5 +1,5 @@
 as yet unclassified
 annotation
-	<MSEClass: #Diagram super: #KEEntity >
+	<MSEClass: #Diagram super: #Object>
 	<package: #KE>
 	^ self

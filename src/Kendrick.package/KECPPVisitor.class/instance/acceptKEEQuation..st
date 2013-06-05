@@ -5,7 +5,7 @@ acceptKEEQuation:  aNode
 	expression := aNode expression.
 		c := WriteStream on: (String new: 60).
 		listCompartment = nil
-		ifFalse: [ tmp:= listCompartment includesSubString:  ((aNode variable) asString).]
+		ifFalse: [ tmp:= listCompartment includes:   ((aNode variable) asString)]
 		ifTrue: [ tmp:=true. ].
 		
 		tmp = false
@@ -28,8 +28,10 @@ acceptKEEQuation:  aNode
 					aStream nextPutAll: ';';cr.
 				aStream nextPutAll: '}';cr.
 		].
-				listCompartment := listCompartment, (aNode variable) asString.	
+				listCompartment add:  (aNode variable) asString.			
+				
 				"aStream nextPutAll: listCompartment ;cr."
+				
 				bStream = nil
 				ifFalse:[
 				bStream contents size > 1

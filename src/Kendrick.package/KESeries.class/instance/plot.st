@@ -7,7 +7,6 @@ plot
 		y: f;
 		defaultColor: Color blue;
 		yAxisLabel: 'Number of individuals';
-		xAxisLabel:'Time';
 		regularAxis;
 		startLineAtZero;
 		width: 1000;
