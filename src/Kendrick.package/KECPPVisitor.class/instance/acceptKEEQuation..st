@@ -16,7 +16,8 @@ acceptKEEQuation:  aNode
 				aStream nextPutAll: (compartments at: aNode variable symbol) asString, ']='.
 				aStream nextPutAll: (self visitNode: expression).
 				aStream nextPutAll: ';';cr. 		
-			c nextPutAll: aStream contents.
+			"lttam: bug: duplicate equation"
+			"c nextPutAll: aStream contents."
 		]
 		ifFalse: [  
 				bStream := WriteStream on: (String new: 60).
