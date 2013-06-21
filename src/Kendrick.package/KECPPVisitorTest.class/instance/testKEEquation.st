@@ -8,4 +8,5 @@ testKEEquation
 	visitor visitNode: (KECompartment new status: #I; initialValue: #(2)).
 	visitor visitNode: (KEParameter new symbol: #beta; value: 0.0052).
 	result := visitor visitNode: input.
-	self assert: result contents = ('dxdt[0]=((beta*x[0])*x[1]);', String cr).
+	"self halt."
+	self assert: result contents = (String tab,'dxdt[0]=((beta*x[0])*x[1]);', String cr).

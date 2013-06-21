@@ -1,6 +1,6 @@
 as yet unclassified
 acceptKEVariable: aNode
-	|k aStream|
+	|k aStream |
 	aStream := WriteStream on: (String new: 60).
 	aNode symbol == #t
 		ifTrue: [ 
@@ -8,6 +8,14 @@ acceptKEVariable: aNode
 			^ aStream contents].
 	k := parameters at: (aNode symbol) ifAbsent: [nil]. 
 		
-	k ifNil: [ aStream nextPutAll: 'x[' , (compartments at: aNode symbol) asString , ']'] 
+	k ifNil: [ 
+		compartments at: (aNode symbol) ifAbsent: [ 
+											aStream nextPutAll: (aNode symbol asString). 
+											^ aStream contents. 
+											].
+		
+		aStream nextPutAll: 'x[' , (compartments at: aNode symbol) asString , ']'.
+		]
+	
 	   ifNotNil:  [ aStream nextPutAll: aNode symbol asString ].
 	^ aStream contents

@@ -1,8 +1,6 @@
 as yet unclassified
-runStochasticSIRModel
-	"self runStochasticSIRModel"
- 
-	| model result |
+testSIRModel
+	| model result visitor |
 	model := KEModel new.
 	model atCompartment: #S putNumberOfIndividuals: 1e5 - 1.
 	model atCompartment: #I putNumberOfIndividuals: 1.
@@ -13,5 +11,9 @@ runStochasticSIRModel
 	model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I').
 	model addEquation: (PPODEParser parse: 'R:t=gamma*I').
 	result := model runStochasticSimulationFor: 50 / 365.
-
-	result keysAndValuesDo: [ :key :eachSeries | eachSeries plot: key ]
+	
+	visitor := KECPPStochasticVisitor  new.
+	visitor visitNode: model.
+	
+	self assert: (visitor compartments size) = 3.
+	self assert: (visitor parameters size) = 2.

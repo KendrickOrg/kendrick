@@ -13,7 +13,9 @@
 		"nbOfCompartments",
 		"parameters",
 		"listCompartment",
-		"bStream"
+		"bStream",
+		"rateOfListEvent",
+		"listEvent"
 	],
 	"name" : "KECPPVisitor",
 	"type" : "normal"

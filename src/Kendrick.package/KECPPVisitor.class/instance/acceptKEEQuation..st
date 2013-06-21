@@ -12,7 +12,7 @@ acceptKEEQuation:  aNode
 		ifTrue:[ 
 			aNode 	idVariable = nil
 			ifTrue:[ 
-				aStream nextPutAll: 'dxdt['.
+				aStream nextPutAll: String tab,'dxdt['.
 				aStream nextPutAll: (compartments at: aNode variable symbol) asString, ']='.
 				aStream nextPutAll: (self visitNode: expression).
 				aStream nextPutAll: ';';cr. 		
@@ -21,13 +21,13 @@ acceptKEEQuation:  aNode
 		]
 		ifFalse: [  
 				bStream := WriteStream on: (String new: 60).
-				c nextPutAll: 'for( size_t i =', 'KEmin_', (aNode idVariable) asString ,'-1','; i <', 'KEmax_', (aNode idVariable) asString,'; i+=', 'KEstep_', (aNode idVariable) asString ,' )';cr.
-				c nextPutAll: '{';cr.
-					aStream nextPutAll: 'dxdt['.
-					aStream nextPutAll:  (aNode idVariable ) asString ,'+', 'KEmax_', (aNode idVariable) asString ,'*' ,(compartments at: aNode variable symbol) asString ,  ']='.			
-					aStream nextPutAll: (self visitNode: expression).
-					aStream nextPutAll: ';';cr.
-				aStream nextPutAll: '}';cr.
+				c nextPutAll: String tab,'for( size_t i =', 'KEmin_', (aNode idVariable) asString ,'-1','; i <', 'KEmax_', (aNode idVariable) asString,'; i+=', 'KEstep_', (aNode idVariable) asString ,' )';cr.
+				c nextPutAll: String tab,'{';cr.
+				aStream nextPutAll: String tab,String tab,'dxdt['.
+				aStream nextPutAll: (aNode idVariable ) asString ,'+', 'KEmax_', (aNode idVariable) asString ,'*' ,(compartments at: aNode variable symbol) asString ,  ']='.			
+				aStream nextPutAll: (self visitNode: expression).
+				aStream nextPutAll: ';';cr.
+				aStream nextPutAll: String tab,'}';cr.
 		].
 				listCompartment add:  (aNode variable) asString.			
 				
