@@ -15,7 +15,9 @@
 		"listCompartment",
 		"bStream",
 		"rateOfListEvent",
-		"listEvent"
+		"listEvent",
+		"streamForTranslator",
+		"numberOfEvent"
 	],
 	"name" : "KECPPVisitor",
 	"type" : "normal"
