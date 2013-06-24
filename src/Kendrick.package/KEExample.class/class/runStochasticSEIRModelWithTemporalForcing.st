@@ -18,5 +18,5 @@ runStochasticSEIRModelWithTemporalForcing
 	model addEquation: (PPODEParser parse: 'E:t=beta*(1+betaAmp*cos(t))*S*I-sigma*E-mu*E').
 	model addEquation: (PPODEParser parse: 'I:t=sigma*E-gamma*I-mu*I').
 	model addEquation: (PPODEParser parse: 'R:t=gamma*I-mu*R').
-	result := model runStochasticSimulationFor: 10 / 365.
+	result := model runStochasticSimulationFrom: 0 to: 50/365 withStep:  0.5 / 365.
 	result keysAndValuesDo: [ :key :eachSeries | eachSeries plot: key ]

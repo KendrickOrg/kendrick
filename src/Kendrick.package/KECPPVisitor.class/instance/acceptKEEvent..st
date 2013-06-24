@@ -1,29 +1,18 @@
 as yet unclassified
-acceptKEEvent: aModelNode
+acceptKEEvent: anEventNode
 	| aStream string string2  |
 	string :=''.
 	string2:=''.
 	aStream := WriteStream on: (String new: 60).
 	string := String tab, string, 'rates[', (numberOfEvent ) asString ,'] = '.
-	string := string, 'abs',(self visitNode: aModelNode rate  ), ';'. 
-	"listEvent add: (  aModelNode actions )."
-	
-	  "aDictionary keysDo:[:zip|aCollection add:'zip code = ',zip]. "
-	streamForTranslator nextPutAll: String tab,'case ', (numberOfEvent asString), ':';cr.
-	
-	aModelNode  actions   keysDo: [:each|
-		"stream nextPutAll: (self visitNode: each)."
-			
-		"	rateOfListEvent add: (self visitNode: each).
-			rateOfListEvent add: (aModelNode actions at: each)."
-			string2:= (self visitNode: each).			
-			
-			(aModelNode actions at: each) < 0
-			ifTrue: [ streamForTranslator nextPutAll: String tab, string2 , '=',string2 , ' ', (aModelNode actions at: each) asString,';' ;cr.]
-			ifFalse: [  streamForTranslator nextPutAll: String tab, string2 , '=',string2 , '+', (aModelNode actions at: each) asString,';' ;cr.].
+	string := string, (self visitNode: anEventNode rate  ), ';'. 	
+	streamOfTransaction nextPutAll: String tab, String tab, 'case ', (numberOfEvent asString), ':';cr.	
+	anEventNode actions keysAndValuesDo: [:name :value|
+		string2 := (self visitNode: name).
+		value > 0 ifTrue: [ streamOfTransaction nextPutAll: String tab, String tab, String tab, string2 , '=', string2, '+', value asString,';' ;cr].
+		value < 0 ifTrue: [ streamOfTransaction nextPutAll: String tab, String tab, String tab, string2 , '=', string2, value asString,';' ;cr]			
 	].
-			streamForTranslator nextPutAll:String tab,  'break;';cr.
-			"rateOfListEvent add: '@@@'."
-			numberOfEvent :=numberOfEvent +1.
+	streamOfTransaction nextPutAll:String tab, String tab, String tab, 'break;';cr.
+	numberOfEvent := numberOfEvent +1.
 	aStream nextPutAll: string;cr.
 	^ aStream contents

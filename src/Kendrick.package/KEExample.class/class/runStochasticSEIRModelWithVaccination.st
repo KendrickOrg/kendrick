@@ -18,5 +18,5 @@ runStochasticSEIRModelWithVaccination
 	model addEquation: (PPODEParser parse: 'E:t=beta*S*I-sigma*E-mu*E').
 	model addEquation: (PPODEParser parse: 'I:t=sigma*E-gamma*I-mu*I').
 	model addEquation: (PPODEParser parse: 'R:t=mu*p*N*gamma*I-mu*R').
-	result := model runStochasticSimulationFor: 50/365.
+	result := model runStochasticSimulationFrom: 0 to: 50/365 withStep:  0.5 / 365.
 	result keysAndValuesDo: [ :key :eachSeries | eachSeries log plot: key ]

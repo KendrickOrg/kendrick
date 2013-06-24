@@ -14,5 +14,5 @@ runStochasticSIRModelWithDemography
 	model addEquation: (PPODEParser parse: 'S:t= mu*N-beta*S*I-mu*S').
 	model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I-mu*I').
 	model addEquation: (PPODEParser parse: 'R:t=gamma*I-mu*R').
-	result := model runStochasticSimulationFor: 50 / 365.
+	result := model runStochasticSimulationFrom: 0 to: 50/365 withStep:  0.5 / 365.
 	result keysAndValuesDo: [ :key :eachSeries | eachSeries plot: key ]

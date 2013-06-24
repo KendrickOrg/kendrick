@@ -1,7 +1,7 @@
 initialization
 initializeListIndividuals
 	listOfIndividuals := Bag new.
-	compartments
+	model compartments
 		do: [ :each | 
 			1 to: each numberOfSpecies do: [ :id | 
 				| nbIdv |

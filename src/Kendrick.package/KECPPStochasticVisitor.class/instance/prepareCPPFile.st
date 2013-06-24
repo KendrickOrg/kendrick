@@ -6,7 +6,7 @@ prepareCPPFile
 	stream nextPutAll: '#include <stdlib.h>';cr.
 	stream nextPutAll: '#include <math.h>';cr.
 	stream nextPutAll: '#include <limits.h>';cr.
-	stream nextPutAll: '#include "libplot.h"';cr.
+	
 	stream nextPutAll: 'using namespace std;';cr.
 
 	

@@ -3,9 +3,9 @@ runDeterministicModelMultiHost
 
 "self runDeterministicModelMultiHost"    
  
-|model dsdt didt result| 
+|model dsdt didt result|    
 
-model := KEModel new.     
+model := KEModel new.         
 model atCompartment: #S putNumberOfIndividuals: #(9999 1000 2000).
 model atCompartment: #I putNumberOfIndividuals: #(1 0 0).
 
@@ -22,5 +22,5 @@ didt := 'I[i]:t=sum(j, beta[i,j]*I[j])*S[i]-(mu[i]+v)*I[i]' parseAsAnEquation.
 model addEquation: dsdt.
 model addEquation: didt.   
 
-result := model runDeterministSimulationFrom: 0 to: 5 withStep: 0.01.
+result := model runDeterministSimulationFrom: 0 to: 15 withStep: 0.01.
 result keysAndValuesDo: [ :key :eachSeries | eachSeries sqrt plot: key]  

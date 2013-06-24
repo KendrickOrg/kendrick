@@ -1,7 +1,7 @@
 as yet unclassified
 updateNbIndividualsForCompartments
 
-compartments do:[:eachComp|
+model compartments do:[:eachComp|
 	|status|
 	status := eachComp status.	     
 	1 to: (eachComp numberOfSpecies) do: [:id|
