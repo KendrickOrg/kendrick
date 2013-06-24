@@ -1,6 +1,6 @@
 as yet unclassified
 prepareCPPFile
-	stream nextPutAll: '//stochastic model';cr.
+	stream nextPutAll: '//individual based model';cr.
 	stream nextPutAll: '#include <iostream>';cr.
 	stream nextPutAll: '#include <string>';cr.
 	stream nextPutAll: '#include <stdio.h>';cr.
@@ -9,9 +9,3 @@ prepareCPPFile
 	stream nextPutAll: '#include <limits.h>';cr.
 	
 	stream nextPutAll: 'using namespace std;';cr.
-
-	
-	
-	
-
-

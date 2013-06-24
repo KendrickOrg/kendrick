@@ -1,5 +1,5 @@
 as yet unclassified
-testSIRModel
+testSIRStochasticModel
 	| model result visitor |
 	model := KEModel new.
 	model atCompartment: #S putNumberOfIndividuals: 1e5 - 1.

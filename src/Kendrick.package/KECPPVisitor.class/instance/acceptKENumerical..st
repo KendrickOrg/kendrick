@@ -1,6 +1,6 @@
 as yet unclassified
-acceptKENumerical: aModelNode
+acceptKENumerical: aKENNode
 	| aStream |
 	aStream := WriteStream on: (String new: 60).
-	aStream nextPutAll: (aModelNode number) asString.
+	aStream nextPutAll: (aKENNode number) asString.
 	^ aStream contents

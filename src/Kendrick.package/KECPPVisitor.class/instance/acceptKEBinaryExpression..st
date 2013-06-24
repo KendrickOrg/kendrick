@@ -1,10 +1,10 @@
 as yet unclassified
-acceptKEBinaryExpression: aModelNode
+acceptKEBinaryExpression: aKEBExpNode
 | aStream |
 aStream := WriteStream on: (String new: 60).
 aStream nextPutAll: '('.
-aStream nextPutAll: (self visitNode: aModelNode leftHandSide).
-aStream nextPutAll: aModelNode op.
-aStream nextPutAll: (self visitNode: aModelNode rightHandSide).
+aStream nextPutAll: (self visitNode: aKEBExpNode leftHandSide).
+aStream nextPutAll: aKEBExpNode op.
+aStream nextPutAll: (self visitNode: aKEBExpNode rightHandSide).
 aStream nextPutAll: ')'.
 ^ aStream contents

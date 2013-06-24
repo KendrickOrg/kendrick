@@ -11,9 +11,8 @@ acceptKEModel: aNode
 	stream := (working / fileName) writeStream.
 	"Traverse the model and visit each node"
 	self prepareCPPFile.
-	"define some global variables"
-	stream nextPutAll: '//stochastic model';cr.
-	stream nextPutAll: '#define TMAX ',	 aNode simulator tMax asString, '	// end of time';cr.
+	"define some global variables"	
+	stream nextPutAll: '#define TMAX ',	 aNode simulator tMax asString;cr.
 	stream nextPutAll: '#define NB_EVENTS  ' , (aNode eventList  size) asString ;cr.
 	stream nextPutAll: '#define nbOfCompartment ', (aNode compartments size) asString;cr.
 	stream nextPutAll: '#define nbOfSpecies ', (aNode numberOfSpecies  ) asString;cr.
