@@ -14,7 +14,6 @@
 		"parameters",
 		"listCompartment",
 		"bStream",
-		"rateOfListEvent",
 		"listEvent",
 		"streamForTranslator",
 		"numberOfEvent"

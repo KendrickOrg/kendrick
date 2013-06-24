@@ -3,7 +3,7 @@ acceptKEModel: aNode
 	|working fileName|
 	
 	numberOfEvent :=0.
-	rateOfListEvent  := OrderedCollection new.
+	"rateOfListEvent  := OrderedCollection new."
 	streamForTranslator  := WriteStream on: (String new: 60). 
 	"Get the name of the model as the name of cpp file"
 	fileName := self getFileName: aNode.
@@ -21,9 +21,10 @@ acceptKEModel: aNode
 	stream nextPutAll: '#define nbOfCompartment ', (aNode compartments size) asString;cr.
 	stream nextPutAll: '#define nbOfSpecies ', (aNode numberOfSpecies  ) asString;cr.
 	stream nextPutAll: 'double initialValue[nbOfCompartment * nbOfSpecies];';cr.
-	stream nextPutAll: 'string compartmentName[nbOfCompartment * nbOfSpecies];';cr;cr.
-	stream nextPutAll: 'double x[nbOfCompartment * nbOfSpecies];';cr;cr.
-	stream nextPutAll: 'double rates[nbOfCompartment * nbOfSpecies];';cr;cr.
+	stream nextPutAll: 'string compartmentName[nbOfCompartment * nbOfSpecies];';cr.
+	stream nextPutAll: 'ChartManager chartManager[nbOfCompartment * nbOfSpecies];';cr.
+	stream nextPutAll: 'double x[nbOfCompartment * nbOfSpecies];';cr.
+	stream nextPutAll: 'double rates[nbOfCompartment * nbOfSpecies];';cr.
 	
 	"visit all parameters"
 	aNode parameters do: [:each|
@@ -100,9 +101,11 @@ acceptKEModel: aNode
 	stream nextPutAll: String tab,'double sum_propencity = 0.0;	// sum of propencities';cr.
 	stream nextPutAll: String tab,'double t=0.0;			// time';cr.
 	stream nextPutAll: String tab,'double r;			// random number';cr.
+	stream nextPutAll: String tab,'double tau;			// time step';cr.
 	stream nextPutAll: String tab,'int reaction;			// reaction number selected';cr.
 				
 	"init value"
+	stream nextPutAll: String tab,'initializeCompartments();';cr.
 	stream nextPutAll: String tab,'	for (int i = 0; i < 	nbOfCompartment * nbOfSpecies; i++)';cr.
 	stream nextPutAll: String tab,String tab,'x[i] = initialValue[i];';cr.
 		
@@ -110,15 +113,30 @@ acceptKEModel: aNode
 		stream nextPutAll: String tab,String tab,'CalculRate();';cr.
 		stream nextPutAll: String tab,String tab,'sum_propencity = sum(rates, NB_EVENTS);';cr.
 		
+		stream nextPutAll: String tab,String tab,'// sample tau';cr.
+		stream nextPutAll: String tab,String tab,'if(sum_propencity > 0){';cr.
+		stream nextPutAll: String tab,String tab,'tau = -log((double)rand()/INT_MAX) / sum_propencity;';cr.
+		stream nextPutAll: String tab,String tab,'}else{';cr.
+		stream nextPutAll: String tab,String tab,'break;';cr.
+		stream nextPutAll: String tab,String tab,'}';cr.
+		
 		stream nextPutAll: String tab,String tab,'// select reaction';cr.
 		stream nextPutAll: String tab,String tab,'r = (double)rand()/INT_MAX;';cr.
 		stream nextPutAll: String tab,String tab,'reaction = select_reaction(rates, NB_EVENTS, sum_propencity, r);';cr.
 		stream nextPutAll: String tab,String tab,'Transition(reaction);';cr.		
-		stream nextPutAll: String tab,String tab,'t += TIMESTEP;';cr.
+		stream nextPutAll: String tab,String tab,'t += tau;';cr.
 		stream nextPutAll: String tab,'	for (int i = 0; i < 	nbOfCompartment * nbOfSpecies; i++)';cr.
+		stream nextPutAll: String tab,'{';cr.
+		stream nextPutAll: String tab,'chartManager[i].addPoint((x[i]));';cr.
 		stream nextPutAll: String tab,'	cout << x[i] << "   " ;';cr.
-		stream nextPutAll: String tab,'	cout << endl;';cr.
 		stream nextPutAll: String tab,'}';cr.
+		stream nextPutAll: String tab,'	cout << endl;';cr.
+		
+		stream nextPutAll: String tab,'}';cr.
+		
+		stream nextPutAll: String tab,'for(int j = 0; j < nbOfCompartment * nbOfSpecies; j++)';cr.
+		stream nextPutAll: String tab,'chartManager[j].drawChart(compartmentName[j],j+1,0,4,1);';cr.
+		stream nextPutAll: String tab,'cvWaitKey(0);';cr.
       "end of main function"				
 	stream nextPutAll: '}';cr.
 	
