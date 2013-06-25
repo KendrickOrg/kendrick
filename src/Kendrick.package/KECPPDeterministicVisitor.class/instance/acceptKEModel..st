@@ -30,6 +30,9 @@ acceptKEModel: aNode
 	"visit all equations"
 	stream nextPutAll: 'void modelEquations( const state_type &x , state_type &dxdt , double t )';cr.
 	stream nextPutAll: '{';cr.
+	"bStream nextPutAll: String tab,'double tmp = 0;';cr."
+	bStream nextPutAll: String tab,'tmp = 0;';cr.
+	stream nextPutAll: 'double tmp = 0;';cr.
 	aNode equations do: [:each|
 		stream nextPutAll: (self visitNode: each).
 		].

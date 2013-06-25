@@ -1,6 +1,5 @@
 as yet unclassified
 prepareCPPFile
-	stream nextPutAll: '//deterministic model';cr.
 	stream nextPutAll: '#include <iostream>';cr.
 	stream nextPutAll: '#include <boost/array.hpp>';cr.
 	stream nextPutAll: '#include <boost/numeric/odeint.hpp>';cr.
