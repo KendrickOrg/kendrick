@@ -1,6 +1,6 @@
 as yet unclassified
 IBMProbabilisticAlgorithm
-	| nbStep count rand listOfTransitions t nbEquations timeIndex nbCompartments nbSpecies listCompSym result |
+	| nbStep count rand t nbEquations timeIndex nbCompartments nbSpecies listCompSym result |
 	nbStep := (0 to: tMax by: step) size.
 	nbEquations := model numberOfEquations.
 	nbCompartments := model numberOfCompartments.

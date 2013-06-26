@@ -14,11 +14,10 @@
 		"parameters",
 		"listCompartment",
 		"bStream",
+		"rateOfListEvent",
 		"listEvent",
-		"streamForTranslator",
 		"numberOfEvent",
-		"st_eqIndex",
-		"st_eqIndexVar"
+		"streamOfTransaction"
 	],
 	"name" : "KECPPVisitor",
 	"type" : "normal"

@@ -1,7 +1,7 @@
 as yet unclassified
 generateTransitionOfEvents
 
-| listOfTransitions eventList count |
+| eventList count |
 	eventList := model generateEvents.
 	listOfTransitions := Array new: (eventList size).
 	count := 1.

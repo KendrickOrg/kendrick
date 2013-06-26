@@ -1,6 +1,6 @@
 as yet unclassified
 testSIRStochasticModel
-	| model result visitor |
+	| model visitor |
 	model := KEModel new.
 	model atCompartment: #S putNumberOfIndividuals: 1e5 - 1.
 	model atCompartment: #I putNumberOfIndividuals: 1.
@@ -10,10 +10,9 @@ testSIRStochasticModel
 	model addEquation: (PPODEParser parse: 'S:t=-beta*S*I').
 	model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I').
 	model addEquation: (PPODEParser parse: 'R:t=gamma*I').
-	result := model runStochasticSimulationFrom: 0 to: 50/365 withStep:  0.5 / 365.
-		
+	model runStochasticSimulationFrom: 0 to: 50/365 withStep:  0.5 / 365.
 	visitor := KECPPStochasticVisitor  new.
 	visitor visitNode: model.
+	self assert: (visitor compartments size) = 3.
+	self assert: (visitor parameters size) = 2.
 	
-	self assert: 1 = 1.
-"	self assert: (visitor parameters size) = 2."

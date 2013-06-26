@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"listOfIndividuals"
+		"listOfIndividuals",
+		"listOfTransitions"
 	],
 	"name" : "KEIndividualBasedSimulator",
 	"type" : "normal"
