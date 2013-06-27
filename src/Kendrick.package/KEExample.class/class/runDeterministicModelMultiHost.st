@@ -3,7 +3,7 @@ runDeterministicModelMultiHost
 
 "self runDeterministicModelMultiHost"    
  
-|model dsdt didt result|    
+|model dsdt didt result|       
 
 model := KEModel new.         
 model atCompartment: #S putNumberOfIndividuals: #(9999 1000 2000).

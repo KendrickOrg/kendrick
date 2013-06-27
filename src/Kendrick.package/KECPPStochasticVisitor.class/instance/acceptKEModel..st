@@ -114,10 +114,10 @@ acceptKEModel: aNode
 	stream nextPutAll: String tab, String tab, '//Sum of rates';cr.
 	stream nextPutAll: String tab, String tab,'sumOfRates = sum(rates, NB_EVENTS);';cr.
 	stream nextPutAll: String tab, String tab, '//Generation of time for the next calculation';cr.
-	stream nextPutAll: String tab, String tab, 'tOffset = (-1/sumOfRates)*log(rand()/(double)RAND_MAX);';cr.
+	stream nextPutAll: String tab, String tab, 'tOffset = (-1/sumOfRates)*log((double)(rand()+1)/RAND_MAX);';cr.
 	stream nextPutAll: String tab, String tab, 't += tOffset;';cr.
 	stream nextPutAll: String tab, String tab, '//select event';cr.
-	stream nextPutAll: String tab, String tab, 'r = rand()/(double)RAND_MAX ;';cr.
+	stream nextPutAll: String tab, String tab, 'r = (double)(rand()+1)/RAND_MAX ;';cr.
 	stream nextPutAll: String tab, String tab, 'event = selectEvent(rates, NB_EVENTS, sumOfRates, r);';cr.
 	stream nextPutAll: String tab, String tab, 'Transition(event);';cr.
 	stream nextPutAll: String tab, String tab, 'cout << t << "	";';cr.	

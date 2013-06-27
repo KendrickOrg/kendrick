@@ -1,6 +1,6 @@
 as yet unclassified
-testModelMultiHost
-	| visitor model dsdt didt result |
+testMultiHostsIndividualBasedModel
+	| model visitor dsdt didt |
 	model := KEModel new.
 	model atCompartment: #S putNumberOfIndividuals: {9999 . 1000 . 2000}.    
 	model atCompartment: #I putNumberOfIndividuals: { 1 . 0 . 0 }.    
@@ -20,10 +20,12 @@ testModelMultiHost
 	didt := 'I[i]:t=sum(j, beta[i,j]*I[j])*S[i]-(mu[i]+v)*I[i]' parseAsAnEquation.
 	model addEquation: dsdt.
 	model addEquation: didt.	
-
-	result := model runDeterministSimulationFrom: 0 to: 5 withStep: 0.01.
-
-	visitor := KECPPDeterministicVisitor new.
+	"model runIndividualBasedSimulationFrom: 0 to: 0.5  withStep:  0.0027."
+	model simulator: ((KEIndividualBasedSimulator new) tMin: 0.0; tMax: 5.0; step: 0.25; model: model; algorithm: #default).
+	model simulator generateTransitionOfEvents.
+	model simulator initializeListIndividuals.
+	visitor := KECPPIndividualBasedVisitor  new.
 	visitor visitNode: model.
-	self assert: visitor compartments size = 2.
-	self assert: visitor parameters size = 6.
+	self assert: (visitor compartments size) = 2.
+	self assert: (visitor parameters size) = 6.
+	
