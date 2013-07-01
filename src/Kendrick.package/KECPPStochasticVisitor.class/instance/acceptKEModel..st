@@ -2,8 +2,7 @@ as yet unclassified
 acceptKEModel: aNode
 	|working fileName|
 	
-	numberOfEvent :=0.	
-	streamOfTransaction  := WriteStream on: (String new: 60). 
+	numberOfEvent :=0.		
 	"Get the name of the model as the name of cpp file"
 	fileName := self getFileName: aNode.
 	"Initialize a file in which all code cpp generated will be saved"
@@ -23,9 +22,13 @@ acceptKEModel: aNode
 	stream nextPutAll: 'double rates[NB_EVENTS];';cr.
 	
 	"visit all parameters"
+	strInitializeParams nextPutAll: 'initializeParameters() {';cr.
 	aNode parameters do: [:each|
 		stream nextPutAll: (self visitNode: each).
 		].
+	strInitializeParams nextPutAll: '}';cr;cr.
+ 	stream nextPutAll: (strInitializeParams contents).
+	
 	"visit all compartments"
 	stream nextPutAll: 'void initializeCompartments()';cr.
 	stream nextPutAll: '{';cr.
@@ -72,9 +75,9 @@ acceptKEModel: aNode
 "	stream nextPutAll: '}';cr."
 	
 	"visit all actions of events"
-	streamOfTransaction nextPutAll: 'void Transition(int pEvent)';cr.
-	streamOfTransaction nextPutAll: '{';cr.
-	streamOfTransaction nextPutAll: String tab, 'switch(pEvent) {';cr.
+	strInitializeTrans nextPutAll: 'void Transition(int pEvent)';cr.
+	strInitializeTrans nextPutAll: '{';cr.
+	strInitializeTrans nextPutAll: String tab, 'switch(pEvent) {';cr.
 	        
 	"visit all events"
 	stream nextPutAll: 'void CalculRate()';cr.
@@ -85,12 +88,12 @@ acceptKEModel: aNode
 	stream nextPutAll: '}';cr.
 	
 	"end of visitor actions"
-	streamOfTransaction nextPutAll: String tab, String tab, 'default: cout<<"Error"<<endl;';cr.
-	streamOfTransaction nextPutAll: String tab, String tab, String tab, 'break;';cr.
-	streamOfTransaction nextPutAll: String tab, '}';cr. "end of switch case "
-	streamOfTransaction nextPutAll: '}';cr.
+	strInitializeTrans nextPutAll: String tab, String tab, 'default: cout<<"Error"<<endl;';cr.
+	strInitializeTrans nextPutAll: String tab, String tab, String tab, 'break;';cr.
+	strInitializeTrans nextPutAll: String tab, '}';cr. "end of switch case "
+	strInitializeTrans nextPutAll: '}';cr.
 	
-	stream nextPutAll: (streamOfTransaction contents ).
+	stream nextPutAll: (strInitializeTrans contents ).
 	
 	"main function"
 	stream nextPutAll: 'int main(void){';cr.

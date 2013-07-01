@@ -32,9 +32,13 @@ acceptKEModel: aModelNode
 	stream nextPutAll: '} listOfTransitions[NB_EVENTS];';cr;cr.
 	
 	"visit all parameters"
+	strInitializeParams nextPutAll: 'initializeParameters() {';cr.
 	aModelNode parameters do: [:each|
 		stream nextPutAll: (self visitNode: each).
 		].
+	strInitializeParams nextPutAll: '}';cr;cr.
+ 	stream nextPutAll: (strInitializeParams contents).
+	
 	"visit all compartments"
 	stream nextPutAll: 'void initializeCompartments()';cr.
 	stream nextPutAll: '{';cr.
@@ -76,9 +80,8 @@ acceptKEModel: aModelNode
 	stream nextPutAll: '}';cr;cr.
 	
 	numberOfEvent :=0.	
-	streamOfTransaction  := WriteStream on: (String new: 60). 
-	streamOfTransaction nextPutAll: 'void initializeTransitions()';cr.
-	streamOfTransaction nextPutAll: '{';cr.
+	strInitializeTrans nextPutAll: 'void initializeTransitions()';cr.
+	strInitializeTrans nextPutAll: '{';cr.
 	
 	stream nextPutAll: 'void calculateRate()';cr.
 	stream nextPutAll: '{';cr.
@@ -86,8 +89,8 @@ acceptKEModel: aModelNode
 		stream nextPutAll: (self visitNode: each).
 		 ].
 	stream nextPutAll: '}';cr;cr.
-	streamOfTransaction nextPutAll: '}';cr;cr.
-	stream nextPutAll: (streamOfTransaction contents).
+	strInitializeTrans nextPutAll: '}';cr;cr.
+	stream nextPutAll: (strInitializeTrans contents).
 	
 	stream nextPutAll: 'int main(void)';cr.
 	stream nextPutAll: '{';cr.

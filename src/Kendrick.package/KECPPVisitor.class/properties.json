@@ -17,7 +17,8 @@
 		"rateOfListEvent",
 		"listEvent",
 		"numberOfEvent",
-		"streamOfTransaction"
+		"strInitializeTrans",
+		"strInitializeParams"
 	],
 	"name" : "KECPPVisitor",
 	"type" : "normal"

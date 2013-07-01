@@ -2,20 +2,20 @@ as yet unclassified
 acceptKEVariable: aNode
 	|k aStream |
 	aStream := WriteStream on: (String new: 60).
-	aNode symbol == #t
-		ifTrue: [ 
-			aStream nextPutAll: (aNode symbol asString). 
-			^ aStream contents].
-	k := parameters at: (aNode symbol) ifAbsent: [nil]. 
-		
+	aNode symbol == #t ifTrue: [ 
+		aStream nextPutAll: (aNode symbol asString). 
+		^ aStream contents
+		].
+	k := parameters at: (aNode symbol) ifAbsent: [nil]. 		
 	k ifNil: [ 
 		compartments at: (aNode symbol) ifAbsent: [ 
-											aStream nextPutAll: (aNode symbol asString). 
-											^ aStream contents. 
-											].
-		
+			aStream nextPutAll: (aNode symbol asString). 
+			^ aStream contents. 
+			].		
 		aStream nextPutAll: 'x[' , (compartments at: aNode symbol) asString , ']'.
-		]
-	
-	   ifNotNil:  [ aStream nextPutAll: aNode symbol asString ].
+	] ifNotNil:  [ 
+		k isInterval ifTrue: [ 
+			aStream nextPutAll: '_', aNode symbol asString ]
+ 		      ifFalse: [ aStream nextPutAll: aNode symbol asString ]
+		].
 	^ aStream contents

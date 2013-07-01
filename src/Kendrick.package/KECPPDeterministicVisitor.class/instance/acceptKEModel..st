@@ -24,10 +24,13 @@ acceptKEModel: aNode
 		].
 	stream nextPutAll: '}';cr.
 	"visit all parameters"
+	strInitializeParams nextPutAll: 'initializeParameters() {';cr.
 	aNode parameters do: [:each|
 		stream nextPutAll: (self visitNode: each).
 		].
-	"visit all equations"
+	strInitializeParams nextPutAll: '}';cr;cr.
+ 	stream nextPutAll: (strInitializeParams contents).
+ 	"visit all equations"
 	stream nextPutAll: 'void modelEquations( const state_type &x , state_type &dxdt , double t )';cr.
 	stream nextPutAll: '{';cr.
 	aNode equations do: [:each|
