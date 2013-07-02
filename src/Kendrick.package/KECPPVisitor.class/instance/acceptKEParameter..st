@@ -3,6 +3,7 @@ acceptKEParameter: aNode
 	| aStream |
 	aStream := WriteStream on: (String new: 60).
 	parameters at: aNode symbol put: aNode value.
+	aNode value isInterval ifTrue: [ ^ aStream contents ].
 	aNode value isArray ifTrue: [ 
 		aStream nextPutAll: 'const double ', aNode symbol asString.
 		aStream nextPutAll: (self prepareArray: aNode value).
@@ -12,4 +13,5 @@ acceptKEParameter: aNode
 	ifFalse: [ 
 		aStream nextPutAll: 'const double ', aNode symbol asString, ' = ', aNode value asString, ';';cr.
 		 ].	
+	"Another cas: aNode value is nil and aNode expression is an Expression"
 	^ aStream contents

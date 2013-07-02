@@ -12,13 +12,13 @@
 		"compartments",
 		"nbOfCompartments",
 		"parameters",
-		"listCompartment",
-		"bStream",
+		"equaChecks",
 		"rateOfListEvent",
-		"listEvent",
 		"numberOfEvent",
 		"strInitializeTrans",
-		"strInitializeParams"
+		"strInitializeKEMath",
+		"function",
+		"isDeterministic"
 	],
 	"name" : "KECPPVisitor",
 	"type" : "normal"

@@ -1,15 +1,10 @@
 as yet unclassified
 testKECompartmentNode
 	| input result visitor |
-	input := (KECompartment new status: #S; initialValue:  #(9999)).
+	input := (KECompartment new status: #S; initialValue:  #(9999); numberOfSpecies: 1).
 	visitor := KECPPVisitor new.
 	result := visitor visitNode: input.
 	
-	"self assert: result = ('compartmentName[0] = S"";', String cr, 'initialValue[0] = 9999;', String cr)."
+	self assert: result = (String tab,'compartmentName[0] = "S";', String cr, String tab, 'initialValue[0][0] = 9999;', String cr).
 	
-	self assert: result = (String tab,'initialValue[0] = 9999;', String cr).
 	
-	input := KECompartment new status: #I; initialValue: #(1).
-	result := visitor visitNode: input.
-	self assert: result = (String tab,'initialValue[1] = 1;', String cr).
-	"self assert: result = ('compartmentName[1] = I"";', String cr, 'initialValue[1] = 1;', String cr)."

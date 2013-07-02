@@ -7,15 +7,20 @@ acceptKEModel: aNode
 	"Initialize a file in which all code cpp generated will be saved"
 	working := FileSystem disk workingDirectory.
 	stream := (working / fileName) writeStream.
+	function := ''.
+	isDeterministic := true.
 	"Traverse the model and visit each node"
 	self prepareCPPFile.
 	"visit all compartments"
-	stream nextPutAll: '#define nbOfCompartment ', (aNode compartments size) asString;cr.
-	stream nextPutAll: '#define nbOfSpecies ', (aNode numberOfSpecies  ) asString;cr.
-	stream nextPutAll: 'double initialValue[nbOfCompartment * nbOfSpecies];';cr.
+	stream nextPutAll: 'const int nbOfCompartments = ', aNode compartments size asString, ';';cr.
+	stream nextPutAll: 'const int nbOfSpecies = ', aNode numberOfSpecies asString, ';';cr.
+	stream nextPutAll: 'const double tMin = ', aNode simulator tMin asString, ';';cr.
+	stream nextPutAll: 'const double tMax = ', aNode simulator tMax asString, ';';cr.
+	stream nextPutAll: 'const double tStep = ', aNode simulator step asString, ';';cr;cr.
 	
-	stream nextPutAll: 'ChartManager chartManager[nbOfCompartment * nbOfSpecies];';cr.
-	stream nextPutAll: 'string compartmentName[nbOfCompartment * nbOfSpecies];';cr;cr.
+	stream nextPutAll: 'double initialValue[nbOfCompartments][nbOfSpecies];';cr.		
+	stream nextPutAll: 'string compartmentName[nbOfCompartments];';cr.
+	stream nextPutAll: 'ChartManager chartManager[nbOfCompartments][nbOfSpecies];';cr;cr.
 	
 	stream nextPutAll: 'void initializeCompartments()';cr.
 	stream nextPutAll: '{';cr.
@@ -23,30 +28,28 @@ acceptKEModel: aNode
 		stream nextPutAll: (self visitNode: each).
 		].
 	stream nextPutAll: '}';cr.
+	
 	"visit all parameters"
-	strInitializeParams nextPutAll: 'initializeParameters() {';cr.
 	aNode parameters do: [:each|
 		stream nextPutAll: (self visitNode: each).
 		].
-	strInitializeParams nextPutAll: '}';cr;cr.
- 	stream nextPutAll: (strInitializeParams contents).
+	
  	"visit all equations"
-	stream nextPutAll: 'void modelEquations( const state_type &x , state_type &dxdt , double t )';cr.
+	stream nextPutAll: 'void initializeEquations(const state_type &x, state_type &dxdt, double t)';cr.
 	stream nextPutAll: '{';cr.
 	aNode equations do: [:each|
 		stream nextPutAll: (self visitNode: each).
 		].
-
-	stream nextPutAll: '}';cr.
-	"visit the mode of simulation of the model"
+	stream nextPutAll: '}';cr;cr.
+	
 	stream nextPutAll: (self visitNode: aNode simulator).
-	aNode simulator class = KEDeterministicSimulator ifTrue: [
-		stream nextPutAll: 'int main(int argc, char **argv)';cr.
-		stream nextPutAll: '{';cr.
-		stream nextPutAll: String tab,'initializeCompartments();';cr.
-		stream nextPutAll: String tab,'solverDeteministe();';cr.
-		stream nextPutAll:  String tab,'cvWaitKey(0);';cr.
-		stream nextPutAll: '}';cr.
-		].
+	
+	stream nextPutAll: 'int main(int argc, char **argv)';cr.
+	stream nextPutAll: '{';cr.
+	stream nextPutAll: String tab,'initializeCompartments();';cr.
+	stream nextPutAll: String tab,'solverDeterministic();';cr.
+	stream nextPutAll:  String tab,'cvWaitKey(0);';cr.
+	stream nextPutAll: '}';cr.
+		
 	"Enregistrer le fichier"
 	stream close.

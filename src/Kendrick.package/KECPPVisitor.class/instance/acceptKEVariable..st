@@ -11,11 +11,10 @@ acceptKEVariable: aNode
 		compartments at: (aNode symbol) ifAbsent: [ 
 			aStream nextPutAll: (aNode symbol asString). 
 			^ aStream contents. 
-			].		
-		aStream nextPutAll: 'x[' , (compartments at: aNode symbol) asString , ']'.
+			].
+		isDeterministic ifTrue: [ aStream nextPutAll: 'x(' , (compartments at: aNode symbol) asString , ', 0)' ]		
+		ifFalse: [ aStream nextPutAll: 'x[' , (compartments at: aNode symbol) asString , '][0]' ]
 	] ifNotNil:  [ 
-		k isInterval ifTrue: [ 
-			aStream nextPutAll: '_', aNode symbol asString ]
- 		      ifFalse: [ aStream nextPutAll: aNode symbol asString ]
+		aStream nextPutAll: aNode symbol asString
 		].
 	^ aStream contents

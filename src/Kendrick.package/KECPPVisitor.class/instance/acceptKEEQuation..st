@@ -1,45 +1,19 @@
 as yet unclassified
-acceptKEEQuation:  aNode
-	|expression aStream tmp c |
+acceptKEEQuation: aNode
+	|aStream strTmp|
 	aStream := WriteStream on: (String new: 60).
-	expression := aNode expression.
-		c := WriteStream on: (String new: 60).
-		listCompartment = nil
-		ifFalse: [ tmp:= listCompartment includes:   ((aNode variable) asString)]
-		ifTrue: [ tmp:=true. ].
-		
-		tmp = false
-		ifTrue:[ 
-			aNode 	idVariable = nil
-			ifTrue:[ 
-				aStream nextPutAll: String tab,'dxdt['.
-				aStream nextPutAll: (compartments at: aNode variable symbol) asString, ']='.
-				aStream nextPutAll: (self visitNode: expression).
-				aStream nextPutAll: ';';cr. 		
-			"lttam: bug: duplicate equation"
-			"c nextPutAll: aStream contents."
-		]
-		ifFalse: [  
-				bStream := WriteStream on: (String new: 60).
-				c nextPutAll: String tab,'for( size_t i =', 'KEmin_', (aNode idVariable) asString ,'-1','; i <', 'KEmax_', (aNode idVariable) asString,'; i+=', 'KEstep_', (aNode idVariable) asString ,' )';cr.
-				c nextPutAll: String tab,'{';cr.
-				aStream nextPutAll: String tab,String tab,'dxdt['.
-				aStream nextPutAll: (aNode idVariable ) asString ,'+', 'KEmax_', (aNode idVariable) asString ,'*' ,(compartments at: aNode variable symbol) asString ,  ']='.			
-				aStream nextPutAll: (self visitNode: expression).
-				aStream nextPutAll: ';';cr.
-				aStream nextPutAll: String tab,'}';cr.
-		].
-				listCompartment add:  (aNode variable) asString.			
-				
-				"aStream nextPutAll: listCompartment ;cr."
-				
-				bStream = nil
-				ifFalse:[
-				bStream contents size > 1
-				ifTrue: [  
-					c nextPutAll: bStream contents.
-				].].	
-				c nextPutAll: aStream contents.
-		].
-^c  contents
-		
+	strTmp := WriteStream on: (String new: 60).
+	strTmp nextPutAll: (self visitNode: aNode expression).
+	equaChecks at: (aNode variable symbol) ifAbsent: [ 
+		equaChecks at: (aNode variable symbol) put: 1.
+		aStream nextPutAll: String tab, 'for (int i = 0; i < nbOfSpecies; i++)';cr.
+		aStream nextPutAll: String tab, '{';cr.
+		strInitializeKEMath ifNotNil: [ 
+			aStream nextPutAll: (strInitializeKEMath contents).
+			strInitializeKEMath := nil.
+			].
+		aStream nextPutAll: String tab, String tab, 'dxdt(', (compartments at: aNode variable symbol) asString, ', i) = '.
+		aStream nextPutAll: strTmp contents, ';';cr.
+		aStream nextPutAll: String tab, '}';cr.
+		 ].
+	^ aStream contents

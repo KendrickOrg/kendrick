@@ -6,9 +6,9 @@ prepareCPPFile
 	stream nextPutAll: '#include <stdio.h>';cr.
 	stream nextPutAll: '#include <stdlib.h>';cr.
 	stream nextPutAll: '#include <math.h>';cr.
-	stream nextPutAll: '#include <limits.h>';cr.
+	stream nextPutAll: '#include <limits.h>';cr;cr.
 	
-	stream nextPutAll: 'using namespace std;';cr.
+	stream nextPutAll: 'using namespace std;';cr;cr.
 
 	
 	

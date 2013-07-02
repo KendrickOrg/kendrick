@@ -10,33 +10,33 @@ acceptKEModel: aNode
 	stream := (working / fileName) writeStream.
 	"Traverse the model and visit each node"
 	self prepareCPPFile.
+	function := ''.
+	isDeterministic := false.
 	"define some global variables"		
-	stream nextPutAll: '#define TMAX ', '(double)', aNode simulator tMax asString;cr.
-	stream nextPutAll: '#define NB_EVENTS  ' , (aNode eventList  size) asString ;cr.
-	stream nextPutAll: '#define nbOfCompartment ', (aNode compartments size) asString;cr.
-	stream nextPutAll: '#define nbOfSpecies ', (aNode numberOfSpecies  ) asString;cr.
+	stream nextPutAll: 'const double TMAX = ',	 '(double)', aNode simulator tMax asString, ';';cr.
+	stream nextPutAll: 'const double TMIN = ', '(double)', aNode simulator tMin asString, ';';cr.
+	stream nextPutAll: 'const int NB_EVENTS = ' , (aNode eventList  size) asString, ';';cr;cr.
 	
-	stream nextPutAll: 'double initialValue[nbOfCompartment * nbOfSpecies];';cr.
-	stream nextPutAll: 'string compartmentName[nbOfCompartment * nbOfSpecies];';cr.
-	stream nextPutAll: 'double x[nbOfCompartment * nbOfSpecies];';cr.
-	stream nextPutAll: 'double rates[NB_EVENTS];';cr.
+	stream nextPutAll: 'const int nbOfCompartments = ', aNode numberOfCompartments asString, ';';cr.
+	stream nextPutAll: 'const int nbOfSpecies = ', aNode numberOfSpecies asString, ';';cr;cr.
+	
+	stream nextPutAll: 'double initialValue[nbOfCompartments][nbOfSpecies];';cr.
+	stream nextPutAll: 'string compartmentName[nbOfCompartments];';cr.
+	stream nextPutAll: 'double x[nbOfCompartments][nbOfSpecies];';cr.
+	stream nextPutAll: 'double rates[NB_EVENTS];';cr;cr.
 	
 	"visit all parameters"
-	strInitializeParams nextPutAll: 'initializeParameters() {';cr.
 	aNode parameters do: [:each|
 		stream nextPutAll: (self visitNode: each).
 		].
-	strInitializeParams nextPutAll: '}';cr;cr.
- 	stream nextPutAll: (strInitializeParams contents).
-	
+		
 	"visit all compartments"
 	stream nextPutAll: 'void initializeCompartments()';cr.
 	stream nextPutAll: '{';cr.
 	aNode compartments do: [:each|
 		stream nextPutAll: (self visitNode: each).
 		].
-	stream nextPutAll: '}';cr.
-	
+	stream nextPutAll: '}';cr.	
 	
 	"function calculate sum"
 	stream nextPutAll: 'double sum(double a[], int n){';cr.
@@ -62,17 +62,7 @@ acceptKEModel: aNode
 		stream nextPutAll: String tab, String tab, String tab,'}';cr.
 	stream nextPutAll: String tab, String tab,'}';cr.
 	stream nextPutAll: String tab, 'return event;';cr.
-	stream nextPutAll: String tab, '}';cr.
-	
-	
-	"visit all equations"
-	"stream nextPutAll: 'void modelEquations( const state_type &x , state_type &dxdt , double t )';cr.
-	stream nextPutAll: '{';cr."
-	aNode equations do: [:each|
-		"stream nextPutAll: ("self visitNode: each")."
-		].
-
-"	stream nextPutAll: '}';cr."
+	stream nextPutAll: String tab, '}';cr.	
 	
 	"visit all actions of events"
 	strInitializeTrans nextPutAll: 'void Transition(int pEvent)';cr.
@@ -97,17 +87,18 @@ acceptKEModel: aNode
 	
 	"main function"
 	stream nextPutAll: 'int main(void){';cr.
-	stream nextPutAll: String tab,'double sumOfRates = 0.0;	// sum of rates';cr.
-	stream nextPutAll: String tab,'double t = 0.0;			// time';cr.
-	stream nextPutAll: String tab,'double r = 0.0;			// random number';cr.
-	stream nextPutAll: String tab,'int event = -1;			// event number selected';cr.
+	stream nextPutAll: String tab,'double sumOfRates = 0.0;';cr.
+	stream nextPutAll: String tab,'double t = 0.0;';cr.
+	stream nextPutAll: String tab,'double r = 0.0;';cr.
+	stream nextPutAll: String tab,'int event = -1;';cr.
 	stream nextPutAll: String tab, 'double tOffset = 0.0;';cr.
 				
 	"init value"
 	stream nextPutAll: String tab, '//Initialize all values of x';cr.
 	stream nextPutAll: String tab, 'initializeCompartments();';cr.
-	stream nextPutAll: String tab,'for (int i = 0; i < nbOfCompartment * nbOfSpecies; i++)';cr.
-	stream nextPutAll: String tab, String tab, 'x[i] = initialValue[i];';cr.	
+	stream nextPutAll: String tab, 'for (int i = 0; i < nbOfCompartments; i++)';cr.
+	stream nextPutAll: String tab, String tab, 'for (int j = 0; j < nbOfSpecies; j++)';cr.
+	stream nextPutAll: String tab, String tab, String tab, 'x[i][j] = initialValue[i][j];';cr.	
 	stream nextPutAll: String tab, '//Begin of algorithm Gillespie';cr.	
 	stream nextPutAll: String tab, 'while (t < TMAX) {';cr.
 	stream nextPutAll: String tab, String tab, '//calculation of rates';cr.
@@ -124,8 +115,9 @@ acceptKEModel: aNode
 	stream nextPutAll: String tab, String tab, 'event = selectEvent(rates, NB_EVENTS, sumOfRates, r);';cr.
 	stream nextPutAll: String tab, String tab, 'Transition(event);';cr.
 	stream nextPutAll: String tab, String tab, 'cout << t << "	";';cr.	
-	stream nextPutAll: String tab, String tab, 'for (int i = 0; i < nbOfCompartment * nbOfSpecies; i++)';cr.	
-	stream nextPutAll: String tab, String tab, String tab, 'cout << x[i] << "   " ;';cr.
+	stream nextPutAll: String tab, String tab, 'for (int i = 0; i < nbOfCompartments; i++)';cr.
+	stream nextPutAll: String tab, String tab, String tab, 'for (int j = 0; j < nbOfSpecies; j++)';cr.
+	stream nextPutAll: String tab, String tab, String tab, String tab, 'cout <<', function, '(x[i][j]) << "   ";';cr.
 	stream nextPutAll: String tab, String tab, 'cout << endl;';cr.
 	stream nextPutAll: String tab, '}';cr.
       "end of main function"				

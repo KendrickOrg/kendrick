@@ -11,6 +11,6 @@ testKEBinaryExpressionWithOneCompartment
 		leftHandSide: a;
 		rightHandSide: b.
 	visitor := KECPPVisitor new.
-	visitor visitNode: (KECompartment new status: #S; initialValue: #(9999)).
+	visitor visitNode: (KECompartment new status: #S; initialValue: #(9999); numberOfSpecies: 1).
 	result := visitor visitNode: input.
-	self assert: result contents = '(x[0]*2)'
+	self assert: result contents = '(x(0, 0)*2)'
