@@ -4,6 +4,7 @@ acceptKEEQuation: aNode
 	aStream := WriteStream on: (String new: 60).
 	strTmp := WriteStream on: (String new: 60).
 	strTmp nextPutAll: (self visitNode: aNode expression).
+	defSumSigma := false.
 	equaChecks at: (aNode variable symbol) ifAbsent: [ 
 		equaChecks at: (aNode variable symbol) put: 1.
 		aStream nextPutAll: String tab, 'for (int i = 0; i < nbOfSpecies; i++)';cr.

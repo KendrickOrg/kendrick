@@ -16,7 +16,6 @@ GillespieDirect
 	1 to: nbCompartments do: [:index| timeIndex at:index put:(Array new: 200000)].
 	
 	eventList := model generateEvents.
-	self halt.
 	t := tMin.
 	i := 1.
 	rand1 := Random new.

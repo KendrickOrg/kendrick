@@ -7,4 +7,8 @@ initialize
 	parameters := Dictionary new.
 	equaChecks := Dictionary new.
 	nbOfCompartments := 0.
+	eventIndex := -1.
+	defSumSigma := false.
+	isDeterministic := true.
+
 	

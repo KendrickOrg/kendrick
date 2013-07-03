@@ -8,6 +8,9 @@ acceptKEIndexedVariable:  aNode
 	aNode idExpression2 isNumber ifFalse: [ 
 		aNode idExpression2 = 'i' ifFalse: [ aNode idExpression2: 'j' ]
 		].
+	eventIndex = -1 ifFalse: [ 
+		aNode idExpression1 = 'j' ifFalse: [ aNode idExpression1: eventIndex ]
+		 ].
 	k := parameters at: (aNode symbol) ifAbsent: [nil]. 
 	k ifNil: [ 	
 		isDeterministic ifTrue: [ aStream nextPutAll: 'x(', (compartments at: aNode symbol) asString, ', ', aNode idExpression1 asString, ')' ]	

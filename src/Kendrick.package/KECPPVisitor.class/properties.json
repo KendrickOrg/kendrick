@@ -18,7 +18,9 @@
 		"strInitializeTrans",
 		"strInitializeKEMath",
 		"function",
-		"isDeterministic"
+		"isDeterministic",
+		"eventIndex",
+		"defSumSigma"
 	],
 	"name" : "KECPPVisitor",
 	"type" : "normal"

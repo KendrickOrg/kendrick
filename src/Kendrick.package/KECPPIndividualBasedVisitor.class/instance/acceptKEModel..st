@@ -116,7 +116,7 @@ acceptKEModel: aModelNode
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'double prob = 0.0;';cr.
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'rate = rates[j] / getNumberOfIndividuals(currentStatus, specieID);';cr.
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'prob = 1 - exp((-1)*STEP*rate);';cr.
-	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'if (prob > (rand()/(double)RAND_MAX))';cr.
+	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'if (prob > ((rand() + 1)/(double)RAND_MAX))';cr.
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, String tab, 'listOfIndividuals[i].nextStatus = listOfTransitions[j].toStatus;';cr.
 	stream nextPutAll: String tab, String tab, String tab, String tab, '}';cr.
 	stream nextPutAll: String tab, String tab, String tab, '}';cr.
