@@ -27,28 +27,31 @@ acceptKEModel: aModelNode
 	stream nextPutAll: '#endif';cr.
 	
 	stream nextPutAll: '#if USE_GNU_PLOT';cr.
-	stream nextPutAll: 'void output_gnuplot(int n){';cr.
+	stream nextPutAll: 'void output_gnuplot(){';cr.
 	stream nextPutAll: String tab,'int i;';cr.
 	stream nextPutAll: String tab,'FILE *out = fopen(PLTFILE,"w");';cr.
 	stream nextPutAll: String tab,'char *outfile = OUTFILE;';cr.
 	stream nextPutAll: String tab,'char *pngfile = PNGFILE;';cr.
 	stream nextPutAll: String tab,'fprintf(out, "set xlabel \"Time\"\n");';cr.
-	stream nextPutAll: String tab,'fprintf(out, "set ylabel \"Number of Chemical Species\"\n");';cr.
+	stream nextPutAll: String tab,'fprintf(out, "set ylabel \"Number of Inviduals\"\n");';cr.
 	stream nextPutAll: String tab,'for (int i = 0; i < nbOfCompartments; i++) {';cr.
 	stream nextPutAll: String tab,String tab,'fprintf(out,"set term png\n");';cr.
 	stream nextPutAll: String tab,String tab,'fprintf(out,"set out \"out%d.png\"\n",i);';cr.
 	stream nextPutAll: String tab,String tab,'fprintf(out, "p ");';cr.
 	stream nextPutAll: String tab,String tab,'for (int j = 0; j < nbOfSpecies; j++) {';cr.
 	stream nextPutAll: String tab,String tab,String tab,'if(j>0) fprintf(out, ",");';cr.
-	stream nextPutAll: String tab,String tab,String tab,'fprintf(out, "\"%s\" u 1:%d t \"%s\" w l\n", outfile, i+j+2, compartmentName[i].c_str());';cr.
+	stream nextPutAll: String tab,String tab,String tab,'if(nbOfSpecies > 1)';cr.
+	stream nextPutAll: String tab,String tab,String tab,String tab,'fprintf(out, "\"%s\" u 1:%d t \"%s\" w l", outfile, i*nbOfCompartments+j+2, compartmentName[i].c_str());';cr.
+	stream nextPutAll: String tab,String tab,String tab,'else';cr.
+	stream nextPutAll: String tab,String tab,String tab,String tab,'fprintf(out, "\"%s\" u 1:%d t \"%s\" w l", outfile, i+j+2, compartmentName[i].c_str());';cr.
 	stream nextPutAll: String tab,String tab,'}';cr.
 	stream nextPutAll: String tab,'fprintf(out,"\n");';cr.
 	stream nextPutAll: String tab,'}';cr.	
 	stream nextPutAll: String tab,'fprintf(out, "\n");';cr.
 	stream nextPutAll: String tab,'fprintf(out, "rep\n");';cr.
-	stream nextPutAll: String tab,'fprintf(out, "pause -1 \'Enter\'\n");';cr.
+	
 	stream nextPutAll: String tab,'printf("Type the following command if gnuplot is installed in your computer.\n");';cr.
-	stream nextPutAll: String tab,'printf(">gnuplot %s\n",pngfile);';cr.
+	stream nextPutAll: String tab,'printf(">gnuplot %s\n",PLTFILE);';cr.
 	stream nextPutAll: String tab,'fclose(out);';cr.
 	stream nextPutAll: '}';cr.
 	stream nextPutAll: '#endif';cr.

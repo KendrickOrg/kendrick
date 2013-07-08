@@ -29,28 +29,31 @@ acceptKEModel: aNode
 	stream nextPutAll: 'double rates[NB_EVENTS];';cr;cr.
 	
 	stream nextPutAll: '#if USE_GNU_PLOT';cr.
-	stream nextPutAll: 'void output_gnuplot(int n){';cr.
+	stream nextPutAll: 'void output_gnuplot(){';cr.
 	stream nextPutAll: String tab,'int i;';cr.
 	stream nextPutAll: String tab,'FILE *out = fopen(PLTFILE,"w");';cr.
 	stream nextPutAll: String tab,'char *outfile = OUTFILE;';cr.
 	stream nextPutAll: String tab,'char *pngfile = PNGFILE;';cr.
 	stream nextPutAll: String tab,'fprintf(out, "set xlabel \"Time\"\n");';cr.
-	stream nextPutAll: String tab,'fprintf(out, "set ylabel \"Number of Chemical Species\"\n");';cr.
+	stream nextPutAll: String tab,'fprintf(out, "set ylabel \"Number of Inviduals\"\n");';cr.
 	stream nextPutAll: String tab,'for (int i = 0; i < nbOfCompartments; i++) {';cr.
 	stream nextPutAll: String tab,String tab,'fprintf(out,"set term png\n");';cr.
 	stream nextPutAll: String tab,String tab,'fprintf(out,"set out \"out%d.png\"\n",i);';cr.
 	stream nextPutAll: String tab,String tab,'fprintf(out, "p ");';cr.
 	stream nextPutAll: String tab,String tab,'for (int j = 0; j < nbOfSpecies; j++) {';cr.
 	stream nextPutAll: String tab,String tab,String tab,'if(j>0) fprintf(out, ",");';cr.
-	stream nextPutAll: String tab,String tab,String tab,'fprintf(out, "\"%s\" u 1:%d t \"%s\" w l\n", outfile, i+j+2, compartmentName[i].c_str());';cr.
+	stream nextPutAll: String tab,String tab,String tab,'if(nbOfSpecies > 1)';cr.
+	stream nextPutAll: String tab,String tab,String tab,String tab,'fprintf(out, "\"%s\" u 1:%d t \"%s\" w l", outfile, i*nbOfCompartments+j+2, compartmentName[i].c_str());';cr.
+	stream nextPutAll: String tab,String tab,String tab,'else';cr.
+	stream nextPutAll: String tab,String tab,String tab,String tab,'fprintf(out, "\"%s\" u 1:%d t \"%s\" w l", outfile, i+j+2, compartmentName[i].c_str());';cr.
 	stream nextPutAll: String tab,String tab,'}';cr.
 	stream nextPutAll: String tab,'fprintf(out,"\n");';cr.
 	stream nextPutAll: String tab,'}';cr.	
 	stream nextPutAll: String tab,'fprintf(out, "\n");';cr.
 	stream nextPutAll: String tab,'fprintf(out, "rep\n");';cr.
-	stream nextPutAll: String tab,'fprintf(out, "pause -1 \'Enter\'\n");';cr.
+	
 	stream nextPutAll: String tab,'printf("Type the following command if gnuplot is installed in your computer.\n");';cr.
-	stream nextPutAll: String tab,'printf(">gnuplot %s\n",pngfile);';cr.
+	stream nextPutAll: String tab,'printf(">gnuplot %s\n",PLTFILE);';cr.
 	stream nextPutAll: String tab,'fclose(out);';cr.
 	stream nextPutAll: '}';cr.
 	stream nextPutAll: '#endif';cr.
@@ -122,6 +125,26 @@ acceptKEModel: aNode
 	stream nextPutAll: String tab,'double r = 0.0;';cr.
 	stream nextPutAll: String tab,'int event = -1;';cr.
 	stream nextPutAll: String tab, 'double tOffset = 0.0;';cr.
+	
+	stream nextPutAll: String tab,'	#if USE_GNU_PLOT';cr.
+	stream nextPutAll: String tab,'FILE *out=fopen(OUTFILE, "w");';cr.
+	stream nextPutAll: String tab,'#endif';cr;cr.	
+	stream nextPutAll: String tab,'#if USE_R_PLOT';cr.
+	stream nextPutAll: String tab,'fprintf(out, "time\t");';cr.
+	stream nextPutAll: String tab,'for (int i = 0; i < nbOfCompartments; i++) {';cr.
+	stream nextPutAll: String tab,String tab,'for (int j = 0; j < nbOfSpecies; j++){ ';cr.
+	stream nextPutAll: String tab,String tab,String tab,'if(j>0)';cr.
+	stream nextPutAll: String tab,String tab,String tab,String tab,'fprintf(out, "%s[%d]",compartmentName[i].c_str(),j);';cr.
+	stream nextPutAll: String tab,String tab,String tab,'else';cr.
+	stream nextPutAll: String tab,String tab,String tab,String tab,'fprintf(out, "%s",compartmentName[i].c_str());';cr.
+	stream nextPutAll: String tab,String tab,String tab,'if(j < nbOfSpecies-1)';cr.
+	stream nextPutAll: String tab,String tab,String tab,String tab,'fprintf(out, "\t");';cr.
+	stream nextPutAll: String tab,String tab,'}';cr.
+	stream nextPutAll: String tab,String tab,'if(i < nbOfCompartments-1)';cr.
+	stream nextPutAll: String tab,String tab,String tab,'fprintf(out, "\t");';cr.
+	stream nextPutAll: String tab,'}';cr.
+	stream nextPutAll: String tab,'fprintf(out, "\n");';cr.
+	stream nextPutAll: String tab,'#endif';cr.
 				
 	"init value"
 	stream nextPutAll: String tab, '//Initialize all values of x';cr.
@@ -145,11 +168,39 @@ acceptKEModel: aNode
 	stream nextPutAll: String tab, String tab, 'event = selectEvent(rates, NB_EVENTS, sumOfRates, r);';cr.
 	stream nextPutAll: String tab, String tab, 'Transition(event);';cr.
 	stream nextPutAll: String tab, String tab, 'cout << t << "	";';cr.	
+			
+	stream nextPutAll: String tab, String tab, '#if USE_GNU_PLOT';cr.
+	stream nextPutAll: String tab, String tab, String tab,'fprintf(out, "%f", t);';cr.
+	stream nextPutAll: String tab, String tab, '#endif';cr.
+	
 	stream nextPutAll: String tab, String tab, 'for (int i = 0; i < nbOfCompartments; i++)';cr.
-	stream nextPutAll: String tab, String tab, String tab, 'for (int j = 0; j < nbOfSpecies; j++)';cr.
+	stream nextPutAll: String tab, String tab, String tab, 'for (int j = 0; j < nbOfSpecies; j++) { ';cr.
+
 	stream nextPutAll: String tab, String tab, String tab, String tab, 'cout <<', function, '(x[i][j]) << "   ";';cr.
+	stream nextPutAll: String tab, String tab, String tab, String tab, '#if USE_CV_PLOT';cr.
+	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'chartManager[i][j].addPoint(',function asString,'(x[i][j]));';cr.
+	stream nextPutAll: String tab, String tab, String tab, String tab, '#endif';cr;cr.
+	stream nextPutAll: String tab, String tab, String tab, String tab, '#if USE_GNU_PLOT';cr.
+	stream nextPutAll: String tab, String tab, String tab, String tab, String tab,'fprintf(out, "\t%f",',function asString,'x[i][j]); ';cr.
+	stream nextPutAll: String tab, String tab, String tab, String tab, '#endif';cr.
+	stream nextPutAll: String tab, String tab, String tab,'}';cr.
+	stream nextPutAll: String tab, String tab, String tab, String tab, '#if USE_GNU_PLOT';cr.
+	stream nextPutAll: String tab, String tab, String tab, String tab, String tab,'fprintf(out, "\n");';cr.
+	stream nextPutAll: String tab, String tab, String tab, String tab, '#endif';cr.
 	stream nextPutAll: String tab, String tab, 'cout << endl;';cr.
 	stream nextPutAll: String tab, '}';cr.
+	stream nextPutAll: String tab,'for (int i = 0; i < nbOfCompartments; i++)';cr.
+	stream nextPutAll: String tab, String tab, 'for (int j = 0; j < nbOfSpecies; j++)';cr.
+	stream nextPutAll: String tab, String tab, String tab, '#if USE_CV_PLOT';cr.
+	stream nextPutAll: String tab, String tab, String tab, String tab,'chartManager[i][j].drawChart(compartmentName[i], j+1, TMIN, TMAX, t);';cr.
+	stream nextPutAll: String tab, String tab, String tab, '#endif';cr.
+	stream nextPutAll: String tab,'#if USE_GNU_PLOT';cr.
+	stream nextPutAll: String tab,String tab,'output_gnuplot();';cr.
+	stream nextPutAll: String tab,'#endif';cr.
+	
+	stream nextPutAll: String tab,'#if USE_CV_PLOT';cr.
+	stream nextPutAll: String tab,String tab,'cvWaitKey(0);';cr.
+	stream nextPutAll: String tab,'#endif';cr.
       "end of main function"				
 	stream nextPutAll: '}';cr.
 	
