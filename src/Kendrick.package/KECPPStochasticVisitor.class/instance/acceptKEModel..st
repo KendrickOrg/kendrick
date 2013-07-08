@@ -190,10 +190,11 @@ acceptKEModel: aNode
 	stream nextPutAll: String tab, String tab, 'cout << endl;';cr.
 	stream nextPutAll: String tab, '}';cr.
 	stream nextPutAll: String tab,'for (int i = 0; i < nbOfCompartments; i++)';cr.
-	stream nextPutAll: String tab, String tab, 'for (int j = 0; j < nbOfSpecies; j++)';cr.
+	stream nextPutAll: String tab, String tab, 'for (int j = 0; j < nbOfSpecies; j++){';cr.
 	stream nextPutAll: String tab, String tab, String tab, '#if USE_CV_PLOT';cr.
 	stream nextPutAll: String tab, String tab, String tab, String tab,'chartManager[i][j].drawChart(compartmentName[i], j+1, TMIN, TMAX, t);';cr.
 	stream nextPutAll: String tab, String tab, String tab, '#endif';cr.
+	stream nextPutAll: String tab, String tab, String tab, '}';cr.
 	stream nextPutAll: String tab,'#if USE_GNU_PLOT';cr.
 	stream nextPutAll: String tab,String tab,'output_gnuplot();';cr.
 	stream nextPutAll: String tab,'#endif';cr.
