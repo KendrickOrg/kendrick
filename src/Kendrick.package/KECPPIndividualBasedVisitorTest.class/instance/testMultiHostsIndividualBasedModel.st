@@ -25,6 +25,7 @@ testMultiHostsIndividualBasedModel
 	model simulator generateTransitionOfEvents.
 	model simulator initializeListIndividuals.
 	visitor := KECPPIndividualBasedVisitor  new.
+	visitor function: #sqrt.
 	visitor visitNode: model.
 	self assert: (visitor compartments size) = 2.
 	self assert: (visitor parameters size) = 6.

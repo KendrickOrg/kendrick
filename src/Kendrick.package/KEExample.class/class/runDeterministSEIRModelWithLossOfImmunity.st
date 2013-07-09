@@ -2,7 +2,7 @@ as yet unclassified
 runDeterministSEIRModelWithLossOfImmunity
 	"self runDeterministSEIRModelWithLossOfImmunity"
 
-	| model result |
+	| model |
 	model := KEModel new.
 	model atCompartment: #S putNumberOfIndividuals: 99999.
 	model atCompartment: #E putNumberOfIndividuals: 1.
@@ -18,5 +18,5 @@ runDeterministSEIRModelWithLossOfImmunity
 	model addEquation: (PPODEParser parse: 'E:t=beta*S*I-sigma*E-mu*E').
 	model addEquation: (PPODEParser parse: 'I:t=sigma*E-gamma*I-mu*I').
 	model addEquation: (PPODEParser parse: 'R:t=gamma*I-mu*R-to*R').
-	result := model runDeterministSimulationFrom: 0.0 to: 1.0 withStep: 0.0001.
-	result do: [ :eachSeries | eachSeries plot ]
+	model runDeterministSimulationFrom: 0.0 to: 1.0 withStep: 0.0001.
+	model plot: #I

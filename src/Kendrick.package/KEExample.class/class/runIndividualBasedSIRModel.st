@@ -2,7 +2,7 @@ as yet unclassified
 runIndividualBasedSIRModel
 	"self runIndividualBasedSIRModel"
 
-	| model result |
+	| model |
 	model := KEModel new.
 	model atCompartment: #S putNumberOfIndividuals: 99999.
 	model atCompartment: #I putNumberOfIndividuals: 1.
@@ -12,5 +12,5 @@ runIndividualBasedSIRModel
 	model addEquation: (PPODEParser parse: 'S:t=-beta*S*I').
 	model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I').
 	model addEquation: (PPODEParser parse: 'R:t=gamma*I').
-	result := model runIndividualBasedSimulationFrom: 0 to: 0.5 withStep: 0.0027.
-	result keysAndValuesDo: [ :key :eachSeries | eachSeries plot: key ]
+	model runIndividualBasedSimulationFrom: 0 to: 0.5 withStep: 0.0027.
+	model plot: { #S . #I . #R }

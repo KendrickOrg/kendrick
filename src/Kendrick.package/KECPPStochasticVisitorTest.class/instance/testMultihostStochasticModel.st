@@ -24,6 +24,7 @@ testMultihostStochasticModel
 	model simulator: ((KEStochasticSimulator new) tMin: 0.0; tMax: 5.0; step: 0.25; model: model; algorithm: #GillespieDirect).
 	model generateEvents.
 	visitor := KECPPStochasticVisitor new.
+	visitor function: #sqrt.
 	visitor visitNode: model.
 	self assert: (visitor compartments size) = 2.
 	self assert: (visitor parameters size) = 6.

@@ -2,7 +2,7 @@ as yet unclassified
 runDeterministicModelMultiDisease
 	"self runDeterministicModelMultiDisease"
 
-	| model compartment dsdt didt result |
+	| model |
 	model := KEModel new.
 	model atCompartment: #SS putNumberOfIndividuals: 9998.
 	model atCompartment: #IS putNumberOfIndividuals: 1.
@@ -28,5 +28,5 @@ runDeterministicModelMultiDisease
 	model addEquation: (PPODEParser parse: 'RI:t=sigma1*II-(mu+sigma2)*RI').
 	model addEquation: (PPODEParser parse: 'IR:t=sigma2*II-(mu+sigma1)*IR').
 	model addEquation: (PPODEParser parse: 'RR:t=sigma1*IR+sigma2*RI-mu*RR').
-	result := model runDeterministSimulationFrom: 0 to: 100 withStep: 0.01.
-	result keysAndValuesDo: [ :key :eachSeries | eachSeries plot: key ]
+	model runDeterministSimulationFrom: 0 to: 100 withStep: 0.01.
+	model plot: { #SS . #IS . #SI . #RS . #SR . #II . #RI . #IR . #RR }

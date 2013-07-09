@@ -7,7 +7,7 @@ printArray: anArray
 	anArray do: [ :each|
 		count := count + 1.
 		each isArray ifTrue: [ aStream nextPutAll: (self printArray: each) ]
-		ifFalse: [ aStream nextPutAll: each asString ].
+		ifFalse: [ aStream nextPutAll: each asFloat asString ].
 		count = (anArray size) ifFalse: [ aStream nextPutAll: ', ' ].			
 		 ].
 	aStream nextPutAll: '}'.

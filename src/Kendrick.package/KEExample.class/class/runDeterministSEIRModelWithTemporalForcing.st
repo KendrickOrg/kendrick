@@ -2,7 +2,7 @@ as yet unclassified
 runDeterministSEIRModelWithTemporalForcing
 	"self runDeterministSEIRModelWithTemporalForcing"
 
-	| model result |
+	| model |
 	model := KEModel new.
 	model atCompartment: #S putNumberOfIndividuals: 99999.
 	model atCompartment: #E putNumberOfIndividuals: 1.
@@ -18,5 +18,5 @@ runDeterministSEIRModelWithTemporalForcing
 	model addEquation: (PPODEParser parse: 'E:t=beta*(1+betaAmp*cos(t))*S*I-sigma*E-mu*E').
 	model addEquation: (PPODEParser parse: 'I:t=sigma*E-gamma*I-mu*I').
 	model addEquation: (PPODEParser parse: 'R:t=gamma*I-mu*R').
-	result := model runDeterministSimulationFrom: 0 to: 400 withStep: 0.01.
-	result keysAndValuesDo: [ :key :eachSeries | eachSeries plot: key ]
+	model runDeterministSimulationFrom: 0 to: 400 withStep: 0.01.
+	model plot: #I do: #log

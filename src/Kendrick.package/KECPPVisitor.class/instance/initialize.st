@@ -10,5 +10,6 @@ initialize
 	eventIndex := -1.
 	defSumSigma := false.
 	isDeterministic := true.
+	function := ''.
 
 	

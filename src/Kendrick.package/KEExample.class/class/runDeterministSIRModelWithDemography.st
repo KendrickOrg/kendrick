@@ -2,7 +2,7 @@ as yet unclassified
 runDeterministSIRModelWithDemography
 	"self runDeterministSIRModelWithDemography"
 
-	| model result |
+	| model |
 	model := KEModel new.
 	model atCompartment: #S putNumberOfIndividuals: 99999.
 	model atCompartment: #I putNumberOfIndividuals: 1.
@@ -14,5 +14,5 @@ runDeterministSIRModelWithDemography
 	model addEquation: (PPODEParser parse: 'S:t= mu*N-beta*S*I-mu*S').
 	model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I-mu*I').
 	model addEquation: (PPODEParser parse: 'R:t=gamma*I-mu*R').
-	result := model runDeterministSimulationFrom: 0.0 to: 1.0 withStep: 0.001.
-	result keysAndValuesDo: [ :key :eachSeries | eachSeries plot: key ]
+	model runDeterministSimulationFrom: 0.0 to: 1.0 withStep: 0.001.
+	model plot: { #S . #I . #R . #E }

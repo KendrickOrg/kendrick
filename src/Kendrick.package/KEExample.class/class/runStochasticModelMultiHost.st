@@ -3,7 +3,7 @@ runStochasticModelMultiHost
 
 "self runStochasticModelMultiHost"
 
-|model dsdt didt result|
+|model dsdt didt |
 
 model := KEModel new.
 model atCompartment: #S putNumberOfIndividuals: {9999 . 1000 . 2000}.
@@ -21,6 +21,6 @@ didt := 'I[i]:t=sum(j, beta[i,j]*I[j])*S[i]-(mu[i]+v)*I[i]' parseAsAnEquation.
 model addEquation: dsdt.
 model addEquation: didt.
 
-result := model runStochasticSimulationFrom: 0 to: 50/365 withStep:  0.5 / 365.
-result keysAndValuesDo: [ :key :eachSeries | eachSeries sqrt plot: key ]
+model runStochasticSimulationFrom: 0 to: 50/365 withStep:  0.5 / 365.
+model plot: { #S . #I } do: #sqrt
 

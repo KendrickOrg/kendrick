@@ -24,6 +24,7 @@ testModelMultiHost
 	result := model runDeterministSimulationFrom: 0 to: 5 withStep: 0.01.
 
 	visitor := KECPPDeterministicVisitor new.
+	visitor function: #sqrt.
 	visitor visitNode: model.
 	self assert: visitor compartments size = 2.
 	self assert: visitor parameters size = 6.

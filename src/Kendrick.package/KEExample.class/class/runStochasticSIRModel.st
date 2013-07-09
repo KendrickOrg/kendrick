@@ -2,7 +2,7 @@ as yet unclassified
 runStochasticSIRModel
 	"self runStochasticSIRModel"
  
-	| model result |
+	| model |
 	model := KEModel new.
 	model atCompartment: #S putNumberOfIndividuals: 1e5 - 1.
 	model atCompartment: #I putNumberOfIndividuals: 1.
@@ -12,5 +12,5 @@ runStochasticSIRModel
 	model addEquation: (PPODEParser parse: 'S:t=-beta*S*I').
 	model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I').
 	model addEquation: (PPODEParser parse: 'R:t=gamma*I').
-	result := model runStochasticSimulationFrom: 0 to: 50/365 withStep:  0.5 / 365.
-	result keysAndValuesDo: [ :key :eachSeries | eachSeries plot: key ]
+	model runStochasticSimulationFrom: 0 to: 50/365 withStep:  0.5 / 365.
+	model plot: { #S . #I . #R }

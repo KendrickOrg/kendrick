@@ -2,7 +2,7 @@ as yet unclassified
 runDeterministSIRModel
 	"self runDeterministSIRModel"
 
-	| model result |
+	| model |
 	model := KEModel new.
 	model atCompartment: #S putNumberOfIndividuals: 1e5 - 1.
 	model atCompartment: #I putNumberOfIndividuals: 1.
@@ -13,6 +13,6 @@ runDeterministSIRModel
 	model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I').
 	model addEquation: (PPODEParser parse: 'R:t=gamma*I').
 	
-	result := model runDeterministSimulationFrom: 0.0 to: 1.0 withStep: 0.0001.
+	model runDeterministSimulationFrom: 0.0 to: 1.0 withStep: 0.0001.
+	model plot: { #S . #I . #R }
 	
-	result keysAndValuesDo: [ :key :eachSeries | eachSeries plot: key ]
