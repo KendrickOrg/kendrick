@@ -7,14 +7,15 @@ acceptKEModel: aModelNode
 	isDeterministic := false.
 	self prepareCPPFile.
 	"define some global variables"
-	stream nextPutAll: 'const double TMAX = ',	 '(double)', aModelNode simulator tMax asFloat asString, ';';cr.
-	stream nextPutAll: 'const double TMIN = ', '(double)', aModelNode simulator tMin asFloat asString, ';';cr.
-	stream nextPutAll: 'const double STEP = ', '(double)', aModelNode simulator step asFloat asString, ';';cr.
+	stream nextPutAll: 'const double TMAX = ',	aModelNode simulator tMax asFloat asString, ';';cr.
+	stream nextPutAll: 'const double TMIN = ', aModelNode simulator tMin asFloat asString, ';';cr.
+	stream nextPutAll: 'const double STEP = ', aModelNode simulator step asFloat asString, ';';cr.
 	stream nextPutAll: 'const int NB_EVENTS = ', aModelNode simulator listOfTransitions size asString, ';';cr;cr.
 		
 	stream nextPutAll: 'const int nbOfCompartments = ', aModelNode numberOfCompartments asString, ';';cr.
 	stream nextPutAll: 'const int nbOfSpecies = ', aModelNode numberOfSpecies asString, ';';cr;cr.
 	
+	stream nextPutAll: 'double t = TMIN;';cr.
 	stream nextPutAll: 'double initialValue[nbOfCompartments][nbOfSpecies];';cr.
 	stream nextPutAll: 'string compartmentName[nbOfCompartments];';cr.
 	stream nextPutAll: 'double x[nbOfCompartments][nbOfSpecies];';cr.
@@ -97,8 +98,7 @@ acceptKEModel: aModelNode
 	stream nextPutAll: (strInitializeTrans contents).
 	
 	stream nextPutAll: 'int main(void)';cr.
-	stream nextPutAll: '{';cr.
-	stream nextPutAll: String tab, 'double t = 0.0;';cr.
+	stream nextPutAll: '{';cr.	
 	stream nextPutAll: String tab, '//initialize all values of x';cr.
 	stream nextPutAll: String tab, 'initializeCompartments();';cr.
 	stream nextPutAll: String tab, 'initializeIndividuals();';cr.
@@ -128,14 +128,17 @@ acceptKEModel: aModelNode
 	stream nextPutAll: String tab, String tab, String tab, String tab, 'for (int j = 0; j < NB_EVENTS; j++){';cr.
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'double rate = 0.0;';cr.
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'double prob = 0.0;';cr.
+	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'double r = 0.0;';cr.
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'rate = rates[j] / getNumberOfIndividuals(currentStatus, specieID);';cr.
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'prob = 1 - exp((-1)*STEP*rate);';cr.
+	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'srand(time(0));';cr.
+	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'r = (double)rand()/RAND_MAX;';cr.
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'if ((listOfTransitions[j].fromStatus.compare(currentStatus)==0)&&(listOfTransitions[j].specieID=specieID)) {';cr.
-	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, String tab, 'if (prob > (rand()/(double)RAND_MAX))';cr.
+	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, String tab, 'if (prob > r)';cr.
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, String tab, String tab,  'listOfIndividuals[i].nextStatus = listOfTransitions[j].toStatus;';cr.
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, '}';cr.
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'if ((listOfTransitions[j].fromStatus.compare("")==0)&&(listOfTransitions[j].toStatus.compare(currentStatus)==0)&&(listOfTransitions[j].specieID=specieID)){';cr.
-	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, String tab, 'if (prob > (rand()/(double)RAND_MAX)) {';cr.
+	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, String tab, 'if (prob > r) {';cr.
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, String tab, String tab, 'KEIndividual individual;';cr.
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, String tab, String tab, 'individual.currentStatus = currentStatus;';cr.
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, String tab, String tab, 'individual.nextStatus = currentStatus;';cr.
@@ -164,7 +167,7 @@ acceptKEModel: aModelNode
 	stream nextPutAll: String tab, String tab, '}';cr.
 	stream nextPutAll: String tab, String tab, 'f.close();';cr.
 	stream nextPutAll: String tab, '}';cr.
-	stream nextPutAll: String tab, 'cout << Finished... << endl;';cr.
+	stream nextPutAll: String tab, 'cout << "Finished..." << endl;';cr.
 	stream nextPutAll: '}';cr.
 	
 	stream close.

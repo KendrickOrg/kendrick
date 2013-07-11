@@ -6,6 +6,7 @@ prepareCPPFile
 	stream nextPutAll: '#include <stdio.h>';cr.
 	stream nextPutAll: '#include <stdlib.h>';cr.
 	stream nextPutAll: '#include <math.h>';cr.
+	stream nextPutAll: '#include <time.h>';cr.
 	stream nextPutAll: '#include <fstream>';cr.
 	stream nextPutAll: '#include <sstream>';cr;cr.	
 		

@@ -21,7 +21,7 @@ testMultihostStochasticModel
 	model addEquation: dsdt.
 	model addEquation: didt.	
 	"model runIndividualBasedSimulationFrom: 0 to: 0.5  withStep:  0.0027."
-	model simulator: ((KEStochasticSimulator new) tMin: 0.0; tMax: 5.0; step: 0.25; model: model; algorithm: #GillespieDirect).
+	model simulator: ((KEStochasticSimulator new) tMin: 0.0; tMax: 5.0; step: 0.01; model: model; algorithm: #GillespieDirect).
 	model generateEvents.
 	visitor := KECPPStochasticVisitor new.
 	visitor function: #sqrt.

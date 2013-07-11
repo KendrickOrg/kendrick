@@ -20,6 +20,7 @@ acceptKEModel: aNode
 	stream nextPutAll: 'const int nbOfCompartments = ', aNode numberOfCompartments asString, ';';cr.
 	stream nextPutAll: 'const int nbOfSpecies = ', aNode numberOfSpecies asString, ';';cr;cr.
 	
+	stream nextPutAll: 'double t = TMIN;';cr.
 	stream nextPutAll: 'double initialValue[nbOfCompartments][nbOfSpecies];';cr.
 	stream nextPutAll: 'string compartmentName[nbOfCompartments];';cr.
 	stream nextPutAll: 'double x[nbOfCompartments][nbOfSpecies];';cr.
@@ -85,10 +86,10 @@ acceptKEModel: aNode
 	
 	"main function"
 	stream nextPutAll: 'int main(int argc, char *argv[]){';cr.
-	stream nextPutAll: String tab, 'double sumOfRates = 0.0;';cr.
-	stream nextPutAll: String tab, 'double t = TMIN;';cr.
+	stream nextPutAll: String tab, 'double sumOfRates = 0.0;';cr.	
 	stream nextPutAll: String tab, 'double previousTime = TMIN;';cr.
-	stream nextPutAll: String tab, 'double r = 0.0;';cr.
+	stream nextPutAll: String tab, 'double r1 = 0.0;';cr.
+	stream nextPutAll: String tab, 'double r2 = 0.0;';cr.
 	stream nextPutAll: String tab, 'int event = -1;';cr.
 	stream nextPutAll: String tab, 'double tOffset = 0.0;';cr.
 				
@@ -119,10 +120,12 @@ acceptKEModel: aNode
 	stream nextPutAll: String tab, String tab, String tab, '//Sum of rates';cr.
 	stream nextPutAll: String tab, String tab, String tab, 'sumOfRates = sum(rates, NB_EVENTS);';cr.
 	stream nextPutAll: String tab, String tab, String tab, '//Generation of time for the next calculation';cr.
-	stream nextPutAll: String tab, String tab, String tab, 'tOffset = (-1/sumOfRates)*log((double)(rand()+1)/RAND_MAX);';cr.
+	stream nextPutAll: String tab, String tab, String tab, 'srand(time(0));';cr.
+	stream nextPutAll: String tab, String tab, String tab, 'r1 = (double)rand()/RAND_MAX;';cr.
+	stream nextPutAll: String tab, String tab, String tab, 'r2 = (double)rand()/RAND_MAX;';cr.
+	stream nextPutAll: String tab, String tab, String tab, 'tOffset = (-1/sumOfRates)*log(r1);';cr.
 	stream nextPutAll: String tab, String tab, String tab, '//select event';cr.
-	stream nextPutAll: String tab, String tab, String tab, 'r = (double)(rand()+1)/RAND_MAX ;';cr.
-	stream nextPutAll: String tab, String tab, String tab, 'event = selectEvent(sumOfRates, r);';cr.
+	stream nextPutAll: String tab, String tab, String tab, 'event = selectEvent(sumOfRates, r2);';cr.
 	stream nextPutAll: String tab, String tab, String tab, 'Transition(event);';cr.
 	stream nextPutAll: String tab, String tab, String tab, 'if (t > (previousTime + STEP)){';cr.
 	stream nextPutAll: String tab, String tab, String tab, String tab, 'f << t << ''\t'';';cr.
