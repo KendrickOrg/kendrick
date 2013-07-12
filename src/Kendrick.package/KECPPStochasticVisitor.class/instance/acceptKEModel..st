@@ -107,7 +107,7 @@ acceptKEModel: aNode
 	stream nextPutAll: String tab, 'fname << "_stc.dat";';cr.
 	stream nextPutAll: String tab, 'ofstream f(fname.str().data());';cr.
 	stream nextPutAll: String tab, 'cout << "Starting..." << endl;';cr.	
-	
+	stream nextPutAll: String tab, 'srand(time(0));';cr.
 	stream nextPutAll: String tab, '//Begin of algorithm Gillespie';cr.
 	stream nextPutAll: String tab, 'if (f.is_open())';cr.
 	stream nextPutAll: String tab, '{';cr.	
@@ -119,8 +119,7 @@ acceptKEModel: aNode
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'rates[i] = rates[i]*(-1);';cr.
 	stream nextPutAll: String tab, String tab, String tab, '//Sum of rates';cr.
 	stream nextPutAll: String tab, String tab, String tab, 'sumOfRates = sum(rates, NB_EVENTS);';cr.
-	stream nextPutAll: String tab, String tab, String tab, '//Generation of time for the next calculation';cr.
-	stream nextPutAll: String tab, String tab, String tab, 'srand(time(0));';cr.
+	stream nextPutAll: String tab, String tab, String tab, '//Generation of time for the next calculation';cr.	
 	stream nextPutAll: String tab, String tab, String tab, 'r1 = (double)rand()/RAND_MAX;';cr.
 	stream nextPutAll: String tab, String tab, String tab, 'r2 = (double)rand()/RAND_MAX;';cr.
 	stream nextPutAll: String tab, String tab, String tab, 'tOffset = (-1/sumOfRates)*log(r1);';cr.

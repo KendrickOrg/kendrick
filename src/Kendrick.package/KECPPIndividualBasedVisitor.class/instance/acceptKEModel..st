@@ -114,6 +114,7 @@ acceptKEModel: aModelNode
 	stream nextPutAll: String tab, 'fname << "_ibm.dat";';cr.
 	stream nextPutAll: String tab, 'ofstream f(fname.str().data());';cr.
 	stream nextPutAll: String tab, 'cout << "Starting..." << endl;';cr.
+	stream nextPutAll: String tab, 'srand(time(0));';cr.
 	stream nextPutAll: String tab, 'if (f.is_open())';cr.
 	stream nextPutAll: String tab, '{';cr.
 	stream nextPutAll: String tab, String tab, 'while (t <= TMAX) {';cr.
@@ -131,7 +132,7 @@ acceptKEModel: aModelNode
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'double r = 0.0;';cr.
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'rate = rates[j] / getNumberOfIndividuals(currentStatus, specieID);';cr.
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'prob = 1 - exp((-1)*STEP*rate);';cr.
-	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'srand(time(0));';cr.
+	
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'r = (double)rand()/RAND_MAX;';cr.
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, 'if ((listOfTransitions[j].fromStatus.compare(currentStatus)==0)&&(listOfTransitions[j].specieID=specieID)) {';cr.
 	stream nextPutAll: String tab, String tab, String tab, String tab, String tab, String tab, 'if (prob > r)';cr.

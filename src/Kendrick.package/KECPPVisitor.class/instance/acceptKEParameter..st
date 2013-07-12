@@ -13,5 +13,5 @@ acceptKEParameter: aNode
 	ifFalse: [ 
 		aStream nextPutAll: 'const double ', aNode symbol asString, ' = ', aNode value asFloat asString, ';';cr.
 		 ].	
-	"Another cas: aNode value is nil and aNode expression is an Expression"
+	"Another case: aNode value is nil and aNode expression is an Expression"
 	^ aStream contents
