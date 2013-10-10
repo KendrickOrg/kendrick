@@ -6,12 +6,16 @@ Github is only used to sync the development en files, for doing [CI](https://tra
 
 ## How to install Kendrick
 
-* Download the last dev MOOSE 4.7 image : http://ci.moosetechnology.org/job/moose-latest-dev/
-
-* Load last version Kendrick :
+* Download the last dev MOOSE 4.8 image : http://www.moosetechnology.org/download
+* Load last version of SciSmalltalk: https://ci.inria.fr/pharo-contribution/job/SciSmalltalk/
+* Load last version of Kendrick :
 
 ```Smalltalk
-Gofer iturl: 'http://smalltalkhub.com/mc/UMMISCO/Kendrick/main';package: 'Kendrick';load.````
+Gofer it
+url: 'http://smalltalkhub.com/mc/UMMISCO/Kendrick/main';
+package: 'Kendrick';
+load.
+````
 
 ## How to sync SmalltalkHub repository with github (only for developers)
 * Bootstrap FileTree:
