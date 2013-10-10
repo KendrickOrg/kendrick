@@ -18,10 +18,10 @@ Gofer new
 * Load last version of Kendrick :
 
 ```Smalltalk
-Gofer it
-url: 'http://smalltalkhub.com/mc/UMMISCO/Kendrick/main';
-package: 'Kendrick';
-load.
+  Gofer it
+    url: 'http://smalltalkhub.com/mc/UMMISCO/Kendrick/main';
+    package: 'Kendrick';
+    load.
 ````
 
 ## How to sync SmalltalkHub repository with github (only for developers)
