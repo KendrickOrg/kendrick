@@ -11,10 +11,6 @@ acceptKEDeterministicSimulator: aNode
 	aStream nextPutAll: String tab, 'for (int i = 0; i < nbOfCompartments; i++)';cr.
 	aStream nextPutAll: String tab, String tab, 'fname << compartmentName[i];';cr.
 	aStream nextPutAll: String tab, 'fname << "_det.dat";';cr.
-	
-	"use gnu plot"
-	aStream nextPutAll: String tab, 'output_gnuplot(fname.str().data(),nbOfCompartments,nbOfSpecies,compartmentName);';cr.
-	
 	aStream nextPutAll: String tab, 'ofstream f(fname.str().data());';cr.
 	aStream nextPutAll: String tab,'for (int i = 0; i < nbOfCompartments; i++)';cr.
 	aStream nextPutAll: String tab, String tab, 'for (int j = 0; j < nbOfSpecies; j++)';cr.

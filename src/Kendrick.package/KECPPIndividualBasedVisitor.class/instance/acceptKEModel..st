@@ -169,10 +169,6 @@ acceptKEModel: aModelNode
 	stream nextPutAll: String tab, String tab, 'f.close();';cr.
 	stream nextPutAll: String tab, '}';cr.
 	stream nextPutAll: String tab, 'cout << "Finished..." << endl;';cr.
-	
-	"gnu plot"
-	stream nextPutAll: String tab, 'output_gnuplot(fname.str().data(),nbOfCompartments,nbOfSpecies,compartmentName);';cr.
-	
 	stream nextPutAll: '}';cr.
 	
 	stream close.

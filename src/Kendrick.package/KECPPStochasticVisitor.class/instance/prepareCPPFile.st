@@ -8,8 +8,7 @@ prepareCPPFile
 	stream nextPutAll: '#include <math.h>';cr.
 	stream nextPutAll: '#include <time.h>';cr.
 	stream nextPutAll: '#include <fstream>';cr.
-	stream nextPutAll: '#include <sstream>';cr.	
-	stream nextPutAll: '#include "libplot.h"';cr;cr.	
+	stream nextPutAll: '#include <sstream>';cr;cr.	
 		
 	stream nextPutAll: 'using namespace std;';cr;cr.
 

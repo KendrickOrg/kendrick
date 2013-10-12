@@ -1,6 +1,6 @@
 as yet unclassified
 plot
-	| diag f |
+	"| diag f |
 	f := [ :x | self atIndex: x ].
 	diag := ESDiagramRenderer new.
 	diag lineDiagram
@@ -13,4 +13,4 @@ plot
 		width: 1000;
 		height: 500;
 		models: index.
-	^ diag open
+	^ diag open"

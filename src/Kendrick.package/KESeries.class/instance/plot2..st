@@ -1,20 +1,22 @@
 as yet unclassified
-plot: aSymbol	
+plot2: aSymbol	
 	(data at: 1) size > 1 
 	ifTrue: [self plotVector: aSymbol]
 	ifFalse: [
 		| diag f Ylabel |
 		f := [ :x | (self atIndex: x) at: 1 ].
 		Ylabel := 'Number of Individuals of ',aSymbol asString.
-		diag := GETDiagramBuilder new.
-		diag lineDiagram 
-			height: 400;
-			models: index;
+		diag := ESDiagramRenderer new.
+		diag lineDiagram
 			y: f;
-			color: Color blue;
+			defaultColor: Color blue;
 			yAxisLabel: Ylabel;
-			"xAxisLabel: 'Time';"
-			regularAxis.
+			xAxisLabel: 'Time';
+			regularAxis;
+			startLineAtZero;
+			width: 1000;
+			height: 500;
+			models: index.
 		^ diag open
 		]
 	
