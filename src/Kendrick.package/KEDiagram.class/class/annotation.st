@@ -1,4 +1,4 @@
-as yet unclassified
+meta
 annotation
 	<MSEClass: #Diagram super: #KEEntity >
 	<package: #KE>

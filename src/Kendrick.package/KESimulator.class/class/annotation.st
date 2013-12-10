@@ -1,4 +1,4 @@
-as yet unclassified
+meta
 annotation
 	<MSEClass: #Simulator super: #KEEntity >
 	<package: #KE>
