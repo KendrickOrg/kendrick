@@ -1,8 +1,8 @@
 as yet unclassified
-atCompartment: aStatus at: idSpecie modifyNumberOfIndividuals: aValue
+atCompartment: aStatus at: idSpecies modifyNumberOfIndividuals: aValue
 
 compartments do: [:each|
 	each status = aStatus ifTrue:[
-		(each numberOfIndividuals) at: idSpecie put: aValue.
+		(each numberOfIndividuals) at: idSpecies put: aValue.
 		]
 	]
