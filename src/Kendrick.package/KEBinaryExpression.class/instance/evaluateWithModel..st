@@ -13,5 +13,5 @@ op = #/ ifTrue:[
 		^left/right].
 op = #-	ifTrue:[
 		^left-right].
-op = #^ ifTrue:[
+op = #'^' ifTrue:[
 		^left raisedTo: right]
