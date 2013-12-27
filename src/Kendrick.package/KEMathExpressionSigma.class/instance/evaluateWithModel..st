@@ -12,4 +12,4 @@ idInterval do: [:id|
 (function = #sum) ifTrue: [
 	rs := 0.
 	expressionValue do: [:a| rs := rs + a]].
-^rs.
+^rs
