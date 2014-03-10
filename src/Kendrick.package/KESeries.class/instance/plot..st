@@ -13,8 +13,11 @@ plot: aSymbol
 			y: f;
 			color: Color blue;
 			yAxisLabel: Ylabel;
-			"xAxisLabel: 'Time';"
+			xAxisLabel: 'Time';
+			withBezierLines: true;
+			tension: 2;
 			regularAxis.
 		^ diag open
 		]
+	
 	
