@@ -13,6 +13,6 @@ runDeterministSIRModel
 	model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I').
 	model addEquation: (PPODEParser parse: 'R:t=gamma*I').
 	
-	model runDeterministSimulationFrom: 0.0 to: 1.0 withStep: 0.0001.
+	model runDeterministSimulationFrom: 0.0 to: 1.0 withStep: 0.001.
 	model plot: { #S . #I . #R }
 	
