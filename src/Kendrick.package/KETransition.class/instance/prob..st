@@ -1,4 +1,3 @@
 accessing
-prob: aValue 
-
-prob := aValue  
+prob: aValue
+	prob := aValue

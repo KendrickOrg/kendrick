@@ -3,4 +3,4 @@ comparing
 
 anExpression isAVariable
 	ifTrue:[^self symbol = anExpression symbol].
-^false.
+^false

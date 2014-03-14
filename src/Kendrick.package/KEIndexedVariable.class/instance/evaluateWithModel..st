@@ -18,4 +18,4 @@ idExpression2 = -1 ifTrue: [index2 := -1] ifFalse: [
 	x := (m atParameter: symbol at: index1 at: index2).
 	].
 "self halt."
-^x.
+^x

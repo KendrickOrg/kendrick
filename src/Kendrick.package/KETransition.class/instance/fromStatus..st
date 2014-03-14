@@ -1,4 +1,3 @@
 accessing
 fromStatus: aStatus
-
-fromStatus := aStatus
+	fromStatus := aStatus

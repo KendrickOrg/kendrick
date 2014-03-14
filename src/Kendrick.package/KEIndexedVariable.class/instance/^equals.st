@@ -7,4 +7,4 @@ anExpression isAnIndex
 		[self idExpression2 = anExpression idExpression2]
 		]
 		].
-^false.
+^false

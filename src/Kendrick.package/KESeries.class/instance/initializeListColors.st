@@ -7,4 +7,4 @@ initializeListColors
 		|rd|
 		rd := Random new.
 		listColor at: i put: (Color r: (rd next) g: (rd next) b: (rd next))].
-	^listColor.
+	^listColor

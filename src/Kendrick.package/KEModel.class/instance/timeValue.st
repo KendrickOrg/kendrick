@@ -1,3 +1,3 @@
 accessing
 timeValue
-^timeValue.
+^timeValue

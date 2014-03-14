@@ -1,4 +1,3 @@
 accessing
 toStatus: aStatus
-
-toStatus := aStatus
+	toStatus := aStatus
