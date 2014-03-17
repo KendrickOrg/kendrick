@@ -6,14 +6,14 @@ baseline01: spec
 		spec blessing: #'baseline'.
 		spec repository: 'http://smalltalkhub.com/mc/UMMISCO/Kendrick/main/'.
 		spec 
-			project: 'GraphET' with: [
-				spec
-					className: #ConfigurationOfGraphET;
-					versionString: 'stable';
-					repository: 'http://smalltalkhub.com/mc/ObjectProfile/GraphET/main/' ];
 			project: 'Fame' with: [
 				spec
 					className: #ConfigurationOfFame;
 					versionString: 'bleedingEdge';
-					repository: 'http://smalltalkhub.com/mc/Moose/Fame/main/' ].
+					repository: 'http://smalltalkhub.com/mc/Moose/Fame/main/' ];
+			project: 'GraphET' with: [
+				spec
+					className: #ConfigurationOfGraphET;
+					versionString: 'stable';
+					repository: 'http://smalltalkhub.com/mc/ObjectProfile/GraphET/main/' ].
 		spec package: 'Kendrick'. ].
