@@ -6,9 +6,10 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"series",
-		"function"
+		"xLabel",
+		"yLabel",
+		"colorList"
 	],
-	"name" : "KEDiagram",
+	"name" : "KEDiagramBuilder",
 	"type" : "normal"
 }

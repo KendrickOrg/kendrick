@@ -1,7 +1,7 @@
 tests
-testParserIndexedEquation
+testParserIndexedVariableInEquation2
 
-|  model s i r dsdt didt drdt |
+|  model    dsdt   |
 model := KEModel new.
 model atCompartment: #S putNumberOfIndividuals: 1.
 model atCompartment: #I putNumberOfIndividuals: 1.

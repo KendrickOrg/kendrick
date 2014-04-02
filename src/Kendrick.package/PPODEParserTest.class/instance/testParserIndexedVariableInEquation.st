@@ -1,7 +1,7 @@
 tests
-testParserIndexInEquation
+testParserIndexedVariableInEquation
 
-|model compartment dsdt didt|
+|model  dsdt didt|
 
 model := KEModel new.
 model atCompartment: #S putNumberOfIndividuals: #(9999 1000 2000).
@@ -27,7 +27,6 @@ self assert: ((model equations) size) equals: 6.
 self assert: (dsdt variable symbol) equals: #S.
 self assert: (dsdt tVariable symbol) equals: #t.
 self assert: (dsdt idVariable) equals: #i.
-self assert: (didt idVariable) equals: #i.
 self assert: (dsdt expression evaluateWithModel: model) equals: (365/30).
 
 
