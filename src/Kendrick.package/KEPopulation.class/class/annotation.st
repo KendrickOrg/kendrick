@@ -1,5 +1,5 @@
 as yet unclassified
 annotation
-	<MSEClass: #Compartment2 super: #KEPopulation>
+	<MSEClass: #Population super: #KEEntity>
 	<package: #KE>
 	^self
