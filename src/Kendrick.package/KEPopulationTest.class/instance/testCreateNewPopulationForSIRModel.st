@@ -7,7 +7,7 @@ testCreateNewPopulationForSIRModel
 	aNewPopulation addSubPopulation: ((KECompartment new) status: #R; initialNbIndividuals: 0).
 	
 	self assert: (aNewPopulation getNbSubPopulations) equals: 3.
-	self assert: (aNewPopulation getSubPopulationAt: 1) isACompartment equals: true.  
-	self assert: (aNewPopulation getSubPopulationAt: 1) superPopulation equals: aNewPopulation.
-	self assert: (aNewPopulation getSubPopulationAt: 1) id equals: 1.
-	self assert: (aNewPopulation getSubPopulationAt: 1) status equals: #S
+	self assert: (aNewPopulation atSubPopulation: 1) isACompartment equals: true.  
+	self assert: (aNewPopulation atSubPopulation: 1) superPopulation equals: aNewPopulation.
+	self assert: (aNewPopulation atSubPopulation: 1) id equals: 1.
+	self assert: (aNewPopulation atSubPopulation: 1) status equals: #S

@@ -1,12 +1,15 @@
 tests
 testParameterAsArray 
-
-|model|
-
-model := KEModel new.
-model atParameter: #gamma put: #(1 2 3). 
-model atParameter:#beta put: #((80 90 100) (110 120 130)).
-self assert: (model atParameter: #gamma at: 2) equals: 2.
-self assert: (model atParameter: #beta at: 2 at: 1) equals: 110.
-
+	|model dsdt|
+	model := KEModel2 new.
+	model addCompartment: #S numberOfIndividuals: #(9999 1000 2000).
+	model addCompartment: #I numberOfIndividuals: #(1 0 0).
+	model addParameter: #beta value: #(#(0 0.02 0.02) #(0.02 0.0 0.0)  #(0.02 0.0 0.0)). 
+	model addParameter: #i value: (1 to: 3).
+	model addParameter: #j value: (1 to: 3).
+	model addParameter: #d value: 5.
+	dsdt := 'S[i]:t=-sum(j, beta[i][j]*I[j])*S[i]' parseAsAnEquation.
+	model addEquation: dsdt.
+	model addTemporalParameter: #i value: 1.
+	self assert: (dsdt expression evaluateWithModel: model withTemporalParameters: model temporalParameters) equals: 0.
 

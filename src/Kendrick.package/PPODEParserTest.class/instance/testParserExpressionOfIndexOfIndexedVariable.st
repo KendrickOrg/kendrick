@@ -7,8 +7,8 @@ testParserExpressionOfIndexOfIndexedVariable
 	self assert: (dsdt expression rightHandSide isAnIndexedVariable) equals: true.
 	self assert: (didt expression rightHandSide isAnIndexedVariable) equals: true.
 	self assert: (drdt expression rightHandSide isAnIndexedVariable) equals: true.
-	self assert: (dsdt expression rightHandSide idExpression1 isBinaryExpression ) equals: true.
-	self assert: (didt expression rightHandSide idExpression1 isMathExpression) equals: true.
-	self assert: (drdt expression rightHandSide idExpression1 isAVariable) equals: true
+	self assert: ((dsdt expression rightHandSide atIndex: 1) isBinaryExpression ) equals: true.
+	self assert: ((didt expression rightHandSide atIndex: 1) isExpressionWithMathFunction) equals: true.
+	self assert: ((drdt expression rightHandSide atIndex: 1) isAVariable) equals: true
 
 

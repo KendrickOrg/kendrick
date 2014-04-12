@@ -1,4 +1,4 @@
 evaluating
 value
-	<MSEProperty: #value type: #Number>
+	<MSEProperty: #value type: #Object>
 	^ value
