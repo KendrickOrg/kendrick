@@ -12,4 +12,4 @@ testParameterAsExpression2
 	model addEquation: dsdt.
 	model addTemporalParameter: #i value: 50.
 	model addTemporalParameter: #j value: 70.
-	self assert: (dsdt expression evaluateWithModel: model withTemporalParameters: model temporalParameters) equals: ((-16) exp)*(-1).
+	self assert: (dsdt expression evaluateWithModel: model) equals: ((-16) exp)*(-1).

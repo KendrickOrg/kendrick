@@ -1,3 +1,0 @@
-as yet unclassified
-evaluateWithModel: aModel withTemporalParameters: parameters
-	self subclassResponsibility

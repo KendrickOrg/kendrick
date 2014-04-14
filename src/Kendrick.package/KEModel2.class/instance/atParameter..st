@@ -5,6 +5,6 @@ atParameter: aSymbol
 	x ifNil: [ ^ nil ].
 	x expression 
 	ifNotNil: [ 
-		x evaluateWithModel: self withTemporalParameters: temporalParameters
+		x evaluateWithModel: self
 		 ].
 	^ x value

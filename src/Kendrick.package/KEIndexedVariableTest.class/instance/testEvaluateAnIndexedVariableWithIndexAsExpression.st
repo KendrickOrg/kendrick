@@ -1,5 +1,5 @@
-tests
-testParameterAsArray 
+as yet unclassified
+testEvaluateAnIndexedVariableWithIndexAsExpression
 	|model dsdt|
 	model := KEModel2 new.
 	model addCompartment: #S numberOfIndividuals: #(9999 1000 2000).
@@ -8,8 +8,7 @@ testParameterAsArray
 	model addParameter: #i value: (1 to: 3).
 	model addParameter: #j value: (1 to: 3).
 	model addParameter: #d value: 5.
-	dsdt := 'S[i]:t=-sum(j, beta[i][j]*I[j])*S[i]' parseAsAnEquation.
+	dsdt := 'S[i]:t=-sum(j, beta[i][j]*I[j])*S[i+1]' parseAsAnEquation.
 	model addEquation: dsdt.
-	model addTemporalParameter: #i value: 1.
-	self assert: (dsdt expression evaluateWithModel: model) equals: 0.
-
+	model addTemporalParameter: #i value: 2.
+	self assert: (dsdt expression evaluateWithModel: model) equals: -40.
