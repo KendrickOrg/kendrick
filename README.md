@@ -6,7 +6,6 @@ Github is only used to sync the development en files, for doing [CI](https://tra
 
 Last stable version : 0.2
 ## How to install Kendrick 0.2
-
 * Download the last dev MOOSE 5.0 on INRIA's CI server: https://ci.inria.fr/moose/job/moose-5.0/
 * Load Kendrick:
 
