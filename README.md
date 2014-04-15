@@ -1,22 +1,15 @@
-Kendrick is a Domain-Specific Language and Simulation Plaform for mathematical epidemiology modeling. All the development happens on SmalltalkHub: http://bit.ly/XrpsL2
+Kendrick is a Domain-Specific Language and Simulation Plaform for mathematical epidemiology modeling. All the development happens on SmalltalkHub at the moment: http://bit.ly/XrpsL2
 
 Kendrick is based extensively on several tools of the meta-modeling platform [MOOSE](http://www.moosetechnology.org/) including [PetitParser](http://www.moosetechnology.org/tools/petitparser) and Graph-ET.
 
 Github is only used to sync the development en files, for doing [CI](https://travis-ci.org/SergeStinckwich/Kendrick) and store the [issues](https://github.com/UMMISCO/Kendrick/issues) list.
 
-## How to install Kendrick
+Last stable version : 0.2
 
-* Download the last dev MOOSE 4.8 image : http://www.moosetechnology.org/download
-* Load last version of [SciSmalltalk](http://smalltalkhub.com/#!/~SergeStinckwich/SciSmalltalk):
+## How to install Kendrick 0.2
 
-```Smalltalk
-Gofer new
-    url: 'http://www.smalltalkhub.com/mc/SergeStinckwich/SciSmalltalk/main';
-    package: 'ConfigurationOfSciSmalltalk';
-    load.
-(Smalltalk at: #ConfigurationOfSciSmalltalk) loadBleedingEdge.
-```
-* Load last version of Kendrick :
+* Download the last dev MOOSE 5.0 on INRIA's CI server: https://ci.inria.fr/moose/job/moose-5.0/
+* Load Kendrick:
 
 ```Smalltalk
   Gofer it
@@ -25,7 +18,7 @@ Gofer new
     load.
 ````
 
-## How to sync SmalltalkHub repository with github (only for developers)
+## Obsolete - How to sync SmalltalkHub repository with github (only for developers)
 * Bootstrap FileTree:
 
 ```Smalltalk
