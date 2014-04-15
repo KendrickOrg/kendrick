@@ -4,7 +4,7 @@ Kendrick is based extensively on several tools of the meta-modeling platform [MO
 
 Github is only used to sync the development en files, for doing [CI](https://travis-ci.org/SergeStinckwich/Kendrick) and store the [issues](https://github.com/UMMISCO/Kendrick/issues) list.
 
-* Last stable version (0.2): [![Build Status](https://ci.inria.fr/pharo-contribution/job/Kendrick/badge/icon)](https://ci.inria.fr/pharo-contribution/job/Kendrick/)
+* Last stable version (0.2): [![Build Status](https://ci.inria.fr/pharo-contribution/buildStatus/icon?job=Kendrick/PHARO=30,VERSION=stable,VM=vm)](https://ci.inria.fr/pharo-contribution/job/Kendrick/PHARO=30,VERSION=stable,VM=vm/)
 * Last dev version:
 
 ## How to install Kendrick 0.2
