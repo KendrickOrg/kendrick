@@ -15,5 +15,10 @@ baseline02: spec
 				spec
 					className: #ConfigurationOfFame;
 					versionString: 'bleedingEdge';
-					repository: 'http://smalltalkhub.com/mc/Moose/Fame/main/' ].
+					repository: 'http://smalltalkhub.com/mc/Moose/Fame/main/' ];
+			project: 'PetitParser' with: [
+				spec
+					className: #ConfigurationOfPetitParser;
+					versionString: #'stable';
+					repository: 'http://smalltalkhub.com/mc/Moose/PetitParser/main/' ].
 		spec package: 'Kendrick'. ].
