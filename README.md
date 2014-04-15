@@ -5,7 +5,6 @@ Kendrick is based extensively on several tools of the meta-modeling platform [MO
 Github is only used to sync the development en files, for doing [CI](https://travis-ci.org/SergeStinckwich/Kendrick) and store the [issues](https://github.com/UMMISCO/Kendrick/issues) list.
 
 Last stable version : 0.2
-
 ## How to install Kendrick 0.2
 
 * Download the last dev MOOSE 5.0 on INRIA's CI server: https://ci.inria.fr/moose/job/moose-5.0/
