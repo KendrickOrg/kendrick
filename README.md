@@ -11,38 +11,10 @@ Last stable version : 0.2
 * Load Kendrick:
 
 ```Smalltalk
-  Gofer it
+Gofer new
     url: 'http://smalltalkhub.com/mc/UMMISCO/Kendrick/main';
-    package: 'Kendrick';
+    package: 'ConfigurationOfKendrick';
     load.
+  ((Smalltalk at: #ConfigurationOfKendrick) project version: '0.2') load.
 ````
 
-## Obsolete - How to sync SmalltalkHub repository with github (only for developers)
-* Bootstrap FileTree:
-
-```Smalltalk
-  Gofer new
-    url: 'http://ss3.gemstone.com/ss/FileTree';
-    package: 'ConfigurationOfFileTree';
-    load.
-  ((Smalltalk at: #ConfigurationOfFileTree) project version: '1.0') load.
-```
-
-* Clone this repository:
-
-```shell
-  mkdir Kendrick
-  cd Kendrick
-  git clone https://github.com/UMMISCO/Kendrick.git
-```
-
-* Attach to filetree repository and load latest packages (use correct path to your filetree download/clone):
-
-```Smalltalk
-repo := 'Add you repo path here'.
-Gofer new
-    repository: (MCFileTreeRepository new directory: 
-                    (FileDirectory on: repo));
-    package: 'Kendrick';
-    load.
-```
