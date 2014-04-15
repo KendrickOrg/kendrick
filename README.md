@@ -17,3 +17,15 @@ Gofer new
   ((Smalltalk at: #ConfigurationOfKendrick) project version: '0.2') load.
 ````
 
+## How to install Kendrick development version
+* Download the last dev MOOSE 5.0 on INRIA's CI server: https://ci.inria.fr/moose/job/moose-5.0/
+* Load Kendrick:
+
+```Smalltalk
+Gofer new
+    url: 'http://smalltalkhub.com/mc/UMMISCO/Kendrick/main';
+    package: 'ConfigurationOfKendrick';
+    load.
+  (Smalltalk at: #ConfigurationOfKendrick) loadDevelopment
+````
+
