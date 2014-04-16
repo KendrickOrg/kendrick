@@ -6,9 +6,14 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"nbIterations",
-		"listOfEquations"
+		"y",
+		"dydx",
+		"k1",
+		"k2",
+		"k3",
+		"k4",
+		"data"
 	],
-	"name" : "RungeKuttaSolver",
+	"name" : "RK4Solver",
 	"type" : "normal"
 }

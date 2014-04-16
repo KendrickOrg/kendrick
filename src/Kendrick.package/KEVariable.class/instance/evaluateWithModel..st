@@ -5,7 +5,7 @@ evaluateWithModel: aModel
 	x ifNil: [ 
 		x := aModel atParameter: symbol.
 		x ifNil: [ 
-			(symbol = #t) ifTrue: [ ^ aModel timeValue ].
+			(symbol = #t) ifTrue: [ ^ aModel temporalParameters at: #t ].
 			popIndexList := aModel temporalParameters at: #PID ifAbsent: [ nil ].
 			popIndexList ifNotNil: [ 
 				subPop := aModel population atSubPopulation: popIndexList.

@@ -5,6 +5,7 @@ atSubPopulation: anObject
 	anObject isCollection ifTrue: [ 
 		|temp|
 		temp := self.
+		anObject = #(0) ifTrue: [ ^ self ].
 		anObject do: [ :each| temp := temp atSubPopulation: each ].
 		^ temp
 		 ].

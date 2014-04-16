@@ -1,13 +1,15 @@
 {
 	"commentStamp" : "",
-	"super" : "KEEntity",
-	"category" : "Kendrick-SemanticModel",
+	"super" : "Object",
+	"category" : "Kendrick-Math-ODE",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"PIDList"
+		"x0",
+		"xn",
+		"step"
 	],
-	"name" : "KEPopulationBuilder",
+	"name" : "Solver",
 	"type" : "normal"
 }

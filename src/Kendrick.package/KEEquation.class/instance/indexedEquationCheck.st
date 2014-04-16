@@ -1,0 +1,3 @@
+accessing
+indexedEquationCheck
+	^ variable isAnIndexedVariable 

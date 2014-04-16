@@ -12,7 +12,8 @@
 		"population",
 		"populationBuilder",
 		"simulator",
-		"compartments"
+		"compartments",
+		"PIDList"
 	],
 	"name" : "KEModel2",
 	"type" : "normal"
