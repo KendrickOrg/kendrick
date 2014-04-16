@@ -1,5 +1,4 @@
 SystemOrganization addCategory: #Kendrick!
-SystemOrganization addCategory: 'Kendrick-Examples'!
 SystemOrganization addCategory: 'Kendrick-ExternalDSL'!
 SystemOrganization addCategory: 'Kendrick-Glamour'!
 SystemOrganization addCategory: 'Kendrick-Math-ODE'!

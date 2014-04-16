@@ -1,3 +1,0 @@
-printing
-isNumerical
-	^ true

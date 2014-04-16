@@ -2,7 +2,7 @@ grammar
 sin 
 
 ^ super sin  ==> [:nodes|
-	(KEExpressionWithMathFunction new)
-	functionName: #sin;
+	(KEMathExpression new)
+	function: #sin;
 	exprInFunction: (nodes at: 5)
 	]
