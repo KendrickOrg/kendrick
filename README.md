@@ -5,7 +5,7 @@ Kendrick is a Domain-Specific Language and Simulation Plaform for mathematical e
 
 Kendrick is based extensively on several tools of the meta-modeling platform [MOOSE](http://www.moosetechnology.org/) including [PetitParser](http://www.moosetechnology.org/tools/petitparser) and Graph-ET.
 
-Github is only used to sync the development en files, for doing [CI](https://travis-ci.org/SergeStinckwich/Kendrick) and store the [issues](https://github.com/UMMISCO/Kendrick/issues) list.
+Github is only used to to store the [issues](https://github.com/UMMISCO/Kendrick/issues) list.
 
 ## How to install Kendrick 0.4
 * Download the last dev MOOSE 5.0 on INRIA's CI server: https://ci.inria.fr/moose/job/moose-5.0/
