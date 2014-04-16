@@ -28,6 +28,6 @@ Gofer new
     url: 'http://smalltalkhub.com/mc/UMMISCO/Kendrick/main';
     package: 'ConfigurationOfKendrick';
     load.
-  (Smalltalk at: #ConfigurationOfKendrick) loadDevelopment
+  (Smalltalk at: #ConfigurationOfKendrick) loadDevelopment.
 ````
 
