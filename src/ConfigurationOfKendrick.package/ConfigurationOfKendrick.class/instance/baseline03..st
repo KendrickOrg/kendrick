@@ -10,6 +10,10 @@ baseline03: spec
 					className: #ConfigurationOfMoose;
 					versionString: #'development';
 					repository: 'http://smalltalkhub.com/mc/Moose/Moose/main/' ].
+		spec project: 'SciSmalltalk' with: [
+				spec
+					className: #ConfigurationOfSciSmalltalk;
+					versionString: #'development';
+					repository: 'http://smalltalkhub.com/mc/SergeStinckwich/SciSmalltalk/main/' ].
 		spec 
-			package: 'Kendrick';
-			package: 'Math-ODE'. ].
+			package: 'Kendrick'].
