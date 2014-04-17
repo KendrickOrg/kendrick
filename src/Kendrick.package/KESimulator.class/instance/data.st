@@ -1,5 +1,5 @@
 accessing
 data
-	<MSEProperty: #data type: #Dictionary>
+	<MSEProperty: #data type: #KESeries>
 	<multivalued>
 	^ data

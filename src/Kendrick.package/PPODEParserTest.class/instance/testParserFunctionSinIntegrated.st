@@ -1,0 +1,25 @@
+tests
+testParserFunctionSinIntegrated
+
+|  model s i r dsdt didt drdt |
+model := KEModel new.
+model atCompartment: #S putNumberOfIndividuals: 100000.
+model atCompartment: #I putNumberOfIndividuals: 0.
+model atCompartment: #R putNumberOfIndividuals: 0.
+model atParameter: #beta put: 0.0052.
+model atParameter: #gamma put: 365/7.
+model atParameter: #mu put: 1/80.
+model atParameter: #betaAmp put: 0.3.
+model atParameter: #N put: 100000.
+model timeValue: 1.
+
+dsdt := 'S:t=mu*N-beta*(1+betaAmp*cos(t))*S*I-mu*S' parseAsAnEquation.
+model addEquation: dsdt.
+
+self assert: (dsdt variable symbol) equals: #S.
+self assert: (dsdt tVariable symbol) equals: #t.
+self assert: (dsdt expression evaluateWithModel: model) equals: 0.
+
+
+
+

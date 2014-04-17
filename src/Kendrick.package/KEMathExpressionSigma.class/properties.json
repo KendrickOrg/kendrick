@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "KEMathExpression",
+	"category" : "Kendrick-SemanticModel",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"idVariable"
+	],
+	"name" : "KEMathExpressionSigma",
+	"type" : "normal"
+}

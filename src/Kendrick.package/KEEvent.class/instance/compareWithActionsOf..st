@@ -7,7 +7,7 @@ compareWithActionsOf: anEvent
 		anEvent actions keysAndValuesDo: [:key2 :value2|
 			flag := false.
 			value1 = value2 ifTrue: [
-				key1 isAnIndexedVariable 
+				key1 isAnIndex 
 					ifFalse: [flag := (key1 symbol = key2 symbol)] 
 					ifTrue: [flag := ((key1 symbol = key2 symbol)&(key1 idExpression1 = key2 idExpression1))]
 				].
