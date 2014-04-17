@@ -11,6 +11,6 @@ prepareCPPFile
 	stream nextPutAll: '#include <sstream>';cr.
 	stream nextPutAll: '#include <vector>';cr;cr.
 		
-	stream nextPutAll: 'using namespace std;';cr;cr
+	stream nextPutAll: 'using namespace std;';cr;cr.
 	
 	

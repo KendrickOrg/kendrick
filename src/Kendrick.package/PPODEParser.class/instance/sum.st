@@ -2,8 +2,8 @@ grammar
 sum 
 
 ^ super sum  ==> [:nodes|
-	(KEMathExpressionSigma new)
-	function: #sum;
-	idVariable: (nodes at: 5) inputValue asSymbol;
+	(KEExpressionWithSigmaMathFunction new)
+	functionName: #sum;
+	idVariable: (nodes at: 5) parsedValue;
 	exprInFunction: (nodes at: 7)
 	]
