@@ -1,21 +1,18 @@
 as yet unclassified
-evaluateWithModel: m
-
-|index1 index2 x|
-
-index1 := (self calculateValueOfIndex: idExpression1 with: m).
-idExpression2 = -1 ifTrue: [index2 := -1] ifFalse: [
-	index2 := (self calculateValueOfIndex: idExpression2 with: m).
-	index2 < 0 ifTrue: [index2 := 0]
-	].
-"self halt."
-(index2 = -1) ifTrue: [
-	(index1 <= 0) ifTrue: [^0].
-	x := (m atParameter: symbol at: index1).
-	x ifNil: [x := ((m atCompartment: symbol) numberOfIndividuals) at: index1]
-	] ifFalse: [
-	((index1 <= 0) | (index2 <= 0)) ifTrue: [^0].
-	x := (m atParameter: symbol at: index1 at: index2).
-	].
-"self halt."
-^x
+evaluateWithModel: aModel
+	|indexValues x currentPID subPop|
+	indexValues := indexList collect: [ :each| each evaluateWithModel: aModel ].
+	indexValues := indexValues collect: [ :each| each < 0 ifTrue: [ 0 ] ifFalse: [ each ] ].
+	x := aModel atParameter: symbol.
+	x isNumber ifTrue: [ ^ x ].
+	x ifNil: [ 
+		currentPID := aModel temporalParameters at: #PID.
+		subPop := aModel population atSubPopulation: currentPID.
+		"check if last index of currentPID = indexValue"
+		currentPID last = indexValues first 
+		ifTrue:  [ ^ (subPop atSubPopulation: symbol) currentNbIndividuals]
+		ifFalse: [ ^ ((subPop superPopulation atSubPopulation: (indexValues first)) atSubPopulation: symbol) currentNbIndividuals ].
+		].
+	"if x is not nil and not a number, so x if a value of a matrix or an array, that depends on indexList"
+	indexValues do: [ :each| x := (x at: each) ].
+	^ x

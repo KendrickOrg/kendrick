@@ -8,11 +8,7 @@
 	"instvars" : [
 		"variable",
 		"tVariable",
-		"expression",
-		"eqIndex",
-		"eqIndex2",
-		"idVariable",
-		"idVariable2"
+		"expression"
 	],
 	"name" : "KEEquation",
 	"type" : "normal"

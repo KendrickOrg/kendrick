@@ -1,6 +1,6 @@
 initialize-release
 initialize
 	super initialize.
-	compartments := OrderedCollection new.
+	compartments := Bag new.
 	parameters := Dictionary new.
-	equations := Bag new.
+	equations := Bag new
