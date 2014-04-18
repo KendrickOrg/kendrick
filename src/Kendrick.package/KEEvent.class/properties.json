@@ -7,10 +7,9 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"rate",
-		"rateValue",
 		"actions",
-		"eqIndex",
-		"eqIndexVar"
+		"fromStatus",
+		"toStatus"
 	],
 	"name" : "KEEvent",
 	"type" : "normal"

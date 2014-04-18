@@ -24,7 +24,7 @@ visitNode: aNode
 		ifTrue: [ ^ self acceptKEMathExpressionSigma: aNode ].
 	aNode  class == KEIndexedVariable 
 		ifTrue: [ ^ self acceptKEIndexedVariable: aNode ].
-	aNode  class == KEEvent
+	aNode  class == KEEventOld
 		ifTrue: [ ^ self acceptKEEvent:  aNode].
 	aNode class == KETransition 
 		ifTrue: [ ^ self acceptKETransition: aNode ].

@@ -1,8 +1,10 @@
-as yet unclassified
-executeOn: aModel
-	|  old |
-	actions keysAndValuesDo:[:status :modification |
-		old := ((aModel atCompartment: (status symbol)) numberOfIndividuals) at: (self eqIndex).
-		aModel atCompartment: (status symbol) at: (self eqIndex) modifyNumberOfIndividuals: (old + modification).
+accessing
+executeOn: model
+	|currentPID subPop|
+	currentPID := model temporalParameters at: #PID.
+	subPop := model population atSubPopulation: currentPID.
+	actions keysAndValuesDo: [ :status :value|
+		|old|
+		old := (subPop atSubPopulation: status) currentNbIndividuals.
+		(subPop atSubPopulation: status) currentNbIndividuals: (old + value)
 		]
-	
