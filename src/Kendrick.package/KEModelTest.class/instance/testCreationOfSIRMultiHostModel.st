@@ -2,6 +2,7 @@ tests
 testCreationOfSIRMultiHostModel
 	|model|
 	model := self createSIRMultiHostModel.
+	self halt.
 	self assert: (model population isAPopulationOfCompartments) equals: false.
 	self assert: (model population getNbSubPopulations) equals: 3.
 	self assert: (model population getNbIndividuals) equals: 13000.
