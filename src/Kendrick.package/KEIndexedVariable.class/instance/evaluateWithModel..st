@@ -13,6 +13,6 @@ evaluateWithModel: aModel
 		ifTrue:  [ ^ (subPop atSubPopulation: symbol) currentNbIndividuals]
 		ifFalse: [ ^ ((subPop superPopulation atSubPopulation: (indexValues first)) atSubPopulation: symbol) currentNbIndividuals ].
 		].
-	"if x is not nil and not a number, so x if a value of a matrix or an array, that depends on indexList"
+	"if x is not nil and not a number, so x is a parameter whose value is a matrix or an array, that depends on indexList"
 	indexValues do: [ :each| x := (x at: each) ].
 	^ x

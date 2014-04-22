@@ -1,13 +1,15 @@
 as yet unclassified
 addCompartment: aSymbol numberOfIndividuals: anObject
+	compartmentSymbols at: aSymbol put: true.
 	anObject isArray ifTrue: [ 
-		compartments := Array new: (anObject size).
+		compartmentAsVector := Array new: (anObject size).
 		1 to: (anObject size) do: [ :id|
-			compartments at: id put: (KECompartment status: aSymbol initialNumberOfIndividuals: (anObject at: id))
+			compartmentAsVector at: id put: (KECompartment status: aSymbol initialNumberOfIndividuals: (anObject at: id))
 			 ].
-		populationBuilder buildPopulation: population fromVecteurCompartment: compartments
+		populationBuilder buildPopulation: population fromVecteurCompartment: compartmentAsVector
 		 ]
 	ifFalse: [ 
 		population addSubPopulation: (KECompartment status: aSymbol initialNumberOfIndividuals: anObject)
 		 ]
+	
 	

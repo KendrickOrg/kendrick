@@ -6,3 +6,4 @@ initialize
 	equations := OrderedCollection new.
 	population := KEPopulation new.
 	populationBuilder := KEPopulationBuilder new.
+	compartmentSymbols := Dictionary new.

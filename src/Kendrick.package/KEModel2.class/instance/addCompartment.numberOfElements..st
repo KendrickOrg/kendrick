@@ -1,7 +1,8 @@
 as yet unclassified
 addCompartment: aSymbol numberOfElements: aNumber
-	compartments := Array new: aNumber.
+	compartmentSymbols at: aSymbol put: true.
+	compartmentAsVector := Array new: aNumber.
 	1 to: aNumber do: [ :id|
-		compartments at: id put: (KECompartment status: aSymbol initialNumberOfIndividuals: 0)
+		compartmentAsVector at: id put: (KECompartment status: aSymbol initialNumberOfIndividuals: 0)
 		 ]
 	

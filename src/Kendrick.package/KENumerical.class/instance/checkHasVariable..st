@@ -1,0 +1,3 @@
+evaluating
+checkHasVariable: aDictionary
+	^ false

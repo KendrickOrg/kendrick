@@ -11,4 +11,5 @@ mergeEventsWithSameActionsIn: eventList
 			 ]
 		ifFalse: [ newList add: event ]
 		 ].
+	"For each event generated from equation, check inter-population interaction, set flag hasInterPopInteraction is true or false for this event, reformulate rate of event to probability of contact by removing the variable with symbol as fromStatus in rate expression of event"
 	^ newList
