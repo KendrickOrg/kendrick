@@ -13,8 +13,8 @@
 		"populationBuilder",
 		"simulator",
 		"PIDList",
-		"compartmentAsVector",
-		"compartmentSymbols"
+		"compartmentSymbols",
+		"compartments"
 	],
 	"name" : "KEModel2",
 	"type" : "normal"

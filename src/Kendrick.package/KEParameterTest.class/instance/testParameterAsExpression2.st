@@ -4,6 +4,7 @@ testParameterAsExpression2
 	model := KEModel2 new.
 	model addCompartment: #S numberOfIndividuals: 1.
 	model addCompartment: #I numberOfIndividuals: 1.
+	model buildPopulation.
 	model addParameter: #beta expressedAs: 'beta[i][j]=exp(-(((i-j)/d)^2))' parseAsAnEquation. 
 	model addParameter: #i value: (50 to: 100).
 	model addParameter: #j value: (50 to: 100).

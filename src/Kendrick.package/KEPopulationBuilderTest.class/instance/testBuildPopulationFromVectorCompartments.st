@@ -4,7 +4,7 @@ testBuildPopulationFromVectorCompartments
 	populationBuilder := KEPopulationBuilder new.
 	population := KEPopulation new.
 	compartments := self exampleOfVectorCompartments.
-	populationBuilder buildPopulation: population fromVecteurCompartment: compartments.
+	populationBuilder build: population from: compartments.
 	
 	self assert: (population getNbSubPopulations) equals: 3.
 	self assert: (population atSubPopulation: 1) isACompartment equals: false.

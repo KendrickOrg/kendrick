@@ -9,7 +9,8 @@
 		"rate",
 		"actions",
 		"fromStatus",
-		"toStatus"
+		"toStatus",
+		"interPopInteraction"
 	],
 	"name" : "KEEvent",
 	"type" : "normal"

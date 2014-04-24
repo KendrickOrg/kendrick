@@ -5,6 +5,7 @@ createSIRSimpleModel
 	model addCompartment: #S numberOfIndividuals: 99999.
 	model addCompartment: #I numberOfIndividuals: 1.
 	model addCompartment: #R numberOfIndividuals: 0.
+	model buildPopulation.
 	
 	model addParameter: #beta value: 0.0052.
 	model addParameter: #gamma value: 52.
