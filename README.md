@@ -1,4 +1,4 @@
-* Last stable version (0.4): [![Build Status](https://ci.inria.fr/pharo-contribution/buildStatus/icon?job=Kendrick/PHARO=30,VERSION=stable,VM=vm)](https://ci.inria.fr/pharo-contribution/job/Kendrick/PHARO=30,VERSION=stable,VM=vm/)
+* Last stable version (0.5): [![Build Status](https://ci.inria.fr/pharo-contribution/buildStatus/icon?job=Kendrick/PHARO=30,VERSION=stable,VM=vm)](https://ci.inria.fr/pharo-contribution/job/Kendrick/PHARO=30,VERSION=stable,VM=vm/)
 * Last dev version: [![Build Status](https://ci.inria.fr/pharo-contribution/buildStatus/icon?job=Kendrick/PHARO=30,VERSION=development,VM=vm)](https://ci.inria.fr/pharo-contribution/job/Kendrick/PHARO=30,VERSION=development,VM=vm/)
 
 Kendrick is a Domain-Specific Language and Simulation Plaform for mathematical epidemiology modeling. All the development happens on SmalltalkHub at the moment: http://bit.ly/XrpsL2
