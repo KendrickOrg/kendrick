@@ -1,0 +1,8 @@
+as yet unclassified
+open
+		"Open the browser on the model collector"
+	|collection|
+	collection := KEExample model .
+	
+	self buildBrowser.
+	browser openOn: collection. 
