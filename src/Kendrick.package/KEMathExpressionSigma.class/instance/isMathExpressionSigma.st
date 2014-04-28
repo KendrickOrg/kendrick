@@ -1,0 +1,3 @@
+testing
+isMathExpressionSigma
+	^ true

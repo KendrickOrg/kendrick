@@ -1,3 +1,0 @@
-accessing
-hasWeightFunction
-	^ (weightFunction isNotNil)

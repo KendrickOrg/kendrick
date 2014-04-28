@@ -1,4 +1,6 @@
-accessing
-evaluateWithModel: model	
-	"This function return the rate of event, take into account the intra-pop and inter-pop interaction rate"
-	^ (self evaluateIntraPopInteractionWithModel: model) + (self evaluateInterPopInteractionWithModel: model)
+as yet unclassified
+evaluateWithModel: aModel
+	aModel eqIdVariable: (self eqIndexVar).
+	aModel eqIdValue: (self eqIndex).
+	self rateValue: ((self rate evaluateWithModel: aModel) abs).
+	^self rateValue.

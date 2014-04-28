@@ -1,3 +1,4 @@
 evaluating
 = aNumerical
-	^ self number = aNumerical number
+
+^ self number = aNumerical number

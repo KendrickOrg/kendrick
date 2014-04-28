@@ -1,11 +1,17 @@
 tests
 testBetaPlusOne
-	|  m e beta b  |
+	|  m e beta b o |
 	
-	m := KEModel2 new.
-	m addParameter: #beta value: 2.
-	beta := (KEVariable new) symbol: #beta.
-	b := (KENumerical new) number: 1.
-	e := (KEBinaryExpression new) op: #+; leftHandSide: beta; rightHandSide: b.
-	
+	m := KEModel new.
+	m atParameter: #beta put: 2.
+	e := KEBinaryExpression new.
+	beta := KEVariable new.
+	beta symbol: #beta.
+	b := KENumerical new.
+	b number: 1.
+	o := #+.
+	e
+		op: o;
+		leftHandSide: beta;
+		rightHandSide: b.
 	self assert: (e evaluateWithModel: m) equals: 3

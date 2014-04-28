@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "KEEntity",
+	"category" : "Kendrick-SemanticModel",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"series",
+		"function"
+	],
+	"name" : "KEDiagram",
+	"type" : "normal"
+}

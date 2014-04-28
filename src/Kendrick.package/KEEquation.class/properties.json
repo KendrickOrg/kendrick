@@ -9,7 +9,10 @@
 		"variable",
 		"tVariable",
 		"expression",
-		"interPopInteractionEvents"
+		"eqIndex",
+		"eqIndex2",
+		"idVariable",
+		"idVariable2"
 	],
 	"name" : "KEEquation",
 	"type" : "normal"

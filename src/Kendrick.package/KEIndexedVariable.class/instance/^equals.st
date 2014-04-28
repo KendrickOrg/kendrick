@@ -1,8 +1,10 @@
 as yet unclassified
 = anExpression
 
-anExpression isAnIndexedVariable
+anExpression isAnIndex
 	ifTrue:[^(self symbol = anExpression symbol) and:
-		[ self indexList = anExpression indexList ]
+		[(self idExpression1 = anExpression idExpression1) and:
+		[self idExpression2 = anExpression idExpression2]
+		]
 		].
 ^false
