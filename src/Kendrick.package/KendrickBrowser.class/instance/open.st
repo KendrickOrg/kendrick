@@ -1,8 +1,8 @@
-as yet unclassified
+instance creation
 open
-		"Open the browser on the model collector"
+	"Open the browser on the model collector"
 	|collection|
-	collection := KEExample model .
+	collection := KEExample models .
 	
 	self buildBrowser.
 	browser openOn: collection. 

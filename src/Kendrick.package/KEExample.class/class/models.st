@@ -1,5 +1,5 @@
 data
-model
+models
 |model|   
 	
 	ModelExample := OrderedCollection new.

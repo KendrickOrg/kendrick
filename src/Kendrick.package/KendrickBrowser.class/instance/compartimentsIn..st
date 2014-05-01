@@ -1,6 +1,10 @@
 as yet unclassified
 compartimentsIn: constructor
-	"Show the list of compartiments"
-	constructor list
-		display: [ :model| model compartments];
-		format: [ :model| model status]
+
+	"Show the list of compartments with the number of individuals"
+	
+	constructor table
+		display: [ :model | model compartments] ;
+		column: 'Name' evaluated: [ :compartment | compartment status] width:120;
+		column: 'Number Of Individuals' evaluated: [ :compartment | compartment numberOfIndividuals first asString];
+		selectionAct: [:elt| elt selection inspect ] on: $i entitled: 'Modify'.
