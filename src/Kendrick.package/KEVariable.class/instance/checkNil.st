@@ -1,0 +1,3 @@
+testing
+checkNil
+	^ (symbol isNil)

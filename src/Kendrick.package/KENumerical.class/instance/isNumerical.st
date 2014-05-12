@@ -1,0 +1,3 @@
+printing
+isNumerical
+	^ true

@@ -1,8 +1,8 @@
 data
 sampleModelsV2
 
-"SampleModelsV2 ifNil: 
-["
+SampleModelsV2 ifNil: 
+[
 	|model|   
 	SampleModelsV2 := GLMAnnouncingCollection new.
 	
@@ -52,5 +52,5 @@ sampleModelsV2
 	model addEquation: (PPODEParser parse: 'R:t=gamma*I-mu*R-to*R').
 	model runDeterministSimulationFrom: 0.0 to: 1.0 withStep: 0.0001.
 	SampleModelsV2 add: model.
-	"]."
+	].
 ^SampleModelsV2

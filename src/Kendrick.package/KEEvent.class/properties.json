@@ -7,10 +7,12 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"rate",
-		"rateValue",
+		"interRate",
 		"actions",
-		"eqIndex",
-		"eqIndexVar"
+		"fromStatus",
+		"toStatus",
+		"values",
+		"interPopWeightName"
 	],
 	"name" : "KEEvent",
 	"type" : "normal"

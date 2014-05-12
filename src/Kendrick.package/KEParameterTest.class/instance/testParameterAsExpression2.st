@@ -1,23 +1,15 @@
 tests
 testParameterAsExpression2
-
-|  model s i r dsdt didt drdt |
-model := KEModel new.
-model atCompartment: #S putNumberOfIndividuals: 1.
-model atCompartment: #I putNumberOfIndividuals: 1.
-model atCompartment: #R putNumberOfIndividuals: 0.
-model atParameter: #beta put: 'beta[i,j]=exp(-(((i-j)/d)^2))' parseAsAnEquation. 
-model atParameter: #i put: (50 to: 100).
-model atParameter: #j put: (50 to: 100).
-model atParameter: #d put: 5.
-
-dsdt := 'S:t=-beta[i, j]*S*I' parseAsAnEquation.
-model addEquation: dsdt.
-model eqIdVariable: #i.
-model eqIdValue: 50.
-model fnIdVariable: #j.
-model fnIdValue: 70.
-
-self assert: (dsdt variable symbol) equals: #S.
-self assert: (dsdt tVariable symbol) equals: #t.
-self assert: (dsdt expression evaluateWithModel: model) equals: ((-16) exp)*(-1).
+	|model dsdt|
+	model := KEModel2 new.
+	model population compartments: #((S 1) (I 1)).
+	model addParameter: #beta expressedAs: 'beta[i][j]=exp(-(((i-j)/d)^2))' parseAsAnEquation. 
+	model addParameter: #i value: (50 to: 100).
+	model addParameter: #j value: (50 to: 100).
+	model addParameter: #d value: 5.
+	dsdt := 'S:t=-beta[i][j]*S*I' parseAsAnEquation.
+	model addEquation: dsdt.
+	model addTemporalParameter: #i value: 50.
+	model addTemporalParameter: #j value: 70.
+	model addTemporalParameter: #PID value: #(0).
+	self assert: (dsdt expression evaluateWithModel: model) equals: ((-16) exp)*(-1).

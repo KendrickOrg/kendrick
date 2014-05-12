@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "KEEntity",
+	"category" : "Kendrick-Network-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"nodes",
+		"edges",
+		"nodeNames"
+	],
+	"name" : "KEGraph",
+	"type" : "normal"
+}

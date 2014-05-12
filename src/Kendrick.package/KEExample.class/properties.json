@@ -6,7 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [
 		"DataModels",
-		"ModelExample",
 		"SampleModels",
 		"SampleModelsV2",
 		"SampleModelsV3",

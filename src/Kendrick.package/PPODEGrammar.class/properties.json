@@ -24,7 +24,9 @@
 		"squarebrackets",
 		"index",
 		"sum",
-		"exp"
+		"exp",
+		"simpleEquation",
+		"odequation"
 	],
 	"name" : "PPODEGrammar",
 	"type" : "normal"
