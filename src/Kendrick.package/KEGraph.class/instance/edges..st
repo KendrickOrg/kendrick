@@ -13,7 +13,7 @@ edges: edgeCollection
 			 ]
 		 ]
 	ifFalse: [ 
-		1 to: edgeCollection size do: [ :each|
+		edgeCollection do: [ :each|
 			each at: 1 put: (nodeNames indexOf: (each at: 1)).
 			each at: 2 put: (nodeNames indexOf: (each at: 2)).
 			edges add: each.			
