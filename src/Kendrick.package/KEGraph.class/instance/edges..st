@@ -1,5 +1,6 @@
 as yet unclassified
 edges: edgeCollection
+	edges := OrderedCollection new.
 	edgeCollection = #all
 	ifTrue: [ 
 		1 to: nodes size do: [ :id|

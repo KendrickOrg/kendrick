@@ -1,5 +1,5 @@
 as yet unclassified
-weight: aSymbol values: weightCollection weightFunction: aBlock
+edges: edgeCollection weight: aSymbol values: weightCollection weightFunction: aBlock
 	|weights|
 	weights := OrderedCollection new.
 	weightCollection = #id ifTrue: [ 
@@ -10,4 +10,4 @@ weight: aSymbol values: weightCollection weightFunction: aBlock
 	weightCollection isCollection ifTrue: [ 
 		weightCollection do: [ :each| weights add: (aBlock value: each) ]
 		 ].
-	self weight: aSymbol values: weights
+	self edges: edgeCollection weight: aSymbol values: weights

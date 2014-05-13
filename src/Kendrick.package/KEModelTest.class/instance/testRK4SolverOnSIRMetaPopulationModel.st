@@ -14,6 +14,6 @@ testRK4SolverOnSIRMetaPopulationModel
 	model addEquation: ('I:t=beta*S*I-v*I-mu*I' parseAsAnEquation).
 	model addEquation: ('R:t=v*I-mu*R' parseAsAnEquation).  	
 	model run: 'deterministic' from: 0.0 to: 40.0 step: 0.01 algorithm: #RK4.
-	"model plot: #I do: #sqrt."
+	model plot: #S do: #sqrt.
 	self assert: (model simulator data size) equals: 3.
 	self assert: ((model simulator data at: #(0 1)) at: #S) data size equals: 4000

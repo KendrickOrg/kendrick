@@ -1,5 +1,6 @@
 as yet unclassified
-weight: aSymbol values: weights
+edges: edgeCollection weight: aSymbol values: weights
+	self edges: edgeCollection.
 	weights isCollection 
 	ifTrue: [ 
 		1 to: edges size do: [ :id|

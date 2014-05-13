@@ -5,6 +5,5 @@ nodes: aCollection edges: edgeCollection weight: aSymbol values: weightCollectio
 	self nodes: aCollection.
 	graph ifNil: [ graph := KEGraph new ].
 	graph nodes: aCollection.
-	graph edges: edgeCollection.
-	graph weight: aSymbol values: weightCollection. 
+	graph edges: edgeCollection weight: aSymbol values: weightCollection. 
 	

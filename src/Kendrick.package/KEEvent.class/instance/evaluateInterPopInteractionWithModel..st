@@ -20,6 +20,7 @@ evaluateInterPopInteractionWithModel: model
 			pid := n id.
 			 ].
 			model setPID: currentPID.
+			model temporalParameters removeKey: weight
 		 ].
 	^ s
 
