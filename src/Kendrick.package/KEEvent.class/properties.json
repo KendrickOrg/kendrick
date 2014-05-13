@@ -11,8 +11,7 @@
 		"actions",
 		"fromStatus",
 		"toStatus",
-		"values",
-		"interPopWeightName"
+		"weight"
 	],
 	"name" : "KEEvent",
 	"type" : "normal"

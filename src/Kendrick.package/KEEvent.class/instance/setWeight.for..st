@@ -1,5 +1,5 @@
 accessing
-setWeight: weight for: model
-	interPopWeightName ifNotNil: [ 
-		model temporalParameters at: interPopWeightName put: weight
+setWeight: value for: model
+	weight ifNotNil: [ 
+		model temporalParameters at: weight put: value
 		 ]

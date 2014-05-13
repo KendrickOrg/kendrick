@@ -9,9 +9,8 @@ calculateDyDx: model
 	    model equations do: [ :eq|
 			eq variable isAnIndexedVariable ifTrue: [ 
 				model addTemporalParameter: ((eq variable atIndex: 1) symbol) value: i ].
-		 	dydx at: j put: (eq expression evaluateWithModel: model).
+		 	dydx at: j put: (eq expression evaluateWithModel: model) + (eq evaluateInterPopInteractionWithModel: model).
 			j := j+1.	
 			 ].
-		"model equations do: [ :eq| eq resetInterRate ]".
 		i := i+1
 		 ]

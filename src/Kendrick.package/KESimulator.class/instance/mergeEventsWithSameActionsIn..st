@@ -16,7 +16,7 @@ mergeEventsWithSameActionsIn: eventList
 		each fromStatus ~= #empty ifTrue: [ each rate: (each rate remove: (KEVariable new symbol: each fromStatus)) ].
 		"Set interPopInteraction is true or false"
 		(each rate checkHasVariable: (model compartmentSymbols)) ifTrue: [ 
-			each interPopWeightName: (each rate getParameter: (model parameters)).
+			each weight: (each rate getParameter: (model parameters)).
 			each interRate: (each rate removeIndexedVariable).
 			 ].
 		  ].

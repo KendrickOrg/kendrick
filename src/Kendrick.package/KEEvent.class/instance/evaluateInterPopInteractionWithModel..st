@@ -1,24 +1,25 @@
 accessing
 evaluateInterPopInteractionWithModel: model	
 	"In this function, check hasInterPopInteraction and calculate interPopInteractionRate"
+	|s pid|
+	s := 0.
 	(self hasInterPopInteraction) & (model population graph isNotNil) ifTrue: [ 
-		(values at: 2) < 0 ifTrue: [ 
-			|s node currentPID currentPop|
-			s := 0.
-			currentPID := model getPID.
-			currentPop := model population at: currentPID. 
-			node := "model graph atSubNode: currentPID." model population graph.
-			node isRoot whileFalse: [ 
-				node adjacentNodes do: [ :each| 
-					model setPID: (node idOf: each).
-					self setWeight: (node weightOf: each) for: model.
-					s := s + (interRate evaluateWithModel: model) abs. 
-					].
-				node := node parent
+	   |n currentPID currentPop|
+		currentPID := model getPID.
+		currentPop := model population at: currentPID. 
+		n := currentPop.
+		pid := n id asArray.
+		[ n isRoot ] whileFalse: [ |tmp|
+			n := n parent.
+			tmp := n graph nodes at: (pid at: (pid size)).
+			tmp adjacentNodes do: [ :each| 
+				model setPID: (n at: each) id asArray.
+				self setWeight: (tmp weight: weight of: each) for: model.
+				s := s + (interRate evaluateWithModel: model) abs. 
 				 ].
-			model setPID: currentPID.
-			values at: 2 put: s.
+			pid := n id.
 			 ].
-		^ (values at: 2)
+			model setPID: currentPID.
 		 ].
-	^ 0
+	^ s
+
