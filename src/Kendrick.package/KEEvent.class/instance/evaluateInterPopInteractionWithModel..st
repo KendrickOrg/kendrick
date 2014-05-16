@@ -11,7 +11,7 @@ evaluateInterPopInteractionWithModel: model
 		pid := n id asArray.
 		[ n isRoot ] whileFalse: [ |tmp|
 			n := n parent.
-			tmp := n graph nodes at: (pid at: (pid size)).
+			tmp := n graph nodes at: (pid last).
 			tmp adjacentNodes do: [ :each| 
 				model setPID: (n at: each) id asArray.
 				self setWeight: (tmp weight: weight of: each) for: model.

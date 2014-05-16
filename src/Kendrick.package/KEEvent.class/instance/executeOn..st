@@ -1,7 +1,7 @@
 accessing
 executeOn: model
 	|currentPID subPop|
-	currentPID := model temporalParameters at: #PID.
+	currentPID := model getPID.
 	subPop := model population at: currentPID.
 	actions keysAndValuesDo: [ :status :value|
 		|old|

@@ -9,7 +9,8 @@
 		"variable",
 		"tVariable",
 		"expression",
-		"interPopInteractionEvents"
+		"interEvents",
+		"movementEvents"
 	],
 	"name" : "KEEquation",
 	"type" : "normal"

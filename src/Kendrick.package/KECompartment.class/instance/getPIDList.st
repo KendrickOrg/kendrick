@@ -1,3 +1,3 @@
 accessing
 getPIDList
-	self parent getPIDList 
+	self parent id asArray 
