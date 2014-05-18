@@ -14,5 +14,7 @@ execute
 		solver x0: tMin.
 		solver step: step.
 		data := solver solve: model.
+		"Return the number of steps of this simulator"
+		^ solver nbOfIterations
 		]
 	

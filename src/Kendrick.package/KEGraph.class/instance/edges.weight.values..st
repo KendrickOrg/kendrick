@@ -1,6 +1,8 @@
 as yet unclassified
 edges: edgeCollection weight: aSymbol values: weights
 	self edges: edgeCollection.
+	weightNames ifNil: [ weightNames := OrderedCollection new ].
+	weightNames add: aSymbol.
 	weights isCollection 
 	ifTrue: [ 
 		1 to: edges size do: [ :id|

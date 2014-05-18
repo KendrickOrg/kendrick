@@ -3,6 +3,6 @@ generateEvents
 	| list e |
 	list := OrderedCollection new.
 	e := KEEvent new.
-	e rate: exprInFunction.
+	e rate: self.
 	list add: e.
 	^ list

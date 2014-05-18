@@ -1,4 +1,4 @@
-as yet unclassified
+testing
 negated
 	^ KEUnaryExpression new
 		op: #-;
