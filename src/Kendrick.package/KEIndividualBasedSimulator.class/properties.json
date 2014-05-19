@@ -5,10 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"listOfIndividuals",
-		"listOfTransitions"
-	],
+	"instvars" : [ ],
 	"name" : "KEIndividualBasedSimulator",
 	"type" : "normal"
 }

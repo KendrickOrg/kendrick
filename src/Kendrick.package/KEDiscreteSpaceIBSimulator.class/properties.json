@@ -1,15 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "KEEntity",
+	"super" : "KEIndividualBasedSimulator",
 	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"currentStatus",
-		"nextStatus",
-		"populationID"
-	],
-	"name" : "KEIndividual",
+	"instvars" : [ ],
+	"name" : "KEDiscreteSpaceIBSimulator",
 	"type" : "normal"
 }
