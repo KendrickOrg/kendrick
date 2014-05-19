@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "KEEntity",
+	"category" : "Kendrick-SemanticModel",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"currentStatus",
+		"nextStatus",
+		"specieID"
+	],
+	"name" : "KEIndividual",
+	"type" : "normal"
+}

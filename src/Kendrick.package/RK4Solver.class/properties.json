@@ -1,0 +1,19 @@
+{
+	"commentStamp" : "",
+	"super" : "Solver",
+	"category" : "Kendrick-Math-ODE",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"y",
+		"dydx",
+		"k1",
+		"k2",
+		"k3",
+		"k4",
+		"data"
+	],
+	"name" : "RK4Solver",
+	"type" : "normal"
+}

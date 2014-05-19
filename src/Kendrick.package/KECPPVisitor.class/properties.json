@@ -1,0 +1,27 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Kendrick-Visitors",
+	"classinstvars" : [
+		"aNode"
+	],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"stream",
+		"compartments",
+		"nbOfCompartments",
+		"parameters",
+		"equaChecks",
+		"rateOfListEvent",
+		"numberOfEvent",
+		"strInitializeTrans",
+		"strInitializeKEMath",
+		"function",
+		"isDeterministic",
+		"eventIndex",
+		"defSumSigma"
+	],
+	"name" : "KECPPVisitor",
+	"type" : "normal"
+}
