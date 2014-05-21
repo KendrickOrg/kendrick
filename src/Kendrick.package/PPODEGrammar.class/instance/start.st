@@ -1,3 +1,0 @@
-grammar
-start
-	^ equation end

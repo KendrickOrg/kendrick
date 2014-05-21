@@ -1,3 +1,0 @@
-evaluating
-evaluateWithModel: aModel
-	^ number

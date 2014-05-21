@@ -1,3 +1,0 @@
-accessing
-equations
-	^ equations 
