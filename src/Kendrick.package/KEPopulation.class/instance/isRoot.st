@@ -1,0 +1,4 @@
+accessing
+isRoot
+	^ parent isNil
+	

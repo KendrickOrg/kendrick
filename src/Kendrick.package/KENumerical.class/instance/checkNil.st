@@ -1,0 +1,3 @@
+evaluating
+checkNil
+	^ number = nil

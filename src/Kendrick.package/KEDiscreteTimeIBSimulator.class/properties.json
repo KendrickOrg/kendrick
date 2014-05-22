@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "KEIndividualBasedSimulator",
+	"category" : "Kendrick-SemanticModel",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "KEDiscreteTimeIBSimulator",
+	"type" : "normal"
+}

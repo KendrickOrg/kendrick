@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "KEStochasticSimulator",
+	"category" : "Kendrick-SemanticModel",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "KEGillespieDirectSimulator",
+	"type" : "normal"
+}

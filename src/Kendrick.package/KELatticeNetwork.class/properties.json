@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "KENetwork",
+	"category" : "Kendrick-Network-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "KELatticeNetwork",
+	"type" : "normal"
+}

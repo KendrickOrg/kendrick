@@ -1,0 +1,33 @@
+{
+	"commentStamp" : "",
+	"super" : "PPCompositeParser",
+	"category" : "Kendrick-ExternalDSL",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"number",
+		"terms",
+		"parenthesis",
+		"identifier",
+		"identifier2",
+		"multiplication",
+		"power",
+		"addition",
+		"factors",
+		"primary",
+		"unary",
+		"equation",
+		"sin",
+		"cos",
+		"log",
+		"squarebrackets",
+		"index",
+		"sum",
+		"exp",
+		"simpleEquation",
+		"odequation"
+	],
+	"name" : "PPODEGrammar",
+	"type" : "normal"
+}

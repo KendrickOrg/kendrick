@@ -1,0 +1,3 @@
+evaluating
+evaluateWithModel: aModel
+	^ number
