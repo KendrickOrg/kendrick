@@ -8,4 +8,7 @@ launch
 	p do: [ :i|
 		self with: (edges at: (id at: i)) weight: #contact value: 1
 		 ].
+	"Make rndContact random contact in lattice grid"
+	self makeRndContacts.
 	^ self
+	

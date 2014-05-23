@@ -2,8 +2,8 @@ as yet unclassified
 initLocation
 	"Initialize a random location (X Y) for each individual"
 	|rand1 rand2 x y|
-	rand1 := Random next.
-	rand2 := Random next.
+	rand1 := Random new.
+	rand2 := Random new.
 	x := (rand1 next: nbInd) * surface.
 	y := (rand2 next: nbInd) * surface.
 	1 to: nbInd do: [ :i|

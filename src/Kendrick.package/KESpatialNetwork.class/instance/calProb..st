@@ -5,7 +5,7 @@ calProb: distances
 	distances do: [ :each|
 		probs add: (kernel value: each)
 		 ].
-	probs := probs - (Random new) next: (probs size).
+	probs := probs - ((Random new) next: (probs size)).
 	^ probs
 	
 	

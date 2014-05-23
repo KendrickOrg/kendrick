@@ -2,7 +2,7 @@ as yet unclassified
 launch
 	"Initialize a graph that connect between individuals"
 	|rand N|
-	rand := Random next.
+	rand := Random new.
 	N := 0.
 	[ N < (contact * nbInd) ] whileTrue: [ 
 		|i j edge|
