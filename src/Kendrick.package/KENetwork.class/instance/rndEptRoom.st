@@ -1,6 +1,6 @@
 as yet unclassified
-randRoom
+rndEptRoom
 	"This function will return a random node ID in the emptyRooms"
 	|rand|
 	rand := Random new.
-	^ ((rand next) * (emptyRooms size)) ceiling
+	^ emptyRooms removeAt: (((rand next) * (emptyRooms size)) ceiling)

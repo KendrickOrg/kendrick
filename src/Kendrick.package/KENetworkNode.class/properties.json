@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "KENode",
+	"category" : "Kendrick-Network-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"contacts"
+	],
+	"name" : "KENetworkNode",
+	"type" : "normal"
+}

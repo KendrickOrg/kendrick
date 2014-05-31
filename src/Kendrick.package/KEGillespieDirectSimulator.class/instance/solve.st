@@ -9,7 +9,7 @@ solve
 	[ t < tMax ] whileTrue: [ 
 		|delta_T|
 		model addTemporalParameter: #t value: t.
-		delta_T := self doGillespieIterate.
+		delta_T := self doGillespieIteration.
 		countStep := countStep + 1.
 		delta_T = 0 ifTrue: [ 
 			self prepareData: timeSeries.

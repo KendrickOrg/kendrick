@@ -10,5 +10,6 @@ launch
 		 ].
 	"Make rndContact random contact in lattice grid"
 	self makeRndContacts.
+	self initializeContacts.
 	^ self
 	

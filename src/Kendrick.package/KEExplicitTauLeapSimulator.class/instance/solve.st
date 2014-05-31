@@ -7,7 +7,7 @@ solve
 	countStep := 0.
 	[ t < tMax ] whileTrue: [ 
 		model addTemporalParameter: #t value: t.
-		self doTauLeapIterate.
+		self doTauLeapIteration.
 		t := t + step.
 		countStep := countStep + 1.
 		self updateResult.

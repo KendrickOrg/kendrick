@@ -1,5 +1,5 @@
 as yet unclassified
-doGillespieIterate
+doGillespieIteration
 	|rand1 rand2 cityRates cityChosen eventChosen deltaT rateTotal|
 	rand1 := Random new.
 	rand2 := Random new.

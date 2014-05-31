@@ -1,5 +1,5 @@
 as yet unclassified
-doTauLeapIterate
+doTauLeapIteration
 	|movementRates|
 	movementRates := self calculateEventRates.
 	model PIDList do: [ :each|

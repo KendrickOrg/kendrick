@@ -10,7 +10,12 @@ evaluateWithModel: aModel
 		subPop := aModel population at: currentPID.
 		"check if last index of currentPID = indexValue"
 		currentPID last = indexValues first 
-		ifTrue:  [ ^ (subPop at: symbol) currentNbIndividuals]
+		ifTrue:  [ 
+			|mode|
+			mode := (aModel atParameter: #mode).
+			(mode = 'IBM') 
+			ifTrue: [ ^ (subPop graph nodes at: (aModel temporalParameters at: #ind )) at: symbol ].
+      		^ (subPop at: symbol) currentNbIndividuals]
 		ifFalse: [ ^ ((subPop parent at: (indexValues first)) at: symbol) currentNbIndividuals ].
 		].
 	"if x is not nil and not a number, so x is a parameter whose value is a matrix or an array, that depends on indexList"

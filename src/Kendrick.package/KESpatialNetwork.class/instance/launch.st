@@ -13,6 +13,7 @@ launch
 	p do: [ :i|
 		self with: (edges at: (id at: i)) weight: #contact value: 1
 		 ].
+	self initializeContacts.
 	^ self
 	
 	
