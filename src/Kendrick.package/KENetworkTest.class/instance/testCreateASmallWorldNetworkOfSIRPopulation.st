@@ -1,0 +1,6 @@
+as yet unclassified
+testCreateASmallWorldNetworkOfSIRPopulation
+	|model|
+	model := KEModel2 new.
+	model population compartments: #((S 99) (I 1) (R 0)) defNetwork: 'smallworld' contact: 4 surface: 1.
+	self assert: (model population graph nodes size) equals: 100.
