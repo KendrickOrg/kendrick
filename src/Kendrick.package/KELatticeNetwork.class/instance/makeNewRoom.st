@@ -9,7 +9,7 @@ makeNewRoom
 	loc := (indList at: j) location.
 	x := (#first value: loc).
 	y := (#second value: loc) + (1.0/sqrtNbInd).
-	indList last location put: (Array with: x with: y).
+	indList last location: (Array with: x with: y).
 	self with: (Array with: i with: j) weight: #contact value: 1.
 	(i\\sqrtNbInd) ~= 1 
 	ifTrue: [ 

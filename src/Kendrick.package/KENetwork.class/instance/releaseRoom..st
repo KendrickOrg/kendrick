@@ -7,5 +7,6 @@ releaseRoom: aNodeID
 	(nodes at: aNodeID) adjacentNodes do: [ :each|
 		(nodes at: each) at: stt remove: 1
 		 ].
-	emptyRooms add: aNodeID.
-	indList at: aNodeID put: nil
+	self emptyRooms add: aNodeID.
+	indList at: aNodeID put: nil.
+	^ stt

@@ -7,6 +7,7 @@ SystemOrganization addCategory: 'Kendrick-Math-ODE'!
 SystemOrganization addCategory: 'Kendrick-Network-Core'!
 SystemOrganization addCategory: 'Kendrick-SemanticModel'!
 SystemOrganization addCategory: 'Kendrick-Tests-ExternalDSL'!
+SystemOrganization addCategory: 'Kendrick-Tests-IBM-Core'!
 SystemOrganization addCategory: 'Kendrick-Tests-Network-Core'!
 SystemOrganization addCategory: 'Kendrick-Tests-SemanticModel'!
 SystemOrganization addCategory: 'Kendrick-Tests-Visitors'!

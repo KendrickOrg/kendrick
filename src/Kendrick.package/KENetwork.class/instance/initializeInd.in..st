@@ -7,7 +7,7 @@ initializeInd: aCollection in: pid
 			ind := KEIndividual new.
 			ind currentStatus: (#first value: each).
 			ind pid: (pid).
-			ind id: i.
+			ind id: ((indList size) + 1).
 			indList add: ind.
 			nodes add: (KENetworkNode new)
 			 ]
