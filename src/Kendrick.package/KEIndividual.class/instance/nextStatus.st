@@ -1,3 +1,3 @@
 as yet unclassified
 nextStatus
-	^ attributes at: #nextStatus
+	^ attributes at: #nextStatus ifAbsent: [ nil ]

@@ -9,11 +9,11 @@ launch
 	y := probs copy sort: [ :a :b| a < b ].
 	id := self indexOf: y in: probs.
 	"get contact*nbInd/2 last edges with probs sorted in y"
-	p := (id size) + ((1-(contact * nbInd / 2)) to: 0).
+	p := (y size) + ((1-(contact * nbInd / 2)) to: 0).
 	p do: [ :i|
 		self with: (edges at: (id at: i)) weight: #contact value: 1
 		 ].
-	self initializeContacts.
+	self initContacts.
 	^ self
 	
 	

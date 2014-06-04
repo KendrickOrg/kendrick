@@ -1,7 +1,7 @@
 tests
 testParameterAsArray 
 	|model dsdt|
-	model := KEModel2 new.
+	model := KEModel new.
 	model population nodes: 3.
 	(model population at: 1) compartments: #((S 9999) (I 1)).
 	(model population at: 2) compartments: #((S 1000) (I 0)).

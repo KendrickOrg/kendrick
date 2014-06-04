@@ -1,7 +1,7 @@
 tests
 createSIRMetaPopulationWithMovementModel
 	|model|
-	model := KEModel2 new.
+	model := KEModel new.
 	model population nodes: 5 forEach: [ :node|
 		node compartments: #((S 1000) (I 0))
 		 ].

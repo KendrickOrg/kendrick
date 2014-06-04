@@ -1,7 +1,7 @@
 tests
 testNumberOfEventOfMultiDiseasesModel
 	|model eventList simulator|
-	model := KEModel2 new.
+	model := KEModel new.
 	model addEquation: (PPODEParser parse: 'SS:t=mu*N-beta1*SS*(IS+II+IR)-beta2*SS*(SI+II+RI)-mu*SS').
 	model addEquation: (PPODEParser parse: 'IS:t=beta1*SS*(IS+II+IR)-beta2*IS*(SI+II+RI)-(mu+sigma1)*IS').
 	model addEquation: (PPODEParser parse: 'SI:t=beta2*SS*(SI+II+RI)-beta1*SI*(IS+II+IR)-(mu+sigma2)*SI').

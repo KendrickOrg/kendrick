@@ -1,6 +1,10 @@
-initialize-release
+as yet unclassified
 initialize
 	super initialize.
-	compartments := Bag new.
 	parameters := Dictionary new.
-	equations := Bag new
+	temporalParameters := Dictionary new.
+	equations := OrderedCollection new.
+	population := KEPopulation new.
+	compartmentSymbols := Dictionary new.
+	
+

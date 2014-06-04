@@ -12,5 +12,7 @@ generateMovementEvents
 				(moveEvents at: (model PIDList at: i)) addAll: events.
 				(moveEvents at: (model PIDList at: j)) addAll: events.	
 				]
-			]
-		 ]
+			].
+		^ moveEvents
+		 ].
+	^ nil

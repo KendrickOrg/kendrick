@@ -5,15 +5,18 @@ newInd: ind in: pid
 	ifTrue: [ 
 		indList add: ind.
 		ind id: (indList size).
-		self makeNewRoom.
+		nbInd := (indList size).
+		self hasNetwork ifTrue: [ self makeNewRoom ].
 		 ]
 	ifFalse: [ 
 		|room|
 		room := self rndEptRoom.
 		ind id: room.
 		indList at: room put: ind
-		 ].
-	self updateContact: ind.
-	(nodes at: (ind attributes at: #id)) adjacentNodes do: [ :i|
-		(nodes at: i) at: (ind attributes at: #currentStatus) add: 1
-		 ]
+	].
+	self hasNetwork ifTrue: [ 
+		self updateContact: ind.
+		(nodes at: (ind id)) adjacentNodes do: [ :i|
+			(nodes at: i) at: (ind currentStatus) add: 1
+		]
+	]

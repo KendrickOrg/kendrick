@@ -16,10 +16,12 @@ calEventRates
 				 ]
 			 ]
 		 ].
-	self movementEventList keysAndValuesDo: [ :key :events|
+	self movementEventList ifNotNil: [ 
+		self movementEventList keysAndValuesDo: [ :key : events|
 		eventRates at: key put: (OrderedCollection new).
 		events do: [ :each|
 			(eventRates at: key) add: (each interRate number)
 			 ]
-		 ].
+		 ] 
+	 ].
 	^ eventRates

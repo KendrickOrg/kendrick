@@ -6,18 +6,13 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"compartments",
 		"parameters",
+		"temporalParameters",
 		"equations",
-		"eventList",
-		"timeValue",
-		"listOfIndividuals",
-		"data",
-		"eqIdValue",
-		"fnIdVariable",
-		"fnIdValue",
-		"eqIdVariable",
-		"simulator"
+		"population",
+		"simulator",
+		"PIDList",
+		"compartmentSymbols"
 	],
 	"name" : "KEModel",
 	"type" : "normal"

@@ -14,6 +14,6 @@ launch
 			self with: edge weight: #contact value: 1
 			 ]
 	 ].
-	self initializeContacts.
+	self initContacts.
 	^ self
 	

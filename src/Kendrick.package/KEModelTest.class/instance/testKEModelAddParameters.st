@@ -1,7 +1,7 @@
 tests
 testKEModelAddParameters
 	|model|
-	model := KEModel2 new.
+	model := KEModel new.
 	model addParameter: #beta value: 520.
 	model addParameter: #gamma value: 52.
 	self assert: (model atParameter: #beta) equals: 520.

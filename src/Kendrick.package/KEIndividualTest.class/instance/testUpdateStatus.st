@@ -1,7 +1,7 @@
 as yet unclassified
 testUpdateStatus
 	|model|
-	model := KEModel2 new.
+	model := KEModel new.
 	model population compartments: #((S 90) (I 1) (R 0)) defNetwork: 'lattice' contact: 4 surface: 1.
 	(model population graph indList at: 80) nextStatus: #I.
 	(model population graph indList at: 80) updateStatus: (model population).

@@ -1,18 +1,17 @@
 as yet unclassified
-indexOf: y in: probs
+indexOf: y in: Y
 	|id c|
 	id := OrderedCollection new.
 	c := 1.
 	[ c <= (y size) ] whileTrue: [ 
-		|i oc tmp|
+		|i  tmp|
 		tmp := y at: c.
-		i := probs indexOf: tmp.
-		oc := y occurrencesOf: tmp.
-		1 to: oc do: [ :j|
+		i := Y indexOf: tmp.
+		[ i > 0 ] whileTrue: [ 
 			id add: i.
-			i := ((probs copyFrom: (i+1) to: (probs size)) indexOf: tmp) + i
-			 ].
-		c := c + oc		
+			c := c+1.
+			i := Y indexOf: tmp startingAt: (i+1).
+		 ]
 	 ].
 	^ id
 	

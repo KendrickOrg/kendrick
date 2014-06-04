@@ -1,7 +1,7 @@
 tests
 testParameterAsExpression2
 	|model dsdt|
-	model := KEModel2 new.
+	model := KEModel new.
 	model population compartments: #((S 1) (I 1)).
 	model addParameter: #beta expressedAs: 'beta[i][j]=exp(-(((i-j)/d)^2))' parseAsAnEquation. 
 	model addParameter: #i value: (50 to: 100).

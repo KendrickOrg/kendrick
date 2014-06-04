@@ -2,7 +2,7 @@ as yet unclassified
 calProb: ind
 	|events moveEvents rand|
 	rand := Random new.
-	events := self eventList at: (ind currentStatus).
+	events := self eventList at: (ind currentStatus) ifAbsent: [ OrderedCollection new ].
 	1 to: (events size) do: [ :i|
 		|e rate prob|
 		e := events at: i.
@@ -15,13 +15,16 @@ calProb: ind
 			ind nextStatus: (e toStatus).
 			 ]
 	 ].
-	moveEvents := self movementEventList at: (ind pid).
-	1 to: (moveEvents size) do: [ :i|
-		|r prob e|
-		e := moveEvents at: i.
-		r := (self eventRates at: (ind pid)) at: i.
-		prob := 1 - (((step * r) negated) exp).
-		(prob > (rand next)) ifTrue: [ 
-			ind attributes at: #moveTo put: (e toStatus).
+	self movementEventList ifNotNil: [ 
+		moveEvents := self movementEventList at: (ind pid) ifAbsent: [ OrderedCollection new ].
+		1 to: (moveEvents size) do: [ :i|
+			|r prob e|
+			e := moveEvents at: i.
+			r := (self eventRates at: (ind pid)) at: i.
+			prob := 1 - (((step * r) negated) exp).
+			(prob > (rand next)) ifTrue: [ 
+				ind attributes at: #moveTo put: (e toStatus).
+				 ]
 			 ]
 		 ]
+	

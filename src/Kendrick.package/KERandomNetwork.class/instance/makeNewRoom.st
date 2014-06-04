@@ -11,5 +11,4 @@ makeNewRoom
 		j := ((rand next) * nbInd) ceiling.
 		self with: (Array with: i with: j) weight: #contact value: 1
 		].
-	nbInd := (indList size).
 	^ (nodes size)

@@ -9,14 +9,14 @@ updateIndividuals
 			|ind nextStt moveTo|
 			ind := indList at: i.
 			ind ifNotNil: [ 
-				nextStt := ind attributes at: #nextStatus ifAbsent: [ nil ].
+				nextStt := ind nextStatus.
 				nextStt ifNotNil: [ 
 					ind updateStatus: subPop.
 					 ].
 				moveTo := ind attributes at: #moveTo ifAbsent: [ nil ].
 				moveTo ifNotNil: [ 
 					ind moveTo: (model population at: moveTo).
-					subPop graph releaseRoom: i.
+					subPop graph hasNetwork ifTrue: [ subPop graph releaseRoom: i ].
 					(subPop at: (ind currentStatus)) removeIndividual: 1
 					 ]
 				 ]
