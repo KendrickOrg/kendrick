@@ -1,7 +1,7 @@
 accessing
 run: type from: tMin to: tMax step: step algorithm: algorithm
 	|countStep|
-	self addParameter: #mode value: type.
+	self addParameter: #die value: 0.
 	type = 'IBM' ifTrue: [  
 		simulator :=  KEIndividualBasedSimulator new: algorithm tMin: tMin tMax: tMax step: step model: self copy
 		 ].

@@ -1,7 +1,7 @@
 tests
-testIBMSimulatorOnSIRMultiHostModelWithNoNetwork
+testIBMSimulatorOnSIRMetaPopulationModelWithNoNetwork
 	|model|
-	model := self createSIRMultiHostModel.
+	model := self createSIRMetaPopulationModel.
 	model run: 'IBM' from: 0.0 to: 1.0 step: 0.027 algorithm: #DiscreteTime.
 	model plot: #I do: #sqrt.
 	self assert: (model simulator data isDictionary) equals: true.

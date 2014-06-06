@@ -1,6 +1,5 @@
 as yet unclassified
 calProb: ind
-	"This function will choose randomly one event for executing on the individual"
 	|events moveEvents rand eChosen|
 	rand := Random new.
 	"Select possible events of individual"

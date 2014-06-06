@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"eventRates"
+		"eventRates",
+		"moveRates"
 	],
 	"name" : "KEIndividualBasedSimulator",
 	"type" : "normal"
