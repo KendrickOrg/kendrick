@@ -11,6 +11,6 @@ run: type from: tMin to: tMax step: step algorithm: algorithm
 	type = 'stochastic' ifTrue: [ 
 		simulator := KEStochasticSimulator new: algorithm tMin: tMin tMax: tMax step: step model: self copy
 		 ].
-	countStep := simulator execute.
+	countStep := 'Step: ', simulator execute asString.
 	Transcript show: countStep;cr.
 	

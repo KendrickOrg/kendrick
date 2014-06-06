@@ -11,7 +11,9 @@ solve
 		model addTemporalParameter: #t value: t.
 		delta_T := self doGillespieIteration.
 		countStep := countStep + 1.
-		delta_T = 0 ifTrue: [ 
+		"check if extinction occurs"
+		((delta_T = 0) | ((model population getNbIndividualsOfCompartment: #I) = 0)) 
+		ifTrue: [ 		
 			self prepareData: timeSeries.
 			^ countStep ].
 		t := t + delta_T.

@@ -1,30 +1,16 @@
 as yet unclassified
 calProb: ind
-	|events moveEvents rand|
+	"This function will choose randomly one event for executing on the individual"
+	|events moveEvents rand eChosen|
 	rand := Random new.
+	"Select possible events of individual"
 	events := self eventList at: (ind currentStatus) ifAbsent: [ OrderedCollection new ].
-	1 to: (events size) do: [ :i|
-		|e rate prob|
-		e := events at: i.
-		rate := (self eventRates at: (ind currentStatus)) at: i.
-		rate = -1 
-		ifTrue: [ 
-			rate := (e evaluateIntraPopInteractionWithModel: model) + (e evaluateInterPopInteractionWithModel: model) ].
-		prob := 1 - (((step * rate) negated) exp).
-		(prob > (rand next)) ifTrue: [ 
-			ind nextStatus: (e toStatus).
-			 ]
-	 ].
+	eChosen := ((rand next) * (events size)) ceiling.
+	(eChosen > 0) ifTrue: [ self execute: eChosen in: events on: ind attribute: #nextStatus ].
 	self movementEventList ifNotNil: [ 
+		"Select possible movement events of individual"
 		moveEvents := self movementEventList at: (ind pid) ifAbsent: [ OrderedCollection new ].
-		1 to: (moveEvents size) do: [ :i|
-			|r prob e|
-			e := moveEvents at: i.
-			r := (self eventRates at: (ind pid)) at: i.
-			prob := 1 - (((step * r) negated) exp).
-			(prob > (rand next)) ifTrue: [ 
-				ind attributes at: #moveTo put: (e toStatus).
-				 ]
-			 ]
+		eChosen := ((rand next) * (moveEvents size)) ceiling.
+		(eChosen > 0) ifTrue: [ self execute: eChosen in: moveEvents on: ind attribute: #moveTo ]
 		 ]
 	
