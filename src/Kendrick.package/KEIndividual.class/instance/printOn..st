@@ -1,3 +1,3 @@
 as yet unclassified
 printOn: aStream
-	aStream nextPutAll: (attributes at: #currentStatus) asString, '-->', (attributes at: #nextStatus ifAbsent: [nil]) asString
+	aStream nextPutAll: (self currentStatus) asString, '-->', (self nextStatus) asString

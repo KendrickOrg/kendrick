@@ -7,5 +7,5 @@ testGillespieDirectOnSIRMultiHostModel
 	self assert: (model simulator data isDictionary) equals: true.
 	self assert: (model simulator data size) equals: 3.
 	self assert: (model simulator data at: #(0 1)) isDictionary equals: true.
-	self assert: (model simulator data at: #(0 1)) size equals: 2.
+	self assert: (model simulator data at: #(0 1)) size equals: 3.
 	
