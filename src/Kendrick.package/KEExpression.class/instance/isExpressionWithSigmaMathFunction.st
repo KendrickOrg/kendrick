@@ -1,3 +1,0 @@
-testing
-isExpressionWithSigmaMathFunction
-	^ false

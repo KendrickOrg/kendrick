@@ -1,3 +1,0 @@
-evaluating
-sign
-	^ number sign
