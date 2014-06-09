@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "KECPPVisitor",
+	"category" : "Kendrick-Code-Generators",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "KECPPDeterministicVisitor",
+	"type" : "normal"
+}

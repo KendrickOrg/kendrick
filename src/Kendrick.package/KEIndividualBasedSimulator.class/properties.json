@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "KEStochasticSimulator",
+	"category" : "Kendrick-Semantic-Model-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"eventRates",
+		"moveRates"
+	],
+	"name" : "KEIndividualBasedSimulator",
+	"type" : "normal"
+}

@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "KEVariable",
+	"category" : "Kendrick-Semantic-Model-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"indexList"
+	],
+	"name" : "KEIndexedVariable",
+	"type" : "normal"
+}

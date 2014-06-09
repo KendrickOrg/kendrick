@@ -1,0 +1,3 @@
+grammar
+terms
+	^ addition / factors

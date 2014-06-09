@@ -1,0 +1,19 @@
+{
+	"commentStamp" : "",
+	"super" : "KEEntity",
+	"category" : "Kendrick-Semantic-Model-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"parameters",
+		"temporalParameters",
+		"equations",
+		"population",
+		"simulator",
+		"PIDList",
+		"compartmentSymbols"
+	],
+	"name" : "KEModel",
+	"type" : "normal"
+}
