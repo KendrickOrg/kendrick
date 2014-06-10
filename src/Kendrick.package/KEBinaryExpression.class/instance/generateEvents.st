@@ -1,7 +1,7 @@
 as yet unclassified
 generateEvents
 |list |
-list := OrderedCollection new.
+list := Bag new.
 (op = #*)|(op  = #/)|(op   = #'^') ifTrue:[
 	self isSeparable ifTrue: [
 		|l|

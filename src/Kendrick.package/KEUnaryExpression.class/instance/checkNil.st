@@ -1,3 +1,0 @@
-printing
-checkNil
-	^ expression isNil

@@ -7,4 +7,3 @@ testAddition
 	self parse: 'beta*S*I-gamma*I' rule: #addition.
 	self parse: '-(beta+7)' rule: #addition.
 	self parse: 'a-b' rule: #addition
-	

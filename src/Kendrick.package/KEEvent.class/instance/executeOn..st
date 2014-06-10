@@ -1,10 +1,8 @@
-accessing
-executeOn: model
-	|currentPID subPop|
-	currentPID := model getPID.
-	subPop := model population at: currentPID.
-	actions keysAndValuesDo: [ :status :value|
-		|old|
-		old := (subPop at: status) currentNbIndividuals.
-		(subPop at: status) currentNbIndividuals: (old + value)
+as yet unclassified
+executeOn: aModel
+	|  old |
+	actions keysAndValuesDo:[:status :modification |
+		old := ((aModel atCompartment: (status symbol)) numberOfIndividuals) at: (self eqIndex).
+		aModel atCompartment: (status symbol) at: (self eqIndex) modifyNumberOfIndividuals: (old + modification).
 		]
+	

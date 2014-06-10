@@ -1,3 +1,5 @@
-accessing
+as yet unclassified
 equations
-	^ equations 
+	<MSEProperty: #equations type: #KEEquation>
+	<multivalued>
+	^ equations

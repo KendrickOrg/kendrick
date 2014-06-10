@@ -1,6 +1,11 @@
-accessing
-plot: anObject do: aFunction
-	"This method will call a diagram builder to visualize all compartments of which the symbol is stored in 'anObject' of the population. An object can be a symbol value or an array of symbols"
-	|diagBuilder|
-	diagBuilder := KEDiagramBuilder new.
-	^ diagBuilder plot: anObject data: simulator data do: aFunction
+as yet unclassified
+plot: aStatus do: aFunction
+	aStatus isArray ifTrue: [ 
+		aStatus do: [ :each|
+			self plot: each do: aFunction.
+			 ].
+		^ nil.
+		 ].
+	aFunction = #sqrt ifTrue: [ (data at: aStatus) sqrt plot: aStatus ].
+	aFunction = #log ifTrue: [ (data at: aStatus) log plot: aStatus ].
+	aFunction ifNil: [ (data at: aStatus) plot: aStatus ].

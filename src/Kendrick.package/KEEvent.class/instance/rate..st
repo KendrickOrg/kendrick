@@ -1,3 +1,4 @@
 accessing
-rate: anObject
-	rate := anObject
+rate: anExpression
+
+rate := anExpression

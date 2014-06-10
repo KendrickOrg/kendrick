@@ -11,7 +11,7 @@ testSIRIndividualBasedModel
 	model addEquation: (PPODEParser parse: 'I:t=beta*S*I-gamma*I').
 	model addEquation: (PPODEParser parse: 'R:t=gamma*I').
 	"model runIndividualBasedSimulationFrom: 0 to: 0.5  withStep:  0.0027."
-	model simulator: ((KEIndividualBasedSimulator2 new) tMin: 0.0; tMax: 1.0; step: 0.0027; model: model; algorithm: #default).
+	model simulator: ((KEIndividualBasedSimulator new) tMin: 0.0; tMax: 1.0; step: 0.0027; model: model; algorithm: #default).
 	model simulator generateTransitionOfEvents.
 	model simulator initializeListIndividuals.
 	visitor := KECPPIndividualBasedVisitor  new.

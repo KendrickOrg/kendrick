@@ -1,17 +1,13 @@
 as yet unclassified
-atParameter: aSymbol
-	|x current pid|
-	pid := self getPID.
-	pid ifNotNil: [
-		current := (population at: pid).
-		x := current atParameter: aSymbol
-		].
-	x ifNil: [ 
-		x := parameters at: aSymbol ifAbsent: [^ nil].
-		x ifNil: [ ^ nil ].
-		x expression 
-		ifNotNil: [ 
-			x evaluateWithModel: self
-		 	]
-		 ].
-	^ x value
+atParameter: aParameter
+
+"^ parameters at: aParameter ifAbsent:[^nil]"
+|x|
+x := parameters at: aParameter ifAbsent: [^nil].
+x ifNotNil: [
+	x expression ifNil: [^(x value)]
+	ifNotNil: [
+		x evaluateWithModel: self.
+		^(x value)
+		]
+	]

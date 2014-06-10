@@ -1,0 +1,3 @@
+initialization
+listOfTransitions
+	^ listOfTransitions 

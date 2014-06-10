@@ -2,7 +2,7 @@ grammar
 cos 
 
 ^ super cos  ==> [:nodes|
-	(KEExpressionWithMathFunction new)
-	functionName: #cos;
+	(KEMathExpression new)
+	function: #cos;
 	exprInFunction: (nodes at: 5)
 	]

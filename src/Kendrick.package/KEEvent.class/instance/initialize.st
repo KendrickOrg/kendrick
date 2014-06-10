@@ -1,9 +1,5 @@
-accessing
+initialize-release
 initialize
-	super initialize.
-	actions := Dictionary new.
-	rate := nil. "is an expression"
-	interRate := nil. "is an expression"
-	toStatus := #empty.
-	fromStatus := #empty.
-	
+
+super initialize.
+actions := Dictionary new
