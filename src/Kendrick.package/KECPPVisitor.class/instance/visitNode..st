@@ -18,13 +18,13 @@ visitNode: aNode
 		ifTrue: [ ^ self acceptKEUnaryExpression: aNode ].
 	aNode class == KEDeterministicSimulator
 		ifTrue: [ ^ self acceptKEDeterministicSimulator: aNode ].
-	aNode class == KEMathExpression 
+	aNode class == KEExpressionWithMathFunction 
 		ifTrue: [ ^ self acceptKEMathExpression: aNode ].
-	aNode  class == KEMathExpressionSigma
+	aNode  class == KEExpressionWithSigmaMathFunction
 		ifTrue: [ ^ self acceptKEMathExpressionSigma: aNode ].
 	aNode  class == KEIndexedVariable 
 		ifTrue: [ ^ self acceptKEIndexedVariable: aNode ].
-	aNode  class == KEEvent
+	aNode  class == KEEventOld
 		ifTrue: [ ^ self acceptKEEvent:  aNode].
 	aNode class == KETransition 
 		ifTrue: [ ^ self acceptKETransition: aNode ].

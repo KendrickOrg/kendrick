@@ -1,0 +1,3 @@
+evaluating
+removeIndexedVariable
+	^ self

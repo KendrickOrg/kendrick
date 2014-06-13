@@ -1,7 +1,6 @@
-testing
-hasAnEventWithOppositeRateIn: aListOfEvents
-
-aListOfEvents do: [:each |
-	((each eqIndex = self eqIndex) and: [each rate negated  = self rate]) ifTrue: [^true]
-]. 
-^false
+accessing
+hasAnEventWithOppositeRateIn: eventList
+	eventList do: [ :event|
+		(event rate negated = self rate) ifTrue: [ ^ true ]
+		 ].
+	^ false

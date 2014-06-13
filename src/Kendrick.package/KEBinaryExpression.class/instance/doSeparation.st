@@ -1,7 +1,7 @@
 as yet unclassified
 doSeparation
 	|list left right c1 c2|
-	list := Bag new.
+	list := OrderedCollection new.
 	c1 := false.
 	c2 := false.
 	left := leftHandSide.
@@ -35,7 +35,7 @@ doSeparation
 	ifFalse: [
 		(leftHandSide isUnaryExpression)|(rightHandSide isUnaryExpression) ifTrue: [
 			|l|
-			l := Bag new.
+			l := OrderedCollection new.
 			list do: [:each|l add: ((KEUnaryExpression new) op: #-; expression: each)].
 			^ l
 			]

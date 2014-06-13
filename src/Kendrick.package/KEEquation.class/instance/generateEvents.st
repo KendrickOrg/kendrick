@@ -1,23 +1,15 @@
 as yet unclassified
 generateEvents
-
-| l |
-l := expression generateEvents.
-l do: [:each | | status|
-	(self idVariable isNil) ifTrue: ["Event: S-->1, I-->-1"
-		status := variable.
-		each eqIndex: 1.
-		each eqIndexVar: nil.
+	"This function will get all events generated from the current equation and depending on the sign of rate expression, create actions for each event"
+	|eventList|
+	eventList := expression generateEvents.
+	eventList do: [ :each|
 		(each rate sign positive)
-		ifTrue:[ each addOneIndividualTo: status]
-		ifFalse:[ each removeOneIndividualFrom:  status]
-	] ifFalse: ["Event: S[1]-->1, S[2]-->1, I[1]-->-1, I[2]-->-1 (S[1] is instance of class KEIndex)"
-		status := (KEIndexedVariable new) symbol: (variable symbol); idExpression1: eqIndex; idExpression2: -1.
-		each eqIndex: (self eqIndex).
-		each eqIndexVar: (self idVariable).
-		(each rate sign positive)
-		ifTrue:[ each addOneIndividualTo: status]
-		ifFalse:[ each removeOneIndividualFrom:  status]
-		]	
-	].
-^l
+		ifTrue: [ 
+			each addOneIndividualTo: (variable symbol).
+			each toStatus: (variable symbol) ]
+		ifFalse: [ 
+			each removeOneIndividualFrom: (variable symbol).
+			each fromStatus: (variable symbol) ]
+		 ].
+	^ eventList

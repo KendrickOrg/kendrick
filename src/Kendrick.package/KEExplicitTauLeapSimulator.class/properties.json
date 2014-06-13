@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "KEStochasticSimulator",
+	"category" : "Kendrick-Semantic-Model-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "KEExplicitTauLeapSimulator",
+	"type" : "normal"
+}

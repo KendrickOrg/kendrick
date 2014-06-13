@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "KESimpleExpression",
-	"category" : "Kendrick-SemanticModel",
+	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

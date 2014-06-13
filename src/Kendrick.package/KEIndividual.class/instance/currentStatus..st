@@ -1,3 +1,3 @@
-accessing
-currentStatus: aStatus
-	currentStatus := aStatus
+as yet unclassified
+currentStatus: stt
+	attributes at: #currentStatus put: stt
