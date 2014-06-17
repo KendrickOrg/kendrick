@@ -1,4 +1,4 @@
-as yet unclassified
+initialize
 initNetworkNodes
 	1 to: (self nbInd) do: [ :i| nodes add: (KENetworkNode new) ].
 	^ self launch

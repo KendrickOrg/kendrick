@@ -7,7 +7,7 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"symbol",
-		"effects"
+		"effect"
 	],
 	"name" : "KEAttribute",
 	"type" : "normal"

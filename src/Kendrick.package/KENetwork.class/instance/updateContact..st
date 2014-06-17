@@ -1,4 +1,4 @@
-as yet unclassified
+network
 updateContact: ind
 	|index node|
 	index := ind id.

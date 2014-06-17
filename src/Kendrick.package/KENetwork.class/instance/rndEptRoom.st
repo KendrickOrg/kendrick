@@ -1,4 +1,4 @@
-as yet unclassified
+network
 rndEptRoom
 	"This function will return a random node ID in the emptyRooms"
 	|rand|

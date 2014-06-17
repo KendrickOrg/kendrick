@@ -1,4 +1,4 @@
-as yet unclassified
+network
 makeNewRoom
 	self subclassResponsibility 
 	

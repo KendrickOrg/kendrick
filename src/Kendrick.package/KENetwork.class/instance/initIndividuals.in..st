@@ -1,4 +1,4 @@
-as yet unclassified
+initialize
 initIndividuals: aCollection in: pid
 	indList := OrderedCollection new.
 	aCollection do: [ :each|

@@ -1,4 +1,4 @@
-as yet unclassified
+accesing
 emptyRooms
 	emptyRooms ifNil: [ emptyRooms := OrderedCollection new ].
 	^ emptyRooms

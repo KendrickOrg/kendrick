@@ -1,4 +1,4 @@
-as yet unclassified
+network
 releaseRoom: aNodeID
 	"If a node is available, add this node into the emptyRooms list"
 	|stt|

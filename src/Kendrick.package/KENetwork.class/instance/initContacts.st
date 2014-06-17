@@ -1,4 +1,4 @@
-as yet unclassified
+initialize
 initContacts
 	nodes do: [ :each|
 		each adjacentNodes do: [ :ajN|
