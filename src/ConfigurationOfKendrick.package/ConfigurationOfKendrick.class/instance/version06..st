@@ -10,4 +10,4 @@ version06: spec
 		spec 
 			project: 'Moose' with: '5.0-baseline';
 			project: 'SciSmalltalk' with: '0.9'.
-		spec package: 'Kendrick' with: 'Kendrick-FabriceATREVI.196'. ].
+		spec package: 'Kendrick' with: 'Kendrick-ATREVIFabrice.196'. ].
