@@ -1,9 +1,11 @@
 as yet unclassified
 generateEvents
+
 	|list e|
+	list := Bag new.
 	(expression isUnaryExpression)|(expression isBinaryExpression) ifTrue: [
 		|l|
-		l := OrderedCollection new.
+		l := Bag new.
 		list := expression generateEvents.
 		list do:[:each|
 			|oldRate|
@@ -18,4 +20,4 @@ generateEvents
 		e rate: self normalize.
 		list add:e.		
 		].
-^ list
+^list

@@ -4,7 +4,7 @@ isSeparable
 	c1 := leftHandSide isSeparable.
 	c2 := rightHandSide isSeparable.
 	c := false.
-	(op = #*)"|(op = #/)" ifTrue: [
+	(op = #*)|(op = #/) ifTrue: [
 		|c3 c4 f|
 		c3 := false.
 		c4 := false.

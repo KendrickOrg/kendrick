@@ -1,4 +1,0 @@
-network
-makeNewRoom
-	self subclassResponsibility 
-	

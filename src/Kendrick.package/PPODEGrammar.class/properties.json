@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "PPCompositeParser",
-	"category" : "Kendrick-ODE-Parser",
+	"category" : "Kendrick-ExternalDSL",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
@@ -24,9 +24,7 @@
 		"squarebrackets",
 		"index",
 		"sum",
-		"exp",
-		"simpleEquation",
-		"odequation"
+		"exp"
 	],
 	"name" : "PPODEGrammar",
 	"type" : "normal"

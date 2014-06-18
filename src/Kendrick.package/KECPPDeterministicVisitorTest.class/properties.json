@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "TestCase",
-	"category" : "Kendrick-Tests-Code-Generators",
+	"category" : "Kendrick-Tests-Visitors",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

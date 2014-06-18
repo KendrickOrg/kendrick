@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "KESimulator",
-	"category" : "Kendrick-Semantic-Model-Core",
+	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

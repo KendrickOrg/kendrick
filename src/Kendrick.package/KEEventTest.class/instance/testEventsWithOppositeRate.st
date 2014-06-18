@@ -19,6 +19,6 @@ minusBetaSI op:#- ; expression: betaSI..
 e1 rate: minusBetaSI normalize.
 e2 rate: betaSI normalize.
 
-listEvents := OrderedCollection new.
+listEvents := Bag new.
 listEvents add: e1.
 self assert: true equals: (e2 hasAnEventWithOppositeRateIn: listEvents)

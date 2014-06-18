@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "ATREVIFabrice 6/6/2014 06:59",
+	"super" : "Object",
+	"category" : "Kendrick-Glamour",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"browser",
+		"index"
+	],
+	"name" : "KendrickBrowser",
+	"type" : "normal"
+}

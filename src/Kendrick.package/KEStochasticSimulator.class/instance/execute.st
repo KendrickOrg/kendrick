@@ -1,3 +1,5 @@
 as yet unclassified
 execute
-	^ self solve
+	algorithm = #GillespieDirect ifTrue: [ 
+		^ self GillespieDirect.
+		 ]

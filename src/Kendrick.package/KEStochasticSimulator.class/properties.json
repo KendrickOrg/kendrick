@@ -1,14 +1,12 @@
 {
 	"commentStamp" : "",
 	"super" : "KESimulator",
-	"category" : "Kendrick-Semantic-Model-Core",
+	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"eventList",
-		"movementEventList",
-		"result"
+		"eventList"
 	],
 	"name" : "KEStochasticSimulator",
 	"type" : "normal"

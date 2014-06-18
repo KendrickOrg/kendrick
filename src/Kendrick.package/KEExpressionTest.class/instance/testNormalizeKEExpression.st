@@ -15,12 +15,8 @@ testNormalizeKEExpression
 		leftHandSide: s;
 		rightHandSide: minusBeta.	
 	k := e normalize.
-	self assert: true equals: (k isUnaryExpression).
-	e
-		op: #*;
-		leftHandSide: minusS ;
-		rightHandSide: minusBeta.
-	k := e normalize.
-	self assert: false equals: (k isUnaryExpression)
+	self assert: true equals: ((k negated) = e).
 	
+	self assert: true equals: (k normalize) isUnaryExpression.
+	self assert: true equals: (k normalize) isUnaryExpression		
 	

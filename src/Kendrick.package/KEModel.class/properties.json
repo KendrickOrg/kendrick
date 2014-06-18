@@ -1,18 +1,23 @@
 {
 	"commentStamp" : "",
 	"super" : "KEEntity",
-	"category" : "Kendrick-Semantic-Model-Core",
+	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
+		"compartments",
 		"parameters",
-		"temporalParameters",
 		"equations",
-		"population",
-		"simulator",
-		"PIDList",
-		"compartmentSymbols"
+		"eventList",
+		"timeValue",
+		"listOfIndividuals",
+		"data",
+		"eqIdValue",
+		"fnIdVariable",
+		"fnIdValue",
+		"eqIdVariable",
+		"simulator"
 	],
 	"name" : "KEModel",
 	"type" : "normal"

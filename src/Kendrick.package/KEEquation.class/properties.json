@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "KEEntity",
-	"category" : "Kendrick-Semantic-Model-Core",
+	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
@@ -9,8 +9,10 @@
 		"variable",
 		"tVariable",
 		"expression",
-		"interEvents",
-		"movementEvents"
+		"eqIndex",
+		"eqIndex2",
+		"idVariable",
+		"idVariable2"
 	],
 	"name" : "KEEquation",
 	"type" : "normal"

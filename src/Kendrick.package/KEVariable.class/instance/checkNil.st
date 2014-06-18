@@ -1,3 +1,0 @@
-testing
-checkNil
-	^ (symbol isNil)

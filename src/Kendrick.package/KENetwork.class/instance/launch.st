@@ -1,3 +1,0 @@
-network
-launch
-	self subclassResponsibility 

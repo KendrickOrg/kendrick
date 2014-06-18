@@ -1,3 +1,0 @@
-evaluating
-checkHasVariable: aDictionary
-	^ false

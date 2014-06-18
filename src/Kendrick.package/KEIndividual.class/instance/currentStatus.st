@@ -1,3 +1,4 @@
-as yet unclassified
+accessing
 currentStatus
-	^ attributes at: #currentStatus ifAbsent: [ nil ]
+	<MSEProperty: #currentStatus type: #String>
+	^ currentStatus

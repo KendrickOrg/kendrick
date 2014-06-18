@@ -1,5 +1,5 @@
-as yet unclassified
+meta
 annotation
-	<MSEClass: #Compartment2 super: #KEPopulation>
+	<MSEClass: #Compartment super: #KEEntity>
 	<package: #KE>
 	^self

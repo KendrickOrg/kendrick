@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Kendrick-SemanticModel",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [
+		"DataModels",
+		"ModelExample",
+		"SampleModels",
+		"SampleModelsV2",
+		"SampleModelsV3",
+		"SampleStochasticModel"
+	],
+	"instvars" : [ ],
+	"name" : "KEExample",
+	"type" : "normal"
+}
