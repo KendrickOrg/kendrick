@@ -4,9 +4,9 @@ version06: spec
 
 	spec for: #'common' do: [
 		spec blessing: #'stable'.
-		spec description: 'version 0.5'.
+		spec description: 'version 0.6'.
 		spec author: 'SergeStinckwich'.
-		spec timestamp: '4/25/2014 00:16'.
+		spec timestamp: '6/17/2014 00:16'.
 		spec 
 			project: 'Moose' with: '5.0-baseline';
 			project: 'SciSmalltalk' with: '0.9'.
