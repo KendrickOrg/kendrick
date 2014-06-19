@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "PPODEGrammar",
-	"category" : "Kendrick-ExternalDSL",
+	"category" : "Kendrick-ODE-Parser",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

@@ -1,16 +1,17 @@
 {
 	"commentStamp" : "",
 	"super" : "KEEntity",
-	"category" : "Kendrick-SemanticModel",
+	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
 		"rate",
-		"rateValue",
+		"interRate",
 		"actions",
-		"eqIndex",
-		"eqIndexVar"
+		"fromStatus",
+		"toStatus",
+		"weight"
 	],
 	"name" : "KEEvent",
 	"type" : "normal"

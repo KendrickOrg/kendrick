@@ -1,10 +1,10 @@
 as yet unclassified
 separateExpression
 	|list|
-	list := Bag new.
+	list := OrderedCollection new.
 	(leftHandSide isSeparable) ifTrue: [
 		|l|
-		l := Bag new.
+		l := OrderedCollection new.
 		list := leftHandSide doSeparation.
 		list do: [:each| 
 			|e|
@@ -16,7 +16,7 @@ separateExpression
 	ifFalse: [
 		rightHandSide isSeparable ifTrue: [
 			|l|
-			l := Bag new.
+			l := OrderedCollection new.
 			list := rightHandSide doSeparation.
 			list do: [:each| 
 				|e|

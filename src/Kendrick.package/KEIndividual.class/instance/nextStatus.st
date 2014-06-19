@@ -1,4 +1,3 @@
-accessing
+as yet unclassified
 nextStatus
-	<MSEProperty: #nextStatus type: #String>
-	^ nextStatus
+	^ attributes at: #nextStatus ifAbsent: [ nil ]
