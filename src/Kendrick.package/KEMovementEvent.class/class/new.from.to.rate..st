@@ -4,4 +4,4 @@ new: aCompartment from: popID_i to: popID_j rate: value
 		compartment: aCompartment;
 		fromStatus: popID_i;
 		toStatus: popID_j;
-		interRate: (KENumerical new number: value)
+		rate: (KENumerical new number: value)

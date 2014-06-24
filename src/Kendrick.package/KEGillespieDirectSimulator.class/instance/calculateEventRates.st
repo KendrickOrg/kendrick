@@ -9,7 +9,12 @@ calculateEventRates
 		aPID isArray ifTrue: [ model setIndex: (aPID last) ].
 		rates := OrderedCollection new.
 		self eventList do: [ :each|
-			rates add: (each evaluateWithModel: model).
+			|r|
+			r := (each evaluateWithModel: model).
+			each fromStatus ~= #empty ifTrue: [ 
+				r := r * ((model population at: (model getPID)) at: (each fromStatus asSymbol)) currentNbIndividuals
+				 ].
+			rates add: r
 			 ].
 		self movementEventList ifNotNil: [ 
 			(self movementEventList at: aPID) do: [ :each|

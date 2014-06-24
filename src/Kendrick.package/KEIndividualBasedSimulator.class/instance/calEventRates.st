@@ -10,14 +10,15 @@ calEventRates
 		self eventList keysAndValuesDo: [ :key :events|
 			eRates at: key put: (OrderedCollection new).
 			events do: [ :event|
-				event hasInterPopInteraction 
+				event isCouplingEvent 
 				ifTrue: [ (eRates at: key) add: -1 ]
 				ifFalse: [ 
 					|r|
 					event fromStatus = #empty ifTrue: [ 
 					event rate: (event rate remove: (KEVariable new symbol: #N))
 					 ].
-					r := event evaluateIntraPopInteractionWithModel: model.
+					"r := event evaluateIntraPopInteractionWithModel: model."
+					r := event evaluateWithModel: model.
 					(eRates at: key) add: r
 				 ]
 			 ]

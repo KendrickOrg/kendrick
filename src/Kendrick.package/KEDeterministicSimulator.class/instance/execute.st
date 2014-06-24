@@ -3,10 +3,10 @@ execute
 	|solver eventList movementEventList|
 	eventList := self generateEvents.
 	movementEventList := self generateMovementEvents.
-	eventList := eventList select: [ :each|each hasInterPopInteraction ].
+	eventList := eventList select: [ :each|each isCouplingEvent ].
 	model equations do: [ :each|
 		"Finding the interaction events for each equation in the whole event list"
-		each findInterEvents: eventList.
+		each findCouplingEvents: eventList.
 		"Finding the movement events for each equation in the whole event list"
 		movementEventList ifNotNil: [ each findMovementEvents: movementEventList ]
 		 ].

@@ -1,9 +1,8 @@
-accessing
-evaluateInterPopInteractionWithModel: model	
-	"In this function, check hasInterPopInteraction and calculate interPopInteractionRate"
+as yet unclassified
+evaluateInterRate: model
 	|s pid|
 	s := 0.
-	(self checkGraph: model)
+	(self interRateIsEvaluable: model)
 	ifTrue: [ 
 	   |aNode currentPID currentPop|
 		currentPID := model getPID.
@@ -16,7 +15,7 @@ evaluateInterPopInteractionWithModel: model
 			tmp adjacentNodes do: [ :each| 
 				model setPID: (aNode at: each) id asArray.
 				self setWeight: (tmp weight: weight of: each) for: model.
-				s := s + (interRate evaluateWithModel: model) abs. 
+				s := s + (couplingRate evaluateWithModel: model) abs. 
 				 ].
 			pid := aNode id
 			 ].
@@ -24,4 +23,3 @@ evaluateInterPopInteractionWithModel: model
 			model temporalParameters removeKey: weight
 		 ].
 	^ s
-

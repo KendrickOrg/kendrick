@@ -1,13 +1,14 @@
 as yet unclassified
-evaluateCouplingInteraction: model	
+evaluateCouplingEvents: model	
 	|result currentPID subPop|
 	result := 0.
 	currentPID := model getPID.
 	subPop := model population at: currentPID. 
-	interEvents do: [ :each| |temp s|
+	couplingEvents do: [ :each| |temp s|
 		"s is total number of individuals of the fromStatus compartment of this event"
 		s := (subPop at: each fromStatus) currentNbIndividuals.
-		temp := (each evaluateInterPopInteractionWithModel: model) * s. 
+		"temp := (each evaluateInterPopInteractionWithModel: model) * s." 
+		temp := (each evaluateInterRate: model) * s.
 		each fromStatus = variable symbol ifTrue: [ result := result - temp ].
 		each toStatus = variable symbol ifTrue: [ result := result + temp ]
 		 ].

@@ -14,5 +14,5 @@ testNumberOfEventOfMultiDiseasesModel
 	simulator := (KESimulator new) model: model.
 	eventList := simulator generateEvents.
 	self assert: 22 equals: eventList size.
-	eventList := eventList select: [ :each| each hasInterPopInteraction ].
+	eventList := eventList select: [ :each| each isCouplingEvent ].
 	self assert: 6 equals: eventList size.

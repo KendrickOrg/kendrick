@@ -9,7 +9,8 @@ calProb2: ind
 		rate := ((self eventRates at: (model getPID)) at: (ind currentStatus)) at: i.
 		rate = -1 
 		ifTrue: [ 
-			rate := (e evaluateIntraPopInteractionWithModel: model) + (e evaluateInterPopInteractionWithModel: model).
+			"rate := (e evaluateIntraPopInteractionWithModel: model) + (e evaluateInterPopInteractionWithModel: model)."
+			rate := e evaluateWithModel: model.
 			 ].
 		prob := 1 - (((step * rate) negated) exp).
 		(prob > (rand next)) ifTrue: [ 

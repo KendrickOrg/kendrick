@@ -7,11 +7,9 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"rate",
-		"interRate",
 		"actions",
 		"fromStatus",
-		"toStatus",
-		"weight"
+		"toStatus"
 	],
 	"name" : "KEEvent",
 	"type" : "normal"
