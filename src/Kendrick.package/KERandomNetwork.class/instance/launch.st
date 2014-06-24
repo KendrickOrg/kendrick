@@ -14,6 +14,13 @@ launch
 			self with: edge weight: #contact value: 1
 			 ]
 	 ].
+	"1 to: (nbInd-1) do: [ :i|
+		(i+1) to: nbInd do: [ :j|
+			|edge|
+			edge := Array with: i with: j.
+			self with: edge weight: #contact value: 1
+			 ]
+		 ]."
 	self initContacts.
 	^ self
 	

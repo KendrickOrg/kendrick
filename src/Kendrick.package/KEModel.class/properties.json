@@ -12,7 +12,8 @@
 		"population",
 		"simulator",
 		"PIDList",
-		"compartmentSymbols"
+		"compartmentSymbols",
+		"graph"
 	],
 	"name" : "KEModel",
 	"type" : "normal"

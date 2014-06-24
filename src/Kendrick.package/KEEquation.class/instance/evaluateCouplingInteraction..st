@@ -1,5 +1,5 @@
 as yet unclassified
-evaluateExternalInteraction: model	
+evaluateCouplingInteraction: model	
 	|result currentPID subPop|
 	result := 0.
 	currentPID := model getPID.
@@ -11,5 +11,5 @@ evaluateExternalInteraction: model
 		each fromStatus = variable symbol ifTrue: [ result := result - temp ].
 		each toStatus = variable symbol ifTrue: [ result := result + temp ]
 		 ].
-	result := result + (self evaluateMovementEvents: model).
+	"result := result + (self evaluateMovementEvents: model)."
 	^ result 

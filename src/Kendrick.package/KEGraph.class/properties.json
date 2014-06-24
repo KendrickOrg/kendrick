@@ -6,6 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
+		"id",
+		"parent",
 		"nodes",
 		"edges",
 		"nodeNames",

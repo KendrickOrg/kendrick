@@ -1,4 +1,4 @@
 accessing
 id
-	<MSEProperty: #id type: #Number>
+	<MSEProperty: #id type: #Collection>
 	^ id
