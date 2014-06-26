@@ -1,7 +1,7 @@
 as yet unclassified
-generateEvents: model
+generateEvents
 	|eventList|
-	eventList := super generateEvents: model.
+	eventList := super generateEvents.
 	1 to: eventList size do: [ :i| |each|
 		each := eventList at: i.
 		(self check: each hasCoupling: (model compartmentSymbols)) ifTrue: [

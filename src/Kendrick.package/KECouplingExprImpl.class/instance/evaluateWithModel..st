@@ -5,7 +5,7 @@ evaluateWithModel: model
 	result := 0.
 	currentPID := model getPID.
 	subPop := model population at: currentPID. 
-	runtimeExpr do: [ :each| |temp s|
+	self runtimeExpr do: [ :each| |temp s|
 		"s is total number of individuals of the fromStatus compartment of this event"
 		s := (subPop at: each fromStatus) currentNbIndividuals.
 		"temp := (each evaluateInterPopInteractionWithModel: model) * s." 

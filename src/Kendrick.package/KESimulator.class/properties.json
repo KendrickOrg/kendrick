@@ -11,7 +11,8 @@
 		"tMax",
 		"step",
 		"data",
-		"algorithm"
+		"algorithm",
+		"rtImpls"
 	],
 	"name" : "KESimulator",
 	"type" : "normal"

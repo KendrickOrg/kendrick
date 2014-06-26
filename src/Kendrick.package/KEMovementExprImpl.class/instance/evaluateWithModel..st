@@ -3,7 +3,7 @@ evaluateWithModel: model
 	|result currentPID|
 	result := 0.
 	currentPID := model getPID.
-	runtimeExpr ifNotNil: [ 
+	self runtimeExpr ifNotNil: [ 
 		(runtimeExpr at: currentPID) do: [ :each|
 			each fromStatus = currentPID ifTrue: [ result := result - (each evaluateWithModel: model) ].
 			each toStatus = currentPID ifTrue: [ result := result + (each evaluateWithModel: model) ]

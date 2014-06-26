@@ -7,7 +7,8 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"arguments",
-		"simulatorBuilder"
+		"simulatorBuilder",
+		"model"
 	],
 	"name" : "KERuntimeImpl",
 	"type" : "normal"

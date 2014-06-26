@@ -5,7 +5,7 @@ doIteration
 		model setPID: pid.
 		pid isArray ifTrue: [ model setIndex: (pid last) ].
 		subPop := model population at: pid.
-		indList := subPop graph indList.
+		indList := subPop "graph" indList.
 		indList do: [ :ind|
 			"ind ifNotNil: [" 
 			(ind attributes at: #alive) ifTrue: [  	

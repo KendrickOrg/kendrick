@@ -1,5 +1,5 @@
 as yet unclassified
-updateContact: ind
+updateContact: ind in: indList
 	"This function is used in the newInd:in that create a new individual and add it into the network, so for the new individual added, it should update the number of contact for others"
 	|index node|
 	index := ind id.

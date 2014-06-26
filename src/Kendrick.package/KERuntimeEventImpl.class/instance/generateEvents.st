@@ -1,5 +1,5 @@
 as yet unclassified
-generateEvents: model
+generateEvents
 	|eventList|
 	eventList := OrderedCollection new.
 	model equations do: [ :eq| |eachList|
