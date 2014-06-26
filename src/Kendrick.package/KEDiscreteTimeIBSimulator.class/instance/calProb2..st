@@ -1,5 +1,6 @@
 as yet unclassified
 calProb2: ind
+	"This function is different from the calProb: in calProb: we will choose randomly an event for an individual for executed. In calProb2, all possible events of an individual will be executed"
 	|events moveEvents rand|
 	rand := Random new.
 	events := self eventList at: (ind currentStatus) ifAbsent: [ OrderedCollection new ].
@@ -7,9 +8,7 @@ calProb2: ind
 		|e rate prob|
 		e := events at: i.
 		rate := ((self eventRates at: (model getPID)) at: (ind currentStatus)) at: i.
-		rate = -1 
-		ifTrue: [ 
-			"rate := (e evaluateIntraPopInteractionWithModel: model) + (e evaluateInterPopInteractionWithModel: model)."
+		rate = -1 ifTrue: [ 
 			rate := e evaluateWithModel: model.
 			 ].
 		prob := 1 - (((step * rate) negated) exp).

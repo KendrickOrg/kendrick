@@ -10,7 +10,8 @@
 		"tVariable",
 		"expression",
 		"movementEvents",
-		"couplingEvents"
+		"couplingEvents",
+		"rtExprImpls"
 	],
 	"name" : "KEEquation",
 	"type" : "normal"

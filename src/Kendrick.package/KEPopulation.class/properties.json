@@ -12,7 +12,8 @@
 		"nodeNames",
 		"parent",
 		"parameters",
-		"rates"
+		"rates",
+		"indList"
 	],
 	"name" : "KEPopulation",
 	"type" : "normal"

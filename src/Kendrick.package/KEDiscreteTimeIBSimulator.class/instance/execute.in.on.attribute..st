@@ -6,7 +6,7 @@ execute: eChosen in: events on: ind attribute: attribute
 	attribute = #moveTo 
 	ifTrue: [ rate := (self moveRates at: (ind pid)) at: eChosen ]
 	ifFalse: [ rate := ((self eventRates at: (model getPID)) at: (ind currentStatus)) at: eChosen ].
-	rate = -1 ifTrue: [ "rate := (e evaluateIntraPopInteractionWithModel: model) + (e evaluateInterPopInteractionWithModel: model)"
+	rate = -1 ifTrue: [ 
 		rate := e evaluateWithModel: model
 		 ].
 	prob := 1 - (((step * rate) negated) exp).

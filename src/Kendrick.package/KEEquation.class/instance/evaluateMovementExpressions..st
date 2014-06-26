@@ -1,5 +1,5 @@
 as yet unclassified
-evaluateMovementEvents: model
+evaluateMovementExpressions: model
 	|result currentPID|
 	result := 0.
 	currentPID := model getPID.

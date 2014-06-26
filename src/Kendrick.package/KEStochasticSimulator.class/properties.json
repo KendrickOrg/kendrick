@@ -6,6 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
+		"rtEventImpls",
 		"eventList",
 		"movementEventList",
 		"result"

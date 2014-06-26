@@ -5,7 +5,9 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"rtExprImpls"
+	],
 	"name" : "KEDeterministicSimulator",
 	"type" : "normal"
 }
