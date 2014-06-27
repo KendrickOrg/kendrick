@@ -3,26 +3,18 @@ calculateEventRates
 	|cityRates i|
 	cityRates := Array new: (model PIDList size).
 	i := 1.
-	model PIDList do: [ :aPID|
+	model PIDList do: [ :pid|
+		(model population at: pid) rates: (OrderedCollection new)
+		 ].
+	self rtImpls do: [ :impl|
 		|rates|
-		model setPID: aPID.
-		aPID isArray ifTrue: [ model setIndex: (aPID last) ].
-		rates := OrderedCollection new.
-		self eventList do: [ :each|
-			|r|
-			r := (each evaluateWithModel: model).
-			each fromStatus ~= #empty ifTrue: [ 
-				r := r * ((model population at: (model getPID)) at: (each fromStatus asSymbol)) currentNbIndividuals
-				 ].
-			rates add: r
-			 ].
-		self movementEventList ifNotNil: [ 
-			(self movementEventList at: aPID) do: [ :each|
-				rates add: (each evaluateWithModel: model)
-				 ]
-			 ].
-		(model population at: aPID) rates: rates.
-		cityRates at: i put: (rates sum).
+		rates := impl calculateEventRates.
+		model PIDList do: [ :pid|
+			(model population at: pid) rates addAll: (rates at: pid)
+			 ]
+		 ].
+	model PIDList do: [ :aPID|
+		cityRates at: i put: (model population at: aPID) rates sum.
 		i := i + 1
 		 ].
 	^ cityRates
