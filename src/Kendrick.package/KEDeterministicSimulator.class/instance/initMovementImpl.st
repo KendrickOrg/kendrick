@@ -1,5 +1,5 @@
 as yet unclassified
-performMovementImpl
+initMovementImpl
 	(model population atParameter: #movement) ifNotNil: [ 
 		|movementImpl events|
 		movementImpl := (KERuntimeMovementEventImpl new) model: model.

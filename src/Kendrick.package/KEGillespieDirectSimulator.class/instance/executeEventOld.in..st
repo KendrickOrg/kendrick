@@ -1,5 +1,5 @@
 as yet unclassified
-executeEvent1: eventChosen in: cityChosen
+executeEventOld: eventChosen in: cityChosen
 	model setPID: cityChosen.
 	eventChosen > (eventList size)
 	ifTrue: [ 

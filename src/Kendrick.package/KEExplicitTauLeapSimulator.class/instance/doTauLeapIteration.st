@@ -1,19 +1,13 @@
 as yet unclassified
 doTauLeapIteration
-	|movementRates|
-	movementRates := self calculateEventRates.
-	model PIDList do: [ :each|
+	self calculateEventRates.
+	model PIDList do: [ :pid|
 		|rates|
-		rates := (model population at: each) rates.
+		rates := (model population at: pid) rates.
 		1 to: (rates size) do: [ :i|
 			|num|
 			num := self poissrnd: (rates at: i).
-			(eventList at: i) executeOn: model times: num 
+			self executeEvent: i in: pid  times: num.
 			 ]
-		 ].
-	1 to: (movementRates size) do: [ :i|
-		|num|
-		num := self poissrnd: (movementRates at: i).
-		(movementEventList at: i) executeOn: model times: num 
 		 ]
 	

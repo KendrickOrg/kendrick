@@ -1,5 +1,5 @@
 as yet unclassified
-performCouplingImpl
+initCouplingImpl
 	|couplingImpl events|
 	couplingImpl := (KERuntimeCouplingEventImpl new) model: model.
 	events := couplingImpl events select: [:each| each isCouplingEvent ].

@@ -1,5 +1,5 @@
 as yet unclassified
-performCouplingImpl
+initCouplingImpl
 	|couplingImpl foundEventImpl|
 	couplingImpl := (KERuntimeCouplingEventImpl new) model: model.
 	foundEventImpl := false.

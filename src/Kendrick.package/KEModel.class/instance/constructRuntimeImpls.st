@@ -1,7 +1,7 @@
 accessing
 constructRuntimeImpls
-	simulator performEventImpl.
-	simulator performCouplingImpl.
-	simulator performMovementImpl.
+	simulator initEventImpl.
+	simulator initCouplingImpl.
+	simulator initMovementImpl.
 	
 	

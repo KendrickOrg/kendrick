@@ -1,5 +1,5 @@
 as yet unclassified
-executeEvent: eventChosen in: cityChosen
+executeEvent: eventChosen in: cityChosen times: times
 	"Get exact eventChosen for each eventImpl"
 	|e|
 	e := eventChosen.
@@ -11,8 +11,8 @@ executeEvent: eventChosen in: cityChosen
 		ifFalse: [ 
 			impl arguments at: #eventChosen put: e.
 			impl arguments at: #cityChosen put: cityChosen.
+			impl arguments at: #times put: times.
 			impl performEvent
 			 ].
 		]
-
 	

@@ -14,7 +14,7 @@ calculateEventRates
 			 ]
 		 ].
 	model PIDList do: [ :aPID|
-		cityRates at: i put: (model population at: aPID) rates sum.
+		cityRates at: i put: ((model population at: aPID) rates sum).
 		i := i + 1
 		 ].
 	^ cityRates
