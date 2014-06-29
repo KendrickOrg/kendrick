@@ -16,5 +16,5 @@ generateEvents
 			eventList at: i put: couplingEvent
 			 ].
 		  ].
-	^ self simulatorBuilder buildEvents: eventList
-	"^ newList"
+	"^ self simulatorBuilder buildEvents: eventList"
+	^ eventList

@@ -14,7 +14,7 @@ compartments: aCollection
 			nodeNames add: (#first value: each).
 			 ]
 		].
-		graph := (KENetwork new) initIndividuals: aCollection in: (self id)
+		graph := (KENetwork new) initIndividuals: aCollection in: (self id asArray)
 
  
 	

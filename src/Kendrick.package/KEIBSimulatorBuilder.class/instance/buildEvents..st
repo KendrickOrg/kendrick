@@ -1,6 +1,6 @@
 as yet unclassified
 buildEvents: events
-	"For Individual Based simulator, events represented as a Dictionary, that help easily processing for each individual"
+	"For Individual Based simulator, events represented as a Dictionary: symbol(key)-->OrderedCollection (event list), that help easily processing for each individual"
 	|eventDict|
 	eventDict := Dictionary new.
 	events do: [ :each|

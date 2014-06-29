@@ -5,7 +5,9 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
-	"name" : "KEBehavior",
+	"instvars" : [
+		"arguments"
+	],
+	"name" : "KEBehaviorBuilder",
 	"type" : "normal"
 }

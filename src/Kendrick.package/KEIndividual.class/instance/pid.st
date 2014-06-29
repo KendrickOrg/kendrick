@@ -1,3 +1,3 @@
 as yet unclassified
 pid
-	^ attributes at: #pid
+	^ (attributes at: #pid) asArray

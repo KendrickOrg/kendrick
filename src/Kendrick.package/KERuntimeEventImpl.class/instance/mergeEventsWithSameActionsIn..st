@@ -15,8 +15,8 @@ mergeEventsWithSameActionsIn: eventList
 		each rate: (each rate remove: (KEVariable new symbol: each fromStatus)).
 		
 		  ].
-	^ self simulatorBuilder buildEvents: newList
-	"^ newList"
+	"^ self simulatorBuilder buildEvents: newList"
+	^ newList
 	
 	
 	

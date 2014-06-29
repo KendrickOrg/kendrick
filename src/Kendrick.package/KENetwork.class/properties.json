@@ -10,7 +10,8 @@
 		"contact",
 		"surface",
 		"attributes",
-		"emptyRooms"
+		"emptyRooms",
+		"indList"
 	],
 	"name" : "KENetwork",
 	"type" : "normal"

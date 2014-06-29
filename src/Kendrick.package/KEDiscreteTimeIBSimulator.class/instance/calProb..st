@@ -1,15 +1,18 @@
 as yet unclassified
 calProb: ind
-	|events moveEvents rand eChosen|
+	|rates rand prob chosen|
+	rates := OrderedCollection new.
+	self rtImpls do: [ :impl| |rs|
+		impl arguments at: #individual put: ind.
+		rs := impl performEvent.
+		rs ifNotNil: [ rates add: rs ]
+		 ].
 	rand := Random new.
-	"Select possible events of individual"
-	events := self eventList at: (ind currentStatus) ifAbsent: [ OrderedCollection new ].
-	eChosen := ((rand next) * (events size)) ceiling.
-	(eChosen > 0) ifTrue: [ self execute: eChosen in: events on: ind attribute: #nextStatus ].
-	self movementEventList ifNotNil: [ 
-		"Select possible movement events of individual"
-		moveEvents := self movementEventList at: (ind pid) ifAbsent: [ OrderedCollection new ].
-		eChosen := ((rand next) * (moveEvents size)) ceiling.
-		(eChosen > 0) ifTrue: [ self execute: eChosen in: moveEvents on: ind attribute: #moveTo ]
-		 ]
+	chosen := ((rand next) * (rates size)) ceiling.
+	(chosen > 0) ifTrue: [ 
+		prob := 1 - (((step * ((rates at: chosen) at: 2)) negated) exp).
+		(prob > (rand next)) ifTrue: [ 
+			ind nextStatus: ((rates at: chosen) at: 1) toStatus
+		].
+	]
 	
