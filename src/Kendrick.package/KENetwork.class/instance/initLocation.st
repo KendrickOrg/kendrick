@@ -7,6 +7,6 @@ initLocation
 	x := (rand1 next: nbInd) * surface.
 	y := (rand2 next: nbInd) * surface.
 	1 to: nbInd do: [ :i|
-		(indList at: i) location: (Array with: (x at: i) with: (y at: i))
+		(population indList at: i) location: (Array with: (x at: i) with: (y at: i))
 		 ]
 	

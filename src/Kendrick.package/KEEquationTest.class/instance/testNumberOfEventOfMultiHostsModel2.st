@@ -1,6 +1,6 @@
 tests
 testNumberOfEventOfMultiHostsModel2
-	|model simulator eventList dsdt didt drdt|
+	|model eventImpl eventList dsdt didt drdt|
 	model := KEModel new.
 	dsdt := 'S[i]:t=mu[i]*N[i]-sum(j, beta[i][j]*I[j])*S[i]-mu[i]*S[i]' parseAsAnEquation.
 	didt := 'I[i]:t=sum(j, beta[i][j]*I[j])*S[i]-(mu[i]+v)*I[i]' parseAsAnEquation.
@@ -8,6 +8,6 @@ testNumberOfEventOfMultiHostsModel2
 	model addEquation: dsdt.
 	model addEquation: didt.
 	model addEquation: drdt.
-	simulator := (KESimulator new) model: model.
-	eventList := simulator generateEvents.
+	eventImpl := (KERuntimeCouplingEventImpl new) model: model.
+	eventList := eventImpl events.
 	self assert: 6 equals: eventList size

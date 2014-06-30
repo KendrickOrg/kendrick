@@ -5,5 +5,5 @@ updateContact: ind
 	index := ind id.
 	node := nodes at: index.
 	node adjacentNodes do: [ :i|
-		node at: ((indList at: i) currentStatus) add: 1
+		node at: ((population indList at: i) currentStatus) add: 1
 		 ]

@@ -7,6 +7,7 @@ doBehavior
 	next isArray 
 	ifTrue: [ ^ self move ]
 	ifFalse: [ 
+		next = #new ifTrue: [ ^ self birth ].
 		next = #empty 
 		ifTrue: [ ^ self die ]
 		ifFalse: [ ^ self changeStatus ]

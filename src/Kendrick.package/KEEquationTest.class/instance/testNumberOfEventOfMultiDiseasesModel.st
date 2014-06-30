@@ -1,6 +1,6 @@
 tests
 testNumberOfEventOfMultiDiseasesModel
-	|model eventList simulator|
+	|model eventList eventImpl|
 	model := KEModel new.
 	model addEquation: (PPODEParser parse: 'SS:t=mu*N-beta1*SS*(IS+II+IR)-beta2*SS*(SI+II+RI)-mu*SS').
 	model addEquation: (PPODEParser parse: 'IS:t=beta1*SS*(IS+II+IR)-beta2*IS*(SI+II+RI)-(mu+sigma1)*IS').
@@ -11,8 +11,8 @@ testNumberOfEventOfMultiDiseasesModel
 	model addEquation: (PPODEParser parse: 'RI:t=beta2*RS*(SI+II+RI)+sigma1*II-(mu+sigma2)*RI').
 	model addEquation: (PPODEParser parse: 'IR:t=beta1*SR*(IS+II+IR)+sigma2*II-(mu+sigma1)*IR').
 	model addEquation: (PPODEParser parse: 'RR:t=sigma1*IR+sigma2*RI-mu*RR').
-	simulator := (KESimulator new) model: model.
-	eventList := simulator generateEvents.
+	eventImpl := (KERuntimeCouplingEventImpl new) model: model.
+	eventList := eventImpl events.
 	self assert: 22 equals: eventList size.
 	eventList := eventList select: [ :each| each isCouplingEvent ].
 	self assert: 6 equals: eventList size.

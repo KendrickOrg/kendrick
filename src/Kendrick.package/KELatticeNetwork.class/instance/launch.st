@@ -1,6 +1,7 @@
 as yet unclassified
 launch
 	|distances y id p|
+	self initLocation.
 	distances := self calDistances.
 	y := distances copy sort: [ :a :b| a < b ].
 	id := self indexOf: y in: distances.

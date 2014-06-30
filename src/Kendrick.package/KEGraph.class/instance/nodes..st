@@ -12,9 +12,9 @@ nodes: aCollection
 		 ]
 	ifFalse: [ 
 		aCollection do: [ :each|
-		|node|
-		node := KENode new.
-		nodes add: node
+			|node|
+			node := KENode new.
+			nodes add: node
 		 ].
 		nodeNames := aCollection
 		 ]

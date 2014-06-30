@@ -11,7 +11,7 @@
 		"surface",
 		"attributes",
 		"emptyRooms",
-		"indList"
+		"population"
 	],
 	"name" : "KENetwork",
 	"type" : "normal"

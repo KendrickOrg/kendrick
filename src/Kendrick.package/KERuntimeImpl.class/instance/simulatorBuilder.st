@@ -1,7 +1,11 @@
 as yet unclassified
 simulatorBuilder
 	simulatorBuilder ifNil: [ 
-		simulatorBuilder := KESimulatorBuilder passSimulatorClass: (model simulator simulatorClass).
+		|simulatorClass|
+		model simulator 
+		ifNil: [ simulatorClass := KEDeterministicSimulator ]
+		ifNotNil: [ simulatorClass := model simulator simulatorClass ]. 
+		simulatorBuilder := KESimulatorBuilder passSimulatorClass: simulatorClass.
 		simulatorBuilder model: model
 		 ].
 	^ simulatorBuilder

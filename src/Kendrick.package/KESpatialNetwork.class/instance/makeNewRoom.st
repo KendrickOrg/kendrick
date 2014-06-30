@@ -4,12 +4,12 @@ makeNewRoom
 	node := KENetworkNode new.
 	x := (Random new) next * surface.
 	y := (Random new) next * surface.
-	ind := indList last. 
+	ind := KEIndividual new.
 	ind location: (Array with: x with: y).
 	nodes add: node.
 	distances := OrderedCollection new.
-	1 to: (indList size - 1) do: [ :i|
-		distances add: (ind distanceTo: (indList at: i))
+	1 to: (population indList size) do: [ :i|
+		distances add: (ind distanceTo: (population indList at: i))
 		 ].
 	prob := self calProb: distances.
 	id := prob copy sort: [ :a :b| a > b ].
@@ -19,4 +19,4 @@ makeNewRoom
 		j := nodes size.
 		self with: (Array with: i with: j) weight: #contact value: 1
 		 ].
-	^ (nodes size)
+	^ (Array with: x with: y)

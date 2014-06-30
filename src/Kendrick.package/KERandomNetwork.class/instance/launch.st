@@ -4,6 +4,7 @@ launch
 	|rand N|
 	rand := Random new.
 	N := 0.
+	self initLocation.
 	[ N < (contact * nbInd) ] whileTrue: [ 
 		|i j edge|
 		i := ((rand next) * nbInd) ceiling.

@@ -10,8 +10,8 @@ initLocation
 	i := 1.
 	location do: [ :x|
 		location do: [ :y|
-			i <= (indList size) ifTrue: [ 
-				(indList at: i) location: (Array with: x with: y).
+			i <= (population indList size) ifTrue: [ 
+				(population indList at: i) location: (Array with: x with: y).
 				i := i + 1.
 				 ]
 			 ]
@@ -22,6 +22,6 @@ initLocation
 			|x y|
 			x := (location last) + (1.0/sqrtNbInd).
 			y := location at: k.
-			(indList at: (i + k - 1)) location: (Array with: x with: y)
+			(population indList at: (i + k - 1)) location: (Array with: x with: y)
 			 ]
 		 ]
