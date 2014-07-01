@@ -6,5 +6,5 @@ die
 	pop := model population at: (model getPID).
 	pop removeIndividual: ind.
 	(pop at: ind currentStatus) removeIndividual: 1.
-	pop graph ifNotNil: [ pop graph releaseRoom: (ind) ].
+	pop hasGraph ifTrue: [ pop graph releaseRoom: (ind) ].
 	^ true

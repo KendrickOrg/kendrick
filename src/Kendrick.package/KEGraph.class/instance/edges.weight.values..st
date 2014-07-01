@@ -1,15 +1,17 @@
 as yet unclassified
 edges: edgeCollection weight: aSymbol values: weights
+	|symbol|
 	self edges: edgeCollection.
-	self weightNames add: aSymbol.
+	((aSymbol = #m) | (aSymbol = #movement)) ifTrue: [ symbol := #movement ] ifFalse: [ symbol := aSymbol ]. 	
+	self weightNames add: symbol.
 	weights isCollection 
 	ifTrue: [ 
 		1 to: edges size do: [ :id|
-			self with: (edges at: id) weight: aSymbol value: (weights at: id)
+			self with: (edges at: id) weight: symbol value: (weights at: id)
 			 ]
 		 ]
 	ifFalse: [ 
-		edges do: [ :each| self with: each weight: aSymbol value: weights ]
+		edges do: [ :each| self with: each weight: symbol value: weights ]
 		 ]
 	
 	

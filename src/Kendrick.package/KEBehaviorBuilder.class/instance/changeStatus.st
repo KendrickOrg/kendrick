@@ -11,7 +11,7 @@ changeStatus
 	(pop at: old) removeIndividual: 1.
 	(pop at: next) addIndividual: 1.
 	"update contact number in network"
-	pop graph ifNotNil: [ 
+	pop hasGraph ifTrue: [ 
 		(pop graph nodes at: (ind id)) adjacentNodes do: [ :i| 
 			(pop graph nodes at: i) at: old remove: 1.
 			(pop graph nodes at: i) at: next add: 1

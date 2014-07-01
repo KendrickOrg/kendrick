@@ -1,6 +1,6 @@
 as yet unclassified
 initMovementImpl
-	(model population atParameter: #movement) ifNotNil: [ 
+	(model population graph hasWeight: #movement) ifTrue: [ 
 		|movementImpl events|
 		movementImpl := (KERuntimeMovementEventImpl new) model: model.
 		events := movementImpl events.

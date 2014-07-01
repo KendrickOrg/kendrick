@@ -7,7 +7,7 @@ createSIRMultiHostModel
 	(model population at: 2) compartments: #((S 999) (I 1) (R 0)).
 	(model population at: 3) compartments: #((S 1999) (I 1) (R 0)). 
 	
-	model addParameter: #beta value: #(#(0 0.02 0.02) #(0.02 0.0 0.0) #(0.02 0.0 0.0)).
+	model addParameter: #beta value: #(#(0.0 0.02 0.02) #(0.02 0.0 0.0) #(0.02 0.0 0.0)).
 	model addParameter: #N value: #(10000 1000 2000).
 	model addParameter: #mu value: {365/30 . 1/20 . 1/20}.
 	model addParameter: #v value: 52.

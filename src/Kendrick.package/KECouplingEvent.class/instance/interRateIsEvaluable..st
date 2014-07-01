@@ -1,6 +1,6 @@
 as yet unclassified
 interRateIsEvaluable: model
-	(model population graph isNotNil)
+	(model population hasGraph)
 	ifTrue: [ 
 		^ (model population graph hasWeight: weight)
 		 ].
