@@ -1,4 +1,3 @@
 accessing
-actions: listOfActions
-
-actions := listOfActions 
+actions: aDictionary
+	actions := aDictionary

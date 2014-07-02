@@ -1,4 +1,3 @@
 evaluating
 normalize
-
-^self
+	^ self

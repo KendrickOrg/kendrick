@@ -21,7 +21,7 @@ testMultiHostsIndividualBasedModel
 	model addEquation: dsdt.
 	model addEquation: didt.	
 	"model runIndividualBasedSimulationFrom: 0 to: 0.5  withStep:  0.0027."
-	model simulator: ((KEIndividualBasedSimulator new) tMin: 0.0; tMax: 5.0; step: 0.25; model: model; algorithm: #default).
+	model simulator: ((KEIndividualBasedSimulator2 new) tMin: 0.0; tMax: 5.0; step: 0.25; model: model; algorithm: #default).
 	model simulator generateTransitionOfEvents.
 	model simulator initializeListIndividuals.
 	visitor := KECPPIndividualBasedVisitor  new.

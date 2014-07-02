@@ -1,15 +1,14 @@
 {
 	"commentStamp" : "",
-	"super" : "KEEntity",
-	"category" : "Kendrick-SemanticModel",
+	"super" : "KEPopulation",
+	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
 		"status",
-		"numberOfIndividuals",
-		"numberOfSpecies",
-		"initialValue"
+		"initialNbIndividuals",
+		"currentNbIndividuals"
 	],
 	"name" : "KECompartment",
 	"type" : "normal"

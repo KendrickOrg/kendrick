@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "KEEvent",
+	"category" : "Kendrick-Semantic-Model-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"weight",
+		"couplingRate"
+	],
+	"name" : "KECouplingEvent",
+	"type" : "normal"
+}

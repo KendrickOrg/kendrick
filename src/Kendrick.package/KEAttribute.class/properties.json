@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "KEEntity",
+	"category" : "Kendrick-IBM-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"symbol",
+		"effect",
+		"parameters",
+		"effectBuilder"
+	],
+	"name" : "KEAttribute",
+	"type" : "normal"
+}

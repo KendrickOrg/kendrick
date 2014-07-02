@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "KEEntity",
-	"category" : "Kendrick-SemanticModel",
+	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
@@ -11,7 +11,8 @@
 		"tMax",
 		"step",
 		"data",
-		"algorithm"
+		"algorithm",
+		"rtImpls"
 	],
 	"name" : "KESimulator",
 	"type" : "normal"

@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "PPCompositeParserTest",
-	"category" : "Kendrick-Tests-ExternalDSL",
+	"category" : "Kendrick-Tests-ODE-Parser",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

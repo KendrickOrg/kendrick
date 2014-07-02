@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "",
+	"super" : "KEGraph",
+	"category" : "Kendrick-Network-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"nbInd",
+		"contact",
+		"surface",
+		"attributes",
+		"emptyRooms",
+		"population"
+	],
+	"name" : "KENetwork",
+	"type" : "normal"
+}

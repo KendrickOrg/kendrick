@@ -1,0 +1,20 @@
+{
+	"commentStamp" : "",
+	"super" : "KEEntity",
+	"category" : "Kendrick-Semantic-Model-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"id",
+		"graph",
+		"nodes",
+		"nodeNames",
+		"parent",
+		"parameters",
+		"rates",
+		"indList"
+	],
+	"name" : "KEPopulation",
+	"type" : "normal"
+}
