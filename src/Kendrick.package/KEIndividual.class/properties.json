@@ -1,13 +1,14 @@
 {
 	"commentStamp" : "",
 	"super" : "KEEntity",
-	"category" : "Kendrick-IBM-Core",
+	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"attributes",
-		"behaviorBuild"
+		"currentStatus",
+		"nextStatus",
+		"specieID"
 	],
 	"name" : "KEIndividual",
 	"type" : "normal"

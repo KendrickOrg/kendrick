@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "KECPPVisitor",
-	"category" : "Kendrick-Code-Generators",
+	"category" : "Kendrick-Visitors",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

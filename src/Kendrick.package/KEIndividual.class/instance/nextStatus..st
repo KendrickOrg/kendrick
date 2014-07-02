@@ -1,3 +1,3 @@
-as yet unclassified
-nextStatus: stt
-	attributes at: #nextStatus put: stt
+accessing
+nextStatus: aStatus
+	nextStatus := aStatus

@@ -1,3 +1,0 @@
-evaluating
-getParameter: aDictionary
-	^ nil

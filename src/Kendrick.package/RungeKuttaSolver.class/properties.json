@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Kendrick-Math-ODE",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"x0",
+		"xn",
+		"step",
+		"relTol",
+		"nbIterations",
+		"listOfEquations"
+	],
+	"name" : "RungeKuttaSolver",
+	"type" : "normal"
+}

@@ -1,7 +1,8 @@
 presentationMagritte
 descriptionValue
 	<magritteDescription>
-	^ MAStringDescription new
+	^ MANumberDescription new
 		accessor: #value;
-		label: 'Value Of Parameter';
+		label: 'Value';
+		comment:'Modify the value of parameters';
 		yourself

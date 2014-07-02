@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "SortedCollection",
+	"category" : "Kendrick-Math-ODE",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "Solution",
+	"type" : "normal"
+}

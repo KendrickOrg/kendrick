@@ -1,11 +1,6 @@
-as yet unclassified
+initialize-release
 initialize
 	super initialize.
+	compartments := OrderedCollection new.
 	parameters := Dictionary new.
-	temporalParameters := Dictionary new.
-	equations := OrderedCollection new.
-	population := KEPopulation new.
-	compartmentSymbols := Dictionary new.
-	
-	
-
+	equations := OrderedCollection  new

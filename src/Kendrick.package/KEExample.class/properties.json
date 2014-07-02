@@ -1,11 +1,12 @@
 {
 	"commentStamp" : "",
 	"super" : "Object",
-	"category" : "Kendrick-Semantic-Model-Core",
+	"category" : "Kendrick-SemanticModel",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [
 		"DataModels",
+		"ModelExample",
 		"SampleModels",
 		"SampleModelsV2",
 		"SampleModelsV3",

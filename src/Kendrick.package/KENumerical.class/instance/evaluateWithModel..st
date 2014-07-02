@@ -1,3 +1,4 @@
 evaluating
 evaluateWithModel: aModel
-	^ number
+
+^ number
