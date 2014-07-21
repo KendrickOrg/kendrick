@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testCreateASpatialNetworkOfSIRMetaPopulation
 	|model|
 	model := KEModel new.

@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testCreateARandomNetworkOfSIRMetaPopulation
 	|model|
 	model := KEModel new.

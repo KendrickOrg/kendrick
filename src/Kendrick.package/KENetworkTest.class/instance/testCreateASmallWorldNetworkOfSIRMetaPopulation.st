@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testCreateASmallWorldNetworkOfSIRMetaPopulation
 	|model|
 	model := KEModel new.

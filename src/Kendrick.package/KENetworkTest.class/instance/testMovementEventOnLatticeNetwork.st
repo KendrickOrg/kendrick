@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testMovementEventOnLatticeNetwork
 	|model|
 	model := KEModel new.

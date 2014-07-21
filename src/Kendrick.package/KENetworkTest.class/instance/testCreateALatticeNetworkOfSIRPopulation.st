@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testCreateALatticeNetworkOfSIRPopulation
 	|model|
 	model := KEModel new.

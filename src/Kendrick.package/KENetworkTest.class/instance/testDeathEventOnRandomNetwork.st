@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testDeathEventOnRandomNetwork
 	|model stt|
 	model := KEModel new.

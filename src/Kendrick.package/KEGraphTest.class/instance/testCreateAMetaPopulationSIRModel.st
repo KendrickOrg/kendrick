@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testCreateAMetaPopulationSIRModel
 	|model|
 	model := KEModel new.

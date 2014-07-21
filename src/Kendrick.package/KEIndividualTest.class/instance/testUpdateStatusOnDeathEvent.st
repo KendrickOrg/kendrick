@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testUpdateStatusOnDeathEvent
 	|model|
 	model := KEModel new.

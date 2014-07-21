@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testBirthEventOnLatticeNetwork
 	|model|
 	model := KEModel new.

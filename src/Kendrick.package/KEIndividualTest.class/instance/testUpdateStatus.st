@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testUpdateStatus
 	|model|
 	model := KEModel new.
