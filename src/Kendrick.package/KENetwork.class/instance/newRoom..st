@@ -1,4 +1,4 @@
-as yet unclassified
+instance creation
 newRoom: ind
 	self emptyRooms size = 0 
 	ifTrue: [ 

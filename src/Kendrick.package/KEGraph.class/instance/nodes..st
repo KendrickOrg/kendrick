@@ -1,4 +1,4 @@
-as yet unclassified
+accessing
 nodes: aCollection
 	aCollection isNumber
 	ifTrue: [

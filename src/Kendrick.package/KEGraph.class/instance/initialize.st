@@ -1,4 +1,4 @@
-as yet unclassified
+initialization
 initialize
 	super initialize.
-	nodes := OrderedCollection new.
+	nodes := OrderedCollection new

@@ -1,4 +1,4 @@
-as yet unclassified
+accessing
 edges: edgeCollection
 	edges := OrderedCollection new.
 	edgeCollection = #all

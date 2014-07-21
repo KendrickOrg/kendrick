@@ -1,4 +1,4 @@
-as yet unclassified
+helpers
 indexOf: y in: Y
 	|id c|
 	id := OrderedCollection new.

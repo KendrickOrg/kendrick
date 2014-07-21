@@ -1,3 +1,3 @@
-as yet unclassified
+accessing
 contact: aValue
 	contact := aValue 

@@ -1,4 +1,4 @@
-as yet unclassified
+accessing
 weightNames
 	weightNames ifNil: [ weightNames := OrderedCollection new ].
 	^ weightNames

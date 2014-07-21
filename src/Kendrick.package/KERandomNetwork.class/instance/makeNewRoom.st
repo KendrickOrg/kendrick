@@ -5,8 +5,8 @@ makeNewRoom
 	node := KENetworkNode new.
 	nodes add: node.
 	rand := Random new.
-	x := (Random new) next * surface.
-	y := (Random new) next * surface.
+	x := rand next * surface.
+	y := rand next * surface.
 	1 to: contact do: [ :k|
 		|i j|
 		i := (nodes size).
