@@ -11,4 +11,4 @@ testCreateAMetaPopulationSIRModel
 	self assert: model population graph nodes size equals: 3.
 	self assert: ((model population graph nodes at: 1) weight: #beta of: 2) equals: 0.02. 
 	self assert: ((model population graph nodes at: 2) weight: #beta of: 2) equals: 0. 
-	self assert: ((model population graph nodes at: 2) weight: #beta of: 1) equals: 0.02. 
+	self assert: ((model population graph nodes at: 2) weight: #beta of: 1) equals: 0.02

@@ -1,0 +1,1 @@
+A KENetwork is a graph where nodes are individuals and edges, interactions between individuals.
