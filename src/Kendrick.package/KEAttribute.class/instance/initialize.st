@@ -1,4 +1,4 @@
 accessing
 initialize
-	effectBuilder := KEAttributeEffectBuilder new.
+	effectBuilder := KEAttributeEffect new.
 	
