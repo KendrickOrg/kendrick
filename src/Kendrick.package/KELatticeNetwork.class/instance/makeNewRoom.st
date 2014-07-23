@@ -1,11 +1,12 @@
 as yet unclassified
 makeNewRoom
-	|node i j x y loc|
+	|node i j x y loc sqrtNbInd|
+	sqrtNbInd := self gridWidth.
 	node := KENetworkNode new.
 	nodes add: node.
 	"find location of new individual"
-	i := (nodes size).
-	j := (nodes size) - sqrtNbInd.
+	i := (self nodes size).
+	j := (self nodes size) - sqrtNbInd.
 	loc := (population indList at: j) location.
 	x := (#first value: loc).
 	y := (#second value: loc) + (1.0/sqrtNbInd).

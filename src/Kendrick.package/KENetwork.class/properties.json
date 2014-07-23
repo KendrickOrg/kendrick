@@ -6,12 +6,10 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"nbInd",
-		"contact",
 		"surface",
-		"attributes",
 		"emptyRooms",
-		"population"
+		"population",
+		"numberOfContacts"
 	],
 	"name" : "KENetwork",
 	"type" : "normal"

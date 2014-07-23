@@ -6,7 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"sqrtNbInd"
+		"gridWidth"
 	],
 	"name" : "KELatticeNetwork",
 	"type" : "normal"

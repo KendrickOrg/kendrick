@@ -1,8 +1,8 @@
 as yet unclassified
 initLocation
-	|location i mod|
+	|location i mod sqrtNbInd|
 	"Make sure that nbInd is a square number"
-	sqrtNbInd := nbInd sqrt rounded.
+	sqrtNbInd := self gridWidth.
 	"(nbInd sqrt \\ 1) ~= 0 ifTrue: [ 
 		nbInd := (nbInd sqrt rounded) raisedTo: 2.
 		 ]."
@@ -16,7 +16,7 @@ initLocation
 				 ]
 			 ]
 		 ].
-	mod := nbInd - (sqrtNbInd raisedTo: 2).
+	mod := (self nodes size) - (sqrtNbInd raisedTo: 2).
 	(mod > 0) ifTrue: [ 
 		1 to: mod do: [ :k|
 			|x y|

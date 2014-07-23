@@ -13,7 +13,7 @@ makeNewRoom
 		 ].
 	prob := self calProb: distances.
 	id := prob copy sort: [ :a :b| a > b ].
-	1 to: contact do: [ :k|
+	1 to: numberOfContacts do: [ :k|
 		|i j|
 		i := prob indexOf: (id at: k).
 		j := nodes size.

@@ -5,10 +5,10 @@ launch
 	rand := Random new.
 	N := 0.
 	self initLocation.
-	[ N < (contact * nbInd) ] whileTrue: [ 
+	[ N < (numberOfContacts * (self nodes size)) ] whileTrue: [ 
 		|i j edge|
-		i := ((rand next) * nbInd) ceiling.
-		j := ((rand next) * nbInd) ceiling.
+		i := ((rand next) * (self nodes size)) ceiling.
+		j := ((rand next) * (self nodes size)) ceiling.
 		edge := Array with: i with: j.
 		(i ~= j) & ((self checkEdge: edge) = 0) ifTrue: [ 
 			N := N + 2.

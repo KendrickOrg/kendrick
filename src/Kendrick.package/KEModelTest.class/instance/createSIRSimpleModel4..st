@@ -2,7 +2,7 @@ tests
 createSIRSimpleModel4: network
 	|model|
 	model := KEModel new.
-	model population compartments: #((S 99) (I 1) (R 0)) defNetwork: network contact: 4.
+	model population compartments: #((S 99) (I 1) (R 0)) defNetwork: network numberOfContacts: 4.
 	
 	model addParameter: #beta value: 1.
 	model addParameter: #gamma value: 0.1.
