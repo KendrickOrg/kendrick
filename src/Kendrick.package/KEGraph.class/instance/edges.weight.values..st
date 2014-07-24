@@ -2,7 +2,7 @@ as yet unclassified
 edges: edgeCollection weight: aSymbol values: weights
 	|symbol|
 	self edges: edgeCollection.
-	((aSymbol = #m) | (aSymbol = #movement)) ifTrue: [ symbol := #movement ] ifFalse: [ symbol := aSymbol ]. 	
+	((aSymbol = #move) | (aSymbol = #movement)) ifTrue: [ symbol := #movement ] ifFalse: [ symbol := aSymbol ]. 	
 	self weightNames add: symbol.
 	weights isCollection 
 	ifTrue: [ 

@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "SergeStinckwich 7/24/2014 10:10",
+	"commentStamp" : "BuiThiMaiAnh 7/24/2014 15:17",
 	"super" : "KEGraph",
 	"category" : "Kendrick-Spatial-Core",
 	"classinstvars" : [ ],
@@ -7,9 +7,9 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"surface",
-		"emptyRooms",
 		"population",
-		"numberOfContacts"
+		"numberOfContacts",
+		"emptyNodes"
 	],
 	"name" : "KENetwork",
 	"type" : "normal"

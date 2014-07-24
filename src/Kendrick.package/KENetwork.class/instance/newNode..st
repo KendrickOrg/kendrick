@@ -1,15 +1,15 @@
 instance creation
-newRoom: ind
-	self emptyRooms size = 0 
+newNode: ind
+	self emptyNodes size = 0 
 	ifTrue: [ 
 		"nbInd := nbInd + 1.
 		ind id: (nbInd)."
-		ind location: (self makeNewRoom).
+		ind location: (self addNode).
 		ind id: (self nodes size)
 		 ]
 	ifFalse: [ 
 		|room|
-		room := self rndEmptyRoom.
+		room := self rndEmptyNode.
 		ind id: room.
 		ind location: (population indList at: room) location.
 	].

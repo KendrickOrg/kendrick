@@ -1,4 +1,4 @@
 as yet unclassified
-makeNewRoom
+addNode
 	self subclassResponsibility 
 	

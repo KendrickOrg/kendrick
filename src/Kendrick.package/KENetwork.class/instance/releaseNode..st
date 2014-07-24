@@ -1,5 +1,5 @@
 as yet unclassified
-releaseRoom: ind
+releaseNode: ind
 	"If a node is available, add this node into the emptyRooms list"
 	|stt aNodeID|
 	"Update number of contacts for other nodes in contact with this released node"
@@ -8,5 +8,5 @@ releaseRoom: ind
 	(nodes at: aNodeID) adjacentNodes do: [ :each|
 		(nodes at: each) at: stt remove: 1
 		 ].
-	self emptyRooms add: aNodeID.
+	self emptyNodes add: aNodeID.
 	^ stt

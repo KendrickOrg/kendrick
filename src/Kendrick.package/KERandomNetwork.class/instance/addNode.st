@@ -1,5 +1,5 @@
 as yet unclassified
-makeNewRoom
+addNode
 	|node rand x y|
 	"Make a new node and add this node to the network"
 	node := KENetworkNode new.

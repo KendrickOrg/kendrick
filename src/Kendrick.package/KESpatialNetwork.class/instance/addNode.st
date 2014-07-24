@@ -1,5 +1,5 @@
 as yet unclassified
-makeNewRoom
+addNode
 	|node x y ind distances prob id|
 	node := KENetworkNode new.
 	x := (Random new) next * surface.

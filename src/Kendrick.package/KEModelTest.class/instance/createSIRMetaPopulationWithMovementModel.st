@@ -7,7 +7,7 @@ createSIRMetaPopulationWithMovementModel
 		 ].
 	(model population nodes at: 1) compartments: #((S 1000) (I 1)).
 	"movement rate between sub-populations"
-	model population graph nodes: 5 edges: #all weight: #m values: 0.001.
+	model population graph nodes: 5 edges: #all weight: #move values: 0.001.
 	"coupling rate between sub-populations"
 	"model population graph edges: #all weight: #beta values: 0.001."
    model addParameter: #mu value: 0.0001.

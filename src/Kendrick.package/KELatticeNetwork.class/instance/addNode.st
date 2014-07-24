@@ -1,5 +1,5 @@
 as yet unclassified
-makeNewRoom
+addNode
 	|node i j x y loc sqrtNbInd|
 	sqrtNbInd := self gridWidth.
 	node := KENetworkNode new.

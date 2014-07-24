@@ -8,5 +8,5 @@ testMovementEventOnRandomNetwork
 	model setPID: #(0 1).
 	((model population at: #(0 1)) indList at: 80) nextStatus: #(0 2).
 	((model population at: #(0 1)) indList at: 80) updateStatus: model.
-	self assert: (model population at: #(0 1)) graph emptyRooms size equals: 1.
+	self assert: (model population at: #(0 1)) graph emptyNodes size equals: 1.
 	self assert: (model population at: #(0 2)) graph nodes size equals: 101.
