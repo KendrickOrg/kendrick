@@ -3,8 +3,8 @@ calculateEventRates: events
 	|rates "currentPID"|
 	"currentPID := model getPID."
 	rates := Dictionary new.
-	model PIDList do: [ :pid| rates at: pid put: (Dictionary new) ].
-	model PIDList do: [ :pid|
+	model populationIDs do: [ :pid| rates at: pid put: (Dictionary new) ].
+	model populationIDs do: [ :pid|
 		model setPID: pid.
 		pid isArray ifTrue: [ model setIndex: (pid last) ].
 		events keysAndValuesDo: [ :symbol :list|

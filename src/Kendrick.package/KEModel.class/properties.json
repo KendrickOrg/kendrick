@@ -11,9 +11,9 @@
 		"equations",
 		"population",
 		"simulator",
-		"PIDList",
 		"compartmentSymbols",
-		"graph"
+		"graph",
+		"populationIDs"
 	],
 	"name" : "KEModel",
 	"type" : "normal"

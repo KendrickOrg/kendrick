@@ -6,7 +6,7 @@ doGillespieIteration
 	"cityRates stores the total rate of each sub-population"
 	cityRates := self calculateEventRates.
 	"Choose a population in which an event will happen"
-	cityChosen := model PIDList at: (self random: (rand1 next) select: cityRates).
+	cityChosen := model populationIDs at: (self random: (rand1 next) select: cityRates).
 	eventChosen := self random: (rand1 next) select: (model population at: cityChosen) rates.
 	self executeEvent: eventChosen in: cityChosen. 
 	"calculate deltaT"

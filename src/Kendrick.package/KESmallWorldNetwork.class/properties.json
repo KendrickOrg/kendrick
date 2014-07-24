@@ -1,7 +1,7 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "BuiThiMaiAnh 7/24/2014 10:56",
 	"super" : "KELatticeNetwork",
-	"category" : "Kendrick-Network-Core",
+	"category" : "Kendrick-Spatial-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

@@ -1,7 +1,7 @@
 as yet unclassified
 calculateEventRates
 	"This function will be called for only one time before the main iteration of algorithm starts"
-	model PIDList do: [ :pid|
+	model populationIDs do: [ :pid|
 		(model population at: pid) rates: (Dictionary new)
 		 ].
 	self rtImpls do: [ :impl|

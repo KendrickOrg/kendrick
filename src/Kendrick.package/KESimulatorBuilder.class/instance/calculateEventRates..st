@@ -2,8 +2,8 @@ as yet unclassified
 calculateEventRates: events
 	|rates|
 	rates := Dictionary new.
-	model PIDList do: [ :pid| rates at: pid put: (OrderedCollection new) ].
-	model PIDList do: [ :pid|
+	model populationIDs do: [ :pid| rates at: pid put: (OrderedCollection new) ].
+	model populationIDs do: [ :pid|
 		model setPID: pid.
 		pid isArray ifTrue: [ model setIndex: (pid last) ].
 		events do: [ :each|

@@ -3,7 +3,7 @@ prepareData: timeSeries
 	|i|
 	i := 1.
 	data := Dictionary new.
-	model PIDList = #(0) 
+	model populationIDs = #(0) 
 	ifTrue: [ 
 		model equations do: [ :eq|
 			data at: (eq variable symbol) put: (KETimeSeries from: (result at: i) withIndex: timeSeries).
@@ -11,7 +11,7 @@ prepareData: timeSeries
 			 ].
 		 ]
 	ifFalse: [ 
-		model PIDList do: [ :aPid|
+		model populationIDs do: [ :aPid|
 			data at: aPid put: (Dictionary new).
 			model equations do: [ :eq|
 				(data at: aPid) at: (eq variable symbol) put: (KETimeSeries from: (result at: i) withIndex: timeSeries).

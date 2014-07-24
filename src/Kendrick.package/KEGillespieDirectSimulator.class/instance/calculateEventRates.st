@@ -1,19 +1,19 @@
 as yet unclassified
 calculateEventRates
 	|cityRates i|
-	cityRates := Array new: (model PIDList size).
+	cityRates := Array new: (model populationIDs size).
 	i := 1.
-	model PIDList do: [ :pid|
+	model populationIDs do: [ :pid|
 		(model population at: pid) rates: (OrderedCollection new)
 		 ].
 	self rtImpls do: [ :impl|
 		|rates|
 		rates := impl calculateEventRates.
-		model PIDList do: [ :pid|
+		model populationIDs do: [ :pid|
 			(model population at: pid) rates addAll: (rates at: pid)
 			 ]
 		 ].
-	model PIDList do: [ :aPID|
+	model populationIDs do: [ :aPID|
 		cityRates at: i put: ((model population at: aPID) rates sum).
 		i := i + 1
 		 ].

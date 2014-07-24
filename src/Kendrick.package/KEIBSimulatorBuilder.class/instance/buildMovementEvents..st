@@ -4,7 +4,7 @@ buildMovementEvents: events
 	|eventDict symbol|
 	eventDict := Dictionary new.
 	symbol := model compartmentSymbols keys first.
-	model PIDList do: [ :pid|
+	model populationIDs do: [ :pid|
 		eventDict at: pid put: (OrderedCollection new)
 		 ].
 	events keysAndValuesDo: [ :pid :list| 

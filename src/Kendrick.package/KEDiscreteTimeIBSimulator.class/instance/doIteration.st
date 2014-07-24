@@ -1,6 +1,6 @@
 as yet unclassified
 doIteration
-	model PIDList do: [ :pid|
+	model populationIDs do: [ :pid|
 		|subPop indList|
 		model setPID: pid.
 		pid isArray ifTrue: [ model setIndex: (pid last) ].

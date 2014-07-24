@@ -1,7 +1,7 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "BuiThiMaiAnh 7/24/2014 11:00",
 	"super" : "KENetwork",
-	"category" : "Kendrick-Network-Core",
+	"category" : "Kendrick-Spatial-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
