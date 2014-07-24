@@ -1,11 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "KEExamples",
+	"super" : "Object",
 	"category" : "Kendrick-Examples",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "StochasticExamples",
+	"name" : "KEExamples",
 	"type" : "normal"
 }

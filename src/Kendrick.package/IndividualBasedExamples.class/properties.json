@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "Object",
+	"super" : "KEExamples",
 	"category" : "Kendrick-Examples",
 	"classinstvars" : [ ],
 	"pools" : [ ],

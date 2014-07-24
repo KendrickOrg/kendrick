@@ -1,5 +1,6 @@
 tests
-testIBMSimulatorOnSIRDemographyModelWithNoNetwork
+runIBMSimulatorOnSIRDemographyModelWithNoNetwork
+	"self new runIBMSimulatorOnSIRDemographyModelWithNoNetwork"
 	|model|
 	"model := self createSIRModelWithDemography."
 	"0.5 year and step = 1 day"
@@ -10,4 +11,4 @@ testIBMSimulatorOnSIRDemographyModelWithNoNetwork
 	model := self createSIRSimpleModel2.	
 	model run: 'IBM' from: 0 to: 730 step: 1 algorithm: #DiscreteTime.
 	model plot: #(#S #I #R).
-	self assert: (model simulator data size) equals: 3.
+	

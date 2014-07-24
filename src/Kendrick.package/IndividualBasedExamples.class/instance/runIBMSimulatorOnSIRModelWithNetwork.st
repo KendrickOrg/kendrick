@@ -1,5 +1,6 @@
 tests
-testIBMSimulatorOnSIRModelWithNetwork
+runIBMSimulatorOnSIRModelWithNetwork
+	"self new runIBMSimulatorOnSIRModelWithNetwork"
 	|model|
 	"if run the model 4 with all individuals connected together in network, the parameter beta must be set to 0.01 (beta*1/N)"
 	model := self createSIRSimpleModel4: #smallworld.
@@ -9,6 +10,5 @@ testIBMSimulatorOnSIRModelWithNetwork
 	model run: 'IBM' from: 0.0 to: 200 step: 0.1 algorithm: #DiscreteTime.
 	model plot: #I.
 	"(model simulator data at: #I) save: 'I_2.dat'."
-	self assert: (model simulator data isDictionary) equals: true.
-	self assert: (model simulator data size) equals: 3.
+	
 	
