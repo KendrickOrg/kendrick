@@ -1,3 +1,0 @@
-accessing
-launch
-	self subclassResponsibility 

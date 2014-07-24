@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "BuiThiMaiAnh 7/24/2014 12:09",
 	"super" : "KEEntity",
 	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
@@ -12,7 +12,6 @@
 		"population",
 		"simulator",
 		"compartmentSymbols",
-		"graph",
 		"populationIDs"
 	],
 	"name" : "KEModel",

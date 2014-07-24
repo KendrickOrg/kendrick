@@ -3,9 +3,6 @@ initLocation
 	|location i mod sqrtNbInd|
 	"Make sure that nbInd is a square number"
 	sqrtNbInd := self gridWidth.
-	"(nbInd sqrt \\ 1) ~= 0 ifTrue: [ 
-		nbInd := (nbInd sqrt rounded) raisedTo: 2.
-		 ]."
 	location := (((1.0 to: sqrtNbInd by: 1.0) asArray)/sqrtNbInd) * surface.
 	i := 1.
 	location do: [ :x|

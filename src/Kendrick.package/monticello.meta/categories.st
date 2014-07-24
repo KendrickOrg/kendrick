@@ -7,3 +7,8 @@ SystemOrganization addCategory: 'Kendrick-Math-ODE-Solvers'!
 SystemOrganization addCategory: 'Kendrick-ODE-Parser'!
 SystemOrganization addCategory: 'Kendrick-Semantic-Model-Core'!
 SystemOrganization addCategory: 'Kendrick-Spatial-Core'!
+SystemOrganization addCategory: 'Kendrick-Tests-Code-Generators'!
+SystemOrganization addCategory: 'Kendrick-Tests-IBM-Core'!
+SystemOrganization addCategory: 'Kendrick-Tests-ODE-Parser'!
+SystemOrganization addCategory: 'Kendrick-Tests-Semantic-Model-Core'!
+SystemOrganization addCategory: 'Kendrick-Tests-Spatial-Core'!
