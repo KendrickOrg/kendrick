@@ -4,7 +4,6 @@ initNetwork
 	"if the connection kernel function is not yet defined"
 	kernel ifNil: [ kernel := [ :d| (d*5) negated exp ] ].
 	"calculate the distance between any two individuals"
-	self initLocation.
 	distances := self calDistances.
 	probs := self calProb: distances.
 	y := probs copy sort: [ :a :b| a < b ].

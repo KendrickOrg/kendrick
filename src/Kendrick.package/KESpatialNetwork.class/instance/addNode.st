@@ -2,8 +2,8 @@ as yet unclassified
 addNode
 	|node x y ind distances prob id|
 	node := KENetworkNode new.
-	x := (Random new) next * surface.
-	y := (Random new) next * surface.
+	x := (Random new) next.
+	y := (Random new) next.
 	ind := KEIndividual new.
 	ind location: (Array with: x with: y).
 	nodes add: node.

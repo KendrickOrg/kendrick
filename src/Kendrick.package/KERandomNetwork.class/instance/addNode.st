@@ -5,8 +5,8 @@ addNode
 	node := KENetworkNode new.
 	nodes add: node.
 	rand := Random new.
-	x := rand next * surface.
-	y := rand next * surface.
+	x := rand next.
+	y := rand next.
 	1 to: numberOfContacts do: [ :k|
 		|i j|
 		i := (nodes size).

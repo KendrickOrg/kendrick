@@ -12,7 +12,9 @@ indList
 					ind id: (indList size + 1).
 					indList add: ind
 					 ]
-				 ]
+				 ].
+			"initialize positions"
+			self initPositions
 			 ]
 		 ].
 	^ indList

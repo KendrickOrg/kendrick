@@ -1,20 +1,14 @@
 as yet unclassified
 addNode
-	|node i j x y loc sqrtNbInd|
+	|node i x y sqrtNbInd|
 	sqrtNbInd := self gridWidth.
 	node := KENetworkNode new.
 	nodes add: node.
 	"find location of new individual"
 	i := (self nodes size).
-	j := (self nodes size) - sqrtNbInd.
-	loc := (population indList at: j) location.
-	x := (#first value: loc).
-	y := (#second value: loc) + (1.0/sqrtNbInd).
-	self with: (Array with: i with: j) weight: #contact value: 1.
-	(i\\sqrtNbInd) ~= 1 
-	ifTrue: [ 
-		j := i - 1.
-		self with: (Array with: i with: j) weight: #contact value: 1
-		 ].
+	x := i\\sqrtNbInd.
+	y := i//sqrtNbInd + 1.
+	x = 0 ifTrue: [ x := sqrtNbInd. y := i //sqrtNbInd ].
+	self addEdge: i.
 	^ (Array with: x with: y)
 	

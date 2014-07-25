@@ -1,12 +1,11 @@
 {
-	"commentStamp" : "BuiThiMaiAnh 7/24/2014 15:17",
+	"commentStamp" : "BuiThiMaiAnh 7/25/2014 13:42",
 	"super" : "KEGraph",
 	"category" : "Kendrick-Spatial-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"surface",
 		"population",
 		"numberOfContacts",
 		"emptyNodes"
