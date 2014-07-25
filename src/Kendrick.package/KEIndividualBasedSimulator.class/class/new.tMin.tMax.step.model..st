@@ -1,8 +1,8 @@
 as yet unclassified
 new: _algorithm tMin: tMin tMax: tMax step: step model: model
-	_algorithm = #DiscreteTime ifTrue: [ 
+	_algorithm = #IBMDiscreteTime ifTrue: [ 
 		^ (KEDiscreteTimeIBSimulator new) tMin: tMin; tMax: tMax; step: step; model: model
 		 ].
-	_algorithm = #DiscreteSpace ifTrue: [ 
+	_algorithm = #IBMDiscreteSpace ifTrue: [ 
 		^ (KEDiscreteSpaceIBSimulator new) tMin: tMin; tMax: tMax; step: step; model: model
 		 ]

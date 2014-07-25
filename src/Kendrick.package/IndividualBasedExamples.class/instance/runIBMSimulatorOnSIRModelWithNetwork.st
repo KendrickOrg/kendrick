@@ -7,7 +7,7 @@ runIBMSimulatorOnSIRModelWithNetwork
 	"model := self createSIRSimpleModel4: #lattice."
 	"model := self createSIRSimpleModel4: #spatial."
 	"model := self createSIRSimpleModel4: #random."
-	model run: 'IBM' from: 0.0 to: 200 step: 0.1 algorithm: #DiscreteTime.
+	model run: #IBMDiscreteTime from: 0.0 to: 200 step: 0.1.
 	model plot: #I.
 	"(model simulator data at: #I) save: 'I_2.dat'."
 	

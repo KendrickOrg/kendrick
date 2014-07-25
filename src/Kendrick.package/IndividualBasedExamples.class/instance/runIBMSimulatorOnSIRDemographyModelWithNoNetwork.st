@@ -9,6 +9,6 @@ runIBMSimulatorOnSIRDemographyModelWithNoNetwork
 	self assert: (model simulator data isDictionary) equals: true.
 	self assert: (model simulator data size) equals: 3."
 	model := self createSIRSimpleModel2.	
-	model run: 'IBM' from: 0 to: 730 step: 1 algorithm: #DiscreteTime.
+	model run: #IBMDiscreteTime from: 0 to: 730 step: 1.
 	model plot: #(#S #I #R).
 	
