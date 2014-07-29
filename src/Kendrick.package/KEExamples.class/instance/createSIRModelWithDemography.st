@@ -1,8 +1,10 @@
 tests
 createSIRModelWithDemography
-	|model|
+	|model population|
 	model := KEModel new.
-	model population compartments: #((S 99999) (I 1) (R 0)).
+	population := KEPopulation new.
+	population compartments: #(S I R).
+	population at: #S put: 99999; at: #I put: 1; at: #R put: 0.
 	
 	model addParameter: #beta value: 0.0052.
 	model addParameter: #gamma value: 52.

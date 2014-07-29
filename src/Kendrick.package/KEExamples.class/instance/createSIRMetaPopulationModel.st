@@ -1,14 +1,22 @@
 tests
 createSIRMetaPopulationModel
-	|model|
+	|model population graph|
 	model := KEModel new.
-	model population nodes: 3.
-	model population graph nodes: 3 edges: #((1 2) (1 3)) weight: #beta values: 0.02.
-	(model population nodes at: 1) compartments: #((S 9999) (I 1) (R 0)).
-	(model population nodes at: 2) compartments: #((S 999) (I 1) (R 0)).
-	(model population nodes at: 3) compartments: #((S 1999) (I 1) (R 0)).
-	model population addParameter: #mu value: { 365/30 . 1/20 . 1/20 }.
-	model population addParameter: #N value: { 10000 . 1000 . 2000 }.
+	population := KEMetaPopulation new.
+	population numberOfSubPopulations: 3.
+	population forEachSubPopulation: [ :each| each compartments: #(S I R) ].
+	(population at: 1) at: #S put: 9999; at: #I put: 1; at: #R put: 0.
+	(population at: 2) at: #S put: 999; at: #I put: 1; at: #R put: 0.
+	(population at: 3) at: #S put: 1999; at: #I put: 1; at: #R put: 0.
+	population addParameter: #mu value: { 365/30 . 1/20 . 1/20 }.
+	population addParameter: #N value: { 10000 . 1000 . 2000 }.
+	
+	graph := KEGraph on: population.
+	graph edges: #((1 2) (1 3)) weight: #beta values: 0.02.
+	
+	population graph: graph.
+	model population: population.
+	
 	model addParameter: #beta value: 0.0.
 	model addParameter: #v value: 52.
 	model addEquation: ('S:t=mu*N-beta*S*I-mu*S' parseAsAnEquation).

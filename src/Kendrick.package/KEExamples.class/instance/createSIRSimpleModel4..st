@@ -1,8 +1,13 @@
 tests
-createSIRSimpleModel4: network
-	|model|
+createSIRSimpleModel4: networkType
+	|model population network|
 	model := KEModel new.
-	model population compartments: #((S 99) (I 1) (R 0)) defNetwork: network numberOfContacts: 4.
+	population := KEMetaPopulation new.
+	population compartments: #(S I R).
+	population at: #S put: 99; at: #I put: 1; at: #R put: 0.
+	network := KENetwork new: networkType numberOfContacts: 4 population: population.
+	population graph: network.
+	model population: population.
 	
 	model addParameter: #beta value: 1.
 	model addParameter: #gamma value: 0.1.

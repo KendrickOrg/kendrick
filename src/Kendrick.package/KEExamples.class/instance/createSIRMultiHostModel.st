@@ -1,11 +1,13 @@
 tests
 createSIRMultiHostModel
-	|model|
+	|model population|
 	model := KEModel new.
-	model population nodes: 3.
-	(model population at: 1) compartments: #((S 9999) (I 1) (R 0)).
-	(model population at: 2) compartments: #((S 999) (I 1) (R 0)).
-	(model population at: 3) compartments: #((S 1999) (I 1) (R 0)). 
+	population := KEMetaPopulation new.
+	population numberOfSubPopulations: 3.
+	population forEachSubPopulation: [ :each| each compartments: #(S I R) ].
+	(model population at: 1) at: #S put: 9999; at: #I put: 1; at: #R put: 0.
+	(model population at: 2) at: #S put: 999; at: #I put: 1; at: #R put: 0.
+	(model population at: 3) at: #S put: 1999; at: #I put: 1; at: #R put: 0.
 	
 	model addParameter: #beta value: #(#(0.0 0.02 0.02) #(0.02 0.0 0.0) #(0.02 0.0 0.0)).
 	model addParameter: #N value: #(10000 1000 2000).

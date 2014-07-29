@@ -1,15 +1,19 @@
 tests
 createSIRMetaPopulationWithMovementModel
-	|model|
+	|model population graph|
 	model := KEModel new.
-	model population nodes: 5 forEach: [ :node|
-		node compartments: #((S 1000) (I 10))
+	population := KEMetaPopulation new.
+	population subPopulations do: [ :each| each compartments: #(S I) ].
+	population forEachSubPopulation: [ :each|
+		each at: #S put: 1000; at: #I put: 10
 		 ].
-	(model population nodes at: 1) compartments: #((S 1000) (I 1)).
-	"movement rate between sub-populations"
-	model population graph nodes: 5 edges: #all weight: #move values: 0.001.
-	"coupling rate between sub-populations"
-	"model population graph edges: #all weight: #beta values: 0.001."
+	(population at: 1) at: #S put: 1000; at: #I put: 1.
+	graph := KEGraph on: population.
+	graph edges: #all moveRates: 0.001.
+	
+	population graph: graph.
+	model population: population.
+	
    model addParameter: #mu value: 0.0001.
 	model addParameter: #beta value: 0.0001.
 	model addParameter: #gamma value: 0.1.

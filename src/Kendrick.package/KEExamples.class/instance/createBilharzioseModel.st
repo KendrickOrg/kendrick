@@ -2,7 +2,14 @@ tests
 createBilharzioseModel
 	|model|
 	model := KEModel new.
-	model population compartments: #((S1 1) (I1 1) (M 0) (P 0) (S2 1) (I2 1)).
+	model population compartments: #(S1 I1 M P S2 I2).
+	model population
+		at: #S1 put: 1;
+		at: #I1 put: 1;
+		at: #M put: 0;
+		at: #P put: 0;
+		at: #S2 put: 1;
+		at: #I2 put: 1.
 	
 	model addParameter: #Lambda1 value: 8000.
 	model addParameter: #Lambda2 value: 200.

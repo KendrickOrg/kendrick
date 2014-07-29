@@ -2,7 +2,8 @@ tests
 createSIRSimpleModel3
 	|model|
 	model := KEModel new.
-	model population compartments: #((S 99) (I 1) (R 0)).
+	model population compartments: #(S I R).
+	model population at: #S put: 99; at: #I put: 1; at: #R put: 0.
 	
 	model addParameter: #beta value: 0.01.
 	model addParameter: #gamma value: 0.1.
