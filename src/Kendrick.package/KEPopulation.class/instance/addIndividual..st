@@ -1,6 +1,6 @@
 accessing
 addIndividual: ind
-	ind pid: (self id asArray).
+	ind pid: (self populationID asArray).
 	(ind id) 
 	ifNil: [ 
 		ind id: (self indList size + 1).

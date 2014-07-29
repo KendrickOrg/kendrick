@@ -1,6 +1,6 @@
 as yet unclassified
 distanceTo: other
 	|x y|
-	x := self location.
-	y := other location.
+	x := self position.
+	y := other position.
 	^ ((x - y) raisedTo: 2) sum

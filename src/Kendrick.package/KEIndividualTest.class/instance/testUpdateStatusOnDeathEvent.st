@@ -3,7 +3,7 @@ testUpdateStatusOnDeathEvent
 	|model|
 	model := KEModel new.
 	model population compartments: #((S 90) (I 1) (R 0)) defNetwork: 'lattice' numberOfContacts: 4.
-	model setPID: (model population indList first pid).
+	model setPopulationID: (model population indList first pid).
 	(model population indList at: 80) nextStatus: #empty.
 	(model population indList at: 80) updateStatus: (model).
 	self assert: (model population at: #S) currentNbIndividuals equals: 89.

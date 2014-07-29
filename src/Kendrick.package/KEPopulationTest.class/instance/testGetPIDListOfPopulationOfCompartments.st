@@ -2,6 +2,6 @@ as yet unclassified
 testGetPIDListOfPopulationOfCompartments
 	|aNewPopulation|
 	aNewPopulation := self createAPopulationOfCompartments. 
-	self assert: (aNewPopulation nodes size) equals: 3.
-	self assert: (aNewPopulation getPIDList) equals: #(0).  
+	self assert: (aNewPopulation getNbSubPopulations) equals: 3.
+	self assert: (aNewPopulation getPopulationIDs) equals: #(0).  
 	

@@ -1,4 +1,4 @@
 accessing
 populationIDs
-	populationIDs ifNil: [ populationIDs := population getPIDList ].
+	populationIDs ifNil: [ populationIDs := population getPopulationIDs ].
 	^ populationIDs

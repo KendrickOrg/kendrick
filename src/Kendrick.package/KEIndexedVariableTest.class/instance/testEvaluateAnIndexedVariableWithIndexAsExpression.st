@@ -1,16 +1,19 @@
 as yet unclassified
 testEvaluateAnIndexedVariableWithIndexAsExpression
-	|model dsdt|
+	|model population dsdt|
 	model := KEModel new.
-	model population nodes: 3.
-	(model population at: 1) compartments: #((S 9999) (I 1)).
-	(model population at: 2) compartments: #((S 1000) (I 0)).
-	(model population at: 3) compartments: #((S 2000) (I 0)).
+	population := KEMetaPopulation new.
+	population numberOfSubPopulations: 3.
+	population subPopulations do: [ :each| each compartments: #(S I R) ].
+	(population at: 1) at: #S put: 9999; at: #I put: 1; at: #R put: 0.
+	(population at: 2) at: #S put: 1000; at: #I put: 0; at: #R put: 0.
+	(population at: 3) at: #S put: 2000; at: #I put: 0; at: #R put: 0.
+	model population: population.
 	model addParameter: #beta value: #(#(0 0.02 0.02) #(0.02 0.0 0.0)  #(0.02 0.0 0.0)). 
 	model addParameter: #j value: (1 to: 3).
 	model addParameter: #d value: 5.
 	dsdt := 'S[i]:t=-sum(j, beta[i][j]*I[j])*S[i+1]' parseAsAnEquation.
 	model addEquation: dsdt.
-	model addTemporalParameter: #PID value: #(2).
+	model addTemporalParameter: #PID value: #(0 2).
 	model addTemporalParameter: #i value: 2.
 	self assert: (dsdt expression evaluateWithModel: model) equals: -40.

@@ -2,16 +2,14 @@ instance creation
 newNode: ind
 	self emptyNodes size = 0 
 	ifTrue: [ 
-		"nbInd := nbInd + 1.
-		ind id: (nbInd)."
-		ind location: (self addNode).
+		ind position: (self addNode).
 		ind id: (self nodes size)
 		 ]
 	ifFalse: [ 
 		|room|
 		room := self rndEmptyNode.
 		ind id: room.
-		ind location: (population indList at: room) location.
+		ind position: (population indList at: room) position.
 	].
 	self updateContact: ind.
 	(nodes at: (ind id)) adjacentNodes do: [ :i|

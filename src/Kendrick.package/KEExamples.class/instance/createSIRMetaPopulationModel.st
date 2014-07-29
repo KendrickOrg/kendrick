@@ -7,8 +7,8 @@ createSIRMetaPopulationModel
 	(model population nodes at: 1) compartments: #((S 9999) (I 1) (R 0)).
 	(model population nodes at: 2) compartments: #((S 999) (I 1) (R 0)).
 	(model population nodes at: 3) compartments: #((S 1999) (I 1) (R 0)).
-	model population with: #mu value: { 365/30 . 1/20 . 1/20 }.
-	model population with: #N value: { 10000 . 1000 . 2000 }.
+	model population addParameter: #mu value: { 365/30 . 1/20 . 1/20 }.
+	model population addParameter: #N value: { 10000 . 1000 . 2000 }.
 	model addParameter: #beta value: 0.0.
 	model addParameter: #v value: 52.
 	model addEquation: ('S:t=mu*N-beta*S*I-mu*S' parseAsAnEquation).

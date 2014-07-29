@@ -11,8 +11,8 @@ evaluateWithModel: aModel
 		"check if last index of currentPID = indexValue"
 		currentPID last = indexValues first 
 		ifTrue:  [ 
-			(subPop hasGraph)
-			ifTrue: [ ^ (subPop graph nodes at: (aModel temporalParameters at: #ind )) at: symbol ].
+			"(subPop hasGraph)
+			ifTrue: [ ^ (subPop graph nodes at: (aModel temporalParameters at: #ind )) at: symbol ]."
       		^ (subPop at: symbol) currentNbIndividuals]
 		ifFalse: [ ^ ((subPop parent at: (indexValues first)) at: symbol) currentNbIndividuals ].
 		].

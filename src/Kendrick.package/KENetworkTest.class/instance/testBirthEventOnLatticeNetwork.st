@@ -10,5 +10,5 @@ testBirthEventOnLatticeNetwork
 	self assert: (model population graph nodes last at: #S) equals: 1.
 	self assert: (model population graph nodes last at: #I) equals: 1.
 	self assert: (model population graph nodes at: 92) adjacentNodes asArray equals: #(82 91).
-	self assert: ind location equals: #(2 10).
+	self assert: ind position equals: #(2 10).
 	

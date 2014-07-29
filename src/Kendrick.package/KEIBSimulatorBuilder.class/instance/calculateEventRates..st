@@ -5,7 +5,7 @@ calculateEventRates: events
 	rates := Dictionary new.
 	model populationIDs do: [ :pid| rates at: pid put: (Dictionary new) ].
 	model populationIDs do: [ :pid|
-		model setPID: pid.
+		model setPopulationID: pid.
 		pid isArray ifTrue: [ model setIndex: (pid last) ].
 		events keysAndValuesDo: [ :symbol :list|
 			(rates at: pid) at: symbol put: (OrderedCollection new).

@@ -5,7 +5,7 @@ addNode
 	x := (Random new) next.
 	y := (Random new) next.
 	ind := KEIndividual new.
-	ind location: (Array with: x with: y).
+	ind position: (Array with: x with: y).
 	nodes add: node.
 	distances := OrderedCollection new.
 	1 to: (population indList size) do: [ :i|

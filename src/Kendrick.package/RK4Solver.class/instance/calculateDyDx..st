@@ -4,7 +4,7 @@ calculateDyDx: model
 	|j|
 	j := 1.
 	model populationIDs do: [ :each|
-		 model setPID: each.
+		 model setPopulationID: each.
 		 each isArray ifTrue: [ model setIndex: (each last) ].
 	    model equations do: [ :eq|
 		 	dydx at: j put: ("eq expression evaluateWithModel: model) + (eq evaluateCouplingInteraction: model" eq evaluateWithModel: model).

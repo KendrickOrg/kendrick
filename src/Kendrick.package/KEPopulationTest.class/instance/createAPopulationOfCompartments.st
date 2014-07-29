@@ -1,8 +1,9 @@
 as yet unclassified
 createAPopulationOfCompartments
-	|aNewPopulation|
-	aNewPopulation := KEPopulation new.
-	aNewPopulation compartments: #((S 99999) (I 1) (R 0)).
+	|population|
+	population := KEPopulation new.
+	population compartments: #(S I R).
+	population at: #S put: 99999; at: #I put: 1; at: #R put: 0.
 	
-	^ aNewPopulation 
+	^ population 
 	

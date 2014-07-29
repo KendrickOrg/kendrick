@@ -1,19 +1,17 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "BuiThiMaiAnh 7/29/2014 11:03",
 	"super" : "KEEntity",
 	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"id",
-		"graph",
-		"nodes",
-		"nodeNames",
 		"parent",
-		"parameters",
-		"rates",
-		"indList"
+		"populationID",
+		"compartments",
+		"compartmentNames",
+		"indList",
+		"rates"
 	],
 	"name" : "KEPopulation",
 	"type" : "normal"

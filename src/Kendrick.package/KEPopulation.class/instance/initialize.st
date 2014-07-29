@@ -1,9 +1,9 @@
 accessing
 initialize
 	super initialize.
-	nodes := OrderedCollection new.
-	nodeNames := OrderedCollection new.
+	compartments := OrderedCollection new.
+	compartmentNames := OrderedCollection new.
 	parent := nil.
 	"id := 0."
-	id := OrderedCollection new.
-	id add: 0.
+	populationID := OrderedCollection new.
+	populationID add: 0.
