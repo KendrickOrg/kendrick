@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "BuiThiMaiAnh 7/30/2014 17:13",
 	"super" : "KEEntity",
 	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
@@ -8,10 +8,7 @@
 	"instvars" : [
 		"variable",
 		"tVariable",
-		"expression",
-		"movementEvents",
-		"couplingEvents",
-		"rtExprImpls"
+		"expression"
 	],
 	"name" : "KEEquation",
 	"type" : "normal"

@@ -2,7 +2,7 @@ grammar
 log
 
 ^ super log  ==> [:nodes|
-	(KEExpressionWithMathFunction new)
+	(KEMathFunctionExpression new)
 	functionName: #log;
-	exprInFunction: (nodes at: 5)
+	functionExpr: (nodes at: 5)
 	]

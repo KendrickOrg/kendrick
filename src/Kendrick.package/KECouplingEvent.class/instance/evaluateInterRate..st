@@ -14,12 +14,12 @@ evaluateInterRate: model
 			tmp := aNode graph nodes at: (pid last).
 			tmp adjacentNodes do: [ :each| 
 				model currentPopulationID: (aNode at: each) id asArray.
-				self setWeight: (tmp weight: weight of: each) for: model.
+				self setCoefficient: (tmp weight: couplingCoefficient of: each) for: model.
 				s := s + (couplingRate evaluateWithModel: model) abs. 
 				 ].
 			pid := aNode id
 			 ].
 			model currentPopulationID: currentPID.
-			model temporalParameters removeKey: weight
+			model temporalParameters removeKey: couplingCoefficient
 		 ].
 	^ s

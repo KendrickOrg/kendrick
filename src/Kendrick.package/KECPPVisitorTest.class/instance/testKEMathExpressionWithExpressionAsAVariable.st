@@ -1,7 +1,7 @@
 as yet unclassified
 testKEMathExpressionWithExpressionAsAVariable
 	|input visitor result|
-	input := KEExpressionWithMathFunction new functionName: #cos; exprInFunction: (KEVariable new symbol: #t).
+	input := KEMathFunctionExpression new functionName: #cos; functionExpr: (KEVariable new symbol: #t).
 	visitor := KECPPVisitor new.
 	result := visitor visitNode: input.
 	

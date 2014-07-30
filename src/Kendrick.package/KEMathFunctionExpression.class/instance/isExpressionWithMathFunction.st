@@ -1,0 +1,3 @@
+checking
+isExpressionWithMathFunction
+	^ true
