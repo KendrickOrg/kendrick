@@ -6,7 +6,7 @@ evaluateWithModel: aModel
 		x := aModel atParameter: symbol.
 		x ifNil: [ 
 			(symbol = #t) ifTrue: [ ^ aModel temporalParameters at: #t ].
-			currentPID := aModel getPID.
+			currentPID := aModel currentPopulationID.
 			subPop := aModel population at: currentPID.
 			subPop isPopulation 
 			ifTrue: [ 

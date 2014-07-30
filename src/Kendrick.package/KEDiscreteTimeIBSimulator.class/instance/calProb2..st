@@ -7,7 +7,7 @@ calProb2: ind
 	1 to: (events size) do: [ :i|
 		|e rate prob|
 		e := events at: i.
-		rate := ((self eventRates at: (model getPID)) at: (ind currentStatus)) at: i.
+		rate := ((self eventRates at: (model currentPopulationID)) at: (ind currentStatus)) at: i.
 		rate = -1 ifTrue: [ 
 			rate := e evaluateWithModel: model.
 			 ].
@@ -17,11 +17,11 @@ calProb2: ind
 			 ]
 	 ].
 	self movementEventList ifNotNil: [ 
-		moveEvents := self movementEventList at: (ind pid) ifAbsent: [ OrderedCollection new ].
+		moveEvents := self movementEventList at: (ind populationID) ifAbsent: [ OrderedCollection new ].
 		1 to: (moveEvents size) do: [ :i|
 			|r prob e|
 			e := moveEvents at: i.
-			r := (self moveRates at: (ind pid)) at: i.
+			r := (self moveRates at: (ind populationID)) at: i.
 			prob := 1 - (((step * r) negated) exp).
 			(prob > (rand next)) ifTrue: [ 
 				ind attributes at: #moveTo put: (e toStatus).

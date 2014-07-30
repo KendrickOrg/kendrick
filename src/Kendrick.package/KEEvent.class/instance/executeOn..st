@@ -1,7 +1,7 @@
 accessing
 executeOn: model
 	|currentPID subPop|
-	currentPID := model getPID.
+	currentPID := model currentPopulationID.
 	subPop := model population at: currentPID.
 	actions keysAndValuesDo: [ :status :value|
 		"|old|

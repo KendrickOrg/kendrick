@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "BuiThiMaiAnh 7/29/2014 16:27",
 	"super" : "KEEntity",
 	"category" : "Kendrick-IBM-Core",
 	"classinstvars" : [ ],
@@ -7,7 +7,7 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"attributes",
-		"behaviorBuild"
+		"behaviorBuilder"
 	],
 	"name" : "KEIndividual",
 	"type" : "normal"

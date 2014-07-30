@@ -1,3 +1,0 @@
-accessing
-subPopulations
-	^ subPopulations

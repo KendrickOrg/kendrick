@@ -2,7 +2,7 @@ as yet unclassified
 evaluateWithModel: model
 	|result currentPID|
 	result := 0.
-	currentPID := model getPID.
+	currentPID := model currentPopulationID.
 	self runtimeExpr ifNotNil: [ 
 		(runtimeExpr at: currentPID) do: [ :each|
 			each fromStatus = currentPID ifTrue: [ result := result - (each evaluateWithModel: model) ].

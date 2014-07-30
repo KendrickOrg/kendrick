@@ -2,7 +2,7 @@ as yet unclassified
 doIteration
 	model populationIDs do: [ :pid|
 		|subPop indList|
-		model setPopulationID: pid.
+		model currentPopulationID: pid.
 		pid isArray ifTrue: [ model setIndex: (pid last) ].
 		subPop := model population at: pid.
 		indList := subPop indList.

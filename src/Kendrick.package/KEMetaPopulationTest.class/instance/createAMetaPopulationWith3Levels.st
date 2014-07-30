@@ -10,7 +10,7 @@ createAMetaPopulationWith3Levels
 	(population at: $a) numberOfSubPopulations: 3.
 	(population at: $b) numberOfSubPopulations: 2.
 	(population at: $c) numberOfSubPopulations: 4.
-	population subPopulations do: [ :each|
+	population forEachSubPopulation: [ :each|
 		each forEachSubPopulation: aBlock ].
 
 	^ population 

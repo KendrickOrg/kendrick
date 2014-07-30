@@ -3,7 +3,7 @@ createSIRMetaPopulationWithMovementModel
 	|model population graph|
 	model := KEModel new.
 	population := KEMetaPopulation new.
-	population subPopulations do: [ :each| each compartments: #(S I) ].
+	population forEachSubPopulation: [ :each| each compartments: #(S I) ].
 	population forEachSubPopulation: [ :each|
 		each at: #S put: 1000; at: #I put: 10
 		 ].

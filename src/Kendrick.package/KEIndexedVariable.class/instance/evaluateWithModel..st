@@ -6,16 +6,17 @@ evaluateWithModel: aModel
 	x := aModel atParameter: symbol.
 	x isNumber ifTrue: [ ^ x ].
 	x ifNil: [ 
-		currentPID := aModel getPID.
+		currentPID := aModel currentPopulationID.
 		subPop := aModel population at: currentPID.
-		"check if last index of currentPID = indexValue"
 		currentPID last = indexValues first 
 		ifTrue:  [ 
-			"(subPop hasGraph)
-			ifTrue: [ ^ (subPop graph nodes at: (aModel temporalParameters at: #ind )) at: symbol ]."
-      		^ (subPop at: symbol) currentNbIndividuals]
+			|contacts|
+			contacts := -1.
+			subPop graph ifNotNil: [ contacts := (subPop graph nodes at: (aModel currentIndividual)) at: symbol ].
+			contacts = -1 ifTrue: [ ^ (subPop at: symbol) currentNbIndividuals ].
+			^ contacts
+      		]
 		ifFalse: [ ^ ((subPop parent at: (indexValues first)) at: symbol) currentNbIndividuals ].
 		].
-	"if x is not nil and not a number, so x is a parameter whose value is a matrix or an array, that depends on indexList"
 	indexValues do: [ :each| x := (x at: each) ].
 	^ x

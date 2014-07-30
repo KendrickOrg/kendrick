@@ -2,7 +2,7 @@ as yet unclassified
 doBirthEvent: subPop
 	|rand r p|
 	rand := Random new.
-	r := (model population at: (model getPID)) rates at: #empty ifAbsent: [ nil ].
+	r := (model population at: (model currentPopulationID)) rates at: #empty ifAbsent: [ nil ].
 	r ifNotNil: [ 
 		p := 1 - ((((r first) * step) negated) exp).
 		(p > (rand next)) ifTrue: [ 

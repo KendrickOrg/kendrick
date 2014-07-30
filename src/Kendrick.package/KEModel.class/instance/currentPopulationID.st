@@ -1,3 +1,3 @@
 accessing
-getPID
+currentPopulationID
 	^ temporalParameters at: #PID ifAbsent: [ ^ nil ]

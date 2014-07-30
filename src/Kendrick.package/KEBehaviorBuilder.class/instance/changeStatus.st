@@ -3,7 +3,7 @@ changeStatus
 	|ind model pop old next|
 	ind := self arguments at: #ind.
 	model := self arguments at: #model.
-	pop := model population at: (model getPID).
+	pop := model population at: (model currentPopulationID).
 	old := ind currentStatus.
 	next := ind nextStatus.
 	ind currentStatus: next.

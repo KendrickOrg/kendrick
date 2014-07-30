@@ -4,7 +4,7 @@ testCreateNewPopulationForSIRMetaPopulationModel
 	population := KEMetaPopulation new.
 	population numberOfSubPopulations: 3.
 	"population graph edges: #((1 2) (1 3)) weight: #beta values: 0.02."
-	population subPopulations do: [ :each| each compartments: #(S I R) ].
+	population forEachSubPopulation: [ :each| each compartments: #(S I R) ].
 	(population at: 1) at: #S put: 9999; at: #I put: 1; at: #R put: 0.
 	(population at: 2) at: #S put: 1000; at: #I put: 0; at: #R put: 0.
 	(population at: 3) at: #S put: 2000; at: #I put: 0; at: #R put: 0.

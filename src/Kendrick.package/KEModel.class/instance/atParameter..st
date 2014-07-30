@@ -1,7 +1,7 @@
 as yet unclassified
 atParameter: aSymbol
 	|x current pid|
-	pid := self getPID.
+	pid := self currentPopulationID.
 	pid ifNotNil: [
 		current := (population at: pid).
 		x := current atParameter: aSymbol

@@ -1,4 +1,4 @@
-accessing
+adding
 addSubPopulation: anObject
 	"This function will add a new subpopulation or a new compartment for the current population"
 	"|populationID|

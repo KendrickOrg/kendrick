@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "BuiThiMaiAnh 7/30/2014 00:38",
 	"super" : "KEEntity",
 	"category" : "Kendrick-IBM-Core",
 	"classinstvars" : [ ],
@@ -8,8 +8,7 @@
 	"instvars" : [
 		"symbol",
 		"effect",
-		"parameters",
-		"effectBuilder"
+		"clinicStatus"
 	],
 	"name" : "KEAttribute",
 	"type" : "normal"

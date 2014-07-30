@@ -2,7 +2,7 @@ as yet unclassified
 updateIndividuals
 	model populationIDs do: [ :pid|
 		|subPop indList|
-		model setPopulationID: pid.
+		model currentPopulationID: pid.
 		subPop := model population at: pid.
 		indList := subPop indList.
 		indList do: [ :ind|

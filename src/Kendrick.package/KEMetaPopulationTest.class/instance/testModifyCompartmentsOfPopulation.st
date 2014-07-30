@@ -3,12 +3,11 @@ testModifyCompartmentsOfPopulation
 	|population|
 	population := KEMetaPopulation new.
 	population numberOfSubPopulations: 5.
-	population subPopulations do: [ :each| 
+	population forEachSubPopulation: [ :each| 
 		each compartments: #(S I).
 		each at: #S put: 1000; at: #I put: 0 ].
    (population at: 1) at: #S put: 999; at: #I put: 1.
 	self assert: (population getNbSubPopulations) equals: 5.
-	self assert: (population at: #(0 1)) equals: (population subPopulations at: 1).
 	self assert: (population at: #(0 1)) getNbSubPopulations equals: 2.
 	self assert: ((population at: #(0 1)) at: #S) initialNbIndividuals equals: 999.
 	self assert: ((population at: #(0 1)) at: #I) initialNbIndividuals equals: 1.

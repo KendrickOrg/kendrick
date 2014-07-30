@@ -3,7 +3,7 @@ evaluateWithModel: model
 	|result currentPID subPop eq|
 	eq := self arguments at: #2.
 	result := 0.
-	currentPID := model getPID.
+	currentPID := model currentPopulationID.
 	subPop := model population at: currentPID. 
 	self runtimeExpr do: [ :each| |temp s|
 		"s is total number of individuals of the fromStatus compartment of this event"

@@ -1,3 +1,3 @@
 accessing
-setPopulationID: pid
+currentPopulationID: pid
 	temporalParameters at: #PID put: pid

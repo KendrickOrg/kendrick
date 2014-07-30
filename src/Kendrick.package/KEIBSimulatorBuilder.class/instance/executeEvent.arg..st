@@ -9,7 +9,7 @@ executeEvent: events arg: arguments
 	eChosen := ((rand next) * (indEvents size)) ceiling.
 	(eChosen > 0) ifTrue: [ 
 		event := indEvents at: eChosen.
-		rate := ((model population at: (ind pid)) rates at: (ind currentStatus)) at: eChosen.
+		rate := ((model population at: (ind populationID)) rates at: (ind currentStatus)) at: eChosen.
 		rate = -1 ifTrue: [ rate := event evaluateWithModel: model ].
 		^ (Array with: event with: rate)
 		 ].

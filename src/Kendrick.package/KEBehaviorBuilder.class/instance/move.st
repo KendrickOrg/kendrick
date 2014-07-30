@@ -4,7 +4,7 @@ move
 	ind := self arguments at: #ind.
 	model := self arguments at: #model.
 	"move from current population"
-	popFrom := model population at: (model getPID).
+	popFrom := model population at: (model currentPopulationID).
 	(popFrom at: (ind currentStatus)) removeIndividual: 1.
 	popFrom removeIndividual: ind.
 	popFrom hasGraph ifTrue: [ popFrom graph releaseNode: (ind) ].
