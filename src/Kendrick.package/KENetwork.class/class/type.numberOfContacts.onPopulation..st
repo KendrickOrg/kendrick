@@ -1,5 +1,5 @@
 as yet unclassified
-new: type numberOfContacts: n population: p
+type: type numberOfContacts: n onPopulation: p
 	(type = #random) | (type = #Random) ifTrue: [ 
 		^ (KERandomNetwork new) numberOfContacts: n; population: p
 		 ].

@@ -1,3 +1,2 @@
 as yet unclassified
-model
-	^ model
+calculateEventRates
