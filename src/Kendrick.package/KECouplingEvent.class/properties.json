@@ -1,13 +1,13 @@
 {
-	"commentStamp" : "BuiThiMaiAnh 7/30/2014 17:02",
+	"commentStamp" : "",
 	"super" : "KEEvent",
 	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"couplingRate",
-		"couplingCoefficient"
+		"weight",
+		"couplingRate"
 	],
 	"name" : "KECouplingEvent",
 	"type" : "normal"

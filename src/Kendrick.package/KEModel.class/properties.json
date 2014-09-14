@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "BuiThiMaiAnh 8/13/2014 16:53",
+	"commentStamp" : "BuiThiMaiAnh 7/24/2014 12:09",
 	"super" : "KEEntity",
 	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
@@ -10,9 +10,10 @@
 		"temporalParameters",
 		"equations",
 		"population",
-		"simulatorBuilder",
+		"simulator",
 		"compartmentSymbols",
-		"populationIDs"
+		"populationIDs",
+		"compartments"
 	],
 	"name" : "KEModel",
 	"type" : "normal"

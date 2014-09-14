@@ -1,4 +1,7 @@
 as yet unclassified
 interRateIsEvaluable: model
-	^ (model population graph hasWeight: couplingCoefficient)
-		
+	(model population hasGraph)
+	ifTrue: [ 
+		^ (model population graph hasWeight: weight)
+		 ].
+	^ false

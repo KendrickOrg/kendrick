@@ -1,11 +1,11 @@
 as yet unclassified
 runtimeExpr
 	runtimeExpr ifNil: [ 
-		|couplingEvents eq|
+		|eventList eq|
 		runtimeExpr := OrderedCollection new.
-		couplingEvents := self arguments at: #1.
+		eventList := self arguments at: #1.
 		eq := self arguments at: #2.
-		couplingEvents do: [ :each|
+		eventList do: [ :each|
 			(each fromStatus = eq variable symbol) | (each toStatus = eq variable symbol) ifTrue: [ runtimeExpr add: each ]
 			 ]
 		 ].

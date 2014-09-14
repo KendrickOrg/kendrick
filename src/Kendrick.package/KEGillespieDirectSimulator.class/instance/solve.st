@@ -14,8 +14,7 @@ solve
 		"check if extinction occurs"
 		((delta_T = 0) | ((model population getNbIndividualsOfCompartment: #I) <= 0)) 
 		ifTrue: [ 		
-			"self prepareData: timeSeries."
-			self buildData: result with: timeSeries.
+			self prepareData: timeSeries.
 			^ countStep ].
 		t := t + delta_T.
 		t > (previousT + step) ifTrue: [ 
@@ -24,6 +23,5 @@ solve
 			previousT := t.
 			 ].
 		 ].
-	"self prepareData: timeSeries."
-	self buildData: result with: timeSeries.
+	self prepareData: timeSeries.
 	^ countStep

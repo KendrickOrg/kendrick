@@ -12,7 +12,7 @@ rates: aPID_i and: aPID_j
 		moveRates at: 2 put: ((g nodes at: (aPID_j last)) weight: #movement of: (aPID_i last)) 
 		 ]
 	ifFalse: [ 
-		moveRates := self moveRatesBetween: (pop1 parent id) and: (pop2 parent id)
+		moveRates := self rates: (pop1 parent id) and: (pop2 parent id)
 		 ].
 	^ moveRates
 	

@@ -1,13 +1,12 @@
 {
-	"commentStamp" : "BuiThiMaiAnh 8/13/2014 17:32",
+	"commentStamp" : "",
 	"super" : "KEEntity",
 	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"simulator",
-		"adapters"
+		"model"
 	],
 	"name" : "KESimulatorBuilder",
 	"type" : "normal"

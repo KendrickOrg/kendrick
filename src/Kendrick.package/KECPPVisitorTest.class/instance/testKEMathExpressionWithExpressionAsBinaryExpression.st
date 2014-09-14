@@ -5,7 +5,7 @@ testKEMathExpressionWithExpressionAsBinaryExpression
 				op: #*; 
 				leftHandSide: (KENumerical new number: 2);
 				rightHandSide: (KEVariable new symbol: #t).
-	input := KEMathFunctionExpression new functionName: #cos; functionExpr: expr .
+	input := KEExpressionWithMathFunction new functionName: #cos; exprInFunction: expr .
 	visitor := KECPPVisitor new.
 	result := visitor visitNode: input.
 	

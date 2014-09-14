@@ -2,7 +2,7 @@ grammar
 exp
 
 ^ super exp  ==> [:nodes|
-	(KEMathFunctionExpression new)
+	(KEExpressionWithMathFunction new)
 	functionName: #exp;
-	functionExpr: (nodes at: 5)
+	exprInFunction: (nodes at: 5)
 	]

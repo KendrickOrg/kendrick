@@ -8,7 +8,7 @@ acceptKEMathExpressionSigma: aNode
 				    ifTrue: [ strInitializeKEMath nextPutAll: String tab, String tab, 'sumSigma = 0.0;';cr  ].
 	strInitializeKEMath nextPutAll: String tab, String tab, 'for (int j = 0; j < nbOfSpecies; j++)';cr.
 	strInitializeKEMath nextPutAll: String tab, String tab, String tab, 'sumSigma += '.
-	strInitializeKEMath nextPutAll: (self visitNode: aNode functionExpr), ';';cr.
+	strInitializeKEMath nextPutAll: (self visitNode: aNode exprInFunction), ';';cr.
 	defSumSigma := true.
 	aStream nextPutAll: 'sumSigma'.
 	^ aStream contents

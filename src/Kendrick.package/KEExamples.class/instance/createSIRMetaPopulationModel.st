@@ -1,6 +1,7 @@
 tests
 createSIRMetaPopulationModel
 	|model population graph|
+	model := KEModel new.
 	population := KEMetaPopulation new.
 	population numberOfSubPopulations: 3.
 	population forEachSubPopulation: [ :each| each compartments: #(S I R) ].
@@ -13,14 +14,13 @@ createSIRMetaPopulationModel
 	graph := KEGraph on: population.
 	graph edges: #((1 2) (1 3)) weight: #beta values: 0.02.
 	
-	model := KEModel new.
+	population graph: graph.
 	model population: population.
+	
 	model addParameter: #beta value: 0.0.
 	model addParameter: #v value: 52.
 	model addEquation: ('S:t=mu*N-beta*S*I-mu*S' parseAsAnEquation).
 	model addEquation: ('I:t=beta*S*I-v*I-mu*I' parseAsAnEquation).
 	model addEquation: ('R:t=v*I-mu*R' parseAsAnEquation).  
-	model run: #RK4 from: 0.0 to: 40.0 step: 0.01.
-	model plot: #I do: #sqrt.
 	
 	^ model

@@ -1,3 +1,0 @@
-acessing
-sign
-	^ 1

@@ -11,7 +11,7 @@ generateEvents
 									fromStatus: (each fromStatus); 
 									toStatus: (each toStatus); 
 									actions: (each actions); 
-									couplingCoefficient: (each rate getParameter: (model parameters)); 
+									weight: (each rate getParameter: (model parameters)); 
 									couplingRate: (each rate removeIndexedVariable). 
 			eventList at: i put: couplingEvent
 			 ].
