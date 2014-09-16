@@ -1,4 +1,0 @@
-evaluating
-normalize
-
-^self

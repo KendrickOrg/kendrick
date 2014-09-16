@@ -1,4 +1,0 @@
-accessing
-fnIdVariable
-
-^fnIdVariable 

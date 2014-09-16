@@ -1,3 +1,0 @@
-accessing
-tVariable
-	^ tVariable

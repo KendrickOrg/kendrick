@@ -1,3 +1,0 @@
-testing
-sign
-^1
