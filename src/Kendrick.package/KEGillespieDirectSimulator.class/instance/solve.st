@@ -7,16 +7,16 @@ solve
 	previousT := t.
 	countStep := 0.
 	[ t < tMax ] whileTrue: [ 
-		|delta_T|
+		|deltaT|
 		model addTemporalParameter: #t value: t.
-		delta_T := self doGillespieIteration.
+		deltaT := self doGillespieIteration.
 		countStep := countStep + 1.
 		"check if extinction occurs"
-		((delta_T = 0) | ((model population getNbIndividualsOfCompartment: #I) <= 0)) 
+		((deltaT = 0) | ((model population getNbIndividualsOfCompartment: #I) <= 0)) 
 		ifTrue: [ 		
 			self buildData: result with: timeSeries.
 			^ countStep ].
-		t := t + delta_T.
+		t := t + deltaT.
 		t > (previousT + step) ifTrue: [ 
 			self updateResult.
 			timeSeries add: t.
