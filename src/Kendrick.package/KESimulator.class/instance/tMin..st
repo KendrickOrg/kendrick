@@ -1,3 +1,3 @@
 accessing
-tMin: anObject
-	tMin := anObject
+tMin: aNumber
+	tMin := aNumber

@@ -1,3 +1,3 @@
 accessing
-tMax: anObject
-	tMax := anObject
+tMax: aNumber
+	tMax := aNumber

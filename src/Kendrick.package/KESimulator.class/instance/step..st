@@ -1,3 +1,3 @@
 accessing
-step: anObject
-	step := anObject
+step: aNumber
+	step := aNumber
