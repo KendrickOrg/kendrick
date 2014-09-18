@@ -1,0 +1,3 @@
+checking
+checkNil
+	^ (functionExpr isNil)

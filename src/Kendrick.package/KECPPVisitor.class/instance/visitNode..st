@@ -18,9 +18,9 @@ visitNode: aNode
 		ifTrue: [ ^ self acceptKEUnaryExpression: aNode ].
 	aNode class == KEDeterministicSimulator
 		ifTrue: [ ^ self acceptKEDeterministicSimulator: aNode ].
-	aNode class == KEExpressionWithMathFunction 
+	aNode class == KEMathFunctionExpression 
 		ifTrue: [ ^ self acceptKEMathExpression: aNode ].
-	aNode  class == KEExpressionWithSigmaMathFunction
+	aNode  class == KESigmaFunctionExpression
 		ifTrue: [ ^ self acceptKEMathExpressionSigma: aNode ].
 	aNode  class == KEIndexedVariable 
 		ifTrue: [ ^ self acceptKEIndexedVariable: aNode ].

@@ -19,5 +19,6 @@ solve: aModel
 		self updateValue: y to: aModel.
 		self updateDataAt: j.
 		 ].
-	^ self createSimulationResult: aModel withTimeSeries: timeSeries
+	"^ self createSimulationResult: aModel withTimeSeries: timeSeries"
+	^ data
 	

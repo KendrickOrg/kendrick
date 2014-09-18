@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "BuiThiMaiAnh 7/30/2014 17:24",
+	"super" : "KEMathFunctionExpression",
+	"category" : "Kendrick-Semantic-Model-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"idVariable"
+	],
+	"name" : "KESigmaFunctionExpression",
+	"type" : "normal"
+}

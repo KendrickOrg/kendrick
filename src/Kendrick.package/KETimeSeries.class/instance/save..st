@@ -9,5 +9,3 @@ save: fileName
 		stream nextPutAll: (index at: i) asString, String tab, (data at: i) asString;cr.
 		 ].
 	stream close
-
-	

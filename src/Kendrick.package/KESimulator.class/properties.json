@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "BuiThiMaiAnh 8/13/2014 17:17",
 	"super" : "KEEntity",
 	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
@@ -12,7 +12,7 @@
 		"step",
 		"data",
 		"algorithm",
-		"rtImpls"
+		"adapters"
 	],
 	"name" : "KESimulator",
 	"type" : "normal"
