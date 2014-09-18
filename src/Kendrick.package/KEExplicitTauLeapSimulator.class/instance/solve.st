@@ -18,7 +18,6 @@ solve
 			^ countStep
 			 ]
 	 ].
-	"self prepareData: timeSeries."
 	self buildData: result with: timeSeries.
 	^ countStep
 	

@@ -23,6 +23,5 @@ solve
 			previousT := t.
 			 ].
 		 ].
-	"self prepareData: timeSeries."
 	self buildData: result with: timeSeries.
 	^ countStep
