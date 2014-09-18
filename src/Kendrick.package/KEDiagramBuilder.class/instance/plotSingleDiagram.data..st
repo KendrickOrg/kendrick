@@ -13,3 +13,16 @@ plotSingleDiagram: anObject data: timeSeries
 		yAxisLabel: yLabel;
 		regularAxis.
 	diag open
+	
+	"Charter version does not work, at the moment"
+	"
+	| b |
+	b := RTCharterBuilder new.
+	b extent: 400 @ 200.
+	b shape ellipse size: 0.
+	b points: #(0.0),(timeSeries index).
+	b y: [ :x | x = 0.0 ifTrue:[0.0] ifFalse:[timeSeries at:x]].	
+	b axisX.
+	b axisY.
+	b curve.
+	b open"
