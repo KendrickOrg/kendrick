@@ -1,3 +1,3 @@
 accessing
 simulatorClass
-	^ nil
+	self subclassResponsibility 

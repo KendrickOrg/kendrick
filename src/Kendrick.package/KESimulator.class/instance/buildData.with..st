@@ -4,7 +4,7 @@ buildData: result with: timeSeries
 	i := 1.
 	data := Dictionary new.
 	model populationIDs = #(0) 
-	ifTrue: [ 
+	ifTrue: [
 		model equations do: [ :eq|
 			data at: (eq variable symbol) put: (KETimeSeries from: (result at: i) withIndex: timeSeries).
 			i := i + 1.
