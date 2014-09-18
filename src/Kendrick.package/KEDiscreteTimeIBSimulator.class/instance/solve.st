@@ -15,7 +15,6 @@ solve
 		timeSeries add: t.
 		"Check if extinction occurs"
 		(model population getNbIndividualsOfCompartment: #I) <= 0 ifTrue: [ 
-			"self prepareData: timeSeries."
 			self buildData: result with: timeSeries.
 			^ countStep
 			 ]
