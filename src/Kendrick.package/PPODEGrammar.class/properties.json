@@ -26,7 +26,8 @@
 		"sum",
 		"exp",
 		"simpleEquation",
-		"odequation"
+		"odequation",
+		"expression"
 	],
 	"name" : "PPODEGrammar",
 	"type" : "normal"

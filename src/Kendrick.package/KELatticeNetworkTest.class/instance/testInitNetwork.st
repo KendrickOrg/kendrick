@@ -1,8 +1,11 @@
 as yet unclassified
 testInitNetwork
-	|nw|
-	nw := KELatticeNetwork new numberOfContacts: 4; population: (KEPopulation new compartments: #((S 19) (I 1))).
-	nw initNetworkNodes: 20.
+	|population nw|
+	population := KEMetaPopulation new.
+	population compartments: #(S I).
+	population at: #S put: 19; at: #I put: 1.
+	nw := KENetwork new: #lattice numberOfContacts: 4 onPopulation: population.
+
 	self assert: (nw nodes size) equals: 20.
 	self assert: (nw nodes at: 1) adjacentNodes asArray equals: #(2 5). 
 	self assert: (nw nodes at: 2) adjacentNodes asArray equals: #(1 3 6).

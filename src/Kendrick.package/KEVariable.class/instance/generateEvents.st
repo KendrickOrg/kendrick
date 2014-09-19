@@ -1,5 +1,5 @@
 as yet unclassified
-generateEvents
+generateEvents"to delete"
 	| list e |
 	list := OrderedCollection new.
 	e := KEEvent new.

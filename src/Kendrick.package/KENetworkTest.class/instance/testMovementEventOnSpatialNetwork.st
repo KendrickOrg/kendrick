@@ -1,10 +1,17 @@
 tests
 testMovementEventOnSpatialNetwork
-	|model|
+	|model population graph|
 	model := KEModel new.
-	model population nodes: 3.
-	model population graph nodes: 3 edges: #((1 3) (1 2)) weight: #beta values: 0.02.
-	model population forEachNode: [ :node| node compartments: #((S 99) (I 1) (R 0)) defNetwork: #spatial numberOfContacts: 4].
+	population := KEMetaPopulation new.
+	population numberOfSubPopulations: 3.
+	population forEachSubPopulation: [ :each|
+		each compartments: #(S I R).
+		each at: #S put: 99; at: #I put: 1; at: #R put: 0.
+		KENetwork new: #spatial numberOfContacts: 4 onPopulation: each.
+		 ].
+	graph := KEGraph on: population.
+	graph edges: #((1 2) (1 3)) weight: #beta values: 0.02.
+	model population: population.
 	model currentPopulationID: #(0 1).
 	((model population at: #(0 1)) indList at: 80) nextStatus: #(0 2).
 	((model population at: #(0 1)) indList at: 80) updateStatus: model.

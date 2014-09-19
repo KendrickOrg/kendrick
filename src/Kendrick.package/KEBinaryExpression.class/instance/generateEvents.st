@@ -1,5 +1,5 @@
 as yet unclassified
-generateEvents
+generateEvents"to delete"
 |list |
 list := OrderedCollection new.
 (op = #*)|(op  = #/)|(op   = #'^') ifTrue:[
