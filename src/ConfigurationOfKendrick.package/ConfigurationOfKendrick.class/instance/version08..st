@@ -10,4 +10,4 @@ version08: spec
 		spec 
 			project: 'Moose' with: '5.0-baseline';
 			project: 'SciSmalltalk' with: '0.12'.
-		spec package: 'Kendrick' with: 'Kendrick-SergeStinckwich.197'. ].
+		spec package: 'Kendrick' with: 'Kendrick-SergeStinckwich.197']
