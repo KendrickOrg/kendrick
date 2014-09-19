@@ -1,14 +1,10 @@
 tests
 testUpdateStatusOnMovementEvent
-	|model population|
+	|model|
 	model := KEModel new.
-	population := KEMetaPopulation new.
-	population numberOfSubPopulations: 5.
-	population forEachSubPopulation: [ :each|
-		each compartments: #(S I).
-		each at: #S put: 1000; at: #I put: 0.
+	model population nodes: 5 forEach: [ :node|
+		node compartments: #((S 1000) (I 0))
 		 ].
-	model population: population.
 	model currentPopulationID: #(0 1).
 	((model population at: #(0 1)) indList at: 80) nextStatus: #(0 2).
 	((model population at: #(0 1)) indList at: 80) updateStatus: model.

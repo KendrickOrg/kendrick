@@ -1,5 +1,5 @@
 as yet unclassified
-generateEvents"to delete"
+generateEvents
 	|list e|
 	(expression isUnaryExpression)|(expression isBinaryExpression) ifTrue: [
 		|l|

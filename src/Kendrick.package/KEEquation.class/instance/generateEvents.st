@@ -1,7 +1,7 @@
 as yet unclassified
-generateEvents"to delete"
+generateEvents
 	"This function will get all events generated from the current equation and depending on the sign of rate expression, create actions for each event"
-	"|eventList|
+	|eventList|
 	eventList := expression generateEvents.
 	eventList do: [ :each|
 		(each rate sign positive)
@@ -12,4 +12,4 @@ generateEvents"to delete"
 			each removeOneIndividualFrom: (variable symbol).
 			each fromStatus: (variable symbol) ]
 		 ].
-	^ eventList"
+	^ eventList

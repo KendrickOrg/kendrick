@@ -1,3 +1,3 @@
 grammar
 start
-	^ equation / expression end
+	^ equation end

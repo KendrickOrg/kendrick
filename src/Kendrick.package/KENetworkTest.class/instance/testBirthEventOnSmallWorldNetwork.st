@@ -1,13 +1,8 @@
 tests
 testBirthEventOnSmallWorldNetwork
-	|model population|
+	|model|
 	model := KEModel new.
-	population := KEMetaPopulation new.
-	population compartments: #(S I R).
-	population at: #S put: 90; at: #I put: 1; at: #R put: 0.
-	KENetwork new: #smallworld numberOfContacts: 4 onPopulation: population.
-	model population: population.
-	
+	model population compartments: #((S 90) (I 1) (R 0)) defNetwork: #smallworld numberOfContacts: 4.
 	self assert: (model population graph nodes size) equals: 91.
 	model population graph newNode: (KEIndividual new currentStatus: #I).
 	self assert: (model population graph nodes size) equals: 92.

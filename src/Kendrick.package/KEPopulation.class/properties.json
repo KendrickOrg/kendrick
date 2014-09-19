@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "BuiThiMaiAnh 9/18/2014 15:31",
+	"commentStamp" : "BuiThiMaiAnh 7/29/2014 11:03",
 	"super" : "KEEntity",
 	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
@@ -11,8 +11,7 @@
 		"compartments",
 		"compartmentNames",
 		"indList",
-		"rates",
-		"events"
+		"rates"
 	],
 	"name" : "KEPopulation",
 	"type" : "normal"

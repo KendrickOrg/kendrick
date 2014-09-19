@@ -11,5 +11,4 @@ plotSingleDiagram: aStatus data: timeSeries
 	b axisXTitled: 'Time'.
 	b axisYTitled: 'Number of individuals of ' , aStatus asString.
 	b build.
-	b view @ RTZoomableView.
 	b open
