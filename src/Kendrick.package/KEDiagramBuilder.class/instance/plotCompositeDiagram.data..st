@@ -4,7 +4,7 @@ plotCompositeDiagram: statusCollection data: data
 	
 	b := RTCharterBuilder new.
 	b extent: 400 @ 200.
-	normalizer := RTMultiLinearColorForIdentity new objects: statusCollection.
+	normalizer := RTMultiLinearColorForIdentity new objects: statusCollection; colors: (ColorPalette qualitative colors: statusCollection size scheme: 'Set1').
 	1 to: data size do: [ :i | 
 		b shape rectangle size: 0.
 		b points: (data at: i) index.
