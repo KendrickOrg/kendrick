@@ -14,4 +14,5 @@ plotCompositeDiagram: statusCollection data: timeSeriesCollection
 	b axisXTitled: 'Time'.
 	b axisYTitled: 'Number of individuals of each class'.
 	b build.
+	b view @ RTZoomableView.
 	b open
