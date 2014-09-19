@@ -4,5 +4,5 @@ runRK4SolverOnBilharzioseModel
 	|model|
 	model := self createBilharzioseModel.	
 	model run: #RK4 from: 0.0 to: 3500 step: 1.
-	model plot: #P
+	model plot: #P.
 	

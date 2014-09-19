@@ -5,7 +5,8 @@ runRK4SolverOnSIRMetaPopulationWithMovementModel
 	model := self createSIRMetaPopulationWithMovementModel.
 	model simulator addAdapter: (KEGraphAdapter new).
 	model run: #RK4 from: 0.0 to: 2910 step: 0.1.
-	model plot: #I
+	""model plot: #I."""simulation run in 3 minutes"
+	
 	
 															
 														
