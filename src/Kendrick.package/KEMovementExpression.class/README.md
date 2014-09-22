@@ -1,11 +1,8 @@
-A KEMovementExpression is an expression that represents the immigration infection in an equation of the epidemiological  model.
+A KEMovementExpression is a special expression that represents the immigration and emigration in an ODequation of the epidemiological  model.
 
 Instance Variables
 	movementExpressions:		<Dictionary>
-	odeVariableSymbol:		<Symbol>
 
 movementExpressions
-	- The list of expressions that represent the movement event in an equation, categoried by populationID
+	- The list  represents the movement events in an equation, categoried by populationID
 
-odeVariableSymbol
-	- The variable name of the ode
