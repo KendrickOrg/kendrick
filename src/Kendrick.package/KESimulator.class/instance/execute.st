@@ -1,3 +1,5 @@
 accessing
 execute
-	self subclassResponsibility 
+	self adapters ifNotNil: [ 
+		self adapters do: [ :anAdapter| anAdapter init ]
+		 ] 

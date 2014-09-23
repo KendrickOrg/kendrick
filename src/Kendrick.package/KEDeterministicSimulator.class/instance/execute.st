@@ -1,6 +1,7 @@
 as yet unclassified
 execute
 	|solver|
+	super execute.
 	solver := self solver.
 	solver xn: tMax.
 	solver x0: tMin.

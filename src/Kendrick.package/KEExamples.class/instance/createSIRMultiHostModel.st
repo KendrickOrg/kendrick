@@ -5,10 +5,9 @@ createSIRMultiHostModel
 	population := KEMetaPopulation new.
 	population numberOfSubPopulations: 3.
 	population forEachSubPopulation: [ :each| each compartments: #(S I R) ].
-	(population at: 1) at: #S put: 9999; at: #I put: 1; at: #R put: 0.
-	(population at: 2) at: #S put: 999; at: #I put: 1; at: #R put: 0.
-	(population at: 3) at: #S put: 1999; at: #I put: 1; at: #R put: 0.
-	model population: population.
+	(model population at: 1) at: #S put: 9999; at: #I put: 1; at: #R put: 0.
+	(model population at: 2) at: #S put: 999; at: #I put: 1; at: #R put: 0.
+	(model population at: 3) at: #S put: 1999; at: #I put: 1; at: #R put: 0.
 	
 	model addParameter: #beta value: #(#(0.0 0.02 0.02) #(0.02 0.0 0.0) #(0.02 0.0 0.0)).
 	model addParameter: #N value: #(10000 1000 2000).

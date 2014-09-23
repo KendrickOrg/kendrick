@@ -5,6 +5,7 @@ createSIRSimpleModel4: networkType
 	population compartments: #(S I R).
 	population at: #S put: 99; at: #I put: 1; at: #R put: 0.
 	network := KENetwork new: networkType numberOfContacts: 4 onPopulation: population.
+	"population graph: network."
 	
 	model := KEModel new.
 	model population: population.

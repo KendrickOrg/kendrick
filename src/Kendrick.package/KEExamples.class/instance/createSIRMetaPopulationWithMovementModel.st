@@ -2,7 +2,6 @@ tests
 createSIRMetaPopulationWithMovementModel
 	|model population graph|
 	population := KEMetaPopulation new.
-	population numberOfSubPopulations: 5.
 	population forEachSubPopulation: [ :each|
 		each compartments: #(S I).
 		each at: #S put: 1000; at: #I put: 10

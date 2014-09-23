@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "KERuntimeAdapter",
+	"category" : "Kendrick-Semantic-Model-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"events"
+	],
+	"name" : "KEEventAdapter",
+	"type" : "normal"
+}

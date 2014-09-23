@@ -6,5 +6,5 @@ die
 	pop := model population at: (model currentPopulationID).
 	pop removeIndividual: ind.
 	(pop at: ind currentStatus) removeIndividual: 1.
-	"pop hasGraph ifTrue: [" pop graph releaseNode: (ind) "]".
+	pop hasGraph ifTrue: [ pop graph releaseNode: (ind) ].
 	^ true

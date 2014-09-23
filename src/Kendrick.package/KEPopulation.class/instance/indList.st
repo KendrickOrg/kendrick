@@ -1,5 +1,6 @@
 accessing
 indList
+	"If population is a population of compartments (at the lowest level), initialize a list of individuals, if not, return nil"
 	self isPopulation ifTrue: [ 
 		indList ifNil: [ 
 			indList := OrderedCollection new.
@@ -10,9 +11,9 @@ indList
 					ind populationID: (self populationID).
 					ind id: (indList size + 1).
 					indList add: ind
-				]
-			]
-		]
-	].
+					 ]
+				 ]
+			 ]
+		 ].
 	^ indList
 	
