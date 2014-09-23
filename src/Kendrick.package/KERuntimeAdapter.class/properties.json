@@ -6,9 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"arguments",
-		"simulatorBuilder",
-		"model"
+		"arguments"
 	],
 	"name" : "KERuntimeAdapter",
 	"type" : "normal"

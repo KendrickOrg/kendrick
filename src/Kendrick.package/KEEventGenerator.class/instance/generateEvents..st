@@ -1,7 +1,8 @@
 as yet unclassified
 generateEvents: model
 	"This method will generate an event list for each population of the model"
-	model populationIDs do: [ :pid| |events|
+	|events|
+	model populationIDs do: [ :pid| 
 		events := OrderedCollection new.
 		model equations do: [ :eq| |eventList|
 			eventList := eq generateEvents: pid.
@@ -16,4 +17,5 @@ generateEvents: model
 				 ].
 			 ].
 		(model population at: pid) events: (self mergeEventsWithSameActionsIn: events)
-		 ]
+		 ].
+	^ events

@@ -4,7 +4,7 @@ generateEvents: population
 	(expression isUnaryExpression)|(expression isBinaryExpression) ifTrue: [
 		|l|
 		l := OrderedCollection new.
-		list := expression generateEvents.
+		list := expression generateEvents: population.
 		list do:[:each|
 			|oldRate|
 			oldRate := each rate.
