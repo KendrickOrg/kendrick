@@ -1,6 +1,11 @@
 tests
 testCreateASmallWorldNetworkOfSIRPopulation
-	|model|
+	|model population|
 	model := KEModel new.
-	model population compartments: #((S 99) (I 1) (R 0)) defNetwork: #smallworld numberOfContacts: 4.
-	self assert: (model population graph nodes size) equals: 100.
+	population := KEMetaPopulation new.
+	population compartments: #(S I R).
+	population at: #S put: 1000; at: #I put: 0; at: #R put: 0.
+	KENetwork new: #smallworld numberOfContacts: 4 onPopulation: population.
+	model population: population.
+	
+	self assert: (model population graph nodes size) equals: 1000.

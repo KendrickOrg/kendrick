@@ -1,13 +1,14 @@
 {
-	"commentStamp" : "BuiThiMaiAnh 7/30/2014 16:17",
+	"commentStamp" : "BuiThiMaiAnh 9/22/2014 14:40",
 	"super" : "KEExpression",
 	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"couplingExpressions",
-		"odeVariableSymbol"
+		"couplingExpression",
+		"variable",
+		"couplingParameter"
 	],
 	"name" : "KECouplingExpression",
 	"type" : "normal"

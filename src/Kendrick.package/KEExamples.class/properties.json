@@ -4,9 +4,7 @@
 	"category" : "Kendrick-Examples",
 	"classinstvars" : [ ],
 	"pools" : [ ],
-	"classvars" : [
-		"ModelExample"
-	],
+	"classvars" : [ ],
 	"instvars" : [ ],
 	"name" : "KEExamples",
 	"type" : "normal"

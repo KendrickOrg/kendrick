@@ -1,0 +1,4 @@
+acessing
+couplingParameter
+	^ couplingParameter
+	

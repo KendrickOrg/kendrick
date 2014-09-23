@@ -1,3 +1,0 @@
-DSL Syntax
-getSubPopulationName
-	^subPopulationNames

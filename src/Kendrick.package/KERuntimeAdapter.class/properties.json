@@ -1,14 +1,12 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "BuiThiMaiAnh 9/23/2014 13:56",
 	"super" : "KEEntity",
 	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"arguments",
-		"simulatorBuilder",
-		"model"
+		"arguments"
 	],
 	"name" : "KERuntimeAdapter",
 	"type" : "normal"

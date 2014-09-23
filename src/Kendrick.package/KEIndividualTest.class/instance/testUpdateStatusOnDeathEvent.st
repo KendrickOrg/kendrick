@@ -1,8 +1,13 @@
 tests
 testUpdateStatusOnDeathEvent
-	|model|
+	|model population|
 	model := KEModel new.
-	model population compartments: #((S 90) (I 1) (R 0)) defNetwork: 'lattice' numberOfContacts: 4.
+	population := KEMetaPopulation new.
+	population compartments: #(S I R).
+	population at: #S put: 90; at: #I put: 1; at: #R put: 0. 
+	KENetwork new: #lattice numberOfContacts: 4 onPopulation: population.
+	model population: population.
+	
 	model currentPopulationID: (model population indList first populationID).
 	(model population indList at: 80) nextStatus: #empty.
 	(model population indList at: 80) updateStatus: (model).

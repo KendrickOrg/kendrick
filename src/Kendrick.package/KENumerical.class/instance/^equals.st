@@ -1,3 +1,5 @@
 evaluating
 = aNumerical
-	^ self number = aNumerical number
+	aNumerical isNumerical ifTrue: [ ^ self number = aNumerical number ].
+	^ false
+	

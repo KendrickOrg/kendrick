@@ -14,6 +14,9 @@ new: type numberOfContacts: n onPopulation: p
 	(type = #smallworld) | (type = #SmallWorld) ifTrue: [ 
 		network := (KESmallWorldNetwork new) numberOfContacts: n; population: p
 		 ].
-	p graph: network.
+	"p getPopulationIDs do: [ :pid|
+		(p at: pid) graph: (network initNetworkNodes: ((p at: pid) getNbIndividuals)).
+		 ]."
+	p graph: (network initNetworkNodes: p getNbIndividuals).
 	^ network
 	
