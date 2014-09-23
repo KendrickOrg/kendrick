@@ -7,7 +7,7 @@ boxViewIn: constructor
 			act: [:p | p update]
 				icon: GLMUIThemeExtraIcons glamorousRefresh
 				entitled: 'Update';
-			painting: [:view :models |
+			painting: [:view :model |
 				| nodes transitcollection arrow edges deces naissance |
 				
 				deces:= OrderedCollection new.
@@ -17,7 +17,7 @@ boxViewIn: constructor
 				edges := OrderedCollection new.
 				
 				"Collect all nodes of the graph"
-				models population getCompartments collect:[:each | nodes add: (each status asString)].
+				model population getCompartments collect:[:each | nodes add: (each status asString)].
 				
 				"Build the nodes"
 				nodes do: [ :aLabel |
@@ -28,22 +28,18 @@ boxViewIn: constructor
 				].
 			
 				"Generate relation between nodes"
-				((KERuntimeEventImpl new) model: models) generateEvents do: [:event | 
+				((KERuntimeEventImpl new) model: model) generateEvents do: [:event | 
 	
 					(((event fromStatus asString) = 'empty') and:[(event toStatus) isNotEmpty ]) ifTrue:[
-		
 						naissance add: (event toStatus asString).
-						
 					].
-					(((event fromStatus) isNotEmpty) and:[(event toStatus asString) =  'empty' ]) ifTrue:[
-						
-						deces add: (event fromStatus asString).
-						
+				
+					(((event fromStatus) isNotEmpty) and:[(event toStatus asString) =  'empty' ]) ifTrue:[		
+						deces add: (event fromStatus asString).						
 					].
+				
 					(((event fromStatus) isNotEmpty) and:[(event toStatus) isNotEmpty]) ifTrue:[
-
-						transitcollection add: ((event fromStatus asString)->(event toStatus asString)).
-						
+						transitcollection add: ((event fromStatus asString)->(event toStatus asString)).						
 					]
 				].
 			
@@ -76,5 +72,4 @@ boxViewIn: constructor
 				].			
 				view addAll: edges.
 				"view @ (RTLabelled new color: Color red; view: view; offsetOnEdge: 0.3)"
-
 			]
