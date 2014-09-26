@@ -6,7 +6,6 @@ Instance Variables
 	parameters:		<Dictionary>
 	population:		<KEPopulation>
 	populationIDs:		<OrderedCollection>
-	simulatorBuilder:		<KESimulatorBuilder>
 	temporalParameters:		<Dictionary>
 
 compartmentSymbols
@@ -23,9 +22,6 @@ population
 
 populationIDs
 	- each sub-population in population has an ID. This variable gets all the sub-population IDs
-
-simulatorBuilder
-	- a simulatorBuilder constructs the simulator to simulate this model
 
 temporalParameters
 	- Beside the fixed parameter, during runtime, model will have some parameters that will be changed depending on current context. The temporalParameters variable store all these values.

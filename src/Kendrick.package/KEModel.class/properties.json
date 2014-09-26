@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "BuiThiMaiAnh 8/13/2014 16:53",
+	"commentStamp" : "BUIThiMaiAnh 9/26/2014 17:24",
 	"super" : "KEEntity",
 	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
@@ -10,7 +10,6 @@
 		"temporalParameters",
 		"equations",
 		"population",
-		"simulatorBuilder",
 		"compartmentSymbols",
 		"populationIDs"
 	],

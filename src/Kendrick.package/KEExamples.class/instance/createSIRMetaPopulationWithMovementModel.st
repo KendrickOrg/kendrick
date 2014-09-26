@@ -21,8 +21,6 @@ createSIRMetaPopulationWithMovementModel
 		('S:t=mu*N - beta*S*I - mu*S' parseAsAnEquation).
 	model addEquation:
 		('I:t=beta*S*I - gamma*I - mu*I' parseAsAnEquation).
-	model run: #RK4 from: 0.0 to: 2910 step: 0.1.
-	model plot: #I.
 	
 	^ model  
 	

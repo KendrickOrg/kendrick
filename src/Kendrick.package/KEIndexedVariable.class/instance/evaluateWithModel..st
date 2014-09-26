@@ -10,12 +10,8 @@ evaluateWithModel: aModel
 		subPop := aModel population at: currentPID.
 		currentPID last = indexValues first 
 		ifTrue:  [ 
-			|contacts|
-			contacts := -1.
-			"subPop graph ifNotNil: [ contacts := (subPop graph nodes at: (aModel currentIndividual)) at: symbol ]."
-			contacts = -1 ifTrue: [ ^ (subPop at: symbol) currentNbIndividuals ].
-			^ contacts
-      		]
+		 	^ (subPop at: symbol) currentNbIndividuals
+			]
 		ifFalse: [ ^ ((subPop parent at: (indexValues first)) at: symbol) currentNbIndividuals ].
 		].
 	indexValues do: [ :each| x := (x at: each) ].

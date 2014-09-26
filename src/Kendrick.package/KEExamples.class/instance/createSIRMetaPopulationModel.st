@@ -20,7 +20,5 @@ createSIRMetaPopulationModel
 	model addEquation: ('S:t=mu*N-beta*S*I-mu*S' parseAsAnEquation).
 	model addEquation: ('I:t=beta*S*I-v*I-mu*I' parseAsAnEquation).
 	model addEquation: ('R:t=v*I-mu*R' parseAsAnEquation).  
-	model run: #RK4 from: 0.0 to: 40.0 step: 0.01.
-	model plot: #I do: #sqrt.
 	
 	^ model
