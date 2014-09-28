@@ -1,10 +1,12 @@
 as yet unclassified
 solve
-	|timeSeries t countStep |
+	|timeSeries t countStep eventGenerator |
 	timeSeries := OrderedCollection new.
 	self initializeResult.
 	t := tMin.
 	countStep := 0.
+	eventGenerator := KEEventGenerator new.
+	eventGenerator generateEvents: model.
 	[ t < tMax ] whileTrue: [ 
 		model addTemporalParameter: #t value: t.
 		self doTauLeapIteration.

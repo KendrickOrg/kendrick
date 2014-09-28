@@ -4,11 +4,5 @@ executeOn: model times: times
 	currentPID := model currentPopulationID.
 	subPop := model population at: currentPID.
 	actions keysAndValuesDo: [ :status :value|
-		"|old use|
-		old := (subPop at: status) currentNbIndividuals.
-		value < 0 
-		ifTrue: [ use := (Array with: old with: times) min ]
-		ifFalse: [ use := times ].
-		(subPop at: status) currentNbIndividuals: (old + (value * use))"
-		(subPop at: status) addIndividual: (value * times)
+		(subPop at: status) addToCompartment: (value * times)
 		]

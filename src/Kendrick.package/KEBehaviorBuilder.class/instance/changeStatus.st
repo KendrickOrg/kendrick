@@ -8,11 +8,11 @@ changeStatus
 	next := ind nextStatus.
 	ind currentStatus: next.
 	ind nextStatus: nil.
-	(pop at: old) removeIndividual: 1.
-	(pop at: next) addIndividual: 1.
+	(pop at: old) removeFromCompartment: 1.
+	(pop at: next) addToCompartment: 1.
 	"update contact number in network"
 	"pop hasGraph ifTrue: [" 
-		(pop graph nodes at: (ind id)) adjacentNodes do: [ :i| 
+		(pop graph nodes at: (ind id)) adjacentNodes do: [ :i| 			
 			(pop graph nodes at: i) at: old remove: 1.
 			(pop graph nodes at: i) at: next add: 1
 			]

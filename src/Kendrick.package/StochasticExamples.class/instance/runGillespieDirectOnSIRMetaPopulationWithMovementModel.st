@@ -1,10 +1,11 @@
 tests
 runGillespieDirectOnSIRMetaPopulationWithMovementModel
 	"self new runGillespieDirectOnSIRMetaPopulationWithMovementModel"
-	|model|
+	|model simulator|
 	model := self createSIRMetaPopulationWithMovementModel.
-	model simulator addAdapter: KEGraphAdapter new.
-	model run: #GillespieDirect from: 0.0 to: 1000 step: 0.1.
-	model plot: #I "population: #(0 5)".
+	simulator := KESimulatorBuilder new.
+	simulator addAdapter: (KEMovementAdapter new).
+	simulator run: #GillespieDirect tMin: 0.0 tMax: 1000 step: 0.1 model: model. 
+	simulator plot: #I
 	
 	

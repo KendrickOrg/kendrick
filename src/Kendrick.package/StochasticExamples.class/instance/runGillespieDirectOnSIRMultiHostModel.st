@@ -1,8 +1,10 @@
 tests
 runGillespieDirectOnSIRMultiHostModel
 	"self new runGillespieDirectOnSIRMultiHostModel"
-	|model|
+	|model simulator|
 	model := self createSIRMultiHostModel.
-	model run: #GillespieDirect from: 0.0 to: 1.0 step: 0.001.
-	model plot: #I do: #sqrt.
+	simulator := KESimulatorBuilder new.
+	
+	simulator run: #GillespieDirect tMin: 0.0 tMax: 1.0 step: 0.001 model: model. 
+	simulator plot: #I do: #sqrt.
 	

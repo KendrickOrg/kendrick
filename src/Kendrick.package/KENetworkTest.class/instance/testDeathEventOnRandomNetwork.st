@@ -10,6 +10,6 @@ testDeathEventOnRandomNetwork
 	
 	self assert: (model population graph nodes size) equals: 91.
 	stt := model population graph releaseNode: (model population indList at: 80).
-	(model population at: stt) removeIndividual: 1.
+	(model population at: stt) removeFromCompartment: 1.
 	self assert: (model population graph nodes size) equals: 91.
 	self assert: (model population graph emptyNodes size) equals: 1.

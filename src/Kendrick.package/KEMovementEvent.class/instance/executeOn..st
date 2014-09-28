@@ -7,5 +7,5 @@ executeOn: model
 		(subPop at: compartment) currentNbIndividuals: (old + value)"
 		|subPop|
 		subPop := (model population at: status).
-		(subPop at: compartment) addIndividual: value
+		(subPop at: compartment) addToCompartment: value
 		 ]

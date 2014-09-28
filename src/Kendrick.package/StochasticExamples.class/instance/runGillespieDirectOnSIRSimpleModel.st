@@ -1,9 +1,12 @@
 tests
 runGillespieDirectOnSIRSimpleModel
 	"self new runGillespieDirectOnSIRSimpleModel"
-	|model|
-	model := self createSIRSimpleModel.	
-	model run: #GillespieDirect from: 0.0 to: 1.0 step: 0.001.
-	model plot: #(#S #I #R).
+	|model simulator|
+	model := self createSIRSimpleModel.
+	
+	simulator := KESimulatorBuilder new.
+	
+	simulator run: #GillespieDirect tMin: 0.0 tMax: 1.0 step: 0.001 model: model.
+	simulator plot: #(S I R)
 	
 	

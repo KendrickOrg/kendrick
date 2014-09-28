@@ -8,5 +8,4 @@ testCreateMovementEvents
 	eventGenerator := KEEventGenerator new.
 	eventGenerator generateEvents: model.
 	events := (model population at: #(0 1)) events.
-	model currentPopulationID: #(0 1).
 	self assert: (events size) equals: 12 

@@ -1,14 +1,11 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "BUIThiMaiAnh 9/28/2014 15:19",
 	"super" : "KEStochasticSimulator",
 	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"eventRates",
-		"moveRates"
-	],
+	"instvars" : [ ],
 	"name" : "KEIndividualBasedSimulator",
 	"type" : "normal"
 }
