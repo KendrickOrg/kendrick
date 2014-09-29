@@ -12,6 +12,8 @@ mergeEventsWithSameActionsIn: eventList
 		ifFalse: [ newList add: event ]
 		 ].
 	newList do: [ :each|
-		each rate: (each rate remove: (KEVariable new symbol: each fromStatus))
-		  ].
+		(each fromStatus = #empty) 
+		ifTrue: [ each rate: (each rate remove: (KEVariable new symbol: #N)) ]
+		ifFalse: [ each rate: (each rate remove: (KEVariable new symbol: each fromStatus)) ]
+		 ].
 	^ newList

@@ -1,12 +1,14 @@
 adding
 addIndividual: ind
 	ind populationID: (self populationID asArray).
-	(ind id) 
-	ifNil: [ 
-		ind id: (self indList size + 1).
-		^ (self indList add: ind)
+	(self diedIndList size > 0) 
+	ifTrue: [ 
+		ind id: (self diedIndList removeFirst).
+		ind position: (self indList at: (ind id)) position.
+		self indList at: (ind id) put: ind
 		]
-	ifNotNil: [ 
-		(ind id > (self indList size)) ifTrue: [ ^ (self indList add: ind) ].
-		^ (self indList at: (ind id) put: ind)
-		 ].
+	ifFalse: [  
+		ind id: (self indList size + 1).
+		self indList add: ind
+		].
+	(self at: (ind currentStatus)) addToCompartment: 1

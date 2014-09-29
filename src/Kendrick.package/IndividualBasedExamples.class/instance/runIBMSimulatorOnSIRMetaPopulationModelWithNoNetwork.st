@@ -1,10 +1,11 @@
 tests
 runIBMSimulatorOnSIRMetaPopulationModelWithNoNetwork
 	"self new runIBMSimulatorOnSIRMetaPopulationModelWithNoNetwork"
-	|model|
+	|model simulator|
 	model := self createSIRMetaPopulationModel.
-	model simulator addAdapter: KEGraphAdapter new.
-	model run: #IBMDiscreteTime from: 0.0 to: 1.0 step: 0.027.
-	model plot: #I do: #sqrt.
+	simulator := KESimulatorBuilder new.
+	simulator addAdapter: (KECouplingAdapter new).
+	simulator run: #IBMDiscreteTime tMin: 0.0 tMax: 1.0 step: 0.0027 model: model.
+	simulator plot: #I do: #sqrt.
 	
 	

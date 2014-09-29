@@ -5,7 +5,9 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"birthEvents"
+	],
 	"name" : "KEIndividualBasedSimulator",
 	"type" : "normal"
 }

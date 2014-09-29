@@ -1,18 +1,15 @@
 as yet unclassified
 calProb: ind
-	|rates rand prob chosen|
-	rates := OrderedCollection new.
-	self rtImpls do: [ :impl| |rs|
-		impl arguments at: #individual put: ind.
-		rs := impl performEvent.
-		rs ifNotNil: [ rates add: rs ]
-		 ].
+	|rate rand prob chosen events|
+	events := (model population at: (ind populationID)) events at: (ind currentStatus) ifAbsentPut: (OrderedCollection new).
+	"Choose an event for execute on this individual"
 	rand := Random new.
-	chosen := ((rand next) * (rates size)) ceiling.
+	chosen := ((rand next) * (events size)) ceiling.
 	(chosen > 0) ifTrue: [ 
-		prob := 1 - (((step * ((rates at: chosen) at: 2)) negated) exp).
+		rate := (events at: chosen) evaluateWithModel: model.
+		prob := 1 - (((step * rate) negated) exp).
 		(prob > (rand next)) ifTrue: [ 
-			ind nextStatus: ((rates at: chosen) at: 1) toStatus
+			ind nextStatus: ((events at: chosen) toStatus)
 		].
 	]
 	

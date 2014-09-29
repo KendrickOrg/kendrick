@@ -1,3 +1,3 @@
 as yet unclassified
 perform
-	^ self doBehavior
+	self doBehavior

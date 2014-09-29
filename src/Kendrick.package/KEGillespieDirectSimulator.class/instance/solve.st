@@ -1,13 +1,12 @@
 as yet unclassified
 solve
-	|timeSeries t previousT countStep eventGenerator|
+	|timeSeries t previousT countStep|
 	timeSeries := OrderedCollection new.
 	self initializeResult.
+	self initializeEvents.
 	t := tMin.
 	previousT := t.
 	countStep := 0.
-	eventGenerator := KEEventGenerator new.
-	eventGenerator generateEvents: model.
 	[ t < tMax ] whileTrue: [ 
 		|deltaT|
 		model addTemporalParameter: #t value: t.

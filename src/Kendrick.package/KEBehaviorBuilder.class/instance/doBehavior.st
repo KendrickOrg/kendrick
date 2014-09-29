@@ -5,12 +5,9 @@ doBehavior
 	ind := self arguments at: #ind.
 	next := ind nextStatus.
 	next isArray 
-	ifTrue: [ ^ self move ]
+	ifTrue: [ self move ]
 	ifFalse: [ 
-		next = #new ifTrue: [ ^ self birth ].
 		next = #empty 
-		ifTrue: [ ^ self die ]
-		ifFalse: [ ^ self changeStatus ]
+		ifTrue: [ self die ]
+		ifFalse: [ self changeStatus ]
 		 ].
-	^ false "nothing affects"
-	

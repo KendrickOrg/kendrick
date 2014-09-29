@@ -3,9 +3,9 @@ solve
 	|timeSeries t countStep|
 	timeSeries := OrderedCollection new.
 	self initializeResult.
+	self initializeEvents.
 	t := tMin.
 	countStep := 0.
-	self calculateEventRates.
 	[ t < tMax ] whileTrue: [ 
 		model addTemporalParameter: #t value: t. 
 		self doIteration.

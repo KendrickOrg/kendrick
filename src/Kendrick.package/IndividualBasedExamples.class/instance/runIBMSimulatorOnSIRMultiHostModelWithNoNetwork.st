@@ -1,9 +1,10 @@
 tests
 runIBMSimulatorOnSIRMultiHostModelWithNoNetwork
 	"self new runIBMSimulatorOnSIRMultiHostModelWithNoNetwork"
-	|model|
+	|model simulator|
 	model := self createSIRMultiHostModel.
-	model run: #IBMDiscreteTime from: 0.0 to: 1.0 step: 0.027.
-	model plot: #I do: #sqrt.
+	simulator := KESimulatorBuilder new.
+	simulator run: #IBMDiscreteTime tMin: 0.0 tMax: 1.0 step: 0.0027 model: model.
+	simulator plot: #I do: #sqrt.
 	
 	

@@ -1,17 +1,20 @@
 as yet unclassified
-doBirthEvent: subPop
-	|rand r p|
-	rand := Random new.
-	r := (model population at: (model currentPopulationID)) rates at: #empty ifAbsent: [ nil ].
-	r ifNotNil: [ 
-		p := 1 - ((((r first) * step) negated) exp).
-		(p > (rand next)) ifTrue: [ 
-			|new stt|
-			new := KEIndividual new.
-			stt := (((rtImpls at: 1) events at: #empty) first toStatus).
-			new currentStatus: stt.
-			new nextStatus: #new.
-			new updateStatus: model
-			 ]
-		 ]
+doBirthEvent: population
+	|e|
+	(self birthEvents at: (population populationID asArray)) size > 0 ifTrue: [ 
+		e := (self birthEvents at: (population populationID asArray)) first 
+		].
+	e ifNotNil: [
+		|r p rand| 
+		r := e evaluateWithModel: model.
+		p := 1 - (((r * step) negated) exp).
+		rand := Random new.
+		(p > (rand next)) ifTrue: [  
+			|newInd|
+			newInd := KEIndividual new.
+			newInd currentStatus: (e toStatus).
+			newInd nextStatus: nil.
+			population addIndividual: newInd
+			]
+		]
 	

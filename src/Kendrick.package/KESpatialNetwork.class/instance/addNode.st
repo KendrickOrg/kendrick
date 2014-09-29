@@ -8,7 +8,7 @@ addNode
 	ind position: (Array with: x with: y).
 	nodes add: node.
 	distances := OrderedCollection new.
-	1 to: (population indList size) do: [ :i|
+	1 to: (population indList size - 1) do: [ :i|
 		distances add: (ind distanceTo: (population indList at: i))
 		 ].
 	prob := self calProb: distances.

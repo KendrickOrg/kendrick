@@ -7,8 +7,7 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"population",
-		"numberOfContacts",
-		"emptyNodes"
+		"numberOfContacts"
 	],
 	"name" : "KENetwork",
 	"type" : "normal"

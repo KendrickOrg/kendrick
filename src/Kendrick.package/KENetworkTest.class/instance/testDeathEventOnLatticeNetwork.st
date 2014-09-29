@@ -1,6 +1,6 @@
 tests
 testDeathEventOnLatticeNetwork
-	|model population stt|
+	|model population node countContactOfNode|
 	model := KEModel new.
 	population := KEMetaPopulation new.
 	population compartments: #(S I R).
@@ -9,9 +9,14 @@ testDeathEventOnLatticeNetwork
 	model population: population.
 	
 	self assert: (model population graph nodes size) equals: 91.
-	stt := model population graph releaseNode: (model population indList at: 80).
-	(model population at: stt) removeFromCompartment: 1.
+	model currentPopulationID: (model population indList first populationID).
+	node := (model population graph nodes at: (model population graph nodes at: 80) adjacentNodes first).
+	countContactOfNode := node at: #S.
+	(model population indList at: 80) nextStatus: #empty.
+	(model population indList at: 80) updateStatus: model.
+	self assert: (model population indList at: 80) isAlive equals: false.
+	self assert: (model population diedIndList first) equals: 80.
 	self assert: (model population graph nodes size) equals: 91.
-	self assert: (model population graph emptyNodes size) equals: 1.
+	self assert: (node at: #S) equals: (countContactOfNode - 1)
 	
 	

@@ -9,7 +9,7 @@ testBirthEventOnSpatialNetwork
 	model population: population.
 	
 	self assert: (model population graph nodes size) equals: 91.
-	model population graph newNode: (KEIndividual new currentStatus: #I).
+	model population addIndividual: (KEIndividual new currentStatus: #I).
 	self assert: (model population graph nodes size) equals: 92.
 	
 	
