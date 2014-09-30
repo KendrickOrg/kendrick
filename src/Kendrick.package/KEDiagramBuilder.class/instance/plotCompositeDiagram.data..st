@@ -1,6 +1,6 @@
 accessing
 plotCompositeDiagram: statusCollection data: timeSeriesCollection
-	| b normalizer|
+	| b normalizer lb|
 	
 	b := RTCharterBuilder new.
 	b extent: 400 @ 200.
@@ -13,6 +13,13 @@ plotCompositeDiagram: statusCollection data: timeSeriesCollection
 		b connectDotColor: (normalizer rtValue: (timeSeriesCollection at:i)) ].
 	b axisXTitled: 'Time'.
 	b axisYTitled: 'Number of individuals of each class'.
+	lb := RTLegend2Builder new.
+	lb view: b view.
+	lb addText: 'Compartiments'.
+	1 to: timeSeriesCollection size do: [ :i|
+			lb addColor: (normalizer rtValue: (timeSeriesCollection at:i)) text: (statusCollection at:i).
+		 ].
+	lb build.
 	b build.
 	b view @ RTZoomableView.
 	b open
