@@ -1,6 +1,6 @@
 accessing
 plotSingleDiagram: aStatus data: timeSeries
-	| b |
+	| b lb |
 	b := RTCharterBuilder new.
 	b extent: 400 @ 200.
 	b shape rectangle size: 0.
@@ -9,7 +9,12 @@ plotSingleDiagram: aStatus data: timeSeries
 	b y: [ :x | timeSeries at: x ].
 	b connectDotColor: Color blue.
 	b axisXTitled: 'Time'.
-	b axisYTitled: 'Number of individuals of ' , aStatus asString.
+	b axisYTitled: 'Number of individuals'.
+	lb := RTLegend2Builder new.
+	lb view: b view.
+	lb addText: 'Compartiment'.
+	lb addColor: Color blue text: aStatus asString.
+	lb build.
 	b build.
 	b view @ RTZoomableView.
 	b open

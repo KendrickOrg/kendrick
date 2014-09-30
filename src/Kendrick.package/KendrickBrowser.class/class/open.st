@@ -1,4 +1,4 @@
 as yet unclassified
 open
-	"Pour lancer le browser"	
+	"self open"	
  	^self new open
