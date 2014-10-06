@@ -13,7 +13,7 @@ plotCompositeDiagram: statusCollection data: timeSeriesCollection
 		b connectDotColor: (normalizer rtValue: (timeSeriesCollection at:i)) ].
 	b axisXTitled: 'Time'.
 	b axisYTitled: 'Number of individuals of each class'.
-	lb := RTLegend2Builder new.
+	lb := RTLegendBuilder new.
 	lb view: b view.
 	lb addText: 'Compartiments'.
 	1 to: timeSeriesCollection size do: [ :i|
