@@ -1,5 +1,5 @@
 tests
-createSIREbolaModelWith10Cities
+createSIREbolaModelWith6Cities
 	|model population graph |
 	model := KEModel new.
 	population := KEMetaPopulation new.

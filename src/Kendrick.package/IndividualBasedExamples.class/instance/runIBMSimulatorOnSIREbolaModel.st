@@ -2,7 +2,7 @@ tests
 runIBMSimulatorOnSIREbolaModel
 	"self new runIBMSimulatorOnSIREbolaModel"
 	|model simulator diagram |
-	model := self createSIREbolaModelWith10Cities .	
+	model := self createSIREbolaModelWith6Cities .	
 	simulator := KESimulatorBuilder new.
 	simulator addAdapter: (KEMovementAdapter new).
 	simulator run: #IBMDiscreteTime tMin: 0.0 tMax: 100 step: 0.1 model: model.

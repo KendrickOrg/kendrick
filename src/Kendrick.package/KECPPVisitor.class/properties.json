@@ -1,6 +1,6 @@
 {
-	"commentStamp" : "",
-	"super" : "Object",
+	"commentStamp" : "BUIThiMaiAnh 10/1/2014 18:57",
+	"super" : "KEVisitor",
 	"category" : "Kendrick-Code-Generators",
 	"classinstvars" : [
 		"aNode"
