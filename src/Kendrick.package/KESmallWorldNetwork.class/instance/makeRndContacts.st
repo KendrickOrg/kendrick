@@ -14,5 +14,5 @@ makeRndContacts
 			j := ((rand next) * (self nodes size)) ceiling.
 			 ].
 		self with: (Array with: i with: j) weight: #contact value: 1
-		 ].
+		 ]
 	

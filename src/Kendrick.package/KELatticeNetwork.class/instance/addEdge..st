@@ -8,4 +8,4 @@ addEdge: currentNode
 	ifTrue: [ 
 		j := currentNode - 1.
 		self with: (Array with: currentNode with: j) weight: #contact value: 1
-		 ].
+		 ]

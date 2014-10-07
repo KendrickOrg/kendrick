@@ -3,6 +3,5 @@ initNetwork
 	super initNetwork.
 	"Make rndContact random contact in lattice grid"
 	self makeRndContacts.
-	self initContacts.
-	^ self
+	self initContacts
 	
