@@ -18,4 +18,5 @@ generateEvents: model
 			 ].
 		(model population at: pid) events: (self mergeEventsWithSameActionsIn: events)
 		 ].
+	events := (model population at: (model populationIDs first)) events.
 	^ events

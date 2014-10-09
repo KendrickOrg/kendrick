@@ -6,6 +6,7 @@ nodes: aCollection
 		1 to: aCollection do: [ :each|
 			|node|
 			node := KENode new.
+			node name: each.
 			nodes add: node.
 			nodeNames add: each.
 			 ]
@@ -14,6 +15,7 @@ nodes: aCollection
 		aCollection do: [ :each|
 			|node|
 			node := KENode new.
+			node name: each.
 			nodes add: node
 		 ].
 		nodeNames := aCollection

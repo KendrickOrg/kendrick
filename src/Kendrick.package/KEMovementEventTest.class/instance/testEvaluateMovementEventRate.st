@@ -11,5 +11,5 @@ testEvaluateMovementEventRate
 	model := KEModel new.
 	model population: population.
 	
-	self assert: (event evaluateWithModel: model) equals: 10 
+	self assert: (event evaluateAtPopulationLevelWithModel: model) equals: 10 
 	

@@ -9,7 +9,7 @@ mergeEventsWithSameActionsIn: eventList
 			e := event findEventWithSameActionsIn: newList.
 			e rate: ((KEBinaryExpression new) op: #+; leftHandSide: (e rate); rightHandSide: (event rate))
 			 ]
-		ifFalse: [ newList add: event ]
+		ifFalse: [ newList add: event ].
 		 ].
 	newList do: [ :each|
 		(each fromStatus = #empty) 

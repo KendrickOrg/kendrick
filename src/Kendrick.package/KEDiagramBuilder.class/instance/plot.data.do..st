@@ -9,10 +9,18 @@ plot: anObject data: data do: aFunction
 		statusCollection := anObject.
 		anObject isSymbol ifTrue: [ 
 			statusCollection := OrderedCollection new.
-			1 to: aCollectionOfTimeSeries size do: [ :i|
-				statusCollection add: (anObject asString, i asString) asSymbol
-				 ]
-			 ].
+			legendNames 
+			ifNotNil: [  
+				legendNames do: [ :each|
+					statusCollection add: (anObject asString, each asString) asSymbol
+					 ]
+				]
+			ifNil: [  
+				1 to: aCollectionOfTimeSeries size do: [ :i|
+					statusCollection add: (anObject asString, i asString) asSymbol
+					]
+				]
+			].
 		self plotCompositeDiagram: statusCollection data: aCollectionOfTimeSeries 
 		]
 	
