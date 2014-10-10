@@ -8,6 +8,6 @@ testCreationOfSIRMultiHostModel
 	self assert: (model population getNbIndividualsOfCompartment: #S) equals: 12997.
 	
 	self assert: (model equations size) equals: 3.
-	self assert: (model population getPopulationIDs) equals: #(#(0 1) #(0 2) #(0 3)).
+	self assert: (model population populationIDs) equals: #(#(0 1) #(0 2) #(0 3)).
 	self assert: ((model population at: #(1)) isPopulation) equals: true.
 	self assert: ((model population at: #(1)) at: #S) currentNbIndividuals equals: 9999

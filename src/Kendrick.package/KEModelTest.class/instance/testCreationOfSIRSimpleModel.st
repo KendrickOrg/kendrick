@@ -6,4 +6,4 @@ testCreationOfSIRSimpleModel
 	self assert: (model population getNbIndividuals) equals: 100000.
 	self assert: (model population getNbSubPopulations) equals: 3.
 	self assert: (model equations size) equals: 3.
-	self assert: (model population getPopulationIDs) equals: #(0)
+	self assert: (model population populationIDs) equals: #(0)

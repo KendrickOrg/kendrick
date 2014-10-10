@@ -1,3 +1,3 @@
 accessing
-getPopulationIDs
+populationIDs
 	^ #(0)
