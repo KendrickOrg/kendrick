@@ -6,5 +6,5 @@ compartimentsIn: constructor
 	constructor table
 		display: [ :population | population compartments] ;
 		column: 'Name' evaluated: [ :compartment | compartment status] width:120;
-		column: 'Number Of Individuals' evaluated: [ :compartment | compartment nbOfIndividuals asString];
+		column: 'Number Of Individuals' evaluated: [ :compartment | compartment getNbIndividuals asString];
 		selectionAct: [:courbe | courbe selection inspect] on: $v entitled: 'View'

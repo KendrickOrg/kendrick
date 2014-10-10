@@ -10,7 +10,7 @@ runIBMSimulatorOnSIREbolaModel2
 	diagram := KEDiagramBuilder new.
 	diagram plotMap: #(#Liberia #Guinea #SierraLeone # Nigeria #Senegal #Niger)
 			  in: #africa
-			  data: (model population populationIDs collect: [ :each|
+			  data: (model population getPopulationIDs collect: [ :each|
 			  	   ((model population at: each) at: #I) currentNbIndividuals
 			  ])
 	

@@ -7,6 +7,6 @@ evaluateAtPopulationLevelWithModel: model
 		r := r * (((model population at: (model currentPopulationID)) at: (self fromStatus)) currentNbIndividuals).
 		]
 	ifFalse: [  
-		r := r * ((model population at: (model currentPopulationID)) nbOfIndividuals)
+		r := r * ((model population at: (model currentPopulationID)) getNbIndividuals)
 		].
 	^ r

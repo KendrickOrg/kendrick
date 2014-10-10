@@ -1,4 +1,4 @@
 accessing
 index
-	"<MSEProperty: #index type: #Array>"
+	<MSEProperty: #index type: #Array>
 	^ index

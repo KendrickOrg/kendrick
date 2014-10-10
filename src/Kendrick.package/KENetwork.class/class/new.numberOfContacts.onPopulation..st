@@ -17,6 +17,6 @@ new: type numberOfContacts: n onPopulation: p
 	"p getPopulationIDs do: [ :pid|
 		(p at: pid) graph: (network initNetworkNodes: ((p at: pid) getNbIndividuals)).
 		 ]."
-	p graph: (network initNetworkNodes: p nbOfIndividuals).
+	p graph: (network initNetworkNodes: p getNbIndividuals).
 	^ network
 	

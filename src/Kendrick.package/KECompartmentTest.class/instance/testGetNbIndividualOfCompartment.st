@@ -3,5 +3,5 @@ testGetNbIndividualOfCompartment
 	| compartment |
 	compartment := KECompartment status: #S initialNumberOfIndividuals: 10000.
 	
-	self assert: (compartment nbOfIndividuals) equals: 10000.
-	self assert: (compartment nbOfIndividualsOf: #I) equals: 0
+	self assert: (compartment getNbIndividuals) equals: 10000.
+	self assert: (compartment getNbIndividualsOfCompartment: #I) equals: 0

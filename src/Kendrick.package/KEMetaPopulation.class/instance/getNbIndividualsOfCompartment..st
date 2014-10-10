@@ -1,11 +1,10 @@
 accessing
-nbOfIndividualsOf: aSymbol
+getNbIndividualsOfCompartment: aSymbol
 	"This function will return the number of all individuals with a clinic status in population"
-	"|count|
+	|count|
 	count := 0.
-	nodes do: [ :each| 
+	subPopulations do: [ :each| 
 		count := count + (each getNbIndividualsOfCompartment: aSymbol)
 		].
-	^ count"
-	^ (self at: aSymbol) currentNbIndividuals 
+	^ count
 	

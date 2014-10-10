@@ -18,7 +18,7 @@ compartments: aCollection
 	aCollection do: [ :each|
 		|aCompartment|
 		aCompartment := KECompartment status: each initialNumberOfIndividuals: 0.
-		compartments add: aCompartment
+		self addSubPopulation: aCompartment
 		 ].
 	^ self
  

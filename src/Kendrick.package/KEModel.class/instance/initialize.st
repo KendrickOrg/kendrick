@@ -5,7 +5,9 @@ initialize
 	temporalParameters := Dictionary new.
 	equations := OrderedCollection new.
 	population := KEPopulation new.
-	compartmentSymbols := Dictionary new
+	compartmentSymbols := Dictionary new.
+	simulatorBuilder := KESimulatorBuilder new
+	
 	
 	
 

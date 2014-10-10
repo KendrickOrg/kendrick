@@ -1,3 +1,3 @@
 acessing
 checkNil
-	^ self couplingExpression checkNil
+	^ (self couplingExpression checkNil)

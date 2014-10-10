@@ -11,7 +11,7 @@ evaluateWithModel: aModel
 			subPop isPopulation 
 			ifTrue: [ 
 				^ (subPop at: symbol) currentNbIndividuals ]
-			ifFalse: [ ^ subPop nbOfIndividualsOf: symbol ]
+			ifFalse: [ ^ subPop getNbIndividualsOfCompartment: symbol ]
 			].
 		].
 	^ x 

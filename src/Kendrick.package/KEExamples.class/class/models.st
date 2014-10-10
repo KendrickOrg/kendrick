@@ -3,8 +3,8 @@ models
      |model  |   
 	
 	ModelExample := OrderedCollection new.
-
-   model := KEModel new.
+	
+      model := KEModel new.
 	model population compartments: #(S I R).
 	model population at: #S put: 99; at: #I put: 1; at: #R put: 0.
 	

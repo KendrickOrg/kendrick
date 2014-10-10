@@ -1,3 +1,3 @@
 accessing
-populationIDs
+getPopulationIDs
 	self parent id asArray 
