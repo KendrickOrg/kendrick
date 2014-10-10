@@ -1,3 +1,3 @@
 accessing
-getNbIndividuals
+nbOfIndividuals
 	^ currentNbIndividuals

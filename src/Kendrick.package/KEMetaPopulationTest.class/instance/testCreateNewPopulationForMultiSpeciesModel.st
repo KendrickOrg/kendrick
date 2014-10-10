@@ -10,6 +10,6 @@ testCreateNewPopulationForMultiSpeciesModel
 	
 	self assert: (population nbOfSubPopulations) equals: 3.
 	self assert: (population at: 1) isPopulation equals: true.
-	self assert: (population at: 1) getNbIndividuals equals: 10000.
-	self assert: ((population at: $a) getNbIndividualsOfCompartment: #S) equals: 9999.
+	self assert: (population at: 1) nbOfIndividuals equals: 10000.
+	self assert: ((population at: $a) nbOfIndividualsOf: #S) equals: 9999.
 	
