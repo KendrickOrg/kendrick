@@ -2,7 +2,6 @@ accessing
 initialize
 	super initialize.
 	actions := Dictionary new.
-	rate := nil. "is an expression"
+	rate := nil. 
 	toStatus := #empty.
-	fromStatus := #empty.
-	
+	fromStatus := #empty
