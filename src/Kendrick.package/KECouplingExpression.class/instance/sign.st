@@ -1,3 +1,3 @@
 acessing
 sign
-	^ (self couplingExpression sign)
+	^ self couplingExpression sign
