@@ -13,7 +13,7 @@ solve
 		deltaT := self doGillespieIteration.
 		countStep := countStep + 1.
 		"check if extinction occurs"
-		((deltaT = 0) | ((model population getNbIndividualsOfCompartment: #I) <= 0)) 
+		((deltaT = 0) | ((model population nbOfIndividualsOf: #I) <= 0)) 
 		ifTrue: [ 		
 			self buildData: result with: timeSeries.
 			^ countStep ].

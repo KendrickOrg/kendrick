@@ -4,7 +4,7 @@ indList
 		indList ifNil: [ 
 			indList := OrderedCollection new.
 			subPopulations do: [ :comp|
-				1 to: (comp getNbIndividuals) do: [ :i| |ind|
+				1 to: (comp nbOfIndividuals) do: [ :i| |ind|
 					ind := KEIndividual new.
 					ind currentStatus: (comp status).
 					ind populationID: (self populationID).

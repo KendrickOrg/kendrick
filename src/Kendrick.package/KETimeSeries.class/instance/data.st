@@ -1,4 +1,4 @@
 accessing
 data
-	<MSEProperty: #data type: #Array>
+	"<MSEProperty: #data type: #Array>"
 	^ data

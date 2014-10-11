@@ -1,8 +1,8 @@
 accessing
-getNbIndividuals
+nbOfIndividuals
 	|total|
 	total := 0.
 	subPopulations do: [ :each|
-		total := total + (each getNbIndividuals)
+		total := total + (each nbOfIndividuals)
 		 ].
 	^ total

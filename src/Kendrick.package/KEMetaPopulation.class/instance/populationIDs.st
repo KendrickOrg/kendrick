@@ -1,11 +1,11 @@
 accessing
-getPopulationIDs
+populationIDs
 	|popIDList|
 	popIDList := OrderedCollection new.
 	self isPopulation ifTrue: [ ^ #(0) ].
 	subPopulations do: [ :each|
 		each isPopulation
 		ifTrue: [ popIDList add: each populationID asArray ]
-		ifFalse: [ popIDList addAll: each getPopulationIDs ]
+		ifFalse: [ popIDList addAll: each populationIDs ]
 		 ].
 	^ popIDList asArray

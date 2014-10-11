@@ -2,7 +2,9 @@
 	"commentStamp" : "BuiThiMaiAnh 7/25/2014 10:44",
 	"super" : "Object",
 	"category" : "Kendrick-Examples",
-	"classinstvars" : [ ],
+	"classinstvars" : [
+		"ModelExample"
+	],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],

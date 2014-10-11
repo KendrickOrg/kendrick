@@ -1,4 +1,4 @@
 accessing
-getNbIndividualsOfCompartment: aSymbol
+nbOfIndividualsOf: aSymbol
 	(status = aSymbol) ifTrue: [ ^ currentNbIndividuals ].
 	^ 0
