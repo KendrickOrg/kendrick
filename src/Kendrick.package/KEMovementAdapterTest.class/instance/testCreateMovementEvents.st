@@ -7,5 +7,5 @@ testCreateMovementEvents
 	movementAdapter init.
 	eventGenerator := KEEventGenerator new.
 	eventGenerator generateEvents: model.
-	events := (model population at: #(0 1)) events.
+	events := (model subPopulations first) events.
 	self assert: (events size) equals: 12 

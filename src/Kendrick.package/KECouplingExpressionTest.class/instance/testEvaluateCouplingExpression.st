@@ -9,6 +9,6 @@ testEvaluateCouplingExpression
 								rightHandSide: (KEVariable new symbol: #I)); 
 							couplingParameter: #beta.
 	model := self createAMetaPopulationModel.
-	model currentPopulationID: #(0 1).
+	model currentSubPopulation: model subPopulations first.
 	result := couplingExpr evaluateWithModel: model.
 	self assert: result equals: 40

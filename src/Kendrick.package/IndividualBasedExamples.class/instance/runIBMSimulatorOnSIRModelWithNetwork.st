@@ -6,7 +6,7 @@ runIBMSimulatorOnSIRModelWithNetwork
 	"model := self createSIRSimpleModel4: #smallworld."
 	"model := self createSIRSimpleModel4: #lattice."
 	"model := self createSIRSimpleModel4: #spatial."
-	model := self createSIRSimpleModel4: #random.
+	model := self createSIRSimpleModel4: #smallworld.
 	simulator := KESimulatorBuilder new.
 	simulator addAdapter: (KENetworkAdapter new).
 	simulator run: #IBMDiscreteTime tMin: 0.0 tMax: 200 step: 0.1 model: model.

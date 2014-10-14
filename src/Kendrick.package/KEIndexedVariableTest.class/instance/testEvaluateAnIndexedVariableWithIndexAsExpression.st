@@ -14,6 +14,6 @@ testEvaluateAnIndexedVariableWithIndexAsExpression
 	model addParameter: #d value: 5.
 	dsdt := 'S[i]:t=-sum(j, beta[i][j]*I[j])*S[i+1]' parseAsAnEquation.
 	model addEquation: dsdt.
-	model addTemporalParameter: #PID value: #(0 2).
+	model currentSubPopulation: (model subPopulations second).
 	model addTemporalParameter: #i value: 2.
 	self assert: (dsdt expression evaluateWithModel: model) equals: -40.

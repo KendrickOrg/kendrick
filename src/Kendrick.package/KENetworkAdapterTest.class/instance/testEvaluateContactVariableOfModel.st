@@ -5,7 +5,7 @@ testEvaluateContactVariableOfModel
 	networkAdapter := KENetworkAdapter new.
 	networkAdapter atArgument: #model put: model.
 	networkAdapter init.
-	model currentPopulationID: #(0).
+	model currentSubPopulation: model population.
 	model currentIndividual: 81.
 	
 	self assert: ((model atEquation: #S) evaluateWithModel: model) equals: -0.02.

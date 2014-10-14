@@ -3,11 +3,11 @@ calculateDyDx: model
 	"In this function checkHasInterPopInteraction if available and evaluate equation expression with adding the interPopInteractionRate"
 	|j|
 	j := 1.
-	model populationIDs do: [ :each|
-		 model currentPopulationID: each.
-		 each isArray ifTrue: [ model setIndex: (each last) ].
+	model subPopulations do: [ :each|
+		 model currentSubPopulation: each.
+		 model setIndex: each populationID.
 	    model equations do: [ :eq|
-		 	dydx at: j put: ("eq expression evaluateWithModel: model) + (eq evaluateCouplingInteraction: model" eq evaluateWithModel: model).
+		 	dydx at: j put: (eq evaluateWithModel: model).
 			j := j+1.	
 			 ]		
 		 ]

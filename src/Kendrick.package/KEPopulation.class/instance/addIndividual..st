@@ -1,6 +1,6 @@
 adding
 addIndividual: ind
-	ind populationID: (self populationID asArray).
+	"ind populationID: (self populationID)."
 	(self diedIndList size > 0) 
 	ifTrue: [ 
 		ind id: (self diedIndList removeFirst).

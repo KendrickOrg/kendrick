@@ -10,7 +10,7 @@ plotSingleDiagram: aStatus data: timeSeries
 	b connectDotColor: Color blue.
 	b axisXTitled: 'Time'.
 	b axisYTitled: 'Number of individuals'.
-	lb := RTLegend2Builder new.
+	lb := RTLegendBuilder new.
 	lb view: b view.
 	lb addText: 'Compartiment'.
 	lb addColor: Color blue text: aStatus asString.

@@ -12,5 +12,5 @@ testParameterAsExpression2
 	model addEquation: dsdt.
 	model addTemporalParameter: #i value: 50.
 	model addTemporalParameter: #j value: 70.
-	model addTemporalParameter: #PID value: #(0).
+	model currentSubPopulation: (model population).
 	self assert: (dsdt expression evaluateWithModel: model) equals: ((-16) exp)*(-1).

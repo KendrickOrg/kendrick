@@ -2,10 +2,10 @@ as yet unclassified
 generateEvents: model
 	"This method will generate an event list for each population of the model"
 	|events|
-	model populationIDs do: [ :pid| 
+	model subPopulations do: [ :pop| 
 		events := OrderedCollection new.
 		model equations do: [ :eq| |eventList|
-			eventList := eq generateEvents: pid.
+			eventList := eq generateEvents: pop.
 			eventList do: [ :anEvent|
 				(anEvent hasAnEventWithOppositeRateIn: events)
 				ifTrue: [ |e|
@@ -16,7 +16,7 @@ generateEvents: model
 				ifFalse: [ events add: anEvent ]
 				 ].
 			 ].
-		(model population at: pid) events: (self mergeEventsWithSameActionsIn: events)
+		pop events: (self mergeEventsWithSameActionsIn: events)
 		 ].
-	events := (model population at: (model populationIDs first)) events.
+	events := (model subPopulations first) events.
 	^ events

@@ -6,8 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"parent",
-		"populationID",
+		"name",
 		"compartments",
 		"compartmentNames",
 		"indList",

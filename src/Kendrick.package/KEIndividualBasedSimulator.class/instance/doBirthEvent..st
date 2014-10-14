@@ -1,8 +1,8 @@
 as yet unclassified
 doBirthEvent: population
 	|e|
-	(self birthEvents at: (population populationID asArray)) size > 0 ifTrue: [ 
-		e := (self birthEvents at: (population populationID asArray)) first 
+	(self birthEvents at: (population name)) size > 0 ifTrue: [ 
+		e := (self birthEvents at: (population name)) first 
 		].
 	e ifNotNil: [
 		|r p rand| 

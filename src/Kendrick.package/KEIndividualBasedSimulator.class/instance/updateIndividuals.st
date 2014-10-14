@@ -1,10 +1,10 @@
 as yet unclassified
 updateIndividuals
-	model populationIDs do: [ :pid|
-		|subPop indList|
-		model currentPopulationID: pid.
-		subPop := model population at: pid.
-		indList := subPop indList.
+	model subPopulations do: [ :each|
+		|indList|
+		model currentSubPopulation: each.
+		"subPop := model population at: pid."
+		indList := each indList.
 		indList do: [ :ind|
 			(ind isAlive) & (ind nextStatus isNotNil) ifTrue: [ ind updateStatus: model ]
 			]

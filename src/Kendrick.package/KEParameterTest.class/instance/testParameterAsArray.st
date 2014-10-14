@@ -17,6 +17,6 @@ testParameterAsArray
 	dsdt := 'S[i]:t=-sum(j, beta[i][j]*I[j])*S[i]' parseAsAnEquation.
 	model addEquation: dsdt.
 	model addTemporalParameter: #i value: 1.
-	model addTemporalParameter: #PID value: #(0 1).
+	model currentSubPopulation: (model subPopulations first).
 	self assert: (dsdt expression evaluateWithModel: model) equals: 0.
 

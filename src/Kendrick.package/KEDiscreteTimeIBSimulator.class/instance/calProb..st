@@ -1,7 +1,7 @@
 as yet unclassified
 calProb: ind
 	|rate rand prob chosen events|
-	events := (model population at: (ind populationID)) events at: (ind currentStatus) ifAbsentPut: (OrderedCollection new).
+	events := (model currentSubPopulation) events at: (ind currentStatus) ifAbsentPut: (OrderedCollection new).
 	"Choose an event for execute on this individual"
 	rand := Random new.
 	chosen := ((rand next) * (events size)) ceiling.

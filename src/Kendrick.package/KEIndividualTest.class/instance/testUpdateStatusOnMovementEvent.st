@@ -9,13 +9,13 @@ testUpdateStatusOnMovementEvent
 		each at: #S put: 1000; at: #I put: 0.
 		 ].
 	model population: population.
-	model currentPopulationID: #(0 1).
-	((model population at: #(0 1)) indList at: 80) nextStatus: #(0 2).
-	((model population at: #(0 1)) indList at: 80) updateStatus: model.
-	self assert: ((model population at: #(0 2)) at: #S) currentNbIndividuals equals: 1001.
-	self assert: ((model population at: #(0 1)) at: #S) currentNbIndividuals equals: 999.
-	self assert: ((model population at: #(0 1)) indList at: 80) isAlive equals: false.
-	self assert: (model population at: #(0 1)) diedIndList first equals: 80. 
-	self assert: ((model population at: #(0 2)) indList at: 80) isAlive equals: true.
+	model currentSubPopulation: model subPopulations first.
+	((model subPopulations first) indList at: 80) nextStatus: (model subPopulations second).
+	((model subPopulations first) indList at: 80) updateStatus: model.
+	self assert: ((model subPopulations second) at: #S) currentNbIndividuals equals: 1001.
+	self assert: ((model subPopulations first) at: #S) currentNbIndividuals equals: 999.
+	self assert: (model subPopulations first indList at: 80) isAlive equals: false.
+	self assert: (model subPopulations first) diedIndList first equals: 80. 
+	self assert: ((model subPopulations second) indList at: 80) isAlive equals: true.
 
 	

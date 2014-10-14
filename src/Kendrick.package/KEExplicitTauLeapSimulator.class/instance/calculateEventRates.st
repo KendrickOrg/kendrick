@@ -1,14 +1,15 @@
 as yet unclassified
 calculateEventRates
-	model populationIDs do: [ :pid|
-		(model population at: pid) rates: (OrderedCollection new)
+	model subPopulations do: [ :pop|
+		pop rates: (OrderedCollection new)
 		 ].
-	model populationIDs do: [ :pid| 
-		model currentPopulationID: pid.
-		pid isArray ifTrue: [ model setIndex: (pid last) ].
-		(model population at: pid) events do: [ :each| |r|
+	model subPopulations do: [ :pop| 
+		model currentSubPopulation: pop.
+		model setIndex: pop populationID. 
+		"pid isArray ifTrue: [ model setIndex: (pid last) ]."
+		pop events do: [ :each| |r|
 			r := each evaluateAtPopulationLevelWithModel: model.
-			(model population at: pid) rates add: r
+			pop rates add: r
 			]
 		]
 	

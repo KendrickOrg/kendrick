@@ -1,6 +1,6 @@
 as yet unclassified
-generateEvents: populationID
+generateEvents: population
 	|eventList|
 	eventList := OrderedCollection new.
-	eventList addAll: (movementExpressions at: populationID).
+	eventList addAll: (movementExpressions at: population name).
 	^ eventList 

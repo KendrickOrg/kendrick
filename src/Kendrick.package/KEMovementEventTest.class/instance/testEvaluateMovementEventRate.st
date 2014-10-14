@@ -1,7 +1,6 @@
 as yet unclassified
 testEvaluateMovementEventRate
 	|event model population|
-	event := KEMovementEvent new: #S from: #(0 1) to: #(0 2) rate: 0.01.
 	population := KEMetaPopulation new.
 	population numberOfSubPopulations: 3.
 	population forEachSubPopulation: [ :each|
@@ -10,6 +9,7 @@ testEvaluateMovementEventRate
 		 ].
 	model := KEModel new.
 	model population: population.
+	event := KEMovementEvent new: #S from: model subPopulations first to: model subPopulations second rate: 0.01.
 	
 	self assert: (event evaluateAtPopulationLevelWithModel: model) equals: 10 
 	

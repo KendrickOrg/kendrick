@@ -1,7 +1,7 @@
 as yet unclassified
 initializeRK4: aModel
 	|size|
-	size := (aModel equations size) * (aModel populationIDs size).
+	size := (aModel equations size) * (aModel subPopulations size).
 	y := Array new: size.
 	dydx := Array new: size.
 	data := Array new: size.

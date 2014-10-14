@@ -3,7 +3,7 @@ contactedIndividuals: model
 	|contacts currentInd currentPop|
 	contacts := OrderedCollection new.
 	currentInd := model currentIndividual.
-	currentPop := model population at: (model currentPopulationID).
+	currentPop := model currentSubPopulation.
 	currentPop graph 
 	ifNil: [ 
 		contacts := currentPop indList collect: [ :each| 

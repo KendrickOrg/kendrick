@@ -1,8 +1,8 @@
 accessing
 executeOn: model
-	|currentPID subPop|
-	currentPID := model currentPopulationID.
-	subPop := model population at: currentPID.
+	|subPop|
+	"currentPID := model currentPopulationID."
+	subPop := model currentSubPopulation.
 	actions keysAndValuesDo: [ :status :value|
 		(subPop at: status) addToCompartment: value
 		]

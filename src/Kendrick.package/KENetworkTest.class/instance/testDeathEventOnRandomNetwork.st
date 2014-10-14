@@ -9,7 +9,7 @@ testDeathEventOnRandomNetwork
 	model population: population.
 	
 	self assert: (model population graph nodes size) equals: 91.
-	model currentPopulationID: (model population indList first populationID).
+	model currentSubPopulation: (model population).
 	node := (model population graph nodes at: (model population graph nodes at: 80) adjacentNodes first).
 	countContactOfNode := node at: #S.
 	(model population indList at: 80) nextStatus: #empty.

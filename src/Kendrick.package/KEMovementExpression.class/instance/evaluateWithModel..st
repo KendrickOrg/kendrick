@@ -1,11 +1,11 @@
 as yet unclassified
 evaluateWithModel: aModel
-	|result currentPID|
+	|result pop|
 	result := 0.
-	currentPID := aModel currentPopulationID.
-	(movementExpressions at: currentPID) do: [ :each| |temp|
+	pop := aModel currentSubPopulation.
+	(movementExpressions at: pop name) do: [ :each| |temp|
 		temp := each evaluateAtPopulationLevelWithModel: aModel.
-		each fromStatus = currentPID ifTrue: [ result := result - temp ].
-		each toStatus = currentPID ifTrue: [ result := result + temp ]
+		each fromStatus name = pop name ifTrue: [ result := result - temp ].
+		each toStatus name = pop name ifTrue: [ result := result + temp ]
 		 ].
 	^ result

@@ -4,9 +4,9 @@ evaluateAtPopulationLevelWithModel: model
 	r := (rate evaluateWithModel: model) abs.
 	self fromStatus ~= #empty 
 	ifTrue: [ 
-		r := r * (((model population at: (model currentPopulationID)) at: (self fromStatus)) currentNbIndividuals).
+		r := r * (((model currentSubPopulation) at: (self fromStatus)) currentNbIndividuals).
 		]
 	ifFalse: [  
-		r := r * ((model population at: (model currentPopulationID)) nbOfIndividuals)
+		r := r * ((model currentSubPopulation) nbOfIndividuals)
 		].
 	^ r

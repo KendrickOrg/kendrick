@@ -11,7 +11,7 @@
 		"equations",
 		"population",
 		"compartmentSymbols",
-		"populationIDs"
+		"subPopulations"
 	],
 	"name" : "KEModel",
 	"type" : "normal"

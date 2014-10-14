@@ -8,7 +8,7 @@ testUpdateStatusOnNetworkModel
 	network := KENetwork new: #lattice numberOfContacts: 4 onPopulation: population.
 	model population: population.
 	
-	model currentPopulationID: (model population indList first populationID).
+	model currentSubPopulation: (model population).
 	(model population indList at: 80) nextStatus: #I.
 	node := model population graph nodes at: ((model population graph nodes at: 80) adjacentNodes first).
 	before := node at: #I.

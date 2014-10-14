@@ -3,7 +3,7 @@ buildData: result with: timeSeries
 	|i|
 	i := 1.
 	data := Dictionary new.
-	model populationIDs = #(0) 
+	model subPopulations size = 1 
 	ifTrue: [
 		model equations do: [ :eq|
 			data at: (eq variable symbol) put: (KETimeSeries from: (result at: i) withIndex: timeSeries).
@@ -11,10 +11,10 @@ buildData: result with: timeSeries
 			 ].
 		 ]
 	ifFalse: [ 
-		model populationIDs do: [ :aPid|
-			data at: aPid put: (Dictionary new).
+		model subPopulations do: [ :pop|
+			data at: (pop name) put: (Dictionary new).
 			model equations do: [ :eq|
-				(data at: aPid) at: (eq variable symbol) put: (KETimeSeries from: (result at: i) withIndex: timeSeries).
+				(data at: pop name) at: (eq variable symbol) put: (KETimeSeries from: (result at: i) withIndex: timeSeries).
 				i := i + 1.
 				 ]
 			 ]
