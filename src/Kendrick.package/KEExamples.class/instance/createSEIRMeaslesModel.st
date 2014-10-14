@@ -13,9 +13,9 @@ createSEIRMeaslesModel
 	model addParameter: #sigma value: 0.125.
 	model addParameter: #N value: 100000.
 	
-	model addEquation: ('S:t=mu*N-beta*S*I-mu*S' parseAsAnEquation).
-	model addEquation: ('E:t=beta*S*I-sigma*E-mu*E' parseAsAnEquation).
-	model addEquation: ('I:t=sigma*E-gamma*I-mu*I' parseAsAnEquation).
-	model addEquation: ('R:t=gamma*I-mu*R' parseAsAnEquation).
+	model addEquation: 'S:t=mu*N-beta*S*I-mu*S' parseAsAnEquation.
+	model addEquation: 'E:t=beta*S*I-sigma*E-mu*E' parseAsAnEquation.
+	model addEquation: 'I:t=sigma*E-gamma*I-mu*I' parseAsAnEquation.
+	model addEquation: 'R:t=gamma*I-mu*R' parseAsAnEquation.
 	
 	^ model
