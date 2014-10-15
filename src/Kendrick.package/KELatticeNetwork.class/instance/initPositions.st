@@ -4,5 +4,5 @@ initPositions
 		x := i\\(self gridWidth).
 		y := i//(self gridWidth) + 1.
 		x = 0 ifTrue: [ x := (self gridWidth). y := i//(self gridWidth) ].
-		(self population indList at: i) position: (Array with: x with: y)
+		(self population individuals at: i) position: (Array with: x with: y)
 		 ]

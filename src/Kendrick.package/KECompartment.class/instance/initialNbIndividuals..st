@@ -1,4 +1,4 @@
 accessing
-initialNbIndividuals: anObject
-	initialNbIndividuals := anObject.
-	currentNbIndividuals := anObject
+initialNbIndividuals: anInteger
+	initialNbIndividuals := anInteger.
+	currentNbIndividuals := anInteger

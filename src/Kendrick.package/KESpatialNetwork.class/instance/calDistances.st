@@ -5,8 +5,8 @@ calDistances
 	distances := OrderedCollection new.
 	edges do: [ :each|
 		|x y|
-		x := population indList at: (#first value: each).
-		y := population indList at: (#second value: each).
+		x := population individuals at: (#first value: each).
+		y := population individuals at: (#second value: each).
 		distances add: (x distanceTo: y)
 		 ].
 	^ distances

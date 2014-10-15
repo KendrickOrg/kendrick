@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testCreateNewPopulationForSIRMetaPopulationModel
 	|population|
 	population := KEMetaPopulation new.

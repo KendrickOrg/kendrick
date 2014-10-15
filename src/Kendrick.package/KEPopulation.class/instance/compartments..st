@@ -19,7 +19,6 @@ compartments: aCollection
 		|aCompartment|
 		aCompartment := KECompartment status: each initialNumberOfIndividuals: 0.
 		compartments add: aCompartment
-		 ].
-	^ self
+		 ]
  
 	

@@ -6,7 +6,7 @@ newNode: ind
 		ind position: (self addNode).
 		node := self nodes at: (ind id).
 		node adjacentNodes do: [ :ajNodeID| 
-			node at: ((population indList at: ajNodeID) currentStatus) add: 1]
+			node at: ((population individuals at: ajNodeID) currentStatus) add: 1]
 		].
 	(nodes at: (ind id)) adjacentNodes do: [ :i|
 		(nodes at: i) at: (ind currentStatus) add: 1

@@ -4,7 +4,7 @@ nbOfIndividuals
 	|totalNbIndividuals|
 	totalNbIndividuals := 0.
 	compartments do: [ :each|
-		totalNbIndividuals := totalNbIndividuals + (each nbOfIndividuals) 
+		totalNbIndividuals :=  each nbOfIndividuals + totalNbIndividuals 
 		 ].
 	^ totalNbIndividuals
 	

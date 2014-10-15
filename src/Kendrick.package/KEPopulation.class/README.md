@@ -1,22 +1,22 @@
-A KEPopulation is a population categoried in compartments  (see class KECompartment for more details) in which the disease is spreading.
+A KEPopulation is a population splitted in several compartments  (see class KECompartment for more details) in which the disease is spreading.
 
 Instance Variables
 	compartmentNames:		<OrderedCollection>
 	compartments:		<OrderedCollection>
-	indList:		<OrderedCollection>
+	individuals:		<OrderedCollection>
 	parent:		<KEPopulation>
 	populationID:		<OrderedCollection>
 	rates:		<OrderedCollection>
 	events:   	         <OrderedCollection>
 
 compartmentNames
-	- A list of compartment names of the epidemiological model
+	- A collection of compartment names of the epidemiological model
 
 compartments
-	- A list of compartments in the population
+	- A collection of compartments in the population
 
-indList
-	- A list of individuals (instances of KEIndividual class)
+individuals
+	- A collection of individuals (instances of KEIndividual class)
 
 parent
 	- Each compartment in system is belong to one population, so it is necessaire to know its parent (the population that contains it). By initialisation, the parent of the population is itself.

@@ -12,8 +12,8 @@ testInitNetwork
 	self assert: (nw nodes at: 3) adjacentNodes asArray equals: #(2 4 7).
 	self assert: (nw nodes at: 4) adjacentNodes asArray equals: #(3 8).
 	self assert: (nw nodes at: 5) adjacentNodes asArray equals: #(1 6 9).
-	self assert: (nw population indList at: 1) position equals: #(1 1).
-	self assert: (nw population indList at: 2) position equals: #(2 1).
-	self assert: (nw population indList at: 4) position equals: #(4 1).
-	self assert: (nw population indList at: 8) position equals: #(4 2).
-	self assert: (nw population indList at: 5) position equals: #(1 2).
+	self assert: (nw population individuals at: 1) position equals: #(1 1).
+	self assert: (nw population individuals at: 2) position equals: #(2 1).
+	self assert: (nw population individuals at: 4) position equals: #(4 1).
+	self assert: (nw population individuals at: 8) position equals: #(4 2).
+	self assert: (nw population individuals at: 5) position equals: #(1 2).

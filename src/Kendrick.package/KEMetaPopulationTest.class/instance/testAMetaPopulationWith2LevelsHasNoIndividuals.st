@@ -1,0 +1,5 @@
+tests
+testAMetaPopulationWith2LevelsHasNoIndividuals
+
+	self assert: metaPopulationWith2Levels individuals isNil
+	

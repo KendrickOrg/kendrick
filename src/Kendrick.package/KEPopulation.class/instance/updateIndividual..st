@@ -5,6 +5,6 @@ updateIndividual: ind
 	newStt := ind nextStatus.
 	ind nextStatus: nil.
 	ind currentStatus: newStt.
-	self indList at: (ind id) put: ind.
+	self individuals at: (ind id) put: ind.
 	(self at: oldStt) removeFromCompartment: 1.
 	(self at: newStt) addToCompartment: 1

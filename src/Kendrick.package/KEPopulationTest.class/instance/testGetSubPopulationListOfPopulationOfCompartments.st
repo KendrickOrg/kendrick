@@ -1,7 +1,3 @@
-as yet unclassified
+tests
 testGetSubPopulationListOfPopulationOfCompartments
-	|aNewPopulation|
-	aNewPopulation := self createAPopulationOfCompartments. 
-	self assert: (aNewPopulation nbOfSubPopulations) equals: 3.
-	self assert: (aNewPopulation name) equals: #0.  
-	
+	self assert: (anSIRPopulationWith1000Individuals name) equals: #0

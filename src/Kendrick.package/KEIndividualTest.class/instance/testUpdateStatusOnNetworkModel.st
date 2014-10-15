@@ -9,14 +9,14 @@ testUpdateStatusOnNetworkModel
 	model population: population.
 	
 	model currentSubPopulation: (model population).
-	(model population indList at: 80) nextStatus: #I.
+	(model population individuals at: 80) nextStatus: #I.
 	node := model population graph nodes at: ((model population graph nodes at: 80) adjacentNodes first).
 	before := node at: #I.
 	self assert: before equals: 0.
-	(model population indList at: 80) updateStatus: model.
+	(model population individuals at: 80) updateStatus: model.
 	after := node at: #I.
 	self assert: after equals: 1. 
 	self assert: (model population at: #S) currentNbIndividuals equals: 89.
 	self assert: (model population at: #I) currentNbIndividuals equals: 2.
-	self assert: (model population indList at: 80) currentStatus equals: #I
+	self assert: (model population individuals at: 80) currentStatus equals: #I
 	

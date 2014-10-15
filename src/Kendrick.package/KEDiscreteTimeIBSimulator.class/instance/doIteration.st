@@ -6,7 +6,7 @@ doIteration
 		"pid isArray ifTrue: [ model setIndex: (pid last) ]."
 		model setIndex: (each populationID).
 		"subPop := model population at: pid."
-		indList := each indList.
+		indList := each individuals.
 		indList do: [ :ind|
 			(ind attributes at: #alive) ifTrue: [  	
 				model addTemporalParameter: #ind value: (ind id). 

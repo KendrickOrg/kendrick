@@ -6,10 +6,10 @@ contactedIndividuals: model
 	currentPop := model currentSubPopulation.
 	currentPop graph 
 	ifNil: [ 
-		contacts := currentPop indList collect: [ :each| 
+		contacts := currentPop individuals collect: [ :each| 
 			each currentStatus = clinicStatus ifTrue: [ each id ] ]
 		 ]
 	ifNotNil: [ 
-		contacts := (currentPop graph nodes at: (currentInd)) adjacentNodes collect: [ :each| (currentPop indList at: each) currentStatus = clinicStatus ifTrue: [ each ] ]
+		contacts := (currentPop graph nodes at: (currentInd)) adjacentNodes collect: [ :each| (currentPop individuals at: each) currentStatus = clinicStatus ifTrue: [ each ] ]
 		 ].
 	^ contacts

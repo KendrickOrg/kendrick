@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testCreateNewPopulationForMultiSpeciesModel
 	|population|
 	population := KEMetaPopulation new.

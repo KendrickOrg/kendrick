@@ -5,7 +5,10 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"metaPopulationWith3Levels",
+		"metaPopulationWith2Levels"
+	],
 	"name" : "KEMetaPopulationTest",
 	"type" : "normal"
 }
