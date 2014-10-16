@@ -16,16 +16,16 @@ testMovementEventOnSpatialNetwork
 	pop1 := model subPopulations first.
 	nodeID := self getANodeHasContacts: (pop1 graph).
 	node := pop1 graph nodes at: ((pop1 graph nodes at: nodeID) adjacentNodes first).
-	status := (pop1 indList at: nodeID) currentStatus.
+	status := (pop1 individuals at: nodeID) currentStatus.
 	count := node at: status.
-	(pop1 indList at: nodeID) nextStatus: (model subPopulations second).
-	(pop1 indList at: nodeID) updateStatus: model.
+	(pop1 individuals at: nodeID) nextStatus: (model subPopulations second).
+	(pop1 individuals at: nodeID) updateStatus: model.
 	
 	self assert: ((model subPopulations second) at: status) currentNbIndividuals equals: 100.
 	self assert: ((model subPopulations first) at: status) currentNbIndividuals equals: 98.
-	self assert: ((model subPopulations first) indList at: nodeID) isAlive equals: false.
+	self assert: ((model subPopulations first) individuals at: nodeID) isAlive equals: false.
 	self assert: (model subPopulations first) diedIndList first equals: nodeID. 
-	self assert: ((model subPopulations second) indList at: nodeID) isAlive equals: true.
+	self assert: ((model subPopulations second) individuals at: nodeID) isAlive equals: true.
 	self assert: (model subPopulations first) graph nodes size equals: 100.
 	self assert: (model subPopulations second) graph nodes size equals: 101.
 	

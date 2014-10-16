@@ -17,6 +17,6 @@ testGenerateEventsOfMultiHostsModel
 	
 	eventGenerator := KEEventGenerator new.
 	eventGenerator generateEvents: model.
-	self assert: ((model population at: #(0 1)) events size) equals: 4.
-	self assert: ((model population at: #(0 2)) events size) equals: 4.
-	self assert: ((model population at: #(0 3)) events size) equals: 4.
+	self assert: ((model population at: 1) events size) equals: 4.
+	self assert: ((model population at: 2) events size) equals: 4.
+	self assert: ((model population at: 3) events size) equals: 4.

@@ -13,9 +13,9 @@ testDeathEventOnSpatialNetwork
 	nodeID := self getANodeHasContacts: population graph.
 	node := (model population graph nodes at: (model population graph nodes at: nodeID) adjacentNodes first).
 	countContactOfNode := node at: #S.
-	(model population indList at: nodeID) nextStatus: #empty.
-	(model population indList at: nodeID) updateStatus: model.
-	self assert: (model population indList at: nodeID) isAlive equals: false.
+	(model population individuals at: nodeID) nextStatus: #empty.
+	(model population individuals at: nodeID) updateStatus: model.
+	self assert: (model population individuals at: nodeID) isAlive equals: false.
 	self assert: (model population diedIndList first) equals: nodeID.
 	self assert: (model population graph nodes size) equals: 91.
 	self assert: (node at: #S) equals: (countContactOfNode - 1)

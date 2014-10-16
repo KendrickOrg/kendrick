@@ -14,4 +14,4 @@ testCreateALatticeNetworkOfSIRMetaPopulation
 	model population: population.
 	
 	self assert: (model population graph nodes size) equals: 3.
-	self assert: (model population at: #(0 1)) graph nodes size equals: 100 
+	self assert: (model population at: 1) graph nodes size equals: 100 

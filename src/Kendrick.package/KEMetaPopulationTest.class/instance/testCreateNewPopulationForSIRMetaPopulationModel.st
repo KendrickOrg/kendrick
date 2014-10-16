@@ -11,6 +11,6 @@ testCreateNewPopulationForSIRMetaPopulationModel
 	population addParameter: #mu value: { 365/30 . 1/20 . 1/20 }.
 	population addParameter: #N value: { 10000 . 1000 . 2000 }.
  
-	self assert: (population at: #(0 1)) isPopulation equals: true.
-	self assert: ((population at: #(0 1)) atParameter: #mu) value equals: 365/30.
-	self assert: ((population at: #(0 2)) atParameter: #N) value equals: 1000. 
+	self assert: (population at: 1) isPopulation equals: true.
+	self assert: ((population at: 1) atParameter: #mu) value equals: 365/30.
+	self assert: ((population at: 2) atParameter: #N) value equals: 1000. 
