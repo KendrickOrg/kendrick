@@ -10,7 +10,6 @@ runIBMSimulatorOnSIRModelWithNetwork
 	simulator := KESimulatorBuilder new.
 	simulator addAdapter: (KENetworkAdapter new).
 	simulator run: #IBMDiscreteTime tMin: 0.0 tMax: 200 step: 0.1 model: model.
-	simulator plot: #I.
-	"(model simulator data at: #I) save: 'I_2.dat'."
+	simulator plot: #I
 	
 	
