@@ -1,9 +1,7 @@
 as yet unclassified
 doBirthEvent: population
 	|e|
-	(self birthEvents at: (population name)) size > 0 ifTrue: [ 
-		e := (self birthEvents at: (population name)) first 
-		].
+	e := self birthEvents at: (population name) ifAbsent: [ nil ].
 	e ifNotNil: [
 		|r p rand| 
 		r := e evaluateWithModel: model.

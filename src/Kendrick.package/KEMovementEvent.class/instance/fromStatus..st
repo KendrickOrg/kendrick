@@ -1,3 +1,3 @@
 as yet unclassified
-fromStatus: aPopulationID
-	fromStatus = #empty ifTrue: [ fromStatus := aPopulationID ]
+fromStatus: aPopulation
+	fromStatus = #empty ifTrue: [ fromStatus := aPopulation ]

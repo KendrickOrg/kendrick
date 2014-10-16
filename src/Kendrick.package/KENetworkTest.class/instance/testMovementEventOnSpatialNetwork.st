@@ -1,6 +1,6 @@
 tests
 testMovementEventOnSpatialNetwork
-	|model population graph node1 count1 |
+	|model population graph pop1 nodeID node count status|
 	model := KEModel new.
 	population := KEMetaPopulation new.
 	population numberOfSubPopulations: 3.
@@ -13,17 +13,20 @@ testMovementEventOnSpatialNetwork
 	graph edges: #((1 2) (1 3)) weight: #beta values: 0.02.
 	model population: population.
 	model currentSubPopulation: model subPopulations first.
-	node1 := ((model subPopulations first) graph nodes at: ((model subPopulations first) graph nodes at: 80) adjacentNodes first). 
-	count1 := node1 at: #S.
-	((model subPopulations first) individuals at: 80) nextStatus: (model subPopulations second).
-	(model subPopulations first individuals at: 80) updateStatus: model.
+	pop1 := model subPopulations first.
+	nodeID := self getANodeHasContacts: (pop1 graph).
+	node := pop1 graph nodes at: ((pop1 graph nodes at: nodeID) adjacentNodes first).
+	status := (pop1 indList at: nodeID) currentStatus.
+	count := node at: status.
+	(pop1 indList at: nodeID) nextStatus: (model subPopulations second).
+	(pop1 indList at: nodeID) updateStatus: model.
 	
-	self assert: ((model subPopulations second) at: #S) currentNbIndividuals equals: 100.
-	self assert: ((model subPopulations first) at: #S) currentNbIndividuals equals: 98.
-	self assert: ((model subPopulations first) individuals at: 80) isAlive equals: false.
-	self assert: (model subPopulations first) diedIndList first equals: 80. 
-	self assert: ((model subPopulations second) individuals at: 80) isAlive equals: true.
+	self assert: ((model subPopulations second) at: status) currentNbIndividuals equals: 100.
+	self assert: ((model subPopulations first) at: status) currentNbIndividuals equals: 98.
+	self assert: ((model subPopulations first) indList at: nodeID) isAlive equals: false.
+	self assert: (model subPopulations first) diedIndList first equals: nodeID. 
+	self assert: ((model subPopulations second) indList at: nodeID) isAlive equals: true.
 	self assert: (model subPopulations first) graph nodes size equals: 100.
 	self assert: (model subPopulations second) graph nodes size equals: 101.
 	
-	self assert: (node1 at: #S) equals: (count1 - 1).
+	self assert: (node at: status) equals: (count - 1).

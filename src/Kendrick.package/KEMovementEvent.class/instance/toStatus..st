@@ -1,3 +1,3 @@
 as yet unclassified
-toStatus: aPopulationID
-	toStatus = #empty ifTrue: [ toStatus := aPopulationID ]
+toStatus: aPopulation
+	toStatus = #empty ifTrue: [ toStatus := aPopulation ]
