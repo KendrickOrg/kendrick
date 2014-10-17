@@ -4,5 +4,5 @@ plot: anObject legends: aCollection
 	|diagBuilder|
 	diagBuilder := KEDiagramBuilder new.
 	diagBuilder legendNames: aCollection.
-	^ diagBuilder plot: anObject data: (self data) do: nil
+	^ diagBuilder plot: anObject data: self data do: nil
 	
