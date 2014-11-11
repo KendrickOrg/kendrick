@@ -9,7 +9,7 @@ All the development happens on SmalltalkHub at the moment: http://bit.ly/XrpsL2
 
 [![Spatial modeling with Kendrick](https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpa1/t31.0-8/10603924_704650679621532_369168494419506567_o.png)](https://www.facebook.com/ObjectProfile/photos/a.341189379300999.82969.340543479365589/704650679621532/?type=1&theater)
 
-Kendrick is based extensively on several tools of the meta-modeling platform [MOOSE](http://www.moosetechnology.org/) including [PetitParser](http://www.moosetechnology.org/tools/petitparser) and Graph-ET.
+Kendrick is based extensively on several tools of the meta-modeling platform [MOOSE](http://www.moosetechnology.org/) including [PetitParser](http://www.moosetechnology.org/tools/petitparser) and Roassal visualization engine.
 
 Github is only used to to store the [issues](https://github.com/UMMISCO/Kendrick/issues) list.
 
