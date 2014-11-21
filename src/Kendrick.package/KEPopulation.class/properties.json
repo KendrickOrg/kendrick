@@ -12,7 +12,8 @@
 		"diedIndList",
 		"rates",
 		"events",
-		"individuals"
+		"individuals",
+		"attributes"
 	],
 	"name" : "KEPopulation",
 	"type" : "normal"

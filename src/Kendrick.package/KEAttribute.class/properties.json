@@ -6,9 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"symbol",
-		"effect",
-		"clinicStatus"
+		"attribute",
+		"domain"
 	],
 	"name" : "KEAttribute",
 	"type" : "normal"

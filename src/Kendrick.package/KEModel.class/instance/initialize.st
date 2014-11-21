@@ -5,7 +5,8 @@ initialize
 	temporalParameters := Dictionary new.
 	equations := OrderedCollection new.
 	population := KEPopulation new.
-	compartmentSymbols := Dictionary new
-	
-	
+	compartmentSymbols := Dictionary new.
+	transitions := OrderedCollection new.
+	"Delete after the new version is completed"
+	test := true.	
 

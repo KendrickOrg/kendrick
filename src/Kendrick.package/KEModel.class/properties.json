@@ -11,7 +11,10 @@
 		"equations",
 		"population",
 		"compartmentSymbols",
-		"subPopulations"
+		"subPopulations",
+		"compartments",
+		"transitions",
+		"test"
 	],
 	"name" : "KEModel",
 	"type" : "normal"

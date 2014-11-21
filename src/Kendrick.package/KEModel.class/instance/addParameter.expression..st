@@ -1,4 +1,11 @@
 as yet unclassified
-addParameter: aSymbol expression: anExpression
-	parameters at: aSymbol put: ((KEParameter new) symbol: aSymbol; expression: anExpression) 
+addParameter: keyInput expression: aBlock
+	|reader key|
+	test ifTrue: [ ^ parameters at: keyInput put: ((KEParameter new) symbol: keyInput; expression: aBlock) ].
+	keyInput isSymbol ifTrue: [ 
+		key := keyInput. 
+		^ parameters at: key put: aBlock
+		].
+	reader := (STONReader on: keyInput readStream) allowComplexMapKeys: true.
+	^ parameters at: (reader next) put: aBlock
 	

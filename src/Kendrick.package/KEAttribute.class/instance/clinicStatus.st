@@ -1,3 +1,0 @@
-accessing
-clinicStatus
-	^ clinicStatus
