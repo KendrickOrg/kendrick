@@ -8,5 +8,5 @@ initialize
 	compartmentSymbols := Dictionary new.
 	transitions := OrderedCollection new.
 	"Delete after the new version is completed"
-	test := true.	
+	oldVersion := true.	
 

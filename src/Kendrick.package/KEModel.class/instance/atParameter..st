@@ -1,7 +1,7 @@
 as yet unclassified
 atParameter: anObject
 	|key param|
-	test ifTrue: [ 
+	oldVersion ifTrue: [ 
 		|x pop|
 	pop := self currentSubPopulation.
 	pop ifNotNil: [

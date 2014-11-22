@@ -2,7 +2,7 @@ tests
 testAtParameter
 	|model |
 	model := KEModel new.
-	model test: false.
+	model oldVersion: false.
 	model addParameter: '{
 		{#specie: #reservoir1}:{
 			#beta: {

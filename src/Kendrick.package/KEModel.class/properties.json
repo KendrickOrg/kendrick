@@ -14,7 +14,7 @@
 		"subPopulations",
 		"compartments",
 		"transitions",
-		"test"
+		"oldVersion"
 	],
 	"name" : "KEModel",
 	"type" : "normal"

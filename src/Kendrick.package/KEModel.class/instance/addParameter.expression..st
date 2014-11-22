@@ -1,7 +1,7 @@
 as yet unclassified
 addParameter: keyInput expression: aBlock
 	|reader key|
-	test ifTrue: [ ^ parameters at: keyInput put: ((KEParameter new) symbol: keyInput; expression: aBlock) ].
+	oldVersion ifTrue: [ ^ parameters at: keyInput put: ((KEParameter new) symbol: keyInput; expression: aBlock) ].
 	keyInput isSymbol ifTrue: [ 
 		key := keyInput. 
 		^ parameters at: key put: aBlock
