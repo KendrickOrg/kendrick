@@ -1,13 +1,13 @@
 {
-	"commentStamp" : "BuiThiMaiAnh 9/23/2014 13:56",
+	"commentStamp" : "BUIThiMaiAnh 11/22/2014 15:41",
 	"super" : "KEEntity",
 	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"arguments"
+		"data"
 	],
-	"name" : "KERuntimeAdapter",
+	"name" : "KEOutputData",
 	"type" : "normal"
 }

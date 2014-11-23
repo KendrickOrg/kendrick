@@ -1,11 +1,11 @@
 as yet unclassified
 testEvaluateProbability
 	|tr model rs|
+	model := KEModel new.
 	tr := KETransition
 			from: '{#status: #S}'
 			to: '{#status: #I}'
-			probability: [ :f :t :m| (m atParameter: #beta) * f * t ].
-	model := KEModel new.
+			probability: [ :fr :to :t| (model atParameter: #beta) * fr * to ].
 	model oldVersion: false.
 	model buildFromCompartments: '{
 		{ #status: #S }: 10000,
@@ -16,5 +16,5 @@ testEvaluateProbability
 	rs := tr probability 
 			value: (model atCompartment: tr from)
 			value: (model atCompartment: tr to)
-			value: model.
+			value: 0.
 	self assert: rs equals: 52

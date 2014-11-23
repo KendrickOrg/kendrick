@@ -1,0 +1,3 @@
+accessing
+peakOfEpidemic
+	^ data max

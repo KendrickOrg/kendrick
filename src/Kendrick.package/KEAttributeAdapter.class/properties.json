@@ -1,6 +1,6 @@
 {
-	"commentStamp" : "",
-	"super" : "KERuntimeAdapter",
+	"commentStamp" : "<historical>",
+	"super" : "KEConcernAdapter",
 	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],

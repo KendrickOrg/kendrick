@@ -12,7 +12,6 @@ executeOn: model times: times
 	[  
 		|old new|
 		old := model compartments at: to.
-		new := old - times.
-		new < 0 ifTrue: [ new := 0 ].
+		new := old + times.
 		model compartments at: to put: new
 	]	

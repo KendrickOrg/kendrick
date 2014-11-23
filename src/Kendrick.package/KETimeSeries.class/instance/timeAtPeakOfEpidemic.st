@@ -1,0 +1,3 @@
+accessing
+timeAtPeakOfEpidemic
+	^ self indexMax
