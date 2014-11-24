@@ -8,7 +8,6 @@ doGillespieIteration: t
 		rates add: (tr probability 
 							value: (model atCompartment: tr from)
 							value: (model atCompartment: tr to)
-							value: model
 							value: t)
 		 ].
 	chosen := self random: (rand1 next) select: rates.

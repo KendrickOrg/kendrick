@@ -5,7 +5,6 @@ doTauLeapIteration: t
 		rate := (tr probability 
 							value: (model atCompartment: tr from)
 							value: (model atCompartment: tr to)
-							value: model
 							value: t).
 		numPoisson := (PoissonGenerator lambda: (rate * step)) next.
 		tr executeOn: model times: numPoisson   
