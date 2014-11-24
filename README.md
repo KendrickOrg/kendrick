@@ -22,7 +22,7 @@ Gofer new
     url: 'http://smalltalkhub.com/mc/UMMISCO/Kendrick/main';
     package: 'ConfigurationOfKendrick';
     load.
-((Smalltalk at: #ConfigurationOfKendrick) project version: '0.14') load.
+((Smalltalk at: #ConfigurationOfKendrick) project version: '0.14') load
 ````
 
 ## How to install Kendrick development version
@@ -34,6 +34,6 @@ Gofer new
     url: 'http://smalltalkhub.com/mc/UMMISCO/Kendrick/main';
     package: 'ConfigurationOfKendrick';
     load.
-(Smalltalk at: #ConfigurationOfKendrick) loadDevelopment.
+(Smalltalk at: #ConfigurationOfKendrick) loadDevelopment
 ````
 
