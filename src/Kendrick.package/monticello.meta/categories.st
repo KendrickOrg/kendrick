@@ -3,7 +3,6 @@ SystemOrganization addCategory: 'Kendrick-Code-Generators'!
 SystemOrganization addCategory: 'Kendrick-Examples'!
 SystemOrganization addCategory: 'Kendrick-Glamour'!
 SystemOrganization addCategory: 'Kendrick-IBM-Core'!
-SystemOrganization addCategory: 'Kendrick-Math-ODE-Solvers'!
 SystemOrganization addCategory: 'Kendrick-ODE-Parser'!
 SystemOrganization addCategory: 'Kendrick-Semantic-Model-Core'!
 SystemOrganization addCategory: 'Kendrick-Spatial-Core'!
