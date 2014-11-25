@@ -6,5 +6,5 @@ menuCommandOn: aBuilder
 			order: 0.1; 
 			parent: #Kendrick;
 			label: 'Kendrick Browser';
-			icon: RTIcon smallRoassal;
+			icon: KEIcon smallKendrick;
 			action: [ self new open ]	
