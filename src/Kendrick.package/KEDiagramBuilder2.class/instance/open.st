@@ -31,6 +31,8 @@ open
 			 ].
 		lb build
 		 ].
+	b axisX.
+	b axisY.
 	b build.
 	b view @ RTZoomableView.
 	b open
