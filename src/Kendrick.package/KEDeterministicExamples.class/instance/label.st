@@ -1,0 +1,3 @@
+examples
+label
+	^ 'Deterministic examples'
