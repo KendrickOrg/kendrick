@@ -15,4 +15,4 @@ testAtParameter
 		}'.
 	model addParameter: '{ #gamma: 52 }'.
 	self assert: (model atParameter: #gamma) equals: 52.
-	self assert: (model atParameter: '{#specie: #reservoir1}: #beta') isDictionary equals: true
+	self assert: (model atParameter: '{{#specie: #reservoir1}: #beta}') isDictionary equals: true

@@ -18,8 +18,8 @@ open
 		ds connectColor: (normalize rtValue: (sttCol at: i)).
 		b add: ds
 		 ].
-	xLabel ifNil: [ b axisXTitled: 'Time' ] ifNotNil: [ b axisXTitled: xLabel ].
-	yLabel ifNil: [ b axisYTitled: 'Number of individuals' ] ifNotNil: [ b axisYTitled: yLabel ].
+	"xLabel ifNil: [ b axisXTitled: 'Time' ] ifNotNil: [ b axisXTitled: xLabel ].
+	yLabel ifNil: [ b axisYTitled: 'Number of individuals' ] ifNotNil: [ b axisYTitled: yLabel ]."
 	self legends ifNotNil: [ 
 		|lb|
 		lb := RTLegendBuilder new.
