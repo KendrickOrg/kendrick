@@ -22,4 +22,4 @@ b global
 	colorCycles.
 b addAll: graph nodes.
 b open.
-b view canvas
+b view canvas a TRCanvas
