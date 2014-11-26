@@ -2,16 +2,17 @@ as yet unclassified
 at: aClassName
 	|key|
 	key := aClassName.
-	key = #all ifTrue: [ ^ data associations ].
 	aClassName isString ifTrue: [ key := STON fromString: aClassName ].
-	key isArray ifTrue: [ 
-		|rs|
-		rs := OrderedCollection new.
-		key do: [ :k| |tmp|
-			tmp := self dataAt: k.
-			tmp isCollection ifTrue: [ rs addAll: tmp ] ifFalse: [ rs add: tmp ]
+	^ data at: key ifAbsent: [ 
+		|c|
+		c := KEDictionary new.
+		data keysAndValuesDo: [ :k :v|
+			(k associations includesAll: (key associations)) ifTrue: [ 
+				|temp|
+				temp := k copy.
+				key keysDo: [ :each| temp removeKey: each ].
+				c at: temp put: v
+				 ]
 			 ].
-		^ rs asArray
-		 ].
-	^ self dataAt: key
-	
+		^ c
+		 ]
