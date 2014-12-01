@@ -1,6 +1,6 @@
 as yet unclassified
 testGenerateEvents1
-	|model population eventGenerator|
+	|model population eventGenerator events|
 	model := KEModel new.
 	population := KEPopulation new.
 	model population: population.
@@ -11,5 +11,5 @@ testGenerateEvents1
 	
 	
 	eventGenerator := KEEventGenerator new.
-	eventGenerator generateEvents: model.
-	self assert: (model population events size) equals: 2
+	events := eventGenerator generateEvents: model.
+	self assert: (events size) equals: 2

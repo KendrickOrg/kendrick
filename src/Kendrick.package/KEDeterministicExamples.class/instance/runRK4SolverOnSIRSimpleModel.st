@@ -1,8 +1,9 @@
 examples
 runRK4SolverOnSIRSimpleModel
 	"self new runRK4SolverOnSIRSimpleModel"
-	|model|
+	|model  simulator output dB |
 	model := KEModel new.
+	model oldVersion: false.
 	model buildFromCompartments: '{
 		{ #status: #S }: 99999,
 		{ #status: #I }: 1,
@@ -12,12 +13,16 @@ runRK4SolverOnSIRSimpleModel
 	model addTransition: (KETransition
 		from: '{#status: #S}'
 		to: '{#status: #I}'
-		probability: [ :fr :to :t| (model atParameter: #beta) * fr * to ]
+		probability: [ :m| (m atParameter: #beta) * (m atCompartment: '{#status: #I}') ]
 	).
 	model addTransition: (KETransition
 		from: '{#status: #I}'
 		to: '{#status: #R}'
-		probability: [ :fr :to :t| (model atParameter: #gamma) * fr ]
+		probability: [ :m| (m atParameter: #gamma) ]
 	).
-
-	
+	simulator := KESimulator new: #RungeKutta from: 0.0 to: 1.0 step: 0.001.
+	simulator executeOn: model.
+	output := simulator data.
+	dB := KEDiagramBuilder2 new.
+	dB data: (output dataAt: '{#status: #I}').
+	dB open

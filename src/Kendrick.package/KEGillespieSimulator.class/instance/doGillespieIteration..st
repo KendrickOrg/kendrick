@@ -4,12 +4,12 @@ doGillespieIteration: t
 	rand1 := Random new.
 	rand2 := Random new.
 	rates := OrderedCollection new.
-	model transitions do: [ :tr|
-		rates add: (tr probability 
-							value: (model atCompartment: tr from)
-							value: (model atCompartment: tr to)
-							value: t)
-		 ].
+	model addParameter: #t value: t.
+	model transitions do: [ :tr| 
+		|prob|
+		prob := (tr probability value: model).
+		prob isDictionary ifTrue: [ prob := prob values sum ].
+		rates add: (prob * (model atCompartment: tr from)) ].
 	chosen := self random: (rand1 next) select: rates.
 	(model transitions at: chosen) executeOn: model times: 1.
 	rateTotal := rates sum.

@@ -7,11 +7,8 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"parameters",
-		"temporalParameters",
 		"equations",
 		"population",
-		"compartmentSymbols",
-		"subPopulations",
 		"compartments",
 		"transitions",
 		"oldVersion"

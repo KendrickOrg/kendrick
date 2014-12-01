@@ -1,6 +1,6 @@
 tests
 testGenerateEventsOfMultiDiseasesModel
-	|model eventGenerator|
+	|model eventGenerator events|
 	model := KEModel new.
 	model population: (KEPopulation new).
 	model addEquation: (PPODEParser parse: 'SS:t=mu*N-beta1*SS*(IS+II+IR)-beta2*SS*(SI+II+RI)-mu*SS').
@@ -14,6 +14,6 @@ testGenerateEventsOfMultiDiseasesModel
 	model addEquation: (PPODEParser parse: 'RR:t=sigma1*IR+sigma2*RI-mu*RR').
 	
 	eventGenerator := KEEventGenerator new.
-	eventGenerator generateEvents: model.
+	events := eventGenerator generateEvents: model.
 	
-	self assert: (model population events size) equals: 22.
+	self assert: (events size) equals: 22.

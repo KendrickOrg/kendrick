@@ -1,24 +1,7 @@
 as yet unclassified
 atParameter: anObject
 	|key param|
-	oldVersion ifTrue: [ 
-		|x pop|
-	pop := self currentSubPopulation.
-	pop ifNotNil: [
-		x := pop atParameter: anObject
-		].
-	x ifNil: [ 
-		x := parameters at: anObject ifAbsent: [^ nil].
-		x ifNil: [ ^ nil ].
-		x expression 
-		ifNotNil: [ 
-			x evaluateWithModel: self
-		 	]
-		 ].
-	^ x value
-		 ].
-	"----------------------------------------------------------------------------"
-	anObject isSymbol
+	(anObject isSymbol | anObject isDictionary)
 	ifFalse: [ 
 		|reader|
 		(reader := STONReader on: anObject readStream) allowComplexMapKeys: true.
@@ -26,9 +9,13 @@ atParameter: anObject
 		 ]
 	ifTrue: [ key := anObject ].
 	^ parameters at: key ifAbsent: [ 
-		param := parameters at: (key keys first) ifAbsent:
-			[ ^ self error: 'No parameter at: ', anObject asString ].
-		param ifNotNil: [ ^ param at: (key values first) ]		
-		 ]
+		key isDictionary ifTrue: [ 
+			param := parameters at: (key keys first) ifAbsent: [ nil ].
+			param ifNotNil: [ |tmp| 
+				tmp := param at: (key values first) ifAbsent: [ ^ nil ].
+				tmp isDictionary ifTrue: [ ^ KEDictionary from: tmp ].
+				^ tmp ]
+		 ].
+		^ nil ]
 	
 	

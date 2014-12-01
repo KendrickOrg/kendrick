@@ -1,6 +1,7 @@
 as yet unclassified
 atCompartment: anObject
 	|key|
+	anObject = #empty ifTrue: [ ^ 1 ].
 	anObject isString ifTrue: [ key := STON fromString: anObject ].
 	anObject isDictionary ifTrue: [ key := anObject ].
 	key ifNotNil: [ 
