@@ -36,87 +36,30 @@ runRK4SolverOnSIRMultiHostModel
 		}
 	}'.
 	model addParameter: '{#gamma: 52}'.
-		model addTransition: (KETransition
-			from: '{#specie: #mosquito, #status: #S}'
-			to: '{#specie: #mosquito, #status: #I}'
-			probability: [:m| 
-				(m atParameter: '{{#specie:#mosquito}:#beta}')*(m atCompartment: '{#status: #I}')]).
-		model addTransition: (KETransition
-			from: '{#specie: #mosquito, #status: #I}'
-			to: '{#specie: #mosquito, #status: #R}'
-			probability: [:m| (m atParameter: #gamma)]).
-		model addTransition: (KETransition
-			from: '{#specie: #mosquito, #status: #S}'
-			to: #empty
-			probability: [:m| (m atParameter: '{{#specie:#mosquito}:#mu}')]).
-		model addTransition: (KETransition
-			from: '{#specie: #mosquito, #status: #I}'
-			to: #empty
-			probability: [:m| (m atParameter: '{{#specie:#mosquito}:#mu}')]).
-		model addTransition: (KETransition
-			from: '{#specie: #mosquito, #status: #R}'
-			to: #empty
-			probability: [:m| (m atParameter: '{{#specie:#mosquito}:#mu}')]).
-		model addTransition: (KETransition
-			from: #empty
-			to: '{#specie: #mosquito, #status: #S}'
-			probability: [:m| 
-				(m atParameter: '{{#specie:#mosquito}:#mu}')*(m atParameter: '{{#specie:#mosquito}:#N}')]).
-	
 	model addTransition: (KETransition
-			from: '{#specie: #reservoir1, #status: #S}'
-			to: '{#specie: #reservoir1, #status: #I}'
-			probability: [:m| 
-				(m atParameter: '{{#specie:#reservoir1}:#beta}')*(m atCompartment: '{#status: #I}')]).
-		model addTransition: (KETransition
-			from: '{#specie: #reservoir1, #status: #I}'
-			to: '{#specie: #reservoir1, #status: #R}'
-			probability: [:m| (m atParameter: #gamma)]).
-		model addTransition: (KETransition
-			from: '{#specie: #reservoir1, #status: #S}'
-			to: #empty
-			probability: [:m| (m atParameter: '{{#specie:#reservoir1}:#mu}')]).
-		model addTransition: (KETransition
-			from: '{#specie: #reservoir1, #status: #I}'
-			to: #empty
-			probability: [:m| (m atParameter: '{{#specie:#reservoir1}:#mu}')]).
-		model addTransition: (KETransition
-			from: '{#specie: #reservoir1, #status: #R}'
-			to: #empty
-			probability: [:m| (m atParameter: '{{#specie:#reservoir1}:#mu}')]).
-		model addTransition: (KETransition
-			from: #empty
-			to: '{#specie: #reservoir1, #status: #S}'
-			probability: [:m| 
-				(m atParameter: '{{#specie:#reservoir1}:#mu}')*(m atParameter: '{{#specie:#reservoir1}:#N}')]).
-			
+		from: '{#status: #S}'
+		to: '{#status: #I}'
+		rate: 'beta*I' parseAsAnExpression).
 	model addTransition: (KETransition
-			from: '{#specie: #reservoir2, #status: #S}'
-			to: '{#specie: #reservoir2, #status: #I}'
-			probability: [:m| 
-				(m atParameter: '{{#specie:#reservoir2}:#beta}')*(m atCompartment: '{#status: #I}')]).
-		model addTransition: (KETransition
-			from: '{#specie: #reservoir2, #status: #I}'
-			to: '{#specie: #reservoir2, #status: #R}'
-			probability: [:m| (m atParameter: #gamma)]).
-		model addTransition: (KETransition
-			from: '{#specie: #reservoir2, #status: #S}'
-			to: #empty
-			probability: [:m| (m atParameter: '{{#specie:#reservoir2}:#mu}')]).
-		model addTransition: (KETransition
-			from: '{#specie: #reservoir2, #status: #I}'
-			to: #empty
-			probability: [:m| (m atParameter: '{{#specie:#reservoir2}:#mu}')]).
-		model addTransition: (KETransition
-			from: '{#specie: #reservoir2, #status: #R}'
-			to: #empty
-			probability: [:m| (m atParameter: '{{#specie:#reservoir2}:#mu}')]).
-		model addTransition: (KETransition
-			from: #empty
-			to: '{#specie: #reservoir2, #status: #S}'
-			probability: [:m| 
-				(m atParameter: '{{#specie:#reservoir2}:#mu}')*(m atParameter: '{{#specie:#reservoir2}:#N}')]).
-			
+		from: '{#status: #I}'
+		to: '{#status: #R}'
+		rate: 'gamma' parseAsAnExpression).
+	model addTransition: (KETransition
+		from: '{#status: #S}'
+		to: #empty
+		rate: 'mu' parseAsAnExpression).
+	model addTransition: (KETransition
+		from: '{#status: #I}'
+		to: #empty
+		rate: 'mu' parseAsAnExpression).
+	model addTransition: (KETransition
+		from: '{#status: #R}'
+		to: #empty
+		rate: 'mu' parseAsAnExpression).
+	model addTransition: (KETransition
+		from: #empty
+		to: '{#status: #S}'
+		rate: 'mu*N' parseAsAnExpression).
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 40.0 step: 0.01.
 	simulator executeOn: model.
 	output := simulator data.

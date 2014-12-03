@@ -27,6 +27,6 @@ equationsToTransitions
 					[ to := ([|tmp| tmp := k copy. tmp at: #status put: each toStatus. tmp] value) ].
 				transitions add: (KETransition from: from to: to rate: each rate subPopulation: k)
 				 ]
-			 ].
+			 ]
 		 ]
 
