@@ -1,6 +1,6 @@
 accessing
 compartments: aCollection
-	compartments ifNil: [ compartments := Dictionary new ].
+	self compartments ifNil: [ compartments := Dictionary new ].
 	aCollection keysAndValuesDo: [ :k :v|
 		compartments at: k put: v
 		 ].

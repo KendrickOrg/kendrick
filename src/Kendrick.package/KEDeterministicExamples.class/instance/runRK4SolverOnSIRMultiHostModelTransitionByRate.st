@@ -1,6 +1,6 @@
 examples
-runRK4SolverOnSIRMultiHostModel
-	"self new runRK4SolverOnSIRMultiHostModel"
+runRK4SolverOnSIRMultiHostModelTransitionByRate
+	"self new runRK4SolverOnSIRMultiHostModelTransitionByRate"
 	|model simulator output db|
 	model := KEModel new.
 	model population attributes: '{
@@ -39,27 +39,27 @@ runRK4SolverOnSIRMultiHostModel
 	model addTransition: (KETransition
 		from: '{#status: #S}'
 		to: '{#status: #I}'
-		probability: [:m|(m atParameter: #beta)*(m atCompartment: '{#status: #I}')]).
+		rate: 'beta*I' parseAsAnExpression).
 	model addTransition: (KETransition
 		from: '{#status: #I}'
 		to: '{#status: #R}'
-		probability: [:m| m atParameter: #gamma]).
+		rate: 'gamma' parseAsAnExpression).
 	model addTransition: (KETransition
 		from: '{#status: #S}'
 		to: #empty
-		probability: [:m| m atParameter: #mu]).
+		rate: 'mu' parseAsAnExpression).
 	model addTransition: (KETransition
 		from: '{#status: #I}'
 		to: #empty
-		probability: [:m| m atParameter: #mu]).
+		rate: 'mu' parseAsAnExpression).
 	model addTransition: (KETransition
 		from: '{#status: #R}'
 		to: #empty
-		probability: [:m| m atParameter: #mu]).
+		rate: 'mu' parseAsAnExpression).
 	model addTransition: (KETransition
 		from: #empty
 		to: '{#status: #S}'
-		probability: [:m| (m atParameter: #mu)*(m atParameter: #N)]).
+		rate: 'mu*N' parseAsAnExpression).
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 40.0 step: 0.01.
 	simulator executeOn: model.
 	output := simulator data.

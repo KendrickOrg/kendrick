@@ -18,6 +18,6 @@ addTransition: aTransition
 		names keys do: [ :k|
 			from ~=#empty ifTrue: [ from := ([|tmp| tmp:=k copy. tmp add: aTransition from associations first. tmp ] value) ].
 			to ~= #empty ifTrue: [ to := ([|tmp| tmp:=k copy. tmp add: aTransition to associations first. tmp] value) ].
-			transitions add: (KETransition from: from to: to rate: aTransition rate subPopulation: k)
+			transitions add: (KETransition from: from to: to probability: aTransition probability rate: aTransition rate subPopulation: k)
 			 ]
 		 ]

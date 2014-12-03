@@ -12,6 +12,7 @@ executeOn: aModel
 		model compartments keysDo: [ :k| |tmp|
 			tmp := ((equations at: k) collect: [ :e|
 				|prob|
+				model addParameter: #subPopulation value: (e at: 1) subPopulation.
 				prob := ((e at: 1) probability value: model).
 				prob isDictionary ifTrue: [ prob := prob values sum ].
 				(e at: 2)*prob*(model atCompartment: (e at: 1) from)]) sum.

@@ -1,3 +1,3 @@
 as yet unclassified
-name
-	^ name
+label
+	^ label

@@ -8,7 +8,7 @@
 	"instvars" : [
 		"adjacentNodes",
 		"weights",
-		"name"
+		"label"
 	],
 	"name" : "KENode",
 	"type" : "normal"

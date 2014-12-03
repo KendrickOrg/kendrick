@@ -8,7 +8,7 @@ atParameter: anObject
 		key := reader next
 		 ]
 	ifTrue: [ key := anObject ].
-	^ parameters at: key ifAbsent: [ 
+	^ parameters at: key ifAbsent: [ |subPop|
 		key isDictionary ifTrue: [ 
 			param := parameters at: (key keys first) ifAbsent: [ nil ].
 			param ifNotNil: [ |tmp| 
@@ -16,6 +16,8 @@ atParameter: anObject
 				tmp isDictionary ifTrue: [ ^ KEDictionary from: tmp ].
 				^ tmp ]
 		 ].
+		subPop := parameters at: #subPopulation ifAbsent: [ nil ].
+		subPop ifNotNil: [ ^ self atParameter: (Dictionary newFrom: {(subPop->key)}) ]. 
 		^ nil ]
 	
 	

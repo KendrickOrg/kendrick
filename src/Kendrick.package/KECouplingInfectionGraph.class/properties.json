@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "BUIThiMaiAnh 12/3/2014 17:59",
+	"super" : "KEGraph",
+	"category" : "Kendrick-Spatial-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "KECouplingInfectionGraph",
+	"type" : "normal"
+}

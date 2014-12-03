@@ -1,4 +1,4 @@
 initialization
 initialize
 	super initialize.
-	nodes := OrderedCollection new
+	nodes := Dictionary new

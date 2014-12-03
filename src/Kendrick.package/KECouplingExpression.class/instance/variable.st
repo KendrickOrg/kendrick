@@ -1,4 +1,0 @@
-acessing
-variable
-	^ variable 
-	
