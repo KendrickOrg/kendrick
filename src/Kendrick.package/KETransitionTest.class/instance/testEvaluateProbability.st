@@ -6,7 +6,6 @@ testEvaluateProbability
 			from: '{#status: #S}'
 			to: '{#status: #I}'
 			probability: [ :fr :to :t| (model atParameter: #beta) * fr * to ].
-	model oldVersion: false.
 	model buildFromCompartments: '{
 		{ #status: #S }: 10000,
 		{ #status: #I }: 1,

@@ -1,4 +1,0 @@
-accessing
-atParameter: parameter
-	^ nil
-	

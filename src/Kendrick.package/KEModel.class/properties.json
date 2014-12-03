@@ -10,8 +10,7 @@
 		"equations",
 		"population",
 		"compartments",
-		"transitions",
-		"oldVersion"
+		"transitions"
 	],
 	"name" : "KEModel",
 	"type" : "normal"

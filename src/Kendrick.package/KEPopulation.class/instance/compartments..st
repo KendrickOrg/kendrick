@@ -1,10 +1,9 @@
 accessing
 compartments: aCollection
-	compartmentNames addAll: aCollection.
-	aCollection do: [ :each|
-		|aCompartment|
-		aCompartment := KECompartment status: each initialNumberOfIndividuals: 0.
-		compartments add: aCompartment
-		 ]
+	compartments ifNil: [ compartments := Dictionary new ].
+	aCollection keysAndValuesDo: [ :k :v|
+		compartments at: k put: v
+		 ].
+	
  
 	

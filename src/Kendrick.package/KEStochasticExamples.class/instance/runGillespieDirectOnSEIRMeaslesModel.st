@@ -3,7 +3,6 @@ runGillespieDirectOnSEIRMeaslesModel
 	"self new runGillespieDirectOnSEIRMeaslesModel"
 	|model simulator output diag |
 	model := KEModel new.
-	model oldVersion: false.
 	model population attributes: '{#status: [#S, #E, #I, #R]}'.
 	model buildFromCompartments: '{
 		{#status: #S}: 99999,
@@ -43,7 +42,7 @@ runGillespieDirectOnSEIRMeaslesModel
 	simulator := KESimulator new: #Gillespie from: 0.0 to: 100 step: 0.01.
 	simulator executeOn: model.
 	output := simulator data.
-	diag := (KEDiagramBuilder2 new) data: (output dataAt: #all).
+	diag := (KEDiagramBuilder new) data: (output dataAt: #all).
 	diag open
 	
 	

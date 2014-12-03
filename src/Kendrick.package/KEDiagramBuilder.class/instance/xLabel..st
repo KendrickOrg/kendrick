@@ -1,3 +1,3 @@
-accessing
-xLabel: anObject
-	xLabel := anObject
+as yet unclassified
+xLabel: aString
+	xLabel := aString

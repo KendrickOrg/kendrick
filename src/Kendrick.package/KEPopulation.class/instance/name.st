@@ -1,3 +1,0 @@
-adding
-name
-	^ #0

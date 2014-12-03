@@ -3,7 +3,6 @@ runRK4SolverOnSEIRMeaslesModelWithVaccination
 	"self new runRK4SolverOnSEIRMeaslesModelWithVaccination"
 	|model simulator output diag |
 	model := KEModel new.
-	model oldVersion: false.
 	model population attributes: '{#status: [#S, #E, #I, #R]}'.
 	model buildFromCompartments: '{
 		{#status: #S}: 99999,
@@ -51,6 +50,6 @@ runRK4SolverOnSEIRMeaslesModelWithVaccination
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 100 step: 0.01.
 	simulator executeOn: model.
 	output := simulator data.
-	diag := (KEDiagramBuilder2 new) data: (output dataAt: '{#status: #I}') do: #log.
+	diag := (KEDiagramBuilder new) data: (output dataAt: '{#status: #I}') do: #log.
 	diag open
 	

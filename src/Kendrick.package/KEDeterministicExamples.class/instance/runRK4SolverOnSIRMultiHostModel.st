@@ -3,7 +3,6 @@ runRK4SolverOnSIRMultiHostModel
 	"self new runRK4SolverOnSIRMultiHostModel"
 	|model simulator output db|
 	model := KEModel new.
-	model oldVersion: false.
 	model population attributes: '{
 		#status: [ #S, #I, #R ], #specie: [ #mosquito, #reservoir1, #reservoir2 ]
 	}'.
@@ -121,6 +120,6 @@ runRK4SolverOnSIRMultiHostModel
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 40.0 step: 0.01.
 	simulator executeOn: model.
 	output := simulator data.
-	db := (KEDiagramBuilder2 new) data: (output dataAt: '{#status: #I}') do: #sqrt.
+	db := (KEDiagramBuilder new) data: (output dataAt: '{#status: #I}') do: #sqrt.
 	db open
 	

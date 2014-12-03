@@ -6,12 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"parent",
-		"populationID",
 		"graph",
-		"subPopulations",
-		"subPopulationNames",
-		"parameters"
+		"subPopulations"
 	],
 	"name" : "KEMetaPopulation",
 	"type" : "normal"

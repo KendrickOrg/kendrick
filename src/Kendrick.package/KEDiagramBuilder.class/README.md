@@ -1,15 +1,19 @@
-A KEDiagramBuilder is the visualisation class of the system.
+A KEDiagramBuilder is the visualisation class of the system..
 
 Instance Variables
-	colorList:		<OrderedCollection>
+	data:		<Collection>
+	legends:		<OrderedCollection>
 	xLabel:		<String>
 	yLabel:		<String>
 
-colorList
-	- the list of colors initialized for a builder
+data
+	- xxxxx
+
+legends
+	- xxxxx
 
 xLabel
-	- The title of the x axis
+	- xxxxx
 
 yLabel
-	- The title of the y axis
+	- xxxxx

@@ -3,7 +3,6 @@ runGillespieDirectOnSIRSimpleModel3
 	"self new runGillespieDirectOnSIRSimpleModel3"
 	|model  simulator output dB |
 	model := KEModel new.
-	model oldVersion: false.
 	model buildFromCompartments: '{
 		{ #status: #S }: 99,
 		{ #status: #I }: 1,
@@ -23,7 +22,7 @@ runGillespieDirectOnSIRSimpleModel3
 	simulator := KESimulator new: #Gillespie from: 0.0 to: 200 step: 0.001.
 	simulator executeOn: model.
 	output := simulator data.
-	dB := KEDiagramBuilder2 new.
+	dB := KEDiagramBuilder new.
 	dB data: (output dataAt: #all).
 	dB open
 	

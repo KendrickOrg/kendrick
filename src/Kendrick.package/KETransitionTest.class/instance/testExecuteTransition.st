@@ -6,7 +6,6 @@ testExecuteTransition
 			to: '{#status: #I}'
 			probability: [ :f :t :m| (m atParameter: #beta) * f * t ].
 	model := KEModel new.
-	model oldVersion: false.
 	model buildFromCompartments: '{
 		{ #status: #S }: 10000,
 		{ #status: #I }: 1,

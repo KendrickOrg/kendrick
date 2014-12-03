@@ -6,14 +6,11 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"name",
 		"compartments",
-		"compartmentNames",
 		"diedIndList",
-		"rates",
-		"events",
 		"individuals",
-		"attributes"
+		"attributes",
+		"relations"
 	],
 	"name" : "KEPopulation",
 	"type" : "normal"

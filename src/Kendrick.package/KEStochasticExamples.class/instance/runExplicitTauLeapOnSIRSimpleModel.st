@@ -3,7 +3,6 @@ runExplicitTauLeapOnSIRSimpleModel
 	"self new runExplicitTauLeapOnSIRSimpleModel"
 	|model simulator output dB |
 	model := KEModel new.
-	model oldVersion: false.
 	model population attributes: '{#status: [#S, #I, #R]}'.
 	model buildFromCompartments: '{
 		{#status: #S}: 4975, {#status: #I}: 25, {#status: #R}: 0
@@ -19,7 +18,7 @@ runExplicitTauLeapOnSIRSimpleModel
 	simulator := KESimulator new: #TauLeap from: 0 to: 730 step: 1.
 	simulator executeOn: model.
 	output := simulator data.
-	dB := KEDiagramBuilder2 new.
+	dB := KEDiagramBuilder new.
 	dB data: (output dataAt: #all).
 	dB open.
 	

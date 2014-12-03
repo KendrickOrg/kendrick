@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "BuiThiMaiAnh 7/30/2014 17:26",
+	"commentStamp" : "BUIThiMaiAnh 12/2/2014 23:32",
 	"super" : "KEEntity",
 	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
@@ -8,8 +8,8 @@
 	"instvars" : [
 		"xLabel",
 		"yLabel",
-		"colorList",
-		"legendNames"
+		"data",
+		"legends"
 	],
 	"name" : "KEDiagramBuilder",
 	"type" : "normal"
