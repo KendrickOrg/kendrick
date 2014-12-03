@@ -15,6 +15,7 @@ loopEdges: anAssoc weight: aSymbol values: weights
 	ifFalse: [ 
 		edgeCollection := arrOfAssoc collect: [ :e| Array with: (attribute->e key) with: (attribute->e key) ]
 		 ].
+	edges addAll: edgeCollection.
 	1 to: edgeCollection size do: [ :id|
 		self with: (edgeCollection at: id) weight: aSymbol value: (values at: id)
 	 ]
