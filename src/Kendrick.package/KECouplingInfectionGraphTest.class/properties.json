@@ -1,11 +1,11 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "<historical>",
 	"super" : "TestCase",
-	"category" : "Kendrick-Tests-Semantic-Model-Core",
+	"category" : "Kendrick-Tests-Spatial-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "KEPopulationTest",
+	"name" : "KECouplingInfectionGraphTest",
 	"type" : "normal"
 }

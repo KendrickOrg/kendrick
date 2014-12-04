@@ -1,6 +1,5 @@
 adding
 addIndividual: ind
-	"ind populationID: (self populationID)."
 	(self diedIndList size > 0) 
 	ifTrue: [ 
 		ind id: (self diedIndList removeFirst).
@@ -11,4 +10,4 @@ addIndividual: ind
 		ind id: (self individuals size + 1).
 		self individuals add: ind
 		].
-	(self at: (ind currentStatus)) addToCompartment: 1
+	

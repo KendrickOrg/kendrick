@@ -1,17 +1,18 @@
 accessing
 individuals
-	self isPopulation ifTrue: [ 
-		individuals ifNil: [ 
-			individuals := OrderedCollection new.
-			compartments do: [ :comp|
-				1 to: (comp nbOfIndividuals) do: [ :i| |ind|
-					ind := KEIndividual new.
-					ind currentStatus: (comp status).
-					ind id: (individuals size + 1).
-					individuals add: ind
-				]
-			]
-		]
-	].
+	individuals ifNil: [ 
+		|n|
+		n := 0.
+		self compartments keysAndValuesDo: [ :k :v|
+			1 to: v do: [ :i|
+				|ind|
+				ind := KEIndividual new.
+				n := n + 1.
+				k associationsDo: [ :a| ind attributes at: a key put: a value ].
+				ind id: n.
+				individuals add: ind
+				 ]
+			 ]
+		 ].
 	^ individuals
 	

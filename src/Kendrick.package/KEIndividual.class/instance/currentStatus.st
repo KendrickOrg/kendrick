@@ -1,3 +1,3 @@
 as yet unclassified
 currentStatus
-	^ attributes at: #currentStatus ifAbsent: [ nil ]
+	^ attributes at: #status ifAbsent: [ nil ]

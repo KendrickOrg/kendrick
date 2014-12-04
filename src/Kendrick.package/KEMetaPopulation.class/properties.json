@@ -6,7 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"graph"
+		"graphs"
 	],
 	"name" : "KEMetaPopulation",
 	"type" : "normal"

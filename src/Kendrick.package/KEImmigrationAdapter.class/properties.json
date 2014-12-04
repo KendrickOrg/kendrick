@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "KEMovementAdapter",
+	"name" : "KEImmigrationAdapter",
 	"type" : "normal"
 }

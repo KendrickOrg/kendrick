@@ -1,5 +1,5 @@
 accessing
 initialize
 	super initialize.
-	subPopulations := OrderedCollection new.
-	subPopulationNames := OrderedCollection new.
+	graphs := OrderedCollection new.
+	 

@@ -1,7 +1,7 @@
 tests
 testCreateCouplingGraphForMetaPopulationModel
 	|population graph|
-	population := KEPopulation new.
+	population := KEMetaPopulation new.
 	population attributes: '{#status: [#S, #I, #R], #region: [#A, #B, #C]}'.
 	graph := KEGraph on: population atAttribute: #region 
 				couplingInfectionCoefficient: #beta 

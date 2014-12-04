@@ -1,3 +1,0 @@
-accessing
-nbOfSubPopulations
-	^ (subPopulations size)
