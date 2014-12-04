@@ -14,4 +14,9 @@ addParameter: aString
 			 	]
 			]
 		].
-	parameters addAll: dic
+	dic keysAndValuesDo: [ :k :v| |tmp|
+		v isDictionary ifTrue: [ 
+			tmp := parameters at: k ifAbsentPut: (Dictionary new).
+			tmp addAll: v ]
+		ifFalse: [ parameters at: k put: v ]
+		]

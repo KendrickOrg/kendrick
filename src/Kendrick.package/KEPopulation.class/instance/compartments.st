@@ -1,6 +1,6 @@
 adding
 compartments
-	(compartments isNil and: [ attributes isNotNil ]) ifNil: [ 
+	(compartments isNil and: [ attributes isNotNil ]) ifTrue: [ 
 		|names expand keys|
 		names := OrderedCollection new.
 		self relations do: [ :each|
