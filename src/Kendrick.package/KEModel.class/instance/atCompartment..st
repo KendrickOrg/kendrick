@@ -16,6 +16,7 @@ atCompartment: anObject
 						c at: temp put: v
 					] 
 				].
+				c size = 0 ifTrue: [ ^ self error: 'Do not have the compartment named: ', key asString ].
 				^ c 
 		 ]
 	].
