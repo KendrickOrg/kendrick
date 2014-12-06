@@ -6,7 +6,9 @@ calProb: ind
 	rand := Random new.
 	chosen := ((rand next) * (events size)) ceiling.
 	(chosen > 0) ifTrue: [ 
+		model addParameter: #subPopulation value: (events at: chosen) key subPopulation.
 		rate := (events at: chosen) key probability value: model.
+		rate isDictionary ifTrue: [ rate := rate values sum ].
 		prob := 1 - (((step * rate) negated) exp).
 		(prob > (rand next)) ifTrue: [ |oldTimes|
 			ind nextStatus: ((events at: chosen) key to).

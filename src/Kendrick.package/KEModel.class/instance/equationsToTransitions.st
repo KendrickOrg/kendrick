@@ -28,5 +28,6 @@ equationsToTransitions
 				transitions add: (KETransition from: from to: to rate: each rate subPopulation: k)
 				 ]
 			 ]
-		 ]
+		 ].
+	equations := OrderedCollection new.
 
