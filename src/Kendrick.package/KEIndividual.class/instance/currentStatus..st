@@ -1,3 +1,3 @@
 as yet unclassified
-currentStatus: stt
-	^ attributes at: #status put: stt
+currentStatus: aDictionary
+	currentStatus := aDictionary

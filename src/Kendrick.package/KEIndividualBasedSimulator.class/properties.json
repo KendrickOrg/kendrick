@@ -6,7 +6,9 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"birthEvents"
+		"birthTransitions",
+		"transitions",
+		"transitionExecutions"
 	],
 	"name" : "KEIndividualBasedSimulator",
 	"type" : "normal"

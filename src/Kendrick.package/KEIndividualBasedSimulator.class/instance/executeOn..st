@@ -6,7 +6,8 @@ executeOn: aModel
 	countStep := 0.
 	self updateDataAt: tMin.
 	[ t < tMax ] whileTrue: [ 
-		self doTauLeapIteration: t.
+		self doIBMIteration: t.
+		self updateIndividuals.
 		t := t + step.
 		self updateDataAt: t.
 		countStep := countStep + 1.

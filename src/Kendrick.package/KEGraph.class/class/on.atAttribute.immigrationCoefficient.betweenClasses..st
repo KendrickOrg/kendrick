@@ -5,5 +5,7 @@ on: population atAttribute: attribute immigrationCoefficient: beta betweenClasse
 	graph nodes: ((population attributes at: attribute) collect: [:e| Dictionary newFrom: {(attribute->e)}]).
 	graph edges: (arrayOfAssoc->attribute) weight: beta 
 			values: (arrayOfAssoc collect: [:e| e value]).
+	population addGraph: graph.
+	graph population: population."For visualizing goal"
 	^ graph
 	

@@ -1,5 +1,5 @@
 as yet unclassified
-visualise: population
+visualise
 	"Show the graph with RTGraphBuilder of Roassal2"
 	|b|
 	b := RTGraphBuilder new.
@@ -7,8 +7,8 @@ visualise: population
 		shape: (RTEllipse new size: 20) + RTLabel;
 		color: (Color blue alpha: 0.4);
 		whenClicked: [ :n| 
-			(population at: (n name)) graph ifNotNil: [ 
-				(population at: (n name)) graph visualise: (population at: (n name)) ]
+			(population at: (n label)) graph ifNotNil: [ 
+				(population at: (n label)) graph visualise: (population at: (n label)) ]
 			 ].
 	b edges
 		connectTo: [ :c| c adjacentNodes collect: [:i| self nodes at: i] ];

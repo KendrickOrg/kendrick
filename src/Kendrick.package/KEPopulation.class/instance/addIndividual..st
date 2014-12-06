@@ -3,7 +3,6 @@ addIndividual: ind
 	(self diedIndList size > 0) 
 	ifTrue: [ 
 		ind id: (self diedIndList removeFirst).
-		ind position: (self individuals at: (ind id)) position.
 		self individuals at: (ind id) put: ind
 		]
 	ifFalse: [  
