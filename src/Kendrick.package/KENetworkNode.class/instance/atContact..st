@@ -1,3 +1,3 @@
 as yet unclassified
-at: status
+atContact: status
 	^ self contacts at: status ifAbsentPut: [ 0 ]

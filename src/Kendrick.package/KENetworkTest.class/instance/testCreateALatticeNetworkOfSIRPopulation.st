@@ -1,11 +1,12 @@
 tests
 testCreateALatticeNetworkOfSIRPopulation
-	|model population|
+	|model population network |
 	model := KEModel new.
 	population := KEMetaPopulation new.
-	population compartments: #(S I R).
-	population at: #S put: 1000; at: #I put: 0; at: #R put: 0.
-	KENetwork new: #lattice numberOfContacts: 4 onPopulation: population.
+	population attributes: '{#status:[#S, #I, #R]}'.
 	model population: population.
+	model buildFromCompartments: {#status->#(S I R)} cardinalities: #(99999 1 0).
+	network := KENetwork on: population atAttribute: #status.
+	network := network build: #lattice numberOfContacts: 4.
 	
-	self assert: (model population graph nodes size) equals: 1000.
+	self assert: network nodes size equals: 100000

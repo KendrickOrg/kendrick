@@ -1,4 +1,4 @@
 as yet unclassified
-addNode
+addNode: ind
 	self subclassResponsibility 
 	

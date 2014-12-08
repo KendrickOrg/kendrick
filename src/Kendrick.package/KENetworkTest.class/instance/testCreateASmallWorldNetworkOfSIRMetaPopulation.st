@@ -1,17 +1,12 @@
 tests
 testCreateASmallWorldNetworkOfSIRMetaPopulation
-	|model population graph|
+	|model population  network |
 	model := KEModel new.
 	population := KEMetaPopulation new.
-	population numberOfSubPopulations: 3.
-	population forEachSubPopulation: [ :each|
-		each compartments: #(S I R).
-		each at: #S put: 99; at: #I put: 1; at: #R put: 0.
-		KENetwork new: #smallworld numberOfContacts: 4 onPopulation: each.
-		 ].
-	graph := KEGraph on: population.
-	graph edges: #((1 2) (1 3)) weight: #beta values: 0.02.
+	population attributes: '{#status:[#S, #I, #R], #region: [#A, #B, #C, #D, #E, #F, #G, #H, #I, #J, #K, #L, #M, #N, #O, #P]}'.
 	model population: population.
+	model buildFromCompartments: {#region->#(A B C D E F G H I J K L M N O P). #status->#(S I R)} cardinalities: #(100 10 0 100 10 0 100 10 0 100 10 0 100 10 0 100 10 0 100 10 0 100 10 0 100 10 0 100 10 0 100 10 0 100 10 0 100 10 0 100 10 0 100 10 0 100 10 0).
+	network := KENetwork on: population atAttribute: #region.
+	network := network build: #smallworld numberOfContacts: 4.
 	
-	self assert: (model population graph nodes size) equals: 3.
-	self assert: (model population at: 1) graph nodes size equals: 100.
+	self assert: network nodes size equals: 16

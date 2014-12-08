@@ -1,5 +1,5 @@
 as yet unclassified
-at: status remove: aNumberOfContacts
+atContact: status remove: aNumberOfContacts
 	|old|
 	old := self contacts at: status ifAbsentPut: [ 0 ].
 	(old = 0) | ((old - aNumberOfContacts) < 0) ifTrue: [ 

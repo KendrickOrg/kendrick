@@ -1,8 +1,8 @@
 as yet unclassified
-addNode
+addNode: ind
 	|node i x y sqrtNbInd|
 	sqrtNbInd := self gridWidth.
-	node := KENetworkNode new.
+	node := KENetworkNode new label: (ind currentStatus at: #status).
 	nodes add: node.
 	"find location of new individual"
 	i := (self nodes size).
@@ -10,5 +10,5 @@ addNode
 	y := i//sqrtNbInd + 1.
 	x = 0 ifTrue: [ x := sqrtNbInd. y := i //sqrtNbInd ].
 	self addEdge: i.
-	^ (Array with: x with: y)
+	ind attributes at: #position put: (Array with: x with: y)
 	

@@ -1,18 +1,20 @@
 tests
 testBirthEventOnLatticeNetwork
-	|model population ind|
+	|model population network ind|
 	model := KEModel new.
 	population := KEMetaPopulation new.
-	population compartments: #(S I R).
-	population at: #S put: 90; at: #I put: 1; at: #R put: 0.
-	KENetwork new: #lattice numberOfContacts: 4 onPopulation: population.
+	population attributes: '{#status:[#S, #I, #R]}'.
 	model population: population.
-	self assert: (model population graph nodes size) equals: 91.
-	ind := KEIndividual new currentStatus: #I.
+	model buildFromCompartments: {#status->#(S I R)} cardinalities: #(90 1 0).
+	network := KENetwork on: population atAttribute: #status.
+	network := network build: #lattice numberOfContacts: 4.
+	population addGraph: network.
+	ind := KEIndividual new currentStatus: (Dictionary newFrom: {#status->#I}).
 	model population addIndividual: (ind).
-	self assert: (model population graph nodes size) equals: 92.
-	self assert: (model population graph nodes last at: #S) equals: 1.
-	self assert: (model population graph nodes last at: #I) equals: 1.
-	self assert: (model population graph nodes at: 92) adjacentNodes asArray equals: #(82 91).
+	
+	self assert: (network nodes size) equals: 92.
+	self assert: (network nodes last atContact: #S) equals: 2.
+	self assert: (network nodes last atContact: #I) equals: 0.
+	self assert: (network nodes at: 92) adjacentNodes keys size equals: 2.
 	self assert: ind position equals: #(2 10).
 	

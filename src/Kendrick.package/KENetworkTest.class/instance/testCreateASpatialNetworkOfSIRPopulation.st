@@ -1,11 +1,12 @@
 tests
 testCreateASpatialNetworkOfSIRPopulation
-	|model population|
+	|model population network |
 	model := KEModel new.
 	population := KEMetaPopulation new.
-	population compartments: #(S I R).
-	population at: #S put: 100; at: #I put: 0; at: #R put: 0.
-	KENetwork new: #spatial numberOfContacts: 4 onPopulation: population.
+	population attributes: '{#status:[#S, #I, #R]}'.
 	model population: population.
+	model buildFromCompartments: {#status->#(S I R)} cardinalities: #(99 1 0).
+	network := KENetwork on: population atAttribute: #status.
+	network := network build: #spatial numberOfContacts: 4.
 	
-	self assert: (model population graph nodes size) equals: 100.
+	self assert: network nodes size equals: 100

@@ -1,6 +1,6 @@
 examples
-runGillespieDirectOnSIRMetaPopulationModel
-	"self new runGillespieDirectOnSIRMetaPopulationModel"
+runIBMSimulatorOnSIRMetaPopulationModel
+	"self new runIBMSimulatorOnSIRMetaPopulationModel"
 	|model simulator db output graph| 
 	model := KEModel new.
 	model population: KEMetaPopulation new.
@@ -18,10 +18,9 @@ runGillespieDirectOnSIRMetaPopulationModel
 	model addEquation: 'S:t=mu*N-beta*S*I-mu*S' parseAsAnEquation.
 	model addEquation: ('I:t=beta*S*I-(mu+v)*I' parseAsAnEquation).
 	model addEquation: ('R:t=v*I-mu*R' parseAsAnEquation).
-	simulator := KESimulator new: #Gillespie from: 0.0 to: 1.0 step: 0.001.
+	simulator := KESimulator new: #IBM from: 0.0 to: 1.0 step: 0.0027.
 	simulator executeOn: model.
 	output := simulator data.
 	db := (KEDiagramBuilder new) data: (output dataAt: '{#status: #I}') do: #sqrt.
 	db open
-	
 	

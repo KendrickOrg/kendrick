@@ -1,15 +1,16 @@
 instance creation
 newNode: ind
+	"just called in the case of network between individuals"
 	(ind id > nodes size) 
 	ifTrue: [ 
 		|node| 
-		ind position: (self addNode).
+		(self addNode: ind).
 		node := self nodes at: (ind id).
-		node adjacentNodes do: [ :ajNodeID| 
-			node at: ((population individuals at: ajNodeID) currentStatus) add: 1]
+		node adjacentNodes keysDo: [ :ajNodeID| 
+			node atContact: ((population individuals at: ajNodeID) currentStatus at: #status) add: 1]
 		].
-	(nodes at: (ind id)) adjacentNodes do: [ :i|
-		(nodes at: i) at: (ind currentStatus) add: 1
+	(nodes at: (ind id)) adjacentNodes keysDo: [ :i|
+		(nodes at: i) atContact: (ind currentStatus at: #status) add: 1
 		]
 
 	

@@ -1,15 +1,11 @@
 as yet unclassified
 evaluateWithModel: model
-	|subPopulation individualID x|
-	x := model temporalParameters at: symbol ifAbsent: [ nil ].
+	|x|
+	x := model atParameter: symbol.
 	x ifNil: [ 
-		x := model atParameter: symbol.
-		x ifNil: [ 
-			"currentPID := model currentPopulationID."
-			subPopulation := model currentSubPopulation.
-			individualID := model currentIndividual.
-			^ (subPopulation graph nodes at: individualID) at: symbol
-			 ]
-		 ].
-	^ x
-	
+		model population graphs do: [ :g|
+			g networkOfIndividuals ifTrue: [ ^ (g nodes at: (model atParameter: #individual) id) atContact: symbol ] ] ].
+	x isBlock ifTrue: [ ^ x value: model ].
+	x isNumber ifTrue: [ ^ x ].
+	x isExpression ifTrue: [ ^ x evaluateWithModel: model ].
+	^ x 

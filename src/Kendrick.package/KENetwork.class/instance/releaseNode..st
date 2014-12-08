@@ -4,7 +4,7 @@ releaseNode: ind
 	|stt aNodeID|
 	"Update number of contacts for other nodes in contact with this released node"
 	aNodeID := ind id.
-	stt := ind currentStatus.
-	(nodes at: aNodeID) adjacentNodes do: [ :each|
-		(nodes at: each) at: stt remove: 1
+	stt := ind currentStatus at: #status.
+	(nodes at: aNodeID) adjacentNodes keysDo: [ :each|
+		(nodes at: each) atContact: stt remove: 1
 		]

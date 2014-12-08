@@ -2,9 +2,10 @@ as yet unclassified
 testInitNetworkOf100000Nodes
 	|population nw|
 	population := KEMetaPopulation new.
-	population compartments: #(S I).
-	population at: #S put: 99999; at: #I put: 1.
-	nw := KENetwork new: #lattice numberOfContacts: 4 onPopulation: population.
-	"nw initLocation."
+	population attributes: '{#status: [#S, #I, #R]}'.
+	population compartments: (Dictionary newFrom: {(Dictionary newFrom: {#status->#S})->99999. (Dictionary newFrom: {#status->#I})->1. (Dictionary newFrom: {#status->#R})->0}).
+	nw := KENetwork on: population atAttribute: #status.
+	nw build: #lattice numberOfContacts: 4.
+	
 	self assert: (nw nodes size) equals: 100000.
 	 

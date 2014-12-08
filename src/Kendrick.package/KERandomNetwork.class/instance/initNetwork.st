@@ -14,5 +14,5 @@ initNetwork
 			self with: edge weight: #contact value: 1
 			 ]
 	 ].
-	self initContacts
+	self networkOfIndividuals ifTrue: [ self initContacts ]
 	

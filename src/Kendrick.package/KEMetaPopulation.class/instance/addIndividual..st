@@ -1,6 +1,6 @@
 accessing
 addIndividual: ind
 	super addIndividual: ind.
-	self graph ifNotNil: [ 
-		graph newNode: ind
+	graphs do: [ :g|
+		g networkOfIndividuals ifTrue: [ g newNode: ind ]
 		 ]

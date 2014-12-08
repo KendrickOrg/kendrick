@@ -1,3 +1,3 @@
 as yet unclassified
-at: status put: aNumberOfContacts
+atContact: status put: aNumberOfContacts
 	^ self contacts at: status put: aNumberOfContacts

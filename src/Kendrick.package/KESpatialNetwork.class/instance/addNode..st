@@ -1,11 +1,10 @@
 as yet unclassified
-addNode
-	|node x y ind distances prob id|
-	node := KENetworkNode new.
+addNode: ind
+	|node x y distances prob id|
+	node := KENetworkNode new label: (ind currentStatus at: #status).
 	x := (Random new) next.
 	y := (Random new) next.
-	ind := KEIndividual new.
-	ind position: (Array with: x with: y).
+	ind attributes at: #position put: (Array with: x with: y).
 	nodes add: node.
 	distances := OrderedCollection new.
 	1 to: (population individuals size - 1) do: [ :i|
@@ -19,4 +18,4 @@ addNode
 		j := nodes size.
 		self with: (Array with: i with: j) weight: #contact value: 1
 		 ].
-	^ (Array with: x with: y)
+	

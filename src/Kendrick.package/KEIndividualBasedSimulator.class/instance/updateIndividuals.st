@@ -3,9 +3,7 @@ updateIndividuals
 	model population individuals do: [ :ind| 
 		((ind isAlive) and: [ ind nextStatus isNotNil ]) ifTrue: [ 
 			ind nextStatus = #empty ifTrue: [ model population removeIndividual: ind ] ifFalse: [ 
-				ind updateAttributes: ind nextStatus.
-				ind currentStatus: ind nextStatus.
-				ind nextStatus: nil ]
+				model population updateIndividual: ind ]
 			 ]
 		].
 	1 to: model transitions size do: [ :i|
