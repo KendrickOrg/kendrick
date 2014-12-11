@@ -1,0 +1,1 @@
+Represent graph of compartments build from a KEModel
