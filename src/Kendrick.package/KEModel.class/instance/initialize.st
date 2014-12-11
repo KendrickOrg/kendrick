@@ -4,4 +4,4 @@ initialize
 	parameters := Dictionary new.
 	equations := OrderedCollection new.
 	population := KEPopulation new.
-	transitions := OrderedCollection new.
+	transitions := OrderedCollection new

@@ -1,7 +1,7 @@
 as yet unclassified
-buildFromCompartments: aString
+buildFromCompartments: aSTONString
 	|reader|
-	(reader := STONReader on: aString readStream) allowComplexMapKeys: true.
+	(reader := STONReader on: aSTONString readStream) allowComplexMapKeys: true.
 	compartments := reader next.
 	self population compartments: compartments
 	

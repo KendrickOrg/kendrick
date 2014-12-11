@@ -1,7 +1,7 @@
 as yet unclassified
-addParameter: aJSONString
+addParameter: aSTONString
 	|reader dic|
-	reader := (STONReader on: aJSONString readStream) allowComplexMapKeys: true.
+	reader := (STONReader on: aSTONString readStream) allowComplexMapKeys: true.
 	dic := reader next.
 	dic keysAndValuesDo: [ :key :value|
 		value isDictionary ifTrue: [ 
