@@ -1,6 +1,6 @@
 examples
-runRK4SolverOnSEIRMeaslesModel
-	"self new runRK4SolverOnSEIRMeaslesModel"
+exampleRunRK4SolverOnSEIRMeaslesModel
+	"self new exampleRunRK4SolverOnSEIRMeaslesModel"
 	|model simulator output diag |
 	model := KEModel new.
 	model population attributes: '{#status: [#S, #E, #I, #R]}'.
@@ -8,7 +8,7 @@ runRK4SolverOnSEIRMeaslesModel
 		{#status: #S}: 99999,
 		{#status: #I}: 1,
 		{#status: #E}: 0,
-		{#status: #R}:0
+		{#status: #R}: 0
 	}'.
 	model addParameter: '{#beta: 0.0000214, #gamma: 0.143, #mu: 0.0000351, #sigma: 0.125, #N: 100000}'.
 	model addTransition: (KETransition

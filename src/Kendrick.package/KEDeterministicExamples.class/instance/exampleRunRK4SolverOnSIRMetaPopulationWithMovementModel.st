@@ -1,6 +1,6 @@
 examples
-runRK4SolverOnSIRMetaPopulationWithMovementModel
-	"self new runRK4SolverOnSIRMetaPopulationWithMovementModel"
+exampleRunRK4SolverOnSIRMetaPopulationWithMovementModel
+	"self new exampleRunRK4SolverOnSIRMetaPopulationWithMovementModel"
 	|model simulator db graph1 graph2 output|
 	model := KEModel new.
 	model population: KEMetaPopulation new.

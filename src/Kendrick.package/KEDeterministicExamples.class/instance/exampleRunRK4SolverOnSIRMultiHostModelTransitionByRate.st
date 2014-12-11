@@ -1,36 +1,36 @@
 examples
-runRK4SolverOnSIRMultiHostModelTransitionByRate
-	"self new runRK4SolverOnSIRMultiHostModelTransitionByRate"
+exampleRunRK4SolverOnSIRMultiHostModelTransitionByRate
+	"self new exampleRunRK4SolverOnSIRMultiHostModelTransitionByRate"
 	|model simulator output db|
 	model := KEModel new.
 	model population attributes: '{
-		#status: [ #S, #I, #R ], #specie: [ #mosquito, #reservoir1, #reservoir2 ]
+		#status: [ #S, #I, #R ], #species: [ #mosquito, #reservoir1, #reservoir2 ]
 	}'.
 	model buildFromCompartments: '{
-		{ #status: #S, #specie: #mosquito }: 9999,
-		{ #status: #I, #specie: #mosquito }: 1,
-		{ #status: #R, #specie: #mosquito }: 0,
-		{ #status: #S, #specie: #reservoir1 }: 999,
-		{ #status: #I, #specie: #reservoir1 }: 1,
-		{ #status: #R, #specie: #reservoir1 }: 0,
-		{ #status: #S, #specie: #reservoir2 }: 1999,
-		{ #status: #I, #specie: #reservoir2 }: 1,
-		{ #status: #R, #specie: #reservoir2 }: 0
+		{ #status: #S, #species: #mosquito }: 9999,
+		{ #status: #I, #species: #mosquito }: 1,
+		{ #status: #R, #species: #mosquito }: 0,
+		{ #status: #S, #species: #reservoir1 }: 999,
+		{ #status: #I, #species: #reservoir1 }: 1,
+		{ #status: #R, #species: #reservoir1 }: 0,
+		{ #status: #S, #species: #reservoir2 }: 1999,
+		{ #status: #I, #species: #reservoir2 }: 1,
+		{ #status: #R, #species: #reservoir2 }: 0
 	}'.
-	model addParameter: '{{#specie: #mosquito}:{
-		#beta: { { #specie: #reservoir1 }: 0.02, { #specie: #reservoir2 }: 0.02, #yourself: 0.0 },
+	model addParameter: '{{#species: #mosquito}:{
+		#beta: { { #species: #reservoir1 }: 0.02, { #species: #reservoir2 }: 0.02, #yourself: 0.0 },
 		#mu: 12.17,
 		#N: 10000
 		}
 	}'.
-	model addParameter: '{{#specie: #reservoir1}:{
-		#beta: { { #specie: #reservoir2 }: 0.0, { #specie: #mosquito }: 0.02, #yourself: 0.0 },
+	model addParameter: '{{#species: #reservoir1}:{
+		#beta: { { #species: #reservoir2 }: 0.0, { #species: #mosquito }: 0.02, #yourself: 0.0 },
 		#mu: 0.05,
 		#N: 1000
 		}
 	}'.
-	model addParameter: '{{#specie: #reservoir2}:{
-		#beta: { { #specie: #reservoir1 }: 0.0, { #specie: #mosquito }: 0.02, #yourself: 0.0 },
+	model addParameter: '{{#species: #reservoir2}:{
+		#beta: { { #species: #reservoir1 }: 0.0, { #species: #mosquito }: 0.02, #yourself: 0.0 },
 		#mu: 0.05,
 		#N: 2000
 		}

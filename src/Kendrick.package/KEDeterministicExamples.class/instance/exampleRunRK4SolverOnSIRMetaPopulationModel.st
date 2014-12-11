@@ -1,11 +1,11 @@
 examples
-runRK4SolverOnSIRMetaPopulationModel
-	"self new runRK4SolverOnSIRMetaPopulationModel"
+exampleRunRK4SolverOnSIRMetaPopulationModel
+	"self new exampleRunRK4SolverOnSIRMetaPopulationModel"
 	|model simulator db output graph| 
 	model := KEModel new.
 	model population: KEMetaPopulation new.
 	model population attributes: '{#status:[#S,#I,#R],#region:[#A,#B,#C]}'.
-	graph := KEGraph on: model population atAttribute: #region 				couplingInfectionCoefficient: #beta 
+	graph := KEGraph on: model population atAttribute: #region couplingInfectionCoefficient: #beta 
 				withOutsideClass: {#(A B)->0.02. #(A C)->0.02} insideClass: {#all->0.0}.
 	graph applyGraph: model.
 	model addParameter: '{

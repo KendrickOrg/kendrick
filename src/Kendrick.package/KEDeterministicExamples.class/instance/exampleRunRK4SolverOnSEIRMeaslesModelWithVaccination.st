@@ -1,6 +1,6 @@
 examples
-runRK4SolverOnSEIRMeaslesModelWithVaccination
-	"self new runRK4SolverOnSEIRMeaslesModelWithVaccination"
+exampleRunRK4SolverOnSEIRMeaslesModelWithVaccination
+	"self new exampleRunRK4SolverOnSEIRMeaslesModelWithVaccination"
 	|model simulator output diag |
 	model := KEModel new.
 	model population attributes: '{#status: [#S, #E, #I, #R]}'.

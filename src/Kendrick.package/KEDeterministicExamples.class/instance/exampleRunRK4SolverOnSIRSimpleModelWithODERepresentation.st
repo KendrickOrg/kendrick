@@ -1,7 +1,7 @@
 examples
-runRK4SolverOnSIRSimpleModelWithODERepresentation
-	"self new runRK4SolverOnSIRSimpleModelWithODERepresentation"
-	|model  simulator output dB |
+exampleRunRK4SolverOnSIRSimpleModelWithODERepresentation
+	"self new exampleRunRK4SolverOnSIRSimpleModelWithODERepresentation"
+	|model simulator output dB |
 	model := KEModel new.
 	model buildFromCompartments: '{
 		{ #status: #S }: 99999,

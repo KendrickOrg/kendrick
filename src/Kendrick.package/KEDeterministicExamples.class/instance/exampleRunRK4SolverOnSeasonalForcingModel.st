@@ -1,7 +1,7 @@
 examples
-runRK4SolverOnSeasonalForcingModel
-	"self new runRK4SolverOnSeasonalForcingModel"
-	|model  simulator output dB |
+exampleRunRK4SolverOnSeasonalForcingModel
+	"self new exampleRunRK4SolverOnSeasonalForcingModel"
+	|model simulator output dB |
 	model := KEModel new.
 	model buildFromCompartments: '{
 		{ #status: #S }: 99999,
