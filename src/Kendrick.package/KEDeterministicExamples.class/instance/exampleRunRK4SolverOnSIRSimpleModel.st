@@ -17,7 +17,7 @@ exampleRunRK4SolverOnSIRSimpleModel
 	model addTransition: (KETransition
 		from: '{#status: #I}'
 		to: '{#status: #R}'
-		probability: [ :m| (m atParameter: #gamma) ]
+		probability: [ :m| m atParameter: #gamma ]
 	).
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 1.0 step: 0.001.
 	simulator executeOn: model.
