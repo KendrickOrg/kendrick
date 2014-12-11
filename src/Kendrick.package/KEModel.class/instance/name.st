@@ -1,8 +1,9 @@
 as yet unclassified
-name 
-	|name|
-	name := WriteStream on: (String new: 60 ).
-	(population attributes at: #status) do: [ :key|
-		name nextPutAll: key asString.
-		 ].
-	^ name contents
+name
+	^ String
+		streamContents: [ :stream | 
+			(STON writer on: stream)
+				prettyPrint: false;
+				jsonMode: true;
+				referencePolicy: #error;
+				nextPut: population compartments ]

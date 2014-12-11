@@ -1,15 +1,11 @@
 A KEModel represents a mathematical model of epidemiology. It contains a population on which the disease is studied, a list of ODEs, a list of common parameters and a simulator.
 
 Instance Variables
-	compartmentSymbols:		<Dictionary>
 	equations:		<OrderedCollection>
 	parameters:		<Dictionary>
 	population:		<KEPopulation>
 	populationIDs:		<OrderedCollection>
 	temporalParameters:		<Dictionary>
-
-compartmentSymbols
-	- a list of compartment name of the epidemiological model
 
 equations
 	- a list of odinary differential equations of mathematical model
