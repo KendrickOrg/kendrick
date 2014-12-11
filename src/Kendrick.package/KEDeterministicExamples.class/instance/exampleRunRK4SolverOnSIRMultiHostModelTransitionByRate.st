@@ -36,30 +36,24 @@ exampleRunRK4SolverOnSIRMultiHostModelTransitionByRate
 		}
 	}'.
 	model addParameter: '{#gamma: 52}'.
-	model addTransition: (KETransition
-		from: '{#status: #S}'
+	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #I}'
-		rate: 'beta*I' parseAsAnExpression).
-	model addTransition: (KETransition
-		from: '{#status: #I}'
+		rate: 'beta*I' parseAsAnExpression.
+	model addTransitionFrom: '{#status: #I}'
 		to: '{#status: #R}'
-		rate: 'gamma' parseAsAnExpression).
-	model addTransition: (KETransition
-		from: '{#status: #S}'
+		rate: 'gamma' parseAsAnExpression.
+	model addTransitionFrom: '{#status: #S}'
 		to: #empty
-		rate: 'mu' parseAsAnExpression).
-	model addTransition: (KETransition
-		from: '{#status: #I}'
+		rate: 'mu' parseAsAnExpression.
+	model addTransitionFrom: '{#status: #I}'
 		to: #empty
-		rate: 'mu' parseAsAnExpression).
-	model addTransition: (KETransition
-		from: '{#status: #R}'
+		rate: 'mu' parseAsAnExpression.
+	model addTransitionFrom: '{#status: #R}'
 		to: #empty
-		rate: 'mu' parseAsAnExpression).
-	model addTransition: (KETransition
-		from: #empty
+		rate: 'mu' parseAsAnExpression.
+	model addTransitionFrom: #empty
 		to: '{#status: #S}'
-		rate: 'mu*N' parseAsAnExpression).
+		rate: 'mu*N' parseAsAnExpression.
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 40.0 step: 0.01.
 	simulator executeOn: model.
 	output := simulator data.

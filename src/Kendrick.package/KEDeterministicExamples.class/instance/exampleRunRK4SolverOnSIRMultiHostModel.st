@@ -36,30 +36,24 @@ exampleRunRK4SolverOnSIRMultiHostModel
 		}
 	}'.
 	model addParameter: '{#gamma: 52}'.
-	model addTransition: (KETransition
-		from: '{#status: #S}'
+	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #I}'
-		probability: [:m|(m atParameter: #beta)*(m atCompartment: '{#status: #I}')]).
-	model addTransition: (KETransition
-		from: '{#status: #I}'
+		probability: [:m|(m atParameter: #beta)*(m atCompartment: '{#status: #I}')].
+	model addTransitionFrom: '{#status: #I}'
 		to: '{#status: #R}'
-		probability: [:m| m atParameter: #gamma]).
-	model addTransition: (KETransition
-		from: '{#status: #S}'
+		probability: [:m| m atParameter: #gamma].
+	model addTransitionFrom: '{#status: #S}'
 		to: #empty
-		probability: [:m| m atParameter: #mu]).
-	model addTransition: (KETransition
-		from: '{#status: #I}'
+		probability: [:m| m atParameter: #mu].
+	model addTransitionFrom: '{#status: #I}'
 		to: #empty
-		probability: [:m| m atParameter: #mu]).
-	model addTransition: (KETransition
-		from: '{#status: #R}'
+		probability: [:m| m atParameter: #mu].
+	model addTransitionFrom: '{#status: #R}'
 		to: #empty
-		probability: [:m| m atParameter: #mu]).
-	model addTransition: (KETransition
-		from: #empty
+		probability: [:m| m atParameter: #mu].
+	model addTransitionFrom: #empty
 		to: '{#status: #S}'
-		probability: [:m| (m atParameter: #mu)*(m atParameter: #N)]).
+		probability: [:m| (m atParameter: #mu)*(m atParameter: #N)].
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 40.0 step: 0.01.
 	simulator executeOn: model.
 	output := simulator data.
