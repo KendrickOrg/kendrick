@@ -36,5 +36,4 @@ exampleVisualizeEbolaDataFromCaitlinRiversRepository
 	lb addColor: Color blue text: 'Guinea'.
 	lb addColor: Color green text: 'Liberia'.
 	lb build.
-	b open.
-	b view canvas
+	^b view

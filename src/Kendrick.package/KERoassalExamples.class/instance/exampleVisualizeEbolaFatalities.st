@@ -29,5 +29,4 @@ exampleVisualizeEbolaFatalities
 	b axisY.
 	b highlightIf: [ :row | (row at: 10) > 100 ] using: [ :row | row third year ].
 	b build.
-	b open.
-	b view canvas
+	^ b view
