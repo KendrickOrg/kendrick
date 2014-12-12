@@ -1,7 +1,6 @@
-examples
+sources
 exampleVisualizeEbolaFatalities
-"self new exampleVisualizeEbolaFatalities"
-	| b tab data |
+| b tab data |
 	
 	"Preparing the data"
 	tab := RTTabTable new input: (ZnEasy get: 'http://bit.ly/EbolaCSV') contents usingDelimiter: $,.
@@ -29,4 +28,6 @@ exampleVisualizeEbolaFatalities
 	b newAxisConfiguration noDecimals.
 	b axisY.
 	b highlightIf: [ :row | (row at: 10) > 100 ] using: [ :row | row third year ].
-	b build
+	b build.
+	b open.
+	b view canvas

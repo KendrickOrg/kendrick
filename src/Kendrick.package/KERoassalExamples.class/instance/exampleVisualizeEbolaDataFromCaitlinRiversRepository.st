@@ -1,6 +1,5 @@
-examples
+sources
 exampleVisualizeEbolaDataFromCaitlinRiversRepository
-	"self new exampleVisualizeEbolaDataFromCaitlinRiversRepository"
 
 	| tab data minValue b lb |
 	tab := RTTabTable new
@@ -37,4 +36,5 @@ exampleVisualizeEbolaDataFromCaitlinRiversRepository
 	lb addColor: Color blue text: 'Guinea'.
 	lb addColor: Color green text: 'Liberia'.
 	lb build.
-	b
+	b open.
+	b view canvas
