@@ -1,4 +1,4 @@
-as yet unclassified
+adapting
 adaptToCollection: rcvr andSend: selector
 	"This method is overriden for the dictionary structure of Kendrick"
 	|r|
