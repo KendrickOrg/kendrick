@@ -7,6 +7,6 @@ testEvaluateWithModel2
 		{ #status: #I }: 1,
 		{ #status: #R }: 0
 	}'.
-	model addParameter: '{#beta: 0.0052, #gamma: 52}'.
+	model addParameters: '{#beta: 0.0052, #gamma: 52}'.
 	expr := 'beta*S*I' parseAsAnExpression.
 	self assert: (expr evaluateWithModel: model) equals: 52.

@@ -7,7 +7,7 @@ exampleExplicitTauLeapOnSIRSimpleModel
 	model buildFromCompartments: '{
 		{#status: #S}: 4975, {#status: #I}: 25, {#status: #R}: 0
 	}'.
-	model addParameter: '{#beta: 0.0002, #gamma: 0.1, #mu: 5e-4, #N: 5000}'.
+	model addParameters: '{#beta: 0.0002, #gamma: 0.1, #mu: 5e-4, #N: 5000}'.
 
 	model addTransitionFrom: '{#status: #S}' to: '{#status: #I}' probability: [ :m| (m atParameter: #beta)*(m atCompartment:'{#status: #I}') ].	
 	model addTransitionFrom: '{#status: #I}' to: '{#status: #R}' probability: [:m| (m atParameter: #gamma)].

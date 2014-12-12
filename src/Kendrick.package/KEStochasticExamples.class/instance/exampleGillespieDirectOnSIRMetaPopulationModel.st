@@ -8,7 +8,7 @@ exampleGillespieDirectOnSIRMetaPopulationModel
 	graph := KEGraph on: model population atAttribute: #region 				couplingInfectionCoefficient: #beta 
 				withOutsideClass: {#(A B)->0.02. #(A C)->0.02} insideClass: {#all->0.0}.
 	graph applyGraph: model.
-	model addParameter: '{
+	model addParameters: '{
 			{#region:#A}:{#mu:12.7,#N:10000},
 			{#region:#B}:{#mu:0.05,#N:1000},
 			{#region:#C}:{#mu:0.05,#N:2000},#v: 52}'.

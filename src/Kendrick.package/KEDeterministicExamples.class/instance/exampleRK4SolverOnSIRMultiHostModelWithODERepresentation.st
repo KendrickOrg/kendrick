@@ -17,25 +17,25 @@ exampleRK4SolverOnSIRMultiHostModelWithODERepresentation
 		{ #status: #I, #species: #reservoir2 }: 1,
 		{ #status: #R, #species: #reservoir2 }: 0
 	}'.
-	model addParameter: '{{#species: #mosquito}:{
+	model addParameters: '{{#species: #mosquito}:{
 		#beta: { { #species: #reservoir1 }: 0.02, { #species: #reservoir2 }: 0.02, #yourself: 0.0 },
 		#mu: 12.17,
 		#N: 10000
 		}
 	}'.
-	model addParameter: '{{#species: #reservoir1}:{
+	model addParameters: '{{#species: #reservoir1}:{
 		#beta: { { #species: #reservoir2 }: 0.0, { #species: #mosquito }: 0.02, #yourself: 0.0 },
 		#mu: 0.05,
 		#N: 1000
 		}
 	}'.
-	model addParameter: '{{#species: #reservoir2}:{
+	model addParameters: '{{#species: #reservoir2}:{
 		#beta: { { #species: #reservoir1 }: 0.0, { #species: #mosquito }: 0.02, #yourself: 0.0 },
 		#mu: 0.05,
 		#N: 2000
 		}
 	}'.
-	model addParameter: '{#v: 52}'.
+	model addParameters: '{#v: 52}'.
 	
 	model addEquation: 'S:t=mu*N-beta*S*I-mu*S' parseAsAnEquation.
 	model addEquation: ('I:t=beta*S*I-(mu+v)*I' parseAsAnEquation).

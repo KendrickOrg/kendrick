@@ -8,7 +8,7 @@ exampleRK4SolverOnSIRSimpleModel
 		{ #status: #I }: 1,
 		{ #status: #R }: 0
 	}'.
-	model addParameter: '{#beta: 0.0052, #gamma: 52}'.
+	model addParameters: '{#beta: 0.0052, #gamma: 52}'.
 	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #I}'
 		probability: [ :m| (m atParameter: #beta) * (m atCompartment: '{#status: #I}')].

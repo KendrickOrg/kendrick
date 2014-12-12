@@ -17,25 +17,25 @@ exampleIBMSimulatorOnSIRMultiHostModel
 		{ #status: #I, #specie: #reservoir2 }: 1,
 		{ #status: #R, #specie: #reservoir2 }: 0
 	}'.
-	model addParameter: '{{#specie: #mosquito}:{
+	model addParameters: '{{#specie: #mosquito}:{
 		#beta: { { #specie: #reservoir1 }: 0.02, { #specie: #reservoir2 }: 0.02, #yourself: 0.0 },
 		#mu: 12.17,
 		#N: 10000
 		}
 	}'.
-	model addParameter: '{{#specie: #reservoir1}:{
+	model addParameters: '{{#specie: #reservoir1}:{
 		#beta: { { #specie: #reservoir2 }: 0.0, { #specie: #mosquito }: 0.02, #yourself: 0.0 },
 		#mu: 0.05,
 		#N: 1000
 		}
 	}'.
-	model addParameter: '{{#specie: #reservoir2}:{
+	model addParameters: '{{#specie: #reservoir2}:{
 		#beta: { { #specie: #reservoir1 }: 0.0, { #specie: #mosquito }: 0.02, #yourself: 0.0 },
 		#mu: 0.05,
 		#N: 2000
 		}
 	}'.
-	model addParameter: '{#v: 52}'.
+	model addParameters: '{#v: 52}'.
 	
 	model addEquation: 'S:t=mu*N-beta*S*I-mu*S' parseAsAnEquation.
 	model addEquation: ('I:t=beta*S*I-(mu+v)*I' parseAsAnEquation).

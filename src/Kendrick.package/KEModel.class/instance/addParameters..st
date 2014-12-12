@@ -1,5 +1,5 @@
 as yet unclassified
-addParameter: aSTONString
+addParameters: aSTONString
 	|reader dic|
 	reader := (STONReader on: aSTONString readStream) allowComplexMapKeys: true.
 	dic := reader next.

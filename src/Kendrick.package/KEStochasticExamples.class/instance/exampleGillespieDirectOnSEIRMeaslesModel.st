@@ -10,7 +10,7 @@ exampleGillespieDirectOnSEIRMeaslesModel
 		{#status: #E}: 0,
 		{#status: #R}:0
 	}'.
-	model addParameter: '{#beta: 0.0000214, #gamma: 0.143, #mu: 0.0000351, #sigma: 0.125, #N: 100000}'.
+	model addParameters: '{#beta: 0.0000214, #gamma: 0.143, #mu: 0.0000351, #sigma: 0.125, #N: 100000}'.
 	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #E}'
 		probability: [:fr :to :t| (model atParameter: #beta) * (model atCompartment: '{#status:#I}') * fr].

@@ -2,7 +2,7 @@ tests
 testAddParameterAtLocalScope
 	|model |
 	model := KEModel new.
-	model addParameter: '{
+	model addParameters: '{
 		{#specie: #reservoir1}:{
 			#beta: {{#specie: #mosquito}: 0.02, #yourself: 0.0},
 			#mu: 52,
