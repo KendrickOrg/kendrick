@@ -1,11 +1,12 @@
 as yet unclassified
 gtInspectorGraphIn: composite
 	<gtInspectorPresentationOrder: 30>
-	composite list
-		title: 'Box View';
-		display: [ 
+	composite roassal2
+		title: 'View';
+		painting: [ :view|
 					| builder graph |
 					builder := RTGraphBuilder new.
+					builder view: view.
 					graph := (KEGraphFromCompartments on: self) run.
 					builder nodes shape:(RTEllipse new size: 20) + RTLabel.
 					builder edges
@@ -15,4 +16,4 @@ gtInspectorGraphIn: composite
 						useInLayout.
 					builder layout forceCharge: -350.
 					builder addAll: graph nodes.
-					builder view]
+					]
