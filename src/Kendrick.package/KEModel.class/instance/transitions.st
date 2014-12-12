@@ -1,6 +1,5 @@
 accessing
 transitions
-	(equations size > 0) ifTrue: [ 
-		self equationsToTransitions.
-		 ].
+	equations size > 0
+		ifTrue: [ self equationsToTransitions ].
 	^ transitions
