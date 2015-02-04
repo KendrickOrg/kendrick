@@ -38,6 +38,6 @@ exampleRK4SolverOnSEIRMeaslesModel
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 100 step: 1.
 	simulator executeOn: model.
 	output := simulator data.
-	diag := (KEDiagramBuilder new) data: (output dataAt: '{#status: #I}').
+	diag := (KEDiagramBuilder new) data: (output dataAt: #all"'{#status: #I}'").
 	diag open
 	
