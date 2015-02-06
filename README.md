@@ -14,6 +14,8 @@ Kendrick is based extensively on several tools of the meta-modeling platform [MO
 Github is only used to to store the [issues](https://github.com/UMMISCO/Kendrick/issues) list.
 
 ## How to install Kendrick 0.14
+
+[![Join the chat at https://gitter.im/UMMISCO/kendrick](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/UMMISCO/kendrick?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 * Download the last dev MOOSE 5.0 on INRIA's CI server: https://ci.inria.fr/moose/job/moose-5.0/
 * Load Kendrick:
 
