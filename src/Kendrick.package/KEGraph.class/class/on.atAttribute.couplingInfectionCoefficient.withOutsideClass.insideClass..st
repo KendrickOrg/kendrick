@@ -8,6 +8,6 @@ on: population atAttribute: attribute couplingInfectionCoefficient: beta withOut
 	graph loopEdges: (arrayOfAssoc2->attribute) weight: beta 
 			values: (arrayOfAssoc2 collect: [:e| e value]).
 	population addGraph: graph.
-	graph population: population. "For visualising goal"
+	"graph population: population." "For visualising goal"
 	^ graph
 	

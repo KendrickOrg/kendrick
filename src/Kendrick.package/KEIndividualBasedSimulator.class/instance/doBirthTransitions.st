@@ -14,8 +14,8 @@ doBirthTransitions
 			newInd updateAttributes: e key to.
 			newInd nextStatus: nil.
 			model population addIndividual: newInd.
-			oldTimes := self transitionExecutions at: e value.
-			self transitionExecutions at: e value put: (oldTimes + 1)
+			oldTimes := self transitionNbExecutions at: e value.
+			self transitionNbExecutions at: e value put: (oldTimes + 1)
 			]
 		]
 	

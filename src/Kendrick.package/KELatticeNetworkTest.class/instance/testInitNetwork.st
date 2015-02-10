@@ -5,7 +5,7 @@ testInitNetwork
 	population attributes: '{#status: [#S, #I, #R]}'.
 	population compartments: (Dictionary newFrom: {(Dictionary newFrom: {#status->#S})->19. (Dictionary newFrom: {#status->#I})->1. (Dictionary newFrom: {#status->#R})->0}).
 	nw := KENetwork on: population atAttribute: #status.
-	nw build: #lattice numberOfContacts: 4.
+	nw buildNetworkType: #lattice numberOfContacts: 4.
 
 	self assert: (nw nodes size) equals: 20.
 	self assert: (nw nodes at: 1) adjacentNodes keys size equals: 2. 

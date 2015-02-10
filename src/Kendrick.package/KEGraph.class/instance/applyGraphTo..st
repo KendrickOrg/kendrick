@@ -1,3 +1,3 @@
 as yet unclassified
-applyGraph: model
+applyGraphTo: model
 	self subclassResponsibility

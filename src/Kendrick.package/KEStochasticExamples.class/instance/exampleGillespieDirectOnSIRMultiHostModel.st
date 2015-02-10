@@ -49,7 +49,7 @@ exampleGillespieDirectOnSIRMultiHostModel
 	model addTransitionFrom: '{#specie: #mosquito, #status: #I}'
 			to: #empty
 			probability: [:m| (m atParameter: '{{#specie:#mosquito}:#mu}')].
-	model addTransitionFom: '{#specie: #mosquito, #status: #R}'
+	model addTransitionFrom: '{#specie: #mosquito, #status: #R}'
 			to: #empty
 			probability: [:m| (m atParameter: '{{#specie:#mosquito}:#mu}')].
 	model addTransitionFrom: #empty
@@ -60,7 +60,7 @@ exampleGillespieDirectOnSIRMultiHostModel
 			to: '{#specie: #reservoir1, #status: #I}'
 			probability: [:m| 
 				(m atParameter: '{{#specie:#reservoir1}:#beta}')*(m atCompartment: '{#status: #I}')].
-	model addTransitionFom: '{#specie: #reservoir1, #status: #I}'
+	model addTransitionFrom: '{#specie: #reservoir1, #status: #I}'
 			to: '{#specie: #reservoir1, #status: #R}'
 			probability: [:m| (m atParameter: #gamma)].
 	model addTransitionFrom: '{#specie: #reservoir1, #status: #S}'

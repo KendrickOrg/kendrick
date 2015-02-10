@@ -11,7 +11,7 @@ testApplyGraph
 				#(#mosquito #reservoir2)->0.02} 
 				insideClass: {(#all->0.0)}.
 	model population: population.
-	graph applyGraph: model.
+	graph applyGraphTo: model.
 
 	self assert: (model parameters size) equals: 3.
 	self assert: (model atParameter: '{{#specie: #mosquito}:#beta}') size equals: 3

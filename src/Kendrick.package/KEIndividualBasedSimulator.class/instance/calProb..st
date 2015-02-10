@@ -12,8 +12,8 @@ calProb: ind
 		prob := 1 - (((step * rate) negated) exp).
 		(prob > (rand next)) ifTrue: [ |oldTimes|
 			ind nextStatus: ((events at: chosen) key to).
-			oldTimes := self transitionExecutions at: (events at: chosen) value.
-			self transitionExecutions at: (events at: chosen) value put: (oldTimes + 1)
+			oldTimes := self transitionNbExecutions at: (events at: chosen) value.
+			self transitionNbExecutions at: (events at: chosen) value put: (oldTimes + 1)
 		].
 	]
 	

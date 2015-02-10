@@ -1,7 +1,7 @@
 examples
-exampleRK4SolverOnSEIRMeaslesModelWithVaccination
-	"self new exampleRK4SolverOnSEIRMeaslesModelWithVaccination"
-	|model simulator output diag |
+exampleRK4SolverOn2SEIRMeaslesModelWithVaccination
+	"self new exampleRK4SolverOn2SEIRMeaslesModelWithVaccination"
+	|model simulator output diag data legends|
 	model := KEModel new.
 	model population attributes: '{#status: [#S, #E, #I, #R]}'.
 	model buildFromCompartments: '{
@@ -10,7 +10,7 @@ exampleRK4SolverOnSEIRMeaslesModelWithVaccination
 		{#status: #E}: 0,
 		{#status: #R}: 0
 	}'.
-	model addParameters: '{#beta: 0.00782, #gamma: 52.14, #mu: 0.0128, #sigma: 45.625, #N: 100000, #p: 0.0}'.
+	model addParameters: '{#beta: 0.00782, #gamma: 52.14, #mu: 0.0128, #sigma: 45.625, #N: 100000, #p: 0.7}'.
 	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #E}'
 		probability: [:m| (m atParameter: #beta) * (m atCompartment: '{#status:#I}')].
@@ -38,9 +38,25 @@ exampleRK4SolverOnSEIRMeaslesModelWithVaccination
 	model addTransitionFrom: #empty
 		to: '{#status: #R}'
 		probability: [:m| (m atParameter: #mu) * (m atParameter: #N) * (m atParameter: #p)].
+	data := OrderedCollection new.
+	legends := OrderedCollection new.
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 100 step: 0.01.
 	simulator executeOn: model.
 	output := simulator data.
-	diag := (KEDiagramBuilder new) data: (output dataAt: '{#status: #I}') do: #log.
+	data addAll: (output dataAt: '{#status: #I}').
+	
+	model addParameter: #p value: 0.0.
+	model resetCompartments.
+	simulator := KESimulator new: #RungeKutta from: 0.0 to: 100 step: 0.01.
+	simulator executeOn: model.
+	output := simulator data.
+	data addAll: (output dataAt: '{#status: #I}').
+	 
+	legends addAll: #('p = 0.7' 'p = 0.0').
+	diag := (KEDiagramBuilder new) data: data do: #log.
+	diag legends: legends.
+	diag xLabel: 'Time in years'.
+	diag yLabel: 'log(Infectious)'.
 	diag open
+	
 	

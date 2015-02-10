@@ -1,5 +1,5 @@
 as yet unclassified
-applyGraph: model
+applyGraphTo: model
 	|adapter|
 	adapter := KECouplingAdapter new.
 	adapter atArgument: #graph put: self.

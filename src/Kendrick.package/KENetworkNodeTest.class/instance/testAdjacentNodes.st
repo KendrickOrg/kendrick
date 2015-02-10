@@ -5,7 +5,7 @@ testAdjacentNodes
 	population attributes: '{#status: [#S, #I, #R]}'.
 	population compartments: (Dictionary newFrom: {(Dictionary newFrom: {#status->#S})->19. (Dictionary newFrom: {#status->#I})->1. (Dictionary newFrom: {#status->#R})->0}).
 	nw := KENetwork on: population atAttribute: #status.
-	nw := nw build: #lattice numberOfContacts: 4.
+	nw := nw buildNetworkType: #lattice numberOfContacts: 4.
 	population addGraph: nw.
 	node := nw nodes first.
 	

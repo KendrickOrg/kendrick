@@ -6,7 +6,7 @@ testApplyGraph
 	population attributes: '{#status: [#S, #I, #R], #region: [#A, #B, #C]}'.
 	graph := KEGraph on: population atAttribute: #region immigrationCoefficient: #m betweenClasses: { #all->0.005 }. 
 	model population: population.
-	graph applyGraph: model.
+	graph applyGraphTo: model.
 	
 	self assert: model transitions size equals: 18.
 	self assert: (model transitions first from at: #status)=(model transitions first to at: #status) equals: true.

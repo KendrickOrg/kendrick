@@ -7,11 +7,11 @@ exampleGillespieDirectOnSIRMetaPopulationWithMovementModel
 	model population attributes: '{#status: [#S,#I], #region:[#A,#B,#C,#D,#E]}'.
 	graph1 := KEGraph on: model population atAttribute: #region 
 					immigrationCoefficient: #m betweenClasses: { #all-> 0.001}.
-	graph1 applyGraph: model.
+	graph1 applyGraphTo: model.
 	graph2 := KEGraph on: model population atAttribute: #region 
 				couplingInfectionCoefficient: #beta withOutsideClass: { #all->0.0 } 
 				insideClass: { #all->0.0001 }.
-	graph2 applyGraph: model.
+	graph2 applyGraphTo: model.
 	model buildFromCompartments: {#region->#(A B C D E). #status->#(S I)} 
 			cardinalities: #(1000 10 1000 0 1000 0 1000 0 1000 0).
 	model addParameters: '{#mu: 0.0001, #gamma: 0.1, #N: 10000}'.

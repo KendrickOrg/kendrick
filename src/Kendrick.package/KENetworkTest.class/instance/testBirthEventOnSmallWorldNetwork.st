@@ -7,7 +7,7 @@ testBirthEventOnSmallWorldNetwork
 	model population: population.
 	model buildFromCompartments: {#status->#(S I R)} cardinalities: #(90 1 0).
 	network := KENetwork on: population atAttribute: #status.
-	network := network build: #smallworld numberOfContacts: 4.
+	network := network buildNetworkType: #smallworld numberOfContacts: 4.
 	population addGraph: network.
 	ind := KEIndividual new currentStatus: (Dictionary newFrom: {#status->#I}).
 	model population addIndividual: (ind).

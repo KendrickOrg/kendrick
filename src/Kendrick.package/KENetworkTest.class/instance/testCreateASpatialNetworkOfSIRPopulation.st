@@ -7,6 +7,6 @@ testCreateASpatialNetworkOfSIRPopulation
 	model population: population.
 	model buildFromCompartments: {#status->#(S I R)} cardinalities: #(99 1 0).
 	network := KENetwork on: population atAttribute: #status.
-	network := network build: #spatial numberOfContacts: 4.
+	network := network buildNetworkType: #spatial numberOfContacts: 4.
 	
 	self assert: network nodes size equals: 100
