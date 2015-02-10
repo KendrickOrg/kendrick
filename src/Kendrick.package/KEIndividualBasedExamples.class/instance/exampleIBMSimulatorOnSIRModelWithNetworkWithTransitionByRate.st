@@ -1,6 +1,6 @@
 examples
-exampleIBMSimulatorOnSIRModelWithNetwork
-	"self new exampleIBMSimulatorOnSIRModelWithNetwork"
+exampleIBMSimulatorOnSIRModelWithNetworkWithTransitionByRate
+	"self new exampleIBMSimulatorOnSIRModelWithNetworkWithTransitionByRate"
 	|model simulator network output db |
 	model := KEModel new.
 	model population: KEMetaPopulation new.
@@ -12,10 +12,13 @@ exampleIBMSimulatorOnSIRModelWithNetwork
 	}'.
 	model addParameter: #beta value: 1.
 	model addParameter: #gamma value: 0.1.
-	model addEquation: ('S:t=-beta*S*I' parseAsAnEquation).
-	model addEquation: ('I:t=beta*S*I-gamma*I' parseAsAnEquation).
-	model addEquation: ('R:t=gamma*I' parseAsAnEquation).
-	network := KENetwork on: model population atAttribute: #status networkType: #lattice numberOfContacts: 4.
+	model addTransitionFrom: '{#status:#S}'
+		to: '{#status: #I}'
+		rate: 'beta*I' parseAsAnExpression.
+	model addTransitionFrom: '{#status:#I}'
+		to: '{#status: #R}'
+		rate: 'gamma' parseAsAnExpression.
+	network := KENetwork on: model population atAttribute: #status networkType: #spatial numberOfContacts: 4.
 	network applyGraphTo: model.
 	
 	simulator := KESimulator new: #IBM from: 0.0 to: 200 step: 0.1.
