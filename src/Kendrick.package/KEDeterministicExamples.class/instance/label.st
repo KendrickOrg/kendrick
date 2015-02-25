@@ -1,3 +1,3 @@
 examples
 label
-	^ 'Deterministic examples'
+	^ 'Deterministic simulation examples'

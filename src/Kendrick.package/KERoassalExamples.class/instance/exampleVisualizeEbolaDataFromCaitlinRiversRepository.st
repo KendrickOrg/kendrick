@@ -16,7 +16,6 @@ exampleVisualizeEbolaDataFromCaitlinRiversRepository
 	b extent: 400 @ 200.
 	
 	ds1 := RTStackedDataSet new.
-	
 	ds1 dotShape ellipse size: 0.
 	ds1 points: data.
 	ds1 connectColor: Color blue.
