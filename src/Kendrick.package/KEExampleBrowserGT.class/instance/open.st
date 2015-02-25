@@ -1,4 +1,4 @@
-as yet unclassified
+instance creation
 open
 	| pager |
 	pager := GLMPager new.
