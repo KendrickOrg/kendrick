@@ -1,3 +1,3 @@
 examples
 label
-	^ 'Roassal examples'
+	^ 'Epidemiological data visualization examples'

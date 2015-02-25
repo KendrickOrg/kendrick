@@ -1,7 +1,6 @@
 sources
 exampleVisualizeEbolaDataFromCaitlinRiversRepository
-
-	| tab data minValue b lb |
+| tab data minValue b lb ds1 ds2 |
 	tab := RTTabTable new
 		input: (ZnEasy get: 'https://raw.githubusercontent.com/cmrivers/ebola/master/country_timeseries.csv') contents
 		usingDelimiter: $,.
@@ -12,17 +11,26 @@ exampleVisualizeEbolaDataFromCaitlinRiversRepository
 	tab replaceZeroWithCumulativeValuesInColumns: (2 to: 12) asArray.
 	data := tab values reversed.
 	minValue := data minValue: [ :aData | aData first julianDayNumber ].
-	b := RTCharterBuilder new.
+	
+	b := RTDoubleGrapherBuilder  new.
 	b extent: 400 @ 200.
-	b shape ellipse size: 0.
-	b points: data.
-	b connectDotColor: Color blue.
-	b y: [ :v | v at: 3 ].
-	b x: [ :v | v first julianDayNumber - minValue ].
-	b points: data.
-	b connectDotColor: Color green.
-	b y: [ :v | v at: 4 ].
-	b x: [ :v | v first julianDayNumber - minValue ].
+	
+	ds1 := RTStackedDataSet new.
+	
+	ds1 dotShape ellipse size: 0.
+	ds1 points: data.
+	ds1 connectColor: Color blue.
+	ds1 y: [ :v | v at: 3 ].
+	ds1 x: [ :v | v first julianDayNumber - minValue ].
+	b add: ds1.
+	
+	ds2 := RTStackedDataSet new.
+	ds2 points: data.
+	ds2 connectColor: Color green.
+	ds2 y: [ :v | v at: 4 ].
+	ds2 x: [ :v | v first julianDayNumber - minValue ].
+	b add: ds2.
+	
 	b axisConfiguration
 		labelRotation: -30;
 		labelConvertion: [ :v | Date julianDayNumber: v + minValue ].
