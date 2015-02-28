@@ -9,5 +9,7 @@ testCreateCouplingGraphForMultiHostModel
 				#(#mosquito #reservoir1)->0.02. 
 				#(#mosquito #reservoir2)->0.02} 
 				insideClass: {(#all->0.0)}.
+				self halt.
+	graph visualise
 	self assert: (graph nodes size) equals: 3.
 	self assert: (graph edges size) equals: 5

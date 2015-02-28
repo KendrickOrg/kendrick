@@ -1,5 +1,5 @@
 accessing
-visualise: aPopulation
+visualise
 	|b|
 	b := RTGraphBuilder new.
 	b nodes

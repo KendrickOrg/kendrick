@@ -10,6 +10,6 @@ executeOn: aModel
 		t := t + step.
 		self updateDataAt: t.
 		countStep := countStep + 1.
-		(model sizeOf: '{#status: #I}') <= 0 ifTrue: [ ^ countStep ]
+		"(model sizeOf: '{#status: #I}') <= 0 ifTrue: [ ^ countStep ]"
 	 ].
 	^ countStep

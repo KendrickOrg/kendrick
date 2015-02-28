@@ -7,14 +7,14 @@ exampleRK4SolverOnSIRMultiHostModel
 		#status: [ #S, #I, #R ], #species: [ #mosquito, #reservoir1, #reservoir2 ]
 	}'.
 	model buildFromCompartments: '{
-		{ #status: #S, #species: #mosquito }: 9999,
-		{ #status: #I, #species: #mosquito }: 1,
+		{ #status: #S, #species: #mosquito }: 9800,
+		{ #status: #I, #species: #mosquito }: 200,
 		{ #status: #R, #species: #mosquito }: 0,
-		{ #status: #S, #species: #reservoir1 }: 999,
-		{ #status: #I, #species: #reservoir1 }: 1,
+		{ #status: #S, #species: #reservoir1 }: 1000,
+		{ #status: #I, #species: #reservoir1 }: 0,
 		{ #status: #R, #species: #reservoir1 }: 0,
-		{ #status: #S, #species: #reservoir2 }: 1999,
-		{ #status: #I, #species: #reservoir2 }: 1,
+		{ #status: #S, #species: #reservoir2 }: 2000,
+		{ #status: #I, #species: #reservoir2 }: 0,
 		{ #status: #R, #species: #reservoir2 }: 0
 	}'.
 	model addParameters: '{{#species: #mosquito}:{
@@ -53,8 +53,8 @@ exampleRK4SolverOnSIRMultiHostModel
 		probability: [:m| m atParameter: #mu].
 	model addTransitionFrom: #empty
 		to: '{#status: #S}'
-		probability: [:m| (m atParameter: #mu)*(m atParameter: #N)].
-	simulator := KESimulator new: #RungeKutta from: 0.0 to: 40.0 step: 0.01.
+		probability: [:m| (m atParameter: #mu)""*(m atParameter: #N)""].
+	simulator := KESimulator new: #RungeKutta from: 0.0 to: 0.5 step: 0.0027.
 	simulator executeOn: model.
 	output := simulator data.
 	db := (KEDiagramBuilder new) data: (output dataAt: '{#status: #I}') do: #sqrt.

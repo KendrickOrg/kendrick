@@ -35,9 +35,10 @@ exampleRK4SolverOnSEIRMeaslesModel
 	model addTransitionFrom: #empty
 		to: '{#status: #S}'
 		probability: [:m| (m atParameter: #mu) * (m atParameter: #N)].
-	simulator := KESimulator new: #RungeKutta from: 0.0 to: 100 step: 1.
+	simulator := KESimulator new: #IBM from: 0.0 to: 100 step: 1.
 	simulator executeOn: model.
 	output := simulator data.
 	diag := (KEDiagramBuilder new) data: (output dataAt: #all"'{#status: #I}'").
+	diag xLabel: 'Time (days)'.
 	diag open
 	

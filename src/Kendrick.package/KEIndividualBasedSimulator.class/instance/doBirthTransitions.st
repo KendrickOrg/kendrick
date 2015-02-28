@@ -1,12 +1,13 @@
 as yet unclassified
 doBirthTransitions
+	|rand|
+	rand := Random new.
 	self birthTransitions do: [ :e|
-		|r p rand| 
+		|r p| 
 		model addParameter: #subPopulation value: e key subPopulation.
 		r := e key probability value: model.
 		r isDictionary ifTrue: [ r := r values sum ].
 		p := 1 - (((r * step) negated) exp).
-		rand := Random new.
 		(p > (rand next)) ifTrue: [  
 			|newInd oldTimes|
 			newInd := KEIndividual new.

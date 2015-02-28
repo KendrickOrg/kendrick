@@ -24,6 +24,7 @@ open
 	       ifNotNil: [ b axisX title: xLabel ].
 	yLabel ifNil: [ b axisY title: 'Number of individuals' ] 
 	       ifNotNil: [ b axisY title: yLabel ].
+	b axisY noDecimal.
 	lb := RTLegendBuilder new.
 	lb view: b view.
 	lb addText: 'Compartments'.

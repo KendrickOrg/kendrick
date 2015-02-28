@@ -55,7 +55,7 @@ exampleRK4SolverOn2SEIRMeaslesModelWithVaccination
 	legends addAll: #('p = 0.7' 'p = 0.0').
 	diag := (KEDiagramBuilder new) data: data do: #log.
 	diag legends: legends.
-	diag xLabel: 'Time in years'.
+	diag xLabel: 'Time (years)'.
 	diag yLabel: 'log(Infectious)'.
 	diag open
 	

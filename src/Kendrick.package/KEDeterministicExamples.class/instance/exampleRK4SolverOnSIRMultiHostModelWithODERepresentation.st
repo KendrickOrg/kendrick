@@ -40,7 +40,6 @@ exampleRK4SolverOnSIRMultiHostModelWithODERepresentation
 	model addEquation: 'S:t=mu*N-beta*S*I-mu*S' parseAsAnEquation.
 	model addEquation: ('I:t=beta*S*I-(mu+v)*I' parseAsAnEquation).
 	model addEquation: ('R:t=v*I-mu*R' parseAsAnEquation).
-
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 40.0 step: 0.01.
 	simulator executeOn: model.
 	output := simulator data.

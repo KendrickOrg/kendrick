@@ -4,102 +4,104 @@ exampleGillespieDirectOnSIRMultiHostModel
 	|model simulator output db|
 	model := KEModel new.
 	model population attributes: '{
-		#status: [ #S, #I, #R ], #specie: [ #mosquito, #reservoir1, #reservoir2 ]
+		#status: [ #S, #I, #R ], #species: [ #mosquito, #reservoir1, #reservoir2 ]
 	}'.
 	model buildFromCompartments: '{
-		{ #status: #S, #specie: #mosquito }: 9999,
-		{ #status: #I, #specie: #mosquito }: 1,
-		{ #status: #R, #specie: #mosquito }: 0,
-		{ #status: #S, #specie: #reservoir1 }: 999,
-		{ #status: #I, #specie: #reservoir1 }: 1,
-		{ #status: #R, #specie: #reservoir1 }: 0,
-		{ #status: #S, #specie: #reservoir2 }: 1999,
-		{ #status: #I, #specie: #reservoir2 }: 1,
-		{ #status: #R, #specie: #reservoir2 }: 0
+		{ #status: #S, #species: #mosquito }: 9800,
+		{ #status: #I, #species: #mosquito }: 200,
+		{ #status: #R, #species: #mosquito }: 0,
+		{ #status: #S, #species: #reservoir1 }: 1000,
+		{ #status: #I, #species: #reservoir1 }: 0,
+		{ #status: #R, #species: #reservoir1 }: 0,
+		{ #status: #S, #species: #reservoir2 }: 2000,
+		{ #status: #I, #species: #reservoir2 }: 0,
+		{ #status: #R, #species: #reservoir2 }: 0
 	}'.
-	model addParameters: '{{#specie: #mosquito}:{
-		#beta: { { #specie: #reservoir1 }: 0.02, { #specie: #reservoir2 }: 0.02, #yourself: 0.0 },
+	model addParameters: '{{#species: #mosquito}:{
+		#beta: { { #species: #reservoir1 }: 0.02, { #species: #reservoir2 }: 0.02, #yourself: 0.0 },
 		#mu: 12.17,
 		#N: 10000
 		}
 	}'.
-	model addParameters: '{{#specie: #reservoir1}:{
-		#beta: { { #specie: #reservoir2 }: 0.0, { #specie: #mosquito }: 0.02, #yourself: 0.0 },
+	model addParameters: '{{#species: #reservoir1}:{
+		#beta: { { #species: #reservoir2 }: 0.0, { #species: #mosquito }: 0.02, #yourself: 0.0 },
 		#mu: 0.05,
 		#N: 1000
 		}
 	}'.
-	model addParameters: '{{#specie: #reservoir2}:{
-		#beta: { { #specie: #reservoir1 }: 0.0, { #specie: #mosquito }: 0.02, #yourself: 0.0 },
+	model addParameters: '{{#species: #reservoir2}:{
+		#beta: { { #species: #reservoir1 }: 0.0, { #species: #mosquito }: 0.02, #yourself: 0.0 },
 		#mu: 0.05,
 		#N: 2000
 		}
 	}'.
 	model addParameters: '{#gamma: 52}'.
-	model addTransitionFrom: '{#specie: #mosquito, #status: #S}'
-			to: '{#specie: #mosquito, #status: #I}'
+	model addTransitionFrom: '{#species: #mosquito, #status: #S}'
+			to: '{#species: #mosquito, #status: #I}'
 			probability: [:m| 
-				(m atParameter: '{{#specie:#mosquito}:#beta}')*(m atCompartment: '{#status: #I}')].
-	model addTransitionFrom: '{#specie: #mosquito, #status: #I}'
-			to: '{#specie: #mosquito, #status: #R}'
+				(m atParameter: '{{#species:#mosquito}:#beta}')*(m atCompartment: '{#status: #I}')].
+	model addTransitionFrom: '{#species: #mosquito, #status: #I}'
+			to: '{#species: #mosquito, #status: #R}'
 			probability: [:m| (m atParameter: #gamma)].
-	model addTransitionFrom: '{#specie: #mosquito, #status: #S}'
+	model addTransitionFrom: '{#species: #mosquito, #status: #S}'
 			to: #empty
-			probability: [:m| (m atParameter: '{{#specie:#mosquito}:#mu}')].
-	model addTransitionFrom: '{#specie: #mosquito, #status: #I}'
+			probability: [:m| (m atParameter: '{{#species:#mosquito}:#mu}')].
+	model addTransitionFrom: '{#species: #mosquito, #status: #I}'
 			to: #empty
-			probability: [:m| (m atParameter: '{{#specie:#mosquito}:#mu}')].
-	model addTransitionFrom: '{#specie: #mosquito, #status: #R}'
+			probability: [:m| (m atParameter: '{{#species:#mosquito}:#mu}')].
+	model addTransitionFrom: '{#species: #mosquito, #status: #R}'
 			to: #empty
-			probability: [:m| (m atParameter: '{{#specie:#mosquito}:#mu}')].
+			probability: [:m| (m atParameter: '{{#species:#mosquito}:#mu}')].
 	model addTransitionFrom: #empty
-			to: '{#specie: #mosquito, #status: #S}'
+			to: '{#species: #mosquito, #status: #S}'
 			probability: [:m| 
-				(m atParameter: '{{#specie:#mosquito}:#mu}')*(m atParameter: '{{#specie:#mosquito}:#N}')].
-	model addTransitionFrom: '{#specie: #reservoir1, #status: #S}'
-			to: '{#specie: #reservoir1, #status: #I}'
+				(m atParameter: '{{#species:#mosquito}:#mu}')*(m atParameter: '{{#species:#mosquito}:#N}')].
+	model addTransitionFrom: '{#species: #reservoir1, #status: #S}'
+			to: '{#species: #reservoir1, #status: #I}'
 			probability: [:m| 
-				(m atParameter: '{{#specie:#reservoir1}:#beta}')*(m atCompartment: '{#status: #I}')].
-	model addTransitionFrom: '{#specie: #reservoir1, #status: #I}'
-			to: '{#specie: #reservoir1, #status: #R}'
+				(m atParameter: '{{#species:#reservoir1}:#beta}')*(m atCompartment: '{#status: #I}')].
+	model addTransitionFrom: '{#species: #reservoir1, #status: #I}'
+			to: '{#species: #reservoir1, #status: #R}'
 			probability: [:m| (m atParameter: #gamma)].
-	model addTransitionFrom: '{#specie: #reservoir1, #status: #S}'
+	model addTransitionFrom: '{#species: #reservoir1, #status: #S}'
 			to: #empty
-			probability: [:m| (m atParameter: '{{#specie:#reservoir1}:#mu}')].
-	model addTransitionFrom: '{#specie: #reservoir1, #status: #I}'
+			probability: [:m| (m atParameter: '{{#species:#reservoir1}:#mu}')].
+	model addTransitionFrom: '{#species: #reservoir1, #status: #I}'
 			to: #empty
-			probability: [:m| (m atParameter: '{{#specie:#reservoir1}:#mu}')].
-	model addTransitionFrom: '{#specie: #reservoir1, #status: #R}'
+			probability: [:m| (m atParameter: '{{#species:#reservoir1}:#mu}')].
+	model addTransitionFrom: '{#species: #reservoir1, #status: #R}'
 			to: #empty
-			probability: [:m| (m atParameter: '{{#specie:#reservoir1}:#mu}')].
+			probability: [:m| (m atParameter: '{{#species:#reservoir1}:#mu}')].
 	model addTransitionFrom: #empty
-			to: '{#specie: #reservoir1, #status: #S}'
+			to: '{#species: #reservoir1, #status: #S}'
 			probability: [:m| 
-				(m atParameter: '{{#specie:#reservoir1}:#mu}')*(m atParameter: '{{#specie:#reservoir1}:#N}')].
-	model addTransitionFrom: '{#specie: #reservoir2, #status: #S}'
-			to: '{#specie: #reservoir2, #status: #I}'
+				(m atParameter: '{{#species:#reservoir1}:#mu}')*(m atParameter: '{{#species:#reservoir1}:#N}')].
+	model addTransitionFrom: '{#species: #reservoir2, #status: #S}'
+			to: '{#species: #reservoir2, #status: #I}'
 			probability: [:m| 
-				(m atParameter: '{{#specie:#reservoir2}:#beta}')*(m atCompartment: '{#status: #I}')].
-	model addTransitionFrom: '{#specie: #reservoir2, #status: #I}'
-			to: '{#specie: #reservoir2, #status: #R}'
+				(m atParameter: '{{#species:#reservoir2}:#beta}')*(m atCompartment: '{#status: #I}')].
+	model addTransitionFrom: '{#species: #reservoir2, #status: #I}'
+			to: '{#species: #reservoir2, #status: #R}'
 			probability: [:m| (m atParameter: #gamma)].
-	model addTransitionFrom: '{#specie: #reservoir2, #status: #S}'
+	model addTransitionFrom: '{#species: #reservoir2, #status: #S}'
 			to: #empty
-			probability: [:m| (m atParameter: '{{#specie:#reservoir2}:#mu}')].
-	model addTransitionFrom: '{#specie: #reservoir2, #status: #I}'
+			probability: [:m| (m atParameter: '{{#species:#reservoir2}:#mu}')].
+	model addTransitionFrom: '{#species: #reservoir2, #status: #I}'
 			to: #empty
-			probability: [:m| (m atParameter: '{{#specie:#reservoir2}:#mu}')].
-	model addTransitionFrom: '{#specie: #reservoir2, #status: #R}'
+			probability: [:m| (m atParameter: '{{#species:#reservoir2}:#mu}')].
+	model addTransitionFrom: '{#species: #reservoir2, #status: #R}'
 			to: #empty
-			probability: [:m| (m atParameter: '{{#specie:#reservoir2}:#mu}')].
+			probability: [:m| (m atParameter: '{{#species:#reservoir2}:#mu}')].
 	model addTransitionFrom: #empty
-			to: '{#specie: #reservoir2, #status: #S}'
+			to: '{#species: #reservoir2, #status: #S}'
 			probability: [:m| 
-				(m atParameter: '{{#specie:#reservoir2}:#mu}')*(m atParameter: '{{#specie:#reservoir2}:#N}')].
+				(m atParameter: '{{#species:#reservoir2}:#mu}')*(m atParameter: '{{#species:#reservoir2}:#N}')].
 			
-	simulator := KESimulator new: #Gillespie from: 0.0 to: 1.0 step: 0.001.
+	simulator := KESimulator new: #Gillespie from: 0.0 to: 0.5 step: 0.0027.
 	simulator executeOn: model.
 	output := simulator data.
 	db := (KEDiagramBuilder new) data: (output dataAt: '{#status: #I}') do: #sqrt.
+	db xLabel: 'Time (year)'.
+	db yLabel: 'sqrt(Infectious)'.
 	db open
 	
