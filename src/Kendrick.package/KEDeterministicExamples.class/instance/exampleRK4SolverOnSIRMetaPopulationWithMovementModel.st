@@ -14,7 +14,7 @@ exampleRK4SolverOnSIRMetaPopulationWithMovementModel
 	graph2 applyGraphTo: model.
 	model buildFromCompartments: {#region->#(A B C D E). #status->#(S I)} 
 			cardinalities: #(1000 10 1000 0 1000 0 1000 0 1000 0).
-	model addParameters: '{#mu: 0.0001, #gamma: 0.1, #N: 10000}'.
+	model addParameters: '{#mu: 0.0001, #gamma: 0.1, #N: #sizeOfPopulation}'.
 	model addEquation:
 		('S:t=mu*N-beta*S*I-mu*S' parseAsAnEquation).
 	model addEquation:

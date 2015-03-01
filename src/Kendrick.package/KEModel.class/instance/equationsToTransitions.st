@@ -3,6 +3,12 @@ equationsToTransitions
 	|eGenerator events|
 	eGenerator := KEEventGenerator new.
 	events := eGenerator generateEvents: self.
+	events do: [ :e|
+		e fromStatus = #empty ifTrue: [ 
+			|symbol|
+			symbol := self parameters keyAtValue: #sizeOfPopulation ifAbsent: [#N].
+			e rate: (e rate remove: (KEVariable new symbol: symbol)) ]
+		 ].
 	events do: [ :each| |names from to|
 		each fromStatus = #empty ifTrue: [ 
 			from := #empty.

@@ -1,11 +1,9 @@
 as yet unclassified
 executeOn: aModel
-	|t countStep rand1 rand2|
+	|t countStep|
 	self model: aModel.
 	t := tMin.
 	countStep := 0.
-	rand1 := Random new.
-	rand2 := Random new.
 	self updateDataAt: tMin.
 	[ t < tMax ] whileTrue: [ 
 		self doIBMIteration: t.

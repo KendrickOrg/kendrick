@@ -19,23 +19,20 @@ exampleGillespieDirectOnSIRMultiHostModel
 	}'.
 	model addParameters: '{{#species: #mosquito}:{
 		#beta: { { #species: #reservoir1 }: 0.02, { #species: #reservoir2 }: 0.02, #yourself: 0.0 },
-		#mu: 12.17,
-		#N: 10000
+		#mu: 12.17
 		}
 	}'.
 	model addParameters: '{{#species: #reservoir1}:{
 		#beta: { { #species: #reservoir2 }: 0.0, { #species: #mosquito }: 0.02, #yourself: 0.0 },
-		#mu: 0.05,
-		#N: 1000
+		#mu: 0.05
 		}
 	}'.
 	model addParameters: '{{#species: #reservoir2}:{
 		#beta: { { #species: #reservoir1 }: 0.0, { #species: #mosquito }: 0.02, #yourself: 0.0 },
-		#mu: 0.05,
-		#N: 2000
+		#mu: 0.05
 		}
 	}'.
-	model addParameters: '{#gamma: 52}'.
+	model addParameters: '{#gamma: 52, #N: #sizeOfPopulation}'.
 	model addTransitionFrom: '{#species: #mosquito, #status: #S}'
 			to: '{#species: #mosquito, #status: #I}'
 			probability: [:m| 
@@ -55,7 +52,7 @@ exampleGillespieDirectOnSIRMultiHostModel
 	model addTransitionFrom: #empty
 			to: '{#species: #mosquito, #status: #S}'
 			probability: [:m| 
-				(m atParameter: '{{#species:#mosquito}:#mu}')*(m atParameter: '{{#species:#mosquito}:#N}')].
+				(m atParameter: '{{#species:#mosquito}:#mu}')].
 	model addTransitionFrom: '{#species: #reservoir1, #status: #S}'
 			to: '{#species: #reservoir1, #status: #I}'
 			probability: [:m| 
@@ -75,7 +72,7 @@ exampleGillespieDirectOnSIRMultiHostModel
 	model addTransitionFrom: #empty
 			to: '{#species: #reservoir1, #status: #S}'
 			probability: [:m| 
-				(m atParameter: '{{#species:#reservoir1}:#mu}')*(m atParameter: '{{#species:#reservoir1}:#N}')].
+				(m atParameter: '{{#species:#reservoir1}:#mu}')].
 	model addTransitionFrom: '{#species: #reservoir2, #status: #S}'
 			to: '{#species: #reservoir2, #status: #I}'
 			probability: [:m| 
@@ -95,7 +92,7 @@ exampleGillespieDirectOnSIRMultiHostModel
 	model addTransitionFrom: #empty
 			to: '{#species: #reservoir2, #status: #S}'
 			probability: [:m| 
-				(m atParameter: '{{#species:#reservoir2}:#mu}')*(m atParameter: '{{#species:#reservoir2}:#N}')].
+				(m atParameter: '{{#species:#reservoir2}:#mu}')].
 			
 	simulator := KESimulator new: #Gillespie from: 0.0 to: 0.5 step: 0.0027.
 	simulator executeOn: model.

@@ -1,5 +1,5 @@
 as yet unclassified
-sizeOf: anObject
+sizeOfAll: anObject
 	|key|
 	anObject isString ifTrue: [ key := STON fromString: anObject ].
 	anObject isDictionary ifTrue: [ key := anObject ].

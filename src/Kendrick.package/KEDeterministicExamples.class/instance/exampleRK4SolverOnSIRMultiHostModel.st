@@ -19,23 +19,21 @@ exampleRK4SolverOnSIRMultiHostModel
 	}'.
 	model addParameters: '{{#species: #mosquito}:{
 		#beta: { { #species: #reservoir1 }: 0.02, { #species: #reservoir2 }: 0.02, #yourself: 0.0 },
-		#mu: 12.17,
-		#N: 10000
+		#mu: 12.17
 		}
 	}'.
 	model addParameters: '{{#species: #reservoir1}:{
 		#beta: { { #species: #reservoir2 }: 0.0, { #species: #mosquito }: 0.02, #yourself: 0.0 },
-		#mu: 0.05,
-		#N: 1000
+		#mu: 0.05
 		}
 	}'.
 	model addParameters: '{{#species: #reservoir2}:{
 		#beta: { { #species: #reservoir1 }: 0.0, { #species: #mosquito }: 0.02, #yourself: 0.0 },
-		#mu: 0.05,
-		#N: 2000
+		#mu: 0.05
 		}
 	}'.
-	model addParameters: '{#gamma: 52}'.
+	model addParameter: #gamma value: 52.
+	model addParameter: #N value: #sizeOfPopulation.
 	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #I}'
 		probability: [:m|(m atParameter: #beta)*(m atCompartment: '{#status: #I}')].
@@ -53,7 +51,7 @@ exampleRK4SolverOnSIRMultiHostModel
 		probability: [:m| m atParameter: #mu].
 	model addTransitionFrom: #empty
 		to: '{#status: #S}'
-		probability: [:m| (m atParameter: #mu)""*(m atParameter: #N)""].
+		probability: [:m| (m atParameter: #mu)].
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 0.5 step: 0.0027.
 	simulator executeOn: model.
 	output := simulator data.

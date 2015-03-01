@@ -9,9 +9,9 @@ exampleGillespieDirectOnSIRMetaPopulationModel
 				withOutsideClass: {#(A B)->0.02. #(A C)->0.02} insideClass: {#all->0.0}.
 	graph applyGraphTo: model.
 	model addParameters: '{
-			{#region:#A}:{#mu:12.7,#N:10000},
-			{#region:#B}:{#mu:0.05,#N:1000},
-			{#region:#C}:{#mu:0.05,#N:2000},#v: 52}'.
+			{#region:#A}:{#mu:12.7},
+			{#region:#B}:{#mu:0.05},
+			{#region:#C}:{#mu:0.05},#v: 52, #N: #sizeOfPopulation}'.
 
 	model buildFromCompartments: {#region->#(A B C). #status->#(S I R)}
 		   cardinalities: #(9999 1 0 999 1 0 1999 1 0).

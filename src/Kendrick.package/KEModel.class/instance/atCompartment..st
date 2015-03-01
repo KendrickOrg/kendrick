@@ -1,7 +1,11 @@
 as yet unclassified
 atCompartment: anObject
 	|key|
-	anObject = #empty ifTrue: [ ^ 1 ].
+	anObject = #empty ifTrue: [ 
+		|s|
+		s := self parameters at: #subPopulation.
+		s ifNil: [ ^ self sizeOfPopulation: #population ].
+		^ self sizeOfPopulation: s associations ].
 	anObject isString ifTrue: [ key := STON fromString: anObject ].
 	anObject isDictionary ifTrue: [ key := anObject ].
 	key ifNotNil: [ 

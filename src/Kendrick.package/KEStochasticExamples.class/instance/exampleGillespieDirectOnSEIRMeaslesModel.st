@@ -11,7 +11,7 @@ exampleGillespieDirectOnSEIRMeaslesModel
 		{#status: #R}:0
 	}'.
 	"model addParameters: '{#beta: 0.0000214, #gamma: 0.143, #mu: 0.0000351, #sigma: 0.125, #N: 100000}'."
-	model addParameters: '{#beta: 0.00782, #gamma: 52.14, #mu: 0.0128, #sigma: 45.625, #N: 100000}'.
+	model addParameters: '{#beta: 0.00782, #gamma: 52.14, #mu: 0.0128, #sigma: 45.625, #N: #sizeOfPopulation}'.
 	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #E}'
 		probability: [:m| (m atParameter: #beta) * (m atCompartment: '{#status:#I}')].
@@ -35,7 +35,7 @@ exampleGillespieDirectOnSEIRMeaslesModel
 		probability: [:m| (m atParameter: #mu)].
 	model addTransitionFrom: #empty
 		to: '{#status: #S}'
-		probability: [:m| (m atParameter: #mu) "* (m atParameter: #N)"].
+		probability: [:m| (m atParameter: #mu)].
 	simulator := KESimulator new: #IBM from: 0.0 to: 0.3 step: 0.0027.
 	simulator executeOn: model.
 	output := simulator data.
