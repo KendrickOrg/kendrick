@@ -93,7 +93,7 @@ exampleGillespieDirectOnSIRMultiHostModel
 			to: '{#species: #reservoir2, #status: #S}'
 			probability: [:m| 
 				(m atParameter: '{{#species:#reservoir2}:#mu}')].
-			
+	self halt.
 	simulator := KESimulator new: #Gillespie from: 0.0 to: 0.5 step: 0.0027.
 	simulator executeOn: model.
 	output := simulator data.

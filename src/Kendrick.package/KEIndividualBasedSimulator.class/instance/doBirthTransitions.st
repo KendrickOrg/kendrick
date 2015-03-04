@@ -1,9 +1,9 @@
 as yet unclassified
 doBirthTransitions
-	|rand|
+	"|rand|
+	rand := Random new."
 	self birthTransitions do: [ :e|
 		|r p| 
-		rand := Random new.
 		model addParameter: #subPopulation value: e key subPopulation.
 		r := e key probability value: model.
 		r isDictionary ifTrue: [ r := r values sum ].

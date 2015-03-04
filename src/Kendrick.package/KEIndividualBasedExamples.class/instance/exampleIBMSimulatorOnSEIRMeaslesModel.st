@@ -35,7 +35,7 @@ exampleIBMSimulatorOnSEIRMeaslesModel
 	model addTransitionFrom: #empty
 		to: '{#status: #S}'
 		probability: [:m| (m atParameter: #mu)].
-	simulator := KESimulator new: #IBM from: 0.0 to: 200 step: 1.
+	simulator := KESimulator new: #IBM from: 0.0 to: 150 step: 1.
 	simulator executeOn: model.
 	output := simulator data.
 	diag := (KEDiagramBuilder new) data: (output dataAt: '{#status: #I}').

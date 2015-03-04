@@ -5,8 +5,8 @@ exampleGillespieDirectOnSEIRMeaslesModel
 	model := KEModel new.
 	model population attributes: '{#status: [#S, #E, #I, #R]}'.
 	model buildFromCompartments: '{
-		{#status: #S}: 99975,
-		{#status: #I}: 25,
+		{#status: #S}: 99999,
+		{#status: #I}: 1,
 		{#status: #E}: 0,
 		{#status: #R}:0
 	}'.
@@ -36,7 +36,7 @@ exampleGillespieDirectOnSEIRMeaslesModel
 	model addTransitionFrom: #empty
 		to: '{#status: #S}'
 		probability: [:m| (m atParameter: #mu)].
-	simulator := KESimulator new: #IBM from: 0.0 to: 0.3 step: 0.0027.
+	simulator := KESimulator new: #IBM from: 0.0 to: 0.5 step: 0.0027.
 	simulator executeOn: model.
 	output := simulator data.
 	diag := (KEDiagramBuilder new) data: (output dataAt: '{#status: #I}').
