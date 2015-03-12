@@ -5,7 +5,7 @@ executeOn: aModel
 	t := tMin.
 	previousT := t.
 	countStep := 0.
-	rand1 := MarsagliaKissRandom new.
+	rand1 := Random new.
 	rand2 := Random new.
 	self updateDataAt: tMin.
 	[ t < tMax ] whileTrue: [ 
@@ -16,11 +16,10 @@ executeOn: aModel
 		countStep := countStep + 1.
 		"((deltaT = 0) or: [ (model sizeOf: '{#status: #I}') <= 0 ]) ifTrue:
 			[ ^ countStep ]."
-		t := t + (2.5*deltaT). 
+		t := t + (deltaT). 
 		t > (previousT + step) ifTrue: [ 
 			self updateDataAt: t.
 			previousT := t.
 		 ]
 	 ].
-self halt.
 	^ countStep

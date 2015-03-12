@@ -8,8 +8,7 @@
 	"instvars" : [
 		"birthTransitions",
 		"transitions",
-		"transitionNbExecutions",
-		"rand"
+		"transitionNbExecutions"
 	],
 	"name" : "KEIndividualBasedSimulator",
 	"type" : "normal"

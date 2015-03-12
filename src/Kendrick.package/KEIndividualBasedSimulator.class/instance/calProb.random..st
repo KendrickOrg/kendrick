@@ -1,8 +1,7 @@
 as yet unclassified
-calProb: ind
-	|rate "rand" prob events|
+calProb: ind random: rand
+	|rate prob events|
 	events := self transitions at: ind currentStatus ifAbsent: [OrderedCollection new].
-	"rand := Random new."
 	"Choose an event for execute on this individual"
 	1 to: events size do: [ :e|
 		model addParameter: #subPopulation value: (events at: e) key subPopulation.

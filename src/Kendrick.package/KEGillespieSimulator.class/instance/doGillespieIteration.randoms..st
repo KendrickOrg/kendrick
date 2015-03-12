@@ -10,7 +10,7 @@ doGillespieIteration: t randoms: rands
 		prob isDictionary ifTrue: [ prob := prob values sum ].
 		rates add: (prob * (model atCompartment: tr from)) 
 		].
-	deltaT := (((rands second) log) negated) / (rates sum).
+	deltaT := (((rands second) ln) negated) / (rates sum).
 	chosen := self random: (rands first) select: rates.
 	(model transitions at: chosen) executeOn: model times: 1.
 	^ deltaT
