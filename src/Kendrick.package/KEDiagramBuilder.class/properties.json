@@ -9,7 +9,8 @@
 		"xLabel",
 		"yLabel",
 		"data",
-		"legends"
+		"legends",
+		"legendTitle"
 	],
 	"name" : "KEDiagramBuilder",
 	"type" : "normal"

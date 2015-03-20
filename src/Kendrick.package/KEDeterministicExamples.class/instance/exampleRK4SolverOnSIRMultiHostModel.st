@@ -52,7 +52,7 @@ exampleRK4SolverOnSIRMultiHostModel
 	model addTransitionFrom: #empty
 		to: '{#status: #S}'
 		probability: [:m| (m atParameter: #mu)].
-	simulator := KESimulator new: #RungeKutta from: 0.0 to: 0.5 step: 0.0027.
+	simulator := KESimulator new: #RungeKutta from: 0.0 to: 40 step: 0.0027.
 	simulator executeOn: model.
 	output := simulator data.
 	db := (KEDiagramBuilder new) data: (output dataAt: '{#status: #I}') do: #sqrt.

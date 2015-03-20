@@ -25,8 +25,9 @@ executeOn: aModel
 	st := model compartments values.
 	ks := model compartments keys.
 	(tMin to: tMax by: step) do: [ :t|
+		self updateDataAt: t.
 		model addParameter: #t value: t.
 		st := stepper doStep: st time: t stepSize: step.
 		1 to: ks size do: [ :i| model compartments at: (ks at: i) put: (st at: i) ].
-		self updateDataAt: t
+		
 		 ]

@@ -1,4 +1,5 @@
 accessing
-attributes: aString
-	attributes := STON fromString: aString
+attributes: input
+	input isArray 
+	ifTrue: [ attributes := Dictionary newFrom: input ] ifFalse: [ attributes := STON fromString: input ]
 	

@@ -1,22 +1,19 @@
 as yet unclassified
-addParameters: aSTONString
+addParameters: input
 	|reader dic|
-	reader := (STONReader on: aSTONString readStream) allowComplexMapKeys: true.
-	dic := reader next.
-	dic keysAndValuesDo: [ :key :value|
-		value isDictionary ifTrue: [ 
-			value keysAndValuesDo: [ :k :v|
-				(v isDictionary and: [ v includesKey: #yourself ]) ifTrue:
-					[ v at: key put: (v at: #yourself).
-				 		v removeKey: #yourself.
-						value at: k put: (KEDictionary from: v)
-					].
-			 	]
+	input isString 
+	ifTrue: [ 
+		reader := (STONReader on: input readStream) allowComplexMapKeys: true.
+		dic := reader next.
+		dic keysAndValuesDo: [ :k :v| |tmp|
+			v isDictionary ifTrue: [ 
+				tmp := parameters at: k ifAbsentPut: (Dictionary new).
+				tmp addAll: v ]
+			ifFalse: [ parameters at: k put: v ]
 			]
-		].
-	dic keysAndValuesDo: [ :k :v| |tmp|
-		v isDictionary ifTrue: [ 
-			tmp := parameters at: k ifAbsentPut: (Dictionary new).
-			tmp addAll: v ]
-		ifFalse: [ parameters at: k put: v ]
 		]
+	ifFalse: [  
+		input do: [ :e| parameters at: e key put: e value ]
+		]
+	
+	
