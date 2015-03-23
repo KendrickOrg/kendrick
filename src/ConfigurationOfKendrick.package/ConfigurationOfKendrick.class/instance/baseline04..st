@@ -15,7 +15,7 @@ baseline04: spec
 					className: #ConfigurationOfSciSmalltalk;
 					versionString: #'development';
 					repository: 'http://smalltalkhub.com/mc/SergeStinckwich/SciSmalltalk/main/' ].
-				spec project: 'Ston' with: [ 
+		spec project: 'Ston' with: [ 
 					spec
 					className: #ConfigurationOfSton;
 					versionString: #'stable';
