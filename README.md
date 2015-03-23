@@ -13,7 +13,7 @@ All the development happens on SmalltalkHub at the moment: http://bit.ly/XrpsL2
 
 Kendrick is based extensively on several tools of the meta-modeling platform [MOOSE](http://www.moosetechnology.org/) including [PetitParser](http://www.moosetechnology.org/tools/petitparser) and Roassal visualization engine.
 
-Github is only used to to store the [issues](https://github.com/UMMISCO/Kendrick/issues) list.
+Github is only used to store [issues](https://github.com/UMMISCO/Kendrick/issues) list.
 
 ## How to install Kendrick 0.15
 * Download the last dev MOOSE 5.1 on INRIA's CI server: https://ci.inria.fr/moose/job/moose-5.1/
