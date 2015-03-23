@@ -36,8 +36,8 @@ exampleIBMSimulatorOnSIREbolaModel
 	
 	model addParameter: #beta inScopes: #country->#all values: 0.0002.
 	g2 := KECouplingInfectionGraph newOn: model population atAttribute: #country.
-	g1 edges: #all rate: #beta values: 0.0.
-	g1 applyGraphTo: model.
+	g2 edges: #all rate: #beta values: 0.0.
+	g2 applyGraphTo: model.
 	
 	model addEquation: ('S:t=-beta*S*I' parseAsAnEquation).
 	model addEquation: ('I:t=beta*S*I-gamma*I' parseAsAnEquation).
