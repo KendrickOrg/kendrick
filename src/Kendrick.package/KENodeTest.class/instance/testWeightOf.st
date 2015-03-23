@@ -2,7 +2,7 @@ as yet unclassified
 testWeightOf
 	|graph node|
 	graph := self createCouplingGraphForTestingNodes.
-	node := graph nodes at: (Dictionary newFrom: {#region->#A}).
+	node := (graph nodes select: [:e| e label = #A]) first.
 	
-	self assert: (node weightOf: (Dictionary newFrom: {#region->#A})) equals: 0.0.
-	self assert: (node weightOf: (Dictionary newFrom: {#region->#B})) equals: 0.02	
+	self assert: (node weightOf: #B) equals: 0.001.
+	self assert: (node weightOf: #C) equals: 0.001	

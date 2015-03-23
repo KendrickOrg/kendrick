@@ -1,23 +1,35 @@
 examples
 exampleGillespieDirectOnSIRMetaPopulationModel
 	"self new exampleGillespieDirectOnSIRMetaPopulationModel"
-	|model simulator db output graph| 
+	|model simulator graph output db|
 	model := KEModel new.
-	model population: KEMetaPopulation new.
-	model population attributes: '{#status:[#S,#I,#R],#region:[#A,#B,#C]}'.
-	graph := KEGraph on: model population atAttribute: #region 				couplingInfectionCoefficient: #beta 
-				withOutsideClass: {#(A B)->0.02. #(A C)->0.02} insideClass: {#all->0.0}.
+	model population: (KEMetaPopulation new attributes: {
+		#status->#(#S #I #R). 
+		#country->#(#Vietnam #Laos #Campuchia)
+	}).
+	model buildFromAttributes: #(#status #country) 
+			compartments: {
+				#(#S #Vietnam)->9800.
+				#(#I #Vietnam)->200.
+				#(#R #Vietnam)->0.
+				#(#S #Laos)->1000.
+				#(#I #Laos)->0.
+				#(#R #Laos)->0.
+				#(#S #Campuchia)->2000.
+				#(#I #Campuchia)->0.
+				#(#R #Campuchia)->0}.
+	model addParameter: #mu 
+		   inScopes: #country->#(#Vietnam #Laos #Campuchia) 
+		   values: #(12.17 0.05 0.05).
+	model addParameter: #gamma value: 52.
+	model addParameter: #N value: #sizeOfPopulation.
+	"multi-host concern specifying"
+	graph := KECouplingInfectionGraph newOn: model population atAttribute: #country.
+	graph edges: { #Vietnam->#Laos. #Vietnam->#Campuchia } rate: #beta values: 0.02.
 	graph applyGraphTo: model.
-	model addParameters: '{
-			{#region:#A}:{#mu:12.7},
-			{#region:#B}:{#mu:0.05},
-			{#region:#C}:{#mu:0.05},#v: 52, #N: #sizeOfPopulation}'.
-
-	model buildFromCompartments: {#region->#(A B C). #status->#(S I R)}
-		   cardinalities: #(9999 1 0 999 1 0 1999 1 0).
 	model addEquation: 'S:t=mu*N-beta*S*I-mu*S' parseAsAnEquation.
-	model addEquation: ('I:t=beta*S*I-(mu+v)*I' parseAsAnEquation).
-	model addEquation: ('R:t=v*I-mu*R' parseAsAnEquation).
+	model addEquation: ('I:t=beta*S*I-(mu+gamma)*I' parseAsAnEquation).
+	model addEquation: ('R:t=gamma*I-mu*R' parseAsAnEquation).
 	simulator := KESimulator new: #Gillespie from: 0.0 to: 1.0 step: 0.001.
 	simulator executeOn: model.
 	output := simulator data.

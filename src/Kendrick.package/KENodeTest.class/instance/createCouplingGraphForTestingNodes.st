@@ -3,9 +3,7 @@ createCouplingGraphForTestingNodes
 	|population graph|
 	population := KEMetaPopulation new.
 	population attributes: '{#status: [#S, #I, #R], #region: [#A, #B, #C]}'.
-	graph := KEGraph on: population atAttribute: #region 
-				couplingInfectionCoefficient: #beta 
-				withOutsideClass: {#all->0.02} 
-				insideClass: {(#all->0.0)}.
+	graph := KECouplingInfectionGraph newOn: population atAttribute: #region.
+	graph edges: #all rate: #beta values: 0.001. 
 	^ graph
 	

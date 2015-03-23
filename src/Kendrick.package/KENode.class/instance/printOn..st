@@ -4,4 +4,4 @@ printOn: aStream
 	weights keysAndValuesDo: [ :key :value|
 		aStream nextPutAll: key asString, ':', value asArray asString, ' '
 		 ]"
-	aStream nextPutAll: label values first asString
+	aStream nextPutAll: label asString

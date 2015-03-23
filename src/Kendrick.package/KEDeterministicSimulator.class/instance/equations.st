@@ -1,11 +1,7 @@
 as yet unclassified
 equations
 	equations := Dictionary new.
-	model compartments keys do: [ :k|
-		|eq|
-		eq := OrderedCollection new.
-		equations at: k put: eq
-		 ].
+	model compartments keys do: [ :k| equations at: k put: OrderedCollection new ].
 	model transitions do: [ :tr|
 		tr from = #empty ifTrue:
 			[ (equations at: tr to) add: (Array with: tr with: 1) ].

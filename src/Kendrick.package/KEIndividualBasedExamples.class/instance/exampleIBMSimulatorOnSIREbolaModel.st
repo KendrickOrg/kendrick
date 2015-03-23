@@ -1,7 +1,7 @@
 examples
 exampleIBMSimulatorOnSIREbolaModel
 	"self new exampleIBMSimulatorOnSIREbolaModel"
-	|model simulator output db graph |
+	|model simulator output db g1 g2 |
 	model := KEModel new.
 	model population: KEMetaPopulation new.
 	model population attributes: '{
@@ -28,9 +28,17 @@ exampleIBMSimulatorOnSIREbolaModel
 		{ #status: #I, #country: #Niger }: 0,
 		{ #status: #R, #country: #Niger }: 0
 	}'.
-	model addParameters: '{#beta: 0.0002, #gamma: 0.1}'.
-	graph := KEGraph on: model population atAttribute: #country immigrationCoefficient: #m betweenClasses: { #all->0.05 }.
-	graph applyGraphTo: model.
+	model addParameter: #gamma value: 0.1.
+	
+	g1 := KEImmigrationGraph newOn: model population atAttribute: #country.
+	g1 edges: #all rate: #m values: 0.05.
+	g1 applyGraphTo: model.
+	
+	model addParameter: #beta inScopes: #country->#all values: 0.0002.
+	g2 := KECouplingInfectionGraph newOn: model population atAttribute: #country.
+	g1 edges: #all rate: #beta values: 0.0.
+	g1 applyGraphTo: model.
+	
 	model addEquation: ('S:t=-beta*S*I' parseAsAnEquation).
 	model addEquation: ('I:t=beta*S*I-gamma*I' parseAsAnEquation).
 	model addEquation: ('R:t=gamma*I' parseAsAnEquation).
@@ -38,6 +46,7 @@ exampleIBMSimulatorOnSIREbolaModel
 	simulator executeOn: model.
 	output := simulator data.
 	db := (KEDiagramBuilder new) data: (output dataAt: '{#status: #	I}').
+	db open.
 	db openMap: #africa 
 	   countries: (model population atAttribute: #country) 
 	   coloredBy: #peakOfEpidemic

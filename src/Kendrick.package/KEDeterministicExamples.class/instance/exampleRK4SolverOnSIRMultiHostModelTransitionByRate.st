@@ -1,39 +1,33 @@
 examples
 exampleRK4SolverOnSIRMultiHostModelTransitionByRate
 	"self new exampleRK4SolverOnSIRMultiHostModelTransitionByRate"
-	|model simulator output db|
+	|model simulator graph output db|
 	model := KEModel new.
-	model population attributes: '{
-		#status: [ #S, #I, #R ], #species: [ #mosquito, #reservoir1, #reservoir2 ]
-	}'.
-	model buildFromCompartments: '{
-		{ #status: #S, #species: #mosquito }: 9999,
-		{ #status: #I, #species: #mosquito }: 1,
-		{ #status: #R, #species: #mosquito }: 0,
-		{ #status: #S, #species: #reservoir1 }: 999,
-		{ #status: #I, #species: #reservoir1 }: 1,
-		{ #status: #R, #species: #reservoir1 }: 0,
-		{ #status: #S, #species: #reservoir2 }: 1999,
-		{ #status: #I, #species: #reservoir2 }: 1,
-		{ #status: #R, #species: #reservoir2 }: 0
-	}'.
-	model addParameters: '{{#species: #mosquito}:{
-		#beta: { { #species: #reservoir1 }: 0.02, { #species: #reservoir2 }: 0.02, #yourself: 0.0 },
-		#mu: 12.17
-		}
-	}'.
-	model addParameters: '{{#species: #reservoir1}:{
-		#beta: { { #species: #reservoir2 }: 0.0, { #species: #mosquito }: 0.02, #yourself: 0.0 },
-		#mu: 0.05
-		}
-	}'.
-	model addParameters: '{{#species: #reservoir2}:{
-		#beta: { { #species: #reservoir1 }: 0.0, { #species: #mosquito }: 0.02, #yourself: 0.0 },
-		#mu: 0.05
-		}
-	}'.
+	model population: (KEMetaPopulation new attributes: {
+		#status->#(#S #I #R). 
+		#species->#(#mosquito #reservoir1 #reservoir2)
+	}).
+	model buildFromAttributes: #(#status #species) 
+			compartments: {
+				#(#S #mosquito)->9999.
+				#(#I #mosquito)->1.
+				#(#R #mosquito)->0.
+				#(#S #reservoir1)->999.
+				#(#I #reservoir1)->0.
+				#(#R #reservoir1)->0.
+				#(#S #reservoir2)->1999.
+				#(#I #reservoir2)->0.
+				#(#R #reservoir2)->0}.
+	model addParameter: #mu 
+		   inScopes: #species->#(#mosquito #reservoir1 #reservoir2) 
+		   values: #(12.17 0.05 0.05).
 	model addParameter: #gamma value: 52.
-	model addParameter: #N value: #sizeOfPopulation. 
+	model addParameter: #N value: #sizeOfPopulation.
+	"multi-host concern specifying"
+	graph := KECouplingInfectionGraph newOn: model population atAttribute: #species.
+	graph edges: { #mosquito->#reservoir1. #mosquito->#reservoir2 } rate: #beta values: 0.02.
+	graph applyGraphTo: model.
+	
 	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #I}'
 		rate: 'beta*I' parseAsAnExpression.

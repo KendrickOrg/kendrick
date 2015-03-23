@@ -4,7 +4,8 @@ testApplyGraph
 	model := KEModel new.
 	population := KEMetaPopulation new.
 	population attributes: '{#status: [#S, #I, #R], #region: [#A, #B, #C]}'.
-	graph := KEGraph on: population atAttribute: #region immigrationCoefficient: #m betweenClasses: { #all->0.005 }. 
+	graph := KEImmigrationGraph newOn: population atAttribute: #region.
+	graph edges: #all rate: #m values: 0.005.
 	model population: population.
 	graph applyGraphTo: model.
 	

@@ -8,5 +8,6 @@ testAtContact
 	nw := nw buildNetworkType: #lattice numberOfContacts: 4.
 	population addGraph: nw.
 	node := nw nodes first.
+
 	self assert: (node atContact: #I) equals: 0.
 	self assert: (node atContact: #S) equals: 2
