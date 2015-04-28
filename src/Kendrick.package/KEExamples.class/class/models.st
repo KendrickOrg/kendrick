@@ -6,7 +6,7 @@ models
 
    model := KEModel new.
 	model population compartments: #(S I R).
-	model population at: #S put: 99; at: #I put: 1; at: #R put: 0.
+	model population compartments at: #S put: 99; at: #I put: 1; at: #R put: 0.
 	
 	model addParameter: #beta value: 0.01.
 	model addParameter: #gamma value: 0.1.
@@ -19,7 +19,7 @@ models
 	
 	model := KEModel new.
 	model population compartments: #(S E I R).
-	model population at: #S put: 99999; at: #E put: 0; at: #I put: 1; at: #R put: 0.
+	model population compartments at: #S put: 99999; at: #E put: 0; at: #I put: 1; at: #R put: 0.
 	
 	model addParameter: #beta value: 0.0052.
 	model addParameter: #gamma value: 365/7.

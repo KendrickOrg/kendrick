@@ -16,7 +16,7 @@ boxViewIn: constructor
 				demography := OrderedCollection new.
 				
 				"Collect all nodes of the graph"
-				model population compartments collect:[:each | nodes add: (each status asString)].
+				model population compartments collect:[:each | nodes add: (each asString)].
 			
 				"Generate relation between nodes"
 				events := (KEEventGenerator new) generateEvents: model.
@@ -57,7 +57,7 @@ boxViewIn: constructor
 				].
 			
 				"Build the edges between box"
-				arrow := RTArrow new 
+				arrow := RTArrowedLine new 
 					color: Color red; 
 					attachPoint: RTHorizontalAttachPoint instance.
 				RTEdge buildEdgesFromObjects: transitcollection from: #key to: #value using: arrow inView: view.	
