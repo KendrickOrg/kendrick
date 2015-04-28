@@ -17,4 +17,4 @@ exampleRK4SolverOnSIRSimpleModelWithODERepresentation
 	output := simulator data.
 	dB := KEDiagramBuilder new.
 	dB data: (output dataAt: '{#status: #I}').
-	dB open
+	^dB view

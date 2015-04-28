@@ -20,4 +20,4 @@ exampleRK4SolverOnSeasonalForcingModel
 	output := simulator data.
 	dB := KEDiagramBuilder new.
 	dB data: (output dataAt: '{#status: #I}') do: #log.
-	dB open
+	^dB view

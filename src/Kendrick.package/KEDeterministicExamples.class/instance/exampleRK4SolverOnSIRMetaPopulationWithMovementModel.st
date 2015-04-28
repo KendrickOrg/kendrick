@@ -26,6 +26,6 @@ exampleRK4SolverOnSIRMetaPopulationWithMovementModel
 	output := simulator data.
 	db := KEDiagramBuilder new.
 	db data: (output dataAt: '{#status: #I}').
-	db open
+	^db view
 															
 														
