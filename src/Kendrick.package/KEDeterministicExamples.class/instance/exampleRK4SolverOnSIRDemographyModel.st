@@ -19,4 +19,4 @@ exampleRK4SolverOnSIRDemographyModel
 	output := simulator data.
 	dB := KEDiagramBuilder new.
 	dB data: (output dataAt: #all).
-	dB open
+	^ dB view

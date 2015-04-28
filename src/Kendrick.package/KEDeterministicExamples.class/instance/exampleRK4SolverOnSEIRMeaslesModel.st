@@ -40,5 +40,5 @@ exampleRK4SolverOnSEIRMeaslesModel
 	output := simulator data.
 	diag := (KEDiagramBuilder new) data: (output dataAt: #all).
 	diag xLabel: 'Time (days)'.
-	diag open
+	^ diag view
 	

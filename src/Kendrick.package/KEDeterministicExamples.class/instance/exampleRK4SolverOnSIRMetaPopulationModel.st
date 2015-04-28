@@ -35,4 +35,4 @@ exampleRK4SolverOnSIRMetaPopulationModel
 	simulator executeOn: model.
 	output := simulator data.
 	db := (KEDiagramBuilder new) data: (output dataAt: '{#status: #I}') do: #sqrt.
-	db open
+	^ db view

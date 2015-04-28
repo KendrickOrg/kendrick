@@ -2,6 +2,7 @@ examples
 exampleRK4SolverOnSIRSimpleModel
 	"self new exampleRK4SolverOnSIRSimpleModel"
 	|model simulator output dB|
+	
 	model := KEModel new.
 	model buildFromCompartments: '{
 		{ #status: #S }: 99999,
@@ -20,4 +21,4 @@ exampleRK4SolverOnSIRSimpleModel
 	output := simulator data.
 	dB := KEDiagramBuilder new.
 	dB data: (output dataAt: '{#status: #I}').
-	dB open
+	^ dB view

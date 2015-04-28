@@ -1,6 +1,6 @@
 as yet unclassified
 build
-	|b normalize lb|
+|b normalize lb|
 	b := RTGrapher new.
 	b extent: 400 @ 200.
 	(self legends size >= 3) ifTrue: [ 
@@ -24,9 +24,11 @@ build
 	       ifNotNil: [ b axisX title: xLabel ].
 	yLabel ifNil: [ b axisY title: 'Number of individuals' ] 
 	       ifNotNil: [ b axisY title: yLabel ].
+	b axisY noDecimal.
 	lb := RTLegendBuilder new.
 	lb view: b view.
-	lb addText: 'Compartments'.
+	self legendTitle ifNil: [ legendTitle := 'Compartments' ].
+	lb addText: legendTitle.
 	1 to: legends size do: [ :i| |c|
 		legends size < 3 
 		ifTrue: [ c:= (self colors at: i) ]
@@ -35,5 +37,6 @@ build
 		 ].
 	lb build.
 	b build.
-	^b view
+	b view @ RTZoomableView.
+	^ b 
 	

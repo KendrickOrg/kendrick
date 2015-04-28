@@ -1,6 +1,6 @@
 as yet unclassified
-open
+view
 	|b|
 	b := self build.
-	^ b open
+	^ b view
 	

@@ -21,7 +21,11 @@ addParameter: aSymbol inScopes: associations values: inputs
 					 ]
 			]
 			ifFalse: [ 
-				(parameters at: (Dictionary newFrom: {associations key->(associations value at: i)}) ifAbsentPut: (Dictionary new)) at: aSymbol put: (inputs at: i)
+				(
+					parameters 
+					at: (Dictionary newFrom: {associations key->(associations value at: i)}) 
+					ifAbsentPut: (Dictionary new)
+				) at: aSymbol put: (inputs at: i)
 			] 
 		] ]
 	ifTrue: [  

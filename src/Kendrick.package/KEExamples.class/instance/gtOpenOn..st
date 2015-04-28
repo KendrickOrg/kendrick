@@ -1,7 +1,6 @@
 as yet unclassified
 gtOpenOn: v
 	|  icon64Mime form element  |
-	
 	self gtExamples do: [ :anExample |
 		[icon64Mime := self perform: (anExample, #Icon) asSymbol.] 
 		on: Error do: 

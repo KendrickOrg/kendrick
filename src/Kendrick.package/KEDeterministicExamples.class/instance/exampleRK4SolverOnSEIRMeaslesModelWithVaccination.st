@@ -44,5 +44,5 @@ exampleRK4SolverOnSEIRMeaslesModelWithVaccination
 	diag := (KEDiagramBuilder new) data: (output dataAt: '{#status: #I}') do: #log.
 	diag yLabel: 'log(Infectious)'.
 	diag xLabel: 'Time (years)'.
-	diag open
+   ^ diag view
 	
