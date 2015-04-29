@@ -1,22 +1,10 @@
 as yet unclassified
 models
-     |model  |   
+   |models deterministic methods|   
+	models := OrderedCollection new.
+	deterministic := KEDeterministicExamples new.
+	methods := (KEDeterministicExamples selectors 
+			select: [ :symbol | (symbol beginsWith: 'model') ]).
+	methods do:[ :m | models add:(deterministic perform: m) ].
 	
-	ModelExample := OrderedCollection new.
-
-   model := KEModel new.
-	model buildFromCompartments: '{
-		{ #status: #S }: 99999,
-		{ #status: #I }: 1,
-		{ #status: #R }: 0
-	}'.
-	model addParameters: '{#beta: 0.0052, #gamma: 52}'.
-	model addTransitionFrom: '{#status: #S}'
-		to: '{#status: #I}'
-		probability: [ :m| (m atParameter: #beta) * (m atCompartment: '{#status: #I}')].
-	model addTransitionFrom: '{#status: #I}'
-		to: '{#status: #R}'
-		probability: [ :m| m atParameter: #gamma].
-	
-	ModelExample add: model.
-	^ ModelExample
+	^ models
