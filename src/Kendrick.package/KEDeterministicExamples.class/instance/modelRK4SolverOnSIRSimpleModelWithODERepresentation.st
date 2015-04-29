@@ -1,9 +1,12 @@
 examples
 modelRK4SolverOnSIRSimpleModelWithODERepresentation
 	"self new exampleRK4SolverOnSIRSimpleModelWithODERepresentation"
-	|model    |
+
+	| model |
 	model := KEModel new.
-	model buildFromCompartments: '{
+	model
+		buildFromCompartments:
+			'{
 		{ #status: #S }: 99999,
 		{ #status: #I }: 1,
 		{ #status: #R }: 0
