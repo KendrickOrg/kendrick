@@ -15,8 +15,6 @@ executeOn: aModel
 		deltaT := self doGillespieIteration: t randoms: (Array with: r1 with: r2).
 		countStep := countStep + 1.
 		deltaT = 0.0 ifTrue: [ ^ countStep ].
-		"((deltaT = 0) or: [ (model sizeOf: '{#status: #I}') <= 0 ]) ifTrue:
-			[ ^ countStep ]."
 		t := t + (deltaT). 
 		t > (previousT + step) ifTrue: [ 
 			self updateDataAt: t.
