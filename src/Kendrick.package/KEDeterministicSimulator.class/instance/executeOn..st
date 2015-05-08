@@ -29,5 +29,4 @@ executeOn: aModel
 		model addParameter: #t value: t.
 		st := stepper doStep: st time: t stepSize: step.
 		1 to: ks size do: [ :i| model compartments at: (ks at: i) put: (st at: i) ].
-		
 		 ]
