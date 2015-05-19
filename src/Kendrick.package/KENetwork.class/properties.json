@@ -1,13 +1,16 @@
 {
-	"commentStamp" : "BuiThiMaiAnh 7/25/2014 13:42",
-	"super" : "KEGraph",
+	"commentStamp" : "BuiThiMaiAnh 5/18/2015 11:15",
+	"super" : "KEEntity",
 	"category" : "Kendrick-Spatial-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"numberOfContacts",
-		"networkOfIndividuals"
+		"nodes",
+		"edges",
+		"attribute",
+		"topology",
+		"strengthFormula"
 	],
 	"name" : "KENetwork",
 	"type" : "normal"

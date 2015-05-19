@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "BuiThiMaiAnh 5/18/2015 16:26",
+	"super" : "KERandomNetworkTopology",
+	"category" : "Kendrick-Spatial-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"m0"
+	],
+	"name" : "KERandomScaleFreeNetwork",
+	"type" : "normal"
+}

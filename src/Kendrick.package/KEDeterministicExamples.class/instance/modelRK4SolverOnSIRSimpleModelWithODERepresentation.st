@@ -4,6 +4,7 @@ modelRK4SolverOnSIRSimpleModelWithODERepresentation
 
 	| model |
 	model := KEModel new.
+	model population attributes: '{ #status: [#S, #I, #R] }'.
 	model
 		buildFromCompartments:
 			'{

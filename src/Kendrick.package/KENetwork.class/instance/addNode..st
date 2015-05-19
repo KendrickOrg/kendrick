@@ -1,4 +1,5 @@
 as yet unclassified
-addNode: ind
-	self subclassResponsibility 
-	
+addNode: aNodeLabel
+	|node|
+	node := KENode new label: aNodeLabel.
+	nodes add: node

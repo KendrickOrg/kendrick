@@ -3,15 +3,15 @@ executeOn: model times: times
 	from = #empty ifFalse:
 	[  
 		|old new|
-		old := model compartments at: from.
+		old := model population compartments at: from.
 		new := old - times.
 		new < 0 ifTrue: [ new := 0 ].
-		model compartments at: from put: new
+		model population compartments at: from put: new
 	].
 	to = #empty ifFalse:
 	[  
 		|old new|
-		old := model compartments at: to.
+		old := model population compartments at: to.
 		new := old + times.
-		model compartments at: to put: new
+		model population compartments at: to put: new
 	]	

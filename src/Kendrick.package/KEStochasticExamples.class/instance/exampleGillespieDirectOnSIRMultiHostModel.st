@@ -19,18 +19,34 @@ exampleGillespieDirectOnSIRMultiHostModel
 				#(#I #reservoir2)->0.
 				#(#R #reservoir2)->0}.
 	model addParameter: #mu 
-		   inScopes: #species->#(#mosquito #reservoir1 #reservoir2) 
+		   inScopes: {#species->#mosquito. #species->#reservoir1. #species->#reservoir2}
 		   values: #(12.17 0.05 0.05).
-	model addParameter: #v value: 52.
+	model addParameter: #gamma value: 52.
+	model addParameter: #beta value: 1.
 	model addParameter: #N value: #sizeOfPopulation.
-	"multi-host concern specifying"
-	graph := KECouplingInfectionGraph newOn: model population atAttribute: #species.
-	graph edges: { #mosquito->#reservoir1. #mosquito->#reservoir2 } rate: #beta values: 0.02.
-	graph applyGraphTo: model.
 	
-	model addEquation: 'S:t=mu*N-beta*S*I-mu*S' parseAsAnEquation.
-	model addEquation: ('I:t=beta*S*I-(mu+v)*I' parseAsAnEquation).
-	model addEquation: ('R:t=v*I-mu*R' parseAsAnEquation).
+	graph := KEContactNetwork newOn: model population atAttribute: #species.
+	graph edges: { #mosquito->#reservoir1. #mosquito->#reservoir2 };
+			strengthOfAllConnections: 0.02.
+	
+	model addTransitionFrom: '{#status: #S}'
+		to: '{#status: #I}'
+		probability: [:m|(m atParameter: #beta)*(m numberContacts: {#status->#I})].
+	model addTransitionFrom: '{#status: #I}'
+		to: '{#status: #R}'
+		probability: [:m| m atParameter: #gamma].
+	model addTransitionFrom: '{#status: #S}'
+		to: #empty
+		probability: [:m| m atParameter: #mu].
+	model addTransitionFrom: '{#status: #I}'
+		to: #empty
+		probability: [:m| m atParameter: #mu].
+	model addTransitionFrom: '{#status: #R}'
+		to: #empty
+		probability: [:m| m atParameter: #mu].
+	model addTransitionFrom: #empty
+		to: '{#status: #S}'
+		probability: [:m| (m atParameter: #mu)].
 	
 	simulator := KESimulator new: #Gillespie from: 0.0 to: 0.5 step: 0.0027.
 	simulator executeOn: model.
