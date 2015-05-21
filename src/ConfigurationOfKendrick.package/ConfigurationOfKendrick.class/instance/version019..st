@@ -11,5 +11,5 @@ version019: spec
 			project: 'Moose' with: '5.0-baseline';
 			project: 'SciSmalltalk' with: '0.17-baseline';
 			project: 'Ston' with: '0.12';
-			project: 'Glamour' with: '3.0.8'.
+			project: 'Glamour' with: '3.3.0'.
 		spec package: 'Kendrick' with: 'Kendrick-SergeStinckwich.373'. ].
