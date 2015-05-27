@@ -1,11 +1,11 @@
 {
-	"commentStamp" : "BUIThiMaiAnh 10/1/2014 18:56",
-	"super" : "KEEntity",
+	"commentStamp" : "BuiThiMaiAnh 5/27/2015 13:53",
+	"super" : "KEVisitor",
 	"category" : "Kendrick-Code-Generators",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "KEVisitor",
+	"name" : "KEPRISMVisitor",
 	"type" : "normal"
 }
