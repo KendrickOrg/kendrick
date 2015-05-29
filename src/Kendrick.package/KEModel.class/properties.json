@@ -11,7 +11,7 @@
 		"population",
 		"compartments",
 		"transitions",
-		"lambda"
+		"FOIs"
 	],
 	"name" : "KEModel",
 	"type" : "normal"

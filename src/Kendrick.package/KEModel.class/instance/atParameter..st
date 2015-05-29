@@ -6,7 +6,7 @@ atParameter: aSymbol
 	aSymbol = #inProcessingCompartment ifTrue: [ ^ parameters at: #inProcessingCompartment ifAbsent: [#population] ].
 	"aSymbol = #scope ifTrue: [ ^ parameters at: #scope ifAbsent: [ #population ] ]."
 	"aSymbol = #individual ifTrue: [ ^ parameters at: #individual ]."
-	aSymbol = lambda ifTrue: [ ^ self forceOfInfection ].
+	(FOIs includes: aSymbol) ifTrue: [ ^ self evaluateForceOfInfection: aSymbol ].
 	"aSymbol = #contactingSource ifTrue: [ ^ parameters at: #contactingSource ifAbsent: [ nil ] ]."
 	"p := (parameters at: (self atParameter: #scope) ifAbsent: [ Dictionary new ]) at: aSymbol ifAbsent: [ nil ]."
 	"p := self atParameter: aSymbol atScope: (self atParameter: #scope)."

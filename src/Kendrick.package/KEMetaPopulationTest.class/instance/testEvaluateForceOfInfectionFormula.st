@@ -1,5 +1,5 @@
 as yet unclassified
-testForceOfInfection
+testEvaluateForceOfInfectionFormula
 	|population model g|
 	population := KEMetaPopulation new.
 	population attributes: '{#status: [#S, #I, #R], #species: [#m1, #m2, #m3]}'.
@@ -20,9 +20,7 @@ testForceOfInfection
 			#(#R #m1)->0.
 			#(#R #m2)->0.
 			#(#R #m3)->0 }.
-	model forceOfInfection: #lambda 
-			formula: [ :m| (m atParameter: #beta) * (m probabilityOfContact: { #status->#I }) ].
 	model parameters at: #inProcessingCompartment put: (Dictionary newFrom: {#status->#S. #species->#m2}).
 	
-	self assert: (model population forceOfInfection: model) equals: 0.02
+	self assert: (model population evaluateForceOfInfection: model formula: [ :m| (m atParameter: #beta) * (m probabilityOfContact: { #status->#I }) ]) equals: 0.02
 	

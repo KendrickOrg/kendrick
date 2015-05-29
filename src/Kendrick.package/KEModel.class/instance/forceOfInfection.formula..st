@@ -1,4 +1,4 @@
 as yet unclassified
 forceOfInfection: aSymbol formula: anExpressionOrABlock
-	lambda := aSymbol.
+	FOIs add: aSymbol.
 	self addParameter: aSymbol value: anExpressionOrABlock 
