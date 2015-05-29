@@ -3,6 +3,6 @@ evaluateWithModel: model
 	|x|
 	((model population attributes at: #status ifAbsent: [OrderedCollection new]) includes: symbol)
 	ifTrue: [ 
-		^ model numberContacts: { #status->symbol } ].
+		^ model probabilityOfContact: { #status->symbol } ].
 	x := model atParameter: symbol.
 	^ x

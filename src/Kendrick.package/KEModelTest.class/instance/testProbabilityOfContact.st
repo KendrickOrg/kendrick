@@ -1,5 +1,5 @@
 tests
-testNumberContacts
+testProbabilityOfContact
 	|model|
 	model := KEModel new.
 	model buildFromCompartments: '{
@@ -8,5 +8,5 @@ testNumberContacts
 		{ #status: #R }: 0
 	}'.
 	model parameters at: #inProcessingCompartment put: (Dictionary newFrom: {#status->#S}).
-	self assert: (model numberContacts: {#status->#I}) equals: 1.
+	self assert: (model probabilityOfContact: {#status->#I}) equals: 1.
 

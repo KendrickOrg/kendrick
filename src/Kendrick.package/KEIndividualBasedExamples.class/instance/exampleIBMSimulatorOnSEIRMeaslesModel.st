@@ -13,7 +13,7 @@ exampleIBMSimulatorOnSEIRMeaslesModel
 	model addParameters: '{#beta: 0.0000214, #gamma: 0.143, #mu: 0.0000351, #sigma: 0.125, #N: #sizeOfPopulation}'.
 	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #E}'
-		probability: [:m| (m atParameter: #beta) * (m numberContacts: '{#status:#I}')].
+		probability: [:m| (m atParameter: #beta) * (m probabilityOfContact: '{#status:#I}')].
 	model addTransitionFrom: '{#status: #E}'
 		to: '{#status: #I}'
 		probability: [:m| (m atParameter: #sigma)].

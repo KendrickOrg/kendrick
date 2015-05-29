@@ -11,7 +11,7 @@ exampleRK4SolverOnSIRSimpleModelWithTransitionProbabilityAsExpression
 	}'.
 	model addParameters: '{#beta: 0.0052, #gamma: 52}'.
 	model forceOfInfection: #lambda 
-			formula: [:m| (m atParameter: #beta) * (m numberContacts: {#status->#I})].
+			formula: [:m| (m atParameter: #beta) * (m probabilityOfContact: {#status->#I})].
 	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #I}'
 		probability: [:m| m atParameter: #lambda].

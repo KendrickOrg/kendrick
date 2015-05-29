@@ -21,7 +21,7 @@ testForceOfInfection
 			#(#R #m2)->0.
 			#(#R #m3)->0 }.
 	model forceOfInfection: #lambda 
-			formula: [ :m| (m atParameter: #beta) * (m numberContacts: { #status->#I }) ].
+			formula: [ :m| (m atParameter: #beta) * (m probabilityOfContact: { #status->#I }) ].
 	model parameters at: #inProcessingCompartment put: (Dictionary newFrom: {#status->#S. #species->#m2}).
 	
 	self assert: (model population forceOfInfection: model) equals: 0.02

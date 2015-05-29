@@ -1,5 +1,5 @@
 as yet unclassified
-numberContacts: anArrayOfAssociations
+probabilityOfContact: anArrayOfAssociations
 	|s reader d|
 	s := self atParameter: #inProcessingCompartment.
 	anArrayOfAssociations isString 
