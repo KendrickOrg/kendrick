@@ -1,8 +1,10 @@
 as yet unclassified
 addParameter: aSymbol value: aNumericalOrAnExpressionOrABlock
 	|expression|
+	(aNumericalOrAnExpressionOrABlock isSymbol and: [ aNumericalOrAnExpressionOrABlock = #sizeOfPopulation ])
+	ifTrue: [ 
+		^ parameters at: aSymbol put: #sizeOfPopulation ].
 	aNumericalOrAnExpressionOrABlock isNumber 
 	ifTrue: [ expression := (KENumerical new number: aNumericalOrAnExpressionOrABlock) ]
 	ifFalse: [ expression := aNumericalOrAnExpressionOrABlock ].
-	"parameters at: #population ifAbsentPut: (Dictionary new)."
-	(parameters "at: #population") at: aSymbol put: (KEParameter new symbol: aSymbol; expression: expression)
+	parameters at: aSymbol put: (KEParameter new symbol: aSymbol; expression: expression)

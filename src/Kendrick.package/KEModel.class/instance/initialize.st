@@ -5,4 +5,5 @@ initialize
 	equations := OrderedCollection new.
 	population := KEPopulation new.
 	transitions := OrderedCollection new.
-	FOIs := OrderedCollection new
+	forceOfInfections := OrderedCollection new.
+	

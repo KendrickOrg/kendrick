@@ -11,7 +11,7 @@
 		"population",
 		"compartments",
 		"transitions",
-		"FOIs"
+		"forceOfInfections"
 	],
 	"name" : "KEModel",
 	"type" : "normal"

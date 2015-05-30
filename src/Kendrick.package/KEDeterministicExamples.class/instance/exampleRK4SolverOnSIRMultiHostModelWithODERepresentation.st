@@ -24,6 +24,7 @@ exampleRK4SolverOnSIRMultiHostModelWithODERepresentation
 	model addParameter: #v value: 52.
 	model addParameter: #beta value: 1.
 	model addParameter: #N value: #sizeOfPopulation.
+	model configurations: { #sizeOfPopulation->#(#species) }.
 	
 	graph := KEContactNetwork newOn: model population atAttribute: #species.
 	graph edges: { #mosquito->#reservoir1. #mosquito->#reservoir2 };

@@ -2,15 +2,11 @@ as yet unclassified
 atParameter: aSymbol
 	|p|
 	aSymbol = #t ifTrue: [ ^ parameters at: #t ifAbsent: [ 0 ] ].
-	"inProcessingCompartment is a Dictionary = name of current processing compartment"
 	aSymbol = #inProcessingCompartment ifTrue: [ ^ parameters at: #inProcessingCompartment ifAbsent: [#population] ].
-	"aSymbol = #scope ifTrue: [ ^ parameters at: #scope ifAbsent: [ #population ] ]."
-	"aSymbol = #individual ifTrue: [ ^ parameters at: #individual ]."
-	(FOIs includes: aSymbol) ifTrue: [ ^ self evaluateForceOfInfection: aSymbol ].
-	"aSymbol = #contactingSource ifTrue: [ ^ parameters at: #contactingSource ifAbsent: [ nil ] ]."
-	"p := (parameters at: (self atParameter: #scope) ifAbsent: [ Dictionary new ]) at: aSymbol ifAbsent: [ nil ]."
-	"p := self atParameter: aSymbol atScope: (self atParameter: #scope)."
+	(forceOfInfections includes: aSymbol) ifTrue: [ ^ self evaluateForceOfInfection: aSymbol ].
+	
 	p := self atParameter: aSymbol atScope: (self atParameter: #inProcessingCompartment).
 	p ifNil: [ p := self atParameter: aSymbol atScope: #population ]. 
+	"p = #sizeOfPopulation ifTrue: [ ^ self population sizeOf: (self atParameter: #inProcessingCompartment) population: (configurations at: #sizeOfPopulation) ]."
 	^ p
 	

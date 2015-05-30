@@ -1,10 +1,14 @@
 as yet unclassified
-sizeOfPopulation: associations
-	|c |
-	associations = #population ifTrue: [ ^ self compartments values sum ].
+sizeOfPopulation: source
+	|c tmp arguments|
+	source = #population ifTrue: [ ^ self compartments values sum ].
+	arguments := configurations at: #sizeOfPopulation.
+	arguments = #population ifTrue: [ ^ self compartments values sum ].
 	c := 0.
+	tmp := source copy.
+	source keysAndValuesDo: [ :k :v| (arguments includes: k) ifFalse: [ tmp removeKey: k ] ].
 	self compartments keysAndValuesDo: [ :k :v|
-		(k associations includesAll: associations) ifTrue: [ c := c + v ]
+		(k associations includesAll: tmp associations) ifTrue: [ c := c + v ]
 	].
 	^ c
 	

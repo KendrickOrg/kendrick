@@ -9,6 +9,7 @@ exampleIBMSimulatorOnSIRMigrationModel
 			cardinalities: #(1000 1 1000 0 1000 0 1000 0 1000 0).
 	model addParameters: '{#mu: 0.001, #gamma: 0.1, #N: #sizeOfPopulation, #d: 0.0001}'.
 	model addParameter: #beta value: 0.0001.
+	model configurations: { #sizeOfPopulation->#(#region) }.
 	
 	graph := KEMigrationNetwork newOn: model population atAttribute: #region.
 	graph edges: #all; strengthOfAllConnections: 0.001.

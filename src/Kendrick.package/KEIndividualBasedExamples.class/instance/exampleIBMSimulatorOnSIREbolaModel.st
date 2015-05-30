@@ -30,6 +30,7 @@ exampleIBMSimulatorOnSIREbolaModel
 	}'.
 	model addParameter: #gamma value: 0.1.
 	model addParameter: #beta value: 0.0002.
+	model configurations: { #sizeOfPopulation->#(#country) }.
 	
 	g1 := KEMigrationNetwork newOn: model population atAttribute: #country.
 	g1 edges: #all; strengthOfAllConnections: 0.05.
