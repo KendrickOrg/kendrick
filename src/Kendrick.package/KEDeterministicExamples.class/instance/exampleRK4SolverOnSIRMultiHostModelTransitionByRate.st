@@ -19,38 +19,36 @@ exampleRK4SolverOnSIRMultiHostModelTransitionByRate
 				#(#I #reservoir2)->0.
 				#(#R #reservoir2)->0}.
 	model addParameter: #mu 
-		   inScopes: {#species->#mosquito. #species->#reservoir1. #species->#reservoir2}
+		   inScopes: #species->#(#mosquito #reservoir1 #reservoir2) 
 		   values: #(12.17 0.05 0.05).
 	model addParameter: #gamma value: 52.
-	model addParameter: #beta value: 1.
 	model addParameter: #N value: #sizeOfPopulation.
-	model configurations: { #sizeOfPopulation->#(#species) }.
-	
-	graph := KEContactNetwork newOn: model population atAttribute: #species.
-	graph edges: { #mosquito->#reservoir1. #mosquito->#reservoir2 };
-			strengthOfAllConnections: 0.02.
+	"multi-host concern specifying"
+	graph := KECouplingInfectionGraph newOn: model population atAttribute: #species.
+	graph edges: { #mosquito->#reservoir1. #mosquito->#reservoir2 } rate: #beta values: 0.02.
+	graph applyGraphTo: model.
 	
 	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #I}'
-		probability: 'beta*I' parseAsAnExpression.
+		rate: 'beta*I' parseAsAnExpression.
 	model addTransitionFrom: '{#status: #I}'
 		to: '{#status: #R}'
-		probability: 'gamma' parseAsAnExpression.
+		rate: 'gamma' parseAsAnExpression.
 	model addTransitionFrom: '{#status: #S}'
 		to: #empty
-		probability: 'mu' parseAsAnExpression.
+		rate: 'mu' parseAsAnExpression.
 	model addTransitionFrom: '{#status: #I}'
 		to: #empty
-		probability: 'mu' parseAsAnExpression.
+		rate: 'mu' parseAsAnExpression.
 	model addTransitionFrom: '{#status: #R}'
 		to: #empty
-		probability: 'mu' parseAsAnExpression.
+		rate: 'mu' parseAsAnExpression.
 	model addTransitionFrom: #empty
 		to: '{#status: #S}'
-		probability: 'mu' parseAsAnExpression.
+		rate: 'mu' parseAsAnExpression.
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 40.0 step: 0.01.
 	simulator executeOn: model.
 	output := simulator data.
 	db := (KEDiagramBuilder new) data: (output dataAt: '{#status: #I}') do: #sqrt.
-	^ db open
+	^db view
 	

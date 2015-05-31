@@ -10,8 +10,7 @@
 		"equations",
 		"population",
 		"compartments",
-		"transitions",
-		"forceOfInfections"
+		"transitions"
 	],
 	"name" : "KEModel",
 	"type" : "normal"

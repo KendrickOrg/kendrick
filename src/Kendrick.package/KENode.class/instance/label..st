@@ -1,3 +1,3 @@
 as yet unclassified
-label: associations
-	label := associations
+label: aDictionary
+	label := aDictionary

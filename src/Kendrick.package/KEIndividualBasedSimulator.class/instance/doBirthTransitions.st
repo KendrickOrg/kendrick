@@ -4,14 +4,9 @@ doBirthTransitions
 	rand := Random new."
 	self birthTransitions do: [ :e|
 		|r p| 
-		"model parameters at: #scope put: e key scope.
-		model parameters at: #contactingSource put: (e key from)."
-		"(e key from = #empty)
-		ifTrue: [ model parameters at: #inProcessingCompartment put: (e key to) ] 
-		ifFalse: [ model parameters at: #inProcessingCompartment put: (e key from) ]."
-		model parameters at: #inProcessingCompartment put: (e key to).
-		r := (e key probability value: model) abs.
-		"r isDictionary ifTrue: [ r := r values sum ]."
+		model addParameter: #subPopulation value: e key subPopulation.
+		r := e key probability value: model.
+		r isDictionary ifTrue: [ r := r values sum ].
 		"p := 1 - (((r * step) negated) exp).
 		(p > (rand next)) ifTrue: [  
 			|newInd oldTimes|

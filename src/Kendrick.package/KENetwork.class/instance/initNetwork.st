@@ -1,0 +1,3 @@
+accessing
+initNetwork
+	self subclassResponsibility 

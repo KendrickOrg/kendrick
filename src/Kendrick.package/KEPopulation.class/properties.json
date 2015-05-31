@@ -10,8 +10,7 @@
 		"diedIndList",
 		"individuals",
 		"attributes",
-		"relations",
-		"configurations"
+		"relations"
 	],
 	"name" : "KEPopulation",
 	"type" : "normal"

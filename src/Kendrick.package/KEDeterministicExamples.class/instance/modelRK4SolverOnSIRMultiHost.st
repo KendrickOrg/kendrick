@@ -22,22 +22,21 @@ modelRK4SolverOnSIRMultiHost
 			(#(#S #reservoir2) -> 2000).
 			(#(#I #reservoir2) -> 0).
 			(#(#R #reservoir2) -> 0)}.
-	model addParameter: #mu 
-		   inScopes: {#species->#mosquito. #species->#reservoir1. #species->#reservoir2}
-		   values: #(12.17 0.05 0.05).
+	model addParameter: #mu inScopes: #species -> #(#mosquito #reservoir1 #reservoir2) values: #(12.17 0.05 0.05).
 	model addParameter: #gamma value: 52.
-	model addParameter: #beta value: 1.
-	model addParameter: #N value: #sizeOfPopulation.
-	model configurations: { #sizeOfPopulation->#(#species) }.
-	
-	graph := KEContactNetwork newOn: model population atAttribute: #species.
-	graph edges: { #mosquito->#reservoir1. #mosquito->#reservoir2 };
-			strengthOfAllConnections: 0.02.
-			
+	model addParameter: #N value: #sizeOfPopulation.	"multi-host concern specifying"
+	graph := KECouplingInfectionGraph newOn: model population atAttribute: #species.
+	graph
+		edges:
+			{(#mosquito -> #reservoir1).
+			(#mosquito -> #reservoir2)}
+		rate: #beta
+		values: 0.02.
+	graph applyGraphTo: model.
 	model
 		addTransitionFrom: '{#status: #S}'
 		to: '{#status: #I}'
-		probability: [ :m | (m atParameter: #beta) * (m probabilityOfContact: '{#status: #I}') ].
+		probability: [ :m | (m atParameter: #beta) * (m atCompartment: '{#status: #I}') ].
 	model addTransitionFrom: '{#status: #I}' to: '{#status: #R}' probability: [ :m | m atParameter: #gamma ].
 	model addTransitionFrom: '{#status: #S}' to: #empty probability: [ :m | m atParameter: #mu ].
 	model addTransitionFrom: '{#status: #I}' to: #empty probability: [ :m | m atParameter: #mu ].

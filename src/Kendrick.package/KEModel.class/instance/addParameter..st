@@ -6,11 +6,11 @@ addParameter: input
 		reader := (STONReader on: input readStream) allowComplexMapKeys: true.
 		dic := reader next.
 		dic keysAndValuesDo: [ :k :v|
-			self addParameter: k value: v 
+			parameters at: k put: v
 			]
 		]
 	ifFalse: [  
-		self addParameter: input key value: input value 
+		parameters at: input key put: input value
 		]
 	
 	

@@ -1,1 +1,1 @@
-KERandomNetwork represents a random graph created by using the Erdos-Renyi (ER) model (http://en.wikipedia.org/wiki/Erdős–Rényi_model)
+A KERandomNetwork is a network in which the contacts between individual are randomly created depending on the number of contacts of the network

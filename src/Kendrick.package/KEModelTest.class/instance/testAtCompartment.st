@@ -7,5 +7,5 @@ testAtCompartment
 		{ #status: #I, #region: #A }: 1,
 		{ #status: #R, #region: #A }: 0
 	}'.
-	compartment := model atCompartment: '{#region: #A, #status: #S}'.
-	self assert: compartment equals: 99999
+	compartment := model atCompartment: '{#region: #A}'.
+	self assert: compartment isDictionary equals: true

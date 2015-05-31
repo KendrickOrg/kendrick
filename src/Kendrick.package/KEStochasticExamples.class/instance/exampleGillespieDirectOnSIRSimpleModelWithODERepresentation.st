@@ -3,7 +3,6 @@ exampleGillespieDirectOnSIRSimpleModelWithODERepresentation
 	"self new exampleGillespieDirectOnSIRSimpleModelWithODERepresentation"
 	|model  simulator output dB |
 	model := KEModel new.
-	model population attributes: '{#status: [#S, #I, #R]}'.
 	model buildFromCompartments: '{
 		{ #status: #S }: 99999,
 		{ #status: #I }: 1,

@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "SergeStinckwich 7/22/2014 10:46",
+	"super" : "KEEntity",
+	"category" : "Kendrick-Spatial-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"nodes",
+		"edges",
+		"population",
+		"attribute"
+	],
+	"name" : "KEGraph",
+	"type" : "normal"
+}

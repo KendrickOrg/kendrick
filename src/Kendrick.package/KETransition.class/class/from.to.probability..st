@@ -1,3 +1,3 @@
 as yet unclassified
-from: fCompartment to: tCompartment probability: aBlockOrAnExpression
-	^ (KETransition new) from: fCompartment; to: tCompartment; probability: aBlockOrAnExpression 
+from: fCompartment to: tCompartment probability: aBlock
+	^ (KETransition new) from: fCompartment; to: tCompartment; probability: aBlock 

@@ -11,7 +11,6 @@ updateIndividuals
 			 ]
 		].
 	"Update compartments'size"
-
 	1 to: model transitions size do: [ :i|
 		|tr|
 		tr := model transitions at: i.

@@ -1,3 +1,3 @@
 accessing
-probability: aBlockOrAnExpression
-	probability := aBlockOrAnExpression 
+probability: aBlock
+	probability := aBlock 

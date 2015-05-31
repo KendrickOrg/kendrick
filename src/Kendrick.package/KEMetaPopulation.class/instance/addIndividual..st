@@ -1,8 +1,4 @@
 accessing
 addIndividual: ind
-	|g|
 	super addIndividual: ind.
-	g := graphs select: [ :e| e attribute = #status ].
-	g size > 0 ifTrue: [ g fist createNodeOf: ind ]
-
-	
+	graphs do: [ :g| g newNode: ind ]

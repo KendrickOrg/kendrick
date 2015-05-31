@@ -13,5 +13,5 @@ testAddTransition
 		{ #status: #I, #species: #reservoir2 }: 1,
 		{ #status: #R, #species: #reservoir2 }: 0
 	}'.
-	model addTransition: (KETransition from: '{#status: #S}' to: '{#status: #I}' probability: 'beta*I' parseAsAnExpression ).
+	model addTransition: (KETransition from: '{#status: #S}' to: '{#status: #I}' rate: 'beta*I' parseAsAnExpression ).
 	self assert: (model transitions size) equals: 3

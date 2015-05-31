@@ -1,4 +1,3 @@
 accessing
 resetCompartments
-	"compartments := self population compartments."
-	self population compartments: compartments
+	compartments := self population compartments.

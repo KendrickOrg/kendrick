@@ -7,4 +7,4 @@ testBuildFromCompartments
 		{ #status: #I }: 1,
 		{ #status: #R }: 0
 	}'.
-	self assert: (model population compartments isDictionary) equals: true
+	self assert: (model compartments isDictionary) equals: true

@@ -2,7 +2,9 @@ tests
 testAddParameters
 	|model |
 	model := KEModel new.
-	model addParameters: '{#beta: 0.02, #gamma: 0.01}'.
-	model addParameters: {#epsilon->0.01. #sigma->0.02}.
-	self assert: (model atParameter: #beta) equals: 0.02.
-	self assert: (model atParameter: #epsilon) equals: 0.01
+	model addParameters: '{#beta: 0.0052, #gamma: 52}'.
+	self assert: model parameters isDictionary equals: true.
+	self assert: (model parameters at: #beta) equals: 0.0052.
+	model addParameters: { #beta->100. #gamma->50 }.
+	self assert: model parameters isDictionary equals: true.
+	self assert: (model atParameter: #beta) equals: 100
