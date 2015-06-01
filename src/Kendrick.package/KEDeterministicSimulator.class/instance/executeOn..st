@@ -21,7 +21,7 @@ executeOn: aModel
 				(e at: 2)*prob*(model atCompartment: (e at: 1) from)]) sum.
 			c at: i put: tmp.
 			i := i + 1
-		 ].self halt.
+		 ].
 		c
 	].
 	self stepper: ((Smalltalk at: self algorithm) onSystem: system).

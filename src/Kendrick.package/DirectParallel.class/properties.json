@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "EmbObjectContainer",
+	"category" : "Kendrick-GPU",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "DirectParallel",
+	"type" : "normal"
+}
