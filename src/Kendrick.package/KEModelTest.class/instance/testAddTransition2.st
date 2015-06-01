@@ -7,5 +7,5 @@ testAddTransition2
 		{ #status: #I }: 1,
 		{ #status: #R}: 0
 	}'.
-	model addTransition: (KETransition from: '{#status: #S}' to: '{#status: #I}' rate: 'beta*I' parseAsAnExpression).
+	model addTransition: (KETransition from: '{#status: #S}' to: '{#status: #I}' probability: 'beta*I' parseAsAnExpression).
 	self assert: (model transitions size) equals: 1

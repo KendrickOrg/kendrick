@@ -19,14 +19,16 @@ exampleRK4SolverOnSIRMultiHostModelWithODERepresentation
 				#(#I #reservoir2)->0.
 				#(#R #reservoir2)->0}.
 	model addParameter: #mu 
-		   inScopes: #species->#(#mosquito #reservoir1 #reservoir2) 
+		   inScopes: {#species->#mosquito. #species->#reservoir1. #species->#reservoir2}
 		   values: #(12.17 0.05 0.05).
 	model addParameter: #v value: 52.
+	model addParameter: #beta value: 1.
 	model addParameter: #N value: #sizeOfPopulation.
-	"multi-host concern specifying"
-	graph := KECouplingInfectionGraph newOn: model population atAttribute: #species.
-	graph edges: { #mosquito->#reservoir1. #mosquito->#reservoir2 } rate: #beta values: 0.02.
-	graph applyGraphTo: model.
+	model configurations: { #sizeOfPopulation->#(#species) }.
+	
+	graph := KEContactNetwork newOn: model population atAttribute: #species.
+	graph edges: { #mosquito->#reservoir1. #mosquito->#reservoir2 };
+			strengthOfAllConnections: 0.02.
 	
 	model addEquation: 'S:t=mu*N-beta*S*I-mu*S' parseAsAnEquation.
 	model addEquation: ('I:t=beta*S*I-(mu+v)*I' parseAsAnEquation).
@@ -35,5 +37,5 @@ exampleRK4SolverOnSIRMultiHostModelWithODERepresentation
 	simulator executeOn: model.
 	output := simulator data.
 	db := (KEDiagramBuilder new) data: (output dataAt: '{#status: #I}') do: #sqrt.
-	^db view
+	^ db view
 	

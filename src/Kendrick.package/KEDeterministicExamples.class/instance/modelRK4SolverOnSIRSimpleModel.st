@@ -4,6 +4,8 @@ modelRK4SolverOnSIRSimpleModel
 
 	| model |
 	model := KEModel new.
+	model population attributes: 
+		'{ #status: [#S, #I, #R]}'.
 	model
 		buildFromCompartments:
 			'{
@@ -15,6 +17,6 @@ modelRK4SolverOnSIRSimpleModel
 	model
 		addTransitionFrom: '{#status: #S}'
 		to: '{#status: #I}'
-		probability: [ :m | (m atParameter: #beta) * (m atCompartment: '{#status: #I}') ].
+		probability: [ :m | (m atParameter: #beta) * (m probabilityOfContact: '{#status: #I}') ].
 	model addTransitionFrom: '{#status: #I}' to: '{#status: #R}' probability: [ :m | m atParameter: #gamma ].
 	^ model

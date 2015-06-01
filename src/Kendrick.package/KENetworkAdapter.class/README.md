@@ -1,1 +1,0 @@
-A KENetworkAdapter will change all variables (according to compartments) to contact variables. Because in the networking model, each individual has limited contacts to other via a network. So the value of the compartment variable is not the size of this compartment at current time but the number of contacts having same compartment status of the current individual.

@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "BuiThiMaiAnh 5/18/2015 11:19",
+	"super" : "KENetworkTopology",
+	"category" : "Kendrick-Spatial-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"activeNodes",
+		"strengthOfConnection"
+	],
+	"name" : "KERandomNetworkTopology",
+	"type" : "normal"
+}

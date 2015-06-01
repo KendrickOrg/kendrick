@@ -1,7 +1,7 @@
 examples
 exampleIBMSimulatorOnSIREbolaModel
 	"self new exampleIBMSimulatorOnSIREbolaModel"
-	|model simulator output db g1 g2 |
+	|model simulator output db g1  |
 	model := KEModel new.
 	model population: KEMetaPopulation new.
 	model population attributes: '{
@@ -29,15 +29,12 @@ exampleIBMSimulatorOnSIREbolaModel
 		{ #status: #R, #country: #Niger }: 0
 	}'.
 	model addParameter: #gamma value: 0.1.
+	model addParameter: #beta value: 0.0002.
+	model configurations: { #sizeOfPopulation->#(#country) }.
 	
-	g1 := KEImmigrationGraph newOn: model population atAttribute: #country.
-	g1 edges: #all rate: #m values: 0.05.
-	g1 applyGraphTo: model.
-	
-	model addParameter: #beta inScopes: #country->#all values: 0.0002.
-	g2 := KECouplingInfectionGraph newOn: model population atAttribute: #country.
-	g2 edges: #all rate: #beta values: 0.0.
-	g2 applyGraphTo: model.
+	g1 := KEMigrationNetwork newOn: model population atAttribute: #country.
+	g1 edges: #all; strengthOfAllConnections: 0.05.
+	g1 addMigrationTransitionsTo: model.
 	
 	model addEquation: ('S:t=-beta*S*I' parseAsAnEquation).
 	model addEquation: ('I:t=beta*S*I-gamma*I' parseAsAnEquation).

@@ -10,4 +10,4 @@ testBuildFromAttributesCompartments2
 				#(#S #North)->1000.
 				#(#I #North)->0.
 				#(#R #North)->0 }.
-	self assert: (model compartments isDictionary) equals: true
+	self assert: (model population compartments isDictionary) equals: true

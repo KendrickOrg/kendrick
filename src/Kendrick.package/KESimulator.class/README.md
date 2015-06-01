@@ -1,4 +1,4 @@
-A KESimulator is an abstract class for simulator of system. All different simulators shoud extend this class and implement the method execute.
+A KESimulator is an abstract class for simulator of system. All different simulators shoud extend this class and implement the method executeOn:
 
 Instance Variables
 	algorithm:	<Symbol>

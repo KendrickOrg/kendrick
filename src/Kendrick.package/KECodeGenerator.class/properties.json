@@ -1,12 +1,13 @@
 {
 	"commentStamp" : "BUIThiMaiAnh 10/1/2014 18:39",
-	"super" : "Object",
+	"super" : "KEEntity",
 	"category" : "Kendrick-Code-Generators",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"visitor"
+		"visitor",
+		"model"
 	],
 	"name" : "KECodeGenerator",
 	"type" : "normal"

@@ -11,7 +11,7 @@ exampleGillespieDirectOnSIRBioPEPAModel
 	model addParameters: '{#beta: 1.4247, #gamma: 0.1429}'.
 	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #I}'
-		probability: [ :m| (m atParameter: #beta) * (m atCompartment: '{#status: #I}')].
+		probability: [ :m| (m atParameter: #beta) * (m probabilityOfContact: '{#status: #I}')].
 	model addTransitionFrom: '{#status: #I}'
 		to: '{#status: #R}'
 		probability: [ :m| (m atParameter: #gamma)].
@@ -19,7 +19,7 @@ exampleGillespieDirectOnSIRBioPEPAModel
 	simulator executeOn: model.
 	output := simulator data.
 	dB := KEDiagramBuilder new.
-	dB data: (output dataAt: #all).
+	dB data: (output dataAt: '{#status: #I}').
 	dB open
 	
 	

@@ -8,9 +8,7 @@
 	"instvars" : [
 		"from",
 		"to",
-		"probability",
-		"rate",
-		"subPopulation"
+		"probability"
 	],
 	"name" : "KETransition",
 	"type" : "normal"
