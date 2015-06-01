@@ -10,7 +10,7 @@ exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals
 		{ #status: #I }: 1,
 		{ #status: #R }: 0
 	}'.
-	model addParameter: #beta value: 0.01.
+	model addParameter: #beta value: 1.
 	model addParameter: #gamma value: 0.1.
 	model addEquation: ('S:t=-beta*S*I' parseAsAnEquation).
 	model addEquation: ('I:t=beta*S*I-gamma*I' parseAsAnEquation).
@@ -20,7 +20,7 @@ exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals
 	network := KEContactNetwork 
 						newOn: model population 
 						atAttribute: #status 
-						topology: (KERandomNetwork new p: 1).
+						topology: (KERandomNetwork new p: 0.4).
 	network strengthOfAllConnections: 1.
 
 	simulator := KESimulator new: #IBM from: 0.0 to: 200 step: 0.1.
