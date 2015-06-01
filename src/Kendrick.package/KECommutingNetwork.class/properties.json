@@ -1,13 +1,11 @@
 {
 	"commentStamp" : "BuiThiMaiAnh 5/18/2015 11:12",
-	"super" : "KENetwork",
+	"super" : "KESpatialNetwork",
 	"category" : "Kendrick-Spatial-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"restrictions"
-	],
+	"instvars" : [ ],
 	"name" : "KECommutingNetwork",
 	"type" : "normal"
 }
