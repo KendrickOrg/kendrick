@@ -13,4 +13,4 @@ version021: spec
 			project: 'Ston' with: '0.12';
 			project: 'Glamour' with: '3.3.0';
 			project: 'VirtualGPU' with:'0.1-baseline'.
-		spec package: 'Kendrick' with: 'Kendrick-BuiThiMaiAnh.377'. ]
+		spec package: 'Kendrick' with: 'Kendrick-SergeStinckwich.383'. ]
