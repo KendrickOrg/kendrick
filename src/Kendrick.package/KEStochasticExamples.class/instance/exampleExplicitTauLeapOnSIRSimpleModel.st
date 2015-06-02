@@ -15,7 +15,7 @@ exampleExplicitTauLeapOnSIRSimpleModel
 	model addTransitionFrom: '{#status: #I}' to: #empty probability: [:m| (m atParameter: #mu)].
 	model addTransitionFrom: '{#status: #R}' to: #empty probability: [:m| (m atParameter: #mu)].
 	model addTransitionFrom: #empty to: '{#status: #S}' probability: [:m| (m atParameter: #mu)].
-	simulator := KESimulator new: #Gillespie from: 0 to: 0.4 step: 0.0027.
+	simulator := KESimulator new: #TauLeap from: 0 to: 0.4 step: 0.0027.
 	simulator executeOn: model.
 	output := simulator data.
 	dB := KEDiagramBuilder new.
