@@ -28,19 +28,19 @@ exampleRK4SolverOnMigrationMultiSpeciesModel2
 	graph := KEMigrationNetwork 
 					newOn: model population 
 					atAttribute: #region 
-					topology: (KERandomSmallWorldNetwork new K: 4; beta: 0).
+					topology: (KERandomSmallWorldNetwork new K: 2; beta: 0).
 	graph strengthOfAllConnections: {(#species->#bird)->0.1. (#species->#human)->0.03}.
 	graph addMigrationTransitionsTo: model.
 	
 	sgraph := KEContactNetwork newOn: model population atAttribute: #species.
-	sgraph edges: { #bird->#bird. #human->#bird }; strengthOfConnections: #(0.24 0.012).
+	sgraph edges: {#bird->#bird. #human->#bird}; strengthOfConnections: #(0.24 0.012).
 	
 	model addEquation: 'S:t=d*N-d*S-beta*S*I+v*R' parseAsAnEquation.
 	model addEquation: 'E:t=beta*S*I-d*E-epsilon*E' parseAsAnEquation.
 	model addEquation: 'I:t=epsilon*E-d*I-gamma*I' parseAsAnEquation.
 	model addEquation: 'R:t=gamma*I-d*R-v*R' parseAsAnEquation.
 		
-	simulator := KESimulator new: #RungeKutta from: 0 to: 800 step: 1.
+	simulator := KESimulator new: #RungeKutta from: 0 to: 200 step: 1.
 	simulator executeOn: model.
 	output := simulator data.
 	db := KEDiagramBuilder new.

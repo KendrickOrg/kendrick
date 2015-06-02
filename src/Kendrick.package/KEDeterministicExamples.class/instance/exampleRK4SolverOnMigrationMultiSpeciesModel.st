@@ -17,7 +17,7 @@ exampleRK4SolverOnMigrationMultiSpeciesModel
 	
 	graph := KEMigrationNetwork 
 					newOn: model population 
-					atAttribute: #region topology: (KERandomSmallWorldNetwork new K: 4; beta: 0).
+					atAttribute: #region topology: (KERandomSmallWorldNetwork new K: 2; beta: 0).
 	graph strengthOfAllConnections: 0.03.
 	graph addMigrationTransitionsTo: model.
 	

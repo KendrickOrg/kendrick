@@ -7,5 +7,5 @@ exampleRK4SolverOnSIRMultiHostModel
 	simulator executeOn: model.
 	output := simulator data.
 	db := (KEDiagramBuilder new) data: (output dataAt: '{#status: #I}') do: #sqrt.
-	^ db view
+	^ db open
 	

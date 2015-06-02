@@ -6,7 +6,7 @@ build
 	(self legends size >= 3) ifTrue: [ 
 		normalize := RTMultiLinearColorForIdentity new 
 						objects: self legends;
-						colors: (ColorPalette qualitative colors: (self legends size) scheme: 'Set1')
+						colors: (ColorPalette qualitative colors: 20 scheme: 'FlatUI1')
 		 ].
 	1 to: legends size do: [ :i|
 		|ds|
