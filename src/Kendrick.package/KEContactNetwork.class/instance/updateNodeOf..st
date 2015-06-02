@@ -7,7 +7,7 @@ updateNodeOf: ind
 	currentNode adjacentNodes keysAndValuesDo: [ :k :v| 
 		|idx|
 		idx := (Dictionary newFrom: k) at: #id.
-		(self nodes at: idx) adjacentNodes removeKey: currentNode label.
+		(self nodes at: idx) adjacentNodes removeKey: currentNode label ifAbsent: [ ].
 		(self nodes at: idx) addAdjacentNode: (newLabel->v)
 		].
 	currentNode label: newLabel

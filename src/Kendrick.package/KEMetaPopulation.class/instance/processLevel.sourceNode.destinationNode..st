@@ -7,7 +7,7 @@ processLevel: level sourceNode: source destinationNode: destination
 	g := graphs at: level.
 	g attribute = #status 
 	ifTrue: [ n := g atNode: (source at: #id) ]
-	ifFalse: [ n := g atNode: (source at: g attribute) ].
+	ifFalse: [ n := g atNode: {g attribute->(source at: g attribute)} ].
 	rs := 0.
 	n adjacentNodes keysAndValuesDo: [ :k :v| 
 		|tmp s|

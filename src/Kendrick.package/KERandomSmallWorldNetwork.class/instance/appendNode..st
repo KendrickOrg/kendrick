@@ -9,10 +9,27 @@ appendNode: aNodeLabel
 		ifTrue: [ 
 			(beta > (rand next)) 
 			ifTrue: [ 
-				network with: (Array with: label with: (network nodes at: ((activeNodes size) * (rand next)) ceiling) label) strengthOfConnection: strengthOfConnection
+				"rewiring the edge (i->j) with i < j"
+				|node_k node_i k|
+				node_i := network nodes at: i.
+				node_k := node_i.
+				[ (node_k label ~= node_i label) 
+					and: [ (node_i adjacentNodes at: node_k label ifAbsent: [ nil ]) isNil ]
+				] whileFalse: 
+					[ 
+						k := ((network nodes size) * (rand next)) ceiling.
+						node_k := (network nodes at: k) 
+					].
+				network 
+					with: (Array with: i with: k) 
+					strengthOfConnection: strengthOfConnection oneWay: true.
+				"add the edge (j->i) with j > i"
+				network 
+					with: (Array with: j  with: i) 
+					strengthOfConnection: strengthOfConnection oneWay: true. 
 				]
 			ifFalse: [  
-				network with: (Array with: label  with: (network nodes at: i) label) strengthOfConnection: strengthOfConnection
+				network with: (Array with: j  with: i) strengthOfConnection: strengthOfConnection
 				]
 			]
 		].

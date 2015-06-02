@@ -16,11 +16,12 @@ exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals
 	model addEquation: ('I:t=beta*S*I-gamma*I' parseAsAnEquation).
 	model addEquation: ('R:t=gamma*I' parseAsAnEquation).
 	
-	"change the value of p to 1 and beta to 0.01 to test the case of mixed population that means an individual has contacts with all others"
+	"KERandomNetwork, p = 1 ==> Mixing population, compare with model with no network (exampleIBMSimulatorOnSIRModel 2)"
+	"KERandomSmallworldNetwork ==> beta = 0: regular ring lattice; beta = 1: random network"
 	network := KEContactNetwork 
 						newOn: model population 
 						atAttribute: #status 
-						topology: (KERandomNetwork new p: 0.4).
+						topology: (KERandomSmallWorldNetwork new K: 4; beta: 1).
 	network strengthOfAllConnections: 1.
 
 	simulator := KESimulator new: #IBM from: 0.0 to: 200 step: 0.1.

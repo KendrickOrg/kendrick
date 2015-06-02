@@ -6,6 +6,6 @@ appendNode: anAssociation
 	rand := Random new.
 	activeNodes do: [ :i| 
 		(p > (rand next)) ifTrue: [ 
-			network with: (Array with: label with: (network nodes at: i) label) strengthOfConnection: strengthOfConnection ]
+			network with: (Array with: idx with: i) strengthOfConnection: strengthOfConnection ]
 		].
 	activeNodes add: idx

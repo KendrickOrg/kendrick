@@ -12,7 +12,7 @@ appendNode: aNodeLabel
 			ki := (network nodes at: i) adjacentNodes size.
 			pi := ki / sumOfKj.
 			(pi > rand next) ifTrue: [ 
-				network with: (Array with: label with: (network nodes at: i) label) strengthOfConnection: strengthOfConnection.
+				network with: (Array with: idx with: i) strengthOfConnection: strengthOfConnection.
 				m := m + 1 ]
 			]
 		].

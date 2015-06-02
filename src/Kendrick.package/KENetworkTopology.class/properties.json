@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"network"
+		"network",
+		"edgeRule"
 	],
 	"name" : "KENetworkTopology",
 	"type" : "normal"

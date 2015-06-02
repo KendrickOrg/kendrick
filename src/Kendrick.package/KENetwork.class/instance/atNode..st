@@ -1,5 +1,5 @@
 as yet unclassified
-atNode: aLabelIdentifyingValue
-	aLabelIdentifyingValue isNumber ifTrue: [ ^ self nodes at: aLabelIdentifyingValue ].
-	self nodes do: [ :n| (n label includes: (attribute->aLabelIdentifyingValue)) ifTrue: [ ^ n ] ]
+atNode: aLabel
+	aLabel isNumber ifTrue: [ ^ self nodes at: aLabel ].
+	self nodes do: [ :n| (n label includesAll: (aLabel)) ifTrue: [ ^ n ] ]
 	
