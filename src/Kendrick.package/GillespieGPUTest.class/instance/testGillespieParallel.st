@@ -1,6 +1,6 @@
 tests
 testGillespieParallel
-	| speciesArray speciesResult speciesBytes speciesBytesResult ratesArray stoichioMatrix reactantIndexArray propensityArray propensityResult propensityBytesResult flagsMem  size size1 rand1 rand2 	indexFiredReaction   deltaT|
+	| speciesArray speciesResult speciesBytes speciesBytesResult ratesArray stoichioMatrix reactantIndexArray propensityArray propensityResult propensityBytesResult   size size1 rand1 rand2 	indexFiredReaction   deltaT|
 	"simulationDataArray"
 	self createContext.
 	self buildProgram.
@@ -60,14 +60,13 @@ testGillespieParallel
 	tMin := 0.0.
 	tMax := 1.0.
 	deltaT := 0.0.
-	flagsMem := OpenCLConstants new.
 	
 	"Allocate buffers"
-	speciesBuffer := context createBuffer: OpenCLConstants CL_MEM_READ_WRITE size:size.
-	ratesBuffer := context createBuffer: OpenCLConstants CL_MEM_READ_ONLY size: size1.
-	stoichBuffer := context createBuffer: OpenCLConstants CL_MEM_READ_ONLY size: (numberSpecies * numberReactions * 4).
-	reactantBuffer := context createBuffer: OpenCLConstants CL_MEM_READ_ONLY size: size1.
-	propensityBuffer := context createBuffer: OpenCLConstants CL_MEM_READ_WRITE size: size1.
+	speciesBuffer := context createBuffer:  CL_MEM_READ_WRITE size:size.
+	ratesBuffer := context createBuffer:  CL_MEM_READ_ONLY size: size1.
+	stoichBuffer := context createBuffer:  CL_MEM_READ_ONLY size: (numberSpecies * numberReactions * 4).
+	reactantBuffer := context createBuffer:  CL_MEM_READ_ONLY size: size1.
+	propensityBuffer := context createBuffer:  CL_MEM_READ_WRITE size: size1.
 	
 	" ............................ LOOP WHILE.......................... "
 			
@@ -79,11 +78,11 @@ testGillespieParallel
 	
 		
 	"Copy data from host memory(CPU) to device memory(GPU)"
-	commandQueue enqueueWriteBuffer: speciesBuffer blocking: OpenCLConstants CL_BLOCKING  offset: 0 size: size  ptr:(speciesArray asCLInt32Array).
-	commandQueue enqueueWriteBuffer: ratesBuffer  blocking: OpenCLConstants CL_BLOCKING  offset: 0 size: numberReactions  ptr:(ratesArray asCLFloatArray).
-	commandQueue enqueueWriteBuffer: stoichBuffer blocking: OpenCLConstants CL_BLOCKING  offset: 0 size: 	(numberReactions * numberSpecies * 4) ptr:(stoichioMatrix asCLFloatArray) .
-	commandQueue enqueueWriteBuffer: reactantBuffer blocking: OpenCLConstants CL_BLOCKING  offset: 0 size: size1  ptr:(reactantIndexArray asCLInt32Array).
-	commandQueue enqueueWriteBuffer: propensityBuffer blocking: OpenCLConstants CL_BLOCKING  offset: 0 size: size1 ptr:(propensityArray asCLFloatArray).
+	commandQueue enqueueWriteBuffer: speciesBuffer blocking:  CL_BLOCKING  offset: 0 size: size  ptr:(speciesArray asCLInt32Array).
+	commandQueue enqueueWriteBuffer: ratesBuffer  blocking:  CL_BLOCKING  offset: 0 size: numberReactions  ptr:(ratesArray asCLFloatArray).
+	commandQueue enqueueWriteBuffer: stoichBuffer blocking:  CL_BLOCKING  offset: 0 size: 	(numberReactions * numberSpecies * 4) ptr:(stoichioMatrix asCLFloatArray) .
+	commandQueue enqueueWriteBuffer: reactantBuffer blocking:  CL_BLOCKING  offset: 0 size: size1  ptr:(reactantIndexArray asCLInt32Array).
+	commandQueue enqueueWriteBuffer: propensityBuffer blocking:  CL_BLOCKING  offset: 0 size: size1 ptr:(propensityArray asCLFloatArray).
 	
 	"Set kernel arguments updatePropensity kernel"
 	kernel argAt: 0 mem: speciesBuffer.
@@ -98,7 +97,7 @@ testGillespieParallel
 	commandQueue enqueue1DRangeKernel: kernel globalWorkSize: numberReactions.
 	
 	"Read the arguments."
-	commandQueue enqueueReadBuffer: propensityBuffer blocking: OpenCLConstants CL_BLOCKING offset: 0 size: size1 ptr: propensityBytesResult.
+	commandQueue enqueueReadBuffer: propensityBuffer blocking:  CL_BLOCKING offset: 0 size: size1 ptr: propensityBytesResult.
 	
 	"......................................................................................................................................"
 	
@@ -126,8 +125,8 @@ testGillespieParallel
 	stoichBuffer := context createBuffer: OpenCLConstants CL_MEM_READ_ONLY size: (numberSpecies * numberReactions * 4)."
 	
 	"Copy data from host memory(CPU) to device memory(GPU)"
-	commandQueue enqueueWriteBuffer: speciesBuffer blocking: OpenCLConstants CL_BLOCKING  offset: 0 size: size  ptr:(speciesArray asCLInt32Array).
-	commandQueue enqueueWriteBuffer: stoichBuffer blocking: OpenCLConstants CL_BLOCKING  offset: 0 size: 	(numberReactions * numberSpecies * 4) ptr:(stoichioMatrix asCLFloatArray).
+	commandQueue enqueueWriteBuffer: speciesBuffer blocking:  CL_BLOCKING  offset: 0 size: size  ptr:(speciesArray asCLInt32Array).
+	commandQueue enqueueWriteBuffer: stoichBuffer blocking:  CL_BLOCKING  offset: 0 size: 	(numberReactions * numberSpecies * 4) ptr:(stoichioMatrix asCLFloatArray).
 	
 	"Set kernel arguments updatePropensity kernel"
 	kernel argAt: 0 mem: speciesBuffer.
@@ -138,7 +137,7 @@ testGillespieParallel
 	"Run the kernel."
 	commandQueue enqueue1DRangeKernel: kernel globalWorkSize: numberSpecies.
 	"Read the arguments."
-	commandQueue enqueueReadBuffer: speciesBuffer blocking: OpenCLConstants CL_BLOCKING offset: 0 size: size ptr: speciesBytesResult.	
+	commandQueue enqueueReadBuffer: speciesBuffer blocking:  CL_BLOCKING offset: 0 size: size ptr: speciesBytesResult.	
 	
 	speciesResult := speciesBytesResult asInt32ArrayFromCL.
 	speciesArray := speciesResult.

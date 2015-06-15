@@ -3,7 +3,9 @@
 	"super" : "TestCase",
 	"category" : "Kendrick-GPU-1",
 	"classinstvars" : [ ],
-	"pools" : [ ],
+	"pools" : [
+		"OpenCLConstants"
+	],
 	"classvars" : [ ],
 	"instvars" : [
 		"platform",
