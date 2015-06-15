@@ -5,7 +5,14 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"model",
+		"tMin",
+		"tMax",
+		"data",
+		"system",
+		"equations"
+	],
 	"name" : "DMBuffer",
 	"type" : "normal"
 }

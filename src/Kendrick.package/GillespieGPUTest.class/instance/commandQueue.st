@@ -1,0 +1,3 @@
+initialize opencl
+commandQueue
+	^ commandQueue.
