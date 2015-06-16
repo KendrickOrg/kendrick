@@ -1,7 +1,7 @@
 as yet unclassified
 executeOn: aModel
 	| t |
-	self model: aModel.
+	super executeOn: aModel.
 	t := tMin.
 	self updateDataAt: tMin.
 	[ t < tMax ]

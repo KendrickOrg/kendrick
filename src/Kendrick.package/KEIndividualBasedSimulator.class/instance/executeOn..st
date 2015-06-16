@@ -1,7 +1,7 @@
 as yet unclassified
 executeOn: aModel
 	| t rand |
-	self model: aModel.
+	super executeOn: aModel.
 	t := tMin.
 	self updateDataAt: tMin.
 	rand := Random new.
