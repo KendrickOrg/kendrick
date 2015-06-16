@@ -1,12 +1,12 @@
 meta
-new: _algorithm from: _tMin to: _tMax step: _step
-	(self deterministicSolvers keys includes: _algorithm) ifTrue: 
-		[ ^ (KEDeterministicSimulator new) tMin: _tMin; tMax: _tMax; step: _step; algorithm: (self deterministicSolvers at: _algorithm) ].
-	_algorithm = #Gillespie ifTrue: 
-		[ ^ (KEGillespieSimulator new) tMin: _tMin; tMax: _tMax; step: _step ].
-	_algorithm = #GPUGillespie ifTrue: 
-		[ ^ (KEGPUStochasticSimulator new) tMin: _tMin; tMax: _tMax; step: _step ].
-	_algorithm = #TauLeap ifTrue: 
-		[ ^ (KETauLeapSimulator new) tMin: _tMin; tMax: _tMax; step: _step ].
-	_algorithm = #IBM ifTrue:
-		[ ^ (KEIndividualBasedSimulator new) tMin: _tMin; tMax: _tMax; step: _step ]
+new: algorithm from: tMin to: tMax step: step
+	(self deterministicSolvers keys includes: algorithm) ifTrue: 
+		[ ^ (KEDeterministicSimulator new) tMin: tMin; tMax: tMax; step: step; algorithm: (self deterministicSolvers at: algorithm) ].
+	algorithm = #Gillespie ifTrue: 
+		[ ^ (KEGillespieSimulator new) tMin: tMin; tMax: tMax; step: step ].
+	algorithm = #GPUGillespie ifTrue: 
+		[ ^ (KEGPUStochasticSimulator new) tMin: tMin; tMax: tMax; step: step ].
+	algorithm = #TauLeap ifTrue: 
+		[ ^ (KETauLeapSimulator new) tMin: tMin; tMax: tMax; step: step ].
+	algorithm = #IBM ifTrue:
+		[ ^ (KEIndividualBasedSimulator new) tMin: tMin; tMax: tMax; step: step ]
