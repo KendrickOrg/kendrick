@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "<historical>",
 	"super" : "VGPUBuffer",
-	"category" : "Kendrick-GPU",
+	"category" : "Kendrick-GPU-obsolete",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

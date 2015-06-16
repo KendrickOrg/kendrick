@@ -1,3 +1,3 @@
-initialize opencl
+as yet unclassified
 commandQueue
 	^ commandQueue.

@@ -1,11 +1,28 @@
 {
 	"commentStamp" : "",
 	"super" : "KEStochasticSimulator",
-	"category" : "Kendrick-Semantic-Model-Core",
+	"category" : "Kendrick-GPU",
 	"classinstvars" : [ ],
-	"pools" : [ ],
+	"pools" : [
+		"OpenCLConstants"
+	],
 	"classvars" : [ ],
-	"instvars" : [ ],
+	"instvars" : [
+		"platform",
+		"device",
+		"context",
+		"program",
+		"kernel",
+		"commandQueue",
+		"speciesBuffer",
+		"stoichBuffer",
+		"ratesBuffer",
+		"simulationBuffer",
+		"reactantBuffer",
+		"propensityBuffer",
+		"numberSpecies",
+		"numberReactions"
+	],
 	"name" : "KEGPUStochasticSimulator",
 	"type" : "normal"
 }

@@ -1,14 +1,7 @@
 as yet unclassified
-programSource
+programSource11
 	^ '
-//  Parallel Gillespie Stochastic Simulation Algorithm kernel
-
-float get_random_0_1_ul (unsigned int* seed) //uniform between 0-1
-{
-  *seed = ((*seed) * 16807 ) % 2147483647;
-  return  (float)(*seed) * 1/2147483647;   //(4.6566129e-10 = 1/(2^31-1) = 1/2147483647)
-}
-__kernel void SSA( __global float * VectorTransitions, __global int * Q, __global uint * global_x, __global float *global_c, __global float *T, int M, int N, __global int * TypeEvent, __global float2* EventLeft)
+__kernel void sSA( __global float * VectorTransitions, __global int * Q, __global uint * global_x, __global float *global_c, __global float *T,__global int M,__global int N, __global int * TypeEvent, __global float2* EventLeft)
  {
 	__local  uint x [N];  // N represents the total number of species
 	__local  int xx [N];
@@ -101,5 +94,9 @@ __kernel void SSA( __global float * VectorTransitions, __global int * Q, __globa
 	// async_work_group_copy(des, src, size, event)		 
 	async_work_group_copy(global_x, x, N, 0);
 }
-	
+/*	float get_random_0_1_ul (unsigned int* seed) //uniform between 0-1
+{
+  *seed = ((*seed) * 16807 ) % 2147483647;
+  return  (float)(*seed) * 1/2147483647;   //(4.6566129e-10 = 1/(2^31-1) = 1/2147483647)
+}*/
 	'
