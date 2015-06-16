@@ -4,15 +4,12 @@ executeOn:aModel
 	"simulationDataArray"
 	self createContext.
 	self buildProgram.
-
-	numberSpecies := 3.
-	numberReactions := 4.
+	self halt.
+	numberSpecies := aModel compartments size.
+	numberReactions := aModel transitions size.
 	size := numberSpecies * 4.
 	size1 := numberReactions  * 4.
-	rand1 := 0.
-	rand2 := 0.
-		
-	speciesArray := Array new: numberSpecies.
+
 	speciesResult := Array new: numberSpecies.	
 	speciesBytes := ByteArray new: size.
 	speciesBytesResult := ByteArray new: size.
@@ -28,7 +25,9 @@ executeOn:aModel
 	reactantIndexArray := Array new: numberReactions.
 	
 	"Initialize data"
-	speciesArray := #(1000 550 50).
+
+	speciesArray := aModel compartiments values.
+	
 	stoichioMatrix := #(-1  0 0 2 -1 0 -2 1 0 0 -1 1).
 	reactantIndexArray := #(0 0 1 1).
 	
