@@ -24,7 +24,7 @@ Github is only used to store [issues](https://github.com/UMMISCO/Kendrick/issues
 Gofer new
     url: 'http://smalltalkhub.com/mc/UMMISCO/Kendrick/main';
     configurationOf:'Kendrick';
-    loadVersion:'0.22.
+    loadVersion:'0.22'.
 ````
 
 ## How to install Kendrick development version
