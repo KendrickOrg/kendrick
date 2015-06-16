@@ -1,4 +1,4 @@
-methods
+as yet unclassified
 selectReaction: random2 select: propensityArray 
 	|sum count|
 	

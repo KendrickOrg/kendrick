@@ -1,7 +1,7 @@
 as yet unclassified
 executeOn: aModel
 	| rand1 rand2 t previousT |
-	super executeOn: aModel.
+	self model: aModel.
 	t := tMin.
 	previousT := t.
 	rand1 := Random new.
