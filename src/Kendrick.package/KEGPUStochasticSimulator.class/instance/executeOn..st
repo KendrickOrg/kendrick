@@ -1,4 +1,4 @@
-as yet unclassified
+methods
 executeOn:aModel
 	| speciesArray speciesResult speciesBytes speciesBytesResult ratesArray stoichioMatrix reactantArray propensityArray propensityResult propensityBytesResult   size size1 rand indexFiredReaction deltaT|
 		
