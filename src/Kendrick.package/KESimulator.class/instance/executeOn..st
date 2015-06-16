@@ -1,3 +1,3 @@
 accessing
 executeOn: aModel
-	self subclassResponsibility 
+	self model: aModel

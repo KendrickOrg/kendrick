@@ -1,7 +1,7 @@
 as yet unclassified
 executeOn: aModel
 	|st ks|
-	self model: aModel.
+	super executeOn:aModel.
 	self equations.
 	system := ExplicitSystem block: [ :x :t| |c i|
 		c := Array new: (model population compartments size).
