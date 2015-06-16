@@ -16,6 +16,7 @@ executeOn: aModel
 			deltaT = 0.0
 				ifTrue: [ ^ self ].
 			t := t + deltaT.
+			"Only store in the result from step to step"
 			t > (previousT + step)
 				ifTrue: [ 
 					self updateDataAt: t.
