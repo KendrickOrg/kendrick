@@ -10,7 +10,7 @@ exampleRK4SolverOnSEIRMeaslesModelWithVaccination
 		{#status: #E}: 0,
 		{#status: #R}: 0
 	}'.
-	model addParameters: '{#beta: 0.00782, #gamma: 52.14, #mu: 0.0128, #sigma: 45.625, #N: #sizeOfPopulation, #p: 0.0}'.
+	model addParameters: '{#beta: 0.00782, #gamma: 52.14, #mu: 0.0128, #sigma: 45.625, #N: #sizeOfPopulation, #p: 0.7}'.
 	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #E}'
 		probability: [:m| (m atParameter: #beta) * (m probabilityOfContact: '{#status:#I}')].
@@ -38,10 +38,10 @@ exampleRK4SolverOnSEIRMeaslesModelWithVaccination
 	model addTransitionFrom: #empty
 		to: '{#status: #R}'
 		probability: [:m| (m atParameter: #mu) * (m atParameter: #p)].
-	simulator := KESimulator new: #RungeKutta from: 0.0 to: 100 step: 0.01.
+	simulator := KESimulator new: #RungeKutta from: 0.0 to: 50 step: 0.01.
 	simulator executeOn: model.
 	output := simulator data.
-	diag := (KEDiagramBuilder new) data: (output dataAt: '{#status: #I}') do: #log.
+	diag := (KEDiagramBuilder new) data: (output dataAt: '{#status: #I}') "do: #log".
 	diag yLabel: 'log(Infectious)'.
 	diag xLabel: 'Time (years)'.
 	diag open
