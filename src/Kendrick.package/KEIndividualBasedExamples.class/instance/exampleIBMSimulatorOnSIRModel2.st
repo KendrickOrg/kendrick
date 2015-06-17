@@ -1,7 +1,7 @@
 examples
 exampleIBMSimulatorOnSIRModel2
 	"self new exampleIBMSimulatorOnSIRModel2"
-	|model simulator output db |
+	|model simulator  db |
 	model := KEModel new.
 	model population attributes: '{#status:[#S,#I,#R]}'.
 	model buildFromCompartments: '{
@@ -13,8 +13,7 @@ exampleIBMSimulatorOnSIRModel2
 	model addTransitionFrom: '{#status:#I}' to: '{#status:#R}' probability: [:m|(m atParameter: #gamma)].
 	simulator := KESimulator new: #IBM from: 0.0 to: 200 step: 0.1.
 	simulator executeOn:  model.
-	output := simulator data.
-	db := KEDiagramBuilder new data: (output dataAt: '{#status:#I}').
+	db := KEDiagramBuilder new data: (simulator dataAt: '{#status:#I}').
 	db open
 	
 	

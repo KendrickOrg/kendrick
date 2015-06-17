@@ -1,7 +1,7 @@
 examples
 exampleGillespieDirectOnSIRBioPEPAModel
 	"self new exampleGillespieDirectOnSIRBioPEPAModel"
-	|model  simulator output dB |
+	|model  simulator  dB |
 	model := KEModel new.
 	model buildFromCompartments: '{
 		{ #status: #S }: 100,
@@ -17,9 +17,8 @@ exampleGillespieDirectOnSIRBioPEPAModel
 		probability: [ :m| (m atParameter: #gamma)].
 	simulator := KESimulator new: #Gillespie from: 0.0 to: 100 step: 1.
 	simulator executeOn: model.
-	output := simulator data.
 	dB := KEDiagramBuilder new.
-	dB data: (output dataAt: '{#status: #I}').
+	dB data: (simulator dataAt: '{#status: #I}').
 	dB open
 	
 	

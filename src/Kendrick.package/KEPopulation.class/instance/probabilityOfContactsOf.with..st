@@ -11,6 +11,5 @@ probabilityOfContactsOf: source with: destination
 	p := self compartments at: tmp.
 	"if mass-action = true and rescale = false, do p/N"
 	((configurations at: #mass_action) and: [ (configurations at: #rescale) not ])
-	ifTrue: [ 
-		p := p / (self sizeOfPopulation: tmp) ].
+	ifTrue: [ p := p / (self sizeOfPopulation: tmp) ].
 	^ p

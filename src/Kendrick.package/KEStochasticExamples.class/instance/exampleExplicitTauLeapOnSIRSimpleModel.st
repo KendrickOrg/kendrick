@@ -1,7 +1,7 @@
 examples
 exampleExplicitTauLeapOnSIRSimpleModel
 	"self new exampleExplicitTauLeapOnSIRSimpleModel"
-	|model simulator output dB |
+	|model simulator  dB |
 	model := KEModel new.
 	model population attributes: '{#status: [#S, #I, #R]}'.
 	model buildFromCompartments: '{
@@ -17,9 +17,8 @@ exampleExplicitTauLeapOnSIRSimpleModel
 	model addTransitionFrom: #empty to: '{#status: #S}' probability: [:m| (m atParameter: #mu)].
 	simulator := KESimulator new: #TauLeap from: 0 to: 0.4 step: 0.0027.
 	simulator executeOn: model.
-	output := simulator data.
 	dB := KEDiagramBuilder new.
-	dB data: (output dataAt: #all).
+	dB data: (simulator dataAt: #all).
 	dB open.
 	
 	

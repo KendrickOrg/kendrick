@@ -1,7 +1,7 @@
 examples
 exampleRK4SolverOnSIRMultiHostModelTransitionByRate
 	"self new exampleRK4SolverOnSIRMultiHostModelTransitionByRate"
-	|model simulator graph output db|
+	|model simulator graph db|
 	model := KEModel new.
 	model population: (KEMetaPopulation new attributes: {
 		#status->#(#S #I #R). 
@@ -50,7 +50,6 @@ exampleRK4SolverOnSIRMultiHostModelTransitionByRate
 		probability: 'mu' parseAsAnExpression.
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 40.0 step: 0.01.
 	simulator executeOn: model.
-	output := simulator data.
-	db := (KEDiagramBuilder new) data: (output dataAt: '{#status: #I}') do: #sqrt.
+	db := (KEDiagramBuilder new) data: (simulator dataAt: '{#status: #I}') do: #sqrt.
 	^ db open
 	

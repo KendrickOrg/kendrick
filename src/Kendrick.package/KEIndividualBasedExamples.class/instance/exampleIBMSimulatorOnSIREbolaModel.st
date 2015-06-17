@@ -1,7 +1,7 @@
 examples
 exampleIBMSimulatorOnSIREbolaModel
 	"self new exampleIBMSimulatorOnSIREbolaModel"
-	|model simulator output db g1  |
+	|model simulator  db g1  |
 	model := KEModel new.
 	model population: KEMetaPopulation new.
 	model population attributes: '{
@@ -41,8 +41,7 @@ exampleIBMSimulatorOnSIREbolaModel
 	model addEquation: ('R:t=gamma*I' parseAsAnEquation).
 	simulator := KESimulator new: #IBM from: 0.0 to: 100 step: 0.1.
 	simulator executeOn: model.
-	output := simulator data.
-	db := (KEDiagramBuilder new) data: (output dataAt: '{#status: #	I}').
+	db := (KEDiagramBuilder new) data: (simulator dataAt: '{#status: #	I}').
 	db open.
 	db openMap: #africa 
 	   countries: (model population atAttribute: #country) 

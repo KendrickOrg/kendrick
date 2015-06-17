@@ -1,7 +1,7 @@
 examples
 exampleIBMSimulatorOnSEIRMeaslesModel
 	"self new exampleIBMSimulatorOnSEIRMeaslesModel"
-	|model simulator output diag|
+	|model simulator  diag|
 	model := KEModel new.
 	model population attributes: '{#status: [#S, #E, #I, #R]}'.
 	model buildFromCompartments: '{
@@ -37,8 +37,7 @@ exampleIBMSimulatorOnSEIRMeaslesModel
 		probability: [:m| (m atParameter: #mu)].
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 150 step: 1.
 	simulator executeOn: model.
-	output := simulator data.
-	diag := (KEDiagramBuilder new) data: (output dataAt: '{#status: #I}').
+	diag := (KEDiagramBuilder new) data: (simulator dataAt: '{#status: #I}').
 	diag open
 	
 	

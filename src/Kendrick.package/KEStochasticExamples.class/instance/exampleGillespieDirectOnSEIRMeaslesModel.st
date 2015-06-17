@@ -1,7 +1,7 @@
 examples
 exampleGillespieDirectOnSEIRMeaslesModel
 	"self new exampleGillespieDirectOnSEIRMeaslesModel"
-	|model simulator output diag |
+	|model simulator  diag |
 	model := KEModel new.
 	model population attributes: '{#status: [#S, #E, #I, #R]}'.
 	model buildFromCompartments: '{
@@ -38,8 +38,7 @@ exampleGillespieDirectOnSEIRMeaslesModel
 		probability: [:m| (m atParameter: #mu)].
 	simulator := KESimulator new: #IBM from: 0.0 to: 0.5 step: 0.0027.
 	simulator executeOn: model.
-	output := simulator data.
-	diag := (KEDiagramBuilder new) data: (output dataAt: '{#status: #I}').
+	diag := (KEDiagramBuilder new) data: (simulator dataAt: '{#status: #I}').
 	diag open
 	
 	

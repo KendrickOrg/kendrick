@@ -20,12 +20,11 @@ build
 		ifFalse: [ ds connectColor: (normalize rtValue: (legends at: i)) ].
 		b add: ds
 		 ].
-	xLabel ifNil: [ b axisX title: 'Time (days)' ] 
+	xLabel ifNil: [ b axisX title: 'Time' ] 
 	       ifNotNil: [ b axisX title: xLabel ].
 	yLabel ifNil: [ b axisY title: 'Number of individuals' ] 
 	       ifNotNil: [ b axisY title: yLabel ].
 	b axisY noDecimal.
-	b axisX noDecimal.
 	lb := RTLegendBuilder new.
 	lb view: b view.
 	self legendTitle ifNil: [ legendTitle := 'Compartments' ].

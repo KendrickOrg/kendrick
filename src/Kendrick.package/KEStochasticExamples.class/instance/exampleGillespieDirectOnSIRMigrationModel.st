@@ -1,7 +1,7 @@
 examples
 exampleGillespieDirectOnSIRMigrationModel
 	"self new exampleGillespieDirectOnSIRMigrationModel"
-	|model simulator db graph output|
+	|model simulator db graph |
 	model := KEModel new.
 	model population: KEMetaPopulation new.
 	model population attributes: '{#status: [#S,#I], #region:[#A,#B,#C,#D,#E]}'.
@@ -22,9 +22,8 @@ exampleGillespieDirectOnSIRMigrationModel
 		
 	simulator := KESimulator new: #Gillespie from: 0 to: 2910 step: 1.
 	simulator executeOn: model.
-	output := simulator data.
 	db := KEDiagramBuilder new.
-	db data: (output dataAt: '{#status: #I}').
+	db data: (simulator dataAt: '{#status: #I}').
 	db open
 															
 														

@@ -1,4 +1,4 @@
-initialize OpenCL
+as yet unclassified
 createContext
 	platform :=OpenCL firstPlatform.
 	device := platform firstGPUDevice.

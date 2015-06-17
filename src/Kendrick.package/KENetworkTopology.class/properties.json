@@ -7,8 +7,7 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"network",
-		"edgeRule",
-		"oneWay"
+		"edgeRule"
 	],
 	"name" : "KENetworkTopology",
 	"type" : "normal"

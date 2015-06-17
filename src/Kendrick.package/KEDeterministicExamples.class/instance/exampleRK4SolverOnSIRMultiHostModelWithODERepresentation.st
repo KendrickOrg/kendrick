@@ -1,7 +1,7 @@
 examples
 exampleRK4SolverOnSIRMultiHostModelWithODERepresentation
 	"self new exampleRK4SolverOnSIRMultiHostModelWithODERepresentation"
-	|model simulator graph output db|
+	|model simulator graph  db|
 	model := KEModel new.
 	model population: (KEMetaPopulation new attributes: {
 		#status->#(#S #I #R). 
@@ -35,7 +35,6 @@ exampleRK4SolverOnSIRMultiHostModelWithODERepresentation
 	model addEquation: ('R:t=v*I-mu*R' parseAsAnEquation).
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 0.5 step: 0.0027.
 	simulator executeOn: model.
-	output := simulator data.
-	db := (KEDiagramBuilder new) data: (output dataAt: '{#status: #I}') do: #sqrt.
+	db := (KEDiagramBuilder new) data: (simulator dataAt: '{#status: #I}') do: #sqrt.
 	^ db view
 	

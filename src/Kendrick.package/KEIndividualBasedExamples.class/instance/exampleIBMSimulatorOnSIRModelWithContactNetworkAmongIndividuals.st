@@ -1,7 +1,7 @@
 examples
 exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals
 	"self new exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals"
-	|model simulator network output db |
+	|model simulator network  db |
 	model := KEModel new.
 	model population: KEMetaPopulation new.
 	model population attributes: '{#status: [#S, #I, #R]}'.
@@ -26,6 +26,5 @@ exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals
 
 	simulator := KESimulator new: #IBM from: 0.0 to: 200 step: 0.1.
 	simulator executeOn: model.
-	output := simulator data.
-	db := KEDiagramBuilder new data: (output dataAt: '{#status: #I}').
+	db := KEDiagramBuilder new data: (simulator dataAt: '{#status: #I}').
 	db open 

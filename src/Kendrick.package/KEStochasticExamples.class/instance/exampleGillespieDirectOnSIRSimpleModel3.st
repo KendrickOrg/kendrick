@@ -1,7 +1,7 @@
 examples
 exampleGillespieDirectOnSIRSimpleModel3
 	"self new exampleGillespieDirectOnSIRSimpleModel3"
-	|model  simulator output dB |
+	|model  simulator  dB |
 	model := KEModel new.
 	model population attributes: '{#status: [#S, #I, #R]}'.
 	model buildFromCompartments: '{
@@ -18,9 +18,8 @@ exampleGillespieDirectOnSIRSimpleModel3
 		probability: [ :m| (m atParameter: #gamma)].
 	simulator := KESimulator new: #Gillespie from: 0.0 to: 200 step: 0.01.
 	simulator executeOn: model.
-	output := simulator data.
 	dB := KEDiagramBuilder new.
-	dB data: (output dataAt: #all).
+	dB data: (simulator dataAt: #all).
 	dB open
 	
 	
