@@ -24,12 +24,17 @@ appendNode: aNodeLabel
 					with: (Array with: i with: k) 
 					strengthOfConnection: strengthOfConnection oneWay: true.
 				"add the edge (j->i) with j > i"
-				network 
-					with: (Array with: j  with: i) 
-					strengthOfConnection: strengthOfConnection oneWay: true. 
+				oneWay ifFalse: [ 
+					network 
+						with: (Array with: j  with: i) 
+						strengthOfConnection: strengthOfConnection oneWay: true ]. 
 				]
 			ifFalse: [  
-				network with: (Array with: j  with: i) strengthOfConnection: strengthOfConnection
+				((j = network nodes size) and: [i = 1]) 
+				ifTrue: 
+					[ network with: (Array with: j  with: i) strengthOfConnection: strengthOfConnection oneWay: oneWay ] 
+				ifFalse: 
+					[ network with: (Array with: i  with: j) strengthOfConnection: strengthOfConnection oneWay: oneWay ]
 				]
 			]
 		].
