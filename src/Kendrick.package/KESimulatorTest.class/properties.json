@@ -6,6 +6,6 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "KEOutputDataTest",
+	"name" : "KESimulatorTest",
 	"type" : "normal"
 }
