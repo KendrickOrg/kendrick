@@ -1,8 +1,7 @@
-accessing
+as yet unclassified
 timeSeriesAt: aCompartmentName
 	|key rs|
-	key := aCompartmentName.
-	aCompartmentName isString ifTrue: [ key := STON fromString: aCompartmentName ].
+	key := STON fromString: aCompartmentName.
 	key isArray ifFalse: [ key := Array with: key ].
 	rs := OrderedCollection new.
 	key do: [ :k| |tmp|
