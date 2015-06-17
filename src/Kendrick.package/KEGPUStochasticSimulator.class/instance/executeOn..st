@@ -1,22 +1,26 @@
 methods
 executeOn: aModel
-	| speciesArray speciesResult speciesBytes speciesBytesResult ratesArray stoichioMatrix reactantArray propensityArray propensityResult propensityBytesResult size size1 rand indexFiredReaction deltaT index |
+	| speciesArray speciesResult speciesBytes speciesBytesResult ratesArray stoichioMatrix reactantArray propensityArray propensityResult propensityBytesResult size size1 rand indexFiredReaction deltaT index  keysArray|
 	self createContext.
 	self buildProgram.
+	
 	numberSpecies := aModel compartments size.
 	numberReactions := aModel transitions size.
 	size := numberSpecies * 4.
 	size1 := numberReactions * 4.
+	
 	speciesResult := Array new: numberSpecies.
 	speciesBytes := ByteArray new: size.
 	speciesBytesResult := ByteArray new: size.
 	ratesArray := Array new: numberReactions.
-	stoichioMatrix := Array new: numberReactions * numberSpecies.
+	stoichioMatrix := Array new: numberReactions * numberSpecies withAll: 0.0.
 	propensityArray := Array new: numberReactions.
 	propensityBytesResult := ByteArray new: size1.
 	propensityResult := Array new: numberReactions.
-	reactantArray := Array new: numberReactions.	"Initialize data"
+	reactantArray := Array new: numberReactions.
+	"Initialize data loaded from Kendrick model "
 	speciesArray := aModel compartiments values.
+	keysArray := Array newFrom: (aModel compartiments keys).
 	index := 0.
 	model transitions
 		do: [ :tr | 
@@ -29,19 +33,13 @@ executeOn: aModel
 			reactantArray at: index put: (model atCompartment: tr from).
 			1 to: numberSpecies do: [:j| stoichioMatrix at: index * numberSpecies + j put: 1.0 asFloat].
 			index := index + 1.
+			"" 
+			tr from = #empty  
+				ifFalse: [ stoichioMatrix at: index * numberSpecies +(keysArray indexOf: (tr from)) put: 1 asFloat].
+			tr to = #empty  
+				ifFalse: [ stoichioMatrix at: index * numberSpecies +(keysArray indexOf: (tr to)) put: -1 asFloat].
 			].
-				
 	"stoichioMatrix at: 1 put: -1 asFloat.
-	stoichioMatrix at: 2 put: 0 asFloat.
-	stoichioMatrix at: 3 put: 0 asFloat.
-	stoichioMatrix at: 4 put: 2 asFloat.
-	stoichioMatrix at: 5 put: -1 asFloat.
-	stoichioMatrix at: 6 put: 0 asFloat.
-	stoichioMatrix at: 7 put: -2 asFloat.
-	stoichioMatrix at: 8 put: 1 asFloat.
-	stoichioMatrix at: 9 put: 0 asFloat.
-	stoichioMatrix at: 10 put: 0 asFloat.
-	stoichioMatrix at: 11 put: -1 asFloat.
 	stoichioMatrix at: 12 put: 1 asFloat."
 	
 	(1 to: numberReactions) do: [ :i | propensityArray at: i put: 0 asFloat ].	
@@ -59,7 +57,8 @@ executeOn: aModel
 		whileTrue: [ 
 			"Create the kernel and the command queue."
 			kernel := program createKernel: 'updatePropensity'.
-			commandQueue := context createCommandQueueFor: device properties: 0.	"Copy data from host memory(CPU) to device memory(GPU)"
+			commandQueue := context createCommandQueueFor: device properties: 0.
+			"Copy data from host memory(CPU) to device memory(GPU)"
 			commandQueue
 				enqueueWriteBuffer: ratesBuffer
 				blocking: CL_BLOCKING
