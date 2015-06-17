@@ -7,7 +7,8 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"data",
-		"index"
+		"index",
+		"compartment"
 	],
 	"name" : "KETimeSeries",
 	"type" : "normal"
