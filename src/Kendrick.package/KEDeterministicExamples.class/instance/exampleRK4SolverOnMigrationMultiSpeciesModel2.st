@@ -43,7 +43,7 @@ exampleRK4SolverOnMigrationMultiSpeciesModel2
 	simulator executeOn: model.
 	db := KEDiagramBuilder new.
 	db data: {#infectious->([|d tmp|
-		tmp := (simulator dataAt: '{#status: #I, #species: #bird}') collect: [ :e| e value ].
+		tmp := (simulator timeSeriesAt: '{#status: #I, #species: #bird}') collect: [ :e| e value ].
 		d := OrderedCollection new.
 		1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
 		KETimeSeries from: d withIndex: tmp first index 

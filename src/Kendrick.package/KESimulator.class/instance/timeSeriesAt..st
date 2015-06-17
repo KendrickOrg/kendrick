@@ -1,9 +1,8 @@
 accessing
-dataAt: aClassName
+timeSeriesAt: aCompartmentName
 	|key rs|
-	key := aClassName.
-	key = #all ifTrue: [ ^ data associations ].
-	aClassName isString ifTrue: [ key := STON fromString: aClassName ].
+	key := aCompartmentName.
+	aCompartmentName isString ifTrue: [ key := STON fromString: aCompartmentName ].
 	key isArray ifFalse: [ key := Array with: key ].
 	rs := OrderedCollection new.
 	key do: [ :k| |tmp|

@@ -20,7 +20,7 @@ exampleGillespieGPUOnSIRSimpleModel
 	simulator := KESimulator new: #GPUGillespie from: 0.0 to: 1.0 step: 0.001.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
-	dB data: (simulator dataAt: #all).
+	dB data: (simulator allTimeSeries).
 	dB open
 	
 	

@@ -1,0 +1,3 @@
+accessing
+allTimeSeries
+	^ data associations

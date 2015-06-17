@@ -18,7 +18,7 @@ exampleGillespieDirectOnSIRBioPEPAModel
 	simulator := KESimulator new: #Gillespie from: 0.0 to: 100 step: 1.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
-	dB data: (simulator dataAt: '{#status: #I}').
+	dB data: (simulator timeSeriesAt: '{#status: #I}').
 	dB open
 	
 	

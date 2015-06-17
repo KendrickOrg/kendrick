@@ -41,7 +41,7 @@ exampleIBMSimulatorOnSIREbolaModel
 	model addEquation: ('R:t=gamma*I' parseAsAnEquation).
 	simulator := KESimulator new: #IBM from: 0.0 to: 100 step: 0.1.
 	simulator executeOn: model.
-	db := (KEDiagramBuilder new) data: (simulator dataAt: '{#status: #	I}').
+	db := (KEDiagramBuilder new) data: (simulator timeSeriesAt: '{#status: #	I}').
 	db open.
 	db openMap: #africa 
 	   countries: (model population atAttribute: #country) 

@@ -37,7 +37,7 @@ exampleIBMSimulatorOnSEIRMeaslesModel
 		probability: [:m| (m atParameter: #mu)].
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 150 step: 1.
 	simulator executeOn: model.
-	diag := (KEDiagramBuilder new) data: (simulator dataAt: '{#status: #I}').
+	diag := (KEDiagramBuilder new) data: (simulator timeSeriesAt: '{#status: #I}').
 	diag open
 	
 	

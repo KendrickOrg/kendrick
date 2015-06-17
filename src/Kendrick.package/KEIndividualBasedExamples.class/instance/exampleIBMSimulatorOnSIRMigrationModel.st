@@ -23,7 +23,7 @@ exampleIBMSimulatorOnSIRMigrationModel
 	simulator := KESimulator new: #IBM from: 0 to: 2910 step: 1.
 	simulator executeOn: model.
 	db := KEDiagramBuilder new.
-	db data: (simulator dataAt: '{#status: #I}').
+	db data: (simulator timeSeriesAt: '{#status: #I}').
 	db open
 															
 														
