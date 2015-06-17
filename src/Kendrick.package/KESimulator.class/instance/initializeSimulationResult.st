@@ -1,4 +1,4 @@
 initialization
 initializeSimulationResult
-	data := Dictionary new.
-	model population compartments keys do: [ :each | data at: each put: ((KETimeSeries new) compartment: each)]
+	data := OrderedCollection new.
+	model population compartments keys do: [ :each | data add:((KETimeSeries new) compartment: each)]

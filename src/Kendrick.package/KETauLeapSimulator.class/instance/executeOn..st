@@ -3,9 +3,9 @@ executeOn: aModel
 	| t |
 	super executeOn: aModel.
 	t := tMin.
-	self updateDataAt: tMin.
+	self saveCompartmentsValueAtTime: tMin.
 	[ t < tMax ]
 		whileTrue: [ 
 			self doTauLeapIteration: t.
 			t := t + step.
-			self updateDataAt: t ]
+			self saveCompartmentsValueAtTime: t ]

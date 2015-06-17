@@ -6,7 +6,7 @@ executeOn: aModel
 	previousT := t.
 	rand1 := Random new.
 	rand2 := Random new.
-	self updateDataAt: tMin.
+	self saveCompartmentsValueAtTime: tMin.
 	[ t < tMax ]
 		whileTrue: [ 
 			| deltaT r1 r2 |
@@ -19,5 +19,5 @@ executeOn: aModel
 			"Only store in the result from step to step"
 			t > (previousT + step)
 				ifTrue: [ 
-					self updateDataAt: t.
+					self saveCompartmentsValueAtTime: t.
 					previousT := t ] ]
