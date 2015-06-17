@@ -10,8 +10,8 @@
 		"tMin",
 		"tMax",
 		"step",
-		"data",
-		"algorithm"
+		"algorithm",
+		"result"
 	],
 	"name" : "KESimulator",
 	"type" : "normal"
