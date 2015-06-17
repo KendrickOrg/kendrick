@@ -20,7 +20,7 @@ exampleGillespieDirectOnSIRSimpleModel
 	simulator := KESimulator new: #Gillespie from: 0.0 to: 1.0 step: 0.001.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
-	dB data: (simulator at: #all).
+	dB data: (simulator dataAt: #all).
 	dB open
 	
 	
