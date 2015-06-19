@@ -11,6 +11,9 @@ addMigrationTransitionsTo: model
 				to := from copy.
 				to at: attribute put: ((Dictionary newFrom: k) at: attribute).
 				v isNumber ifFalse: [ rtValue := n strengthOfConnection: k rtLabel: (from associations) ].
-				model transitions add: (KETransition from: from to: to probability: (KENumerical new number: rtValue))
+				model transitions add: 
+					(KETransition from: from 
+									  to: to 
+									  probability: (KENumerical new number: rtValue))
 			] ] ]
 	

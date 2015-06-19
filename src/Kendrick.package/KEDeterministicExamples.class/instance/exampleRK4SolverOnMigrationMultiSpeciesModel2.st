@@ -5,10 +5,12 @@ exampleRK4SolverOnMigrationMultiSpeciesModel2
 	model := KEModel new.
 	model population: KEMetaPopulation new.
 	model population attributes: {#patch->((1 to: 15) asArray). #species->#(#bird #human). #status->#(S E I R)}.
-	cards := OrderedCollection newFrom: #(49000 0 1000 0 5000 0 0 0).
+	cards := OrderedCollection newFrom: #(4990 0 10 0 500 0 0 0).
 	cards addAll: ([|c| c := OrderedCollection new.
-							1 to: 14 do: [:i| c addAll: #(50000 0 0 0 5000 0 0 0)]. c]) value.
-	model buildFromCompartments: {#patch->((1 to: 15) asArray). #species->#(#bird #human). #status->#(S E I R)} 
+							1 to: 14 do: [:i| c addAll: #(5000 0 0 0 500 0 0 0)]. c]) value.
+	model buildFromCompartments: 
+				{#patch->((1 to: 15) asArray). 
+				#species->#(#bird #human). #status->#(S E I R)} 
 			cardinalities: cards.
 	model addParameter: #beta value: 1.
 	model addParameter: #d 
@@ -28,11 +30,17 @@ exampleRK4SolverOnMigrationMultiSpeciesModel2
 					newOn: model population 
 					atAttribute: #patch 
 					topology: (KERandomSmallWorldNetwork new K: 2; beta: 0).
-	graph strengthOfAllConnections: {(#species->#bird)->0.1. (#species->#human)->0.03} oneWay: true.
+	graph 
+		strengthOfAllConnections: 
+			{(#species->#bird)->0.1. 
+			(#species->#human)->0.03} 
+		oneWay: true.
 	graph addMigrationTransitionsTo: model.
 	
 	sgraph := KEContactNetwork newOn: model population atAttribute: #species.
-	sgraph edges: {#bird->#bird. #human->#bird}; strengthOfConnections: #(0.24 0.012) oneWay: true.
+	sgraph 
+		edges: {#bird->#bird. #human->#bird}; 
+		strengthOfConnections: #(2.4 1.2) oneWay: true.
 	
 	model addEquation: 'S:t=d*N-d*S-beta*S*I+v*R' parseAsAnEquation.
 	model addEquation: 'E:t=beta*S*I-d*E-epsilon*E' parseAsAnEquation.
@@ -42,12 +50,13 @@ exampleRK4SolverOnMigrationMultiSpeciesModel2
 	simulator := KESimulator new: #RungeKutta from: 0 to: 200 step: 1.
 	simulator executeOn: model.
 	db := KEDiagramBuilder new.
-	db data: {#infectious->([|d tmp|
+	"db data: {#infectious->([|d tmp|
 		tmp := (simulator timeSeriesAt: '{#status: #I, #species: #bird}') collect: [ :e| e value ].
 		d := OrderedCollection new.
 		1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
 		KETimeSeries from: d withIndex: tmp first index 
-		] value)}.
+		] value)}."
+	db data: (simulator timeSeriesAt: '{#status: #I, #species: #bird}').
 	db open
 															
 														

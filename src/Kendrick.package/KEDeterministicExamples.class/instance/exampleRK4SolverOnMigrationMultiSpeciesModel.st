@@ -18,7 +18,7 @@ exampleRK4SolverOnMigrationMultiSpeciesModel
 	graph := KEMigrationNetwork 
 					newOn: model population 
 					atAttribute: #patch topology: (KERandomSmallWorldNetwork new K: 2; beta: 0).
-	graph strengthOfAllConnections: 0.03.
+	graph strengthOfAllConnections: 0.03 oneWay: true.
 	graph addMigrationTransitionsTo: model.
 	
 	model addEquation: 'S:t=d*N-d*S-beta*S*I+v*R' parseAsAnEquation.
