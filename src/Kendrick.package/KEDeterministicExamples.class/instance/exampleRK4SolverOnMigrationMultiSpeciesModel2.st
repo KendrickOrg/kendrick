@@ -40,23 +40,23 @@ exampleRK4SolverOnMigrationMultiSpeciesModel2
 	sgraph := KEContactNetwork newOn: model population atAttribute: #species.
 	sgraph 
 		edges: {#bird->#bird. #human->#bird}; 
-		strengthOfConnections: #(2.4 1.2) oneWay: true.
+		strengthOfConnections: #(0.42 0.21) oneWay: true.
 	
 	model addEquation: 'S:t=d*N-d*S-beta*S*I+v*R' parseAsAnEquation.
 	model addEquation: 'E:t=beta*S*I-d*E-epsilon*E' parseAsAnEquation.
 	model addEquation: 'I:t=epsilon*E-d*I-gamma*I' parseAsAnEquation.
 	model addEquation: 'R:t=gamma*I-d*R-v*R' parseAsAnEquation.
 		
-	simulator := KESimulator new: #RungeKutta from: 0 to: 200 step: 1.
+	simulator := KESimulator new: #RungeKutta from: 0 to: 500 step: 1.
 	simulator executeOn: model.
 	db := KEDiagramBuilder new.
-	"db data: {#infectious->([|d tmp|
-		tmp := (simulator timeSeriesAt: '{#status: #I, #species: #bird}') collect: [ :e| e value ].
+	db data: {([|d tmp|
+		tmp := (simulator timeSeriesAt: '{#status: #I, #species: #human}') collect: [ :e| e value ].
 		d := OrderedCollection new.
 		1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
-		KETimeSeries from: d withIndex: tmp first index 
-		] value)}."
-	db data: (simulator timeSeriesAt: '{#status: #I, #species: #bird}').
+		(KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: '{#status: #I, #species: #human}')
+		] value)}.
+	"db data: (simulator timeSeriesAt: '{#status: #I, #species: #human}')."
 	db open
 															
 														

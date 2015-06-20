@@ -27,10 +27,9 @@ executeOn: aModel
 	self stepper: ((Smalltalk at: self algorithm) onSystem: system).
 	st := model population compartments values.
 	ks := model population compartments keys.
-	(tMin to: tMax by: step) do: [ :t|
+	(tMin to: tMax by: step) do: [ :t| 
 		self saveCompartmentsValueAtTime: t.
 		model parameters at: #t put: t.
 		st := stepper doStep: st time: t stepSize: step.
-		1 to: ks size do: [ :i| model population compartments at: (ks at: i) put: (st at: i) ].
-
-		 ]
+		1 to: ks size do: [ :i| model population compartments at: (ks at: i) put: (st at: i) ] ].
+	
