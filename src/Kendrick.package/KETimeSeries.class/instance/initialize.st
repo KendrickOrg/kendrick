@@ -1,5 +1,5 @@
 accessing
 initialize
 	super initialize.
-	data := OrderedCollection new.
+	data  := OrderedCollection new.
 	index := OrderedCollection new
