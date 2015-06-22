@@ -1,0 +1,28 @@
+{
+	"commentStamp" : "",
+	"super" : "KEStochasticSimulator",
+	"category" : "Kendrick-GPU",
+	"classinstvars" : [ ],
+	"pools" : [
+		"OpenCLConstants"
+	],
+	"classvars" : [ ],
+	"instvars" : [
+		"platform",
+		"device",
+		"context",
+		"program",
+		"kernel",
+		"commandQueue",
+		"speciesBuffer",
+		"stoichBuffer",
+		"ratesBuffer",
+		"simulationBuffer",
+		"reactantBuffer",
+		"propensityBuffer",
+		"numberSpecies",
+		"numberReactions"
+	],
+	"name" : "KEGPUTauLeapSimulator",
+	"type" : "normal"
+}
