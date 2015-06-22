@@ -1,7 +1,7 @@
 examples
 exampleRK4SolverOnMigrationMultiSpeciesModel2
 	"self new exampleRK4SolverOnMigrationMultiSpeciesModel2"
-	|model simulator graph db  cards sgraph|
+	|model simulator graph db  cards sgraph f|
 	model := KEModel new.
 	model population: KEMetaPopulation new.
 	model population attributes: {#patch->((1 to: 15) asArray). #species->#(#bird #human). #status->#(S E I R)}.
@@ -50,13 +50,23 @@ exampleRK4SolverOnMigrationMultiSpeciesModel2
 	simulator := KESimulator new: #RungeKutta from: 0 to: 500 step: 1.
 	simulator executeOn: model.
 	db := KEDiagramBuilder new.
-	db data: {([|d tmp|
+	"db data: {([|d tmp|
 		tmp := (simulator timeSeriesAt: '{#status: #I, #species: #human}') collect: [ :e| e value ].
 		d := OrderedCollection new.
 		1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
 		(KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: '{#status: #I, #species: #human}')
 		] value)}.
-	"db data: (simulator timeSeriesAt: '{#status: #I, #species: #human}')."
+	db data: (simulator timeSeriesAt: '{#status: #I, #species: #human, #patch: 1}')."
+	f := [:name| |d tmp|
+		tmp := (simulator timeSeriesAt: name) collect: [ :e| e value ].
+		d := OrderedCollection new.
+		1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
+		(KETimeSeries from: d withIndex: tmp first index) 
+		].
+	db data: { (f value: '{#status:#I,#species:#bird}'). (f value: '{#status: #I, #species: #human}') }.
+	db xLabel: 'Time (days)'.
+	db legendTitle: 'Total of infectious'.
+	db legends: { 'birds'. 'humans' }.
 	db open
 															
 														

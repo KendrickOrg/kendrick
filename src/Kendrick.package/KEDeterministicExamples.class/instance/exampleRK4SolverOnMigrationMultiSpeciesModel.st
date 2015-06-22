@@ -18,7 +18,7 @@ exampleRK4SolverOnMigrationMultiSpeciesModel
 	graph := KEMigrationNetwork 
 					newOn: model population 
 					atAttribute: #patch topology: (KERandomSmallWorldNetwork new K: 2; beta: 0).
-	graph strengthOfAllConnections: 0.03 oneWay: true.
+	graph strengthOfAllConnections: 0.03 "oneWay: true".
 	graph addMigrationTransitionsTo: model.
 	
 	model addEquation: 'S:t=d*N-d*S-beta*S*I+v*R' parseAsAnEquation.
@@ -26,10 +26,23 @@ exampleRK4SolverOnMigrationMultiSpeciesModel
 	model addEquation: 'I:t=epsilon*E-d*I-gamma*I' parseAsAnEquation.
 	model addEquation: 'R:t=gamma*I-d*R-v*R' parseAsAnEquation.
 		
-	simulator := KESimulator new: #RungeKutta from: 0 to: 800 step: 1.
+	simulator := KESimulator new: #RungeKutta from: 0 to: 500 step: 1.
 	simulator executeOn: model.
+	self halt.
 	db := KEDiagramBuilder new.
-	db data: (simulator timeSeriesAt: '{#status: #I}').
+	db data: [|tmp| tmp := OrderedCollection new.
+	tmp addAll: (simulator timeSeriesAt: '{#status: #I,#patch:1}').
+	tmp addAll: (simulator timeSeriesAt: '{#status: #I,#patch:2}').
+	tmp addAll: (simulator timeSeriesAt: '{#status: #I,#patch:3}').
+	tmp addAll: (simulator timeSeriesAt: '{#status: #I,#patch:4}').
+	tmp addAll: (simulator timeSeriesAt: '{#status: #I,#patch:5}').
+	tmp addAll: (simulator timeSeriesAt: '{#status: #I,#patch:6}').
+	tmp addAll: (simulator timeSeriesAt: '{#status: #I,#patch:7}').
+	tmp addAll: (simulator timeSeriesAt: '{#status: #I,#patch:8}').
+	tmp] value.
+	db legends: { 'patch 1'. 'patch 2-15'. 'patch 3-14'. 'patch 4-13'. 'patch 5-12'. 'patch 6-11'. 'patch 7-10'. 'patch 8-9'}.
+	db legendTitle: 'Infectious'.
+	db xLabel: 'Time (days)'.
 	db open
 															
 														

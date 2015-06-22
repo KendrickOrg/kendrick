@@ -6,7 +6,7 @@ build
 	(self legends size >= 3) ifTrue: [ 
 		normalize := RTMultiLinearColorForIdentity new 
 						objects: self legends;
-						colors: (ColorPalette qualitative colors: 20 scheme: 'FlatUI1')
+						colors: (ColorPalette qualitative colors: "20" 9 scheme: "'FlatUI1'" 'Set1')
 		 ].
 	1 to: legends size do: [ :i|
 		|ds|
@@ -25,7 +25,7 @@ build
 	yLabel ifNil: [ b axisY title: 'Number of individuals' ] 
 	       ifNotNil: [ b axisY title: yLabel ].
 	b axisY noDecimal.
-	"b axisX noDecimal."
+	b axisX noDecimal.
 	lb := RTLegendBuilder new.
 	lb view: b view.
 	self legendTitle ifNil: [ legendTitle := 'Compartments' ].

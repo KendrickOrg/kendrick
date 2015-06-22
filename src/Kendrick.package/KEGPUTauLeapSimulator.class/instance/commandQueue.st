@@ -1,3 +1,0 @@
-initialize OpenCL
-commandQueue
-	^ commandQueue.
