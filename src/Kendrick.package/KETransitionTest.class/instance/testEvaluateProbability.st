@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testEvaluateProbability
 	|tr model rs|
 	model := KEModel new.
