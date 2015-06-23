@@ -1,11 +1,11 @@
 methods
 executeOn: aModel
-	| speciesArray speciesResult speciesBytes speciesBytesResult ratesArray stoichioMatrix reactantArray propensityArray propensityResult propensityBytesResult size size1 rand indexFiredReaction deltaT index  keysArray  previousT timeT  i |
+	| speciesArray speciesResult speciesBytes speciesBytesResult ratesArray stoichioMatrix reactantArray propensityArray propensityResult propensityBytesResult size size1 rand indexFiredReaction deltaT index indexRates  keysArray  previousT timeT  i |
 	super executeOn: aModel.
 	self createContext. 
 	self buildProgram.
-	numberSpecies := aModel compartments size.
-	numberReactions := aModel transitions size.
+	numberSpecies := model population compartments size.
+	numberReactions := model transitions size.
 	size := numberSpecies * 4.
 	size1 := numberReactions * 4.
 			
@@ -19,9 +19,11 @@ executeOn: aModel
 	propensityResult := Array new: numberReactions.
 	reactantArray := Array new: numberReactions.
 	"Initialize data loaded from Kendrick model "
-	speciesArray := aModel compartiments values.
-	keysArray := Array newFrom: (aModel compartiments keys).
+	speciesArray := (model population compartments values).
+	keysArray := Array newFrom: (model population compartments keys).
 	index := 0.
+	indexRates := 1.
+	
 	model transitions
 		do: [ :tr | 
 			| prob |
@@ -29,13 +31,14 @@ executeOn: aModel
 				ifTrue: [ model parameters at: #inProcessingCompartment put: tr to ]
 				ifFalse: [ model parameters at: #inProcessingCompartment put: tr from ].
 			prob := (tr probability value: model) abs.
-			ratesArray at: index put: prob asFloat.
-			reactantArray at: index put: (model atCompartment: tr from).
+			ratesArray at: indexRates put: prob asFloat.
+			reactantArray at: indexRates put: (model atCompartment: tr from).
 			"1 to: numberSpecies do: [:j| stoichioMatrix at: index * numberSpecies + j put: 1.0 asFloat]."
 			tr from = #empty  
 				ifFalse: [ stoichioMatrix at: index * numberSpecies +(keysArray indexOf: (tr from)) put: -1 asFloat].
 			tr to = #empty  
 				ifFalse: [ stoichioMatrix at: index * numberSpecies +(keysArray indexOf: (tr to))   put: 1 asFloat].
 			index := index + 1.
+			indexRates := indexRates +1.
 			].
 		

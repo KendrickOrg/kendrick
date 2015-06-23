@@ -6,5 +6,5 @@ calculateTime: random1 rates: propensityArray
 	sum := propensityArray sum.
 	"(sum ~= 0) ifTrue: [ timeT := (1/sum) * ((1/random1) ln) ]."
 	(sum ~= 0) ifTrue: [ timeT := ((random1 ln) negated)/(propensityArray sum) ].  
-	^ timeT.
+	^ timeT asFloat.
 																						

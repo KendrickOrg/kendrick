@@ -3,7 +3,7 @@ programSource
 	^ '
 	
 __kernel void updatePropensity(__constant float* ratesVector, 
-										__constant   int* reactantVector, 
+										__global   int* reactantVector, 
 										__global   float* propensityVector 
 										)
  {
