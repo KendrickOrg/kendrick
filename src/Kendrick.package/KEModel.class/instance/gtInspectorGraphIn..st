@@ -5,7 +5,7 @@ gtInspectorGraphIn: composite
 		title: 'View';
 		painting: [ :view|
 					| builder graph |
-					builder := RTGraphBuilder new.
+					builder := RTMondrian new.
 					builder view: view.
 					graph := (KEGraphFromCompartments on: self) run.
 					builder nodes shape:(RTEllipse new size: 20) + RTLabel.
