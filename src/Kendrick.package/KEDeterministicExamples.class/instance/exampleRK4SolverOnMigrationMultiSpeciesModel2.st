@@ -1,7 +1,7 @@
 examples
 exampleRK4SolverOnMigrationMultiSpeciesModel2
 	"self new exampleRK4SolverOnMigrationMultiSpeciesModel2"
-	|model simulator graph db  cards sgraph f|
+	|model simulator graph db cards sgraph f|
 	model := KEModel new.
 	model population: KEMetaPopulation new.
 	model population attributes: {#patch->((1 to: 15) asArray). #species->#(#bird #human). #status->#(S E I R)}.

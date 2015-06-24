@@ -18,7 +18,7 @@ exampleExplicitTauLeapOnSIRSimpleModel
 	simulator := KESimulator new: #TauLeap from: 0 to: 0.4 step: 0.0027.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
-	dB data: (simulator allTimeSeries).
+	dB data: simulator allTimeSeries.
 	dB open.
 	
 	

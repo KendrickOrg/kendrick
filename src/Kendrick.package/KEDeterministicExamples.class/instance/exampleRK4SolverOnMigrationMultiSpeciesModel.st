@@ -1,7 +1,7 @@
 examples
 exampleRK4SolverOnMigrationMultiSpeciesModel
 	"self new exampleRK4SolverOnMigrationMultiSpeciesModel"
-	|model simulator graph db  cards|
+	|model simulator graph db cards|
 	model := KEModel new.
 	model population: KEMetaPopulation new.
 	model population attributes: {#patch->((1 to: 15) asArray). #status->#(S E I R)}.
@@ -28,7 +28,7 @@ exampleRK4SolverOnMigrationMultiSpeciesModel
 		
 	simulator := KESimulator new: #RungeKutta from: 0 to: 500 step: 1.
 	simulator executeOn: model.
-	self halt.
+
 	db := KEDiagramBuilder new.
 	db data: [|tmp| tmp := OrderedCollection new.
 	tmp addAll: (simulator timeSeriesAt: '{#status: #I,#patch:1}').

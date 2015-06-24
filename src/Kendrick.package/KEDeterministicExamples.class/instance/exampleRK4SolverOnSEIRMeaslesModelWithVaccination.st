@@ -1,7 +1,7 @@
 examples
 exampleRK4SolverOnSEIRMeaslesModelWithVaccination
 	"self new exampleRK4SolverOnSEIRMeaslesModelWithVaccination"
-	|model simulator  diag |
+	|model simulator diag |
 	model := KEModel new.
 	model population attributes: '{#status: [#S, #E, #I, #R]}'.
 	model buildFromCompartments: '{
@@ -40,7 +40,7 @@ exampleRK4SolverOnSEIRMeaslesModelWithVaccination
 		probability: [:m| (m atParameter: #mu) * (m atParameter: #p)].
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 50 step: 0.01.
 	simulator executeOn: model.
-	diag := (KEDiagramBuilder new) data: (simulator timeSeriesAt: '{#status: #I}') "do: #log".
+	diag := (KEDiagramBuilder new) data: (simulator timeSeriesAt: '{#status: #I}').
 	diag yLabel: 'log(Infectious)'.
 	diag xLabel: 'Time (years)'.
 	diag open

@@ -1,7 +1,7 @@
 examples
 exampleGillespieDirectOnSIRMultiHostModel
 	"self new exampleGillespieDirectOnSIRMultiHostModel"
-	|model simulator graph  db|
+	|model simulator graph db|
 	model := KEModel new.
 	model population: (KEMetaPopulation new attributes: {
 		#status->#(#S #I #R). 
@@ -51,7 +51,7 @@ exampleGillespieDirectOnSIRMultiHostModel
 	
 	simulator := KESimulator new: #Gillespie from: 0.0 to: 0.5 step: 0.0027.
 	simulator executeOn: model.
-	db := (KEDiagramBuilder new) data: ((simulator timeSeriesAt: '{#status: #I}') do: #sqrt).
+	db := (KEDiagramBuilder new) data: ((simulator timeSeriesAt: '{#status: #I}') sqrt).
 	db xLabel: 'Time (year)'.
 	db yLabel: 'sqrt(Infectious)'.
 	db open

@@ -1,7 +1,7 @@
 examples
 exampleIBMSimulatorOnSIREbolaModel
 	"self new exampleIBMSimulatorOnSIREbolaModel"
-	|model simulator  db g1  |
+	|model simulator db g1 |
 	model := KEModel new.
 	model population: KEMetaPopulation new.
 	model population attributes: '{

@@ -50,6 +50,6 @@ exampleRK4SolverOnSIRMultiHostModelTransitionByRate
 		probability: 'mu' parseAsAnExpression.
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 40.0 step: 0.01.
 	simulator executeOn: model.
-	db := (KEDiagramBuilder new) data: ((simulator timeSeriesAt: '{#status: #I}') do: #sqrt).
+	db := (KEDiagramBuilder new) data: ((simulator timeSeriesAt: '{#status: #I}') sqrt).
 	^ db open
 	

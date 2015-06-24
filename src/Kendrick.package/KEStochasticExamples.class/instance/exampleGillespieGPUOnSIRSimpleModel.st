@@ -1,7 +1,7 @@
 examples
 exampleGillespieGPUOnSIRSimpleModel
 	"self new exampleGillespieGPUOnSIRSimpleModel"
-	|model simulator  dB |
+	|model simulator dB |
 	model := KEModel new.
 	model population attributes: '{#status: [#S, #I, #R]}'.
 	model buildFromCompartments: '{
@@ -20,7 +20,7 @@ exampleGillespieGPUOnSIRSimpleModel
 	simulator := KESimulator new: #GPUGillespie from: 0.0 to: 1.0 step: 0.01.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
-	dB data: (simulator allTimeSeries).
+	dB data: simulator allTimeSeries.
 	dB open
 	
 	

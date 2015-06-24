@@ -1,7 +1,7 @@
 examples
 exampleIBMSimulatorOnSEIRMeaslesModel
 	"self new exampleIBMSimulatorOnSEIRMeaslesModel"
-	|model simulator  diag|
+	|model simulator diag|
 	model := KEModel new.
 	model population attributes: '{#status: [#S, #E, #I, #R]}'.
 	model buildFromCompartments: '{
