@@ -1,7 +1,6 @@
 methods
 executeOn: aModel
-	| speciesArray speciesResult speciesBytes speciesBytesResult ratesArray stoichioMatrix reactantArray propensityArray propensityResult propensityBytesResult size size1 rand indexFiredReaction  index indexRates  keysArray  previousT timeT  i positive |
-	
+	| speciesArray speciesResult speciesBytes speciesBytesResult ratesArray stoichioMatrix reactantArray propensityArray propensityResult propensityBytesResult size size1 rand indexFiredReaction deltaT index indexRates  keysArray  previousT timeT  i |
 	super executeOn: aModel.
 	self createContext. 
 	self buildProgram.
@@ -14,30 +13,43 @@ executeOn: aModel
 	speciesBytes := ByteArray new: size.
 	speciesBytesResult := ByteArray new: size.
 	ratesArray := Array new: numberReactions.
-	stoichioMatrix := Array new: numberReactions * numberSpecies withAll: 0.0 asFloat.
+	stoichioMatrix := Array new: numberReactions * numberSpecies withAll: 0.0.
 	propensityArray := Array new: numberReactions withAll: (0.0 asFloat).
 	propensityBytesResult := ByteArray new: size1.
 	propensityResult := Array new: numberReactions.
 	reactantArray := Array new: numberReactions.
-	"Load data from Kendrick model "
-	speciesArray := (model population compartments values) asArray.
+	"Initialize data loaded from Kendrick model "
+	speciesArray := (model population compartments values).
 	keysArray := Array newFrom: (model population compartments keys).
 	index := 0.
+	indexRates := 1.
+	
 	model transitions
 		do: [ :tr | 
+			| prob |
 			tr from = #empty
 				ifTrue: [ model parameters at: #inProcessingCompartment put: tr to ]
 				ifFalse: [ model parameters at: #inProcessingCompartment put: tr from ].
+			prob := (tr probability value: model) abs.
+			ratesArray at: indexRates put: prob asFloat.
+			reactantArray at: indexRates put: (model atCompartment: tr from).
+			"1 to: numberSpecies do: [:j| stoichioMatrix at: index * numberSpecies + j put: 1.0 asFloat]."
 			tr from = #empty  
 				ifFalse: [ stoichioMatrix at: index * numberSpecies +(keysArray indexOf: (tr from)) put: -1 asFloat].
 			tr to = #empty  
 				ifFalse: [ stoichioMatrix at: index * numberSpecies +(keysArray indexOf: (tr to))   put: 1 asFloat].
 			index := index + 1.
+			indexRates := indexRates +1.
 			].
+	"
+	Transcript show: ratesArray;cr; show:stoichioMatrix;cr. 	
+		self halt."
 	
+	"tMin := 0.0."
+	tMax := 10.0.
 	timeT := tMin.
-	previousT := tMin.
-	
+	previousT := timeT.
+	deltaT := 0.0.	
 		
 	self saveCompartmentsValueAtTime: tMin.
 	
@@ -47,27 +59,17 @@ executeOn: aModel
 	stoichBuffer := context createBuffer: CL_MEM_READ_ONLY size: numberSpecies * numberReactions * 4.
 	reactantBuffer := context createBuffer: CL_MEM_READ_ONLY size: size1.
 	propensityBuffer := context createBuffer: CL_MEM_READ_WRITE size: size1.
+
+	
 	
 	kernel := program createKernel: 'updatePropensity'.
 	commandQueue := context createCommandQueueFor: device properties: 0.
 	kernel1 := program createKernel: 'updateSpecies'.
 	commandQueue1 := context createCommandQueueFor: device properties: 0.
-	positive := 1.
 	
-	[ timeT <= tMax & positive > 0 ]
+	
+	[ timeT < tMax ]
 		whileTrue: [ 
-			| deltaT | 	
-		deltaT := 0.0.
-		indexRates :=1.
-		model transitions
-		do: [ :tr | 
-			tr from = #empty
-				ifTrue: [ model parameters at: #inProcessingCompartment put: tr to ]
-				ifFalse: [ model parameters at: #inProcessingCompartment put: tr from ].
-			ratesArray at: indexRates put: ((tr probability value: model) abs) asFloat.
-			reactantArray at: indexRates put: (model atCompartment: tr from).
-			indexRates := indexRates +1.
-			].
 			"Create the kernel and the command queue."
 			
 			"Copy data from host memory(CPU) to device memory(GPU)"
@@ -104,12 +106,13 @@ executeOn: aModel
 				ptr: propensityBytesResult.
 			propensityResult := propensityBytesResult asFloatArrayFromCL.	
 			"Calculate deltaT time"
-			rand := Random new.
+			rand := MersenneTwisterRandom new.
 			deltaT := (self calculateTime: rand next rates: propensityResult).
 			"Select reaction or event to be fired"
 			rand := Random new.
 			indexFiredReaction := self selectReaction: rand next select: propensityResult.	
-							
+			
+				
 			"Copy data from host memory(CPU) to device memory(GPU)"
 			commandQueue1
 				enqueueWriteBuffer: speciesBuffer
@@ -123,7 +126,7 @@ executeOn: aModel
 				offset: 0
 				size: numberReactions * numberSpecies * 4
 				ptr: stoichioMatrix asCLFloatArray.	
-			"Set kernel arguments "
+			"Set kernel arguments updatePropensity kernel"
 			kernel1 argAt: 0 mem: speciesBuffer.
 			kernel1 argAt: 1 mem: stoichBuffer.
 			kernel1 argAt: 2 int: indexFiredReaction - 1.
@@ -137,17 +140,33 @@ executeOn: aModel
 				offset: 0
 				size: size
 				ptr: speciesBytesResult.
-			
 			speciesResult := speciesBytesResult asInt32ArrayFromCL.
 			speciesArray := speciesResult.
 			propensityArray := propensityResult.	
 			i := 1.
 			model population compartments keysDo: [ :k| model population compartments at: k put: (speciesResult at: i).
-				i := i + 1].
-			Transcript show: model population compartments asArray;cr.
-			speciesArray do:[:each | (each < 0 ) ifTrue: [positive := 0] ].
+				i := i + 1]."
+			"Transcript show: model population compartments asArray;cr.
+			
+			indexRates :=1.
+			model transitions
+				do: [ :tr | 
+					tr from = #empty
+						ifTrue: [ model parameters at: #inProcessingCompartment put: tr to ]
+						ifFalse: [ model parameters at: #inProcessingCompartment put: tr from ].
+					reactantArray at: indexRates put: (model atCompartment: tr from).
+					indexRates := indexRates +1.
+					].
 			
 			timeT := timeT + deltaT.
-					
-			(timeT - previousT) > step  ifTrue: [ self saveCompartmentsValueAtTime: timeT.previousT := timeT.]
-			].					
+			"previousT := timeT asFloat."
+			
+			deltaT < 0.0 ifFalse: [(timeT - previousT) > 0.006  ifTrue: [ self saveCompartmentsValueAtTime: timeT].previousT := timeT.].
+			
+			"timeT > (previousT + 0.01)
+				ifTrue: [ 
+					self saveCompartmentsValueAtTime: timeT.
+					previousT := timeT ]." 
+			
+				"(speciesArray at:1) > 1000 ifTrue: [ self halt.]."
+				].					

@@ -1,7 +1,7 @@
 examples
 exampleRK4SolverOn2SEIRMeaslesModelWithVaccination
 	"self new exampleRK4SolverOn2SEIRMeaslesModelWithVaccination"
-	|model simulator output diag data legends|
+	|model simulator  diag data legends|
 	model := KEModel new.
 	model population attributes: '{#status: [#S, #E, #I, #R]}'.
 	model buildFromCompartments: '{
@@ -42,14 +42,12 @@ exampleRK4SolverOn2SEIRMeaslesModelWithVaccination
 	legends := OrderedCollection new.
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 100 step: 0.01.
 	simulator executeOn: model.
-	output := simulator data.
 	data addAll: (simulator timeSeriesAt: '{#status: #I}').
 	
 	model addParameter: #p value: 0.0.
 	model resetCompartments.
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 100 step: 0.01.
 	simulator executeOn: model.
-	output := simulator data.
 	data addAll: (simulator timeSeriesAt: '{#status: #I}').
 	 
 	legends addAll: #('p = 0.7' 'p = 0.0').
