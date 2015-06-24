@@ -5,6 +5,6 @@ exampleRK4SolverOnSIRMultiHostModel
 	model := self modelRK4SolverOnSIRMultiHost.
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 0.5 step: 0.0027.
 	simulator executeOn: model.
-	db := (KEDiagramBuilder new) data: (simulator timeSeriesAt: '{#status: #I}') do: #sqrt.
+	db := (KEDiagramBuilder new) data: ((simulator timeSeriesAt: '{#status: #I}') do: #sqrt).
 	^ db open
 	
