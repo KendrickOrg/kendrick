@@ -1,5 +1,3 @@
 accessing
 do: aFunction
-	aFunction = #sqrt ifTrue: [ ^ self sqrt ].
-	aFunction = #log ifTrue: [ ^ self log ].
-	aFunction ifNil: [ ^ self ]
+	^ KETimeSeries from: (data collect: [ :each | each perform: aFunction ]) withIndex: index copy
