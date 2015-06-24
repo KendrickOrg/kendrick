@@ -8,11 +8,11 @@ openMap: continent display: countries
 		ifTrue: [ cData add: (Array with: each with: ((self dataAt: each) perform: #peakOfEpidemic)) ]
 		ifFalse: [ cData add: (Array with: each with: 0) ]
 		 ].
-	sum := (cData collect: [ :c| c at: 2 ]) sum.
+	sum := cData sum: [ :c| c at: 2 ].
 	cn := RTNColorLinearNormalizer 
 		inContext: (cData collect: [:c| c at: 2]) asArray
-		lowColor: (Color r: 1.0 g: 1.0 b: 1.0)
-		highColor: (Color r: 1.0 g: 0.0 b: 0.0).
+		lowColor: Color white
+		highColor: Color red.
 	b := RTMapBuilder new.
 	b countries: cData asArray named: [ :c| c at: 1 ].
 	b color: [ :c| cn rtValue: (c at: 2) ].
