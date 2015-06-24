@@ -10,7 +10,7 @@ __kernel void updatePropensity(__constant float* ratesVector,
 	
 	size_t id = get_global_id(0);
 		
-	propensityVector[id] =  ratesVector[id] * reactantVector[id];
+	propensityVector[id] =  ratesVector[id] * (float) reactantVector[id];
 	
 }
 

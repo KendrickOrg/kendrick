@@ -5,7 +5,7 @@ exampleGillespieGPUOnSIRSimpleModel
 	model := KEModel new.
 	model population attributes: '{#status: [#S, #I, #R]}'.
 	model buildFromCompartments: '{
-		{ #status: #S }: 999,
+		{ #status: #S }: 9999,
 		{ #status: #I }: 1,
 		{ #status: #R }: 0
 	}'.
