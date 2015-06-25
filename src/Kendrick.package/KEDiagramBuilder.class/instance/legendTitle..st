@@ -1,3 +1,3 @@
 as yet unclassified
-legendTitle: aText
-	legendTitle := aText
+legendTitle: aString
+	legendTitle := aString

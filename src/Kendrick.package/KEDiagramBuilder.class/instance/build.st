@@ -32,7 +32,7 @@ build
 	lb addText: legendTitle.
 	1 to: legends size do: [ :i| |c|
 		legends size < 3 
-		ifTrue: [ c:= (self colors at: i) ]
+		ifTrue: [ c:= self colors at: i ]
 		ifFalse: [ c:= (normalize rtValue: (legends at: i)) ].
 		lb addColor: c text: (legends at: i)
 		 ].
