@@ -8,12 +8,11 @@ gtInspectorGraphIn: composite
 					builder := RTMondrian new.
 					builder view: view.
 					graph := (KEGraphFromCompartments on: self) run.
-					builder nodes shape:(RTEllipse new size: 20) + RTLabel.
+					builder shape ellipse size:20.
 					builder edges
-						seed: graph edges;
+						objects: graph edges;
 						connectFrom: #from;
-						connectTo: #to;
-						useInLayout.
-					builder layout forceCharge: -350.
-					builder addAll: graph nodes.
+						connectTo: #to.
+					builder layout forceWithCharge: -350.
+					builder nodes: graph nodes.
 					]

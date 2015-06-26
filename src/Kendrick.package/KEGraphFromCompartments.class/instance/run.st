@@ -5,7 +5,7 @@ run
 		do: [ :t | 
 			self
 				edges:
-					{(t from).
-					(t to)}
-				from: #first
-				to: #second ]
+					{(t from associations) ->
+					(t to associations)} 
+				from: #key
+				to: #value ]
