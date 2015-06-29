@@ -15,5 +15,5 @@ generateEvents: model
 			ifFalse: [ events add: anEvent ]
 			 ]
 		 ].
-	events := (self mergeEventsWithSameActionsIn: events).
+	events := self mergeEventsWithSameActionsIn: events.
 	^ events

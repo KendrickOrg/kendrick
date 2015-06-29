@@ -1,6 +1,3 @@
 accessing
 findEventWithSameActionsIn: eventList
-	eventList do: [ :event|
-		(event actions = self actions) ifTrue: [ ^ event ]
-		 ].
-	^ nil
+	^ eventList detect: [ :event | event actions = actions ] ifNone: [ nil ]
