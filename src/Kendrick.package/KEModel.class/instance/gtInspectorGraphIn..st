@@ -8,11 +8,13 @@ gtInspectorGraphIn: composite
 					builder := RTMondrian new.
 					builder view: view.
 					graph := (KEGraphFromCompartments on: self) run.
-					builder shape ellipse size:20.
-					builder edges
-						objects: graph edges;
-						connectFrom: #from;
-						connectTo: #to.
-					builder layout forceWithCharge: -350.
+					builder shape circle size: 20.
 					builder nodes: graph nodes.
+					builder shape arrowedLine color: Color black; withShorterDistanceAttachPoint.
+					builder edges
+						objects: graph edges
+						from: #from
+						to: #to.
+					builder layout forceWithCharge: -450.
+					builder build.
 					]

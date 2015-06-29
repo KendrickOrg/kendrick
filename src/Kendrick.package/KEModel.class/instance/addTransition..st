@@ -13,8 +13,6 @@ addTransition: aTransition
 		aTransition to = #empty
 		ifTrue: [ to := #empty ]
 		ifFalse: [ tmp at: #status put: (aTransition to at: #status). to := tmp copy ].
-		"tmp removeKey: #status.
-		tmp size = 0 ifTrue: [ scope := #population ] ifFalse: [ scope := tmp associations ]."
 		transitions add: (KETransition new from: from; to: to; probability: aTransition probability)
 	]
 	

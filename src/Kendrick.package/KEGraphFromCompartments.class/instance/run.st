@@ -1,11 +1,11 @@
 running
 run
-	self nodes: model population compartments.
+	self nodes: model population compartments keys.
 	model transitions
 		do: [ :t | 
 			self
 				edges:
-					{(t from associations) ->
-					(t to associations)} 
+					{(t from) ->
+					(t to)} 
 				from: #key
-				to: #value ]
+				to: #value]
