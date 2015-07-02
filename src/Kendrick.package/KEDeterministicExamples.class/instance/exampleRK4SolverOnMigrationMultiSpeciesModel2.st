@@ -6,8 +6,7 @@ exampleRK4SolverOnMigrationMultiSpeciesModel2
 	model population: KEMetaPopulation new.
 	model population attributes: {#patch->(1 to: 15). #species->#(#bird #human). #status->#(S E I R)}.
 	cards := OrderedCollection newFrom: #(4990 0 10 0 500 0 0 0).
-	cards addAll: ([|c| c := OrderedCollection new.
-							1 to: 14 do: [:i| c addAll: #(5000 0 0 0 500 0 0 0)]. c]) value.
+	14 timesRepeat: [cards add: #(5000 0 0 0 500 0 0 0) ].
 	model buildFromCompartments: 
 				{#patch->(1 to: 15). 
 				#species->#(#bird #human). #status->#(S E I R)} 
