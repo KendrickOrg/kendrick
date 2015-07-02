@@ -4,12 +4,12 @@ exampleRK4SolverOnMigrationMultiSpeciesModel2
 	|model simulator graph db cards sgraph f|
 	model := KEModel new.
 	model population: KEMetaPopulation new.
-	model population attributes: {#patch->((1 to: 15) asArray). #species->#(#bird #human). #status->#(S E I R)}.
+	model population attributes: {#patch->(1 to: 15). #species->#(#bird #human). #status->#(S E I R)}.
 	cards := OrderedCollection newFrom: #(4990 0 10 0 500 0 0 0).
 	cards addAll: ([|c| c := OrderedCollection new.
 							1 to: 14 do: [:i| c addAll: #(5000 0 0 0 500 0 0 0)]. c]) value.
 	model buildFromCompartments: 
-				{#patch->((1 to: 15) asArray). 
+				{#patch->(1 to: 15). 
 				#species->#(#bird #human). #status->#(S E I R)} 
 			cardinalities: cards.
 	model addParameter: #beta value: 1.
