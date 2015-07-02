@@ -1,3 +1,3 @@
 as yet unclassified
 isInfected
-	^ (self isAlive and: [ (self currentStatus at: #status) = #I ] )
+	^ self isAlive and: [ (self currentStatus at: #status) = #I ]
