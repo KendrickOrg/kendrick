@@ -5,6 +5,7 @@ sizeOfCompartments: keys
 	self compartments keysAndValuesDo: [ :k :v|
 		(k associations includesAll: keys) ifTrue: [ c := c + v ]
 	].
+	^ c
 	
 	
 	
