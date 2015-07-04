@@ -11,7 +11,7 @@ atCompartment: anObject
 		^ self population sizeOfPopulation: s ].
 	anObject isString ifTrue: [ key := STON fromString: anObject ].
 	anObject isDictionary ifTrue: [ key := anObject ].
-	^ self population sizeOfCompartment: key.
+	^ self population sizeOfACompartment: key.
 	
 	
 	
