@@ -5,6 +5,7 @@ effectiveSizeOf: source population: population
 	localNode := self atNode: {self attribute->(source at: self attribute)}.
 	"size of local location"
 	effectiveSize := (population sizeOfCompartments: localNode label).
+	
 	effectiveSize := effectiveSize / (1 + (self commutingRateOf: localNode)).
 	localNode adjacentNodes keysDo: [ :k| 
 		|travelRate ed|

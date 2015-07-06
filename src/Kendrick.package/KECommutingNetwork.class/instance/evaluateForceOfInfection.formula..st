@@ -8,7 +8,7 @@ evaluateForceOfInfection: model formula: formula
 		|travelRate ed|
 		ed := (localNode label)->k.
 		travelRate := (leaveRates at: ed)/(returnRates at: ed).
-		effectiveLambda := effectiveLambda + (self evaluateForceOfInfection: model formula: formula onSubpopulation: k)
+		effectiveLambda := effectiveLambda + (travelRate * (self evaluateForceOfInfection: model formula: formula onSubpopulation: k))
 		].
 	effectiveLambda := effectiveLambda / (1 + (self commutingRateOf: localNode)).
 	^ effectiveLambda 

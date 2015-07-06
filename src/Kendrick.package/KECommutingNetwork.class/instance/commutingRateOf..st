@@ -6,7 +6,7 @@ commutingRateOf: node
 	node adjacentNodes keysDo: [ :k| 
 		|ed|
 		ed := (node label)->k.
-		sum := sum + (leaveRates at: ed)/(returnRates at: ed).
+		sum := sum + ((leaveRates at: ed)/(returnRates at: ed)).
 	].
 	^ sum
 	

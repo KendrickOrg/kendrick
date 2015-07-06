@@ -1,6 +1,6 @@
 as yet unclassified
-createCommutingNetworkForTesting
-	|population network|
+createMetaPopulationForTesting
+	|population|
 	population := KEMetaPopulation new.
 	population attributes: { #status->#(S I). #patch->(1 to: 5) }.
 	population compartments: '{
@@ -15,9 +15,6 @@ createCommutingNetworkForTesting
 		{ #status: #S, #patch: 5 }: 1000,
 		{ #status: #I, #patch: 5 }: 0
 	}'.
-	network := KECommutingNetwork newOn: population atAttribute: #patch.
-	network 
-		edges: { 1->2. 2->3. 3->4. 5->5 };
-		leaveRatesOfAllConnections: 0.1;
-		returnRatesOfAllConnections: 2.
-	^ network
+	population configurations: { #sizeOfPopulation->#patch. #rescale->false }.
+	^ population
+	

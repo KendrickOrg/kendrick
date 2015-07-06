@@ -5,7 +5,7 @@ probabilityOfContactsOf: source with: destination inPopulation: population
 	firstContactLevel := 2. 
 	localNode := self atNode: {self attribute->(source at: self attribute)}.
 	effectiveContacts := population processLevel: firstContactLevel sourceNode: source destinationNode: destination.
-	effectiveContacts := effectiveContacts / (1 + self commutingRateOf: localNode).
+	effectiveContacts := effectiveContacts / (1 + (self commutingRateOf: localNode)).
 	localNode adjacentNodes keysDo: [ :k| 
 		|tmp travelRate ed travelContact|
 		tmp := source copy.
