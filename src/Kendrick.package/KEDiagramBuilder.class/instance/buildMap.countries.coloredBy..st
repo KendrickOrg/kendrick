@@ -1,6 +1,6 @@
 as yet unclassified
-openMap: continent countries: countries coloredBy: function
-	"|continentCountries results sum cn b|
+buildMap: continent countries: countries coloredBy: function
+	|continentCountries results sum cn b|
 	continentCountries := RTSVGPath perform: continent.
 	results := Dictionary new.
 		
@@ -23,5 +23,4 @@ openMap: continent countries: countries coloredBy: function
 		(c key) asString, ': ',
 		(((c value) / sum * 100 asFloat roundTo: 0.01) printString), '%'].
 	b scale: 2.
-	b open"
-	^ (self buildMap: continent countries: countries coloredBy: function) open 
+	^ b

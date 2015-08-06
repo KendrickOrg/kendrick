@@ -46,6 +46,6 @@ exampleRK4SolverOnMigrationMultiSpeciesModel
 	db legends: { 'patch 1'. 'patch 2-15'. 'patch 3-14'. 'patch 4-13'. 'patch 5-12'. 'patch 6-11'. 'patch 7-10'. 'patch 8-9'}.
 	db legendTitle: 'Infectious'.
 	db xLabel: 'Time (days)'.
-	db open
+	^ db view
 															
 														

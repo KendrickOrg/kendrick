@@ -32,6 +32,6 @@ exampleRK4SolverOnMultipleRiskGroupsModel
 	db := KEDiagramBuilder new.
 	db data: (simulator timeSeriesAt: '{#status: #I}').
 	db yLabel: 'Time (years)'.
-	db open
+	^ db view
 															
 														

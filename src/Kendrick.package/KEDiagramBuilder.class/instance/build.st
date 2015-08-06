@@ -25,7 +25,7 @@ build
 	yLabel ifNil: [ b axisY title: 'Number of individuals' ] 
 	       ifNotNil: [ b axisY title: yLabel ].
 	b axisY noDecimal.
-	b axisX noDecimal.
+	"b axisX noDecimal."
 	lb := RTLegendBuilder new.
 	lb view: b view.
 	self legendTitle ifNil: [ legendTitle := 'Compartments' ].

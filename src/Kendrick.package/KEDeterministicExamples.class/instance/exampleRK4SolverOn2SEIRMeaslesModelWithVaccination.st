@@ -56,6 +56,6 @@ exampleRK4SolverOn2SEIRMeaslesModelWithVaccination
 	diag xLabel: 'Time (years)'.
 	diag yLabel: 'log(Infectious)'.
 	diag legendTitle: 'Vaccination Rate'.
-	diag open
+	^ diag view
 	
 	

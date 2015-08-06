@@ -66,6 +66,6 @@ exampleRK4SolverOnMigrationMultiSpeciesModel2
 	db xLabel: 'Time (days)'.
 	db legendTitle: 'Total of infectious'.
 	db legends: { 'birds'. 'humans' }.
-	db open
+	^ db view
 															
 														

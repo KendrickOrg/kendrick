@@ -1,6 +1,6 @@
 examples
-exampleIBMSimulatorOnSIREbolaModel
-	"self new exampleIBMSimulatorOnSIREbolaModel"
+exampleGillespieSimulatorOnSIREbolaModel
+	"self new exampleGillespieSimulatorOnSIREbolaModel"
 	|model simulator db g1 |
 	model := KEModel new.
 	model population: KEMetaPopulation new.
@@ -39,18 +39,11 @@ exampleIBMSimulatorOnSIREbolaModel
 	model addEquation: ('S:t=-beta*S*I' parseAsAnEquation).
 	model addEquation: ('I:t=beta*S*I-gamma*I' parseAsAnEquation).
 	model addEquation: ('R:t=gamma*I' parseAsAnEquation).
-	simulator := KESimulator new: #RungeKutta from: 0.0 to: 100 step: 0.1.
+	simulator := KESimulator new: #Gillespie from: 0.0 to: 100 step: 0.1.
 	simulator executeOn: model.
-	(simulator timeSeriesAt: '{#status: #I, #country: #Guinea}') first save: 'I_Guinea_Det.txt'.
-	(simulator timeSeriesAt: '{#status: #I, #country: #Liberia}') first save: 'I_Liberia_Det.txt'.
-	(simulator timeSeriesAt: '{#status: #I, #country: #Niger}') first save: 'I_Niger_Det.txt'.
-	(simulator timeSeriesAt: '{#status: #I, #country: #Nigeria}') first save: 'I_Nigeria_Det.txt'.
-	(simulator timeSeriesAt: '{#status: #I, #country: #Senegal}') first save: 'I_Senegal_Det.txt'.
-	(simulator timeSeriesAt: '{#status: #I, #country: #SierraLeone}') first save: 'I_SierraLeone_Det.txt'.
+	(simulator timeSeriesAt: '{#status:#I,#country:#Liberia}') first save: 'Liberia.txt'.
 	db := (KEDiagramBuilder new) data: (simulator timeSeriesAt: '{#status: #	I}').
 	db open.
 	db openMap: #africa 
 	   countries: (model population atAttribute: #country) 
-	   coloredBy: #peakOfEpidemic.
-	
-	
+	   coloredBy: #peakOfEpidemic
