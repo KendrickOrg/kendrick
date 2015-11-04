@@ -4,7 +4,7 @@ testBuildFromAttributesCompartments2
 	model := KEModel new.
 	model buildFromAttributes: #(#status #region) 
 			compartments: { 
-				#(#	S #Sud)->999. 
+				#(#S #Sud)->999. 
 				#(#I #Sud)->1. 
 				#(#R #Sud)->0.
 				#(#S #North)->1000.
