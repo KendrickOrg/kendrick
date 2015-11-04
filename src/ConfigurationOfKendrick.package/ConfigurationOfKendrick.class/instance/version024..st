@@ -8,8 +8,8 @@ version024: spec
 		spec author: 'SergeStinckwich'.
 		spec timestamp: '11/4/2015 16:12'.
 		spec 
-			project: 'Moose' with: '6.0-baseline';
-			project: 'SciSmalltalk' with: '0.18-baseline';
+			project: 'Moose' with: '5.1';
+			project: 'SciSmalltalk' with: '0.25-baseline';
 			project: 'Ston' with: '0.14';
 			project: 'Glamour' with: '3.3.0';
 			project: 'VirtualGPU' with: '0.1-baseline'.
