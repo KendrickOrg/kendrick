@@ -10,8 +10,10 @@ openOn: v
 		[icon64Mime := self perform: (k, #Icon) asSymbol.] 
 		on: Error do: 
 		[ icon64Mime := self defaultIcon ].
-		form := TRPlatform current formClass fromBinaryStream: 
-							(TRPlatform current mimeDecodeToBytes: icon64Mime readStream).
+		"form := TRPlatform current formClass fromBinaryStream: 
+							(TRPlatform current mimeDecodeToBytes: icon64Mime readStream)."
+		form := Form fromBinaryStream: 
+							(Base64MimeConverter mimeDecodeToBytes: icon64Mime readStream).
 		element := (RTBitmap new form: form) element.
 		element @ (RTPopup new text: k asString).
 		element when: TRMouseLeftClick do: [ :evt | self class new perform: k ].
