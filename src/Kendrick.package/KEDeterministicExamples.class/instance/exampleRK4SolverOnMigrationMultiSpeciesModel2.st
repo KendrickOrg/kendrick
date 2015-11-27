@@ -60,7 +60,7 @@ exampleRK4SolverOnMigrationMultiSpeciesModel2
 		tmp := (simulator timeSeriesAt: name) collect: [ :e| e value ].
 		d := OrderedCollection new.
 		1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
-		(KETimeSeries from: d withIndex: tmp first index) 
+		(KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)
 		].
 	db data: { (f value: '{#status:#I,#species:#bird}'). (f value: '{#status: #I, #species: #human}') }.
 	db xLabel: 'Time (days)'.
