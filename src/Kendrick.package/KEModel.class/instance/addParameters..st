@@ -1,6 +1,7 @@
 as yet unclassified
 addParameters: input
-	|reader dic|
+	"input must be anArray of associations, each association is in format aSymbol->value corresponding to a parameter"
+	"|reader dic|
 	input isString 
 	ifTrue: [ 
 		reader := (STONReader on: input readStream) allowComplexMapKeys: true.
@@ -10,6 +11,7 @@ addParameters: input
 		]
 	ifFalse: [  
 		input do: [ :e| self addParameter: e key value: e value ]
-		]
+		]"
+	input do: [ :e| self addParameter: e key value: e value ]
 	
 	

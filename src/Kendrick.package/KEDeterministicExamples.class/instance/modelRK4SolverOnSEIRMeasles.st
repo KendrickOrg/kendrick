@@ -13,12 +13,12 @@ modelRK4SolverOnSEIRMeasles
 		{#status: #E}: 0,
 		{#status: #R}: 0
 	}'.
-	model addParameters: '{
-		#beta: 0.0000214, 
-		#gamma: 0.143, 
-		#mu: 0.0000351, 
-		#sigma: 0.125, 
-		#N: #sizeOfPopulation}'.
+	model addParameters: {
+		#beta->0.0000214. 
+		#gamma->0.143. 
+		#mu->0.0000351. 
+		#sigma->0.125. 
+		#N->#sizeOfPopulation}.
 	model
 		addTransitionFrom: '{#status: #S}'
 		to: '{#status: #E}'

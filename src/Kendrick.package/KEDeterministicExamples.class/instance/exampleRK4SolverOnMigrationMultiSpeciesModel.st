@@ -15,7 +15,7 @@ exampleRK4SolverOnMigrationMultiSpeciesModel
 		cardinalities: cards.
 	model addParameter: #beta inScope: (#patch->1) value: 0.75.
 	model addParameter: #beta inScopes: ((2 to: 15) collect: [ :e| #patch->e ]) values: ((2 to: 15) collect: [:e| 0.5 ]).
-	model addParameter: '{#v: 0.00274, #d: 0.0000365, #epsilon: 0.5, #gamma: 0.25, #N: #sizeOfPopulation}'.
+	model addParameters: {#v->0.00274. #d->0.0000365. #epsilon->0.5. #gamma->0.25. #N->#sizeOfPopulation}.
 	model configurations: { #sizeOfPopulation->#(#patch). #rescale->false }.
 	
 	graph := KEMigrationNetwork 

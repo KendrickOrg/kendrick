@@ -9,7 +9,7 @@ testAfterSimulationOfSIRModelThereAreThreeTimeSeries
 		{ #status: #I }: 1,
 		{ #status: #R }: 0
 	}'.
-	model addParameters: '{#beta: 520, #gamma: 52}'.
+	model addParameters: {#beta->520. #gamma->52}.
 	model configurations: { #rescale->false }.
 	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #I}'

@@ -8,7 +8,7 @@ exampleGillespieDirectOnSIRBioPEPAModel
 		{ #status: #I }: 1,
 		{ #status: #R }: 0
 	}'.
-	model addParameters: '{#beta: 1.4247, #gamma: 0.1429}'.
+	model addParameters: {#beta->1.4247. #gamma->0.1429}.
 	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #I}'
 		probability: [ :m| (m atParameter: #beta) * (m probabilityOfContact: '{#status: #I}')].

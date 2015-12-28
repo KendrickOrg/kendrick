@@ -13,13 +13,13 @@ modelRK4SolverOnSeasonalForcingModel
 		{ #status: #I }: 1,
 		{ #status: #R }: 0
 	}'.
-	model addParameters: '{
-		#beta0: 0.0052, 
-		#gamma: 52, 
-		#sigma: 52, 
-		#betaAmp: 0.3, 
-		#N: #sizeOfPopulation, 
-		#mu: 0.0125}'.
+	model addParameters: {
+		#beta0->0.0052.
+		#gamma->52. 
+		#sigma->52. 
+		#betaAmp->0.3. 
+		#N->#sizeOfPopulation. 
+		#mu->0.0125}.
 	model
 		addParameter: #beta 
 		value: 'beta0*(1 + (betaAmp*cos(t)))' parseAsAnExpression.

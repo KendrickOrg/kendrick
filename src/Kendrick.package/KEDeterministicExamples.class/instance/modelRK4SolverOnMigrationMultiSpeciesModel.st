@@ -11,7 +11,7 @@ modelRK4SolverOnMigrationMultiSpeciesModel
 													1 to: 14 do: [:i| c addAll: #(1000 0 0 0)]. c]) value).
 	model addParameter: #beta inScope: (#region->1) value: 0.75.
 	model addParameter: #beta inScope: ((2 to: 15) collect: [ :e| #region->e ]) value: ((2 to: 15) collect: [:e| 0.5 ]).
-	model addParameter: '{#d: 0.0000365. #epsilon: 0.5. #gamma: 0.25. #N: #sizeOfPopulation}'.
+	model addParameters: {#d->0.0000365. #epsilon->0.5. #gamma->0.25. #N->#sizeOfPopulation}.
 	model configurations: { #sizeOfPopulation->#(#region). #rescale->false }.
 	
 	graph := KEMigrationNetwork 

@@ -11,7 +11,7 @@ testExecuteTransition
 		{ #status: #I }: 1,
 		{ #status: #R }: 0
 	}'.
-	model addParameters: '{#beta: 0.0052, #gamma: 52}'.
+	model addParameters: {#beta->0.0052. #gamma->52}.
 	tr executeOn: model times: 1.
 	self assert: (model atCompartment: '{#status:#S}') equals: 9999.
 	self assert: (model atCompartment: '{#status:#I}') equals: 2.  
