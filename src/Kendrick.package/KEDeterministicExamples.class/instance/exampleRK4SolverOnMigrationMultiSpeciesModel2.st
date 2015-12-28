@@ -12,15 +12,30 @@ exampleRK4SolverOnMigrationMultiSpeciesModel2
 				#species->#(#bird #human). #status->#(S E I R)} 
 			cardinalities: cards.
 	model addParameter: #beta value: 1.
-	model addParameter: #d 
-	      inScopes: {#species->#human. #species->#bird} 
-	      values: #(0.0000365 0.00137). 
-	model addParameter: #epsilon
-	      inScopes: {#species->#human. #species->#bird} 
-	      values: #(0.5 0.67).
-	model addParameter: #gamma 
-	      inScopes: {#species->#human. #species->#bird} 
-	      values: #(0.25 0.233).  
+	model
+		addParameter: #d
+		value: 
+		[ :aModel| |c| 
+			c := aModel currentCompartment at: #species.
+			c = #human ifTrue: [ ^ 0.0000365 ].
+			c = #bird ifTrue: [ ^ 0.00137 ]
+		].
+	model
+		addParameter: #epsilon
+		value:
+		[ :aModel| |c| 
+			c := aModel currentCompartment at: #species.
+			c = #human ifTrue: [ ^ 0.5 ].
+			c = #bird ifTrue: [ ^ 0.67 ]
+		].
+	model
+		addParameter: #gamma
+		value:
+		[ :aModel| |c| 
+			c := aModel currentCompartment at: #species.
+			c = #human ifTrue: [ ^ 0.25 ].
+			c = #bird ifTrue: [ ^ 0.233 ]
+		].
 	model addParameter: #v value: 0.00274.
 	model addParameter: #N value: #sizeOfPopulation.
 	model configurations: { #sizeOfPopulation->#(#patch #species). #rescale->false }.

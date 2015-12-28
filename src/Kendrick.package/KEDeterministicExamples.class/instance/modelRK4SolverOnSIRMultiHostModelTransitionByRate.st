@@ -23,9 +23,15 @@ modelRK4SolverOnSIRMultiHostModelTransitionByRate
 			(#(#I #reservoir2) -> 0).
 			(#(#R #reservoir2) -> 0)}.
 	
-	model addParameter: #mu 
-		   inScopes: {#species->#mosquito. #species->#reservoir1. #species->#reservoir2}
-		   values: #(12.17 0.05 0.05).
+	model 
+		addParameter: #mu
+		value: 
+		[ :aModel| |c| 
+			c := aModel currentCompartment at: #species.
+			c = #mosquito ifTrue: [ ^ 12.17 ].
+			c = #reservoir1 ifTrue: [ ^ 0.05 ].
+			c = #reservoir2 ifTrue: [ ^ 0.05 ]
+		].
 	model addParameter: #gamma value: 52.
 	model addParameter: #beta value: 1.
 	model addParameter: #N value: #sizeOfPopulation.
