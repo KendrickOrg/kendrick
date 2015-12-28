@@ -5,9 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"algorithm"
-	],
+	"instvars" : [ ],
 	"name" : "KECPPGenerator",
 	"type" : "normal"
 }

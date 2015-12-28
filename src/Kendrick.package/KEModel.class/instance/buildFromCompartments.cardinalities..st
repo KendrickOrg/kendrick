@@ -13,9 +13,9 @@ buildFromCompartments: anArrayOfAssociation cardinalities: anArray
 			list first inject: #() into: [ :all :each|
 				all, (expand value: (prefix copyWith: each) value: tail) ] ] ].
 	keys := expand value: #() value: names.
-	compartments := Dictionary new.
-	1 to: keys size do: [ :i| compartments at: (Dictionary newFrom: (keys at: i)) put: (anArray at: i) ].
-	self population compartments: compartments
+	initCompartments := Dictionary new.
+	1 to: keys size do: [ :i| initCompartments at: (Dictionary newFrom: (keys at: i)) put: (anArray at: i) ].
+	self population compartments: initCompartments
 	
 	
 	

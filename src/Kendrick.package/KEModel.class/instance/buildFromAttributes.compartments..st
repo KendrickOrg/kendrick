@@ -19,6 +19,6 @@ buildFromAttributes: namesOfAttributes compartments: arrayOfAssociation
 	1 to: arrayOfAssociation size do: [ :i| 
 		associations add: ((f value: keyFormat value: (keyValue at: i))->(arrayOfAssociation at: i) value)
 		 ].
-	compartments := Dictionary newFrom: associations.
-	self population compartments: compartments
+	initCompartments := Dictionary newFrom: associations.
+	self population compartments: initCompartments
 	
