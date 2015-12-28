@@ -14,8 +14,8 @@ executeOn: aModel
 				|prob|
 				"model parameters at: #scope put: (e at: 1) scope."
 				(e at: 1) from = #empty 
-				ifTrue: [ model parameters at: #inProcessingCompartment put: ((e at: 1) to) ] 
-				ifFalse: [ model parameters at: #inProcessingCompartment put: ((e at: 1) from) ].
+				ifTrue: [ model currentCompartment: ((e at: 1) to) ] 
+				ifFalse: [ model currentCompartment: ((e at: 1) from) ].
 				prob := ((e at: 1) probability value: model) abs.
 				"prob isDictionary ifTrue: [ prob := prob values sum ]."
 				(e at: 2)*prob*(model atCompartment: (e at: 1) from)]) sum.
@@ -29,7 +29,7 @@ executeOn: aModel
 	ks := model population compartments keys.
 	(tMin to: tMax by: step) do: [ :t| 
 		self saveCompartmentsValueAtTime: t.
-		model parameters at: #t put: t.
+		model t: t.
 		st := stepper doStep: st time: t stepSize: step.
 		1 to: ks size do: [ :i| model population compartments at: (ks at: i) put: (st at: i) ] ].
 	

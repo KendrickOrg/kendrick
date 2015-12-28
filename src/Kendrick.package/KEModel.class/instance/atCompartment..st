@@ -3,7 +3,7 @@ atCompartment: anObject
 	|key|
 	anObject = #empty ifTrue: [ 
 		|s|
-		s := (self atParameter: #inProcessingCompartment) copy.
+		s := (self currentCompartment) copy.
 		"s ~= #population ifTrue: [ 
 			s removeKey: #status. 
 			s size = 0 ifTrue: [ s := #population ] ifFalse: [ s := s associations ] ].

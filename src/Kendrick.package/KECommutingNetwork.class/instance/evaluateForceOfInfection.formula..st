@@ -1,7 +1,7 @@
 as yet unclassified
 evaluateForceOfInfection: model formula: formula
 	|s effectiveLambda localNode|
-	s := model atParameter: #inProcessingCompartment.
+	s := model currentCompartment.
 	localNode := self atNode: (s at: self attribute).
 	effectiveLambda := self evaluateForceOfInfection: model formula: formula onSubpopulation: localNode label.
 	localNode adjacentNodes keysDo: [ :k|

@@ -4,9 +4,9 @@ probabilityOfContactsOf: source with: destination
 	"destination: associations, source: dictionary"
 	|tmp p|
 	tmp := source copy.
-	tmp = #population 
-	ifTrue: [ tmp := Dictionary newFrom: destination ]
-	ifFalse: [ destination do: [ :each| tmp at: each key put: each value ] ].
+	tmp 
+	ifNil: [ tmp := Dictionary newFrom: destination ]
+	ifNotNil: [ destination do: [ :each| tmp at: each key put: each value ] ].
 	tmp removeKey: #id ifAbsent: [ tmp ].
 	p := self compartments at: tmp.
 	"if mass-action = true and rescale = false, do p/N"

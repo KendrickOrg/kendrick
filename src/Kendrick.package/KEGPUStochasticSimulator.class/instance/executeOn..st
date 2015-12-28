@@ -28,8 +28,8 @@ executeOn: aModel
 		do: [ :tr | 
 			| prob |
 			tr from = #empty
-				ifTrue: [ model parameters at: #inProcessingCompartment put: tr to ]
-				ifFalse: [ model parameters at: #inProcessingCompartment put: tr from ].
+				ifTrue: [ model currentCompartment: tr to ]
+				ifFalse: [ model currentCompartment: tr from ].
 			prob := (tr probability value: model) abs.
 			ratesArray at: indexRates put: prob asFloat.
 			reactantArray at: indexRates put: (model atCompartment: tr from).
@@ -152,8 +152,8 @@ executeOn: aModel
 			model transitions
 				do: [ :tr | 
 					tr from = #empty
-						ifTrue: [ model parameters at: #inProcessingCompartment put: tr to ]
-						ifFalse: [ model parameters at: #inProcessingCompartment put: tr from ].
+						ifTrue: [ model currentCompartment: tr to ]
+						ifFalse: [ model currentCompartment: tr from ].
 					reactantArray at: indexRates put: (model atCompartment: tr from).
 					indexRates := indexRates +1.
 					].

@@ -8,7 +8,7 @@ testEvaluateForceOfInfectionFormulaOnSubpopulation
 		edges: { 1->2. 2->3. 3->4. 5->5 };
 		leaveRatesOfAllConnections: 0.1;
 		returnRatesOfAllConnections: 2.
-	model parameters at: #inProcessingCompartment put: (Dictionary newFrom: {#status->#S. #patch->2}).
+	model currentCompartment: (Dictionary newFrom: {#status->#S. #patch->2}).
 	model addParameter: #beta value: 1.
 	rs := network evaluateForceOfInfection: model formula: 'beta*I' parseAsAnExpression onSubpopulation: { #patch->1 }.
 

@@ -9,7 +9,7 @@ calProb: ind random: rand
 		ifFalse: [ model parameters at: #inProcessingCompartment put: ((events at: e) key from) ]".
 		l := ind currentStatus copy.
 		l at: #id put: (ind id).
-		model parameters at: #inProcessingCompartment put: l.
+		model currentCompartment: l.
 		rate := ((events at: e) key probability value: model) abs.
 		"rate isDictionary ifTrue: [ rate := rate values sum ]."
 		prob := 1 - (((step * rate) negated) exp).

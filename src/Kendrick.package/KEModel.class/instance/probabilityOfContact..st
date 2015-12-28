@@ -1,7 +1,7 @@
 as yet unclassified
 probabilityOfContact: anArrayOfAssociations
 	|s reader d|
-	s := self atParameter: #inProcessingCompartment.
+	s := self currentCompartment.
 	anArrayOfAssociations isString 
 	ifTrue: [ 
 		(reader := STONReader on: anArrayOfAssociations readStream) allowComplexMapKeys: true.

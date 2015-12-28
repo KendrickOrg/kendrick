@@ -10,6 +10,6 @@ testEvaluateForceOfInfection
 	}'.
 	model addParameter: #beta value: 1.
 	model forceOfInfection: #lambda formula: ('beta*I' parseAsAnExpression).  
-	model parameters at: #inProcessingCompartment put: (Dictionary newFrom: {#status->#S}).
+	model currentCompartment: (Dictionary newFrom: {#status->#S}).
 	self assert: (model evaluateForceOfInfection: #lambda) equals: 1.
 

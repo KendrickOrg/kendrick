@@ -7,6 +7,6 @@ testProbabilityOfContact
 		{ #status: #I }: 1,
 		{ #status: #R }: 0
 	}'.
-	model parameters at: #inProcessingCompartment put: (Dictionary newFrom: {#status->#S}).
+	model currentCompartment: (Dictionary newFrom: {#status->#S}).
 	self assert: (model probabilityOfContact: {#status->#I}) equals: 1.
 

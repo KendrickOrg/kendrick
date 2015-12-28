@@ -20,7 +20,7 @@ testEvaluateForceOfInfectionFormula
 			#(#R #m1)->0.
 			#(#R #m2)->0.
 			#(#R #m3)->0 }.
-	model parameters at: #inProcessingCompartment put: (Dictionary newFrom: {#status->#S. #species->#m2}).
+	model currentCompartment: (Dictionary newFrom: {#status->#S. #species->#m2}).
 	
 	self assert: (model population evaluateForceOfInfection: model formula: [ :m| (m atParameter: #beta) * (m probabilityOfContact: { #status->#I }) ]) equals: 0.02
 	
