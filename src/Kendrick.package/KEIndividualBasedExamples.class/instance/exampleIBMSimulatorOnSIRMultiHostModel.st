@@ -21,11 +21,12 @@ exampleIBMSimulatorOnSIRMultiHostModel
 	model 
 		addParameter: #mu
 		value: 
-		[ :aModel| |c| 
+		[ :aModel| |c val| 
 			c := aModel currentCompartment at: #species.
-			c = #mosquito ifTrue: [ ^ 12.17 ].
-			c = #reservoir1 ifTrue: [ ^ 0.05 ].
-			c = #reservoir2 ifTrue: [ ^ 0.05 ]
+			c = #mosquito ifTrue: [ val := 12.17 ].
+			c = #reservoir1 ifTrue: [ val := 0.05 ].
+			c = #reservoir2 ifTrue: [ val := 0.05 ].
+			val
 		].
 	model addParameter: #gamma value: 52.
 	model addParameter: #beta value: 1.

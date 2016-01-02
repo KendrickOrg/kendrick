@@ -15,26 +15,29 @@ exampleRK4SolverOnMigrationMultiSpeciesModel2
 	model
 		addParameter: #d
 		value: 
-		[ :aModel| |c| 
+		[ :aModel| |c val| 
 			c := aModel currentCompartment at: #species.
-			c = #human ifTrue: [ ^ 0.0000365 ].
-			c = #bird ifTrue: [ ^ 0.00137 ]
+			c = #human ifTrue: [ val := 0.0000365 ].
+			c = #bird ifTrue: [ val := 0.00137 ].
+			val
 		].
 	model
 		addParameter: #epsilon
 		value:
-		[ :aModel| |c| 
+		[ :aModel| |c val| 
 			c := aModel currentCompartment at: #species.
-			c = #human ifTrue: [ ^ 0.5 ].
-			c = #bird ifTrue: [ ^ 0.67 ]
+			c = #human ifTrue: [ val := 0.5 ].
+			c = #bird ifTrue: [ val := 0.67 ].
+			val
 		].
 	model
 		addParameter: #gamma
 		value:
-		[ :aModel| |c| 
+		[ :aModel| |c val| 
 			c := aModel currentCompartment at: #species.
-			c = #human ifTrue: [ ^ 0.25 ].
-			c = #bird ifTrue: [ ^ 0.233 ]
+			c = #human ifTrue: [ val := 0.25 ].
+			c = #bird ifTrue: [ val := 0.233 ].
+			val
 		].
 	model addParameter: #v value: 0.00274.
 	model addParameter: #N value: #sizeOfPopulation.
