@@ -17,6 +17,6 @@ testEquationsToTransitions2
 	model addEquation: ('I:t=beta*S*I-(mu+v)*I' parseAsAnEquation).
 	model addEquation: ('R:t=v*I-mu*R' parseAsAnEquation).
 	
-	self assert: (model transitions size) equals: 18
+	self assert: (model transitions size) equals: 6
 	
 	
