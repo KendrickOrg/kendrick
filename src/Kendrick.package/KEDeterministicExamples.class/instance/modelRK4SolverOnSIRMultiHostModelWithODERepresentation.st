@@ -34,14 +34,17 @@ modelRK4SolverOnSIRMultiHostModelWithODERepresentation
 		].
 	model addParameter: #gamma value: 52.
 	model addParameter: #beta value: 1.
-	model addParameter: #N value: #sizeOfPopulation.
-	model configurations: { #sizeOfPopulation->#(#species) }.
+	model atParameter: #N assignValue: [ :aModel| |c| 
+		c := aModel currentCompartment at: #species.
+		aModel sizeOfPopulation: c
+		].
+	"model configurations: { #sizeOfPopulation->#(#species) }."
 	
 	graph := KEContactNetwork newOn: model population atAttribute: #species.
 	graph edges: { #mosquito->#reservoir1. #mosquito->#reservoir2 };
 			strengthOfAllConnections: 0.02.
 	
 	model addEquation: 'S:t=mu*N-beta*S*I-mu*S' parseAsAnEquation.
-	model addEquation: ('I:t=beta*S*I-(mu+v)*I' parseAsAnEquation).
-	model addEquation: ('R:t=v*I-mu*R' parseAsAnEquation).
+	model addEquation: ('I:t=beta*S*I-(mu+gamma)*I' parseAsAnEquation).
+	model addEquation: ('R:t=gamma*I-mu*R' parseAsAnEquation).
 	^ model

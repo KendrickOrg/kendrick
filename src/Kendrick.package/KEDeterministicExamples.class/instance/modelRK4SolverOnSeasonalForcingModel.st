@@ -17,8 +17,7 @@ modelRK4SolverOnSeasonalForcingModel
 		#beta0->0.0052.
 		#gamma->52. 
 		#sigma->52. 
-		#betaAmp->0.3. 
-		#N->#sizeOfPopulation. 
+		#betaAmp->0.3.
 		#mu->0.0125}.
 	model
 		addParameter: #beta 

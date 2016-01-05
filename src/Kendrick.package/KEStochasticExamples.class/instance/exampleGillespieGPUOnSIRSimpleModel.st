@@ -10,10 +10,11 @@ exampleGillespieGPUOnSIRSimpleModel
 		{ #status: #R }: 0
 	}'.
 	model addParameters: {#beta->520. #gamma->52}.
-	model configurations: { #rescale->false }.
 	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #I}'
-		probability: [ :m| (m atParameter: #beta) * (m probabilityOfContact: '{#status: #I}')].
+		probability: [ :m| 
+			(m atParameter: #beta) * 
+			(m atCompartment: {#status->#I}) / (m atParameter: #N)].
 	model addTransitionFrom: '{#status: #I}'
 		to: '{#status: #R}'
 		probability: [ :m| (model atParameter: #gamma)].

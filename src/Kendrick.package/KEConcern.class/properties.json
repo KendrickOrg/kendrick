@@ -1,17 +1,16 @@
 {
-	"commentStamp" : "BUIThiMaiAnh 12/4/2014 07:01",
+	"commentStamp" : "BuiThiMaiAnh 1/4/2016 17:09",
 	"super" : "KEEntity",
 	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"compartments",
-		"diedIndList",
-		"individuals",
 		"attributes",
-		"relations"
+		"parameters",
+		"equations",
+		"transitions"
 	],
-	"name" : "KEPopulation",
+	"name" : "KEConcern",
 	"type" : "normal"
 }

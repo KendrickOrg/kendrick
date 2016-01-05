@@ -10,10 +10,12 @@ exampleRK4SolverOn2SEIRMeaslesModelWithVaccination
 		{#status: #E}: 0,
 		{#status: #R}: 0
 	}'.
-	model addParameters: {#beta->0.00782. #gamma->52.14. #mu->0.0128. #sigma->45.625. #N->#sizeOfPopulation. #p->0.7}.
+	model addParameters: {#beta->0.00782. #gamma->52.14. #mu->0.0128. #sigma->45.625. #p->0.7}.
 	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #E}'
-		probability: [:m| (m atParameter: #beta) * (m probabilityOfContact: '{#status:#I}')].
+		probability: [:m| 
+			(m atParameter: #beta) * 
+			(m atCompartment: {#status->#I})].
 	model addTransitionFrom: '{#status: #E}'
 		to: '{#status: #I}'
 		probability: [:m| (m atParameter: #sigma)].

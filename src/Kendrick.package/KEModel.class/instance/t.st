@@ -1,3 +1,4 @@
 as yet unclassified
 t
-	^ self parameters at: #t ifAbsent: [ 0 ]
+	"^ self parameters at: #t ifAbsent: [ 0 ]"
+	^ t

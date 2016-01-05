@@ -5,9 +5,9 @@ equationsToTransitions
 	events := eGenerator generateEvents: self.
 	events do: [ :e|
 		e fromStatus = #empty ifTrue: [ 
-			|symbol|
-			symbol := parameters keyAtValue: #sizeOfPopulation ifAbsent: [#N].
-			e rate: (e rate remove: (KEVariable new symbol: symbol)) ]
+			"|symbol|
+			symbol := parameters keyAtValue: #sizeOfPopulation ifAbsent: [#N]."
+			e rate: (e rate remove: (KEVariable new symbol: #N)) ]
 		 ].
 	events do: [ :each| |from to|
 		each fromStatus = #empty ifTrue: [ from := #empty ] ifFalse: [ from := Dictionary newFrom: { #status->each fromStatus } ].

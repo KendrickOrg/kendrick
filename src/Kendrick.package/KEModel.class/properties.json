@@ -12,7 +12,7 @@
 		"population",
 		"initCompartments",
 		"transitions",
-		"forceOfInfections"
+		"t"
 	],
 	"name" : "KEModel",
 	"type" : "normal"

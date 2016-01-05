@@ -1,59 +1,8 @@
 examples
 exampleRK4SolverOnSIRMultiHostModelTransitionByRate
 	"self new exampleRK4SolverOnSIRMultiHostModelTransitionByRate"
-	|model simulator graph db|
-	model := KEModel new.
-	model population: (KEMetaPopulation new attributes: {
-		#status->#(#S #I #R). 
-		#species->#(#mosquito #reservoir1 #reservoir2)
-	}).
-	model buildFromAttributes: #(#status #species) 
-			compartments: {
-				#(#S #mosquito)->9999.
-				#(#I #mosquito)->1.
-				#(#R #mosquito)->0.
-				#(#S #reservoir1)->999.
-				#(#I #reservoir1)->0.
-				#(#R #reservoir1)->0.
-				#(#S #reservoir2)->1999.
-				#(#I #reservoir2)->0.
-				#(#R #reservoir2)->0}.
-	model 
-		addParameter: #mu
-		value: 
-		[ :aModel| |c| 
-			c := aModel currentCompartment at: #species.
-			c = #mosquito ifTrue: [ ^ 12.17 ].
-			c = #reservoir1 ifTrue: [ ^ 0.05 ].
-			c = #reservoir2 ifTrue: [ ^ 0.05 ]
-		].
-	model addParameter: #gamma value: 52.
-	model addParameter: #beta value: 1.
-	model addParameter: #N value: #sizeOfPopulation.
-	model configurations: { #sizeOfPopulation->#(#species) }.
-	
-	graph := KEContactNetwork newOn: model population atAttribute: #species.
-	graph edges: { #mosquito->#reservoir1. #mosquito->#reservoir2 };
-			strengthOfAllConnections: 0.02.
-	
-	model addTransitionFrom: '{#status: #S}'
-		to: '{#status: #I}'
-		probability: 'beta*I' parseAsAnExpression.
-	model addTransitionFrom: '{#status: #I}'
-		to: '{#status: #R}'
-		probability: 'gamma' parseAsAnExpression.
-	model addTransitionFrom: '{#status: #S}'
-		to: #empty
-		probability: 'mu' parseAsAnExpression.
-	model addTransitionFrom: '{#status: #I}'
-		to: #empty
-		probability: 'mu' parseAsAnExpression.
-	model addTransitionFrom: '{#status: #R}'
-		to: #empty
-		probability: 'mu' parseAsAnExpression.
-	model addTransitionFrom: #empty
-		to: '{#status: #S}'
-		probability: 'mu' parseAsAnExpression.
+	|model simulator db|
+	model := self modelRK4SolverOnSIRMultiHostModelTransitionByRate.
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 40.0 step: 0.01.
 	simulator executeOn: model.
 	db := (KEDiagramBuilder new) data: ((simulator timeSeriesAt: '{#status: #I}') sqrt).

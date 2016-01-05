@@ -40,8 +40,13 @@ exampleRK4SolverOnMigrationMultiSpeciesModel2
 			val
 		].
 	model addParameter: #v value: 0.00274.
-	model addParameter: #N value: #sizeOfPopulation.
-	model configurations: { #sizeOfPopulation->#(#patch #species). #rescale->false }.
+	model atParameter: #N assignValue: [ :aModel| |c| 
+		c := OrderedCollection new.
+		c add: (aModel currentCompartment at: #patch).
+		c add: (aModel currentCompartment at: #species).
+		aModel sizeOfPopulation: (c asArray)
+		].
+	"model configurations: { #sizeOfPopulation->#(#patch #species). #rescale->false }."
 	
 	graph := KEMigrationNetwork 
 					newOn: model population 

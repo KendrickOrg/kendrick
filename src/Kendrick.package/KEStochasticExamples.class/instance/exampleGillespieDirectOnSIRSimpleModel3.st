@@ -12,7 +12,9 @@ exampleGillespieDirectOnSIRSimpleModel3
 	model addParameters: {#beta->0.01. #gamma->0.1}.
 	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #I}'
-		probability: [ :m| (m atParameter: #beta) * (m probabilityOfContact: '{#status: #I}')].
+		probability: [ :m| 
+			(m atParameter: #beta) * 
+			(m atCompartment: {#status->#I})].
 	model addTransitionFrom: '{#status: #I}'
 		to: '{#status: #R}'
 		probability: [ :m| (m atParameter: #gamma)].

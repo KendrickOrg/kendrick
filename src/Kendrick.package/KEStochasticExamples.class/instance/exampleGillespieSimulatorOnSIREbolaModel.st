@@ -30,7 +30,10 @@ exampleGillespieSimulatorOnSIREbolaModel
 	}'.
 	model addParameter: #gamma value: 0.1.
 	model addParameter: #beta value: 0.0002.
-	model configurations: { #sizeOfPopulation->#(#country) }.
+	model atParameter: #N assignValue: [ :aModel| |c| 
+		c := aModel currentCompartment at: #country.
+		aModel sizeOfPopulation: c
+		].
 	
 	g1 := KEMigrationNetwork newOn: model population atAttribute: #country.
 	g1 edges: #all; strengthOfAllConnections: 0.05.

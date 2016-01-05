@@ -18,8 +18,11 @@ exampleRK4SolverOnMultiInfectiousStatusModel
 	model 
 		addTransitionFrom: '{#status: #S}' 
 		to: '{#status: #I}' 
-		probability: [ :m| ((m atParameter: #beta1) * (m probabilityOfContact: '{#status:#I}')) +
-								 ((m atParameter: #beta2) * (m probabilityOfContact: '{#status:#Is}')) ].
+		probability: [ :m| 
+			((m atParameter: #beta1) * 
+			(m atCompartment: {#status->#I})) +
+			((m atParameter: #beta2) * 
+			(m atCompartment: {#status->#Is})) ].
 	model
 		addTransitionFrom: '{#status: #I}' 
 		to: '{#status: #Is}' 

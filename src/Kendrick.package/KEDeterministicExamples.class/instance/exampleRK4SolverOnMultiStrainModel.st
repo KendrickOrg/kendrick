@@ -19,11 +19,12 @@ exampleRK4SolverOnMultiStrainModel
 	model 
 		addTransitionFrom: '{#status:#S}' 
 		to: '{#status: #I1}' 
-		probability: [ :m| (m atParameter: #beta1) * (m probabilityOfContact: '{#status:#I1}') ].
+		probability: [ :m| 
+			(m atParameter: #beta1) * (m atCompartment: {#status->#I1}) ].
 	model
 		addTransitionFrom: '{#status:#S}' 
 		to: '{#status:#I2}' 
-		probability: [ :m| (m atParameter: #beta2) * (m probabilityOfContact: '{#status: #I2}') ].
+		probability: [ :m| (m atParameter: #beta2) * (m atCompartment: {#status->#I2}) ].
 	model
 		addTransitionFrom: '{#status: #I1}' 
 		to: '{#status: #R}' 

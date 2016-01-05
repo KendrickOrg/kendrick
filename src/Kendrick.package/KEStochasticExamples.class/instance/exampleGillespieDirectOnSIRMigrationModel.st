@@ -7,9 +7,12 @@ exampleGillespieDirectOnSIRMigrationModel
 	model population attributes: '{#status: [#S,#I], #region:[#A,#B,#C,#D,#E]}'.
 	model buildFromCompartments: {#region->#(A B C D E). #status->#(S I)} 
 			cardinalities: #(1000 1 1000 0 1000 0 1000 0 1000 0).
-	model addParameters: {#mu->0.001. #gamma->0.1. #N->#sizeOfPopulation. #d->0.0001}.
-	model addParameter: #beta value: 0.0001.
-	model configurations: { #sizeOfPopulation->#(#region) }.
+	model addParameters: {#mu->0.001. #gamma->0.1. #d->0.0001. #beta->0.0001}.
+	model atParameter: #N assignValue: [ :aModel| |c| 
+		c := aModel currentCompartment at: #region.
+		aModel sizeOfPopulation: c
+		].
+	"model configurations: { #sizeOfPopulation->#(#region) }."
 
 	graph := KEMigrationNetwork newOn: model population atAttribute: #region.
 	graph edges: #all; strengthOfAllConnections: 0.001.

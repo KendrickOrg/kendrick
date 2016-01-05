@@ -12,12 +12,17 @@ modelRK4SolverOnMigrationMultiSpeciesModel
 	model 
 		addParameter: #beta 
 		value: 
-		[:aModel| |c| 
+		[:aModel| |c val| 
 			c := aModel currentCompartment at: #region.
-			c = 1 ifTrue: [ ^ 0.75 ] ifFalse: [ ^ 0.5 ]
+			c = 1 ifTrue: [ val := 0.75 ] ifFalse: [ val := 0.5 ].
+			val
 		].
-	model addParameters: {#d->0.0000365. #epsilon->0.5. #gamma->0.25. #N->#sizeOfPopulation}.
-	model configurations: { #sizeOfPopulation->#(#region). #rescale->false }.
+	model addParameters: {#d->0.0000365. #epsilon->0.5. #gamma->0.25}.
+	model atParameter: #N assignValue: [ :aModel| |c| 
+		c := aModel currentCompartment at: #region.
+		aModel sizeOfPopulation: c
+		].
+	"model configurations: { #sizeOfPopulation->#(#region). #rescale->false }."
 	
 	graph := KEMigrationNetwork 
 					newOn: model population 
