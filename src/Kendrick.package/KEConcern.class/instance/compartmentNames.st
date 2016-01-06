@@ -13,4 +13,5 @@ compartmentNames
 			list first inject: #() into: [ :all :each|
 				all, (expand value: (prefix copyWith: each) value: tail) ] ] ].
 	keys := expand value: #() value: names.
+	keys = #(#()) ifTrue: [ keys := #() ].
 	^ (keys collect: [ :e| Dictionary newFrom: e ])
