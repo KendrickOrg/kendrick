@@ -1,9 +1,10 @@
 as yet unclassified
 testStrengthOfConnectionRtLabel
-	|population graph node|
-	population := KEMetaPopulation new.
-	population attributes: '{#status: [#S, #I, #R], #region: [#A, #B, #C]}'.
-	graph := KEContactNetwork newOn: population atAttribute: #region.
+	|model  graph node|
+	model := KEModel new.
+	model population: KEMetaPopulation new.
+	model attributes: {#status->#(#S #I #R). #region->#(#A #B #C)}.
+	graph := KEContactNetwork newOn: model atAttribute: #region.
 	graph edges: #all; strengthOfAllConnections: {(#status->#S)->0.1. (#status->#I)->0.05. (#status->#R)->0.2}. 
 	node := graph atNode: {graph attribute->#A}.
 	

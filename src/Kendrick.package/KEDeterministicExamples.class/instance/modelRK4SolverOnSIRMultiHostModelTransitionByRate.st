@@ -6,10 +6,11 @@ modelRK4SolverOnSIRMultiHostModelTransitionByRate
 	model := KEModel new.
 	model
 		population:
-			(KEMetaPopulation new
+			(KEMetaPopulation new).
+			model
 				attributes:
 					{(#status -> #(#S #I #R)).
-					(#species -> #(#mosquito #reservoir1 #reservoir2))}).
+					(#species -> #(#mosquito #reservoir1 #reservoir2))}.
 	model
 		buildFromAttributes: #(#status #species)
 		compartments:

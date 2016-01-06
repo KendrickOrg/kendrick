@@ -4,7 +4,9 @@ exampleRK4SolverOnMigrationMultiSpeciesModel2
 	|model simulator graph db cards sgraph f|
 	model := KEModel new.
 	model population: KEMetaPopulation new.
-	model population attributes: {#patch->(1 to: 15). #species->#(#bird #human). #status->#(S E I R)}.
+	model addAttribute: #patch value: (1 to: 15).
+	model addAttribute: #species value: #(#bird #human).
+	model addAttribute: #status value: #(S E I R).
 	cards := OrderedCollection newFrom: #(4990 0 10 0 500 0 0 0).
 	14 timesRepeat: [cards addAll: #(5000 0 0 0 500 0 0 0) ].
 	model buildFromCompartments: 

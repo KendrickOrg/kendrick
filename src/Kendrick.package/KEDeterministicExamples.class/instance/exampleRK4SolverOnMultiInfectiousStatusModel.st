@@ -3,7 +3,7 @@ exampleRK4SolverOnMultiInfectiousStatusModel
 	"self new exampleRK4SolverOnMultiInfectiousStatusModel"
 	|model simulator db data|
 	model := KEModel new.
-	model population attributes: {#status->#(S I Is R)}.
+	model attributes: {#status->#(S I Is R)}.
 	model buildFromCompartments: '{
 		{ #status: #S }: 450,
 		{ #status: #I }: 10,

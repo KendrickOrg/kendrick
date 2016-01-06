@@ -1,7 +1,7 @@
 as yet unclassified
-newOn: population atAttribute: attribute
+newOn: model atAttribute: attribute
 	|network|
 	network := self new attribute: attribute.
-	network addNodes: (population atAttribute: attribute) from: population.
-	population graphs add: network.
+	network addNodes: (model atAttribute: attribute) from: model population.
+	model population graphs add: network.
 	^ network

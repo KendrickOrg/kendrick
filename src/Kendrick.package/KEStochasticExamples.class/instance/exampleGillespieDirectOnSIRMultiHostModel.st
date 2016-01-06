@@ -3,10 +3,11 @@ exampleGillespieDirectOnSIRMultiHostModel
 	"self new exampleGillespieDirectOnSIRMultiHostModel"
 	|model simulator graph db|
 	model := KEModel new.
-	model population: (KEMetaPopulation new attributes: {
+	model population: (KEMetaPopulation new).
+	model attributes: {
 		#status->#(#S #I #R). 
 		#species->#(#mosquito #reservoir1 #reservoir2)
-	}).
+	}.
 	model buildFromAttributes: #(#status #species) 
 			compartments: {
 				#(#S #mosquito)->9800.

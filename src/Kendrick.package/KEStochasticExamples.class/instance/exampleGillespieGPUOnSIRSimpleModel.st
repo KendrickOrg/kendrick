@@ -3,7 +3,7 @@ exampleGillespieGPUOnSIRSimpleModel
 	"self new exampleGillespieGPUOnSIRSimpleModel"
 	|model simulator dB |
 	model := KEModel new.
-	model population attributes: '{#status: [#S, #I, #R]}'.
+	model attributes: {#status->#(#S #I #R)}.
 	model buildFromCompartments: '{
 		{ #status: #S }: 999,
 		{ #status: #I }: 1,

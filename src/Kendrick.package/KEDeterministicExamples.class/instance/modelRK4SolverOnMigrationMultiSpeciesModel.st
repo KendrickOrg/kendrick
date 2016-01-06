@@ -4,7 +4,7 @@ modelRK4SolverOnMigrationMultiSpeciesModel
 	| model graph |
 	model := KEModel new.
 	model population: KEMetaPopulation new.
-	model population attributes: {#region->((1 to: 15) asArray). #status->#(S E I R)}.
+	model attributes: {#region->((1 to: 15) asArray). #status->#(S E I R)}.
 	model buildFromCompartments: {#region->((1 to: 15) asArray). #status->#(S E I R)} 
 			cardinalities: ((OrderedCollection newFrom: #(900 100 0 0)) 
 									addAll: ([|c| c := OrderedCollection new.

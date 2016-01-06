@@ -3,7 +3,7 @@ exampleRK4SolverOnMultiStrainModel
 	"self new exampleRK4SolverOnMultiStrainModel"
 	|model simulator db data|
 	model := KEModel new.
-	model population attributes: {#status->#(#S #I1 #I2 #R)}.
+	model attributes: {#status->#(#S #I1 #I2 #R)}.
 	model buildFromCompartments: '{
 		{ #status: #S }: 9900,
 		{ #status: #I1 }: 99,

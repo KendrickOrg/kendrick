@@ -3,7 +3,7 @@ exampleRK4SolverOn2SEIRMeaslesModelWithVaccination
 	"self new exampleRK4SolverOn2SEIRMeaslesModelWithVaccination"
 	|model simulator diag data legends|
 	model := KEModel new.
-	model population attributes: '{#status: [#S, #E, #I, #R]}'.
+	model addAttribute: #status value: #(S E I R).
 	model buildFromCompartments: '{
 		{#status: #S}: 99999,
 		{#status: #I}: 1,

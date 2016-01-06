@@ -3,7 +3,7 @@ exampleRK4SolverOnSIRSimpleModelWithTransitionProbabilityAsExpression
 	"self new exampleRK4SolverOnSIRSimpleModelWithTransitionProbabilityAsExpression"
 	|model simulator dB|
 	model := KEModel new.
-	model population attributes: '{#status: [#S, #I, #R]}'.
+	model attributes: {#status->#(#S #I #R)}.
 	model buildFromCompartments: '{
 		{ #status: #S }: 99999,
 		{ #status: #I }: 1,

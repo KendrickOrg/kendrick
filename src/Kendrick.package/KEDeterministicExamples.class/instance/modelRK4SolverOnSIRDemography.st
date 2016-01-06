@@ -4,10 +4,10 @@ modelRK4SolverOnSIRDemography
 
 	| model |
 	model := KEModel new.
-	model population attributes: '{#status: [#S, #I, #R]}'.
-	model atCompartment: '{#status: #S}' putInitialValue: 4975.
-	model atCompartment: '{#status: #I}' putInitialValue: 25.
-	model atCompartment: '{#status: #R}' putInitialValue: 0.
+	model attributes: {#status->#(#S #I #R)}.
+	model atCompartment: '{#status: #S}' put: 4975.
+	model atCompartment: '{#status: #I}' put: 25.
+	model atCompartment: '{#status: #R}' put: 0.
 	model addParameter: #beta value: 1 / 5000.
 	model addParameter: #gamma value: 1 / 10.0.
 	model addParameter: #mu value: 5e-4.

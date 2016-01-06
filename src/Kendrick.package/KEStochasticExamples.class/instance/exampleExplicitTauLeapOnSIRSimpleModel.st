@@ -3,7 +3,7 @@ exampleExplicitTauLeapOnSIRSimpleModel
 	"self new exampleExplicitTauLeapOnSIRSimpleModel"
 	|model simulator  dB |
 	model := KEModel new.
-	model population attributes: '{#status: [#S, #I, #R]}'.
+	model attributes: {#status->#(#S #I #R)}.
 	model buildFromCompartments: '{
 		{#status: #S}: 4975, {#status: #I}: 25, {#status: #R}: 0
 	}'.

@@ -4,7 +4,7 @@ modelRK4SolverOnSEIRMeasles
 
 	| model |
 	model := KEModel new.
-	model population attributes: '{#status: [#S, #E, #I, #R]}'.
+	model attributes: {#status->#(#S #E #I #R)}.
 	model
 		buildFromCompartments:
 			'{

@@ -2,7 +2,7 @@ tests
 testEvaluateWithModel2
 	|model expr|
 	model := KEModel new.
-	model population attributes: '{#status: [#S, #I, #R]}'.
+	model attributes: {#status->#(#S #I #R)}.
 	model buildFromCompartments: '{
 		{ #status: #S }: 10000,
 		{ #status: #I }: 1,

@@ -3,9 +3,9 @@ testAddMigrationTransitionsToWithRestrictions
 	|model g|
 	model := KEModel new.
 	model population: KEMetaPopulation new.
-	model population attributes: '{#status: [#S, #I, #ISym, #R], #region:[#A, #B, #C]}'.
+	model attributes: {#status->#(#S #I #ISym #R). #region->#(#A #B #C)}.
 	
-	g := KEMigrationNetwork newOn: model population atAttribute: #region.
+	g := KEMigrationNetwork newOn: model atAttribute: #region.
 	g edges: #all; strengthOfAllConnections: 0.005; restrictions: {#status->#ISym}.
 	g addMigrationTransitionsTo: model.
 	

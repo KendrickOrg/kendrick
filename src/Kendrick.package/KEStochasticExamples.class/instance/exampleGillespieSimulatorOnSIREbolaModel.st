@@ -4,10 +4,8 @@ exampleGillespieSimulatorOnSIREbolaModel
 	|model simulator db g1 |
 	model := KEModel new.
 	model population: KEMetaPopulation new.
-	model population attributes: '{
-		#status: [ #S, #I, #R ],
-		#country: [ #Liberia, #Guinea, #SierraLeone, #Nigeria, #Senegal, #Niger ]
-	}'.	
+	model addAttribute: #status value: #(S I R).
+	model addAttribute: #country value: #(#Liberia #Guinea #SierraLeone #Nigeria #Senegal #Niger).
 	model buildFromCompartments: '{
 		{ #status: #S, #country: #Liberia }: 950,
 		{ #status: #I, #country: #Liberia }: 50,
@@ -35,7 +33,7 @@ exampleGillespieSimulatorOnSIREbolaModel
 		aModel sizeOfPopulation: c
 		].
 	
-	g1 := KEMigrationNetwork newOn: model population atAttribute: #country.
+	g1 := KEMigrationNetwork newOn: model atAttribute: #country.
 	g1 edges: #all; strengthOfAllConnections: 0.05.
 	g1 addMigrationTransitionsTo: model.
 	
@@ -48,5 +46,5 @@ exampleGillespieSimulatorOnSIREbolaModel
 	db := (KEDiagramBuilder new) data: (simulator timeSeriesAt: '{#status: #	I}').
 	db open.
 	db openMap: #africa 
-	   countries: (model population atAttribute: #country) 
+	   countries: (model atAttribute: #country) 
 	   coloredBy: #peakOfEpidemic

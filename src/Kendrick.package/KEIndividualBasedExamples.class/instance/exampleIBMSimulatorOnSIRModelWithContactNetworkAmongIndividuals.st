@@ -4,7 +4,7 @@ exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals
 	|model simulator network  db |
 	model := KEModel new.
 	model population: KEMetaPopulation new.
-	model population attributes: '{#status: [#S, #I, #R]}'.
+	model attributes: {#status->#(#S #I #R)}.
 	model buildFromCompartments: '{
 		{ #status: #S }: 99,
 		{ #status: #I }: 1,

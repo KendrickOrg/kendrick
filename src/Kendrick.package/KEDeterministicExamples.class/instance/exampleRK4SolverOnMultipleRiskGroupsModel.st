@@ -4,7 +4,7 @@ exampleRK4SolverOnMultipleRiskGroupsModel
 	|model simulator graph db|
 	model := KEModel new.
 	model population: KEMetaPopulation new.
-	model population attributes: {#riskGroup->(1 to: 5). #status->#(S I)}.
+	model attributes: {#riskGroup->(1 to: 5). #status->#(S I)}.
 	model
 		buildFromAttributes: #(#status #riskGroup)
 		compartments: {

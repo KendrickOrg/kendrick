@@ -9,8 +9,7 @@
 		"compartments",
 		"diedIndList",
 		"individuals",
-		"attributes",
-		"relations"
+		"initialSize"
 	],
 	"name" : "KEPopulation",
 	"type" : "normal"
