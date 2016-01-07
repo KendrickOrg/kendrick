@@ -32,4 +32,3 @@ executeOn: aModel
 		model t: t.
 		st := stepper doStep: st time: t stepSize: step.
 		1 to: ks size do: [ :i| model population compartments at: (ks at: i) put: (st at: i) ] ].
-	

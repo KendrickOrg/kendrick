@@ -3,16 +3,10 @@ modelRK4SolverOnSeasonalForcingModel
 	"self new exampleRK4SolverOnSeasonalForcingModel"
 
 	| model |
-	model := KEModel new.
+	model := KEModel new population: (KEPopulation size: 100000).
 	model attributes: { #status->#(#S #E #I #R) }.
-	model
-		buildFromCompartments:
-			'{
-		{ #status: #S }: 99999,
-		{ #status: #E }: 0,
-		{ #status: #I }: 1,
-		{ #status: #R }: 0
-	}'.
+	model atCompartment: { #status->#S } put: 99999 atOthersPut: 0.
+	model atCompartment: { #status->#I } put: 1.
 	model addParameters: {
 		#beta0->0.0052.
 		#gamma->52. 

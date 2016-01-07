@@ -1,6 +1,6 @@
 as yet unclassified
-sizeOfACompartment: associations
-	^ self compartments at: associations ifAbsent: [ ^ self error: 'No compartment name: ', associations asString ]
+sizeOfACompartment: aCompartmentName
+	^ self compartments at: aCompartmentName ifAbsent: [ ^ self error: 'No compartment name: ', aCompartmentName asString ]
 	
 	
 	

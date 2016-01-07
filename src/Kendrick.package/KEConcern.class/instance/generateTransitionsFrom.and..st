@@ -5,7 +5,7 @@ generateTransitionsFrom: t and: keys
 	keys size = 0 
 	ifTrue: [ result add: t ]
 	ifFalse: [ 
-		keys do: [ :k| 
+		(keys select: [ :k| k ~= #empty]) do: [ :k|
 			|tmp from to|
 			tmp := k copy.
 			t from = #empty

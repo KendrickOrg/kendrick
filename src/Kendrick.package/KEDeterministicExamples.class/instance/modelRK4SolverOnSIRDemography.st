@@ -1,9 +1,8 @@
 examples
 modelRK4SolverOnSIRDemography
 	"self new exampleRK4SolverOnSIRDemographyModel"
-
 	| model |
-	model := KEModel new.
+	model := KEModel new population: (KEPopulation size: 5000).
 	model attributes: {#status->#(#S #I #R)}.
 	model atCompartment: '{#status: #S}' put: 4975.
 	model atCompartment: '{#status: #I}' put: 25.

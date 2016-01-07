@@ -3,22 +3,15 @@ modelRK4SolverOnSEIRMeasles
 	"self new exampleRK4SolverOnSEIRMeaslesModel"
 
 	| model |
-	model := KEModel new.
-	model attributes: {#status->#(#S #E #I #R)}.
-	model
-		buildFromCompartments:
-			'{
-		{#status: #S}: 99999,
-		{#status: #I}: 1,
-		{#status: #E}: 0,
-		{#status: #R}: 0
-	}'.
+	model := KEModel new population: (KEPopulation size: 100000).
+	model addAttribute: #status value: #(S E I R).
+	model atCompartment: { #status->#S } put: 99999 atOthersPut: 0.
+	model atCompartment: { #status->#I } put: 1.
 	model addParameters: {
 		#beta->0.0000214. 
 		#gamma->0.143. 
 		#mu->0.0000351. 
-		#sigma->0.125
-		}.
+		#sigma->0.125 }.
 	model
 		addTransitionFrom: '{#status: #S}'
 		to: '{#status: #E}'

@@ -1,24 +1,17 @@
 examples
 modelRK4SolverOnSEIRMeaslesModelWithVaccination
 	"self new exampleRK4SolverOnSEIRMeaslesModelWithVaccination"
-
 	| model |
-	model := KEModel new.
-	model attributes: {#status->#(#S #E #I #R)}.
-	model
-		buildFromCompartments:
-			'{
-		{#status: #S}: 99999,
-		{#status: #I}: 1,
-		{#status: #E}: 0,
-		{#status: #R}: 0
-	}'.
+	model := KEModel new population: (KEPopulation size: 100000).
+	model addAttribute: #status value: #(S E I R).
+	model atCompartment: { #status->#S } put: 99999 atOthersPut: 0.
+	model atCompartment: { #status->#I } put: 1.
 	model addParameters: {
 		#beta->0.00782. 
 		#gamma->52.14. 
 		#mu->0.0128.
 		#sigma->45.625.
-		#p->0.0}.
+		#p->0.7}.
 	model
 		addTransitionFrom: '{#status: #S}'
 		to: '{#status: #E}'
