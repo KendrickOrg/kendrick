@@ -2,14 +2,14 @@ examples
 modelRK4SolverOnMigrationTwoSpeciesModel
 	"self new exampleRK4SolverOnMigrationTwoSpeciesModel"
 	|model spatialConcern  SEIRSConcern multihostConcern|
-	spatialConcern := self SpatialConcern.
+	spatialConcern := self spatialConcern.
 	SEIRSConcern := self SEIRSConcern.
-	multihostConcern := self MultiHostConcern.
+	multihostConcern := self multiHostConcern.
 	
 	model := KEModel new population: (KEPopulation size: 27500).
 	model integrate: spatialConcern.
-	model integrate: SEIRSConcern.
 	model integrate: multihostConcern.
+	model integrate: SEIRSConcern.
 	
 	model atParameter: #beta assignValue: 1.
 	model atParameter: #mu assignValue: [ :aModel| |c val| 

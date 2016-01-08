@@ -3,7 +3,7 @@ modelRK4SolverOnMigrationOneSpeciesModel
 	"self new exampleRK4SolverOnMigrationOneSpeciesModel"
 	|model spatialConcern  SEIRSConcern|
 	SEIRSConcern := self SEIRSConcern.
-	spatialConcern := self SpatialConcern.
+	spatialConcern := self spatialConcern.
 	
 	model := KEModel new.
 	model population: (KEPopulation size: 5000).
@@ -30,7 +30,6 @@ modelRK4SolverOnMigrationOneSpeciesModel
 	].
 	model atCompartment: { #status->#S. #patch->1 } put: 900 atOthersPut: 0.
 	model atCompartment: { #status->#I. #patch->1 } put: 100.
-	model atCompartment: { #status->#S. #patch->2 } put: 1000.
 	model atCompartment: { #status->#S. #patch->2 } put: 1000.
 	model atCompartment: { #status->#S. #patch->3 } put: 1000.
 	model atCompartment: { #status->#S. #patch->4 } put: 1000.

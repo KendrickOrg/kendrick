@@ -2,7 +2,7 @@ examples
 modelRK4SolverOnMultipleRiskGroupsModel
 	"self new exampleRK4SolverOnMultipleRiskGroupsModel"
 	| model riskGroupConcern |
-	riskGroupConcern := self RiskGroupConcern.
+	riskGroupConcern := self riskGroupConcern.
 	model := KEModel new population: (KEPopulation size: 100000).
 	model attributes: {#status->#(S I)}.
 	model addParameter: #beta value: 16e-9.
