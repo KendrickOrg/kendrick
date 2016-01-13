@@ -5,12 +5,7 @@ baseline010: spec
 	spec for: #'common' do: [
 		spec blessing: #'baseline'.
 		spec repository: 'http://smalltalkhub.com/mc/UMMISCO/Kendrick/main/'.
-		spec 
-			project: 'Moose' with: [
-				spec
-					className: #ConfigurationOfMoose;
-					versionString: #'development';
-					repository: 'http://smalltalkhub.com/mc/Moose/Moose/main/' ];
+		spec
 			project: 'SciSmalltalk' with: [
 				spec
 					className: #ConfigurationOfSciSmalltalk;
@@ -27,4 +22,20 @@ baseline010: spec
 					versionString: #'stable';
 					loads: #('Glamour-Magritte-Presentations' );
 					repository: 'http://smalltalkhub.com/mc/Moose/Glamour/main/' ].
-		spec package: 'Kendrick'. ]
+		spec package: 'Kendrick'. ].
+	spec for:#'pharo4.0' do:[
+		spec project:'Moose' with:[
+				spec
+					className: #ConfigurationOfMoose;
+					versionString: #'stable';
+					repository: 'http://smalltalkhub.com/mc/Moose/Moose/main/' ]
+		].
+	spec for:#'pharo5.0' do:[	
+		spec project:'Moose' with:[
+				spec
+					className: #ConfigurationOfMoose;
+					versionString: #'development';
+					repository: 'http://smalltalkhub.com/mc/Moose/Moose/main/' ]
+		
+		].
+	
