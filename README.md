@@ -3,7 +3,7 @@
 
 Kendrick is a Domain-Specific Language and Simulation Plaform for mathematical epidemiology modeling. It helps epidemiologists craft custom analyses cheaply. It's based on [Pharo](http://www.pharo.org/) and it's open source under MIT.
 
-Kendrick is member of Moose4Ebola team for [Ebola Challenge](https://www.hackerleague.org/hackathons/computing-for-ebola-challenge/hacks/moose4ebola).
+Kendrick was involved in the Moose4Ebola team for [Ebola Challenge](https://www.hackerleague.org/hackathons/computing-for-ebola-challenge/hacks/moose4ebola).
 
 * Last stable version (0.23) on Pharo 4.0: [![Build Status](https://ci.inria.fr/pharo-contribution/buildStatus/icon?job=Kendrick/PHARO=40,VERSION=stable,VM=vm)](https://ci.inria.fr/pharo-contribution/job/Kendrick/PHARO=40,VERSION=stable,VM=vm/)
 * Last dev version on Pharo 4.0: [![Build Status](https://ci.inria.fr/pharo-contribution/job/Kendrick/PHARO=40,VERSION=development,VM=vm/badge/icon)](https://ci.inria.fr/pharo-contribution/job/Kendrick/PHARO=40,VERSION=development,VM=vm/)
