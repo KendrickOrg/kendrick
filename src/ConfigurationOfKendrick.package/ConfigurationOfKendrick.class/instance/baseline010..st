@@ -1,5 +1,5 @@
 baselines
-baseline10: spec
+baseline010: spec
 	<version: '0.10-baseline'>
 
 	spec for: #'common' do: [
