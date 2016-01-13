@@ -10,6 +10,6 @@ version027: spec
 		spec 
 			project: 'Moose' with: '6.0-baseline';
 			project: 'SciSmalltalk' with: '0.39';
-			project: 'Ston' with: '0.14';
+			project: 'Ston' with: '0.15';
 			project: 'Glamour' with: '3.3.0'.
 		spec package: 'Kendrick' with: 'Kendrick-SergeStinckwich.471'. ]
