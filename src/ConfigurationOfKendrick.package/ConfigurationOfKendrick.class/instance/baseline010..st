@@ -26,5 +26,5 @@ baseline010: spec
 					className: #ConfigurationOfGlamour;
 					versionString: #'stable';
 					loads: #('Glamour-Magritte-Presentations' );
-					repository: 'http://smalltalkhub.com/mc/Moose/Glamour/main/' ]
+					repository: 'http://smalltalkhub.com/mc/Moose/Glamour/main/' ].
 		spec package: 'Kendrick'. ].
