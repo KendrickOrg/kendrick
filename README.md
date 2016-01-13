@@ -17,7 +17,7 @@ Kendrick is based extensively on several tools of the meta-modeling platform [MO
 Github is only used to store [issues](https://github.com/UMMISCO/Kendrick/issues) list.
 
 ## How to install Kendrick 0.27
-* Download the last dev MOOSE 5.1 on INRIA's CI server: https://ci.inria.fr/moose/job/moose-5.1/
+* Download the last dev MOOSE 6.0 on INRIA's CI server: https://ci.inria.fr/moose/job/moose-6.0/
 * Load Kendrick:
 
 ```Smalltalk
@@ -28,7 +28,7 @@ Gofer new
 ````
 
 ## How to install Kendrick development version
-* Download the last dev MOOSE 5.1 on INRIA's CI server: https://ci.inria.fr/moose/job/moose-5.1/
+* Download the last dev MOOSE 6.0 on INRIA's CI server: https://ci.inria.fr/moose/job/moose-6.0/
 * Load Kendrick:
 
 ```Smalltalk
