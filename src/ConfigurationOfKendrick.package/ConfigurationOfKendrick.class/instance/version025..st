@@ -8,7 +8,7 @@ version025: spec
 		spec author: 'SergeStinckwich'.
 		spec timestamp: '13/1/2015 10:13'.
 		spec 
-			project: 'Moose' with: '6.0';
+			project: 'Moose' with: '6.0-baseline';
 			project: 'SciSmalltalk' with: '0.25-baseline';
 			project: 'Ston' with: '0.14';
 			project: 'Glamour' with: '3.3.0';

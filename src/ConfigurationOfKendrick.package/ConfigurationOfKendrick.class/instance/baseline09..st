@@ -9,7 +9,7 @@ baseline09: spec
 			project: 'Moose' with: [
 				spec
 					className: #ConfigurationOfMoose;
-					versionString: #'stable';
+					versionString: #'development';
 					repository: 'http://smalltalkhub.com/mc/Moose/Moose/main/' ];
 			project: 'SciSmalltalk' with: [
 				spec
