@@ -1,8 +1,6 @@
 SystemOrganization addCategory: #Kendrick!
 SystemOrganization addCategory: 'Kendrick-Code-Generators'!
 SystemOrganization addCategory: 'Kendrick-Examples'!
-SystemOrganization addCategory: 'Kendrick-GPU'!
-SystemOrganization addCategory: 'Kendrick-GPU-obsolete'!
 SystemOrganization addCategory: 'Kendrick-Glamour'!
 SystemOrganization addCategory: 'Kendrick-IBM-Core'!
 SystemOrganization addCategory: 'Kendrick-ODE-Parser'!
