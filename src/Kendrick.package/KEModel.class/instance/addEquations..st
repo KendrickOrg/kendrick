@@ -1,3 +1,3 @@
 adding
 addEquations: aCollectionOfEquations
-	aCollectionOfEquations do: [ :equation | self addEquation: equation parseAsAnEquation ]
+	aCollectionOfEquations do: [ :eachString | self addEquation: eachString ]
