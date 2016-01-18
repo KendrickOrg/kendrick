@@ -1,4 +1,4 @@
-as yet unclassified
+adding
 addTransition: aTransition
 	"Allowing to define a basic transition et generate automatically a set of equivalent transitions for compartments with the same status"
 	"|names|

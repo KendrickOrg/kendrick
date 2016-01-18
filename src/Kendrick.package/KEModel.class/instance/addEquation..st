@@ -1,3 +1,3 @@
-as yet unclassified
+adding
 addEquation: anEquation
 	equations addLast: anEquation

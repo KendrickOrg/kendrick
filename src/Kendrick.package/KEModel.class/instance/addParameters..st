@@ -1,4 +1,4 @@
-as yet unclassified
+adding
 addParameters: input
 	"input must be anArray of associations, each association is in format aSymbol->value corresponding to a parameter"
 	"|reader dic|

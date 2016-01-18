@@ -1,4 +1,4 @@
-as yet unclassified
+adding
 addParameter: input
 	"input of a parameter to add must be in format: aSymbol->value"
 	"|reader dic|
