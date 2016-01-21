@@ -1,7 +1,7 @@
 examples
 exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals
 	"self new exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals"
-	|model simulator network  db |
+	"|model simulator network  db |
 	model := KEModel new.
 	model population: KEMetaPopulation new.
 	model attributes: {#status->#(#S #I #R)}.
@@ -14,11 +14,11 @@ exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals
 	model addParameter: #gamma value: 0.1.
 	model addEquation: ('S:t=-beta*S*I').
 	model addEquation: ('I:t=beta*S*I-gamma*I').
-	model addEquation: ('R:t=gamma*I').
+	model addEquation: ('R:t=gamma*I')."
 	
 	"KERandomNetwork, p = 1 ==> Mixing population, compare with model with no network (exampleIBMSimulatorOnSIRModel 2)"
 	"KERandomSmallworldNetwork ==> beta = 0: regular ring lattice; beta = 1: random network"
-	network := KEContactNetwork 
+	"network := KEContactNetwork 
 						newOn: model population 
 						atAttribute: #status 
 						topology: (KERandomSmallWorldNetwork new K: 4; beta: 1).
@@ -27,4 +27,4 @@ exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals
 	simulator := KESimulator new: #IBM from: 0.0 to: 200 step: 0.1.
 	simulator executeOn: model.
 	db := KEDiagramBuilder new data: (simulator timeSeriesAt: '{#status: #I}').
-	^ db view 
+	^ db view "

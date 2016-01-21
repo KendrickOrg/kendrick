@@ -2,13 +2,10 @@ examples
 exampleGillespieDirectOnSIRSimpleModelWithODERepresentation
 	"self new exampleGillespieDirectOnSIRSimpleModelWithODERepresentation"
 	|model  simulator dB |
-	model := KEModel new.
-	model attributes: {#status->#(#S #I #R)}.
-	model buildFromCompartments: '{
-		{ #status: #S }: 99999,
-		{ #status: #I }: 1,
-		{ #status: #R }: 0
-	}'.
+	model := KEModel new population: (KEPopulation size: 100000).
+	model addAttribute: #status value: #(#S #I #R).
+	model atCompartment: { #status->#S } put: 99999 atOthersPut: 0.
+	model atCompartment: { #status->#I } put: 1.
 	model addParameters: {#beta->0.0052. #gamma->52}.
 	model addEquation: 'S:t=-beta*S*I'.
 	model addEquation: 'I:t=beta*S*I - gamma*I'.

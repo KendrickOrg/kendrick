@@ -2,13 +2,10 @@ examples
 exampleGillespieDirectOnSIRSimpleModel
 	"self new exampleGillespieDirectOnSIRSimpleModel"
 	|model simulator dB |
-	model := KEModel new.
-	model attributes: {#status->#(#S #I #R)}.
-	model buildFromCompartments: '{
-		{ #status: #S }: 9999,
-		{ #status: #I }: 1,
-		{ #status: #R }: 0
-	}'.
+	model := KEModel new population: (KEPopulation size: 10000).
+	model addAttribute: #status value: #(#S #I #R).
+	model atCompartment: { #status->#S } put: 9999 atOthersPut: 0.
+	model atCompartment: { #status->#I } put: 1.
 	model addParameters: {#beta->520. #gamma->52}.
 	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #I}'

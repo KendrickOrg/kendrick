@@ -2,12 +2,10 @@ examples
 exampleGillespieDirectOnSIRBioPEPAModel
 	"self new exampleGillespieDirectOnSIRBioPEPAModel"
 	|model  simulator  dB |
-	model := KEModel new.
-	model buildFromCompartments: '{
-		{ #status: #S }: 100,
-		{ #status: #I }: 1,
-		{ #status: #R }: 0
-	}'.
+	model := KEModel new population: (KEPopulation size: 100).
+	model addAttribute: #status value: #(S I R).
+	model atCompartment: { #status->#S } put: 99 atOthersPut: 0.
+	model atCompartment: { #status->#I } put: 1.
 	model addParameters: {#beta->1.4247. #gamma->0.1429}.
 	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #I}'
@@ -21,6 +19,6 @@ exampleGillespieDirectOnSIRBioPEPAModel
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
 	dB data: (simulator timeSeriesAt: '{#status: #I}').
-	^ dB view
+	^ dB open
 	
 	
