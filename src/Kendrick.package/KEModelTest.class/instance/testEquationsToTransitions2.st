@@ -13,9 +13,9 @@ testEquationsToTransitions2
 		{ #status: #I, #species: #reservoir2 }: 1,
 		{ #status: #R, #species: #reservoir2 }: 0
 	}'.
-	model addEquation: 'S:t=mu*N-beta*S*I-mu*S' parseAsAnEquation.
-	model addEquation: ('I:t=beta*S*I-(mu+v)*I' parseAsAnEquation).
-	model addEquation: ('R:t=v*I-mu*R' parseAsAnEquation).
+	model addEquation: 'S:t=mu*N-beta*S*I-mu*S'.
+	model addEquation: 'I:t=beta*S*I-(mu+v)*I'.
+	model addEquation: 'R:t=v*I-mu*R'.
 	
 	self assert: (model transitions size) equals: 6
 	

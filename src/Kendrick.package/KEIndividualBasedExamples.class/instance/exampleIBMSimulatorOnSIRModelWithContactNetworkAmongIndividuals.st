@@ -12,9 +12,9 @@ exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals
 	}'.
 	model addParameter: #beta value: 1.
 	model addParameter: #gamma value: 0.1.
-	model addEquation: ('S:t=-beta*S*I' parseAsAnEquation).
-	model addEquation: ('I:t=beta*S*I-gamma*I' parseAsAnEquation).
-	model addEquation: ('R:t=gamma*I' parseAsAnEquation).
+	model addEquation: ('S:t=-beta*S*I').
+	model addEquation: ('I:t=beta*S*I-gamma*I').
+	model addEquation: ('R:t=gamma*I').
 	
 	"KERandomNetwork, p = 1 ==> Mixing population, compare with model with no network (exampleIBMSimulatorOnSIRModel 2)"
 	"KERandomSmallworldNetwork ==> beta = 0: regular ring lattice; beta = 1: random network"

@@ -10,7 +10,7 @@ modelRK4SolverOnSIRSimpleModelWithODERepresentation
 	model atCompartment: { #status->#R } put: 0.
 		
 	model addParameters: {#beta->0.0052. #gamma->52}.
-	model addEquation: 'S:t=-beta*S*I' parseAsAnEquation.
-	model addEquation: 'I:t=beta*S*I - gamma*I' parseAsAnEquation.
-	model addEquation: 'R:t=gamma*I' parseAsAnEquation.
+	model addEquation: 'S:t=-beta*S*I'.
+	model addEquation: 'I:t=beta*S*I - gamma*I'.
+	model addEquation: 'R:t=gamma*I'.
 	^ model

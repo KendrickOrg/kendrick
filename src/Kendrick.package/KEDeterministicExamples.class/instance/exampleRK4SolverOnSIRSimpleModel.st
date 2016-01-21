@@ -8,4 +8,4 @@ exampleRK4SolverOnSIRSimpleModel
 	dB := KEDiagramBuilder new.
 	dB data: (simulator timeSeriesAt: '{#status: #I}').
 	dB xLabel: 'Time (year)'.
-	^ dB view
+	^ dB open

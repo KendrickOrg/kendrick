@@ -19,9 +19,9 @@ exampleIBMSimulatorOnSIRMigrationModel
 	graph addMigrationTransitionsTo: model.
 
 	model addEquation:
-		('S:t=mu*N-beta*S*I-d*S' parseAsAnEquation).
+		('S:t=mu*N-beta*S*I-d*S').
 	model addEquation:
-		('I:t=beta*S*I-gamma*I-d*I' parseAsAnEquation).
+		('I:t=beta*S*I-gamma*I-d*I').
 		
 	simulator := KESimulator new: #IBM from: 0 to: 2910 step: 1.
 	simulator executeOn: model.

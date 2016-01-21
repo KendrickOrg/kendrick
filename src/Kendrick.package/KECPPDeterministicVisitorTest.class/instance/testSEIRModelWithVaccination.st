@@ -12,10 +12,10 @@ testSEIRModelWithVaccination
 	model atParameter: #mu put: 1 / 80.
 	model atParameter: #p put: 0.0.
 	model atParameter: #N put: 100000.
-	model addEquation: (PPODEParser parse: 'S:t=mu*(1-p)*N-beta*S*I-mu*S').
-	model addEquation: (PPODEParser parse: 'E:t=beta*S*I-sigma*E-mu*E').
-	model addEquation: (PPODEParser parse: 'I:t=sigma*E-gamma*I-mu*I').
-	model addEquation: (PPODEParser parse: 'R:t=mu*p*N*gamma*I-mu*R').
+	model addEquation: ('S:t=mu*(1-p)*N-beta*S*I-mu*S').
+	model addEquation: ('E:t=beta*S*I-sigma*E-mu*E').
+	model addEquation: ('I:t=sigma*E-gamma*I-mu*I').
+	model addEquation: ('R:t=mu*p*N*gamma*I-mu*R').
 	result := model runDeterministSimulationFrom: 0 to: 100 withStep: 0.01.
 	visitor := KECPPDeterministicVisitor new.
 	visitor visitNode: model.

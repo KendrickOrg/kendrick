@@ -37,9 +37,9 @@ exampleGillespieSimulatorOnSIREbolaModel
 	g1 edges: #all; strengthOfAllConnections: 0.05.
 	g1 addMigrationTransitionsTo: model.
 	
-	model addEquation: ('S:t=-beta*S*I' parseAsAnEquation).
-	model addEquation: ('I:t=beta*S*I-gamma*I' parseAsAnEquation).
-	model addEquation: ('R:t=gamma*I' parseAsAnEquation).
+	model addEquation: ('S:t=-beta*S*I').
+	model addEquation: ('I:t=beta*S*I-gamma*I').
+	model addEquation: ('R:t=gamma*I').
 	simulator := KESimulator new: #Gillespie from: 0.0 to: 100 step: 0.1.
 	simulator executeOn: model.
 	(simulator timeSeriesAt: '{#status:#I,#country:#Liberia}') first save: 'Liberia.txt'.

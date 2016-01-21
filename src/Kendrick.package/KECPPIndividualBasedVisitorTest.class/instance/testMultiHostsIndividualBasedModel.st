@@ -16,12 +16,12 @@ testMultiHostsIndividualBasedModel
 	model atParameter: #v put: 52.
 	model atParameter: #j put: (1 to: 3).
 	model atParameter: #i put: (1 to: 3).
-	dsdt := 'S[i]:t=mu[i]*N[i]-sum(j, beta[i, j]*I[j])*S[i]-mu[i]*S[i]' parseAsAnEquation.
-	didt := 'I[i]:t=sum(j, beta[i,j]*I[j])*S[i]-(mu[i]+v)*I[i]' parseAsAnEquation.
+	dsdt := 'S[i]:t=mu[i]*N[i]-sum(j, beta[i, j]*I[j])*S[i]-mu[i]*S[i]'.
+	didt := 'I[i]:t=sum(j, beta[i,j]*I[j])*S[i]-(mu[i]+v)*I[i]'.
 	model addEquation: dsdt.
 	model addEquation: didt.	
 	"model runIndividualBasedSimulationFrom: 0 to: 0.5  withStep:  0.0027."
-	model simulator: ((KEIndividualBasedSimulator2 new) tMin: 0.0; tMax: 5.0; step: 0.25; model: model; algorithm: #default).
+	model simulator: ((KEIndividualBasedSimulator new) tMin: 0.0; tMax: 5.0; step: 0.25; model: model; algorithm: #default).
 	model simulator generateTransitionOfEvents.
 	model simulator initializeListIndividuals.
 	visitor := KECPPIndividualBasedVisitor  new.

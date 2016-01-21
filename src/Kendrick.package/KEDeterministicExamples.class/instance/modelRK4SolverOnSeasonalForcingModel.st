@@ -17,11 +17,11 @@ modelRK4SolverOnSeasonalForcingModel
 		addParameter: #beta 
 		value: 'beta0*(1 + (betaAmp*cos(t)))' parseAsAnExpression.
 	model 
-		addEquation: 'S:t=mu*N-beta*S*I-mu*S' parseAsAnEquation.
+		addEquation: 'S:t=mu*N-beta*S*I-mu*S'.
 	model 
-		addEquation: 'E:t=beta*S*I-sigma*E-mu*E' parseAsAnEquation.
+		addEquation: 'E:t=beta*S*I-sigma*E-mu*E'.
 	model 
-		addEquation: 'I:t=sigma*E-gamma*I-mu*I' parseAsAnEquation.
+		addEquation: 'I:t=sigma*E-gamma*I-mu*I'.
 	model 
-		addEquation: 'R:t=gamma*I-mu*R' parseAsAnEquation.
+		addEquation: 'R:t=gamma*I-mu*R'.
 	^ model

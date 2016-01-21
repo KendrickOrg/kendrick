@@ -7,8 +7,8 @@ testEquationsToTransitions
 		{ #status: #I }: 1,
 		{ #status: #R }: 0
 	}'.
-	model addEquation: 'S:t=mu*N - beta*S*I - mu*S' parseAsAnEquation.
-	model addEquation: 'I:t=beta*S*I - gamma*I - mu*I' parseAsAnEquation.
-	model addEquation: 'R:t=gamma*I - mu*R' parseAsAnEquation.
+	model addEquation: 'S:t=mu*N - beta*S*I - mu*S'.
+	model addEquation: 'I:t=beta*S*I - gamma*I - mu*I'.
+	model addEquation: 'R:t=gamma*I - mu*R'.
 	
 	self assert: (model transitions size) equals: 6

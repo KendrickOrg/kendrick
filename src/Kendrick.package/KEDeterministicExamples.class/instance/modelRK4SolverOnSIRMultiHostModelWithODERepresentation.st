@@ -15,9 +15,9 @@ modelRK4SolverOnSIRMultiHostModelWithODERepresentation
 	model addParameter: #lambda value: [ :aModel| 
 		(aModel atParameter: #beta) * 
 		(aModel atCompartment: {#status->#I}) ].
-	model addEquation: 'S:t=mu*N-beta*S*I-mu*S' parseAsAnEquation.
-	model addEquation: ('I:t=beta*S*I-(mu+gamma)*I' parseAsAnEquation).
-	model addEquation: ('R:t=gamma*I-mu*R' parseAsAnEquation).
+	model addEquation: 'S:t=mu*N-beta*S*I-mu*S'.
+	model addEquation: ('I:t=beta*S*I-(mu+gamma)*I').
+	model addEquation: ('R:t=gamma*I-mu*R').
 	
 	model integrate: multiHostConcern.	
 	model 

@@ -7,9 +7,9 @@ modelRK4SolverOnMultipleRiskGroupsModel
 	model attributes: {#status->#(S I)}.
 	model addParameter: #beta value: 16e-9.
 	model addParameter: #gamma value: 0.2.
-	model addParameter: #lambda value: 'beta*I' parseAsAnExpression. 
-	model addEquation: 'S:t=gamma*I-lambda*S' parseAsAnEquation.
-	model addEquation: 'I:t=lambda*S-gamma*I' parseAsAnEquation.
+	model addParameter: #lambda value: 'beta*I'. 
+	model addEquation: 'S:t=gamma*I-lambda*S'.
+	model addEquation: 'I:t=lambda*S-gamma*I'.
 	
 	model integrate: riskGroupConcern.
 	model addParameter: #rho value: [ :aModel| |c val|

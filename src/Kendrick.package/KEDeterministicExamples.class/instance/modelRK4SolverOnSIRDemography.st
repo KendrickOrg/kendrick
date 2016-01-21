@@ -10,7 +10,7 @@ modelRK4SolverOnSIRDemography
 	model addParameter: #beta value: 1 / 5000.
 	model addParameter: #gamma value: 1 / 10.0.
 	model addParameter: #mu value: 5e-4.
-	model addEquation: 'S:t=mu*N-beta*S*I-mu*S' parseAsAnEquation.
-	model addEquation: 'I:t=beta*S*I-gamma*I-mu*I' parseAsAnEquation.
-	model addEquation: 'R:t=gamma*I-mu*R' parseAsAnEquation.
+	model addEquation: 'S:t=mu*N-beta*S*I-mu*S'.
+	model addEquation: 'I:t=beta*S*I-gamma*I-mu*I'.
+	model addEquation: 'R:t=gamma*I-mu*R'.
 	^ model

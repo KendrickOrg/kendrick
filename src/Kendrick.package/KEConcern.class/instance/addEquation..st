@@ -1,3 +1,3 @@
 as yet unclassified
-addEquation: anEquation
-	equations add: anEquation 
+addEquation: aString
+	equations addLast: aString parseAsAnEquation 

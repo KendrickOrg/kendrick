@@ -12,12 +12,12 @@ testSEIRWithLossOfImunityIndividualBasedModel
 	model atParameter: #mu put: 1 / 80.
 	model atParameter: #to put: 2.
 	model atParameter: #N put: 100000.
-	model addEquation: (PPODEParser parse: 'S:t=mu*N-beta*S*I-mu*S+to*R').
-	model addEquation: (PPODEParser parse: 'E:t=beta*S*I-sigma*E-mu*E').
-	model addEquation: (PPODEParser parse: 'I:t=sigma*E-gamma*I-mu*I').
-	model addEquation: (PPODEParser parse: 'R:t=gamma*I-mu*R-to*R').
+	model addEquation: ('S:t=mu*N-beta*S*I-mu*S+to*R').
+	model addEquation: ('E:t=beta*S*I-sigma*E-mu*E').
+	model addEquation: ('I:t=sigma*E-gamma*I-mu*I').
+	model addEquation: ('R:t=gamma*I-mu*R-to*R').
 	"model runIndividualBasedSimulationFrom: 0 to: 0.5  withStep:  0.0027."
-	model simulator: ((KEIndividualBasedSimulator2 new) tMin: 0.0; tMax: 1.0; step: 0.0027; model: model; algorithm: #default).
+	model simulator: ((KEIndividualBasedSimulator new) tMin: 0.0; tMax: 1.0; step: 0.0027; model: model; algorithm: #default).
 	model simulator generateTransitionOfEvents.
 	model simulator initializeListIndividuals.
 	visitor := KECPPIndividualBasedVisitor  new.

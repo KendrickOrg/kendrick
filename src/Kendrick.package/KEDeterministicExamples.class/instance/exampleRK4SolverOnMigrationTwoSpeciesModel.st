@@ -16,6 +16,7 @@ exampleRK4SolverOnMigrationTwoSpeciesModel
 	db data: { 
 		(f value: '{#status:#I,#species:#bird}'). 
 		(f value: '{#status: #I, #species: #human}') }.
+
 	db xLabel: 'Time (days)'.
 	db legendTitle: 'Total of infectious'.
 	db legends: { 'birds'. 'humans' }.
