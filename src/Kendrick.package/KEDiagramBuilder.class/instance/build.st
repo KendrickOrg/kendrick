@@ -8,7 +8,7 @@ build
 						colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
 	1 to: legends size do: [ :i|
 		|ds|
-		ds := RTData new.
+		ds := RTDataSet new.
 		ds noDot.
 		ds points: (data at: i) value index.
 		ds x: #yourself.
