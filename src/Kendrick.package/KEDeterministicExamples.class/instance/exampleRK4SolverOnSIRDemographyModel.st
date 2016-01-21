@@ -7,4 +7,4 @@ exampleRK4SolverOnSIRDemographyModel
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
 	dB data: { simulator timeSeriesAt: '{#status: #I}'}.
-	^ dB open
+	^ dB view

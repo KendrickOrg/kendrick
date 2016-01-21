@@ -21,5 +21,5 @@ exampleRK4SolverOnMigrationTwoSpeciesModel
 	db legendTitle: 'Total of infectious'.
 	db legends: { 'birds'. 'humans' }.
 
-	^ db open															
+	^ db view															
 														

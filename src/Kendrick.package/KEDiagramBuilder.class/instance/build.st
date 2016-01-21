@@ -5,7 +5,7 @@ build
 	b extent: 400 @ 200.
 	normalize := RTMultiLinearColorForIdentity new 
 						objects: self legends;
-						colors: (RTColorPalette qualitative colors: 9 scheme: "'FlatUI1'" 'Set1').
+						colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
 	1 to: legends size do: [ :i|
 		|ds|
 		ds := RTDataSet new.
@@ -21,7 +21,6 @@ build
 	yLabel ifNil: [ b axisY title: 'Number of individuals' ] 
 	       ifNotNil: [ b axisY title: yLabel ].
 	b axisY noDecimal.
-	"b axisX noDecimal."
 	lb := RTLegendBuilder new.
 	lb view: b view.
 	self legendTitle ifNil: [ legendTitle := 'Compartments' ].
