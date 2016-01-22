@@ -19,7 +19,7 @@ Github is only used to store [issues](https://github.com/UMMISCO/Kendrick/issues
 ## How to install Kendrick 0.30
 * Download a Spur VM: https://ci.inria.fr/pharo/view/5.0-VM-Spur/job/PharoVM-spur32/
 * Download the last dev MOOSE 6.0 on INRIA's CI server: https://ci.inria.fr/moose/job/moose-6.0/
-* Load Kendrick:
+* Load Kendrick: Open MOOSE 6.0 image with the Spur VM then right-click anywhere to open the main menu. Choose Playground to execute scripts. Paste the script below in Playground, select all then right-click and choose Do it to execute this.
 
 ```Smalltalk
 Gofer new
@@ -31,7 +31,7 @@ Gofer new
 ## How to install Kendrick development version
 * Download a Spur VM: https://ci.inria.fr/pharo/view/5.0-VM-Spur/job/PharoVM-spur32/
 * Download the last dev MOOSE 6.0 on INRIA's CI server: https://ci.inria.fr/moose/job/moose-6.0/
-* Load Kendrick:
+* Load Kendrick: the instructions to load the development version of Kendrick is similar. The script is below:
 
 ```Smalltalk
 Gofer new
