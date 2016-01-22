@@ -1,12 +1,10 @@
 tests-as yet unclassified
 testSizeOfPopulation
 	|model|
-	model := KEModel new.
-	model buildFromCompartments: '{
-		{ #status: #S }: 99999,
-		{ #status: #I }: 1,
-		{ #status: #R }: 0
-	}'.
+	model := KEModel new population: (KEPopulation size: 100000).
+	model attributes: { #status->#(S I R) }.
+	model atCompartment: { #status->#S } put: 99999 atOthersPut: 0.
+	model atCompartment: { #status->#I } put: 1.
 	
 	self assert: (model sizeOfPopulation) equals: 100000.
 	self assert: (model sizeOfPopulation: #(#S)) equals: 99999.
