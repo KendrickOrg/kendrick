@@ -9,7 +9,8 @@
 		"attributes",
 		"parameters",
 		"equations",
-		"transitions"
+		"transitions",
+		"dependencyConcern"
 	],
 	"name" : "KEConcern",
 	"type" : "normal"
