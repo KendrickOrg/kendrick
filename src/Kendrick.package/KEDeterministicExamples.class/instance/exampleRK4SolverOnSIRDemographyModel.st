@@ -6,5 +6,5 @@ exampleRK4SolverOnSIRDemographyModel
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 146 step: 0.1.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
-	dB data: { simulator timeSeriesAt: '{#status: #I}'}.
+	dB data: (simulator timeSeriesAt: '{#status: #I}').
 	^ dB open
