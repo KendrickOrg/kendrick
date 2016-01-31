@@ -1,15 +1,16 @@
 tests
 testEvaluateProbability
 	|tr model rs|
-	model := KEModel new population: (KEPopulation size: 10001).
-	model attributes: { #status->#(S I R) }.
-	model atCompartment: { #status->#S } put: 10000 atOthersPut: 0.
-	model atCompartment: { #status->#I } put: 1.
+	model := KEModel new.
 	tr := KETransition
 			from: '{#status: #S}'
 			to: '{#status: #I}'
 			probability: [ :fr :to :t| (model atParameter: #beta) * fr * to ].
-	
+	model buildFromCompartments: '{
+		{ #status: #S }: 10000,
+		{ #status: #I }: 1,
+		{ #status: #R }: 0
+	}'.
 	model addParameters: {#beta->0.0052. #gamma->52}.
 	rs := tr probability 
 			value: (model atCompartment: tr from)

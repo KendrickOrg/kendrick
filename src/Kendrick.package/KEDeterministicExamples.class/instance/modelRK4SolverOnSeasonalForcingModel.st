@@ -15,7 +15,7 @@ modelRK4SolverOnSeasonalForcingModel
 		#mu->0.0125}.
 	model
 		addParameter: #beta 
-		value: 'beta0*(1 + (betaAmp*cos(t)))'.
+		value: 'beta0*(1 + (betaAmp*cos(t)))' parseAsAnExpression.
 	model 
 		addEquation: 'S:t=mu*N-beta*S*I-mu*S'.
 	model 

@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "BuiThiMaiAnh 1/6/2016 09:23",
+	"super" : "KEConcern",
+	"category" : "Kendrick-Semantic-Model-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "KEDependentConcern",
+	"type" : "normal"
+}

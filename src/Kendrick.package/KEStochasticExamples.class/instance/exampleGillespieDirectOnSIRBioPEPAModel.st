@@ -19,6 +19,6 @@ exampleGillespieDirectOnSIRBioPEPAModel
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
 	dB data: (simulator timeSeriesAt: '{#status: #I}').
-	^ dB view
+	^ dB open
 	
 	

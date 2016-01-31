@@ -7,5 +7,5 @@ exampleRK4SolverOnSEIRMeaslesModel
 	simulator executeOn: model.
 	diag := (KEDiagramBuilder new) data: simulator allTimeSeries.
 	diag xLabel: 'Time (days)'.
-	^ diag open
+	^ diag view
 	

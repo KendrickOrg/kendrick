@@ -1,5 +1,5 @@
-tests-as yet unclassified
-testAddTransition
+tests
+testEquationsToTransitions2
 	|model|
 	model := KEModel new.
 	model buildFromCompartments: '{
@@ -13,5 +13,10 @@ testAddTransition
 		{ #status: #I, #species: #reservoir2 }: 1,
 		{ #status: #R, #species: #reservoir2 }: 0
 	}'.
-	model addTransition: (KETransition from: '{#status: #S}' to: '{#status: #I}' probability: 'beta*I' parseAsAnExpression ).
-	self assert: (model transitions size) equals: 1
+	model addEquation: 'S:t=mu*N-beta*S*I-mu*S'.
+	model addEquation: 'I:t=beta*S*I-(mu+v)*I'.
+	model addEquation: 'R:t=v*I-mu*R'.
+	
+	self assert: (model transitions size) equals: 6
+	
+	

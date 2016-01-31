@@ -84,5 +84,5 @@ exampleGillespieDirectOnSIRMultiHostModel
 	db := (KEDiagramBuilder new) data: ((simulator timeSeriesAt: '{#status: #I}') sqrt).
 	db xLabel: 'Time (year)'.
 	db yLabel: 'sqrt(Infectious)'.
-	^ db view
+	^ db open
 	

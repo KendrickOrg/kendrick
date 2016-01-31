@@ -2,10 +2,13 @@ as yet unclassified
 testAfterSimulationOfSIRModelThereAreThreeTimeSeries
 
 |model simulator   |
-	model := KEModel new population: (KEPopulation size: 100000).
+	model := KEModel new.
 	model attributes: {#status->#(#S #I #R)}.
-	model atCompartment: { #status->#S } put: 99999 atOthersPut: 0.
-	model atCompartment: { #status->#I } put: 1.
+	model buildFromCompartments: '{
+		{ #status: #S }: 99999,
+		{ #status: #I }: 1,
+		{ #status: #R }: 0
+	}'.
 	model addParameters: {#beta->520. #gamma->52}.
 	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #I}'
