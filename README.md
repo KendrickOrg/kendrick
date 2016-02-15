@@ -16,7 +16,7 @@ Kendrick is based extensively on several tools of the meta-modeling platform [MO
 
 Github is only used to store [issues](https://github.com/UMMISCO/Kendrick/issues) list.
 
-## How to install Kendrick 0.30
+## How to install Kendrick 0.31
 * Download a Spur VM: https://ci.inria.fr/pharo/view/5.0-VM-Spur/job/PharoVM-spur32/
 * Download the last dev MOOSE 6.0 on INRIA's CI server: https://ci.inria.fr/moose/job/moose-6.0/
 * Load Kendrick: Open MOOSE 6.0 image with the Spur VM then right-click anywhere to open the main menu. Choose Playground to execute scripts. Paste the script below in Playground, select all then right-click and choose Do it to execute this.
@@ -25,7 +25,7 @@ Github is only used to store [issues](https://github.com/UMMISCO/Kendrick/issues
 Gofer new
     url: 'http://smalltalkhub.com/mc/UMMISCO/Kendrick/main';
     configurationOf:'Kendrick';
-    loadVersion:'0.30'.
+    loadVersion:'0.31'.
 ````
 
 ## How to install Kendrick development version
