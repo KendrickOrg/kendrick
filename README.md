@@ -5,8 +5,8 @@ Kendrick is a Domain-Specific Language and Simulation Plaform for mathematical e
 
 Kendrick was involved in the Moose4Ebola team for [Ebola Challenge](https://www.hackerleague.org/hackathons/computing-for-ebola-challenge/hacks/moose4ebola).
 
-* Last stable version (0.30) on Pharo 5.0: [![Build Status](https://ci.inria.fr/pharo-contribution/buildStatus/icon?job=Kendrick/PHARO=40,VERSION=stable,VM=vm)](https://ci.inria.fr/pharo-contribution/job/Kendrick/PHARO=40,VERSION=stable,VM=vm/)
-* Last dev version on Pharo 4.0: [![Build Status](https://ci.inria.fr/pharo-contribution/job/Kendrick/PHARO=40,VERSION=development,VM=vm/badge/icon)](https://ci.inria.fr/pharo-contribution/job/Kendrick/PHARO=40,VERSION=development,VM=vm/)
+* Last stable version (0.31) on Pharo 5.0: [![Build Status](https://ci.inria.fr/pharo-contribution/buildStatus/icon?job=Kendrick/PHARO=50,VERSION=stable,VM=vm)](https://ci.inria.fr/pharo-contribution/job/Kendrick/PHARO=50,VERSION=stable,VM=vm/)
+* Last dev version on Pharo 5.0: [![Build Status](https://ci.inria.fr/pharo-contribution/job/Kendrick/PHARO=50,VERSION=development,VM=vm/badge/icon)](https://ci.inria.fr/pharo-contribution/job/Kendrick/PHARO=50,VERSION=development,VM=vm/)
 
 All the development happens on SmalltalkHub at the moment: http://bit.ly/XrpsL2
 
