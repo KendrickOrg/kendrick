@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/UMMISCO/kendrick.png?label=ready&title=Ready)](https://waffle.io/UMMISCO/kendrick)
 [![Join the chat at https://gitter.im/UMMISCO/kendrick](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/UMMISCO/kendrick?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/UMMISCO/kendrick/master/LICENSE)
 
