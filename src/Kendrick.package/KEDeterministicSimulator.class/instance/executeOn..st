@@ -1,4 +1,4 @@
-as yet unclassified
+public
 executeOn: aModel
 	|st ks|
 	super executeOn:aModel.

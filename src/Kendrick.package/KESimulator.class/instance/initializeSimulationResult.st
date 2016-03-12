@@ -1,4 +1,5 @@
 initialization
 initializeSimulationResult
 	result := OrderedCollection new.
-	model population compartments keys do: [ :each | result add: (KETimeSeries new compartment: each) ]
+	model population compartments
+		keysDo: [ :each | result add: (KETimeSeries new compartment: each) ]

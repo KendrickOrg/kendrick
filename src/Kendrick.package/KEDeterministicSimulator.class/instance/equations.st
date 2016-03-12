@@ -1,4 +1,4 @@
-as yet unclassified
+accessing
 equations
 	equations := Dictionary new.
 	model compartmentNames do: [ :k| equations at: k put: OrderedCollection new ].

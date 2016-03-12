@@ -1,3 +1,3 @@
-as yet unclassified
+accessing
 strengthFormula: anExpressionOrBlock
 	strengthFormula := anExpressionOrBlock 

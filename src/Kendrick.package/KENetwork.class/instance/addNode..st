@@ -1,5 +1,3 @@
-as yet unclassified
+adding
 addNode: aNodeLabel
-	|node|
-	node := KENode new label: aNodeLabel.
-	nodes add: node
+	nodes add: (KENode new label: aNodeLabel)

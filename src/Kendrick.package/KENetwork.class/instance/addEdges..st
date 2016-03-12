@@ -1,4 +1,4 @@
-as yet unclassified
+adding
 addEdges: edgeCollection
 	"edgeCollection is either #all or an array of associations: {#a->#b. #a->#c. ...}"
 	((edgeCollection = #all) or: [ edgeCollection = #allIncludingWithItself ])

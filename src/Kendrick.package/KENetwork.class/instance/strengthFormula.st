@@ -1,4 +1,4 @@
-as yet unclassified
+accessing
 strengthFormula
 	strengthFormula ifNil: [ strengthFormula := [:rho| rho] ].
 	^ strengthFormula 

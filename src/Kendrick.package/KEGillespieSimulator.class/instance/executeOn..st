@@ -1,4 +1,4 @@
-as yet unclassified
+public
 executeOn: aModel
 	| rand1 rand2 t previousT |
 	super executeOn: aModel.
@@ -14,7 +14,6 @@ executeOn: aModel
 			r1 := rand1 next.
 			r2 := rand1 next.
 			deltaT := self doGillespieIteration: t randoms: (Array with: r1 with: r2).
-			"Transcript show: (aModel population compartments) values; cr."
 			deltaT = 0.0
 				ifTrue: [ ^ self ].
 			t := t + deltaT.
