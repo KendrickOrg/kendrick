@@ -1,18 +1,23 @@
-as yet unclassified
+accessing
 equationsToTransitions
-	|eGenerator events|
+	| eGenerator events |
 	eGenerator := KEEventGenerator new.
 	events := eGenerator generateEvents: self.
-	events do: [ :e|
-		e fromStatus = #empty ifTrue: [ 
+	events
+		do: [ :e | 
+			e fromStatus = #empty
+				ifTrue:
+					[ e rate: (e rate remove: (KEVariable new symbol: #N)) ]
 			"|symbol|
-			symbol := parameters keyAtValue: #sizeOfPopulation ifAbsent: [#N]."
-			e rate: (e rate remove: (KEVariable new symbol: #N)) ]
-		 ].
-	events do: [ :each| |from to|
-		each fromStatus = #empty ifTrue: [ from := #empty ] ifFalse: [ from := Dictionary newFrom: { #status->each fromStatus } ].
-		each toStatus = #empty ifTrue: [ to := #empty ] ifFalse: [ to := Dictionary newFrom: { #status->each toStatus } ].
-		self addTransitionFrom: from to: to probability: each rate
-		 ].
-	equations := OrderedCollection new.
-
+			symbol := parameters keyAtValue: #sizeOfPopulation ifAbsent: [#N]." ].
+	events
+		do: [ :each | 
+			| from to |
+			from := each fromStatus = #empty
+				ifTrue: [ #empty ]
+				ifFalse: [ Dictionary newFrom: {(#status -> each fromStatus)} ].
+			to := each toStatus = #empty
+				ifTrue: [ #empty ]
+				ifFalse: [ Dictionary newFrom: {(#status -> each toStatus)} ].
+			self addTransitionFrom: from to: to probability: each rate ].
+	equations := OrderedCollection new
