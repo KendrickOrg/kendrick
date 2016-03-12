@@ -1,7 +1,8 @@
 accessing
 transitions
-	(equations size > 0) ifTrue: [ self equationsToTransitions ].
-	transitions size = 0 ifTrue: [  
+
+	equations isEmpty ifFalse: [ self equationsToTransitions ].
+	transitions isEmpty ifTrue: [  
 		"generate a transition rate matrix of 0"
 		self compartmentNames do: [ :e| 
 			transitions addAll: (self compartmentNames collect: [:f| 
