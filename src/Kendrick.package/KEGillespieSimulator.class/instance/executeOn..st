@@ -14,7 +14,7 @@ executeOn: aModel
 			r1 := rand1 next.
 			r2 := rand2 next.
 			deltaT := self doGillespieIteration: t randoms: (Array with: r1 with: r2).
-			deltaT = 0.0
+			(deltaT closeTo: 0.0)
 				ifTrue: [ ^ self ].
 			t := t + deltaT.
 			"Only store in the result from step to step"

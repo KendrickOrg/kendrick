@@ -1,17 +1,14 @@
 as yet unclassified
 doGillespieIteration: t randoms: rands
-	|rates deltaT  chosen|
+	|rates deltaT chosen|
 	rates := OrderedCollection new.
 	model t: t.
 	model transitions do: [ :tr| 
 		|prob|
-		"model parameters at: #scope put: tr scope.
-		model parameters at: #contactingSource put: (tr from)."
 		(tr from = #empty)
 		ifTrue: [ model currentCompartment: (tr to) ] 
 		ifFalse: [ model currentCompartment: (tr from) ].
 		prob := (tr probability value: model) abs.
-		"prob isDictionary ifTrue: [ prob := prob values sum ]."
 		rates add: (prob * (model atCompartment: tr from)) 
 		].
 	(rates sum) = 0 ifTrue: [ ^ 0.0 ].
