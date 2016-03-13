@@ -1,5 +1,3 @@
-as yet unclassified
+evaluating
 evaluateWithModel: model
-	|result|
-	result := self expression evaluateWithModel: model.
-	^ result
+	^ self expression evaluateWithModel: model

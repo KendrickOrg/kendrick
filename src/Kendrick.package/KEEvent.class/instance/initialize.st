@@ -1,7 +1,7 @@
-accessing
+initialization
 initialize
 	super initialize.
 	actions := Dictionary new.
-	rate := nil. 
+	rate := nil.
 	toStatus := #empty.
 	fromStatus := #empty

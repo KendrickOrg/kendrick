@@ -1,6 +1,3 @@
 accessing
 hasAnEventWithOppositeRateIn: eventList
-	eventList do: [ :event|
-		(event rate negated = self rate) ifTrue: [ ^ true ]
-		 ].
-	^ false
+	^ eventList anySatisfy: [ :event | event rate negated = self rate ]
