@@ -1,4 +1,4 @@
-as yet unclassified
+testing
 sign
 	^ (op = #-)
 		ifTrue: [^expression sign negated]

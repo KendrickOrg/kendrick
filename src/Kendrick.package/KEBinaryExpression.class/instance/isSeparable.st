@@ -1,4 +1,4 @@
-as yet unclassified
+testing
 isSeparable
 	|c c1 c2|
 	c1 := leftHandSide isSeparable.

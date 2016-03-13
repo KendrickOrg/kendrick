@@ -1,3 +1,3 @@
-as yet unclassified
+testing
 isSeparable
 	^ (expression isSeparable)

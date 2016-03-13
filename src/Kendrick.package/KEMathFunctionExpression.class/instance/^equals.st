@@ -1,4 +1,4 @@
-as yet unclassified
+comparing
 = aMathExp
 aMathExp isNumber ifTrue: [ ^ self = (KENumerical new number: aMathExp) ].
 aMathExp isExpressionWithMathFunction ifTrue:[

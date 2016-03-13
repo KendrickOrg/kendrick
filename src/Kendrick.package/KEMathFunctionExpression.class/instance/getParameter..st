@@ -1,3 +1,3 @@
-as yet unclassified
+printing
 getParameter: aDictionary
 	^ functionExpr getParameter: aDictionary

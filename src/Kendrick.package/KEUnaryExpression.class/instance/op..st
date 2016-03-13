@@ -1,3 +1,3 @@
-as yet unclassified
+accessing
 op: anOperator
 	op := anOperator

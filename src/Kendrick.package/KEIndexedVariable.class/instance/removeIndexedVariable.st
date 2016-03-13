@@ -1,4 +1,4 @@
-as yet unclassified
+evaluating
 removeIndexedVariable
 	^ (KEVariable new symbol: symbol)
 		

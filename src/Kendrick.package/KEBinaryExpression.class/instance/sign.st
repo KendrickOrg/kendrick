@@ -1,4 +1,4 @@
-as yet unclassified
+testing
 sign
 
 (op = #*) ifTrue: [^(rightHandSide sign) * (leftHandSide sign)] "ifFalse:[^0]" ifFalse: [^1]

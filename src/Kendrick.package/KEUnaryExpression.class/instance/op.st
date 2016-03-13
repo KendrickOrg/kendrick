@@ -1,4 +1,4 @@
-as yet unclassified
+accessing
 op
 	<MSEProperty: #op type: #String>
 	^ op

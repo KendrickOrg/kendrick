@@ -1,4 +1,4 @@
-as yet unclassified
+converting
 normalize
 	|e|
 	e := expression normalize.

@@ -1,4 +1,4 @@
-as yet unclassified
+accessing
 expression 
 	<MSEProperty: #expression type: #KEExpression>
 	^ expression

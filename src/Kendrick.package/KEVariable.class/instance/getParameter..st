@@ -1,4 +1,4 @@
-as yet unclassified
+printing
 getParameter: aDictionary
 	|p|
 	p := aDictionary at: symbol ifAbsent: [ ^ nil ].

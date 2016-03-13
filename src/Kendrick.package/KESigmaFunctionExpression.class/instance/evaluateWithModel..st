@@ -1,4 +1,4 @@
-as yet unclassified
+evaluating
 evaluateWithModel: aModel
 	|expressionValue idInterval rs|
 	idInterval := (aModel atParameter: (idVariable symbol)).

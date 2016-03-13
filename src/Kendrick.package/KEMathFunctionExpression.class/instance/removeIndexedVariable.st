@@ -1,4 +1,4 @@
-as yet unclassified
+evaluating
 removeIndexedVariable
 	|new|
 	new := self copy.

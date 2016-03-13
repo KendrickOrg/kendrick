@@ -1,3 +1,3 @@
-as yet unclassified
+accessing
 number:aNumber
 	number := aNumber

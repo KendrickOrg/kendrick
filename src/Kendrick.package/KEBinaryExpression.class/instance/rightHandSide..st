@@ -1,3 +1,3 @@
-as yet unclassified
+accessing
 rightHandSide: anExpression
 	rightHandSide := anExpression

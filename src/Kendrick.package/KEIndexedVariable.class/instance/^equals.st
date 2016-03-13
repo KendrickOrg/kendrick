@@ -1,4 +1,4 @@
-as yet unclassified
+comparing
 = anExpression
 anExpression isNumber ifTrue: [ ^ self = (KENumerical new number: anExpression) ].
 anExpression isAnIndexedVariable

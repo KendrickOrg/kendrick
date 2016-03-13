@@ -1,4 +1,4 @@
-as yet unclassified
+adding
 addAllIndex: anObjectList
 	indexList addAll: anObjectList
 		

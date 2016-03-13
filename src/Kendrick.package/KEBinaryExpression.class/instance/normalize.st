@@ -1,4 +1,4 @@
-as yet unclassified
+converting
 normalize
 	"If the expression is negative, put the minus on the top"
 	|l1 l2 k | 

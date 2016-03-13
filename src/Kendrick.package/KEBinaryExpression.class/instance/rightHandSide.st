@@ -1,4 +1,4 @@
-as yet unclassified
+accessing
 rightHandSide
 	<MSEProperty: #rightHandSide type: #KEExpression>
 	^ rightHandSide
