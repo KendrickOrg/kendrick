@@ -1,4 +1,4 @@
-as yet unclassified
+meta
 annotation
 	<MSEClass: #TimeSeries super: #KEEntity >
 	<package: #KE>

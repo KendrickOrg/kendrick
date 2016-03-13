@@ -1,4 +1,4 @@
-as yet unclassified
+accessing
 from: anArray
 	^ super new
 		data: anArray;
