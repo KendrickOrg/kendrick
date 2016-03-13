@@ -1,3 +1,3 @@
 checking
 checkNil
-	^ (functionExpr isNil)
+	^ functionExpr isNil

@@ -1,3 +1,9 @@
-testing
+printing
 printOn: aStream
-	aStream nextPutAll: functionName asString, '(', idVariable asString, ',', functionExpr asString, ')'.
+	aStream
+		nextPutAll: functionName asString;
+		nextPutAll: '(';
+		nextPutAll: idVariable asString;
+		nextPutAll: ',';
+		nextPutAll: functionExpr asString;
+		nextPutAll: ')'

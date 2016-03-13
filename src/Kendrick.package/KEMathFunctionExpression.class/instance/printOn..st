@@ -1,3 +1,7 @@
 printing
 printOn: aStream
-	aStream nextPutAll: functionName asString, '(', functionExpr asString, ')'.
+	aStream
+		nextPutAll: functionName asString;
+		nextPutAll: '(';
+		nextPutAll: functionExpr asString;
+		nextPutAll: ')'
