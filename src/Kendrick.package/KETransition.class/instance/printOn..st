@@ -1,4 +1,4 @@
-accessing
+printing
 printOn: aStream
 	| f t |
 	f := from isSymbol
@@ -7,4 +7,8 @@ printOn: aStream
 	t := to isSymbol
 		ifTrue: [ to asString ]
 		ifFalse: [ to associations asString ].
-	aStream nextPutAll: 'From: ' , f , ' To: ' , t
+	aStream
+		nextPutAll: 'From: ';
+		nextPutAll: f;
+		nextPutAll: ' To: ';
+		nextPutAll: t
