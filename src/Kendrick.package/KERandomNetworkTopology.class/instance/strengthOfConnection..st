@@ -1,4 +1,4 @@
-as yet unclassified
+accessing
 strengthOfConnection: aValue
 	strengthOfConnection := aValue.
 	oneWay := false

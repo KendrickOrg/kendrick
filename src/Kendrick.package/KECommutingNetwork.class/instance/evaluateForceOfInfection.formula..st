@@ -1,4 +1,4 @@
-as yet unclassified
+accessing
 evaluateForceOfInfection: model formula: formula
 	|s effectiveLambda localNode|
 	s := model currentCompartment.

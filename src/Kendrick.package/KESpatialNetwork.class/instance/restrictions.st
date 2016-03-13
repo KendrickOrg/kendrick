@@ -1,4 +1,4 @@
-as yet unclassified
+accessing
 restrictions
 	restrictions ifNil: [ restrictions := #() ].
 	^ restrictions 

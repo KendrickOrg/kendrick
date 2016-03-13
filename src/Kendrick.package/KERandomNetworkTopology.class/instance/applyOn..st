@@ -1,4 +1,4 @@
-as yet unclassified
+instance creation
 applyOn: graph
 	activeNodes := OrderedCollection new.
 	network := graph.

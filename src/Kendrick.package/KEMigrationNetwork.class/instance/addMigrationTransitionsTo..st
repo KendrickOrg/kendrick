@@ -1,4 +1,4 @@
-as yet unclassified
+adding
 addMigrationTransitionsTo: model
 	|names|
 	names := model compartmentNames select: [ :k| (k associations includesAny: (self restrictions)) not].

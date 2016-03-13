@@ -1,3 +1,3 @@
-as yet unclassified
+instance creation
 applyOn: graph
 	self subclassResponsibility 

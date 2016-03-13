@@ -1,3 +1,3 @@
-as yet unclassified
+accessing
 edgeRule: aBlock
 	edgeRule := aBlock
