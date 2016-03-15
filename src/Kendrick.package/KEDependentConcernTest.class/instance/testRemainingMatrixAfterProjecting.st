@@ -1,9 +1,10 @@
 tests-as yet unclassified
-testProject
+testRemainingMatrixAfterProjecting
 	|model concern|
 	model := KEModel new.
 	model integrate: self sirConcern.
 	model integrate: self multiHostConcern.
 	concern := KEConcern dependOn: (self sirConcern).
-
-	self assert: (concern project: model transitions) size equals: 6.
+	
+	self assert: (concern remainingMatrixAfterProjecting: model transitions) size equals: 4. 
+	
