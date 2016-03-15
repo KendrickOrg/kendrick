@@ -6,4 +6,4 @@ testModelWithTwoCompartmentsOfSizeNineAneOneHasATotalSizeOfTen
 	model atCompartment: {(#status -> #S)} put: 9.
 	model atCompartment: {(#status -> #I)} put: 1.
 	model atCompartment: {(#status -> #R)} put: 0.
-	self assert: model sizeOfPopulation equals: 10
+	self assert: model population size equals: 10

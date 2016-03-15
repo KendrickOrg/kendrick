@@ -9,8 +9,4 @@ sizeOfPopulation: anArrayOfValues
 	anArrayOfValues isArray
 		ifTrue: [ array addAll: anArrayOfValues ]
 		ifFalse: [ array add: anArrayOfValues ].
-	self population compartments
-		keysAndValuesDo: [ :k :v | 
-			(k values includesAll: array)
-				ifTrue: [ c := c + v ] ].
-	^ c
+	^self population sizeOfPopulation: array
