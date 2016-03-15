@@ -4,7 +4,7 @@ updateIndividuals
 	model population individuals do: [ :ind| 
 		((ind isAlive) and: [ ind nextStatus isNotNil ]) 
 		ifTrue: [ 
-			ind nextStatus = #empty 
+			((ind nextStatus at: #status) = #empty) 
 			ifTrue: [ model population removeIndividual: ind ] 
 			ifFalse: [ 
 				model population updateIndividual: ind ]

@@ -13,7 +13,7 @@ executeOn: aModel
 			tmp := ((equations at: k) collect: [ :e|
 				|prob|
 				"model parameters at: #scope put: (e at: 1) scope."
-				(e at: 1) from = #empty 
+				(((e at: 1) from at: #status) = #empty) 
 				ifTrue: [ model currentCompartment: ((e at: 1) to) ] 
 				ifFalse: [ model currentCompartment: ((e at: 1) from) ].
 				prob := ((e at: 1) probability value: model) abs.

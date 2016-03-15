@@ -5,7 +5,7 @@ generateTransitionsFrom: t and: keys
 	keys size = 0 
 	ifTrue: [ result add: t ]
 	ifFalse: [ 
-		(keys select: [ :k| k ~= #empty]) do: [ :k|
+		"(keys select: [ :k| k ~= #empty]) do: [ :k|
 			|tmp from to|
 			tmp := k copy.
 			t from = #empty
@@ -15,5 +15,14 @@ generateTransitionsFrom: t and: keys
 			ifTrue: [ to := #empty ]
 			ifFalse: [ t to keysAndValuesDo: [ :kt :vt| tmp at: kt put: vt ]. to := tmp copy ].
 			result add: (KETransition from: from to: to probability: t probability)
-		] ].
+		]" 
+	(keys select: [ :k| (k values includes: #empty) not ]) do: [ :k|
+			|tmp from to|
+			tmp := k copy.
+			t from keysAndValuesDo: [ :kt :vt| tmp at: kt put: vt ]. 
+			from := tmp copy.
+			t to keysAndValuesDo: [ :kt :vt| tmp at: kt put: vt ]. 
+			to := tmp copy.
+			result add: (KETransition from: from to: to probability: t probability) 
+	] ].
 	^ result

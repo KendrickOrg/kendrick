@@ -5,7 +5,7 @@ doTauLeapIteration: t
 		|rate numPoisson prob|
 		"model parameters at: #scope put: tr scope.
 		model parameters at: #contactingSource put: (tr from)."
-		(tr from = #empty)
+		((tr from at: #status) = #empty)
 		ifTrue: [ model currentCompartment: (tr to) ] 
 		ifFalse: [ model currentCompartment: (tr from) ].
 		prob := (tr probability value: model) abs.

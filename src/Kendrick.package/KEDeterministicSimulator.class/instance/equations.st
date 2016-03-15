@@ -3,11 +3,11 @@ equations
 	equations := Dictionary new.
 	model compartmentNames do: [ :k| equations at: k put: OrderedCollection new ].
 	model transitions do: [ :tr|
-		tr from = #empty ifTrue:
+		(tr from at: #status) = #empty ifTrue:
 			[ (equations at: tr to) add: (Array with: tr with: 1) ].
-		tr to = #empty ifTrue:
+		(tr to at: #status) = #empty ifTrue:
 			[ (equations at: tr from) add: (Array with: tr with: -1) ].
-		((tr from ~= #empty) and: [ tr to ~= #empty ]) ifTrue:[ 
+		(((tr from at: #status) ~= #empty) and: [ (tr to at: #status) ~= #empty ]) ifTrue:[ 
 			(equations at: tr from) add: (Array with: tr with: -1).
 			(equations at: tr to) add: (Array with: tr with: 1) ]
 		 ].

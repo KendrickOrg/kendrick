@@ -5,7 +5,7 @@ doGillespieIteration: t randoms: rands
 	model t: t.
 	model transitions do: [ :tr| 
 		|prob|
-		(tr from = #empty)
+		((tr from at: #status) = #empty)
 		ifTrue: [ model currentCompartment: (tr to) ] 
 		ifFalse: [ model currentCompartment: (tr from) ].
 		prob := (tr probability value: model) abs.

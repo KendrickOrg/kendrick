@@ -1,6 +1,6 @@
 as yet unclassified
 dependOn: aConcern
 	|c|
-	c := KEConcern new.
+	c := KEDependentConcern new.
 	c attributes: aConcern attributes.
 	^ c

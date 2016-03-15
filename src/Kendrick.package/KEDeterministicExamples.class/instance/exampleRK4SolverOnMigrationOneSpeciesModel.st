@@ -18,6 +18,6 @@ exampleRK4SolverOnMigrationOneSpeciesModel
 	db legends: { 'patch 1'. 'patch 2'. 'patch 3'. 'patch 4'. 'patch 5'}.
 	db legendTitle: 'Infectious'.
 	db xLabel: 'Time (days)'.
-	^ db view
+	^ db open
 															
 														

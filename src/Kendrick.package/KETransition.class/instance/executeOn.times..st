@@ -1,12 +1,12 @@
 accessing
 executeOn: model times: times
-	from = #empty
+	(from at: #status) = #empty
 		ifFalse: [ | old new |
 			old := model population compartments at: from.
 			new := old - times.
 			new := new max: 0.
 			model population compartments at: from put: new ].
-	to = #empty
+	(to at: #status) = #empty
 		ifFalse: [ | old new |
 			old := model population compartments at: to.
 			new := old + times.
