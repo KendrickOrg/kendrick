@@ -12,9 +12,7 @@ gtInspectorGraphIn: composite
 					builder nodes: graph nodes.
 					builder shape arrowedLine color: Color black; withShorterDistanceAttachPoint.
 					builder edges
-						objects: graph edges
-						from: #from
-						to: #to.
+						objects: graph edges.
 					builder layout forceWithCharge: -450.
 					builder build.
 					]
