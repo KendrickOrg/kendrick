@@ -1,4 +1,4 @@
-tests-as yet unclassified
+tests
 testAtCompartmentPutAtOthersPut
 	|model|
 	model := KEModel new.

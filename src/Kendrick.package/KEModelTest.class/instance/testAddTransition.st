@@ -1,4 +1,4 @@
-tests-as yet unclassified
+tests
 testAddTransition
 	| model |
 	model := KEModel new.

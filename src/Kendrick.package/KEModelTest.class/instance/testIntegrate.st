@@ -1,4 +1,4 @@
-tests-accessing
+tests
 testIntegrate
 	|model concern|
 	model := KEModel new.

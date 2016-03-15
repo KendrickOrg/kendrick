@@ -1,4 +1,4 @@
-tests-accessing
+tests
 testTransitions
 	|model|
 	model := KEModel new.

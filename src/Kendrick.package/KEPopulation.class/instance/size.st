@@ -1,4 +1,4 @@
-adding
+accessing
 size
 	| s |
 	s := 0.
