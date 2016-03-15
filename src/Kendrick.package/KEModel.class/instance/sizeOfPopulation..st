@@ -1,12 +1,10 @@
 accessing
 sizeOfPopulation: anArrayOfValues
+	"anArrayOfValues describe a subpopulation like {#S. #human. #female}. Returns the nb of individus that verify this property"
 
-	"eg. anArrayOfValues = {#S. #human. #female}, this function counts all individuals having the value attributes in anArrayOfValues"
-	"anArrayOrAValue decribe a subpopulation"
-	| c array |
-	c := 0.
+	| array |
 	array := OrderedCollection new.
 	anArrayOfValues isArray
 		ifTrue: [ array addAll: anArrayOfValues ]
 		ifFalse: [ array add: anArrayOfValues ].
-	^self population sizeOfPopulation: array
+	^ self population sizeOfPopulation: array
