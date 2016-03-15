@@ -9,7 +9,8 @@ atCompartment: anObject
 		ifTrue: [ key := anObject ].
 	anObject isArray
 		ifTrue: [ key := Dictionary newFrom: anObject ].
-	((key at: #status) = #empty) ifTrue: [ ^ self atParameter: #N ].
+	key at: #status ifPresent: [ 
+		((key at: #status) = #empty) ifTrue: [ ^ self atParameter: #N ] ].
 	c := self attributes keys reject: [ :a | key keys includes: a ].
 	c isEmpty
 		ifTrue: [ ^ self population sizeOfACompartment: key ]
