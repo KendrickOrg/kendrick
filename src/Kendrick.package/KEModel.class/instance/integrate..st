@@ -9,3 +9,4 @@ integrate: aConcern
 		self addParameter: k value: v
 	].
 	self population reset.
+	initCompartments := nil.

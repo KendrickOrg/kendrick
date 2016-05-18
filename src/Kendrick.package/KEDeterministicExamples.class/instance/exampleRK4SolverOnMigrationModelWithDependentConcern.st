@@ -1,6 +1,6 @@
 examples
 exampleRK4SolverOnMigrationModelWithDependentConcern
-
+"self new exampleRK4SolverOnMigrationModelWithDependentConcern"
 |model sirConcern eConcern spatialConcern simulator db|
 sirConcern := KEConcern new.
 sirConcern attributes: {#status->#(#S #I #R)}.
