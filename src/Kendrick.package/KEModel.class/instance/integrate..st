@@ -7,4 +7,5 @@ integrate: aConcern
 	].
 	aConcern parameters keysAndValuesDo: [ :k :v| 
 		self addParameter: k value: v
-	]
+	].
+	self population reset.
