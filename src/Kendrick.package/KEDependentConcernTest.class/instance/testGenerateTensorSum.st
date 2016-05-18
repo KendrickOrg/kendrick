@@ -1,7 +1,7 @@
 tests-as yet unclassified
 testGenerateTensorSum
 	|model concern|
-	model := KEModel new.
+	model := KEModel new population: (KEPopulation new).
 	model integrate: self sirConcern.
 	model integrate: self spatialConcern.
 	concern := KEConcern dependOn: (self sirConcern).

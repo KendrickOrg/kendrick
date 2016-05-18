@@ -1,7 +1,7 @@
 tests-as yet unclassified
 testRemainingMatrixAfterProjecting
 	|model concern|
-	model := KEModel new.
+	model := KEModel new population: (KEPopulation new)..
 	model integrate: self sirConcern.
 	model integrate: self multiHostConcern.
 	concern := KEConcern dependOn: (self sirConcern).
