@@ -12,5 +12,4 @@ testUpdateTransitionFromToProbability
 	concern addTransitionFrom: { #status->#Q } to: #empty probability: [ :aModel| aModel atParameter: #mu ].
 	concern addParameters: #(#epsilon #nu #lambda).
 	sirTransitionMatrix := concern project: model transitions.
-	self halt.
 	self assert: (concern generateSum: sirTransitionMatrix) size equals: 9
