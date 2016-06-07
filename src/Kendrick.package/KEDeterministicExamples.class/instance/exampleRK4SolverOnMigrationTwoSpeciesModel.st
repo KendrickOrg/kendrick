@@ -3,7 +3,7 @@ exampleRK4SolverOnMigrationTwoSpeciesModel
 	"self new exampleRK4SolverOnMigrationTwoSpeciesModel"
 	|model simulator db f|
 	model := self modelRK4SolverOnMigrationTwoSpeciesModel.
-	simulator := KESimulator new: #IBM from: 0 to: 200 step: 1.
+	simulator := KESimulator new: #RungeKutta from: 0 to: 500 step: 1.
 	simulator executeOn: model.
 	db := KEDiagramBuilder new.
 	
