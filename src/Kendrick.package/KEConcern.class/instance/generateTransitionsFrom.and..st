@@ -1,8 +1,8 @@
-as yet unclassified
+general
 generateTransitionsFrom: t and: keys
 	|result|
 	result := OrderedCollection new.
-	keys size = 0 
+	keys isEmpty
 	ifTrue: [ result add: t ]
 	ifFalse: [ 
 		(keys select: [ :k| (k values includes: #empty) not ]) do: [ :k|
