@@ -8,6 +8,7 @@ doGillespieIteration: t randoms: rands
 		((tr from at: #status) = #empty)
 		ifTrue: [ model currentCompartment: (tr to) ] 
 		ifFalse: [ model currentCompartment: (tr from) ].
+		model nextCompartment: (tr to).
 		prob := (tr probability value: model) abs.
 		rates add: (prob * (model atCompartment: tr from)) 
 		].
