@@ -1,4 +1,4 @@
-general
+as yet unclassified
 generateKeys: aTransitionList
 	|tmp|
 	tmp := Dictionary new.

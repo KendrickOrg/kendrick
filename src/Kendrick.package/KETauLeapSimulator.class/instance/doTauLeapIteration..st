@@ -8,7 +8,6 @@ doTauLeapIteration: t
 		((tr from at: #status) = #empty)
 		ifTrue: [ model currentCompartment: (tr to) ] 
 		ifFalse: [ model currentCompartment: (tr from) ].
-		model nextCompartment: (tr to).
 		prob := (tr probability value: model) abs.
 		"prob isDictionary ifTrue: [ prob := prob values sum ]."
 		rate := prob * (model atCompartment: tr from).

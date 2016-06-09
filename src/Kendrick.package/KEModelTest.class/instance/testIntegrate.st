@@ -1,7 +1,7 @@
-tests
+tests-accessing
 testIntegrate
 	|model concern|
-	model := KEModel new population: (KEPopulation size: 1000).
+	model := KEModel new.
 	concern := KEConcern new.
 	concern addAttribute: #status value: #(S I R).
 	concern 
