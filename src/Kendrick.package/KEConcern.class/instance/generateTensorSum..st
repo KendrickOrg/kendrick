@@ -1,4 +1,4 @@
-as yet unclassified
+operators
 generateTensorSum: aTransitionList
 	|result keys|
 	result := OrderedCollection new.

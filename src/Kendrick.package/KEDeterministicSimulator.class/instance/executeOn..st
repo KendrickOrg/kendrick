@@ -10,15 +10,20 @@ executeOn: aModel
 			i := i + 1 ].
 		i := 1.
 		model population compartments keysDo: [ :k| |tmp|
-			tmp := ((equations at: k) collect: [ :e|
+			(equations at: k) isEmpty 
+			ifTrue: [ tmp := 0 ]
+			ifFalse: [  
+				tmp := ((equations at: k) collect: [ :e|
 				|prob|
 				"model parameters at: #scope put: (e at: 1) scope."
 				(((e at: 1) from at: #status) = #empty) 
 				ifTrue: [ model currentCompartment: ((e at: 1) to) ] 
 				ifFalse: [ model currentCompartment: ((e at: 1) from) ].
+				model nextCompartment: ((e at: 1) to).
 				prob := ((e at: 1) probability value: model) abs.
 				"prob isDictionary ifTrue: [ prob := prob values sum ]."
 				(e at: 2)*prob*(model atCompartment: (e at: 1) from)]) sum.
+			].
 			c at: i put: tmp.
 			i := i + 1
 		 ].
