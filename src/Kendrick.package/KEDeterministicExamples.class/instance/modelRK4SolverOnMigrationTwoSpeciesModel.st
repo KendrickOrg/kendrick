@@ -14,7 +14,7 @@ modelRK4SolverOnMigrationTwoSpeciesModel
 	model atParameter: #beta assignValue: 1.
 	model atParameter: #mu assignValue: [ :aModel| |c val| 
 		c := aModel currentCompartment at: #species.
-		c = #human ifTrue: [ val := 0.0000365 ].
+		c = #human ifTrue: [ val := 0.000365 ].
 		c = #bird ifTrue: [ val := 0.00137 ].
 		val ].
 	model atParameter: #sigma assignValue: [ :aModel| |c val| 
