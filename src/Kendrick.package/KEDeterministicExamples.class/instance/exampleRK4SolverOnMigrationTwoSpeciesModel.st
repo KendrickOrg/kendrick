@@ -13,13 +13,13 @@ exampleRK4SolverOnMigrationTwoSpeciesModel
 		1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
 		(KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)
 		].
-	db data: { 
+	db data: "{ 
 		(f value: '{#status:#I,#species:#bird}'). 
-		(f value: '{#status: #I, #species: #human}') }.
+		(f value: '{#status: #I, #species: #human}') }" (simulator timeSeriesAt: {#status->#I. #species->#bird}).
 
 	db xLabel: 'Time (days)'.
-	db legendTitle: 'Total of infectious'.
-	db legends: { 'birds'. 'humans' }.
+	"db legendTitle: 'Total of infectious'."
+	"db legends: { 'birds'. 'humans' }."
 
 	^ db open															
 														
