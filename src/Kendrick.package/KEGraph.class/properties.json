@@ -1,13 +1,14 @@
 {
-	"commentStamp" : "BuiThiMaiAnh 5/18/2015 11:19",
-	"super" : "KENetworkTopology",
+	"commentStamp" : "BuiThiMaiAnh 7/8/2016 14:40",
+	"super" : "KEEntity",
 	"category" : "Kendrick-Spatial-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"activeNodes"
+		"nodes",
+		"edges"
 	],
-	"name" : "KERandomNetworkTopology",
+	"name" : "KEGraph",
 	"type" : "normal"
 }

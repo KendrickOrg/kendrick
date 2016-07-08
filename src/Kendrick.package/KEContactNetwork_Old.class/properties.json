@@ -1,11 +1,11 @@
 {
-	"commentStamp" : "BuiThiMaiAnh 7/8/2016 16:30",
-	"super" : "KEGraph",
+	"commentStamp" : "BuiThiMaiAnh 5/18/2015 10:38",
+	"super" : "KENetwork",
 	"category" : "Kendrick-Spatial-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "KEContactNetwork",
+	"name" : "KEContactNetwork_Old",
 	"type" : "normal"
 }

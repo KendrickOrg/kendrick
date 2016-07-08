@@ -1,3 +1,3 @@
 accessing
-label: associations
-	label := associations
+label: aString
+	label := aString

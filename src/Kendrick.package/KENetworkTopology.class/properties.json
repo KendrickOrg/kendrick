@@ -5,11 +5,7 @@
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"network",
-		"edgeRule",
-		"oneWay"
-	],
+	"instvars" : [ ],
 	"name" : "KENetworkTopology",
 	"type" : "normal"
 }

@@ -1,4 +1,4 @@
 initialization
 initialize 
 	super initialize.
-	adjacentNodes := Dictionary new.
+	adjacentNodes := OrderedCollection new.

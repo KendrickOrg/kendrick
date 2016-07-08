@@ -1,8 +1,9 @@
 as yet unclassified
 testAdjacentNodes
 	|graph node|
-	graph := self createContactNetworkForTestingNodes.
-	node := graph atNode: {graph attribute->#A}.
+	graph := KEGraph nodes: #(A B C D E).
+	graph edgesFrom: #A toAll: #(B C D E).
+	node := graph atNode: #A.
 	
-	self assert: (node adjacentNodes size) equals: 2.
+	self assert: (node adjacentNodes size) equals: 4.
 	
