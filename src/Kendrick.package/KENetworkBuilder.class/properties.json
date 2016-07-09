@@ -1,15 +1,13 @@
 {
-	"commentStamp" : "BuiThiMaiAnh 6/27/2016 15:53",
+	"commentStamp" : "BuiThiMaiAnh 7/8/2016 22:36",
 	"super" : "KEGraphBuilder",
 	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"countries",
-		"routes",
-		"map"
+		"network"
 	],
-	"name" : "KEMapBuilder",
+	"name" : "KENetworkBuilder",
 	"type" : "normal"
 }

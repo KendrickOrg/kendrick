@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "BUIThiMaiAnh 12/2/2014 23:32",
-	"super" : "KEEntity",
+	"super" : "KEGraphBuilder",
 	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
@@ -8,7 +8,6 @@
 	"instvars" : [
 		"xLabel",
 		"yLabel",
-		"data",
 		"legends",
 		"legendTitle"
 	],

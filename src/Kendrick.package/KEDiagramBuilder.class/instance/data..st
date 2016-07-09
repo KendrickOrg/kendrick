@@ -1,4 +1,4 @@
 as yet unclassified
 data: aCollection
-	data := aCollection.
+	super data: aCollection.
 	self buildLegends
