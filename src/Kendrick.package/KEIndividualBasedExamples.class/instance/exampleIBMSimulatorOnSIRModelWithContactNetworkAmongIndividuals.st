@@ -1,30 +1,40 @@
 examples
 exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals
 	"self new exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals"
-	"|model simulator network  db |
-	model := KEModel new.
-	model population: KEMetaPopulation new.
-	model attributes: {#status->#(#S #I #R)}.
-	model buildFromCompartments: '{
-		{ #status: #S }: 99,
-		{ #status: #I }: 1,
-		{ #status: #R }: 0
-	}'.
-	model addParameter: #beta value: 1.
-	model addParameter: #gamma value: 0.1.
-	model addEquation: ('S:t=-beta*S*I').
-	model addEquation: ('I:t=beta*S*I-gamma*I').
-	model addEquation: ('R:t=gamma*I')."
-	
-	"KERandomNetwork, p = 1 ==> Mixing population, compare with model with no network (exampleIBMSimulatorOnSIRModel 2)"
-	"KERandomSmallworldNetwork ==> beta = 0: regular ring lattice; beta = 1: random network"
-	"network := KEContactNetwork 
-						newOn: model population 
-						atAttribute: #status 
-						topology: (KERandomSmallWorldNetwork new K: 4; beta: 1).
-	network strengthOfAllConnections: 1.
+	|model network spatialConcern sirConcern simulator db f|
+model := KEModel new population: (KEPopulation size: 100).
 
-	simulator := KESimulator new: #IBM from: 0.0 to: 200 step: 0.1.
-	simulator executeOn: model.
-	db := KEDiagramBuilder new data: (simulator timeSeriesAt: '{#status: #I}').
-	^ db view "
+sirConcern := KEConcern new.
+sirConcern addAttribute: #status value: #(S I R).
+sirConcern addParameters: { #beta. #gamma. #lambda }.
+sirConcern addTransitionFrom: { #status->#S } to: { #status->#I } probability: 'lambda'.
+sirConcern addTransitionFrom: { #status->#I } to: { #status->#R } probability: 'gamma'.
+
+spatialConcern := KEConcern new.
+network := KEContactNetwork nodes: 100 topology: { #random. #p->1 }.
+spatialConcern addParameter: #network value: network.
+spatialConcern addAttribute: #node value: network allContacts.
+
+model integrate: sirConcern.
+model integrate: spatialConcern.
+
+model atParameter: #lambda assignValue: [ :aModel||node|
+	node := aModel currentCompartment at: #node.
+	((aModel atParameter: #network) contactsOf: {aModel. #node->node. #status->#I})*(aModel atParameter: #beta)/(aModel atParameter: #N)
+	 ].
+model atParameter: #beta assignValue: 1.
+model atParameter: #gamma assignValue: 0.1.
+
+1 to: 99 do: [:i| model atCompartment: {#status->#S. #node->i asString asSymbol} put: 1].
+model atCompartment: { #status->#I. #node->#'100' } put: 1.
+
+simulator := KESimulator new: #IBM from: 0.0 to: 50 step: 0.1.
+simulator executeOn: model.
+f := [:name| |d tmp|
+		tmp := (simulator timeSeriesAt: name) collect: [ :e| e value ].
+		d := OrderedCollection new.
+		1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
+		(KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)
+		].
+db := KEDiagramBuilder new data: { (f value: '{#status:#I}') }.
+db open.
