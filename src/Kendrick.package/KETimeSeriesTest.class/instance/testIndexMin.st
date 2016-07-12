@@ -1,5 +1,5 @@
 tests
-testATimeSeriesIndexMin
+testIndexMin
 	| s1 s2 |
 	s1 := KETimeSeries from: #(4 2 6 8 10).
 	self assert: (s1 indexMin) equals: 2.

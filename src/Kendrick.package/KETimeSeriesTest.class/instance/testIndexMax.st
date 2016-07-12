@@ -1,5 +1,5 @@
 tests
-testATimeSeriesIndexMax
+testIndexMax
 	| s1 s2 s3|
 	s1 := KETimeSeries from: #(4 2 6 8 10).
 	self assert: (s1 indexMax) equals: 5.

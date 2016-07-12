@@ -1,5 +1,5 @@
 tests
-testATimeSeriesAt
+testAt
 	| s1 s2 |
 	s1 := KETimeSeries from: #(2 2 2 2 2).
 	self assert: (s1 at: 3) equals: 2.

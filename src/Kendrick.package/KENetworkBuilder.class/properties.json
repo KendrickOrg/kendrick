@@ -6,7 +6,12 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"network"
+		"network",
+		"vizData",
+		"isAtIndividualLevel",
+		"status",
+		"colors",
+		"networkLegend"
 	],
 	"name" : "KENetworkBuilder",
 	"type" : "normal"

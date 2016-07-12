@@ -6,6 +6,6 @@ appendNode: anAssociation
 	rand := Random new.
 	activeNodes do: [ :node| 
 		(p > (rand next)) ifTrue: [ 
-			graph edgesFrom: label toAll: (Array with: node)  ]
+			graph edgesFrom: label toAll: (Array with: node) ]
 		].
 	activeNodes add: label
