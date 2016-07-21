@@ -3,7 +3,7 @@ exampleIBMSimulatorOnSIRMultiHostModel
 	"self new exampleIBMSimulatorOnSIRMultiHostModel"
 	| model multiHostConcern simulator db |
 	
-	multiHostConcern := KEConcern new.
+	multiHostConcern := KEModelPart new.
 	multiHostConcern 
 		addAttribute: #species 
 		value: #(#mosquito #reservoir1 #reservoir2).

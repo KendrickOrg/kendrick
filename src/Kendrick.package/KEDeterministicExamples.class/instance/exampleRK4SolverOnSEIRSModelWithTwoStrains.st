@@ -4,7 +4,7 @@ exampleRK4SolverOnSEIRSModelWithTwoStrains
 	| model SEIRConcern SEIRSConcern twoStrains simulator dB data|
 	model := KEModel new.
 	model population: (KEPopulation size: 5000).
-	SEIRConcern := KEConcern new.
+	SEIRConcern := KEModelPart new.
 	SEIRConcern attributes: {#status->#(#S #E #I #R)}.
 	SEIRConcern addParameters: { #beta. #gamma. #mu. #sigma}.
 	SEIRConcern addParameter: #lambda value: 'beta*I/N'.
@@ -15,11 +15,11 @@ exampleRK4SolverOnSEIRSModelWithTwoStrains
 		'R:t=gamma*I - mu*R'
 	 }.		
 	
-	SEIRSConcern := KEConcern extends: SEIRConcern.
+	SEIRSConcern := KEModelPart extends: SEIRConcern.
 	SEIRSConcern addTransitionFrom: { #status->#R } to: { #status->#S } probability: 'nu'.
 	SEIRSConcern addParameter: #nu.
 	
-	twoStrains := KEConcern extends: SEIRSConcern.
+	twoStrains := KEModelPart extends: SEIRSConcern.
 	twoStrains splitStatus: {  #(I). #strains->#(1 2) }.
 	twoStrains addParameters: { #beta1. #beta2 }.
 	

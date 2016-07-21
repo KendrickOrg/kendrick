@@ -4,13 +4,13 @@ exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals
 	|model network spatialConcern sirConcern simulator db f|
 model := KEModel new population: (KEPopulation size: 100).
 
-sirConcern := KEConcern new.
+sirConcern := KEModelPart new.
 sirConcern addAttribute: #status value: #(S I R).
 sirConcern addParameters: { #beta. #gamma. #lambda }.
 sirConcern addTransitionFrom: { #status->#S } to: { #status->#I } probability: 'lambda'.
 sirConcern addTransitionFrom: { #status->#I } to: { #status->#R } probability: 'gamma'.
 
-spatialConcern := KEConcern new.
+spatialConcern := KEModelPart new.
 network := KEContactNetwork nodes: 100 topology: { #random. #p->1 }.
 spatialConcern addParameter: #network value: network.
 spatialConcern addAttribute: #node value: network allContacts.

@@ -2,7 +2,7 @@ examples
 SIRDemographyConcern
 
 	| SIRDemographyConcern |
-	SIRDemographyConcern := KEConcern new.
+	SIRDemographyConcern := KEModelPart new.
 	SIRDemographyConcern attributes: 
 		{#status->#(#S #I #R)}.
 	SIRDemographyConcern addParameters: {#beta. #gamma. #mu}.

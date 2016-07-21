@@ -1,6 +1,5 @@
-examples
+tests-as yet unclassified
 spatialConcern
-	"self new exampleRK4SolverOnMigrationMultiSpeciesModel"
 	| spatialConcern|
 	spatialConcern := KEModelPart new.
 	spatialConcern addAttribute: #patch value: (1 to: 5) asArray.
@@ -22,7 +21,3 @@ spatialConcern
 	]. 
 	
 	^ spatialConcern 
-	
-	 
-	
-	

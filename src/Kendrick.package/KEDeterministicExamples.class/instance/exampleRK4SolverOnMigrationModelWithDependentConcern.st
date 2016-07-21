@@ -2,7 +2,7 @@ examples
 exampleRK4SolverOnMigrationModelWithDependentConcern
 "self new exampleRK4SolverOnMigrationModelWithDependentConcern"
 |model sirConcern eConcern spatialConcern simulator db|
-sirConcern := KEConcern new.
+sirConcern := KEModelPart new.
 sirConcern attributes: {#status->#(#S #I #R)}.
 sirConcern addParameters: {#lambda. #gamma}.
 sirConcern
@@ -14,7 +14,7 @@ sirConcern
 	to: '{#status: #R}' 
 	probability: [ :aModel | aModel atParameter: #gamma ].
 
-spatialConcern := KEConcern new.
+spatialConcern := KEModelPart new.
 spatialConcern addAttribute: #patch value: (1 to: 5) asArray.
 spatialConcern addParameter: #rho.
 (1 to: 5) do: [ :i| 
@@ -38,7 +38,7 @@ model population: (KEPopulation size: 5000).
 model integrate: spatialConcern.
 model integrate: sirConcern.
 
-eConcern := KEConcern dependOn: sirConcern.
+eConcern := KEModelPart dependOn: sirConcern.
 eConcern atAttribute: #status add: #E.
 eConcern 
 	removeTransitionFrom: { #status->#S } 

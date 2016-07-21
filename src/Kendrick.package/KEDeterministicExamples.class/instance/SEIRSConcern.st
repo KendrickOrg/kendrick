@@ -3,7 +3,7 @@ SEIRSConcern
 	"self new exampleRK4SolverOnSEIRMeaslesModel"
 
 	| SEIRSConcern |
-	SEIRSConcern := KEConcern new.
+	SEIRSConcern := KEModelPart new.
 	SEIRSConcern attributes: {#status->#(#S #E #I #R)}.
 	SEIRSConcern addParameters: { #beta. #gamma. #mu. #sigma. #v }.
 	SEIRSConcern addParameter: #lambda value: [ :aModel | 

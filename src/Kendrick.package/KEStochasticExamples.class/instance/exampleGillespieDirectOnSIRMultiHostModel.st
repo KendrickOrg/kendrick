@@ -3,7 +3,7 @@ exampleGillespieDirectOnSIRMultiHostModel
 	"self new exampleGillespieDirectOnSIRMultiHostModel"
 	| model multiHostConcern simulator db |
 	
-	multiHostConcern := KEConcern new.
+	multiHostConcern := KEModelPart new.
 	multiHostConcern 
 		addAttribute: #species 
 		value: #(#mosquito #reservoir1 #reservoir2).
@@ -57,7 +57,7 @@ exampleGillespieDirectOnSIRMultiHostModel
 		c := aModel currentCompartment at: #species.
 		aModel sizeOfPopulation: c
 		].
-	model addParameter: #rho value: [ :aModel| |c val|
+	model atParameter: #beta assignValue: [ :aModel| |c val|
 		c := aModel currentCompartment at: #species.
 		c = #mosquito ifTrue: [ val := #(0 0.02 0.02) ].
 		c = #reservoir1 ifTrue: [ val := #(0.02 0 0) ].
@@ -66,19 +66,13 @@ exampleGillespieDirectOnSIRMultiHostModel
 		].
 	model atParameter: #lambda assignValue: [ :aModel|
 		((aModel atParameter: #beta) * 
-		(aModel atParameter: #rho) * 
 		(aModel atCompartment: {#status->#I})) sum
 		].
 	model atCompartment: { #status->#S. #species->#mosquito } put: 9999.
 	model atCompartment: { #status->#I. #species->#mosquito } put: 1.
-	model atCompartment: { #status->#R. #species->#mosquito } put: 0.
 	model atCompartment: { #status->#S. #species->#reservoir1 } put: 1000.
-	model atCompartment: { #status->#I. #species->#reservoir1 } put: 0.
-	model atCompartment: { #status->#R. #species->#reservoir1 } put: 0.
 	model atCompartment: { #status->#S. #species->#reservoir2 } put: 2000.
-	model atCompartment: { #status->#I. #species->#reservoir2 } put: 0.
-	model atCompartment: { #status->#R. #species->#reservoir2 } put: 0.
-	
+
 	simulator := KESimulator new: #Gillespie from: 0.0 to: 0.5 step: 0.0027.
 	simulator executeOn: model.
 	db := (KEDiagramBuilder new) data: ((simulator timeSeriesAt: '{#status: #I}') sqrt).

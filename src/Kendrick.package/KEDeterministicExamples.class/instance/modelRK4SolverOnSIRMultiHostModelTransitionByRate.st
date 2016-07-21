@@ -3,7 +3,7 @@ modelRK4SolverOnSIRMultiHostModelTransitionByRate
 	"self new exampleRK4SolverOnSIRMultiHostModelTransitionByRate"
 
 	| model  multiHostConcern|
-	multiHostConcern := KEConcern new.
+	multiHostConcern := KEModelPart new.
 	multiHostConcern 
 		addAttribute: #species 
 		value: #(#mosquito #reservoir1 #reservoir2).

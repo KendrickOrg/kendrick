@@ -4,7 +4,7 @@ exampleRK4SolverOnSEIRSModelWithQuarantine
 	| model SEIRConcern SEIRSConcern QuarantineConcern simulator dB|
 	model := KEModel new.
 	model population: (KEPopulation size: 5000).
-	SEIRConcern := KEConcern new.
+	SEIRConcern := KEModelPart new.
 	SEIRConcern attributes: {#status->#(#S #E #I #R)}.
 	SEIRConcern addParameters: { #beta. #gamma. #mu. #sigma}.
 	SEIRConcern addParameter: #lambda value: 'beta*I/N'.
@@ -15,11 +15,11 @@ exampleRK4SolverOnSEIRSModelWithQuarantine
 		'R:t=gamma*I - mu*R'
 	 }.		
 	
-	SEIRSConcern := KEConcern dependOn: SEIRConcern.
+	SEIRSConcern := KEModelPart dependOn: SEIRConcern.
 	SEIRSConcern addTransitionFrom: { #status->#R } to: { #status->#S } probability: 'nu'.
 	SEIRSConcern addParameter: #nu.
 	
-	QuarantineConcern := KEConcern dependOn: SEIRConcern.
+	QuarantineConcern := KEModelPart dependOn: SEIRConcern.
 	QuarantineConcern addStatus: #(Q).
 	QuarantineConcern addTransitionFrom: { #status->#I } to: { #status->#Q } probability: 'delta'.
 	QuarantineConcern addTransitionFrom: { #status->#Q } to: { #status->#R } probability: 'epsilon'.

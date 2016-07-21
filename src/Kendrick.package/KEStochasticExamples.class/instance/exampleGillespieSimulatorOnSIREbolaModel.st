@@ -2,7 +2,7 @@ examples
 exampleGillespieSimulatorOnSIREbolaModel
 	"self new exampleGillespieSimulatorOnSIREbolaModel"
 	|model simulator db spatialConcern countries|
-	spatialConcern := KEConcern new.
+	spatialConcern := KEModelPart new.
 	spatialConcern addAttribute: #country value: #(#Liberia #Guinea #SierraLeone #Nigeria #Senegal #Niger).
 	spatialConcern addParameter: #rho.
 	countries := spatialConcern atAttribute: #country.

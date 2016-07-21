@@ -2,7 +2,7 @@ tests
 testIntegrate
 	|model concern|
 	model := KEModel new population: (KEPopulation size: 1000).
-	concern := KEConcern new.
+	concern := KEModelPart new.
 	concern addAttribute: #status value: #(S I R).
 	concern 
 		addTransitionFrom: { #status->#S } 

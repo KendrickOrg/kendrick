@@ -3,7 +3,7 @@ modelRK4SolverOnSIRMultiHost
 	"self new exampleRK4SolverOnSIRMultiHostModel"
 	| model multiHostConcern |
 	
-	multiHostConcern := KEConcern new.
+	multiHostConcern := KEModelPart new.
 	multiHostConcern 
 		addAttribute: #species 
 		value: #(#mosquito #reservoir1 #reservoir2).

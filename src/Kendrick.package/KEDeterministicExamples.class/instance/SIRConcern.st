@@ -2,7 +2,7 @@ examples
 SIRConcern
 
 	| SIRConcern |
-	SIRConcern := KEConcern new.
+	SIRConcern := KEModelPart new.
 	SIRConcern attributes: 
 		{#status->#(#S #I #R)}.
 	SIRConcern addParameters: {#beta. #gamma}.
