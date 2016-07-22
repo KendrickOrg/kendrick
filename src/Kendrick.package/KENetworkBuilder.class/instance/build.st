@@ -31,7 +31,7 @@ build
 	isAtIndividualLevel 
 	ifTrue: [ 
 		|str|
-		str := 'cirle = an individual; '.
+		str := 'circle = an individual; '.
 		1 to: status size do: [ :i| str := str, (colors at: i) asString, ' circle = ', (status at: i) asString, ';' ].
 		str := str, 'gray circle = others'.
 		lb addText: str ]

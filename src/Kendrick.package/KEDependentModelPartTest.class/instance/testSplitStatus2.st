@@ -1,15 +1,15 @@
 tests-as yet unclassified
-testSplitStatus
+testSplitStatus2
 	|twoStrains model|
 	twoStrains := KEModelPart dependOn: self sirConcern.
 	twoStrains transitions: self sirConcern transitions.
-	twoStrains splitStatus: { #(I). #index->#(1 2) }.
+	twoStrains splitStatus: { #(S I). #index->#(1 2) }.
 
-	self assert: (twoStrains atAttribute: #status) size equals: 5.
-	self assert: (twoStrains transitions size) equals: 12.
+	self assert: (twoStrains atAttribute: #status) size equals: 7.
+	self assert: (twoStrains transitions size) equals: 16.
 	
 	model := KEModel new population: (KEPopulation new).
 	model integrate: self sirConcern.
 	model integrate: twoStrains.
 	
-	self assert: (model transitions) size equals: 9.
+	self assert: (model transitions) size equals: 11.

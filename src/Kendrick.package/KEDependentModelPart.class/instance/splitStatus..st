@@ -34,7 +34,7 @@ splitStatus: inputs
 					newTr := KETransition from: tr from copy to: tr to copy probability: tr probability.
 					newTr from at: #status put: ((tmp at: (tr from at: #status)) at: i).
 					newTr to at: #status put: ((tmp at: (tr to at: #status)) at: i).
-					trans add: newTr
+					trs add: newTr
 				]
 			]
 			ifFalse: [  
