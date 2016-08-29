@@ -12,4 +12,4 @@ version035: spec
 			project: 'SciSmalltalk' with: '0.29-baseline';
 			project: 'Ston' with: '0.19';
 			project: 'Glamour' with: '3.3.2'.
-		spec package: 'Kendrick' with: 'Kendrick-BuiThiMaiAnh.525'. ].
+		spec package: 'Kendrick' with: 'Kendrick-BuiThiMaiAnh.532'. ].
