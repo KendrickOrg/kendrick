@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "KendrickComposite",
+	"category" : "Kendrick-DSL",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"model",
+		"concerns",
+		"compartments"
+	],
+	"name" : "Composition",
+	"type" : "normal"
+}

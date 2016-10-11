@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "",
+	"super" : "TestCase",
+	"category" : "Kendrick-DSL",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"beforeSimulator",
+		"afterSimulator",
+		"beforeModel",
+		"afterModel",
+		"beforeDiagram",
+		"afterDiagram"
+	],
+	"name" : "TestMeaslesScripts",
+	"type" : "normal"
+}

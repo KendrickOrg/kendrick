@@ -1,0 +1,4 @@
+*Kendrick-DSL
+isUnaryExpression
+
+	^ true

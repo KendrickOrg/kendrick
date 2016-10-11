@@ -1,0 +1,19 @@
+{
+	"commentStamp" : "",
+	"super" : "KendrickInternalDSLEntities",
+	"category" : "Kendrick-DSL",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"simulation",
+		"xLabel",
+		"diag",
+		"builder",
+		"explicitDataSet",
+		"lazyDataBlock",
+		"canvas"
+	],
+	"name" : "Visualization",
+	"type" : "normal"
+}

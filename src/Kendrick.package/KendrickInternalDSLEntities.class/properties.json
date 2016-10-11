@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Kendrick-DSL",
+	"classinstvars" : [
+		"storedInstances"
+	],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"id"
+	],
+	"name" : "KendrickInternalDSLEntities",
+	"type" : "normal"
+}

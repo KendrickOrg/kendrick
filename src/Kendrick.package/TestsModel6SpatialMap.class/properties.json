@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "",
+	"super" : "TestsIST",
+	"category" : "Kendrick-DSL",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"beforeSimulator",
+		"afterSimulator",
+		"beforeModel",
+		"afterModel",
+		"beforeDiagram",
+		"afterDiagram"
+	],
+	"name" : "TestsModel6SpatialMap",
+	"type" : "normal"
+}

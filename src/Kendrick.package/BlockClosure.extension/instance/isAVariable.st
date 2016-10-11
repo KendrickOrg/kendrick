@@ -1,0 +1,4 @@
+*Kendrick-DSL
+isAVariable
+
+	^ true

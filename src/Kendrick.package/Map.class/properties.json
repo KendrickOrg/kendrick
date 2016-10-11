@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "KendrickInternalDSLEntities",
+	"category" : "Kendrick-DSL",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"attributeToRegions",
+		"borders"
+	],
+	"name" : "Map",
+	"type" : "normal"
+}

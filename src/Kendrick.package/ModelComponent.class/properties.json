@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "KendrickModelingComponent",
+	"category" : "Kendrick-DSL",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"population"
+	],
+	"name" : "ModelComponent",
+	"type" : "normal"
+}
