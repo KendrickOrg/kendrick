@@ -10,7 +10,7 @@ gtInspectorGraphIn: composite
 					nodes := ((RTEllipse new size: 15; color:((Color blue alpha: 0.4))) + (lab text: [ :e | e model any asString ])) elementsOn: graph nodes.
 					nodes @ RTDraggable.
 					view addAll: nodes.
-					RTEdgeBuilder new view: view;shape: (RTArrowedLine new color: Color black; attachPoint: RTCircleAttachPoint new);source: graph edges connectFrom:#from to:#to.					.
+					RTEdgeBuilder new view: view;shape: (RTArrowedLine new color: Color black; attachPoint: RTBorderAttachPoint new);source: graph edges connectFrom:#from to:#to.					.
 					(RTLayoutBuilder new forceWithCharge: -450) on: view elements.
 					view
 					]
