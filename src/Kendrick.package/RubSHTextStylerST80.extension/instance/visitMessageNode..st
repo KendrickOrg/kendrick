@@ -1,4 +1,4 @@
-*Kendrick-DSL
+*Kendrick-InternalDSL-DSL
 visitMessageNode: aMessageNode
 	| style link |
 	style := #keyword.

@@ -1,4 +1,4 @@
-*Kendrick-DSL
+*Kendrick-InternalDSL-DSL
 isUnaryExpression
 
 	^ true

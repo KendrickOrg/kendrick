@@ -1,4 +1,4 @@
-*Kendrick-DSL
+*Kendrick-InternalDSL-DSL
 symbol
 
 	^ self at: 1

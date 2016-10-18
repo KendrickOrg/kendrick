@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "TestsIST",
-	"category" : "Kendrick-DSL",
+	"category" : "Kendrick-InternalDSL",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

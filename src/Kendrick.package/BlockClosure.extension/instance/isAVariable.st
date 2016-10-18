@@ -1,4 +1,4 @@
-*Kendrick-DSL
+*Kendrick-InternalDSL-DSL
 isAVariable
 
 	^ true

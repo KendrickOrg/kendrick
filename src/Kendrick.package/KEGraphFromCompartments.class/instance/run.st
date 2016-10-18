@@ -1,6 +1,6 @@
 running
 run
-	self nodes: model population compartments keys.
+	self nodes: model initCompartments keys.
 	model transitions
 		do: [ :t | 
 			self
