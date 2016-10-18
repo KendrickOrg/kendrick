@@ -1,4 +1,4 @@
 as yet unclassified
 entityFilesDir
 
-	^ Smalltalk vmDirectory parent asFileReference 
+	^ (Smalltalk vmDirectory parent asFileReference / 'Library/')
