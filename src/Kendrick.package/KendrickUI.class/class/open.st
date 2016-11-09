@@ -2,5 +2,5 @@ as yet unclassified
 open
 
 	^ self 
-		inspect: (Smalltalk vmDirectory parent asFileReference / 'Library/')
+		inspect: (Smalltalk vmDirectory parent asFileReference / 'Sources/')
 		label: 'KendrickUI'

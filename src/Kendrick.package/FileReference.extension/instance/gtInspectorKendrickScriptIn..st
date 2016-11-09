@@ -8,7 +8,9 @@ gtInspectorKendrickScriptIn: composite
 			title: 'Code';
 			display: [ self readStreamDo: [ :s | s contents ] ];
 			act: [ :text |
+
 					KendrickInternalDSLEntities cleanUpForInteractiveSessions.
+					KendrickInternalDSLEntities currentProjectDir: self projectNameForKendrick.
 					text selectionInterval: (1 to: text text size).
 					text highlightEvaluateAndDo: [ :result | text selection: result ] ]
 				icon: GLMUIThemeExtraIcons glamorousGo

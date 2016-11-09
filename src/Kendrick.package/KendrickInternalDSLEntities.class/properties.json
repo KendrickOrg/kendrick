@@ -6,7 +6,9 @@
 		"storedInstances"
 	],
 	"pools" : [ ],
-	"classvars" : [ ],
+	"classvars" : [
+		"currentProjectDir"
+	],
 	"instvars" : [
 		"id"
 	],
