@@ -4,7 +4,8 @@ activate
 	
 	self activateHelp.
 	self arguments ifEmpty: [ ^ self error: '[KENDRICK] No input file defined' ].
-	inDisk := self class entityFilesDir / self arguments first.
+	inDisk := "self class entityFilesDir / "self arguments first asFileReference.
+	KendrickInternalDSLEntities currentProjectDir: inDisk projectNameForKendrick.
 			inDisk exists 	
 				ifTrue: [ 
 					|rs entity|
