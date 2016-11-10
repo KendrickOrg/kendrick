@@ -1,17 +1,24 @@
 public-api
 exportToPng
 
-	['./Library/Output/' asFileReference createDirectory] on: Error do: [  ].
+	|outDir filePath|
 
-	('./Library/Output/' , self id , '.png') asFileReference 
-		exists ifTrue: [ ('./Library/Output/' , self id , '.png') asFileReference delete ].	
+	outDir := './Sources/', KendrickInternalDSLEntities currentProjectDir , '/Output/'. 
+	outDir asFileReference exists 
+		ifFalse: [ outDir := './Sources/Projects/', KendrickInternalDSLEntities currentProjectDir , '/Output/'].
+	filePath := (outDir , self id , '.png').
+
+	"[outDir asFileReference createDirectory] on: Error do: [  ]."
+
+	filePath asFileReference 
+		exists ifTrue: [ filePath asFileReference delete ].	
 
 	(RTCanvasExporter canvas: self canvas)
 		whole;
 		defaultScale;
 		oversizedBy: 20 @ 20;
 		format: #png;
-		fileName: ('./Library/Output/' , self id , '.png'); 
+		fileName: filePath; 
 		ifNil: [ ^ nil ];
 		export.
 		
