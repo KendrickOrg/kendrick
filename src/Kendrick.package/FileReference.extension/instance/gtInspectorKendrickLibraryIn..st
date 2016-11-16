@@ -14,7 +14,7 @@ gtInspectorKendrickLibraryIn: composite
 			self isRoot 
 				ifTrue: [ children ]
 				ifFalse: [ 
-					children asOrderedCollection 
+					children asOrderedCollection
 						"addFirst: self parent;" "should not navigate like this !" 
 						yourself ] ];
 		column: 'Entity' evaluated: [:each | (self isChildOf: each) 
@@ -30,7 +30,7 @@ gtInspectorKendrickLibraryIn: composite
 			each isDirectory 
 				ifTrue: [ GLMUIThemeExtraIcons glamorousFolder ] 
 				ifFalse: [ GLMUIThemeExtraIcons glamorousBrowse ] ];
-		when: [self isDirectory and: [self hasChildren]];
+		when: [self isDirectory "and: [self hasChildren]"];
 		selectionAct: [:table | table selection delete. table update] entitled: 'Delete';
 		act: [ :table |
 			 (UIManager default request: 'New Directory name?' initialAnswer: '') 
