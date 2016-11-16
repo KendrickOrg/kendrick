@@ -39,7 +39,7 @@ gtInspectorKendrickLibraryIn: composite
 			 ] icon: GLMUIThemeExtraIcons glamorousFolder entitled: 'Create Directory';		
 		act: [ :table |
 			 (UIManager default request: 'New File name?' initialAnswer: '') 
-					ifNotNil: [:name | (self / name) ensureCreateFile ].
+					ifNotNil: [:name | (self / (name , '.kendrick')) ensureCreateFile ].
 			 table update
 			 ] icon: GLMUIThemeExtraIcons glamorousBrowse entitled: 'Create File';		
 		act: [ :table | table update ] icon: GLMUIThemeExtraIcons glamorousRefresh entitled: 'Refresh'.";
