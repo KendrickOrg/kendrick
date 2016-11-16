@@ -7,7 +7,7 @@ gtInspectorKendrickLibraryIn: composite
 	
 	
 	^ composite table 
-		title: 'Library';
+		title: 'Folder';
 		display: [ 
 			| children |
 			children := self directories, (self files select: [:file | file basename asString first ~= $.]). "no hidden files"
