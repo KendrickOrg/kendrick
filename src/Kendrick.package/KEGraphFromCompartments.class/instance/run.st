@@ -1,11 +1,10 @@
 running
 run
 	self nodes: model initCompartments keys.
-	model transitions
-		do: [ :t | 
 			self
-				edges:
-					{(t from) ->
-					(t to)} 
-				from: #key
-				to: #value]
+				edges: (model transitions collect: [ :t | 
+					{(t from) .
+					(t to) . t probability}]) 
+				from: #first
+				to: #second
+				weight: #third
