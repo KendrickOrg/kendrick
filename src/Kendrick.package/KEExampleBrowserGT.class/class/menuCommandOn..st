@@ -1,6 +1,6 @@
-as yet unclassified
+world menu
 menuCommandOn: aBuilder
-	<worldMenu>
+
 	((aBuilder item: #Kendrick) icon: KEIcon smallKendrick)
 	withSeparatorAfter;
 	with: [

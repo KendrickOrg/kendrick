@@ -1,10 +1,10 @@
-as yet unclassified
+world menu
 menuCommandOn: aBuilder
-
+ <worldMenu>
 
 	(aBuilder item: #'Kendrick Browser')
 			order: 0.1; 
 			parent: #Kendrick;
-			label: 'Kendrick Browser';
+			label: 'Kendrick UI';
 			icon: KEIcon smallKendrick;
-			action: [ self new open ]	
+			action: [ self openWithDependancies ]	
