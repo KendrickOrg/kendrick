@@ -2,5 +2,5 @@ instance creation
 open
 
 	^ self 
-		inspect: (Smalltalk vmDirectory parent asFileReference / 'Sources/')
+		inspect: (SmalltalkImage current lastImagePath asFileReference parent / 'Sources/')
 		label: 'KendrickUI'
