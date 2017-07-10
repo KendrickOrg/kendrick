@@ -4,5 +4,5 @@ openOn: aPage
 	w := self 
 		openOn: aPage 
 		with: self defaultRenderer.
-	w extent: self class preferredExtent.
+	"w extent: self class preferredExtent."
 	^ w
