@@ -3,7 +3,7 @@ inspect: anObject label: aString
 
 	| instance |
 	instance := self new.
-	(instance 
+	instance 
 		title: aString;
-		openOn: anObject) fullscreen.
+		openOn: anObject.
 	^ instance
