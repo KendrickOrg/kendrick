@@ -1,4 +1,4 @@
-as yet unclassified
+public
 edgesFrom: aNode toAll: otherNodes oneWay: boolean
 	otherNodes do: [ :n|
 		edges add: aNode->n. 
