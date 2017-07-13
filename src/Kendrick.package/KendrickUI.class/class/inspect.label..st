@@ -1,4 +1,4 @@
-openning
+as yet unclassified
 inspect: anObject label: aString
 
 	| instance |
