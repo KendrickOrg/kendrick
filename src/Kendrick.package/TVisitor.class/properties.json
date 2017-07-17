@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "KEEntity",
+	"category" : "Kendrick-CTransform",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"model"
+	],
+	"name" : "TVisitor",
+	"type" : "normal"
+}

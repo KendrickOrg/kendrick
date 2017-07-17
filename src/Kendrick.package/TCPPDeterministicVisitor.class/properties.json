@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "TCPPVisitor",
+	"category" : "Kendrick-CTransform",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "TCPPDeterministicVisitor",
+	"type" : "normal"
+}

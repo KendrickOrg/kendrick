@@ -1,3 +1,3 @@
-accessing
+as yet unclassified
 atNode: aLabel
-	^ self nodes detect: [ :n | n label = aLabel ]
+	^ (self nodes select: [ :n| n label = aLabel ]) first
