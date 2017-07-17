@@ -1,31 +1,40 @@
 tests
 prepare4FirstTestCase
-	|spatialConcern model seirsConcern|
+	|model multiHostConcern spatialConcern seirsConcern|
+	model := KEModel new population: (KEPopulation size: 27500).
+
+	"Multi-host concern"
+	multiHostConcern := KEModelPart new.
+	multiHostConcern    addAttribute: #species  value: #(#human #bird).
+
+	"Spatial concern"
 	spatialConcern := KEModelPart new.
 	spatialConcern addAttribute: #patch value: (1 to: 5) asArray.
 	spatialConcern addParameter: #rho.
-	(1 to: 5) do: [ :i| 
-		(i < 5) 
-		ifTrue: [  
-			spatialConcern 
-				addTransitionFrom: { #patch->i } 
-				to: { #patch->(i+1) } 
-				probability: [ :aModel| aModel atParameter: #rho ].
-		]
-		ifFalse: [  
-			spatialConcern 
-				addTransitionFrom: { #patch->i } 
-				to: { #patch->1 } 
-				probability: [ :aModel| aModel atParameter: #rho ].
-		]
-	].
-	seirsConcern := KEModelPart new.
-    seirsConcern attributes: {#status->#(#S #E #I #R)}.
-    seirsConcern addParameters: { #beta. #gamma. #mu. #sigma. #v }.
-    seirsConcern addParameter: #lambda value: [ :aModel | 
+    (1 to: 5) do: [ :i| 
+        (i < 5) 
+        ifTrue: [  
+            spatialConcern 
+                addTransitionFrom: { #patch->i } 
+                to: { #patch->(i+1) } 
+                probability: [ :aModel| aModel atParameter: #rho ].
+        ]
+        ifFalse: [  
+            spatialConcern 
+                addTransitionFrom: { #patch->i } 
+                to: { #patch->1 } 
+                probability: [ :aModel| aModel atParameter: #rho ].
+        ]
+    ]. 
+
+"SEIRS concern"
+seirsConcern := KEModelPart new.
+seirsConcern attributes: {#status->#(#S #E #I #R)}.
+seirsConcern addParameters: { #beta. #gamma. #mu. #sigma. #nu }.
+seirsConcern addParameter: #lambda value: [ :aModel | 
             (aModel atParameter: #beta) * 
             (aModel atCompartment: {#status->#I}) / (aModel atParameter: #N) ].
-    seirsConcern
+seirsConcern
         addTransitionFrom: '{#status: #S}'
         to: '{#status: #E}'
         probability: [ :aModel | 
@@ -41,7 +50,7 @@ prepare4FirstTestCase
     seirsConcern 
         addTransitionFrom: '{#status: #R}' 
         to: '{#status: #S}' 
-        probability: [ :aModel | aModel atParameter: #v ].
+        probability: [ :aModel | aModel atParameter: #nu ].
     #(S E I R) do: [ :each| 
         seirsConcern 
             addTransitionFrom: {#status->each}
@@ -53,34 +62,67 @@ prepare4FirstTestCase
         to: '{#status: #S}' 
         probability: [ :aModel | aModel atParameter: #mu ].
 
-   model := KEModel new.
-   model population: (KEPopulation size: 5000).
-   model integrate: spatialConcern.
-   model integrate: seirsConcern.
+"Concerns integration"
 
-   model atParameter: #beta assignValue: [ :aModel| |c val| 
-        c := aModel currentCompartment at: #patch.
-        c = 1 ifTrue: [ val := 0.75 ] ifFalse: [ val := 0.5 ].
-        val 
-    ].
-    model atParameter: #v assignValue: 0.00274.
-    model atParameter: #mu assignValue: 0.0000365.
-    model atParameter: #sigma assignValue: 0.5.
-    model atParameter: #gamma assignValue: 0.25.
+    model integrate: spatialConcern.
+    model integrate: multiHostConcern.
+    model integrate: seirsConcern.
+
+    model atParameter: #mu assignValue: [ :aModel| |c val| 
+        c := aModel currentCompartment at: #species.
+        c = #human ifTrue: [ val := 0.0000365 ].
+        c = #bird ifTrue: [ val := 0.00137 ].
+        val ].
+    model atParameter: #sigma assignValue: [ :aModel| |c val| 
+        c := aModel currentCompartment at: #species.
+        c = #human ifTrue: [ val := 0.5 ].
+        c = #bird ifTrue: [ val := 0.67 ].
+        val ].
+    model atParameter: #gamma assignValue: [ :aModel| |c val| 
+        c := aModel currentCompartment at: #species.
+        c = #human ifTrue: [ val := 0.25 ].
+        c = #bird ifTrue: [ val := 0.233 ].
+        val ].
+    model atParameter: #nu assignValue: 0.00274.
     model atParameter: #N assignValue: [ :aModel| |c| 
-        c := aModel currentCompartment at: #patch.
-        aModel sizeOfPopulation: c
-        ].
-    model atParameter: #rho assignValue: 0.03. 
+        c := OrderedCollection new.
+        c add: (aModel currentCompartment at: #patch).
+        c add: (aModel currentCompartment at: #species).
+        aModel sizeOfPopulation: (c asArray)
+    ].
+    model atParameter: #rho assignValue: [ :aModel| |c val|
+        c := aModel currentCompartment at: #species.
+        c = #bird ifTrue: [ val := 0.1 ].
+        c = #human ifTrue: [ val := 0.03 ].
+        val
+    ].
+    model atParameter: #beta assignValue: [ :aModel| |c val| 
+        c := aModel currentCompartment at: #species.
+        c = #human ifTrue: [ val := #(0 0.21) ].
+        c = #bird ifTrue: [ val := #(0 0.42) ].
+        val
+    ]. 
     model atParameter: #lambda assignValue: [ :aModel| |c|
         c := aModel currentCompartment at: #patch.
-        (aModel atParameter: #beta) * (aModel atCompartment: {#status->#I. #patch->c}) / (aModel atParameter: #N)
+        ((aModel atParameter: #beta) *
+        (aModel atCompartment: {#status->#I. #patch->c}) / (aModel atParameter: #N)) sum.
+    ].
+    model 
+        atCompartment: { #status->#S. #species->#bird. #patch->1 } 
+        put: 4990
+        atOthersPut: 0.
+    model 
+        atCompartment: { #status->#I. #species->#bird. #patch->1 } 
+        put: 10.
+    2 to: 5 do: [ :i| 
+        model 
+            atCompartment: { #status->#S. #species->#bird. #patch->i } 
+            put: 5000.
+    ].
+    1 to: 5 do: [ :i| 
+        model 
+            atCompartment: { #status->#S. #species->#human. #patch->i } 
+            put: 500 
     ].
 
-   model atCompartment: { #status->#S. #patch->1 } put: 900 atOthersPut: 0.
-   model atCompartment: { #status->#I. #patch->1 } put: 100.
-   model atCompartment: { #status->#S. #patch->2 } put: 1000.
-   model atCompartment: { #status->#S. #patch->3 } put: 1000.
-   model atCompartment: { #status->#S. #patch->4 } put: 1000.
-   model atCompartment: { #status->#S. #patch->5 } put: 1000.
 	^model

@@ -29,12 +29,7 @@ evaluateWithModel: aModel
 				
 			]."endof allKeys 	do: [:each|"
 				
-		"subPop := aModel currentSubPopulation.
-		subPop populationID = indexValues first 
-		ifTrue: [ 
-		 	^ (subPop at: symbol) currentNbIndividuals
-			]
-		ifFalse: [ ^ ((subPop parent at: (indexValues first)) at: symbol) currentNbIndividuals ]."
+		
 		"Endof ThanhNT 13-July-2017"
 		].
 	indexValues do: [ :each| x := (x at: each) ].
