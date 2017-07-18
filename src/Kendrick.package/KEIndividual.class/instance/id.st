@@ -1,3 +1,3 @@
-as yet unclassified
+accessing
 id
 	^ attributes at: #id ifAbsent: [ nil ]

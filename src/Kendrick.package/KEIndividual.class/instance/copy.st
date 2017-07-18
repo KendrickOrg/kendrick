@@ -1,4 +1,4 @@
-as yet unclassified
+copying
 copy
 	|new|
 	new := KEIndividual new.
