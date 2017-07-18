@@ -1,0 +1,4 @@
+protected
+allTimeSeries
+
+	^ simulator allTimeSeries 

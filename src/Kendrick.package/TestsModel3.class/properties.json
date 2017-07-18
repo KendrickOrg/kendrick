@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "TestsIST",
+	"category" : "Kendrick-InternalDSL",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "TestsModel3",
+	"type" : "normal"
+}

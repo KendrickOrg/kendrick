@@ -1,0 +1,20 @@
+{
+	"commentStamp" : "",
+	"super" : "KendrickInternalDSLEntities",
+	"category" : "Kendrick-InternalDSL",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"algo",
+		"from",
+		"to",
+		"step",
+		"simulator",
+		"combo",
+		"scenario",
+		"scenarios"
+	],
+	"name" : "Simulation",
+	"type" : "normal"
+}
