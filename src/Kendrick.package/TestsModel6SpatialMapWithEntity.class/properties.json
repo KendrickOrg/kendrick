@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "",
+	"super" : "TestsIST",
+	"category" : "Kendrick-InternalDSL",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"beforeSimulator",
+		"afterSimulator",
+		"beforeModel",
+		"afterModel",
+		"beforeDiagram",
+		"afterDiagram"
+	],
+	"name" : "TestsModel6SpatialMapWithEntity",
+	"type" : "normal"
+}

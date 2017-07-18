@@ -5,7 +5,7 @@ exampleRK4SolverOnSEIRMeaslesModelWithVaccination
 	model := self modelRK4SolverOnSEIRMeaslesModelWithVaccination.
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 100 step: 0.01.
 	simulator executeOn: model.
-	diag := (KEDiagramBuilder new) data: ((simulator timeSeriesAt: '{#status: #I}') log).
+	diag := (KEDiagramBuilder new) data: ((simulator timeSeriesOutputsAt: '{#status: #I}') log).
 	diag yLabel: 'log(Infectious)'.
 	diag xLabel: 'Time (years)'.
 	^ diag view

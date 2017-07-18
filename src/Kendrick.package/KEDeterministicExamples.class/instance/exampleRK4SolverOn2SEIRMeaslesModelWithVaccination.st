@@ -7,13 +7,13 @@ exampleRK4SolverOn2SEIRMeaslesModelWithVaccination
 	legends := OrderedCollection new.
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 100 step: 0.01.
 	simulator executeOn: model.
-	data addAll: (simulator timeSeriesAt: '{#status: #I}').
+	data addAll: (simulator timeSeriesOutputsAt: '{#status: #I}').
 	
 	model atParameter: #p assignValue: 0.0.
 	model resetCompartments.
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 100 step: 0.01.
 	simulator executeOn: model.
-	data addAll: (simulator timeSeriesAt: '{#status: #I}').
+	data addAll: (simulator timeSeriesOutputsAt: '{#status: #I}').
 	 
 	legends addAll: #('p = 0.7' 'p = 0.0').
 	diag := (KEDiagramBuilder new) data: data log.

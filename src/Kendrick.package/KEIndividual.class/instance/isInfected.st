@@ -1,3 +1,3 @@
-as yet unclassified
+testing
 isInfected
 	^ self isAlive and: [ (self currentStatus at: #status) = #I ]

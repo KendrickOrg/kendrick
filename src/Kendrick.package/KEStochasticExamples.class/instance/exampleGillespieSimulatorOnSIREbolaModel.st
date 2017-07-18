@@ -54,7 +54,7 @@ exampleGillespieSimulatorOnSIREbolaModel
 	simulator := KESimulator new: #Gillespie from: 0.0 to: 100 step: 0.1.
 	simulator executeOn: model.
 	"(simulator timeSeriesAt: '{#status:#I,#country:#Liberia}') first save: 'Liberia.txt'."
-	db := (KEDiagramBuilder new) data: (simulator timeSeriesAt: '{#status: #	I}').
+	db := (KEDiagramBuilder new) data: (simulator timeSeriesOutputsAt: '{#status: #	I}').
 	db open.
 	db openMap: #africa 
 	   countries: (model atAttribute: #country) 

@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "TestCase",
+	"category" : "Kendrick-InternalDSL",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"beforeSimulator",
+		"afterSimulator",
+		"beforeModel",
+		"afterModel"
+	],
+	"name" : "TestMultiSpeciesSpatialODEs",
+	"type" : "normal"
+}

@@ -1,6 +1,5 @@
 tests
 testParserIndexedVariable
-	"self new testParserIndexedVariable"
 	|betaEquation|
 	betaEquation := 'beta[i][j]=exp(-(i-j)^2/d)' parseAsAnEquation.
 	self assert: (betaEquation variable isAnIndexedVariable) equals: true.
