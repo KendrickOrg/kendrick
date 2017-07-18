@@ -1,4 +1,4 @@
-as yet unclassified
+public
 executeOn: aModel
 	| t rand |
 	super executeOn: aModel.
