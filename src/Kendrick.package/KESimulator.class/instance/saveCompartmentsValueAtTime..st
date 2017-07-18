@@ -1,6 +1,5 @@
 as yet unclassified
 saveCompartmentsValueAtTime: t
-self halt.
 	model population compartments
 		keysAndValuesDo: [ :k :v | 
 			| ts |
