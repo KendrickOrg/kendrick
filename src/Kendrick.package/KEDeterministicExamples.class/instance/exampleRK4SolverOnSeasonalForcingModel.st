@@ -6,5 +6,5 @@ exampleRK4SolverOnSeasonalForcingModel
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 400 step: 0.01.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
-	dB data: ((simulator timeSeriesOutputsAt: '{#status: #I}') log).
+	dB data: ((simulator timeSeriesAt: '{#status: #I}') log).
 	^ dB view

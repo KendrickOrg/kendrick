@@ -2,7 +2,7 @@ as yet unclassified
 updateIndividuals
 	"Update status for individuals of population"
 	model population individuals do: [ :ind| 
-		(ind isAlive and: [ ind nextStatus isNotNil ]) 
+		((ind isAlive) and: [ ind nextStatus isNotNil ]) 
 		ifTrue: [ 
 			((ind nextStatus at: #status) = #empty) 
 			ifTrue: [ model population removeIndividual: ind ] 

@@ -1,4 +1,4 @@
-accessing
+as yet unclassified
 birthTransitions
 	birthTransitions ifNil: [ 
 		birthTransitions := OrderedCollection new.

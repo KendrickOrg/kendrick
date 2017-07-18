@@ -1,4 +1,0 @@
-protected
-parameters
-
-	^ parameters 

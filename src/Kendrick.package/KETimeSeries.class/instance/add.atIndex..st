@@ -1,4 +1,4 @@
-adding
+accessing
 add: element atIndex: indexElement
 	index addLast: indexElement.
 	data addLast: element

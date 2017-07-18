@@ -1,6 +1,6 @@
-copying
+as yet unclassified
 copy
-	|newInstance|
-	newInstance := self class new.
-	newInstance attributes addAll: (self attributes).
-	^ newInstance
+	|new|
+	new := KEIndividual new.
+	new attributes addAll: (self attributes).
+	^ new

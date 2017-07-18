@@ -1,4 +1,4 @@
-accessing
+as yet unclassified
 transitions
 	transitions ifNil: [ 
 		transitions := Dictionary new.
