@@ -1,4 +1,4 @@
-initialization
+accessing
 initialize
 	super initialize.
 	data  := OrderedCollection new.

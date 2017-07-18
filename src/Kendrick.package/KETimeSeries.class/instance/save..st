@@ -1,4 +1,4 @@
-action
+accessing
 save: fileName
 	"This function will save all data in a file as fileName.dat. The time col is first and next is the data col"
 	|stream fileSystem workDir|
