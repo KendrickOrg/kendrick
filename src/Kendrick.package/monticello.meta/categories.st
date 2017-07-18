@@ -1,5 +1,4 @@
 SystemOrganization addCategory: #Kendrick!
-SystemOrganization addCategory: 'Kendrick-CTransform'!
 SystemOrganization addCategory: 'Kendrick-Code-Generators'!
 SystemOrganization addCategory: 'Kendrick-Examples'!
 SystemOrganization addCategory: 'Kendrick-Glamour'!
