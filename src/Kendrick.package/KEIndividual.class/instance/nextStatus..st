@@ -1,3 +1,3 @@
-as yet unclassified
+accessing
 nextStatus: aDictionary
 	nextStatus := aDictionary

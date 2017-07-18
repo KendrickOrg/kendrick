@@ -1,3 +1,3 @@
-as yet unclassified
+testing
 isAlive
 	^ self attributes at: #alive

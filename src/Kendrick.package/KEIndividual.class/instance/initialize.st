@@ -1,6 +1,5 @@
-as yet unclassified
+initialization
 initialize
 	super initialize.
 	attributes := Dictionary new.
-	attributes at: #alive put: true.
-	nextStatus := nil
+	attributes at: #alive put: true

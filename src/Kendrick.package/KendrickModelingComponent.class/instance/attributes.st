@@ -1,0 +1,4 @@
+protected
+attributes
+
+	^ attributes

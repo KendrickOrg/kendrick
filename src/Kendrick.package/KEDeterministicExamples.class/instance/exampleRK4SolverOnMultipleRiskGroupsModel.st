@@ -7,7 +7,7 @@ exampleRK4SolverOnMultipleRiskGroupsModel
 	simulator executeOn: model.
 
 	db := KEDiagramBuilder new.
-	db data: (simulator timeSeriesAt: '{#status: #I}').
+	db data: (simulator timeSeriesOutputsAt: '{#status: #I}').
 	db yLabel: 'Infectious'.
 	^ db view
 															

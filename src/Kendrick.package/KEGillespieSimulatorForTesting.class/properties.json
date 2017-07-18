@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "KEGillespieSimulator",
+	"category" : "Kendrick-InternalDSL",
+	"classinstvars" : [
+		"seed"
+	],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "KEGillespieSimulatorForTesting",
+	"type" : "normal"
+}
