@@ -17,4 +17,4 @@ testAfterSimulationOfSIRModelThereAreThreeTimeSeries
 		probability: [ :m| (model atParameter: #gamma)].
 	simulator := KESimulator new: #Gillespie from: 0.0 to: 1.0 step: 0.001.
 	simulator executeOn: model.
-	self assert: simulator allTimeSeries size = 3.
+	self assert: simulator timeSeriesOutputs size = 3.

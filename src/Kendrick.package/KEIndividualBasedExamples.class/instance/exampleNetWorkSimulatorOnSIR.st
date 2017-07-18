@@ -40,7 +40,7 @@ f := [:name| |d tmp|
 db := KEDiagramBuilder new data: { (f value: '{#status:#I}') }.
 db open.
 db := KENetworkBuilder new
-	data: simulator allTimeSeries;
+	data: simulator timeSeriesOutputs;
         network: (model atParameter: #network);
 	status: #(#S #I #R);
 	colors: #(#green #red #blue);
