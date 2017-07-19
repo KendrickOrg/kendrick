@@ -1,4 +1,4 @@
 public
 executeOn: aModel
 	self model: aModel.
-	self initializeTimeSeriesOutputs
+	self initializeSimulationResult

@@ -1,4 +1,4 @@
-information
+as yet unclassified
 distanceTo: other
 	|x y|
 	x := self position.

@@ -1,22 +1,19 @@
-A KEDiagramBuilder is the visualisation of the results of the simulation of a Kendrick model. Usually, several KETimeSeries are visualized in the same graph.
+A KEDiagramBuilder is the visualisation class of the system..
 
 Instance Variables
+	data:		<Collection>
 	legends:		<OrderedCollection>
 	xLabel:		<String>
 	yLabel:		<String>
-	legendTitle: 	<String>
-	
+
 data
-	- collection of Time Series
+	- xxxxx
 
 legends
-	- collection of labels of each time series
+	- xxxxx
 
 xLabel
-	- Name given to the x axis
+	- xxxxx
 
 yLabel
-	- Name given to the y axis
-
-legendTitle
-	- Title of the legend
+	- xxxxx

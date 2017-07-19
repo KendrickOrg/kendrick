@@ -18,6 +18,6 @@ exampleIBMSimulatorOnSIRModel
 	simulator := KESimulator new: #IBM from: 0.0 to: 1.0 step: 0.0027.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
-	dB data: (simulator timeSeriesOutputsAt: '{#status: #I}').
+	dB data: (simulator timeSeriesAt: '{#status: #I}').
 	^ dB open
 	

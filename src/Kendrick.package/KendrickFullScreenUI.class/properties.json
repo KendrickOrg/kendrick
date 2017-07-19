@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "KendrickUI",
+	"super" : "AnObsoleteKendrickUI",
 	"category" : "Kendrick-InternalDSL",
 	"classinstvars" : [ ],
 	"pools" : [ ],

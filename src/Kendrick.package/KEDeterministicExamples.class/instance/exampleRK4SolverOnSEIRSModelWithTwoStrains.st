@@ -54,8 +54,8 @@ exampleRK4SolverOnSEIRSModelWithTwoStrains
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
 	data := OrderedCollection new.
-	data addAll: (simulator timeSeriesOutputsAt: '{#status: #I1}').
-	data addAll: (simulator timeSeriesOutputsAt: '{#status: #I2}').
+	data addAll: (simulator timeSeriesAt: '{#status: #I1}').
+	data addAll: (simulator timeSeriesAt: '{#status: #I2}').
 	dB data: data.
 	dB xLabel: 'Time (year)'.
 	dB open.

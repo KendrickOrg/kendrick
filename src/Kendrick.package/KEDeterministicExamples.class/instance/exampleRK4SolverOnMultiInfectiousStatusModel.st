@@ -6,8 +6,8 @@ exampleRK4SolverOnMultiInfectiousStatusModel
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 50 step: 0.1.
 	simulator executeOn: model.
 	data := OrderedCollection new.
-	data addAll: (simulator timeSeriesOutputsAt: '{#status:#I}').
-	data addAll: (simulator timeSeriesOutputsAt: '{#status:#Is}').
+	data addAll: (simulator timeSeriesAt: '{#status:#I}').
+	data addAll: (simulator timeSeriesAt: '{#status:#Is}').
 	db := KEDiagramBuilder new data: data.
 	^ db view
 	 
