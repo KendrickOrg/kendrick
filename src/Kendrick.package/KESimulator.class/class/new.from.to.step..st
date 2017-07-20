@@ -1,4 +1,4 @@
-meta
+instance creation
 new: algorithm from: tMin to: tMax step: step
 	(self deterministicSolvers keys includes: algorithm) ifTrue: 
 		[ ^ (KEDeterministicSimulator new) tMin: tMin; tMax: tMax; step: step; algorithm: (self deterministicSolvers at: algorithm) ].
