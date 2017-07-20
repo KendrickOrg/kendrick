@@ -10,7 +10,6 @@
 		"tMin",
 		"tMax",
 		"step",
-		"algorithm",
 		"timeSeries"
 	],
 	"name" : "KESimulator",

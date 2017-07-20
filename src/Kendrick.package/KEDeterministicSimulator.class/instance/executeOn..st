@@ -29,7 +29,7 @@ executeOn: aModel
 		 ].
 		c
 	].
-	self stepper: ((Smalltalk at: self algorithm) onSystem: system).
+	self stepper: ((Smalltalk at: self solver) onSystem: system).
 	st := model population compartments values.
 	ks := model population compartments keys.
 	(tMin to: tMax by: step) do: [ :t| 

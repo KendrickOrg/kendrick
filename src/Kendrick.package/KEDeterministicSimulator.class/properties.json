@@ -8,7 +8,8 @@
 	"instvars" : [
 		"system",
 		"stepper",
-		"equations"
+		"equations",
+		"solver"
 	],
 	"name" : "KEDeterministicSimulator",
 	"type" : "normal"
