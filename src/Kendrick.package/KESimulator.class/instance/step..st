@@ -1,3 +1,3 @@
 accessing
-step: aNumber
-	step := aNumber
+step: aStepTime
+	step := aStepTime
