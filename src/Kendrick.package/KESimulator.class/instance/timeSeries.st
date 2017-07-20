@@ -1,3 +1,5 @@
 accessing
 timeSeries
-	^ timeSeries 
+	"return all timeSeries generated after a simulation"
+
+	^ timeSeries

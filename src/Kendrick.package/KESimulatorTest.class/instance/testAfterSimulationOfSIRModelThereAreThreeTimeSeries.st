@@ -23,6 +23,6 @@ testAfterSimulationOfSIRModelThereAreThreeTimeSeries
 		new: #Gillespie
 		from: 0.0
 		to: 1.0
-		step: 0.001.
+		by: 0.001.
 	simulator executeOn: model.
 	self assert: simulator timeSeries size equals: 3

@@ -82,7 +82,7 @@ model atParameter: #mu assignValue: 0.0000365.
 	model atCompartment: { #status->#S. #patch->4 } put: 1000.
 	model atCompartment: { #status->#S. #patch->5 } put: 1000.
 	
-	simulator := KESimulator new: #RungeKutta from: 0 to: 500 step: 1.
+	simulator := KESimulator new: #RungeKutta from: 0 to: 500 by: 1.
 	simulator executeOn: model.
 	
 	db := KEDiagramBuilder new.

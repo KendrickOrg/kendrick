@@ -158,7 +158,7 @@ before
 			put: 500 
 	].
 	
-	simulator := KESimulator new: #RungeKutta from: 0.0 to: 500 step: 1.
+	simulator := KESimulator new: #RungeKutta from: 0.0 to: 500 by: 1.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
 	f := [:name| |d tmp|

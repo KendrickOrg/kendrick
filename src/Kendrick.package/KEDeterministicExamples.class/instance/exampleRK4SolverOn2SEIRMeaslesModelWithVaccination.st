@@ -5,13 +5,13 @@ exampleRK4SolverOn2SEIRMeaslesModelWithVaccination
 	model := self modelRK4SolverOnSEIRMeaslesModelWithVaccination.
 	data := OrderedCollection new.
 	legends := OrderedCollection new.
-	simulator := KESimulator new: #RungeKutta from: 0.0 to: 100 step: 0.01.
+	simulator := KESimulator new: #RungeKutta from: 0.0 to: 100 by: 0.01.
 	simulator executeOn: model.
 	data addAll: (simulator allTimesSeriesContaining: '{#status: #I}').
 	
 	model atParameter: #p assignValue: 0.0.
 	model resetCompartments.
-	simulator := KESimulator new: #RungeKutta from: 0.0 to: 100 step: 0.01.
+	simulator := KESimulator new: #RungeKutta from: 0.0 to: 100 by: 0.01.
 	simulator executeOn: model.
 	data addAll: (simulator allTimesSeriesContaining: '{#status: #I}').
 	legends addAll: #('p = 0.7' 'p = 0.0').

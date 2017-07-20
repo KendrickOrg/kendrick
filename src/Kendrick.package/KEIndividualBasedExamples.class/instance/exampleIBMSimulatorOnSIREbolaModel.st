@@ -51,7 +51,7 @@ exampleIBMSimulatorOnSIREbolaModel
 		ifFalse: [model atCompartment: { #status->#S. #country->each } put: 1000 ]
 	].
 	
-	simulator := KESimulator new: #IBM from: 0.0 to: 100 step: 0.1.
+	simulator := KESimulator new: #IBM from: 0.0 to: 100 by: 0.1.
 	simulator executeOn: model.
 	"(simulator timeSeriesAt: '{#status: #I, #country: #Guinea}') first save: 'I_Guinea_Det.txt'.
 	(simulator timeSeriesAt: '{#status: #I, #country: #Liberia}') first save: 'I_Liberia_Det.txt'.

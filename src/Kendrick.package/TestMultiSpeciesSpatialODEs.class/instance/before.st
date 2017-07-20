@@ -56,7 +56,7 @@ model addEquation:
 	'R[p][s]:t=gamma[p][s]*I[p][s]-mu[p][s]*I[p][s]-nu*R[p][s]+sum(q,rho[s][p][q]*R[q][s])-sum(q,rho[s][q][p])*R[p][s]' parseAsAnEquation.
 
 "Run the model with RK4"
-simulator := KESimulator new: #RungeKutta from: 0 to: 500 step: 1.
+simulator := KESimulator new: #RungeKutta from: 0 to: 500 by: 1.
     simulator executeOn: model.
     db := KEDiagramBuilder new.
 
