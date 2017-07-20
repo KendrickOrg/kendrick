@@ -1,6 +1,6 @@
 public
 executeOn: aModel
-	|st ks|
+	|st ks system |
 	super executeOn:aModel.
 	self equations.
 	system := ExplicitSystem block: [ :x :t| |c i|
