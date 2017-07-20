@@ -59,7 +59,7 @@ exampleIBMSimulatorOnSIREbolaModel
 	(simulator timeSeriesAt: '{#status: #I, #country: #Nigeria}') first save: 'I_Nigeria_Det.txt'.
 	(simulator timeSeriesAt: '{#status: #I, #country: #Senegal}') first save: 'I_Senegal_Det.txt'.
 	(simulator timeSeriesAt: '{#status: #I, #country: #SierraLeone}') first save: 'I_SierraLeone_Det.txt'."
-	db := (KEDiagramBuilder new) data: (simulator timeSeriesAt: '{#status: #	I}').
+	db := (KEDiagramBuilder new) data: (simulator allTimesSeriesContaining: '{#status: #	I}').
 	db open.
 	db openMap: #africa 
 	   countries: (model atAttribute: #country) 

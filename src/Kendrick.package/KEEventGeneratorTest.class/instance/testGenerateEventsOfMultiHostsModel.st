@@ -1,6 +1,5 @@
 tests
 testGenerateEventsOfMultiHostsModel
-	"self new testGenerateEventsOfMultiHostsModel"
 	|model eventGenerator events dsdt didt|
 	model := KEModel new.
 	

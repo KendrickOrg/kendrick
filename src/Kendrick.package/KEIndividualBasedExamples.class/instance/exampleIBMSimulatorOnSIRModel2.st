@@ -18,7 +18,7 @@ exampleIBMSimulatorOnSIRModel2
 			probability: [:m|(m atParameter: #gamma)].
 	simulator := KESimulator new: #IBM from: 0.0 to: 50 step: 0.1.
 	simulator executeOn:  model.
-	db := KEDiagramBuilder new data: (simulator timeSeriesAt: '{#status:#I}').
+	db := KEDiagramBuilder new data: (simulator allTimesSeriesContaining: '{#status:#I}').
 	^ db open
 	
 	

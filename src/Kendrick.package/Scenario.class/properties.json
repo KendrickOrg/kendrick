@@ -1,0 +1,16 @@
+{
+	"commentStamp" : "",
+	"super" : "KendrickModelingComponent",
+	"category" : "Kendrick-InternalDSL",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"model",
+		"concerns",
+		"compartments",
+		"composition"
+	],
+	"name" : "Scenario",
+	"type" : "normal"
+}

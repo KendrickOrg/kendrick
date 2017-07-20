@@ -1,3 +1,3 @@
-as yet unclassified
+accessing
 position
 	^ attributes at: #position ifAbsent: [ nil ]

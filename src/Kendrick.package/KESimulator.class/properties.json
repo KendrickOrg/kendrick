@@ -11,7 +11,7 @@
 		"tMax",
 		"step",
 		"algorithm",
-		"result"
+		"timeSeries"
 	],
 	"name" : "KESimulator",
 	"type" : "normal"

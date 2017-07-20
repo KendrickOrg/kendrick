@@ -6,4 +6,5 @@ inspect: anObject label: aString
 	instance 
 		title: aString;
 		openOn: anObject.
+	self splashLogo.
 	^ instance
