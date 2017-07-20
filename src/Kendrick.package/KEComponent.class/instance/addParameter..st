@@ -1,3 +1,3 @@
-as yet unclassified
+adding
 addParameter: aSymbol
 	self addParameter: aSymbol value: nil

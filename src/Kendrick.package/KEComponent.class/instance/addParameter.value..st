@@ -1,4 +1,4 @@
-as yet unclassified
+adding
 addParameter: aSymbol value: aNumericalOrAnExpressionOrABlock
 	|expression|
 	aNumericalOrAnExpressionOrABlock isNumber 

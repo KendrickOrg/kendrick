@@ -1,4 +1,4 @@
-as yet unclassified
+accessing
 atAttribute: aSymbol add: aValue
 	|newDomain|
 	attributes at: aSymbol ifAbsent: [ ^ self error: 'Cannot find attribute ', aSymbol asString ].

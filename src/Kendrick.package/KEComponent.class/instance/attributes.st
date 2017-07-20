@@ -1,4 +1,4 @@
-as yet unclassified
+accessing
 attributes
 	attributes ifNil: [ attributes := Dictionary new ].
 	^ attributes
