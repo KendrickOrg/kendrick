@@ -2,7 +2,7 @@ public
 executeOn: aModel
 	|st ks system |
 	super executeOn:aModel.
-	self equations.
+	equations := model buildEquations.
 	system := ExplicitSystem block: [ :x :t| |c i|
 		c := Array new: (model population compartments size).
 		i := 1.
