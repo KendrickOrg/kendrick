@@ -1,8 +1,10 @@
 as yet unclassified
 compartmentNames
+	"Returns compartment names of a model (an array of dictionnaries)"
+
 	|names expand keys|
 	names := OrderedCollection new.
-	self attributes keys do: [ :e| 
+	self attributes keysDo: [ :e| 
 		names add: ((self atAttribute: e) collect: [ :v| (e->v) ])
 	].
 	expand := [ :prefix :list| 
