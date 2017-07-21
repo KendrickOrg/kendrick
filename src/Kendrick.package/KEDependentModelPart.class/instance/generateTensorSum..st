@@ -1,4 +1,4 @@
-as yet unclassified
+operators
 generateTensorSum: aTransitionList
 	|remainingMatrix|
 	remainingMatrix := self remainingMatrixAfterProjecting: aTransitionList.
