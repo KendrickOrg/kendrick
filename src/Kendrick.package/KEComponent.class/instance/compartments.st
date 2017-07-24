@@ -2,7 +2,9 @@ public-api
 compartments
 	"Return a set of compartments by doing a cartesian product on status"
 
-	| collection |
+	"| collection |
 	collection := Set new.
 	self attributes keysAndValuesDo: [ :k :v | v do: [:i| collection add: (KECompartment from: {(k -> i)}) ] ].
-	^ collection
+	^ collection"
+	
+	^self compartmentNames collect: [:e| KECompartment from: e ]

@@ -4,6 +4,7 @@ compartmentNames
 	"Should returns a collection of KECompartments in the future"
 	
 	|names keys|
+
 	"Extract status from attributes"
 	names := OrderedCollection new.
 	self attributes keysDo: [ :e| 
@@ -12,5 +13,6 @@ compartmentNames
 
 	"Do a cartesian product of status"
 	keys := self crossProduct: names.
+	
 	keys = #(#()) ifTrue: [ keys := #() ].
 	^ (keys collect: [ :e| Dictionary newFrom: e ])
