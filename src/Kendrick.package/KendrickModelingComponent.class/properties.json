@@ -1,0 +1,20 @@
+{
+	"commentStamp" : "",
+	"super" : "KendrickInternalDSLEntities",
+	"category" : "Kendrick-InternalDSL",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"attributes",
+		"parameters",
+		"equations",
+		"transitions",
+		"explicitelySetCompartments",
+		"otherCompartmentValue",
+		"emptyRate",
+		"backEndEntity"
+	],
+	"name" : "KendrickModelingComponent",
+	"type" : "normal"
+}

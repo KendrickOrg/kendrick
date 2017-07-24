@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "KendrickModelingComponent",
+	"category" : "Kendrick-InternalDSL",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "KendrickComposite",
+	"type" : "normal"
+}

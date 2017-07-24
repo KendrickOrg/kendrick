@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "GTInspector",
+	"category" : "Kendrick-InternalDSL",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "KendrickUI",
+	"type" : "normal"
+}

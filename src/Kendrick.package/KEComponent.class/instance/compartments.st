@@ -1,4 +1,4 @@
-adding
+public-api
 compartments
 	"Return a set of compartments by doing a cartesian product on status"
 

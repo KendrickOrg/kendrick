@@ -1,4 +1,4 @@
-as yet unclassified
+public-api
 compartmentNames
 	"Returns compartment names of a model (an array of dictionnaries)"
 	"Should returns a collection of KECompartments in the future"
