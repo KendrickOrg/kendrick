@@ -1,4 +1,4 @@
-accessing
+utilities
 equationsToTransitions
 	|  events |
 	events := KEEventGenerator from: self.
@@ -18,6 +18,6 @@ equationsToTransitions
 				ifTrue: [ #empty ]
 				ifFalse: [ Dictionary newFrom: {(#status -> each toStatus)} ].
 			self addTransitionFrom: from to: to probability: each rate ].
-		
+
 	"why resetting the equations ?"
 	equations := OrderedCollection new
