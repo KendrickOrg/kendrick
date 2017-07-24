@@ -1,5 +1,6 @@
 accessing
 transitions
+"Return a collection of transitions of the model"
 
 	equations isEmpty ifFalse: [ self equationsToTransitions ].
 	transitions isEmpty ifTrue: [  
