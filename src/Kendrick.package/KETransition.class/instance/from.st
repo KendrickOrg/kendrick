@@ -2,4 +2,6 @@ accessing
 from
 	"Return a compartment"
 
-	^ from
+		from isDictionary
+		ifTrue: [ ^ from ].
+	^ from asDictionary

@@ -11,5 +11,4 @@ testSplitStatus
 	model := KEModel new population: (KEPopulation new).
 	model integrate: self sirConcern.
 	model integrate: twoStrains.
-	
 	self assert: (model transitions) size equals: 9.
