@@ -29,6 +29,7 @@ build
 		c:= (normalize rtValue: (legends at: i)).
 		lb addColor: c text: (legends at: i) ].
 	lb build.
+	"b build."
 	b view @ RTZoomableView.
 	^ b 
 	

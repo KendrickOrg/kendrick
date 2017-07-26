@@ -1,4 +1,4 @@
-generated
+as yet unclassified
 imports: aMatrix
 "constructing transitions using an adjacency matrix"
 |att dom|

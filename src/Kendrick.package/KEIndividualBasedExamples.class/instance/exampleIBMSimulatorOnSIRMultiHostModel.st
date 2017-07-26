@@ -79,8 +79,8 @@ exampleIBMSimulatorOnSIRMultiHostModel
 	model atCompartment: { #status->#I. #species->#reservoir2 } put: 0.
 	model atCompartment: { #status->#R. #species->#reservoir2 } put: 0.
 	
-	simulator := KESimulator new: #IBM from: 0.0 to: 0.5 by: 0.0027.
+	simulator := KESimulator new: #IBM from: 0.0 to: 0.5 step: 0.0027.
 	simulator executeOn: model.
-	db := (KEDiagramBuilder new) data: ((simulator allTimesSeriesContaining: '{#status: #I}') sqrt).
+	db := (KEDiagramBuilder new) data: ((simulator timeSeriesOutputsAt: '{#status: #I}') sqrt).
 	^ db open
 	

@@ -1,11 +1,11 @@
 SystemOrganization addCategory: #Kendrick!
 SystemOrganization addCategory: 'Kendrick-Code-Generators'!
 SystemOrganization addCategory: 'Kendrick-Examples'!
+SystemOrganization addCategory: 'Kendrick-Glamour'!
 SystemOrganization addCategory: 'Kendrick-Help'!
 SystemOrganization addCategory: 'Kendrick-IBM-Core'!
 SystemOrganization addCategory: 'Kendrick-InternalDSL'!
 SystemOrganization addCategory: 'Kendrick-ODE-Parser'!
-SystemOrganization addCategory: 'Kendrick-Obsolete'!
 SystemOrganization addCategory: 'Kendrick-Semantic-Model-Core'!
 SystemOrganization addCategory: 'Kendrick-Spatial-Core'!
 SystemOrganization addCategory: 'Kendrick-Tests-Code-Generators'!

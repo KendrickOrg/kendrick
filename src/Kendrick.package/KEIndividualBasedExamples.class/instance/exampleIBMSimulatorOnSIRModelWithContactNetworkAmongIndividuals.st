@@ -28,10 +28,10 @@ model atParameter: #gamma assignValue: 0.1.
 1 to: 99 do: [:i| model atCompartment: {#status->#S. #node->i asString asSymbol} put: 1].
 model atCompartment: { #status->#I. #node->#'100' } put: 1.
 
-simulator := KESimulator new: #IBM from: 0.0 to: 50 by: 0.1.
+simulator := KESimulator new: #IBM from: 0.0 to: 50 step: 0.1.
 simulator executeOn: model.
 f := [:name| |d tmp|
-		tmp := (simulator allTimesSeriesContaining: name) collect: [ :e| e value ].
+		tmp := (simulator timeSeriesOutputsAt: name) collect: [ :e| e value ].
 		d := OrderedCollection new.
 		1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
 		(KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)

@@ -1,8 +1,8 @@
-tests
+as yet unclassified
 testParserSTONReader
 	|reader aCollection dataOfComps compartments|
 	aCollection := #(S I R).
-	compartments := Dictionary new.
+	compartments ifNil: [ compartments := Dictionary new ].
 	aCollection isDictionary 
 	ifFalse: [ 
 		|key|

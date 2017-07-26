@@ -1,8 +1,8 @@
 public
 executeOn: aModel
-	|st ks system |
+	|st ks|
 	super executeOn:aModel.
-	equations := model buildEquations.
+	self equations.
 	system := ExplicitSystem block: [ :x :t| |c i|
 		c := Array new: (model population compartments size).
 		i := 1.
@@ -29,7 +29,7 @@ executeOn: aModel
 		 ].
 		c
 	].
-	self stepper: ((Smalltalk at: self solver) onSystem: system).
+	self stepper: ((Smalltalk at: self algorithm) onSystem: system).
 	st := model population compartments values.
 	ks := model population compartments keys.
 	(tMin to: tMax by: step) do: [ :t| 

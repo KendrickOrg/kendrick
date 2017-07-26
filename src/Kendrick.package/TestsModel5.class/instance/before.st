@@ -158,11 +158,11 @@ before
 			put: 500 
 	].
 	
-	simulator := KESimulator new: #RungeKutta from: 0.0 to: 500 by: 1.
+	simulator := KESimulator new: #RungeKutta from: 0.0 to: 500 step: 1.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
 	f := [:name| |d tmp|
-		tmp := (simulator allTimesSeriesContaining: name) collect: [ :e| e value ].
+		tmp := (simulator timeSeriesOutputsAt: name) collect: [ :e| e value ].
 		d := OrderedCollection new.
 		1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
 		(KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)

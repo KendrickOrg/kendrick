@@ -73,9 +73,9 @@ exampleGillespieDirectOnSIRMultiHostModel
 	model atCompartment: { #status->#S. #species->#reservoir1 } put: 1000.
 	model atCompartment: { #status->#S. #species->#reservoir2 } put: 2000.
 
-	simulator := KESimulator new: #Gillespie from: 0.0 to: 0.5 by: 0.0027.
+	simulator := KESimulator new: #Gillespie from: 0.0 to: 0.5 step: 0.0027.
 	simulator executeOn: model.
-	db := (KEDiagramBuilder new) data: ((simulator allTimesSeriesContaining: '{#status: #I}') sqrt).
+	db := (KEDiagramBuilder new) data: ((simulator timeSeriesOutputsAt: '{#status: #I}') sqrt).
 	db xLabel: 'Time (year)'.
 	db yLabel: 'sqrt(Infectious)'.
 	^ db open

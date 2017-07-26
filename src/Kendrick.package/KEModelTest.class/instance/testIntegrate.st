@@ -18,4 +18,4 @@ testIntegrate
 	self should: ((model parameters size)  >= 3).
 	self assert: (model transitions size) equals: 2.
 	self assert: (model attributes size) equals: 1.
-	self assert: (model compartments size) equals: 3.  
+	self assert: (model compartmentNames size) equals: 3.  
