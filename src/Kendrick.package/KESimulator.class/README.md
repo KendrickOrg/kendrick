@@ -1,30 +1,20 @@
-A KESimulator is an abstract class for simulator of system. All different simulators shoud extend this class and implement the method executeOn:
+A KESimulator is an abstract class for simulator for Kendrick models. All different simulators shoud extend this class and implement the method executeOn:
 
 Instance Variables
-	algorithm:	<Symbol>
-	data:		<Dictionary<Symbol><KETimeSeries>>
 	model:		<KEModel>
 	step:		<Number>
 	tMax:		<Number>
 	tMin:		<Number>
-
-algorithm
-	- xxxxx
-
-data
-	- xxxxx
-
+	timeSeries: 	<Collection>
+		
 model
-	- xxxxx
-
-adapters
-	- A list of adapters added into model. Each adapter is responsible for a particular task, related to the specific aspect of domain
+	- a KEModel that the simulator will use
 
 step
-	- xxxxx
+	- 
 
 tMax
-	- xxxxx
+	- final time of the simulation
 
 tMin
-	- xxxxx
+	- initial time of the simulation

@@ -1,3 +1,3 @@
 accessing
-model: anObject
-	model := anObject
+model: aKEModel
+	model := aKEModel

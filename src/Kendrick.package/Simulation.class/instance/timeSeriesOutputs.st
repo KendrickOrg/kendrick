@@ -1,4 +1,0 @@
-protected
-timeSeriesOutputs
-
-	^ simulator timeSeriesOutputs 

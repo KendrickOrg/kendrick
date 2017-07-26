@@ -1,18 +1,49 @@
 as yet unclassified
 evaluateWithModel: aModel
-	|indexValues x subPop|
+	|indexValues x allCompartments allKeys groupKeys count result |
 	indexValues := indexList collect: [ :each| each evaluateWithModel: aModel ].
-	indexValues := indexValues collect: [ :each| each < 0 ifTrue: [ 0 ] ifFalse: [ each ] ].
+	"ThanhNT 19/7"
+	"indexValues := indexValues collect: [ :each| each < 0 ifTrue: [ 0 ] ifFalse: [ each ] ]."
+	indexValues := indexValues collect: [ :each| (self checkAllPositive: each) ifTrue: [ each ] ifFalse: [ 0 ] ].
+	"Endof ThanhNT 19/7"
 	x := aModel atParameter: symbol.
 	x isNumber ifTrue: [ ^ x ].
 	x ifNil: [ 
 		"currentPID := aModel currentPopulationID."
-		subPop := aModel currentSubPopulation.
-		subPop populationID = indexValues first 
-		ifTrue: [ 
-		 	^ (subPop at: symbol) currentNbIndividuals
-			]
-		ifFalse: [ ^ ((subPop parent at: (indexValues first)) at: symbol) currentNbIndividuals ].
+		"ThanhNT 13-July-2017"
+		count := 0.
+		groupKeys := '#'.
+		x := self findKeysFromIndexedVariable: aModel at: (indexValues).
+		allCompartments := (aModel population) compartments.
+		allKeys := 	(allCompartments keys).
+			allKeys 	do: [:each|
+				count := 0.
+				groupKeys := '#'.
+				(each values) do: [ :item|
+					((x findString: ('#' , (item asString), '#')) >= 1) 
+						ifTrue: [ count := count + 1. 
+									groupKeys := groupKeys , (item asString), '#'.
+									]
+				]. 
+				count = (each values)	size & 
+					(groupKeys size = x size)
+					ifTrue: [ ^ aModel atCompartment: each. ]
+				
+			]."endof allKeys 	do: [:each|"
+				
+		
+		"Endof ThanhNT 13-July-2017"
 		].
-	indexValues do: [ :each| x := (x at: each) ].
+	"ThanhNT 20-July-2017"
+	"Reason: the old statement cant handle indexValues which is"
+	"multi-dimension array"
+	"indexValues do: [ :each| x := (x at: each) ]."
+	(aModel checkIndexedExpression: indexList ) ifTrue: [ 
+			^x.
+		 ]
+	ifFalse: 
+		[
+			indexValues do: [ :each| x := (x at: each) ].
+		].
+	"Endof ThanhNT 20-July-2017"
 	^ x

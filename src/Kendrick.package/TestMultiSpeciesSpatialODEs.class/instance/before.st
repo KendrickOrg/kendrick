@@ -56,12 +56,12 @@ model addEquation:
 	'R[p][s]:t=gamma[p][s]*I[p][s]-mu[p][s]*I[p][s]-nu*R[p][s]+sum(q,rho[s][p][q]*R[q][s])-sum(q,rho[s][q][p])*R[p][s]' parseAsAnEquation.
 
 "Run the model with RK4"
-simulator := KESimulator new: #RungeKutta from: 0 to: 500 step: 1.
+simulator := KESimulator new: #RungeKutta from: 0 to: 500 by: 1.
     simulator executeOn: model.
     db := KEDiagramBuilder new.
 
     f := [:name| |d tmp|
-        tmp := (simulator timeSeriesOutputsAt: name) collect: [ :e| e value ].
+        tmp := (simulator allTimesSeriesContaining: name) collect: [ :e| e value ].
         d := OrderedCollection new.
         1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
         (KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)

@@ -16,7 +16,7 @@ map: anArray
 	self buildMapFrom: attribute given: compositeCompartments.	
 	
 	tSeries := compositeCompartments 
-		collect: [:compartment | (simulation timeSeriesOutputsAt: compartment) first]. 
+		collect: [:compartment | (simulation allTimesSeriesContaining: compartment) first]. 
 	
 	(#(sum sqrt size log peakOfEpidemic) includes: anArray last) ifTrue: [  
 			tSeries := tSeries collect: [ :ts | ts perform: anArray last ].

@@ -1,13 +1,13 @@
 {
-	"commentStamp" : "BuiThiMaiAnh 9/23/2014 13:59",
+	"commentStamp" : "SergeStinckwich 7/20/2017 15:59",
 	"super" : "KESimulator",
 	"category" : "Kendrick-Semantic-Model-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"system",
 		"stepper",
+		"solver",
 		"equations"
 	],
 	"name" : "KEDeterministicSimulator",

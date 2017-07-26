@@ -1,3 +1,3 @@
-as yet unclassified
+accessing
 atAttribute: aSymbol
 	^ attributes at: aSymbol ifAbsent: [ nil ]

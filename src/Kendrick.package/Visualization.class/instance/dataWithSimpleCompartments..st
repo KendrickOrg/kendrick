@@ -3,7 +3,7 @@ dataWithSimpleCompartments: anArray "should be full math-expression"
 
 		^ diag data: 
 			(simulation 
-					timeSeriesOutputsAt: 
+					allTimesSeriesContaining: 
 						(simulation model transitionRefFor: anArray first))
 
 					

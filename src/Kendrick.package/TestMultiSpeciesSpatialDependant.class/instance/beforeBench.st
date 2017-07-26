@@ -129,5 +129,5 @@ seirsConcern
     ].
 
 "Run the model with RK4"
-simulator := KESimulator new: #RungeKutta from: 0 to: 500 step: 1.
+simulator := KESimulator new: #RungeKutta from: 0 to: 500 by: 1.
     simulator executeOn: model.

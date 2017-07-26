@@ -1,3 +1,0 @@
-grammar
-expression
-    ^ addition / factors

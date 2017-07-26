@@ -1,0 +1,3 @@
+operations
+nbAttributes
+	^ dictionary size

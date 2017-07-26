@@ -5,7 +5,7 @@ canvas
 
 		simulation execute.
 		explicitDataSet 
-			ifFalse: [ diag data: simulation timeSeriesOutputs ]
+			ifFalse: [ diag data: simulation timeSeries ]
 			ifTrue: [ lazyDataBlock value ].
 		xLabel ifNotNil: [diag xLabel: xLabel].
 		KendrickInternalDSLEntities cleanUpForInteractiveSessions.

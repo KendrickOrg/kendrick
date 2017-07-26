@@ -1,4 +1,4 @@
-as yet unclassified
+public-api
 transitionRates: anExpressionOrBlock
 	"setting same rate for all transitions"
 	self transitions do: [ :tr| 

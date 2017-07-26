@@ -11,7 +11,7 @@ testSIRModel
 	model addEquation: 'S:t=-beta*S*I'.
 	model addEquation: 'I:t=beta*S*I - gamma*I'.
 	model addEquation: 'R:t=gamma*I'.
-	simulator := KESimulator new: #RungeKutta from: 0.0 to: 0.3 step: 0.0027.
+	simulator := KESimulator new: #RungeKutta from: 0.0 to: 0.3 by: 0.0027.
 	simulator executeOn: model.
 	visitor := KECPPDeterministicVisitor new.
 	visitor visitNode: model.

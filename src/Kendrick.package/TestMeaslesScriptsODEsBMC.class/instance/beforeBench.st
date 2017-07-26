@@ -17,5 +17,5 @@ model addParameters: {
         #gamma->0.143. 
         #mu->0.0000351. 
         #sigma->0.125 }.
-simulator := KESimulator new: #RungeKutta from: 0.0 to: 150 step: 1.
+simulator := KESimulator new: #RungeKutta from: 0.0 to: 150 by: 1.
 simulator executeOn: model.
