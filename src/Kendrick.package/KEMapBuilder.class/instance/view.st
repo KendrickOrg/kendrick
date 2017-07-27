@@ -1,6 +1,6 @@
 as yet unclassified
 view
-	|b|
-	b := self build.
-	b build.
-	^ b view
+	| tmp1 |
+	tmp1 := self build.
+	tmp1 build.
+	^ tmp1 view

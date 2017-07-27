@@ -1,5 +1,4 @@
 public-api
-withTransitionRate: aSymbolArray
-
-	aSymbolArray do: [ :var | parameters at: var put: 0 ].
-	self imports: borders using: aSymbolArray first.
+withTransitionRate: arg1
+	arg1 do: [ :arg2 | parameters at: arg2 put: 0 ].
+	self imports: borders using: arg1 first

@@ -1,4 +1,6 @@
 accessing
-applyOn: graph
+applyOn: arg1
+	| tmp1 |
 	activeNodes := OrderedCollection new.
-	1 to: graph nodes size do: [ :i| self appendNode: i->graph ]
+	tmp1 := arg1 nodes size.
+	1 to: tmp1 do: [ :tmp2 | self appendNode: tmp2 -> arg1 ]

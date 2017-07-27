@@ -1,9 +1,10 @@
 *Kendrick-InternalDSL-DSL
-gtInspectorKendrickViewIn: composite
+gtInspectorKendrickViewIn: arg1
 	<gtInspectorPresentationOrder: -20>
 	<gtInspectorTag: #custom>
 	<gtInspectorTag: #kendrick>
-	composite roassal2
+	| tmp2 |
+	tmp2 := arg1 roassal2.
+	tmp2
 		title: 'Canvas';
 		initializeView: [ RTView new setCanvas: self ]
-		

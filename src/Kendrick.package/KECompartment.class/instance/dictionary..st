@@ -1,3 +1,3 @@
 accessing
-dictionary: aDictionary
-	dictionary := aDictionary
+dictionary: arg1
+	dictionary := arg1

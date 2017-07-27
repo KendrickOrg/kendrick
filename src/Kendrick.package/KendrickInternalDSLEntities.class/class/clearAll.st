@@ -1,4 +1,3 @@
 as yet unclassified
 clearAll
-
-	self allSubclassesDo: [ :subclass | subclass clearAllInstances ]
+	self allSubclassesDo: [ :arg1 | arg1 clearAllInstances ]

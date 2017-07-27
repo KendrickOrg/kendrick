@@ -1,7 +1,9 @@
 presentationMagritte
 descriptionExpression
 	<magritteDescription>
-	^ MAStringDescription new
+	| tmp2 |
+	tmp2 := MAStringDescription new.
+	tmp2
 		accessor: #expression;
-		label: 'Expression';
-		yourself
+		label: 'Expression'.
+	^ tmp2 yourself

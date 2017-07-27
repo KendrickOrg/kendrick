@@ -1,25 +1,33 @@
 as yet unclassified
 testSEIRModelWithLossOfImmunityStochasticModel
-	| model visitor |
-	model := KEModel new.
-	model atCompartment: #S putNumberOfIndividuals: 99999.
-	model atCompartment: #E putNumberOfIndividuals: 1.
-	model atCompartment: #I putNumberOfIndividuals: 1.
-	model atCompartment: #R putNumberOfIndividuals: 0.
-	model atParameter: #beta put: 0.0052.
-	model atParameter: #gamma put: 365 / 7.
-	model atParameter: #sigma put: 365 / 7.
-	model atParameter: #mu put: 1 / 80.
-	model atParameter: #to put: 2.
-	model atParameter: #N put: 100000.
-	model addEquation: ('S:t=mu*N-beta*S*I-mu*S+to*R').
-	model addEquation: ('E:t=beta*S*I-sigma*E-mu*E').
-	model addEquation: ('I:t=sigma*E-gamma*I-mu*I').
-	model addEquation: ('R:t=gamma*I-mu*R-to*R').
-	model simulator: ((KEStochasticSimulator new) tMin: 0.0; tMax: 1.0; step: 0.001; model: model; algorithm: #GillespieDirect).
-	model generateEvents.
-	visitor := KECPPStochasticVisitor  new.
-	visitor visitNode: model.
-	self assert: (visitor compartments size) = 4.
-	self assert: (visitor parameters size) = 6.
-	
+	| tmp1 tmp2 tmp4 |
+	tmp1 := KEModel new.
+	tmp1
+		atCompartment: #S putNumberOfIndividuals: 99999;
+		atCompartment: #E putNumberOfIndividuals: 1;
+		atCompartment: #I putNumberOfIndividuals: 1;
+		atCompartment: #R putNumberOfIndividuals: 0;
+		atParameter: #beta put: 0.0052;
+		atParameter: #gamma put: 365 / 7;
+		atParameter: #sigma put: 365 / 7;
+		atParameter: #mu put: 1 / 80;
+		atParameter: #to put: 2;
+		atParameter: #N put: 100000;
+		addEquation: 'S:t=mu*N-beta*S*I-mu*S+to*R';
+		addEquation: 'E:t=beta*S*I-sigma*E-mu*E';
+		addEquation: 'I:t=sigma*E-gamma*I-mu*I';
+		addEquation: 'R:t=gamma*I-mu*R-to*R'.
+	tmp4 := KEStochasticSimulator new.
+	tmp4
+		tMin: 0.0;
+		tMax: 1.0;
+		step: 0.001;
+		model: tmp1.
+	tmp1
+		simulator: (tmp4 algorithm: #GillespieDirect);
+		generateEvents.
+	tmp2 := KECPPStochasticVisitor new.
+	tmp2 visitNode: tmp1.
+	self
+		assert: tmp2 compartments size = 4;
+		assert: tmp2 parameters size = 6

@@ -1,3 +1,3 @@
 accessing
-leftHandSide: anExpression
-	leftHandSide := anExpression
+leftHandSide: arg1
+	leftHandSide := arg1

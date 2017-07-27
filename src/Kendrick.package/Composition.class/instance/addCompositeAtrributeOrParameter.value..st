@@ -1,20 +1,10 @@
 as yet unclassified
-addCompositeAtrributeOrParameter: variable value: value
-
-	|variablePlusAttributes|
-	
-	variablePlusAttributes := variable asString findTokens: '_'.
-	"assume single attribute for the time being"
-	
-	(model attributeValuesIncludes: variablePlusAttributes first asSymbol)
-		ifTrue: [ 
-			self addCompositeAttribute: variablePlusAttributes value: value. 
-		] ifFalse: [  
-		(model parameters keys includes: variablePlusAttributes first asSymbol)
-			ifTrue: [  
-				self addCompositeParameter: variablePlusAttributes value: value.
-			] ifFalse: [ 
-					KendrickDSLSyntaxError 
-								signal: 'Undefined Variable Being Set: ' , variable asString ]. 
-		].
-	
+addCompositeAtrributeOrParameter: arg1 value: arg2
+	| tmp1 |
+	tmp1 := arg1 asString findTokens: '_'.
+	(model attributeValuesIncludes: tmp1 first asSymbol)
+		ifTrue: [ self addCompositeAttribute: tmp1 value: arg2 ]
+		ifFalse: [ (model parameters keys includes: tmp1 first asSymbol)
+				ifTrue: [ self addCompositeParameter: tmp1 value: arg2 ]
+				ifFalse: [ KendrickDSLSyntaxError
+						signal: 'Undefined Variable Being Set: ' , arg1 asString ] ]

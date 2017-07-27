@@ -1,7 +1,7 @@
 public-api
-extends: anotherEntityName
-	"copy down semantics -- check how shallow is the default copy on this one"
-	|previousId|
-	previousId := id.
-	self become: (self class withId: anotherEntityName) copy.
-	self id: previousId.
+extends: arg1
+	| tmp1 |
+	tmp1 := id.
+	self
+		become: (self class withId: arg1) copy;
+		id: tmp1

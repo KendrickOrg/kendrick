@@ -1,4 +1,3 @@
 accessing
-expression: anExpression
-
-expression := anExpression
+expression: arg1
+	expression := arg1

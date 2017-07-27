@@ -1,4 +1,3 @@
 protected
 parameters
-
-	^ parameters 
+	^ parameters

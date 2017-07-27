@@ -1,6 +1,6 @@
 as yet unclassified
-dependOn: aConcern
-	|c|
-	c := KEDependentModelPart new.
-	c attributes: aConcern attributes.
-	^ c
+dependOn: arg1
+	| tmp1 |
+	tmp1 := KEDependentModelPart new.
+	tmp1 attributes: arg1 attributes.
+	^ tmp1

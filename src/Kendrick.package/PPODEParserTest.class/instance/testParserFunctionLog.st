@@ -1,8 +1,8 @@
 tests
 testParserFunctionLog
-	|dsdt|
-	dsdt := 'S:t=log(2*t)*S' parseAsAnEquation.
-	self assert: (dsdt expression leftHandSide isExpressionWithMathFunction) equals: true.
-	self assert: (dsdt expression leftHandSide functionName) equals: #log.
-
-
+	| tmp1 |
+	tmp1 := 'S:t=log(2*t)*S' parseAsAnEquation.
+	self
+		assert: tmp1 expression leftHandSide isExpressionWithMathFunction
+			equals: true;
+		assert: tmp1 expression leftHandSide functionName equals: #log

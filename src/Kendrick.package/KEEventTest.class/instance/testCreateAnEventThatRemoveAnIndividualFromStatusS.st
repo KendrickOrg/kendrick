@@ -1,6 +1,6 @@
 tests
 testCreateAnEventThatRemoveAnIndividualFromStatusS
-	|e|
-	e := KEEvent new.
-	e removeOneIndividualFrom: #S.
-	self assert: (e actions at: #S) equals: -1.
+	| tmp1 |
+	tmp1 := KEEvent new.
+	tmp1 removeOneIndividualFrom: #S.
+	self assert: (tmp1 actions at: #S) equals: -1

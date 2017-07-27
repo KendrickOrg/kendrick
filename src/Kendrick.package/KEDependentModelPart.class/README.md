@@ -1,1 +1,0 @@
-A dependent concern is a concern that depends on another one

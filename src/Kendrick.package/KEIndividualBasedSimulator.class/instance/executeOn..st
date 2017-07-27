@@ -1,13 +1,15 @@
 public
-executeOn: aModel
-	| t rand |
-	super executeOn: aModel.
-	t := tMin.
+executeOn: arg1
+	| tmp1 tmp2 |
+	super executeOn: arg1.
+	tmp1 := tMin.
 	self saveCompartmentsValueAtTime: tMin.
-	rand := Random new.
-	[ t < tMax ]
-		whileTrue: [ 
-			self doIBMIteration: t random: rand.
-			self updateIndividuals.
-			t := t + step.
-			self saveCompartmentsValueAtTime: t ]
+	tmp2 := Random new.
+	[ tmp1 < tMax ]
+		whileTrue: [ | tmp4 |
+			tmp4 := self.
+			tmp4
+				doIBMIteration: tmp1 random: tmp2;
+				updateIndividuals.
+			tmp1 := tmp1 + step.
+			self saveCompartmentsValueAtTime: tmp1 ]

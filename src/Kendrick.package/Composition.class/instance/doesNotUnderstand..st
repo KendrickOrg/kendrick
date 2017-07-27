@@ -1,30 +1,17 @@
 as yet unclassified
-doesNotUnderstand: aMessage
-
-	|variable value|
-
-	"TODO: should also search in the concerns for setting comp/attri"
-	
-	variable := aMessage selector.
-	variable := (variable asString trimRight: [: c | c =  $:]) asSymbol.
-	value := aMessage arguments first.
- 
-	(model attributeValuesIncludes: variable)
-		ifTrue: [ 
-			explicitelySetCompartments add: variable.
-			compartments at: variable put: value.
-			model atCompartment: variable value: value. 
-		] ifFalse: [  
-		(model parameters keys includes: variable)
-			ifTrue: [  
-				parameters at: variable put: value.
-				model atParameter: variable value: value. "can be array here treat differently"
-			] ifFalse: [ 
-					(aMessage selector asString includes: $_)
-						ifTrue: [ self addCompositeAtrributeOrParameter: variable value: value ]
-						ifFalse: [  
-							KendrickDSLSyntaxError 
-								signal: 'Undefined Variable Being Set: ' , variable asString
-						] 
-					]. 
-		].
+doesNotUnderstand: arg1
+	| tmp1 tmp2 |
+	tmp1 := arg1 selector.
+	tmp1 := (tmp1 asString trimRight: [ :arg2 | arg2 = $: ]) asSymbol.
+	tmp2 := arg1 arguments first.
+	(model attributeValuesIncludes: tmp1)
+		ifTrue: [ explicitelySetCompartments add: tmp1.
+			compartments at: tmp1 put: tmp2.
+			model atCompartment: tmp1 value: tmp2 ]
+		ifFalse: [ (model parameters keys includes: tmp1)
+				ifTrue: [ parameters at: tmp1 put: tmp2.
+					model atParameter: tmp1 value: tmp2 ]
+				ifFalse: [ (arg1 selector asString includes: $_)
+						ifTrue: [ self addCompositeAtrributeOrParameter: tmp1 value: tmp2 ]
+						ifFalse: [ KendrickDSLSyntaxError
+								signal: 'Undefined Variable Being Set: ' , tmp1 asString ] ] ]

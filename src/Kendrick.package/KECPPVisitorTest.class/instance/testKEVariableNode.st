@@ -1,8 +1,12 @@
 as yet unclassified
 testKEVariableNode
-	| input result visitor |
-	visitor := KECPPVisitor new.
-	visitor visitNode: (KECompartment new status: #S; initialValue: #(1); numberOfSpecies: 1).
-	input := KEVariable symbol: #S.
-	result := visitor visitNode: input.
-	self assert: result  = 'x(0, 0)'
+	| tmp1 tmp2 tmp3 tmp5 |
+	tmp3 := KECPPVisitor new.
+	tmp5 := KECompartment new.
+	tmp5
+		status: #S;
+		initialValue: #(1).
+	tmp3 visitNode: (tmp5 numberOfSpecies: 1).
+	tmp1 := KEVariable symbol: #S.
+	tmp2 := tmp3 visitNode: tmp1.
+	self assert: tmp2 = 'x(0, 0)'

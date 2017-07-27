@@ -1,3 +1,3 @@
 accessing
-position: position
-	attributes at: #position put: position
+position: arg1
+	attributes at: #position put: arg1

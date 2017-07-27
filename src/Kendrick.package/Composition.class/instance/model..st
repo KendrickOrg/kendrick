@@ -1,6 +1,6 @@
 as yet unclassified
-model: aString
-
-	model := [ModelComponent withId: aString] on: Error do: [ ModelComponent new id: aString]. 
-	"the error should be a Comp. DNU here -- fix"
-	backEndEntity := model keModel 
+model: arg1
+	model := [ ModelComponent withId: arg1 ]
+		on: Error
+		do: [ ModelComponent new id: arg1 ].
+	backEndEntity := model keModel

@@ -1,8 +1,6 @@
 as yet unclassified
 testKENumericalNode
-	| input result|
-	input := KENumerical number: 1.
-	result := KECPPVisitor new visitNode: input.
-	
-	self assert: result contents = '1'.
-	
+	| tmp1 tmp2 |
+	tmp1 := KENumerical number: 1.
+	tmp2 := KECPPVisitor new visitNode: tmp1.
+	self assert: tmp2 contents = '1'

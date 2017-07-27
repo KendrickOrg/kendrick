@@ -1,3 +1,3 @@
 adding
-addTransition: aTransition
-	transitions add: aTransition
+addTransition: arg1
+	transitions add: arg1

@@ -1,11 +1,12 @@
 as yet unclassified
 testRoutesToTransitions
-|m|
-m := KEMapBuilder new.
-m countries: #(#MyanmarBurma #Cambodia #Laos #Malaysia #Thailand #Vietnam).
-m routesFrom: #VietNam toAll: #(#Laos #Cambodia).
-m routesFrom: #Laos toAll: #(#Vietnam #Thailand #Cambodia).
-m routesFrom: #Cambodia toAll: #(Vietnam #Laos #Thailand).
-m routesFrom: #Thailand toAll: #(#Laos #Cambodia #MyanmarBurma #Malaysia).
-
-self assert: (m routesToTransitions: 'rho') size equals: 12
+	| tmp1 |
+	tmp1 := KEMapBuilder new.
+	tmp1
+		countries: #(#MyanmarBurma #Cambodia #Laos #Malaysia #Thailand #Vietnam);
+		routesFrom: #VietNam toAll: #(#Laos #Cambodia);
+		routesFrom: #Laos toAll: #(#Vietnam #Thailand #Cambodia);
+		routesFrom: #Cambodia toAll: #(#Vietnam #Laos #Thailand);
+		routesFrom: #Thailand
+			toAll: #(#Laos #Cambodia #MyanmarBurma #Malaysia).
+	self assert: (tmp1 routesToTransitions: 'rho') size equals: 12

@@ -1,5 +1,3 @@
 public-api
 rungeKutta
-
-	^ self  
-		with: #RungeKutta
+	^ self with: #RungeKutta

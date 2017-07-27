@@ -1,5 +1,3 @@
 adding
-addAllIndex: anObjectList
-	indexList addAll: anObjectList
-		
-	
+addAllIndex: arg1
+	indexList addAll: arg1

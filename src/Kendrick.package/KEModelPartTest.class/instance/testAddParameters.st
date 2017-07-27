@@ -1,6 +1,6 @@
 tests-as yet unclassified
 testAddParameters
-	|c|
-	c := KEModelPart new.
-	c addParameters: {#beta. #gamma}.
-	self assert: c parameters size equals: 2
+	| tmp1 |
+	tmp1 := KEModelPart new.
+	tmp1 addParameters: {#beta . #gamma}.
+	self assert: tmp1 parameters size equals: 2

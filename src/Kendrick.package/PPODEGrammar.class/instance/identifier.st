@@ -1,3 +1,3 @@
 grammar
 identifier
-   ^ #letter asParser , #word asParser star
+	^ #letter asParser , #word asParser star

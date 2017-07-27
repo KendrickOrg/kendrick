@@ -1,4 +1,4 @@
 grammar
-number 
-
-^ super number flatten ==> [:string | (KENumerical new) number: string asNumber]
+number
+	^ super number flatten
+		==> [ :arg1 | KENumerical new number: arg1 asNumber ]

@@ -1,4 +1,7 @@
 as yet unclassified
 storedInstances
-
-	^ storedInstances ifNil: [ storedInstances := OrderedCollection new ]
+	| tmp2 |
+	tmp2 := storedInstances.
+	^ tmp2
+		ifNil: [ storedInstances := OrderedCollection new ]
+		ifNotNil: [ tmp2 ]

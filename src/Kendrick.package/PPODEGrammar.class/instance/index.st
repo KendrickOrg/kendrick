@@ -1,3 +1,3 @@
 grammar
 index
-   ^ number / identifier
+	^ number / identifier

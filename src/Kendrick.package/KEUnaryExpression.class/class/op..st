@@ -1,4 +1,3 @@
 as yet unclassified
-op: aSymbol
-
-^ super new op:aSymbol
+op: arg1
+	^ super new op: arg1

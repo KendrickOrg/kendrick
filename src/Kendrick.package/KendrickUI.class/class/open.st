@@ -1,6 +1,7 @@
 instance creation
 open
-
-	^ self 
-		inspect: (SmalltalkImage current lastImagePath asFileReference parent / 'Sources/')
+	^ self
+		inspect:
+			SmalltalkImage current lastImagePath asFileReference parent
+				/ 'Sources/'
 		label: 'KendrickUI'

@@ -1,12 +1,7 @@
 as yet unclassified
-"protocol: as yet unclassified"
-withId: anId
-	
-	|inImage inDisk|
-
-	inImage := (self storedInstances select: [ :instance | instance id = anId ]).
-	inImage isEmpty 	
-		ifFalse: [ ^ inImage first ]
-		ifTrue: [  
-			^ self pathLookUpFor: anId
-		]
+withId: arg1
+	| tmp1 tmp2 |
+	tmp1 := self storedInstances select: [ :arg2 | arg2 id = arg1 ].
+	tmp1 isEmpty
+		ifFalse: [ ^ tmp1 first ].
+	^ self pathLookUpFor: arg1

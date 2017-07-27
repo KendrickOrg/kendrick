@@ -1,6 +1,7 @@
 tests
 testIdentifier
-	self parse: 'beta' rule: #identifier.
-	self parse: 'gamma' rule: #identifier.
-	self parse: 'a1' rule: #identifier.
-	self fail: '11b' rule: #identifier
+	self
+		parse: 'beta' rule: #identifier;
+		parse: 'gamma' rule: #identifier;
+		parse: 'a1' rule: #identifier;
+		fail: '11b' rule: #identifier

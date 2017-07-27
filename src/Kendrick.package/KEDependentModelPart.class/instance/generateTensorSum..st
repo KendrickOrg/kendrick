@@ -1,6 +1,6 @@
 operators
-generateTensorSum: aTransitionList
-	|remainingMatrix|
-	remainingMatrix := self remainingMatrixAfterProjecting: aTransitionList.
-	self transitions: (self generateSum: (self project: aTransitionList)).
-	^ super generateTensorSum: remainingMatrix
+generateTensorSum: arg1
+	| tmp1 |
+	tmp1 := self remainingMatrixAfterProjecting: arg1.
+	self transitions: (self generateSum: (self project: arg1)).
+	^ super generateTensorSum: tmp1

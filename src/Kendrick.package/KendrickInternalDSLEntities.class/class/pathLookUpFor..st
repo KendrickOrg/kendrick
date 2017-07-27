@@ -1,13 +1,10 @@
 as yet unclassified
-pathLookUpFor: anId
-	
-	|inDisk|
-	
-	inDisk := (self entityFilesDir: self currentProjectDir) / self asString / (anId asString , '.kendrick'). "currentProject"
-	[^ self entityExistsIn: inDisk] 
+pathLookUpFor: arg1
+	| tmp2 |
+	tmp2 := (self entityFilesDir: self currentProjectDir) / self asString
+		/ (arg1 asString , '.kendrick').
+	[ ^ self entityExistsIn: tmp2 ]
 		on: NotFoundError
-		do: [  
-			inDisk := self entityFilesDir / self asString / (anId asString , '.kendrick'). "library"
-			^ self entityExistsIn: inDisk.
-		]
-			
+		do: [ tmp2 := self entityFilesDir / self asString
+				/ (arg1 asString , '.kendrick').
+			^ self entityExistsIn: tmp2 ]

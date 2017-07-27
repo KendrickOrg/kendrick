@@ -1,20 +1,20 @@
 as yet unclassified
-acceptKEVariable: aNode
-	|k aStream |
-	aStream := WriteStream on: (String new: 60).
-	aNode symbol == #t ifTrue: [ 
-		aStream nextPutAll: (aNode symbol asString). 
-		^ aStream contents
-		].
-	k := parameters at: (aNode symbol) ifAbsent: [nil]. 		
-	k ifNil: [ 
-		compartments at: (aNode symbol) ifAbsent: [ 
-			aStream nextPutAll: (aNode symbol asString). 
-			^ aStream contents. 
-			].
-		isDeterministic ifTrue: [ aStream nextPutAll: 'x(' , (compartments at: aNode symbol) asString , ', 0)' ]		
-		ifFalse: [ aStream nextPutAll: 'x[' , (compartments at: aNode symbol) asString , '][0]' ]
-	] ifNotNil:  [ 
-		aStream nextPutAll: aNode symbol asString
-		].
-	^ aStream contents
+acceptKEVariable: arg1
+	| tmp1 tmp2 |
+	tmp2 := WriteStream on: (String new: 60).
+	arg1 symbol == #t
+		ifTrue: [ tmp2 nextPutAll: arg1 symbol asString.
+			^ tmp2 contents ].
+	tmp1 := parameters at: arg1 symbol ifAbsent: [  ].
+	tmp1
+		ifNil: [ compartments
+				at: arg1 symbol
+				ifAbsent: [ tmp2 nextPutAll: arg1 symbol asString.
+					^ tmp2 contents ].
+			isDeterministic
+				ifTrue: [ tmp2
+						nextPutAll: 'x(' , (compartments at: arg1 symbol) asString , ', 0)' ]
+				ifFalse: [ tmp2
+						nextPutAll: 'x[' , (compartments at: arg1 symbol) asString , '][0]' ] ]
+		ifNotNil: [ tmp2 nextPutAll: arg1 symbol asString ].
+	^ tmp2 contents

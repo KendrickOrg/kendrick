@@ -1,7 +1,5 @@
 public-api
-equations: anArrayOfSymExpressions
-
-	equations :=
-		KendrickEquations new with: anArrayOfSymExpressions.
-	backEndEntity addEquations: equations convertToCompatibleBackendRepresentation.
-	
+equations: arg1
+	equations := KendrickEquations new with: arg1.
+	backEndEntity
+		addEquations: equations convertToCompatibleBackendRepresentation

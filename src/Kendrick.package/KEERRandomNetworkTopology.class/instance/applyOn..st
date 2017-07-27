@@ -1,4 +1,3 @@
 instance creation
-applyOn: graph
-	graph nodes do: [ :node| self appendNode: (node label)->graph]
-	
+applyOn: arg1
+	arg1 nodes do: [ :arg2 | self appendNode: arg2 label -> arg1 ]

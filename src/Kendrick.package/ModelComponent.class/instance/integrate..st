@@ -1,8 +1,7 @@
 protected
-integrate: concern.
-
-	backEndEntity integrate: concern keConcern.
-	parameters addAll: concern parameters.
-	concern parameters keysAndValuesDo: [ :key :value | self addParameter: key value: value ].
-	attributes addAll: concern attributes. "init compartments from concerns not possible just add"
-	
+integrate: arg1
+	backEndEntity integrate: arg1 keConcern.
+	parameters addAll: arg1 parameters.
+	arg1 parameters
+		keysAndValuesDo: [ :arg2 :arg3 | self addParameter: arg2 value: arg3 ].
+	attributes addAll: arg1 attributes

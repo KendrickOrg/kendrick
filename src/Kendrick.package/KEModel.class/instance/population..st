@@ -1,3 +1,3 @@
 accessing
-population: aPopulation
-	population := aPopulation
+population: arg1
+	population := arg1

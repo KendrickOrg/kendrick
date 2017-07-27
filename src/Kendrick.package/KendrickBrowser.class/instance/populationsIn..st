@@ -1,6 +1,3 @@
 as yet unclassified
-populationsIn:constructor
-	"Show the list of model"
-	constructor list
-		display: [ :model | model population]";
-		format: [:model | modelgetNbSubPopulations]"
+populationsIn: arg1
+	arg1 list display: [ :arg2 | arg2 population ]

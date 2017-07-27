@@ -1,19 +1,20 @@
 as yet unclassified
-doGillespieIteration: t randoms: rands
-	|rates deltaT chosen|
-	rates := OrderedCollection new.
-	model t: t.
-	model transitions do: [ :tr| 
-		|prob|
-		((tr from at: #status) = #empty)
-		ifTrue: [ model currentCompartment: (tr to) ] 
-		ifFalse: [ model currentCompartment: (tr from) ].
-		model nextCompartment: (tr to).
-		prob := (tr probability value: model) abs.
-		rates add: (prob * (model atCompartment: tr from)) 
-		].
-	(rates sum) = 0 ifTrue: [ ^ 0.0 ].
-	deltaT := (((rands second) ln) negated) / (rates sum).
-	chosen := self random: (rands first) select: rates.
-	(model transitions at: chosen) executeOn: model times: 1.
-	^ deltaT
+doGillespieIteration: arg1 randoms: arg2
+	| tmp1 tmp2 tmp3 |
+	tmp1 := OrderedCollection new.
+	model t: arg1.
+	model transitions
+		do: [ :arg3 | 
+			| tmp4 |
+			(arg3 from at: #status) = #empty
+				ifTrue: [ model currentCompartment: arg3 to ]
+				ifFalse: [ model currentCompartment: arg3 from ].
+			model nextCompartment: arg3 to.
+			tmp4 := (arg3 probability value: model) abs.
+			tmp1 add: tmp4 * (model atCompartment: arg3 from) ].
+	tmp1 sum = 0
+		ifTrue: [ ^ 0.0 ].
+	tmp2 := arg2 second ln negated / tmp1 sum.
+	tmp3 := self random: arg2 first select: tmp1.
+	(model transitions at: tmp3) executeOn: model times: 1.
+	^ tmp2

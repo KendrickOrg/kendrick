@@ -1,6 +1,6 @@
 as yet unclassified
-acceptKENumerical: aKENNode
-	| aStream |
-	aStream := WriteStream on: (String new: 60).
-	aStream nextPutAll: (aKENNode number) asString.
-	^ aStream contents
+acceptKENumerical: arg1
+	| tmp1 |
+	tmp1 := WriteStream on: (String new: 60).
+	tmp1 nextPutAll: arg1 number asString.
+	^ tmp1 contents

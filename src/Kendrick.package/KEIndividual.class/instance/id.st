@@ -1,3 +1,3 @@
 accessing
 id
-	^ attributes at: #id ifAbsent: [ nil ]
+	^ attributes at: #id ifAbsent: [  ]

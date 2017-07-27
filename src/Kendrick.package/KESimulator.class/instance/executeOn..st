@@ -1,4 +1,5 @@
 public
-executeOn: aModel
-	self model: aModel.
-	self initializeTimeSeries
+executeOn: arg1
+	self
+		model: arg1;
+		initializeTimeSeries

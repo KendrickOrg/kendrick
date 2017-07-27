@@ -1,3 +1,3 @@
 as yet unclassified
-visitNode: model
-	self subclassResponsibility 
+visitNode: arg1
+	self subclassResponsibility

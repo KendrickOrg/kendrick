@@ -1,8 +1,6 @@
 grammar
-getObjectArrayOf: nodes at: id
-	|collection|
-	collection := OrderedCollection new.
-	nodes do: [ :each|
-		collection addLast: (each at: id) parsedValue
-		 ].
-	^ collection
+getObjectArrayOf: arg1 at: arg2
+	| tmp1 |
+	tmp1 := OrderedCollection new.
+	arg1 do: [ :arg3 | tmp1 addLast: (arg3 at: arg2) parsedValue ].
+	^ tmp1

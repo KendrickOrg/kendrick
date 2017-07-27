@@ -1,15 +1,13 @@
 as yet unclassified
 testGenerateEvents1
-	|model population eventGenerator events|
-	model := KEModel new.
-	population := KEPopulation new.
-	model population: population.
-	
-	model addEquation: ('S:t=-betaI*S*I-betaH*S*H-betaF*S*F').
-	model addEquation: ('E:t=betaI*S*I+betaH*S*H+betaF*S*F-anpha*E').
-	model addEquation: ('I:t=anpha*E').
-	
-	
-	eventGenerator := KEEventGenerator new.
-	events := eventGenerator generateEvents: model.
-	self assert: (events size) equals: 2
+	| tmp1 tmp2 tmp3 tmp4 |
+	tmp1 := KEModel new.
+	tmp2 := KEPopulation new.
+	tmp1
+		population: tmp2;
+		addEquation: 'S:t=-betaI*S*I-betaH*S*H-betaF*S*F';
+		addEquation: 'E:t=betaI*S*I+betaH*S*H+betaF*S*F-anpha*E';
+		addEquation: 'I:t=anpha*E'.
+	tmp3 := KEEventGenerator new.
+	tmp4 := tmp3 generateEvents: tmp1.
+	self assert: tmp4 size equals: 2

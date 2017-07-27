@@ -1,5 +1,5 @@
 tests
 testAtNode
-	| g |
-	g := KEGraph nodes: 100.
-	self assert: (g atNode: #'1') label equals: #'1'
+	| tmp1 |
+	tmp1 := KEGraph nodes: 100.
+	self assert: (tmp1 atNode: #'1') label equals: #'1'

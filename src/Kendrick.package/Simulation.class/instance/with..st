@@ -1,4 +1,3 @@
 public-api
-with: anAlgorithm
-
-	algo := anAlgorithm 
+with: arg1
+	algo := arg1

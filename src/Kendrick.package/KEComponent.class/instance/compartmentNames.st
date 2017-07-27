@@ -1,18 +1,10 @@
 public-api
 compartmentNames
-	"Returns compartment names of a model (an array of dictionnaries)"
-	"Should returns a collection of KECompartments in the future"
-	
-	|names keys|
-
-	"Extract status from attributes"
-	names := OrderedCollection new.
-	self attributes keysDo: [ :e| 
-		names add: ((self atAttribute: e) collect: [ :v| (e->v) ])
-	].
-
-	"Do a cartesian product of status"
-	keys := self crossProduct: names.
-	
-	keys = #(#()) ifTrue: [ keys := #() ].
-	^ (keys collect: [ :e| Dictionary newFrom: e ])
+	| tmp1 tmp2 |
+	tmp1 := OrderedCollection new.
+	self attributes
+		keysDo: [ :arg1 | tmp1 add: ((self atAttribute: arg1) collect: [ :arg2 | arg1 -> arg2 ]) ].
+	tmp2 := self crossProduct: tmp1.
+	tmp2 = #(#())
+		ifTrue: [ tmp2 := #() ].
+	^ tmp2 collect: [ :arg3 | Dictionary newFrom: arg3 ]

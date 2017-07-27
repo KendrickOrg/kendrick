@@ -1,3 +1,3 @@
 accessing
-yLabel: aString
-	yLabel := aString
+yLabel: arg1
+	yLabel := arg1

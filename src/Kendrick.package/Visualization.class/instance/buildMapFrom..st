@@ -1,15 +1,8 @@
 as yet unclassified
-buildMapFrom: attribute
-
-	|mapConcern|
-
-	mapConcern := (simulation compo 
-		concerns select: [ :concern | concern attributes keys includes: attribute ]) first.
-		
-	diag countries: (mapConcern attributes at: attribute).
-	
-	mapConcern transitions do: [ :transition | 
-		diag routesFrom: transition key key toAll: { transition value }
-	].
-	
-	
+buildMapFrom: arg1
+	| tmp1 |
+	tmp1 := (simulation compo concerns
+		select: [ :arg2 | arg2 attributes keys includes: arg1 ]) first.
+	diag countries: (tmp1 attributes at: arg1).
+	tmp1 transitions
+		do: [ :arg3 | diag routesFrom: arg3 key key toAll: {arg3 value} ]

@@ -1,3 +1,3 @@
 testing
 checkNil
-	^ (symbol isNil)
+	^ symbol isNil

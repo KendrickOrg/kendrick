@@ -1,3 +1,3 @@
 adding
-addEquation: aString
-	equations addLast: aString parseAsAnEquation 
+addEquation: arg1
+	equations addLast: arg1 parseAsAnEquation

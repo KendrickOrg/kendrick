@@ -1,3 +1,3 @@
 printing
-checkHasVariable: aDictionary
-	^ expression checkHasVariable: aDictionary
+checkHasVariable: arg1
+	^ expression checkHasVariable: arg1

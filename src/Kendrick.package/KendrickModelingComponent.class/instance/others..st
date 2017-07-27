@@ -1,5 +1,3 @@
 public-api
-others: anInteger
-
-	otherCompartmentValue := anInteger.
-		
+others: arg1
+	otherCompartmentValue := arg1

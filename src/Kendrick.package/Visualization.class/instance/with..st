@@ -1,5 +1,4 @@
 protected
-with: aBuilder
-
-	builder := aBuilder.
-	diag := builder new.
+with: arg1
+	builder := arg1.
+	diag := builder new

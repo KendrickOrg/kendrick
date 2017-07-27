@@ -1,4 +1,4 @@
 *Kendrick-InternalDSL-DSL
-, anotherObject
-
-	^ { self . anotherObject } asArray
+, arg1
+	^ {self.
+	arg1} asArray

@@ -1,4 +1,3 @@
 as yet unclassified
-seed: aPair
-
-	seed := aPair
+seed: arg1
+	seed := arg1

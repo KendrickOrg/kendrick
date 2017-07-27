@@ -1,3 +1,3 @@
 accessing
-op: anOperator
-	op := anOperator
+op: arg1
+	op := arg1

@@ -1,3 +1,3 @@
 accessing
-t: aNumber
-	t := aNumber
+t: arg1
+	t := arg1

@@ -1,10 +1,8 @@
 as yet unclassified
-addCompositeAttribute: variablePlusAttributes value: value
-
-	compartments at: variablePlusAttributes put: value.
-	(self allCompositeReferencesFor: variablePlusAttributes)
-		doWithIndex: [:ref :index|  
-			(value anySatisfy: [ :item | item isCollection ])
-				ifTrue: [ backEndEntity atCompartment: ref put: (value flatten at: index) ]
-				ifFalse: [ backEndEntity atCompartment: ref put: (value at: index) ]		
-		]
+addCompositeAttribute: arg1 value: arg2
+	compartments at: arg1 put: arg2.
+	(self allCompositeReferencesFor: arg1)
+		doWithIndex: [ :arg3 :arg4 | 
+			(arg2 anySatisfy: [ :arg5 | arg5 isCollection ])
+				ifTrue: [ backEndEntity atCompartment: arg3 put: (arg2 flatten at: arg4) ]
+				ifFalse: [ backEndEntity atCompartment: arg3 put: (arg2 at: arg4) ] ]

@@ -1,3 +1,3 @@
 as yet unclassified
-visitor: aVisitor
-	visitor := aVisitor
+visitor: arg1
+	visitor := arg1

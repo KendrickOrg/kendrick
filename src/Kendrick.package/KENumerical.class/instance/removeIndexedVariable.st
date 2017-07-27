@@ -1,3 +1,3 @@
 evaluating
 removeIndexedVariable
-	^ self
+	

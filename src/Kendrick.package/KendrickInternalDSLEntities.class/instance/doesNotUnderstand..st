@@ -1,4 +1,4 @@
 as yet unclassified
-doesNotUnderstand: aMessage
-
-	KendrickDSLSyntaxError signal: self class name , ' has no keyword ' , aMessage selector.
+doesNotUnderstand: arg1
+	KendrickDSLSyntaxError
+		signal: self class name , ' has no keyword ' , arg1 selector

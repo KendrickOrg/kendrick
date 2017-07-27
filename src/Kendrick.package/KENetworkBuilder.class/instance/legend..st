@@ -1,3 +1,3 @@
 as yet unclassified
-legend: text
-	networkLegend := text
+legend: arg1
+	networkLegend := arg1

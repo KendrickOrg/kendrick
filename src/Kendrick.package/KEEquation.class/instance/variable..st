@@ -1,3 +1,3 @@
 accessing
-variable: aVariable
-	variable := aVariable
+variable: arg1
+	variable := arg1

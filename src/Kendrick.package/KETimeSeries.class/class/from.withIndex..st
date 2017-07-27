@@ -1,5 +1,6 @@
 as yet unclassified
-from: anArray withIndex: anArrayOfTimeIndex
-	^ super new
-		data: anArray;
-		index: anArrayOfTimeIndex 
+from: arg1 withIndex: arg2
+	| tmp2 |
+	tmp2 := super new.
+	tmp2 data: arg1.
+	^ tmp2 index: arg2

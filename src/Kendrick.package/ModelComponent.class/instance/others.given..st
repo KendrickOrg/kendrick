@@ -1,5 +1,4 @@
 public-api
-others: anInteger given: explicitelySetCompInOtherEntity
-
-	explicitelySetCompartments addAll: explicitelySetCompInOtherEntity.
-	self others: anInteger
+others: arg1 given: arg2
+	explicitelySetCompartments addAll: arg2.
+	self others: arg1

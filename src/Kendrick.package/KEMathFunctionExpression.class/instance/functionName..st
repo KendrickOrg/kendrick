@@ -1,3 +1,3 @@
 acessing
-functionName: aValue
-	functionName := aValue
+functionName: arg1
+	functionName := arg1

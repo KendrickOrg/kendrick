@@ -1,8 +1,9 @@
 tests
 createADictionaryForTest
-	|dictionary|
-	dictionary := Dictionary new.
-	dictionary at: #S put: true.
-	dictionary at: #I put: true.
-	dictionary at: #R put: true.
-	^ dictionary
+	| tmp1 |
+	tmp1 := Dictionary new.
+	tmp1
+		at: #S put: true;
+		at: #I put: true;
+		at: #R put: true.
+	^ tmp1

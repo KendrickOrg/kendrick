@@ -1,15 +1,16 @@
 examples
 exampleRK4SolverOnMultiInfectiousStatusModel
-	"self new exampleRK4SolverOnMultiInfectiousStatusModel"
-	|model simulator db data|
-	model := self modelRK4SolverOnMultiInfectiousStatusModel.
-	simulator := KESimulator new: #RungeKutta from: 0.0 to: 50 by: 0.1.
-	simulator executeOn: model.
-	data := OrderedCollection new.
-	data addAll: (simulator allTimesSeriesContaining: '{#status:#I}').
-	data addAll: (simulator allTimesSeriesContaining: '{#status:#Is}').
-	db := KEDiagramBuilder new data: data.
-	^ db view
-	 
-															
-														
+	| tmp1 tmp2 tmp3 tmp4 |
+	tmp1 := self modelRK4SolverOnMultiInfectiousStatusModel.
+	tmp2 := KESimulator
+		new: #RungeKutta
+		from: 0.0
+		to: 50
+		by: 0.1.
+	tmp2 executeOn: tmp1.
+	tmp4 := OrderedCollection new.
+	tmp4
+		addAll: (tmp2 allTimesSeriesContaining: '{#status:#I}');
+		addAll: (tmp2 allTimesSeriesContaining: '{#status:#Is}').
+	tmp3 := KEDiagramBuilder new data: tmp4.
+	^ tmp3 view

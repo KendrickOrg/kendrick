@@ -1,3 +1,3 @@
 accessing
-legendTitle: aString
-	legendTitle := aString
+legendTitle: arg1
+	legendTitle := arg1

@@ -1,3 +1,3 @@
 as yet unclassified
-countries: aCollection
-	countries := aCollection
+countries: arg1
+	countries := arg1

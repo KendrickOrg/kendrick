@@ -1,3 +1,3 @@
 accessing
-label: aString
-	label := aString
+label: arg1
+	label := arg1

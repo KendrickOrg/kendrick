@@ -1,4 +1,3 @@
 testing
 negated
-
-^expression
+	^ expression

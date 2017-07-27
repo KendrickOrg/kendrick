@@ -1,6 +1,6 @@
 evaluating
 removeIndexedVariable
-	|new|
-	new := self copy.
-	new functionExpr: functionExpr removeIndexedVariable.
-	^ new
+	| tmp1 |
+	tmp1 := self copy.
+	tmp1 functionExpr: functionExpr removeIndexedVariable.
+	^ tmp1

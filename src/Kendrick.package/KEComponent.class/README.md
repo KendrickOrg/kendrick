@@ -1,1 +1,0 @@
-Abstract class of KEConcern and KEModel. Models are preferably representations as set of transitions instead collection of equations.

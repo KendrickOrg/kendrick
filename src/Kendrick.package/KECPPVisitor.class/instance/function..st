@@ -1,3 +1,3 @@
 accessing
-function: anObject
-	function := anObject
+function: arg1
+	function := arg1

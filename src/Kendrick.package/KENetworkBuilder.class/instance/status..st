@@ -1,3 +1,3 @@
 as yet unclassified
-status: anArray
-	status := anArray
+status: arg1
+	status := arg1

@@ -1,11 +1,12 @@
 action
-save: fileName
-	"This function will save all data in a file as fileName.dat. The time col is first and next is the data col"
-	|stream fileSystem workDir|
-	fileSystem := FileSystem disk workingDirectory.
-	workDir := fileSystem resolvePath: (fileSystem path / 'data').
-	stream := (workDir / fileName) writeStream.
-	1 to: (index size) do: [ :i|
-		stream nextPutAll: (index at: i) asString, String tab, (data at: i) asString;cr.
-		 ].
-	stream close
+save: arg1
+	| tmp1 tmp2 tmp3 tmp4 |
+	tmp2 := FileSystem disk workingDirectory.
+	tmp3 := tmp2 resolvePath: tmp2 path / 'data'.
+	tmp1 := (tmp3 / arg1) writeStream.
+	tmp4 := index size.
+	1 to: tmp4 do: [ :tmp5 | 
+		tmp1
+			nextPutAll: (index at: tmp5) asString , String tab , (data at: tmp5) asString;
+			cr ].
+	tmp1 close

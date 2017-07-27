@@ -1,19 +1,12 @@
 as yet unclassified
-buildMapFrom: attribute given: compositeCompartments
-
-	|mapConcern countries|
-
-	mapConcern := (simulation compo 
-		concerns select: [ :concern | concern attributes keys includes: attribute ]) first.	
-	
-	countries := (compositeCompartments collect: [ :item | 
-			(item select: [ :assoc | 
-				assoc key asSymbol = attribute asSymbol  ]) collect: #value ]) flatten.
-		
-	diag countries: (mapConcern attributes at: attribute).
-	
-	mapConcern transitions do: [ :transition | 
-		diag routesFrom: transition key key toAll: { transition value }
-	].
-	
-	
+buildMapFrom: arg1 given: arg2
+	| tmp1 tmp2 |
+	tmp1 := (simulation compo concerns
+		select: [ :arg3 | arg3 attributes keys includes: arg1 ]) first.
+	tmp2 := (arg2
+		collect: [ :arg4 | 
+			(arg4 select: [ :arg5 | arg5 key asSymbol = arg1 asSymbol ])
+				collect: #value ]) flatten.
+	diag countries: (tmp1 attributes at: arg1).
+	tmp1 transitions
+		do: [ :arg6 | diag routesFrom: arg6 key key toAll: {arg6 value} ]

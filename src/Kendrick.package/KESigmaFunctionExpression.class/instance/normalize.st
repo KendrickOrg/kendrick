@@ -1,3 +1,3 @@
 converting
 normalize
-	^ self
+	

@@ -1,5 +1,6 @@
 accessing
-mapStatusWith: anEvent
-	"This function will map fromStatus and toStatus to ones of anEvent"
-	(fromStatus = #empty) & (anEvent fromStatus ~= #empty) ifTrue: [ fromStatus := anEvent fromStatus ].
-	(toStatus = #empty) & (anEvent toStatus ~= #empty) ifTrue: [ toStatus := anEvent toStatus ]
+mapStatusWith: arg1
+	fromStatus = #empty & (arg1 fromStatus ~= #empty)
+		ifTrue: [ fromStatus := arg1 fromStatus ].
+	toStatus = #empty & (arg1 toStatus ~= #empty)
+		ifTrue: [ toStatus := arg1 toStatus ]

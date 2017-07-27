@@ -1,9 +1,10 @@
 grammar
 odequation
-
-^ super odequation ==> [:nodes |
-	(KEEquation new)
-		variable: (nodes first parsedValue);
-		tVariable: ((nodes at: 3) parsedValue);
-		expression: nodes last
-	]
+	^ super odequation
+		==> [ :arg1 | 
+			| tmp2 |
+			tmp2 := KEEquation new.
+			tmp2
+				variable: arg1 first parsedValue;
+				tVariable: (arg1 at: 3) parsedValue;
+				expression: arg1 last ]

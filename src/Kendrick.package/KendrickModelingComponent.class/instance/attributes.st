@@ -1,4 +1,3 @@
 protected
 attributes
-
 	^ attributes

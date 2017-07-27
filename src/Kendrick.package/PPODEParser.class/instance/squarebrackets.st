@@ -1,31 +1,16 @@
 grammar
 squarebrackets
-
-"^ super squarebrackets ==> [:nodes |
-	(nodes at: 5) 
-	ifNotNil: [
-		(KEIndexedVariable new)
-		symbol: (nodes first) inputValue asSymbol;
-		idExpression1: (nodes at: 3) parsedValue; 
-		idExpression2: (((nodes at: 5) at: 1) at: 2) parsedValue] 
-	ifNil: [
-		(KEIndexedVariable new)
-		symbol: (nodes first) inputValue  asSymbol;
-		idExpression1: (nodes at: 3) parsedValue;
-		idExpression2: ((KENumerical new) number: -1).
-		]		
-	]"
-	^ super squarebrackets ==> [ :nodes|
-		(nodes at: 5) 
-		ifNil: [ 
-			(KEIndexedVariable new)
-				symbol: (nodes first) inputValue asSymbol;
-				addIndex: (nodes at: 3) parsedValue
-			 ]
-		ifNotNil: [ 
-			(KEIndexedVariable new)
-				symbol: (nodes first) inputValue asSymbol;
-				addIndex: (nodes at: 3) parsedValue;
-				addAllIndex: (self getObjectArrayOf: (nodes at: 5) at: 2)
-			 ]
-		]
+	^ super squarebrackets
+		==> [ :arg1 | 
+			(arg1 at: 5)
+				ifNil: [ | tmp2 |
+					tmp2 := KEIndexedVariable new.
+					tmp2
+						symbol: arg1 first inputValue asSymbol;
+						addIndex: (arg1 at: 3) parsedValue ]
+				ifNotNil: [ | tmp4 |
+					tmp4 := KEIndexedVariable new.
+					tmp4
+						symbol: arg1 first inputValue asSymbol;
+						addIndex: (arg1 at: 3) parsedValue;
+						addAllIndex: (self getObjectArrayOf: (arg1 at: 5) at: 2) ] ]

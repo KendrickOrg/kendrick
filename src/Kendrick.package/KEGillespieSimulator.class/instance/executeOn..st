@@ -1,24 +1,24 @@
 public
-executeOn: aModel
-	| rand1 rand2 t previousT |
-	super executeOn: aModel.
-	t := tMin.
-	previousT := t.
-	rand1 := Random new.
-	rand2 := Random new.
+executeOn: arg1
+	| tmp1 tmp2 tmp3 tmp4 tmp5 tmp6 tmp7 |
+	super executeOn: arg1.
+	tmp3 := tMin.
+	tmp4 := tmp3.
+	tmp1 := Random new.
+	tmp2 := Random new.
 	self saveCompartmentsValueAtTime: tMin.
-
-	[ t < tMax ]
-		whileTrue: [ 
-			| deltaT r1 r2 |
-			r1 := rand1 next.
-			r2 := rand2 next.
-			deltaT := self doGillespieIteration: t randoms: (Array with: r1 with: r2).
-			(deltaT = 0.0)
+	[ tmp3 < tMax ]
+		whileTrue: [ tmp5 := nil.
+			tmp6 := nil.
+			tmp7 := nil.
+			tmp6 := tmp1 next.
+			tmp7 := tmp2 next.
+			tmp5 := self
+				doGillespieIteration: tmp3
+				randoms: (Array with: tmp6 with: tmp7).
+			tmp5 = 0.0
 				ifTrue: [ ^ self ].
-			t := t + deltaT.
-			"Only store in the result from step to step"
-			t > (previousT + step)
-				ifTrue: [ 
-					self saveCompartmentsValueAtTime: t.
-					previousT := t ] ]
+			tmp3 := tmp3 + tmp5.
+			tmp3 > (tmp4 + step)
+				ifTrue: [ self saveCompartmentsValueAtTime: tmp3.
+					tmp4 := tmp3 ] ]

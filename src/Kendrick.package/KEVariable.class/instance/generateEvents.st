@@ -1,8 +1,8 @@
 as yet unclassified
 generateEvents
-	| list e |
-	list := OrderedCollection new.
-	e := KEEvent new.
-	e rate: self.
-	list add: e.
-	^ list
+	| tmp1 tmp2 |
+	tmp1 := OrderedCollection new.
+	tmp2 := KEEvent new.
+	tmp2 rate: self.
+	tmp1 add: tmp2.
+	^ tmp1

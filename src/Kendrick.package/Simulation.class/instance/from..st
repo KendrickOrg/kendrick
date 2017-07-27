@@ -1,4 +1,3 @@
 public-api
-from: aNumber
-
-	from := aNumber
+from: arg1
+	from := arg1

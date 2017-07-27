@@ -1,4 +1,4 @@
 as yet unclassified
 expectedFailures
-
-^{#testModelMultiDisease. #testModelMultiHost. #testSEIRModelWithTemporalForcing. #testSEIRModelWithVaccination. #testSIRModel. #testSIRModelWithDemography.}
+	^ {#testModelMultiDisease . #testModelMultiHost . #testSEIRModelWithTemporalForcing.
+	#testSEIRModelWithVaccination . #testSIRModel . #testSIRModelWithDemography}

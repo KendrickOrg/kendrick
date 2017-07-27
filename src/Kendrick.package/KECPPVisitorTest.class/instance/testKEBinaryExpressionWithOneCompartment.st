@@ -1,16 +1,20 @@
 as yet unclassified
 testKEBinaryExpressionWithOneCompartment
-	| input result a b o visitor |
-	input := KEBinaryExpression new.
-	a := KEVariable symbol: #S.
-	b := KENumerical new.
-	b number: 2.
-	o := #*.
-	input
-		op: o;
-		leftHandSide: a;
-		rightHandSide: b.
-	visitor := KECPPVisitor new.
-	visitor visitNode: (KECompartment new status: #S; initialValue: #(9999); numberOfSpecies: 1).
-	result := visitor visitNode: input.
-	self assert: result contents = '(x(0, 0)*2)'
+	| tmp1 tmp2 tmp3 tmp4 tmp5 tmp6 tmp8 |
+	tmp1 := KEBinaryExpression new.
+	tmp3 := KEVariable symbol: #S.
+	tmp4 := KENumerical new.
+	tmp4 number: 2.
+	tmp5 := #*.
+	tmp1
+		op: tmp5;
+		leftHandSide: tmp3;
+		rightHandSide: tmp4.
+	tmp6 := KECPPVisitor new.
+	tmp8 := KECompartment new.
+	tmp8
+		status: #S;
+		initialValue: #(9999).
+	tmp6 visitNode: (tmp8 numberOfSpecies: 1).
+	tmp2 := tmp6 visitNode: tmp1.
+	self assert: tmp2 contents = '(x(0, 0)*2)'

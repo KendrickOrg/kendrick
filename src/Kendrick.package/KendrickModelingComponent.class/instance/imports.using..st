@@ -1,24 +1,19 @@
 public-api
-imports: aMatrix using: transition
-
-|att dom|
-att := self attributes associations first key.
-dom := self attributes associations first value.
-dom size ~= aMatrix size ifTrue: [ ^ self error: 'Size of input is not compatible' ].
-1 to: aMatrix size do: [ :row| 
-	1 to: (aMatrix at: row) size do: [ :col|
-		(((aMatrix at: row) at: col) ~= 0) ifTrue: [ 
-			|probability|
-			
-			probability :=
-				((aMatrix at: row) at: col) = 0 
-					ifFalse: [ probability := transition asString ]
-					ifTrue: [ 0 asString ].
-			
-			backEndEntity 
-				addTransitionFrom: { att->(dom at: row) } to: { att->(dom at: col) } 
-				probability:  probability asString].
-	]
-]
-	
-	
+imports: arg1 using: arg2
+	| tmp1 tmp2 tmp3 tmp5 tmp7 |
+	tmp1 := self attributes associations first key.
+	tmp2 := self attributes associations first value.
+	tmp2 size ~= arg1 size
+		ifTrue: [ ^ self error: 'Size of input is not compatible' ].
+	tmp3 := arg1 size.
+	1 to: tmp3 do: [ :tmp4 | 
+		tmp5 := (arg1 at: tmp4) size.
+		1 to: tmp5 do: [ :tmp6 | 
+			((arg1 at: tmp4) at: tmp6) ~= 0
+				ifTrue: [ tmp7 := ((arg1 at: tmp4) at: tmp6) = 0
+						ifTrue: [ 0 asString ]
+						ifFalse: [ tmp7 := arg2 asString ].
+					backEndEntity
+						addTransitionFrom: {(tmp1 -> (tmp2 at: tmp4))}
+						to: {(tmp1 -> (tmp2 at: tmp6))}
+						probability: tmp7 asString ] ] ]

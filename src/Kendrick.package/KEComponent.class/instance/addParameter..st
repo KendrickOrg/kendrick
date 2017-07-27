@@ -1,3 +1,3 @@
 adding
-addParameter: aSymbol
-	self addParameter: aSymbol value: nil
+addParameter: arg1
+	self addParameter: arg1 value: nil

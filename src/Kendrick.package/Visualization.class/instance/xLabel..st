@@ -1,4 +1,3 @@
 public-api
-xLabel: aString
-
-	xLabel := aString
+xLabel: arg1
+	xLabel := arg1

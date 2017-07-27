@@ -1,7 +1,9 @@
 public-api
 allHierarchyTransitions
-
-	^ backEndEntity transitions copy 
-		addAll: (structuralDependencies 
-			flatCollect: [ :name | (KendrickModel withId: name) allHierarchyTransitions ]);
-		yourself
+	| tmp2 |
+	tmp2 := backEndEntity transitions copy.
+	tmp2
+		addAll:
+			(structuralDependencies
+				flatCollect: [ :arg1 | (KendrickModel withId: arg1) allHierarchyTransitions ]).
+	^ tmp2 yourself

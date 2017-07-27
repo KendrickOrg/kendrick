@@ -1,4 +1,3 @@
 as yet unclassified
-currentProjectDir: aProjectDir
-
-	currentProjectDir := aProjectDir 
+currentProjectDir: arg1
+	currentProjectDir := arg1

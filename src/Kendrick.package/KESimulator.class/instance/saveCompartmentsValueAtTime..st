@@ -1,7 +1,7 @@
 as yet unclassified
-saveCompartmentsValueAtTime: t
+saveCompartmentsValueAtTime: arg1
 	model population compartments
-		keysAndValuesDo: [ :k :v | 
-			| ts |
-			ts := timeSeries detect: [ :e | e compartment = k ].
-			ts add: v atIndex: t ]
+		keysAndValuesDo: [ :arg2 :arg3 | 
+			| tmp1 |
+			tmp1 := timeSeries detect: [ :arg4 | arg4 compartment = arg2 ].
+			tmp1 add: arg3 atIndex: arg1 ]

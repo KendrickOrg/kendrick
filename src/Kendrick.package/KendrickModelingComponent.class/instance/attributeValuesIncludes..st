@@ -1,4 +1,4 @@
 protected
-attributeValuesIncludes: variable
-
-	^ (attributes values select: [ :values | values includes: variable ]) isEmpty not
+attributeValuesIncludes: arg1
+	^ (attributes values select: [ :arg2 | arg2 includes: arg1 ]) isEmpty
+		not

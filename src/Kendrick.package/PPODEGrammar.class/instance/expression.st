@@ -1,3 +1,3 @@
 grammar
 expression
-    ^ addition / factors
+	^ addition / factors

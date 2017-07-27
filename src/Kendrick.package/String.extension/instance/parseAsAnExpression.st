@@ -1,4 +1,3 @@
 *Kendrick-ExternalDSL
 parseAsAnExpression
-
-^PPODEParser parse: self
+	^ PPODEParser parse: self

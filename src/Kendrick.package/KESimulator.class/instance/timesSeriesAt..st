@@ -1,10 +1,8 @@
 accessing
-timesSeriesAt: aCompartmentName
-
-"Return a time series according to the compartment name"
-"This is a bad design to expect to two differents types for the compartment name"
-
-	| association |
-	association := aCompartmentName.
-	aCompartmentName isString ifTrue: [ association := (STON fromString: aCompartmentName) associations ].
-	^ self timeSeries detect: [ :t | t compartment associations includesAll: association ]
+timesSeriesAt: arg1
+	| tmp1 |
+	tmp1 := arg1.
+	arg1 isString
+		ifTrue: [ tmp1 := (STON fromString: arg1) associations ].
+	^ self timeSeries
+		detect: [ :arg2 | arg2 compartment associations includesAll: tmp1 ]

@@ -1,3 +1,3 @@
 evaluating
-checkHasVariable: aDictionary
+checkHasVariable: arg1
 	^ false

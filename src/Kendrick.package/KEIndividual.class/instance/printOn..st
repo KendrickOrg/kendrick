@@ -1,3 +1,4 @@
 printing
-printOn: aStream
-	aStream nextPutAll: (self currentStatus) asString, '-->', (self nextStatus) asString
+printOn: arg1
+	arg1
+		nextPutAll: self currentStatus asString , '-->' , self nextStatus asString

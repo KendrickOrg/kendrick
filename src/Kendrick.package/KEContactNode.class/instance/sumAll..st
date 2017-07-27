@@ -1,4 +1,6 @@
 as yet unclassified
-sumAll: anArray
-	anArray isNumber ifTrue: [ ^ anArray ].
-	anArray isArray ifTrue: [ ^ (anArray collect: [ :each| self sumAll: each ]) sum ]
+sumAll: arg1
+	arg1 isNumber
+		ifTrue: [ ^ arg1 ].
+	arg1 isArray
+		ifTrue: [ ^ (arg1 collect: [ :arg2 | self sumAll: arg2 ]) sum ]

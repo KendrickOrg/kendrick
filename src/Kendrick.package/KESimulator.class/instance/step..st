@@ -1,3 +1,3 @@
 accessing
-step: aStepTime
-	step := aStepTime
+step: arg1
+	step := arg1

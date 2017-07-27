@@ -1,4 +1,3 @@
 protected
 timeSeries
-
-	^ simulator timeSeries 
+	^ simulator timeSeries

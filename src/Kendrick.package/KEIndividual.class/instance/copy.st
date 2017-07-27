@@ -1,6 +1,6 @@
 copying
 copy
-	|newInstance|
-	newInstance := self class new.
-	newInstance attributes addAll: (self attributes).
-	^ newInstance
+	| tmp1 |
+	tmp1 := self class new.
+	tmp1 attributes addAll: self attributes.
+	^ tmp1

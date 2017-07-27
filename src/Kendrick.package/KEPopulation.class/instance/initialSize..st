@@ -1,3 +1,3 @@
 adding
-initialSize: aNumber
-	initialSize := aNumber
+initialSize: arg1
+	initialSize := arg1

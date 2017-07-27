@@ -1,3 +1,3 @@
 accessing
-op: aString
-	op := aString
+op: arg1
+	op := arg1

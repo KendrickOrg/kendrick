@@ -1,3 +1,3 @@
 accessing
-tMin: aNumber
-	tMin := aNumber
+tMin: arg1
+	tMin := arg1

@@ -1,3 +1,3 @@
 adding
-addNode: aNodeLabel
-	nodes add: (KEContactNode new label: aNodeLabel)
+addNode: arg1
+	nodes add: (KEContactNode new label: arg1)

@@ -1,10 +1,9 @@
 protected
-allTransitionRefsForAttributeWith: aCompartment
-	
-	|assoc|
-
-	aCompartment asString translateToLowercase = 'empty'
-		ifTrue: [ ^ { #empty } ].
-	
-	assoc := (attributes associations select: [ :pair | pair value includes: aCompartment ]).
-	^ assoc value collect: [:comp | '{#' , assoc key asString , ': #' , comp , '}']
+allTransitionRefsForAttributeWith: arg1
+	| tmp1 |
+	arg1 asString translateToLowercase = 'empty'
+		ifTrue: [ ^ {#empty} ].
+	tmp1 := attributes associations
+		select: [ :arg2 | arg2 value includes: arg1 ].
+	^ tmp1 value
+		collect: [ :arg3 | '{#' , tmp1 key asString , ': #' , arg3 , '}' ]

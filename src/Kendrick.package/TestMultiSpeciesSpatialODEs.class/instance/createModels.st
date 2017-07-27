@@ -1,11 +1,10 @@
 as yet unclassified
 createModels
-
-	| beforePair |
-	beforePair := self before.
-	beforeSimulator := beforePair key.
-	beforeModel := beforePair value.
+	| tmp1 |
+	tmp1 := self before.
+	beforeSimulator := tmp1 key.
+	beforeModel := tmp1 value.
 	self after.
 	afterSimulator := Simulation withId: 'SpatialRungeKutta'.
 	afterModel := ModelComponent withId: 'MultiSpeciesSpatial'.
-	(Visualization withId: 'SpatialDiagramViz') open.	
+	(Visualization withId: 'SpatialDiagramViz') open

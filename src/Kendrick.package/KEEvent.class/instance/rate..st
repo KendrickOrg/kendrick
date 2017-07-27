@@ -1,3 +1,3 @@
 accessing
-rate: anObject
-	rate := anObject
+rate: arg1
+	rate := arg1

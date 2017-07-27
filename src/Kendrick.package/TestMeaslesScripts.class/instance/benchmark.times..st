@@ -1,16 +1,10 @@
 as yet unclassified
-benchmark: aBlock times: anInteger
-
-	"µ the average time in ms and τ standard deviation"
-
-	| runs average deviation |
-
-	runs := [ 
-		(1 to: anInteger) 
-			collect: [ :each | Time millisecondsToRun: aBlock ] ] 
+benchmark: arg1 times: arg2
+	| tmp1 tmp2 tmp3 |
+	tmp1 := [ (1 to: arg2)
+		collect: [ :arg3 | Time millisecondsToRun: arg1 ] ]
 		valueUnpreemptively.
-	average := runs average asFloat.
-	deviation := ((runs 
-		detectSum: [ :each | (each - average) * (each - average) ]) 
-			/ runs size) sqrt.
-	^ Array with: average with: deviation
+	tmp2 := tmp1 average asFloat.
+	tmp3 := ((tmp1 detectSum: [ :arg4 | (arg4 - tmp2) * (arg4 - tmp2) ])
+		/ tmp1 size) sqrt.
+	^ Array with: tmp2 with: tmp3

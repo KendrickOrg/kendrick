@@ -1,3 +1,3 @@
 as yet unclassified
-colors: anArray
-	colors := anArray
+colors: arg1
+	colors := arg1

@@ -1,4 +1,3 @@
 instance creation
-from: aCollection
-	^ self new
-		dictionary: aCollection asDictionary
+from: arg1
+	^ self new dictionary: arg1 asDictionary

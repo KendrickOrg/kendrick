@@ -1,4 +1,3 @@
 as yet unclassified
 tearDown
-
-	KendrickInternalDSLEntities clearAll.
+	KendrickInternalDSLEntities clearAll

@@ -1,6 +1,7 @@
 as yet unclassified
-modelsIn: constructor
-	"Show the list of model"
-	constructor list
-		display: [ :model | model ];
-		format: [:model | model name]
+modelsIn: arg1
+	| tmp2 |
+	tmp2 := arg1 list.
+	tmp2
+		display: [ :arg2 | arg2 ];
+		format: [ :arg3 | arg3 name ]

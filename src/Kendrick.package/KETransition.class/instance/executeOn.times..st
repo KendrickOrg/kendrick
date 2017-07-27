@@ -1,14 +1,13 @@
 accessing
-executeOn: model times: times
-	| old new |
+executeOn: arg1 times: arg2
+	| tmp1 tmp2 |
 	(from at: #status) = #empty
-		ifFalse: [
-			old := model population compartments at: from.
-			new := old - times.
-			new := new max: 0.
-			model population compartments at: from put: new ].
+		ifFalse: [ tmp1 := arg1 population compartments at: from.
+			tmp2 := tmp1 - arg2.
+			tmp2 := tmp2 max: 0.
+			arg1 population compartments at: from put: tmp2 ].
 	(to at: #status) = #empty
 		ifTrue: [ ^ self ].
-	old := model population compartments at: to.
-	new := old + times.
-	model population compartments at: to put: new
+	tmp1 := arg1 population compartments at: to.
+	tmp2 := tmp1 + arg2.
+	arg1 population compartments at: to put: tmp2

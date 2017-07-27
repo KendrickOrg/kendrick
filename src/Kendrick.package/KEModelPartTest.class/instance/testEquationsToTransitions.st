@@ -1,8 +1,9 @@
 tests-as yet unclassified
 testEquationsToTransitions
-	|c|
-	c := KEModelPart new.
-	c addEquation: 'S:t=mu*N-beta*S*I/N-mu*S'.
-	c addEquation: 'I:t=beta*S*I/N-gamma*I-mu*I'.
-	c addEquation: 'R:t=gamma*I-mu*R'.
-	self assert: c transitions size equals: 6.
+	| tmp1 |
+	tmp1 := KEModelPart new.
+	tmp1
+		addEquation: 'S:t=mu*N-beta*S*I/N-mu*S';
+		addEquation: 'I:t=beta*S*I/N-gamma*I-mu*I';
+		addEquation: 'R:t=gamma*I-mu*R'.
+	self assert: tmp1 transitions size equals: 6

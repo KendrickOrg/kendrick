@@ -1,4 +1,3 @@
 as yet unclassified
-borders: aMatrix
-
-	borders := aMatrix 
+borders: arg1
+	borders := arg1

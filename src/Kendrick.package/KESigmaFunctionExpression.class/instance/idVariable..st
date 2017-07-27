@@ -1,3 +1,3 @@
 accessing
-idVariable: aValue
-	idVariable := aValue
+idVariable: arg1
+	idVariable := arg1

@@ -1,4 +1,4 @@
 adding
-add: element atIndex: indexElement
-	index addLast: indexElement.
-	data addLast: element
+add: arg1 atIndex: arg2
+	index addLast: arg2.
+	data addLast: arg1

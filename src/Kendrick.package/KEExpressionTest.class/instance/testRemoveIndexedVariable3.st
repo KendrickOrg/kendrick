@@ -1,14 +1,13 @@
 tests
 testRemoveIndexedVariable3
-	|e f n|
-	e := (KEMathFunctionExpression new functionName: #cos).
-	e functionExpr: (KEVariable new symbol: #t).
-	f := e copy.
-	f functionExpr: (KEIndexedVariable new symbol: #S).
-	f functionExpr addIndex: (KEVariable new symbol: #i).
-	n := e removeIndexedVariable.
-	self assert: n asString equals: 'cos(t)'.
-	self assert: f asString equals: 'cos(S[i])'.
-	self assert: f removeIndexedVariable asString equals: 'cos(S)'.
-	
-	
+	| tmp1 tmp2 tmp3 |
+	tmp1 := KEMathFunctionExpression new functionName: #cos.
+	tmp1 functionExpr: (KEVariable new symbol: #t).
+	tmp2 := tmp1 copy.
+	tmp2 functionExpr: (KEIndexedVariable new symbol: #S).
+	tmp2 functionExpr addIndex: (KEVariable new symbol: #i).
+	tmp3 := tmp1 removeIndexedVariable.
+	self
+		assert: tmp3 asString equals: 'cos(t)';
+		assert: tmp2 asString equals: 'cos(S[i])';
+		assert: tmp2 removeIndexedVariable asString equals: 'cos(S)'

@@ -1,5 +1,3 @@
 accessing
 indexList
-	^ indexList 
-		
-	
+	^ indexList

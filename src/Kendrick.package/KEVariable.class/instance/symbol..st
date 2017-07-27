@@ -1,3 +1,3 @@
 accessing
-symbol: aSymbol 
-	symbol := aSymbol
+symbol: arg1
+	symbol := arg1

@@ -1,10 +1,7 @@
 tests
 testParserFunctionExp
-	|dsdt|
-	dsdt := 'S:t=exp(2*t)' parseAsAnEquation.
-	self assert: (dsdt expression isExpressionWithMathFunction) equals: true.
-	self assert: (dsdt expression functionName) equals: #exp.
-
-
-
-
+	| tmp1 |
+	tmp1 := 'S:t=exp(2*t)' parseAsAnEquation.
+	self
+		assert: tmp1 expression isExpressionWithMathFunction equals: true;
+		assert: tmp1 expression functionName equals: #exp

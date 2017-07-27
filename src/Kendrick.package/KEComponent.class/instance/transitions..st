@@ -1,3 +1,3 @@
 accessing
-transitions: aTransitionCollection
-	transitions := aTransitionCollection
+transitions: arg1
+	transitions := arg1

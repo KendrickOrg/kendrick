@@ -1,8 +1,11 @@
 accessing
-to: aCompartment
-	|reader|
-	(aCompartment isDictionary) ifTrue: [ ^ to := aCompartment ].
-	aCompartment = #empty ifTrue: [ ^ self to: { #status -> #empty } ].
-	(aCompartment isArray) ifTrue: [ ^ to := Dictionary newFrom: aCompartment ].
-	(reader := STONReader on: aCompartment readStream) allowComplexMapKeys: true.
-	^ to := reader next
+to: arg1
+	| tmp1 |
+	arg1 isDictionary
+		ifTrue: [ ^ to := arg1 ].
+	arg1 = #empty
+		ifTrue: [ ^ self to: {(#status -> #empty)} ].
+	arg1 isArray
+		ifTrue: [ ^ to := Dictionary newFrom: arg1 ].
+	(tmp1 := STONReader on: arg1 readStream) allowComplexMapKeys: true.
+	^ to := tmp1 next

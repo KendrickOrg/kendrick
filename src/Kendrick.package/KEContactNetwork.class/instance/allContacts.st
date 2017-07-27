@@ -1,4 +1,3 @@
 as yet unclassified
 allContacts
-
-	^ self nodes collect: [ :e| e label ]
+	^ self nodes collect: [ :arg1 | arg1 label ]

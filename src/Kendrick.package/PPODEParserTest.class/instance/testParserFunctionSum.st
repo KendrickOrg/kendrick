@@ -1,7 +1,12 @@
 tests
 testParserFunctionSum
-	|dsdt|
-	dsdt := 'beta=sum(j, beta[i][j]*sum(k, I[k]))' parseAsAnEquation.
-	self assert: (dsdt expression) isExpressionWithSigmaMathFunction equals: true.
-	self assert: (dsdt expression functionExpr rightHandSide) isExpressionWithSigmaMathFunction equals: true.
-	self assert: (dsdt expression idVariable symbol) equals: #j
+	| tmp1 |
+	tmp1 := 'beta=sum(j, beta[i][j]*sum(k, I[k]))' parseAsAnEquation.
+	self
+		assert: tmp1 expression isExpressionWithSigmaMathFunction
+			equals: true;
+		assert:
+			tmp1 expression functionExpr rightHandSide
+				isExpressionWithSigmaMathFunction
+			equals: true;
+		assert: tmp1 expression idVariable symbol equals: #j

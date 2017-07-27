@@ -1,4 +1,3 @@
 adding
-addTimeSeries: aKETimeSeries withKey: aString
-
-	timeSeries at: aString put: aKETimeSeries
+addTimeSeries: arg1 withKey: arg2
+	timeSeries at: arg2 put: arg1

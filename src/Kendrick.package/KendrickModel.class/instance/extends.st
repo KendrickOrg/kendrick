@@ -1,4 +1,3 @@
 public-api
 extends
-
 	^ structuralDependencies

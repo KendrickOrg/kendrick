@@ -1,4 +1,4 @@
 initialization
-initialize 
+initialize
 	super initialize.
-	adjacentNodes := OrderedCollection new.
+	adjacentNodes := OrderedCollection new

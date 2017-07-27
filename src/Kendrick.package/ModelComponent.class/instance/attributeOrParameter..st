@@ -1,29 +1,25 @@
 protected
-attributeOrParameter: aName
-
-	^ (parameters keys includes: aName)
-		ifTrue: [ backEndEntity atParameter: aName ]
-		ifFalse: [  
-			|assoc|
-			assoc := (attributes associations select: [ :as | as value includes: aName ]).
-			assoc isEmpty 
-				ifTrue: [ 
-					(aName asString includes: $_)
-							ifTrue: [ |tokens c|
-								tokens := aName findTokens: '_'.
-								(attributes keys includes: tokens first)
-									ifFalse: [  
-										c := backEndEntity currentCompartment at: tokens second.
-										assoc := (attributes associations select: [ :as | as value includes: tokens first ]).
-										backEndEntity atCompartment: { assoc first key -> tokens first asSymbol . tokens second -> c } 
-									] ifTrue: [  
-										backEndEntity sizeOfPopulation: (tokens collect: [:t | (backEndEntity currentCompartment at: t)]) asArray.
-									]
-							]
-							ifFalse: [backEndEntity sizeOfPopulation: (backEndEntity currentCompartment at: aName asSymbol)] 
-				] "assume attribute name"
-				ifFalse: [
-								backEndEntity atCompartment: { assoc first key -> aName }
-				]
-		]
-	
+attributeOrParameter: arg1
+	| tmp1 tmp2 tmp3 |
+	^ (parameters keys includes: arg1)
+		ifTrue: [ backEndEntity atParameter: arg1 ]
+		ifFalse: [ tmp1 := attributes associations
+				select: [ :arg2 | arg2 value includes: arg1 ].
+			tmp1 isEmpty
+				ifTrue: [ (arg1 asString includes: $_)
+						ifTrue: [ tmp2 := arg1 findTokens: '_'.
+							(attributes keys includes: tmp2 first)
+								ifTrue: [ backEndEntity
+										sizeOfPopulation:
+											(tmp2 collect: [ :arg4 | backEndEntity currentCompartment at: arg4 ])
+												asArray ]
+								ifFalse: [ tmp3 := backEndEntity currentCompartment at: tmp2 second.
+									tmp1 := attributes associations
+										select: [ :arg3 | arg3 value includes: tmp2 first ].
+									backEndEntity
+										atCompartment:
+											{(tmp1 first key -> tmp2 first asSymbol).
+											(tmp2 second -> tmp3)} ] ]
+						ifFalse: [ backEndEntity
+								sizeOfPopulation: (backEndEntity currentCompartment at: arg1 asSymbol) ] ]
+				ifFalse: [ backEndEntity atCompartment: {(tmp1 first key -> arg1)} ] ]

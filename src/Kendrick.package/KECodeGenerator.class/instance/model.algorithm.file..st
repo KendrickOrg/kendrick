@@ -1,4 +1,5 @@
 as yet unclassified
-model: anInputModel algorithm: modellingAlgorithmName file: savingFileName
-	visitor visitNode: anInputModel.
-	visitor generate: modellingAlgorithmName save: savingFileName
+model: arg1 algorithm: arg2 file: arg3
+	visitor
+		visitNode: arg1;
+		generate: arg2 save: arg3

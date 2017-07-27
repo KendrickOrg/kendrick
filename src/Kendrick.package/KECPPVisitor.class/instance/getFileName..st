@@ -1,10 +1,8 @@
 as yet unclassified
-getFileName: aModel
-	|aStream|
-	aStream := WriteStream on: (String new: 10).
-	aModel compartments do: [:each|
-		aStream nextPutAll: (each status asString)
-		].
-	aStream nextPutAll: '.cpp'.
-	^ aStream contents
-	
+getFileName: arg1
+	| tmp1 |
+	tmp1 := WriteStream on: (String new: 10).
+	arg1 compartments
+		do: [ :arg2 | tmp1 nextPutAll: arg2 status asString ].
+	tmp1 nextPutAll: '.cpp'.
+	^ tmp1 contents

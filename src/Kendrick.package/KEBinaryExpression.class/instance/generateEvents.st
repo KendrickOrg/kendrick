@@ -1,40 +1,30 @@
 as yet unclassified
 generateEvents
-|list |
-list := OrderedCollection new.
-(op = #*)|(op  = #/)|(op   = #'^') ifTrue:[
-	self isSeparable ifTrue: [
-		|l|
-		l := self separateExpression.
-		l do: [:each|
-			|e|
-			e := KEEvent new.
-			e rate: each normalize.
-			list add:e
-			]
-		]
-	ifFalse: [
-		|e|
-		e := (KEEvent new) rate: self normalize.
-		list add: e.
-		]
-	].
-
-(op   = #+)
-ifTrue:[
-	|l1 l2|
-l1 := leftHandSide generateEvents.	
-l2 := rightHandSide generateEvents.
-list addAll:l1.
-list addAll:l2.
-].
-
-(op   = #-)
-ifTrue:[
-	|l1 l2|
-	l1 := leftHandSide generateEvents.
-	l2 := ((KEUnaryExpression new) op: #-; expression: rightHandSide) generateEvents.
-	l1 ifNotNil:[list addAll:l1].
-	list addAll:l2.
-	].
-^list
+	| tmp1 tmp2 tmp3 tmp4 tmp5 |
+	tmp1 := OrderedCollection new.
+	op = #* | (op = #/) | (op = #'^')
+		ifTrue: [ self isSeparable
+				ifTrue: [ tmp2 := self separateExpression.
+					tmp2
+						do: [ :arg1 | 
+							| tmp6 |
+							tmp6 := KEEvent new.
+							tmp6 rate: arg1 normalize.
+							tmp1 add: tmp6 ] ]
+				ifFalse: [ tmp3 := KEEvent new rate: self normalize.
+					tmp1 add: tmp3 ] ].
+	op = #+
+		ifTrue: [ tmp4 := leftHandSide generateEvents.
+			tmp5 := rightHandSide generateEvents.
+			tmp1
+				addAll: tmp4;
+				addAll: tmp5 ].
+	op = #-
+		ifTrue: [ | tmp8 |
+			tmp4 := leftHandSide generateEvents.
+			tmp8 := KEUnaryExpression new.
+			tmp8 op: #-.
+			tmp5 := (tmp8 expression: rightHandSide) generateEvents.
+			tmp4 ifNotNil: [ tmp1 addAll: tmp4 ].
+			tmp1 addAll: tmp5 ].
+	^ tmp1

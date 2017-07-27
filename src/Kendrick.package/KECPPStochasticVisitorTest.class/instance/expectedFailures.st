@@ -1,4 +1,4 @@
 as yet unclassified
 expectedFailures
-
-^{#testMultihostStochasticModel. #testSEIRModelWithLossOfImmunityStochasticModel. #testSIRStochasticModel}
+	^ {#testMultihostStochasticModel . #testSEIRModelWithLossOfImmunityStochasticModel.
+	#testSIRStochasticModel}

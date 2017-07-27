@@ -1,15 +1,14 @@
 tests
 testBuildABinaryExpression
-	| e a b o |
-	
-	e := KEBinaryExpression new.
-	a := KENumerical new.
-	a number: 3.
-	b := KENumerical new.
-	b number: 7.
-	o := #+.
-	e
-		op: o;
-		leftHandSide: a;
-		rightHandSide: b.
-	self assert: e op equals: #+
+	| tmp1 tmp2 tmp3 tmp4 |
+	tmp1 := KEBinaryExpression new.
+	tmp2 := KENumerical new.
+	tmp2 number: 3.
+	tmp3 := KENumerical new.
+	tmp3 number: 7.
+	tmp4 := #+.
+	tmp1
+		op: tmp4;
+		leftHandSide: tmp2;
+		rightHandSide: tmp3.
+	self assert: tmp1 op equals: #+

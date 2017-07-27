@@ -1,4 +1,3 @@
 public-api
-step: aNumber
-
-	step := aNumber
+step: arg1
+	step := arg1

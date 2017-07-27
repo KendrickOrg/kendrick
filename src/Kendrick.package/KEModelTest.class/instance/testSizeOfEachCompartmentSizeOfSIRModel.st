@@ -1,10 +1,12 @@
 tests
 testSizeOfEachCompartmentSizeOfSIRModel
-	| model |
-	model := KEModel new population: (KEPopulation size: 100000).
-	model attributes: {(#status -> #(#S #I #R))}.
-	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
-	model atCompartment: {(#status -> #I)} put: 1.
-	self assert: (model sizeOfPopulation: #(#S)) equals: 99999.
-	self assert: (model sizeOfPopulation: #(#I)) equals: 1.
-	self assert: (model sizeOfPopulation: #(#R)) equals: 0
+	| tmp1 |
+	tmp1 := KEModel new population: (KEPopulation size: 100000).
+	tmp1
+		attributes: {(#status -> #(#S #I #R))};
+		atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0;
+		atCompartment: {(#status -> #I)} put: 1.
+	self
+		assert: (tmp1 sizeOfPopulation: #(#S)) equals: 99999;
+		assert: (tmp1 sizeOfPopulation: #(#I)) equals: 1;
+		assert: (tmp1 sizeOfPopulation: #(#R)) equals: 0

@@ -1,4 +1,3 @@
 as yet unclassified
-for: aSymbolArray
-
-	attributeToRegions := aSymbolArray 
+for: arg1
+	attributeToRegions := arg1

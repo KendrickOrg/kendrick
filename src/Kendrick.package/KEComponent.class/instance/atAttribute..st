@@ -1,3 +1,3 @@
 accessing
-atAttribute: aSymbol
-	^ attributes at: aSymbol ifAbsent: [ nil ]
+atAttribute: arg1
+	^ attributes at: arg1 ifAbsent: [  ]

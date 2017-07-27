@@ -1,5 +1,3 @@
 public-api
 gillespie
-
-	^ self  
-		with: #Gillespie
+	^ self with: #Gillespie

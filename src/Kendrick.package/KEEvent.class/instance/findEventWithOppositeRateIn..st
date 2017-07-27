@@ -1,3 +1,3 @@
 accessing
-findEventWithOppositeRateIn: eventList
-	^ eventList detect: [ :event | event rate negated = rate ] ifNone: [ nil ]
+findEventWithOppositeRateIn: arg1
+	^ arg1 detect: [ :arg2 | arg2 rate negated = rate ] ifNone: [  ]

@@ -1,3 +1,3 @@
 as yet unclassified
-map: aMap
-	map := aMap
+map: arg1
+	map := arg1

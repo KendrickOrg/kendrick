@@ -1,17 +1,17 @@
 testing
 isSeparable
-	|c c1 c2|
-	c1 := leftHandSide isSeparable.
-	c2 := rightHandSide isSeparable.
-	c := false.
-	(op = #*)"|(op = #/)" ifTrue: [
-		|c3 c4 f|
-		c3 := false.
-		c4 := false.
-		"f := [ :x | (x isBinaryExpression) ifTrue: [((x op = #+)|(x op = #-))] ifFalse: [false] ]."
-		f := [ :x| x isBinaryExpression ifTrue: [ x op = #+ ] ifFalse: [ false ] ].
-		leftHandSide isUnaryExpression ifTrue: [c3 := (f value: (leftHandSide expression))].			
-		rightHandSide isUnaryExpression ifTrue: [c4 := (f value: (rightHandSide expression))].
-		c := (f value: leftHandSide)|(f value: rightHandSide)|c3|c4
-		].
-	^ c|c1|c2
+	| tmp1 tmp2 tmp3 tmp4 tmp5 tmp6 |
+	tmp2 := leftHandSide isSeparable.
+	tmp3 := rightHandSide isSeparable.
+	tmp1 := false.
+	op = #*
+		ifTrue: [ tmp4 := false.
+			tmp5 := false.
+			tmp6 := [ :arg1 | arg1 isBinaryExpression and: [ arg1 op = #+ ] ].
+			leftHandSide isUnaryExpression
+				ifTrue: [ tmp4 := tmp6 value: leftHandSide expression ].
+			rightHandSide isUnaryExpression
+				ifTrue: [ tmp5 := tmp6 value: rightHandSide expression ].
+			tmp1 := (tmp6 value: leftHandSide) | (tmp6 value: rightHandSide)
+				| tmp4 | tmp5 ].
+	^ tmp1 | tmp2 | tmp3

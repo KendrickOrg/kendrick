@@ -1,5 +1,4 @@
 protected
 cleanUpForInteractiveSessions
-
 	KendrickInternalDSLEntities clearAllInstances.
-	MooseModel resetMeta.
+	MooseModel resetMeta

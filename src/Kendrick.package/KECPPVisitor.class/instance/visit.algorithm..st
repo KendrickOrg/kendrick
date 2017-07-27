@@ -1,6 +1,10 @@
 as yet unclassified
-visit: model algorithm: algorithm
-	algorithm = #RK4 ifTrue: [ ^ (KECPPRK4Visitor new) visitNode: model ].
-	algorithm = #Gillespie ifTrue: [ ^ (KECPPGillespieDirectVisitor new) visitNode: model ].
-	algorithm = #ExplicitTauLeap ifTrue: [ ^ (KECPPExplicitTauLeapVisitor new) visitNode: model ].
-	algorithm = #IBM ifTrue: [ ^ (KECPPIndividualBasedVisitor new) visitNode: model ] 
+visit: arg1 algorithm: arg2
+	arg2 = #RK4
+		ifTrue: [ ^ KECPPRK4Visitor new visitNode: arg1 ].
+	arg2 = #Gillespie
+		ifTrue: [ ^ KECPPGillespieDirectVisitor new visitNode: arg1 ].
+	arg2 = #ExplicitTauLeap
+		ifTrue: [ ^ KECPPExplicitTauLeapVisitor new visitNode: arg1 ].
+	arg2 = #IBM
+		ifTrue: [ ^ KECPPIndividualBasedVisitor new visitNode: arg1 ]

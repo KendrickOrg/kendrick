@@ -1,3 +1,3 @@
 as yet unclassified
-currentCompartment: aCompartment
-	self parameters at: #currentCompartment put: aCompartment
+currentCompartment: arg1
+	self parameters at: #currentCompartment put: arg1

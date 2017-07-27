@@ -1,10 +1,14 @@
 examples
 exampleRK4SolverOnSIRSimpleModelWithTransitionProbabilityAsExpression
-	"self new exampleRK4SolverOnSIRSimpleModelWithTransitionProbabilityAsExpression"
-	|model simulator dB|
-	model := self modelRK4SolverOnSIRSimpleModelWithTransitionProbabilityAsExpression.
-	simulator := KESimulator new: #RungeKutta from: 0.0 to: 1.0 by: 0.0027.
-	simulator executeOn: model.
-	dB := KEDiagramBuilder new.
-	dB data: (simulator allTimesSeriesContaining: '{#status: #I}').
-	^ dB view
+	| tmp1 tmp2 tmp3 |
+	tmp1 := self
+		modelRK4SolverOnSIRSimpleModelWithTransitionProbabilityAsExpression.
+	tmp2 := KESimulator
+		new: #RungeKutta
+		from: 0.0
+		to: 1.0
+		by: 0.0027.
+	tmp2 executeOn: tmp1.
+	tmp3 := KEDiagramBuilder new.
+	tmp3 data: (tmp2 allTimesSeriesContaining: '{#status: #I}').
+	^ tmp3 view

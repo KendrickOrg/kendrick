@@ -1,3 +1,3 @@
 accessing
-compartment: aCompartment
-	compartment := aCompartment
+compartment: arg1
+	compartment := arg1

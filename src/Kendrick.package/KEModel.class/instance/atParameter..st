@@ -1,7 +1,6 @@
 as yet unclassified
-atParameter: aSymbol
-	|p|
-	p := (self parameters at: aSymbol ifAbsent: [ nil ]).
-	p ifNotNil: [ ^ p value: self ].
+atParameter: arg1
+	| tmp1 |
+	tmp1 := self parameters at: arg1 ifAbsent: [  ].
+	tmp1 ifNotNil: [ ^ tmp1 value: self ].
 	^ nil
-	

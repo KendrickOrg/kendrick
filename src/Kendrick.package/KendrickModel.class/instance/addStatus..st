@@ -1,5 +1,4 @@
 public-api
-addStatus: symExpression
-
-	(attributes at: #status) add: symExpression first.
-	backEndEntity addStatus: symExpression.
+addStatus: arg1
+	(attributes at: #status) add: arg1 first.
+	backEndEntity addStatus: arg1

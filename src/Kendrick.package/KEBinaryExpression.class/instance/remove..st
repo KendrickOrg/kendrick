@@ -1,12 +1,23 @@
 removing
-remove: aVariable
-	"This function is reserved for the reformulation of rate expression to probability of contact of an event generated from an equation"
-	|new|
-	new := (KEBinaryExpression new) op: op; leftHandSide: (leftHandSide remove: aVariable); rightHandSide: (rightHandSide remove: aVariable).
-	new checkNil ifTrue: [ ^ nil ].
-	new leftHandSide ifNil: [ ^ rightHandSide ].
-	new rightHandSide ifNil: [ ^ leftHandSide ].
-	new leftHandSide isUnaryExpression & new leftHandSide checkNil ifTrue: [ ^ (KEUnaryExpression new) op: #-; expression: rightHandSide ].
-	new rightHandSide isUnaryExpression & new rightHandSide checkNil ifTrue: [ ^ (KEUnaryExpression new) op: #-; expression: leftHandSide ].
-	 ^ new
-
+remove: arg1
+	| tmp1 tmp3 |
+	tmp3 := KEBinaryExpression new.
+	tmp3
+		op: op;
+		leftHandSide: (leftHandSide remove: arg1).
+	tmp1 := tmp3 rightHandSide: (rightHandSide remove: arg1).
+	tmp1 checkNil
+		ifTrue: [ ^ nil ].
+	tmp1 leftHandSide ifNil: [ ^ rightHandSide ].
+	tmp1 rightHandSide ifNil: [ ^ leftHandSide ].
+	tmp1 leftHandSide isUnaryExpression & tmp1 leftHandSide checkNil
+		ifTrue: [ | tmp5 |
+			tmp5 := KEUnaryExpression new.
+			tmp5 op: #-.
+			^ tmp5 expression: rightHandSide ].
+	tmp1 rightHandSide isUnaryExpression & tmp1 rightHandSide checkNil
+		ifTrue: [ | tmp7 |
+			tmp7 := KEUnaryExpression new.
+			tmp7 op: #-.
+			^ tmp7 expression: leftHandSide ].
+	^ tmp1

@@ -1,3 +1,3 @@
 instance creation
-on: aKEModel
-	^ self new model: aKEModel
+on: arg1
+	^ self new model: arg1

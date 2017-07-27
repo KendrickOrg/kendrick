@@ -1,5 +1,3 @@
 as yet unclassified
-number: aNumber
-
-
-^super new number: aNumber
+number: arg1
+	^ super new number: arg1

@@ -1,4 +1,3 @@
 protected
 keConcern
-
-	^ backEndEntity.
+	^ backEndEntity

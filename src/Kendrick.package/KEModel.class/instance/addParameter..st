@@ -1,4 +1,3 @@
 adding
-addParameter: input
-	self addParameter: input key value: input value
-	
+addParameter: arg1
+	self addParameter: arg1 key value: arg1 value

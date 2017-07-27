@@ -1,37 +1,22 @@
 as yet unclassified
-addCompositeParameter: variablePlusAttributes value: value
-
-	|entities entity |
-
-	"should be generilized"
-	
-	entities := self entitiesFor: variablePlusAttributes allButFirst.
-	
-	"Refactor this one ..."
-	
-	parameters at: variablePlusAttributes put: value.
-	
-	((variablePlusAttributes size >= 3) and: [ entities second isEmpty ])
-		ifTrue: [ ^ self addCompositeParameterWithTwoAttributes: variablePlusAttributes value: value ].
-
-	
-	backEndEntity 
-        addParameter: variablePlusAttributes first asSymbol
-        value: 
-        [ :aModel| |c index attrEnt compEnt|
-				attrEnt := entities first first. "for now suppose you have one of each"
-				compEnt := entities second. "or only attributes"
-            c := aModel currentCompartment at: variablePlusAttributes second.
-				index := (attrEnt attributes at: variablePlusAttributes second) indexOf: c.            
-				compEnt isEmpty
-					ifTrue: [value at: index]
-					ifFalse: [  
-						c := aModel currentCompartment at: compEnt first attributes keys first. "should pick the right attr here"
-						c = variablePlusAttributes last 
-							ifTrue: [ value last ]
-							ifFalse: [ 
-								value at: index.
-							]
-					]  
-        ].
-
+addCompositeParameter: arg1 value: arg2
+	| tmp1 tmp2 |
+	tmp1 := self entitiesFor: arg1 allButFirst.
+	parameters at: arg1 put: arg2.
+	(arg1 size >= 3 and: [ tmp1 second isEmpty ])
+		ifTrue: [ ^ self addCompositeParameterWithTwoAttributes: arg1 value: arg2 ].
+	backEndEntity
+		addParameter: arg1 first asSymbol
+		value: [ :arg3 | 
+			| tmp3 tmp4 tmp5 tmp6 |
+			tmp5 := tmp1 first first.
+			tmp6 := tmp1 second.
+			tmp3 := arg3 currentCompartment at: arg1 second.
+			tmp4 := (tmp5 attributes at: arg1 second) indexOf: tmp3.
+			tmp6 isEmpty
+				ifTrue: [ arg2 at: tmp4 ]
+				ifFalse:
+					[ tmp3 := arg3 currentCompartment at: tmp6 first attributes keys first.
+					tmp3 = arg1 last
+						ifTrue: [ arg2 last ]
+						ifFalse: [ arg2 at: tmp4 ] ] ]

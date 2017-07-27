@@ -1,6 +1,7 @@
 as yet unclassified
 open
-	|b|
-	b := self build.
-	b build.
-	b open
+	| tmp1 |
+	tmp1 := self build.
+	tmp1
+		build;
+		open

@@ -1,4 +1,3 @@
 public-api
-parameters: anArray
-
-	anArray do: [ :var | parameters at: var put: 0 ]
+parameters: arg1
+	arg1 do: [ :arg2 | parameters at: arg2 put: 0 ]

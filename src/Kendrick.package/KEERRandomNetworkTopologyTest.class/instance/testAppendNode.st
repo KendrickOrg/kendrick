@@ -1,11 +1,14 @@
 as yet unclassified
 testAppendNode
-   |g tp|
-	g := KEGraph nodes: 10.
-	tp := KENetworkTopology new: {#random. #p->0.5}.
-	tp appendNode: #'1'->g.
-	tp appendNode: #'2'->g.
-	tp appendNode: #'3'->g.
-	tp appendNode: #'4'->g.
-
-	self should: [ (g nodes at: 1) adjacentNodes size >= 0 ]
+	| tmp1 tmp2 |
+	tmp1 := KEGraph nodes: 10.
+	tmp2 := KENetworkTopology
+		new:
+			{#random.
+			(#p -> 0.5)}.
+	tmp2
+		appendNode: #'1' -> tmp1;
+		appendNode: #'2' -> tmp1;
+		appendNode: #'3' -> tmp1;
+		appendNode: #'4' -> tmp1.
+	self should: [ (tmp1 nodes at: 1) adjacentNodes size >= 0 ]

@@ -1,7 +1,6 @@
 tests
 testAddParameterValue
-	|model |
-	model := KEModel new.
-	model addParameter: #beta value: 0.02.
-
-	self assert: (model atParameter: #beta) equals: 0.02.
+	| tmp1 |
+	tmp1 := KEModel new.
+	tmp1 addParameter: #beta value: 0.02.
+	self assert: (tmp1 atParameter: #beta) equals: 0.02

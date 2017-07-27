@@ -1,7 +1,5 @@
 as yet unclassified
-sizeOfACompartment: aCompartmentName
-	^ self compartments at: aCompartmentName ifAbsent: [ ^ self error: 'No compartment name: ', aCompartmentName asString ]
-	
-	
-	
-	
+sizeOfACompartment: arg1
+	^ self compartments
+		at: arg1
+		ifAbsent: [ ^ self error: 'No compartment name: ' , arg1 asString ]

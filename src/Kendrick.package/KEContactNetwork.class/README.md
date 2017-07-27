@@ -1,1 +1,0 @@
-KEContactNetwork represents a contact patterns between all subpopulations/individuals of an epidemiological model

@@ -1,3 +1,3 @@
 accessing
-tVariable: aVariable
-	tVariable := aVariable
+tVariable: arg1
+	tVariable := arg1

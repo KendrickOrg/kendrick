@@ -1,8 +1,7 @@
 as yet unclassified
-on: aComposition
-
-	composition := Composition withId: aComposition.
+on: arg1
+	composition := Composition withId: arg1.
 	model := composition model.
 	backEndEntity := model keModel.
 	compartments := composition compartments.
-	concerns := composition concerns.
+	concerns := composition concerns

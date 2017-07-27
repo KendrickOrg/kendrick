@@ -1,6 +1,6 @@
 tests
 testName
-	| g |
-	g := KEVariable new.
-	g symbol: #gamma.
-	self assert: g symbol equals: #gamma
+	| tmp1 |
+	tmp1 := KEVariable new.
+	tmp1 symbol: #gamma.
+	self assert: tmp1 symbol equals: #gamma

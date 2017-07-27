@@ -1,30 +1,30 @@
 as yet unclassified
-visitNode: aNode
-	aNode class == KENumerical
-		ifTrue: [ ^ self acceptKENumerical: aNode ].
-	aNode class == KEModel
-		ifTrue: [ ^ self acceptKEModel: aNode ].
-	aNode class == KEVariable
-		ifTrue: [ ^ self acceptKEVariable: aNode ].
-	aNode class == KEBinaryExpression
-		ifTrue: [ ^ self acceptKEBinaryExpression: aNode ].
-	aNode class == KECompartment
-		ifTrue: [ ^ self acceptKECompartment: aNode ].
-	aNode class == KEEquation
-		ifTrue: [ ^ self acceptKEEQuation: aNode ].
-	aNode class == KEParameter
-		ifTrue: [ ^ self acceptKEParameter: aNode ].
-	aNode class == KEUnaryExpression
-		ifTrue: [ ^ self acceptKEUnaryExpression: aNode ].
-	aNode class == KEDeterministicSimulator
-		ifTrue: [ ^ self acceptKEDeterministicSimulator: aNode ].
-	aNode class == KEMathFunctionExpression 
-		ifTrue: [ ^ self acceptKEMathExpression: aNode ].
-	aNode  class == KESigmaFunctionExpression
-		ifTrue: [ ^ self acceptKEMathExpressionSigma: aNode ].
-	aNode  class == KEIndexedVariable 
-		ifTrue: [ ^ self acceptKEIndexedVariable: aNode ].
-	aNode  class == KEEventOld
-		ifTrue: [ ^ self acceptKEEvent:  aNode].
-	aNode class == KETransition 
-		ifTrue: [ ^ self acceptKETransition: aNode ].
+visitNode: arg1
+	arg1 class == KENumerical
+		ifTrue: [ ^ self acceptKENumerical: arg1 ].
+	arg1 class == KEModel
+		ifTrue: [ ^ self acceptKEModel: arg1 ].
+	arg1 class == KEVariable
+		ifTrue: [ ^ self acceptKEVariable: arg1 ].
+	arg1 class == KEBinaryExpression
+		ifTrue: [ ^ self acceptKEBinaryExpression: arg1 ].
+	arg1 class == KECompartment
+		ifTrue: [ ^ self acceptKECompartment: arg1 ].
+	arg1 class == KEEquation
+		ifTrue: [ ^ self acceptKEEQuation: arg1 ].
+	arg1 class == KEParameter
+		ifTrue: [ ^ self acceptKEParameter: arg1 ].
+	arg1 class == KEUnaryExpression
+		ifTrue: [ ^ self acceptKEUnaryExpression: arg1 ].
+	arg1 class == KEDeterministicSimulator
+		ifTrue: [ ^ self acceptKEDeterministicSimulator: arg1 ].
+	arg1 class == KEMathFunctionExpression
+		ifTrue: [ ^ self acceptKEMathExpression: arg1 ].
+	arg1 class == KESigmaFunctionExpression
+		ifTrue: [ ^ self acceptKEMathExpressionSigma: arg1 ].
+	arg1 class == KEIndexedVariable
+		ifTrue: [ ^ self acceptKEIndexedVariable: arg1 ].
+	arg1 class == KEEventOld
+		ifTrue: [ ^ self acceptKEEvent: arg1 ].
+	arg1 class == KETransition
+		ifTrue: [ ^ self acceptKETransition: arg1 ]

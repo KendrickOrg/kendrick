@@ -1,3 +1,3 @@
 as yet unclassified
-network: aNetwork
-	network := aNetwork
+network: arg1
+	network := arg1

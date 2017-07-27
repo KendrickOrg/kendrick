@@ -1,3 +1,3 @@
 checking
-checkHasVariable: aDictionary
-	^ functionExpr checkHasVariable: aDictionary
+checkHasVariable: arg1
+	^ functionExpr checkHasVariable: arg1

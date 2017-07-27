@@ -1,3 +1,3 @@
 accessing
-nextStatus: aDictionary
-	nextStatus := aDictionary
+nextStatus: arg1
+	nextStatus := arg1

@@ -1,34 +1,39 @@
 as yet unclassified
 build
-|b normalize lb|
-	b := RTGrapher new.
-	b extent: 400 @ 200.
-	normalize := RTMultiLinearColorForIdentity new 
-						objects: self legends;
-						colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
-	1 to: legends size do: [ :i|
-		|ds|
-		ds := RTData new.
-		ds noDot.
-		ds points: (data at: i) value index.
-		ds x: #yourself.
-		ds y: [ :x| (data at: i) value at: x ].
-		ds connectColor: (normalize rtValue: (legends at: i)).
-		b add: ds.
-		 ].
-	xLabel ifNil: [ b axisX title: 'Time (days)' ] 
-	       ifNotNil: [ b axisX title: xLabel ].
-	yLabel ifNil: [ b axisY title: 'Number of individuals' ] 
-	       ifNotNil: [ b axisY title: yLabel ].
-	b axisY noDecimal.
-	lb := RTLegendBuilder new.
-	lb view: b view.
+	| tmp1 tmp2 tmp3 tmp4 tmp5 tmp7 tmp9 |
+	tmp1 := RTGrapher new.
+	tmp1 extent: 400 @ 200.
+	tmp9 := RTMultiLinearColorForIdentity new.
+	tmp9 objects: self legends.
+	tmp2 := tmp9
+		colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
+	tmp4 := legends size.
+	1 to: tmp4 do: [ :tmp6 | 
+		tmp5 := nil.
+		tmp5 := RTData new.
+		tmp5
+			noDot;
+			points: (data at: tmp6) value index;
+			x: #yourself;
+			y: [ :arg1 | (data at: tmp6) value at: arg1 ];
+			connectColor: (tmp2 rtValue: (legends at: tmp6)).
+		tmp1 add: tmp5 ].
+	xLabel
+		ifNil: [ tmp1 axisX title: 'Time (days)' ]
+		ifNotNil: [ tmp1 axisX title: xLabel ].
+	yLabel
+		ifNil: [ tmp1 axisY title: 'Number of individuals' ]
+		ifNotNil: [ tmp1 axisY title: yLabel ].
+	tmp1 axisY noDecimal.
+	tmp3 := RTLegendBuilder new.
+	tmp3 view: tmp1 view.
 	self legendTitle ifNil: [ legendTitle := 'Compartments' ].
-	lb addText: legendTitle.
-	1 to: legends size do: [ :i| |c|
-		c:= (normalize rtValue: (legends at: i)).
-		lb addColor: c text: (legends at: i) ].
-	lb build.
-	b view @ RTZoomableView.
-	^ b 
-	
+	tmp3 addText: legendTitle.
+	tmp4 := legends size.
+	1 to: tmp4 do: [ :tmp6 | 
+		tmp7 := nil.
+		tmp7 := tmp2 rtValue: (legends at: tmp6).
+		tmp3 addColor: tmp7 text: (legends at: tmp6) ].
+	tmp3 build.
+	tmp1 view @ RTZoomableView.
+	^ tmp1

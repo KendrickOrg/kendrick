@@ -1,6 +1,8 @@
 testing
-addExpression: anExpression
-	^ KEBinaryExpression new
+addExpression: arg1
+	| tmp2 |
+	tmp2 := KEBinaryExpression new.
+	tmp2
 		op: #+;
-		leftHandSide: self;
-		rightHandSide: anExpression
+		leftHandSide: self.
+	^ tmp2 rightHandSide: arg1

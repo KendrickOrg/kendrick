@@ -1,4 +1,5 @@
 as yet unclassified
-printObjectAsAnItem: anObject
-
-	[^ anObject kendrickDescription] on: MessageNotUnderstood do: [ ^  anObject class name asString]
+printObjectAsAnItem: arg1
+	[ ^ arg1 kendrickDescription ]
+		on: MessageNotUnderstood
+		do: [ ^ arg1 class name asString ]
