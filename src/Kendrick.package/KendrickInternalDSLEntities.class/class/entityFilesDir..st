@@ -1,4 +1,4 @@
 as yet unclassified
 entityFilesDir: aProject
 
-	^ (Smalltalk vmDirectory parent asFileReference / ('Sources/Projects/' , aProject , '/'))
+	^ (SmalltalkImage current lastImagePath asFileReference parent / ('Sources/Projects/' , aProject , '/'))

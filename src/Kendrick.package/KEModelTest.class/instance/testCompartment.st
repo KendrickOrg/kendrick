@@ -1,6 +1,5 @@
 tests
 testCompartment
-	"self new testCompartment"
 	|model|
 	model := KEModel new.
 	self assert: (model compartments size) equals: 0.

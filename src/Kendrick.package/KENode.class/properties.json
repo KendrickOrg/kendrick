@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "BuiThiMaiAnh 7/24/2014 11:29",
+	"super" : "KEEntity",
+	"category" : "Kendrick-Spatial-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"adjacentNodes",
+		"label"
+	],
+	"name" : "KENode",
+	"type" : "normal"
+}
