@@ -1,6 +1,6 @@
 as yet unclassified
 doBirthTransitions
-	self birthTransitions do: [ :e|
+	birthTransitions do: [ :e|
 		|r p|
 		model currentCompartment: (e key to).
 		r := (e key probability value: model) abs.

@@ -2,6 +2,7 @@ public
 executeOn: aModel
 	| t rand |
 	super executeOn: aModel.
+	self initializeSimulation.
 	t := tMin.
 	self saveCompartmentsValueAtTime: tMin.
 	rand := Random new.
