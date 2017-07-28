@@ -1,6 +1,7 @@
 examples
 exampleIBMWikiSimulatorContactNetwork
 "self new exampleIBMWikiSimulatorContactNetwork"
+"First example found here: https://github.com/UMMISCO/kendrick/wiki/Example-10:-SIR-Model-with-contact-network"
 |model network spatialConcern sirConcern simulator db f|
 model := KEModel new population: (KEPopulation size: 100).
 
