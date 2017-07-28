@@ -1,3 +1,3 @@
 accessing
-nextStatus: aDictionary
-	nextStatus := aDictionary
+nextStatus: aStatus
+	nextStatus := aStatus
