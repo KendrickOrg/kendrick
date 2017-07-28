@@ -1,5 +1,7 @@
 accessing
 individuals
+	"Return the individuals of a population"
+	"If the individuals does not exist, we create them"
 	individuals ifNil: [ 
 		|n|
 		n := 0.
