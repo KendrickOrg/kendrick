@@ -1,3 +1,4 @@
 as yet unclassified
-symbol: arg1
-	^ super new symbol: arg1
+symbol: aSymbol
+
+^super new symbol: aSymbol

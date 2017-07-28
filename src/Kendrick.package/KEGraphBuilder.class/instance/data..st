@@ -1,3 +1,3 @@
 as yet unclassified
-data: arg1
-	data := arg1
+data: aCollection
+	data := aCollection

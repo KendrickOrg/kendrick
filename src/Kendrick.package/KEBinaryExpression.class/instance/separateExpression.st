@@ -1,36 +1,30 @@
 as yet unclassified
 separateExpression
-	| tmp1 tmp2 |
-	tmp1 := OrderedCollection new.
-	leftHandSide isSeparable
-		ifTrue: [ tmp2 := OrderedCollection new.
-			tmp1 := leftHandSide doSeparation.
-			tmp1
-				do: [ :arg1 | 
-					| tmp3 tmp5 |
-					tmp5 := KEBinaryExpression new.
-					tmp5
-						op: op;
-						leftHandSide: arg1.
-					tmp3 := tmp5 rightHandSide: rightHandSide.
-					tmp3 isSeparable
-						ifTrue: [ tmp2 addAll: tmp3 doSeparation ]
-						ifFalse: [ tmp2 add: tmp3 ] ].
-			^ tmp2 ].
-	rightHandSide isSeparable
-		ifTrue: [ tmp2 := OrderedCollection new.
-			tmp1 := rightHandSide doSeparation.
-			tmp1
-				do: [ :arg2 | 
-					| tmp6 tmp8 |
-					tmp8 := KEBinaryExpression new.
-					tmp8
-						op: op;
-						leftHandSide: leftHandSide.
-					tmp6 := tmp8 rightHandSide: arg2.
-					tmp6 isSeparable
-						ifTrue: [ tmp2 addAll: tmp6 doSeparation ]
-						ifFalse: [ tmp2 add: tmp6 ] ].
-			^ tmp2 ].
-	tmp1 := self doSeparation.
-	^ tmp1
+	|list|
+	list := OrderedCollection new.
+	(leftHandSide isSeparable) ifTrue: [
+		|l|
+		l := OrderedCollection new.
+		list := leftHandSide doSeparation.
+		list do: [:each| 
+			|e|
+			e := (KEBinaryExpression new) op: op; leftHandSide: each; rightHandSide: rightHandSide.
+			e isSeparable ifTrue: [l addAll: (e doSeparation)] ifFalse: [l add: e].
+			].
+		^ l
+		]
+	ifFalse: [
+		rightHandSide isSeparable ifTrue: [
+			|l|
+			l := OrderedCollection new.
+			list := rightHandSide doSeparation.
+			list do: [:each| 
+				|e|
+				e := (KEBinaryExpression new) op: op; leftHandSide: leftHandSide; rightHandSide: each.
+				e isSeparable ifTrue: [l addAll: (e doSeparation)] ifFalse: [l add: e].
+				].
+			^ l
+			]
+		ifFalse: [list := self doSeparation.]
+		].
+	^ list

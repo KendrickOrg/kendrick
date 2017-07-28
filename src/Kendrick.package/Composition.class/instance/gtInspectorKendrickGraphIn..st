@@ -1,6 +1,8 @@
 as yet unclassified
-gtInspectorKendrickGraphIn: arg1
+gtInspectorKendrickGraphIn: composite
+
 	<gtInspectorPresentationOrder: -20>
 	<gtInspectorTag: #custom>
 	<gtInspectorTag: #kendrick>
-	^ backEndEntity gtInspectorKendrickGraphIn: arg1
+	
+	^ backEndEntity gtInspectorKendrickGraphIn: composite

@@ -1,3 +1,4 @@
 public-api
-legendTitle: arg1
-	diag legendTitle: arg1
+legendTitle: aString
+
+	diag legendTitle: aString

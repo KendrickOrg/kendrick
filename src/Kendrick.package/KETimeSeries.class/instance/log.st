@@ -1,6 +1,3 @@
 accessing
 log
-	^ self class
-		from: (data collect: [ :arg1 | arg1 perform: #log ])
-		withIndex: index copy
-		compartment: self compartment
+	^ self class from: (data collect: [ :each | each perform: #log ]) withIndex: index copy compartment: self compartment

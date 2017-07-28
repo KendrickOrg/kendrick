@@ -1,14 +1,17 @@
 as yet unclassified
-checkAllPositive: arg1
-	| tmp2 |
-	arg1 isNumber
-		ifTrue: [ ^ arg1 > 0 ].
-	arg1 isArray
-		ifTrue: [ tmp2 := true.
-			arg1
-				do: [ :arg2 | 
-					tmp2 := tmp2 & (self checkAllPositive: arg2).
-					tmp2
-						ifFalse: [ ^ tmp2 ] ].
-			^ tmp2 ].
-	^ false
+checkAllPositive: anArray
+	"Created by ThanhNT 19/7"
+	"Purpose: Determine all elements of an Array are positive or not."
+	"This function will return true if all of them are positive"
+	"self new checkAllPositive: #(1 2 4 5 6 -7)"
+	|check|
+	anArray isNumber ifTrue: [ ^(anArray > 0) ].
+	anArray isArray ifTrue: [ 
+		check := true.
+		anArray do: [ :each| 
+			check := check & (self checkAllPositive: each).
+			check ifFalse: [ ^check ].
+			].
+		^check.
+		 ].
+	^false.

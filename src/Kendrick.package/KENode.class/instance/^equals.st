@@ -1,3 +1,3 @@
 adding
-= arg1
-	^ self label = arg1 label
+= aNode
+	^ self label = aNode label

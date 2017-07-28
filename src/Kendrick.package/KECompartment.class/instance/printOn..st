@@ -1,11 +1,12 @@
 printing
-printOn: arg1
-	^ arg1
+printOn: stream
+	"Represent compartment with STON syntax"
+	"Like : {#status:#S,#species:#reservoir1}"
+
+	^ stream
 		nextPutAll:
 			(String
-				streamContents: [ :arg2 | 
-					| tmp2 |
-					tmp2 := STON writer.
-					tmp2
-						on: arg2;
+				streamContents: [ :s | 
+					STON writer
+						on: s;
 						nextPut: dictionary ])

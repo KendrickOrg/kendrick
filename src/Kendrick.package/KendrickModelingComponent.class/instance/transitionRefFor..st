@@ -1,8 +1,10 @@
 protected
-transitionRefFor: arg1
-	| tmp1 |
-	arg1 = 'Empty'
+transitionRefFor: aCompartment
+	
+	|assoc|
+
+	
+	aCompartment = 'Empty'
 		ifTrue: [ ^ #empty ].
-	tmp1 := (attributes associations
-		select: [ :arg2 | arg2 value includes: arg1 ]) first.
-	^ '{#' , tmp1 key asString , ': #' , arg1 , '}'
+	assoc := (attributes associations select: [ :pair | pair value includes: aCompartment ]) first.
+	^ '{#' , assoc key asString , ': #' , aCompartment , '}'.

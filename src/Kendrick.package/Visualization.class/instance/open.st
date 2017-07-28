@@ -1,4 +1,6 @@
 protected
 open
-	self canvas.
-	^ diag
+
+	self canvas. "to generate / simulate"
+
+	^ diag.

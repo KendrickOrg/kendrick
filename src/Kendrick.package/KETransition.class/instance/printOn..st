@@ -1,15 +1,14 @@
 printing
-printOn: arg1
-	| tmp1 tmp2 tmp4 |
-	tmp1 := from isSymbol
+printOn: aStream
+	| f t |
+	f := from isSymbol
 		ifTrue: [ from asString ]
 		ifFalse: [ from associations asString ].
-	tmp2 := to isSymbol
+	t := to isSymbol
 		ifTrue: [ to asString ]
 		ifFalse: [ to associations asString ].
-	tmp4 := arg1.
-	tmp4
+	aStream
 		nextPutAll: 'From: ';
-		nextPutAll: tmp1;
+		nextPutAll: f;
 		nextPutAll: ' To: ';
-		nextPutAll: tmp2
+		nextPutAll: t

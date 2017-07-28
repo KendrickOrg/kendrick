@@ -1,6 +1,6 @@
 information
-distanceTo: arg1
-	| tmp1 tmp2 |
-	tmp1 := self position.
-	tmp2 := arg1 position.
-	^ (tmp1 - tmp2 raisedTo: 2) sum
+distanceTo: other
+	|x y|
+	x := self position.
+	y := other position.
+	^ ((x - y) raisedTo: 2) sum

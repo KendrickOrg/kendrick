@@ -1,10 +1,10 @@
 as yet unclassified
-routesToTransitions: arg1
-	| tmp1 |
-	tmp1 := edges
-		collect: [ :arg2 | 
-			KETransition
-				from: {(#country -> arg2 key)}
-				to: {(#country -> arg2 value)}
-				probability: arg1 ].
-	^ tmp1
+routesToTransitions: aBlockOrAnExpression
+	|transitions|
+	transitions := edges collect: [ :each|
+		KETransition 
+			from: { #country->each key } 
+			to: { #country->each value } 
+			probability: aBlockOrAnExpression 	
+	].
+	^ transitions

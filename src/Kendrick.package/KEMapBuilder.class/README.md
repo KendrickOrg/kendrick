@@ -1,0 +1,1 @@
+A map show the infection dynamic of an infectious disease

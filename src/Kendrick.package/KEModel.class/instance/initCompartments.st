@@ -1,6 +1,6 @@
 accessing
 initCompartments
-	initCompartments
-		ifNil: [ initCompartments := Dictionary
-				newFrom: (self compartmentNames collect: [ :arg1 | arg1 -> 0 ]) ].
+	"initialize all compartments with a size of 0"
+
+	initCompartments ifNil: [ initCompartments := Dictionary newFrom: (self compartmentNames collect: [ :c | c -> 0 ]) ].
 	^ initCompartments

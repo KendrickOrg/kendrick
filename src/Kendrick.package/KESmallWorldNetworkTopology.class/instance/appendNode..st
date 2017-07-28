@@ -1,30 +1,39 @@
 as yet unclassified
-appendNode: arg1
-	| tmp1 tmp2 tmp3 tmp4 |
-	tmp1 := arg1 key.
-	tmp2 := arg1 value.
-	tmp3 := Random new.
-	tmp4 := tmp1.
-	activeNodes
-		do: [ :arg2 | 
-			| tmp5 tmp6 tmp7 |
-			(arg2 - tmp4) abs \\ (tmp2 nodes size - (K // 2)) <= (K // 2)
-				ifTrue: [ beta > tmp3 next
-						ifTrue: [ | tmp8 |
-							tmp6 := tmp2 nodes at: arg2.
-							tmp8 := tmp6.
-							[ tmp8 label ~= tmp6 label
-								and: [ (tmp6 adjacentNodes select: [ :arg3 | arg3 = tmp8 label ]) isEmpty ] ]
-								whileFalse: [ tmp7 := (tmp2 nodes size * tmp3 next) ceiling.
-									tmp8 := tmp2 nodes at: tmp7 ].
-							tmp2
-								edgesFrom: (tmp2 nodes at: arg2) label
-									toAll: (Array with: (tmp2 nodes at: tmp7) label)
-									oneWay: true;
-								edgesFrom: (tmp2 nodes at: tmp4) label
-									toAll: (Array with: (tmp2 nodes at: arg2) label)
-									oneWay: true ]
-						ifFalse: [ tmp2
-								edgesFrom: (tmp2 nodes at: tmp4) label
-								toAll: (Array with: (tmp2 nodes at: arg2) label) ] ] ];
-		add: tmp4
+appendNode: anAssociation
+	|nodeIdx graph rand j|
+	nodeIdx := anAssociation key.
+	graph := anAssociation value.
+	rand := Random new.
+	j := nodeIdx.
+	activeNodes do: [ :i| 
+		((((i-j) abs ) \\ (graph nodes size - (K // 2))) <= (K // 2))
+		ifTrue: [ 
+			(beta > (rand next)) 
+			ifTrue: [ 
+				"rewiring the edge (i->j) with i < j"
+				|node_k node_i k|
+				node_i := graph nodes at: i.
+				node_k := node_i.
+				[ (node_k label ~= node_i label) 
+					and: [ (node_i adjacentNodes select: [ :e| e = node_k label ]) isEmpty ]
+				] whileFalse: 
+					[ 
+						k := ((graph nodes size) * (rand next)) ceiling.
+						node_k := (graph nodes at: k) 
+					].
+				graph edgesFrom: (graph nodes at: i) label toAll: (Array with: (graph nodes at: k) label) oneWay: true.
+				"add the edge (j->i) with j > i"
+				graph edgesFrom: (graph nodes at: j) label toAll: (Array with: (graph nodes at: i) label) oneWay: true.
+			]
+			ifFalse: [  
+				graph edgesFrom: (graph nodes at: j) label toAll: (Array with: (graph nodes at: i) label).
+				"((j = graph nodes size) and: [i = 1]) 
+				ifTrue: 
+					[ network with: (Array with: j  with: i) strengthOfConnection: strengthOfConnection oneWay: oneWay ] 
+				ifFalse: 
+					[ network with: (Array with: i  with: j) strengthOfConnection: strengthOfConnection oneWay: oneWay ]"
+				]
+			]
+		].
+	activeNodes add: j
+	

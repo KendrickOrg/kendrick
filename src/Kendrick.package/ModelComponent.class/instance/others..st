@@ -1,9 +1,12 @@
 public-api
-others: arg1
-	otherCompartmentValue := arg1.
+others: anInteger
+
+	otherCompartmentValue := anInteger.
+
 	backEndEntity attributes
-		associationsDo: [ :arg2 | 
-			arg2 value
-				do: [ :arg3 | 
-					(explicitelySetCompartments includes: arg3)
-						ifFalse: [ self atCompartment: arg3 value: arg1 ] ] ]
+		associationsDo: [ :assoc | 
+			assoc value do: [:var |
+				(explicitelySetCompartments includes: var)
+					ifFalse: [ self atCompartment: var value: anInteger ]
+			] 
+		]

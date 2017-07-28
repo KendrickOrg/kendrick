@@ -1,3 +1,6 @@
 as yet unclassified
-others: arg1
-	model others: arg1 given: explicitelySetCompartments
+others: anInteger
+
+	model others: anInteger given: explicitelySetCompartments. "TODO: propagate to concerns as well"
+
+	

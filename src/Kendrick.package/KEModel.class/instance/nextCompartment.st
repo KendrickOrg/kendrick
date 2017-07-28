@@ -1,3 +1,3 @@
 as yet unclassified
 nextCompartment
-	^ self parameters at: #nextCompartment ifAbsent: [  ]
+	^ self parameters at: #nextCompartment ifAbsent: [ nil ]

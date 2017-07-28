@@ -1,7 +1,9 @@
 public-api
-dataWithOp: arg1
-	^ lazyDataBlock := [ diag
-		data:
-			((simulation
-				allTimesSeriesContaining: (simulation model transitionRefFor: arg1 first))
-				perform: arg1 last) ]
+dataWithOp: anArray "should be full math-expression"
+	^ lazyDataBlock := [
+			diag data: 
+				((simulation 
+					allTimesSeriesContaining: 
+						(simulation model transitionRefFor: anArray first))
+					perform: anArray last)
+			]

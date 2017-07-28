@@ -1,3 +1,5 @@
 adding
-addParameters: arg1
-	arg1 do: [ :arg2 | self addParameter: arg2 ]
+addParameters: input
+	input do: [ :e| self addParameter: e ]
+	
+	

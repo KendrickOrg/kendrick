@@ -1,4 +1,4 @@
 accessing
-expression
+expression 
 	<MSEProperty: #expression type: #KEExpression>
 	^ expression

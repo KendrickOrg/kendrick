@@ -1,3 +1,3 @@
 accessing
 adjacentNodes
-	^ adjacentNodes
+	^ adjacentNodes.

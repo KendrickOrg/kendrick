@@ -1,13 +1,10 @@
 accessing
 birthTransitions
-	| tmp1 tmp2 tmp3 |
-	birthTransitions
-		ifNil: [ birthTransitions := OrderedCollection new.
-			tmp1 := model transitions size.
-			tmp3 := tmp1.
-			1 to: tmp3 do: [ :tmp4 | 
-				tmp2 := nil.
-				tmp2 := model transitions at: tmp4.
-				(tmp2 from at: #status) = #empty
-					ifTrue: [ birthTransitions add: tmp2 -> tmp4 ] ] ].
-	^ birthTransitions
+	birthTransitions ifNil: [ 
+		birthTransitions := OrderedCollection new.
+		1 to: model transitions size do: [ :i| |tr| tr := model transitions at: i.
+			((tr from at: #status) = #empty) ifTrue: [ 
+				"tr rate ifNotNil: [ tr rate: (tr rate remove: (KEVariable new symbol: #N)) ]."
+				birthTransitions add: (tr->i) ] ]
+		 ].
+	^ birthTransitions 

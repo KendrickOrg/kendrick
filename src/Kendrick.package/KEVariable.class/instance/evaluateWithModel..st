@@ -1,8 +1,8 @@
 as yet unclassified
-evaluateWithModel: arg1
-	| tmp1 |
-	((arg1 attributes at: #status ifAbsent: [ OrderedCollection new ])
-		includes: symbol)
-		ifTrue: [ ^ arg1 atCompartment: {(#status -> symbol)} ].
-	tmp1 := arg1 atParameter: symbol.
-	^ tmp1
+evaluateWithModel: model
+	|x|
+	((model attributes at: #status ifAbsent: [OrderedCollection new]) includes: symbol)
+	ifTrue: [ 
+		^ model atCompartment: { #status->symbol } ].
+	x := model atParameter: symbol.
+	^ x

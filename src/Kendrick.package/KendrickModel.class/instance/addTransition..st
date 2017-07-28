@@ -1,15 +1,13 @@
 public-api
-addTransition: arg1
-	| tmp1 |
-	tmp1 := KendrickTransitions new with: arg1.
-	tmp1 convertToCompatibleBackendRepresentation
-		do: [ :arg2 | 
-			| tmp2 tmp3 tmp4 |
-			tmp2 := arg2 key key asString asSymbol.
-			tmp4 := arg2 key value.
-			tmp3 := arg2 value asString asSymbol.
-			self
-				allTransitionsFor:
-					{tmp2.
-					tmp4.
-					tmp3} ]
+addTransition: symExpression
+
+	|newTransition| 
+
+	newTransition :=
+		KendrickTransitions new with: symExpression.
+	newTransition convertToCompatibleBackendRepresentation do: [:assoc |
+		|from to propability|
+		from := assoc key key asString asSymbol.
+		propability := assoc key value.
+		to := assoc value asString asSymbol.
+		self allTransitionsFor: { from . propability . to } ].

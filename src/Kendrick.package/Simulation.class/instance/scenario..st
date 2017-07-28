@@ -1,4 +1,5 @@
 public-api
-scenario: arg1
-	scenario := Scenario withId: arg1.
-	combo := scenario composition
+scenario: aScenarioID
+	
+	scenario := Scenario withId: aScenarioID. 
+	combo := scenario composition.

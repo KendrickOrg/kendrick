@@ -1,3 +1,4 @@
 protected
-allTimesSeriesContaining: arg1
-	^ simulator allTimesSeriesContaining: arg1
+allTimesSeriesContaining: anIdentifier
+
+	^ simulator allTimesSeriesContaining: anIdentifier 

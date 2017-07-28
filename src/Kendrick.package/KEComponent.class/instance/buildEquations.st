@@ -1,17 +1,18 @@
 adding
 buildEquations
-	| tmp1 |
-	tmp1 := Dictionary new.
-	self compartmentNames
-		do: [ :arg1 | tmp1 at: arg1 put: OrderedCollection new ].
-	self transitions
-		do: [ :arg2 | 
-			(arg2 from at: #status) = #empty
-				ifTrue: [ (tmp1 at: arg2 to) add: (Array with: arg2 with: 1) ].
-			(arg2 to at: #status) = #empty
-				ifTrue: [ (tmp1 at: arg2 from) add: (Array with: arg2 with: -1) ].
-			((arg2 from at: #status) ~= #empty
-				and: [ (arg2 to at: #status) ~= #empty ])
-				ifTrue: [ (tmp1 at: arg2 from) add: (Array with: arg2 with: -1).
-					(tmp1 at: arg2 to) add: (Array with: arg2 with: 1) ] ].
-	^ tmp1
+	"Return the suitable array for KESimulatorDeterministic in order to solve the equations."
+	"This method should be merge with equations method in the same class: issue #40"
+
+	| eq |
+	eq := Dictionary new.
+	self compartmentNames do: [ :k| eq at: k put: OrderedCollection new ].
+	self transitions do: [ :tr|
+		(tr from at: #status) = #empty ifTrue:
+			[ (eq at: tr to) add: (Array with: tr with: 1) ].
+		(tr to at: #status) = #empty ifTrue:
+			[ (eq at: tr from) add: (Array with: tr with: -1) ].
+		(((tr from at: #status) ~= #empty) and: [ (tr to at: #status) ~= #empty ]) ifTrue:[ 
+			(eq at: tr from) add: (Array with: tr with: -1).
+			(eq at: tr to) add: (Array with: tr with: 1) ]
+		 ].
+	^eq

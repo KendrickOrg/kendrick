@@ -1,13 +1,12 @@
 as yet unclassified
-acceptKEMathExpression: arg1
-	| tmp1 |
-	tmp1 := WriteStream on: (String new: 60).
-	tmp1 nextPutAll: arg1 functionName asString.
-	arg1 functionExpr class == KEVariable
-		| (arg1 functionExpr class == KENumerical)
-		ifTrue: [ tmp1 nextPutAll: '(' ].
-	tmp1 nextPutAll: (self visitNode: arg1 functionExpr).
-	arg1 functionExpr class == KEVariable
-		| (arg1 functionExpr class == KENumerical)
-		ifTrue: [ tmp1 nextPutAll: ')' ].
-	^ tmp1 contents
+acceptKEMathExpression: aNode
+	|aStream|
+	aStream := WriteStream on: (String new: 60).
+	aStream nextPutAll: (aNode functionName asString).
+	(aNode functionExpr class == KEVariable) | (aNode functionExpr class == KENumerical) 
+		ifTrue: [ aStream nextPutAll: '(' ].
+	aStream nextPutAll: (self visitNode: aNode functionExpr).
+	(aNode functionExpr class == KEVariable) | (aNode functionExpr class == KENumerical) 
+		ifTrue: [ aStream nextPutAll: ')' ].
+	^ aStream contents
+	

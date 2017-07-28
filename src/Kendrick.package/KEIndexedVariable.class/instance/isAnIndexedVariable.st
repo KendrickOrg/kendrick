@@ -1,3 +1,4 @@
 testing
 isAnIndexedVariable
-	^ true
+
+^true

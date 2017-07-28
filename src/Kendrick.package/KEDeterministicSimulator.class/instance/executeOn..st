@@ -1,48 +1,39 @@
 public
-executeOn: arg1
-	| tmp1 tmp2 tmp4 |
-	super executeOn: arg1.
+executeOn: aModel
+	|st ks system |
+	super executeOn:aModel.
 	equations := model buildEquations.
-	tmp2 := ExplicitSystem
-		block: [ :arg2 :arg3 | 
-			| tmp6 tmp7 |
-			tmp6 := Array new: model population compartments size.
-			tmp7 := 1.
-			model population compartments
-				keysDo: [ :arg4 | 
-					model population compartments at: arg4 put: (arg2 at: tmp7).
-					tmp7 := tmp7 + 1 ].
-			tmp7 := 1.
-			model population compartments
-				keysDo: [ :arg5 | 
-					| tmp8 |
-					(equations at: arg5) isEmpty
-						ifTrue: [ tmp8 := 0 ]
-						ifFalse: [ tmp8 := ((equations at: arg5)
-								collect: [ :arg6 | 
-									| tmp9 |
-									((arg6 at: 1) from at: #status) = #empty
-										ifTrue: [ model currentCompartment: (arg6 at: 1) to ]
-										ifFalse: [ model currentCompartment: (arg6 at: 1) from ].
-									model nextCompartment: (arg6 at: 1) to.
-									tmp9 := ((arg6 at: 1) probability value: model) abs.
-									(arg6 at: 2) * tmp9
-										* (model atCompartment: (arg6 at: 1) from) ]) sum ].
-					tmp6 at: tmp7 put: tmp8.
-					tmp7 := tmp7 + 1 ].
-			tmp6 ].
-	self stepper: ((Smalltalk at: self solver) onSystem: tmp2).
-	tmp4 := model population compartments values.
-	tmp1 := model population compartments keys.
-	(tMin to: tMax by: step)
-		do: [ :arg7 | 
-			| tmp10 |
-			self saveCompartmentsValueAtTime: arg7.
-			model t: arg7.
-			tmp4 := stepper doStep: tmp4 time: arg7 stepSize: step.
-			tmp10 := tmp1 size.
-			1 to: tmp10 do: [ :tmp11 | 
-				model population compartments
-					at: (tmp1 at: tmp11)
-					put: (tmp4 at: tmp11) ].
-			1 ]
+	system := ExplicitSystem block: [ :x :t| |c i|
+		c := Array new: (model population compartments size).
+		i := 1.
+		model population compartments keysDo: [ :k| model population compartments at: k put: (x at: i).
+			i := i + 1 ].
+		i := 1.
+		model population compartments keysDo: [ :k| |tmp|
+			(equations at: k) isEmpty 
+			ifTrue: [ tmp := 0 ]
+			ifFalse: [  
+				tmp := ((equations at: k) collect: [ :e|
+				|prob|
+				"model parameters at: #scope put: (e at: 1) scope."
+				(((e at: 1) from at: #status) = #empty) 
+				ifTrue: [ model currentCompartment: ((e at: 1) to) ] 
+				ifFalse: [ model currentCompartment: ((e at: 1) from) ].
+				model nextCompartment: ((e at: 1) to).
+				prob := ((e at: 1) probability value: model) abs.
+				"prob isDictionary ifTrue: [ prob := prob values sum ]."
+				(e at: 2)*prob*(model atCompartment: (e at: 1) from)]) sum.
+			].
+			c at: i put: tmp.
+			i := i + 1
+		 ].
+		c
+	].
+	self stepper: ((Smalltalk at: self solver) onSystem: system).
+	st := model population compartments values.
+	ks := model population compartments keys.
+	(tMin to: tMax by: step) do: [ :t| 
+		self saveCompartmentsValueAtTime: t.
+		model t: t.
+		st := stepper doStep: st time: t stepSize: step.
+		1 to: ks size do: [ :i| model population compartments at: (ks at: i) put: (st at: i) ] ].

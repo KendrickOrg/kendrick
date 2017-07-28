@@ -1,3 +1,5 @@
 as yet unclassified
 setUp
-	KendrickInternalDSLEntities clearAll
+
+	KendrickInternalDSLEntities clearAll.
+	"KEGillespieSimulatorForTesting newSeed." "stochastic but reproducible each time"

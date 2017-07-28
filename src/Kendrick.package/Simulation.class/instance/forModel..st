@@ -1,3 +1,4 @@
 public-api
-forModel: arg1
-	combo := Composition dummy model: arg1
+forModel: aModelID
+
+	combo := Composition dummy model: aModelID.

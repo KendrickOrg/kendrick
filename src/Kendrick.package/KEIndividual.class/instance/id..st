@@ -1,3 +1,3 @@
 accessing
-id: arg1
-	attributes at: #id put: arg1
+id: id
+	attributes at: #id put: id

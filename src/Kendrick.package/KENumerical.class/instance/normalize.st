@@ -1,3 +1,3 @@
 evaluating
 normalize
-	
+	^ self

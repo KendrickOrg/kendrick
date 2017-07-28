@@ -1,6 +1,7 @@
 tests
 testRemoveIndexedVariable1
-	| tmp1 tmp2 |
-	tmp1 := KEVariable new symbol: #S.
-	tmp2 := tmp1 removeIndexedVariable.
-	self assert: tmp2 isAVariable equals: true
+	|e n|
+	e := (KEVariable new symbol: #S).
+	n := e removeIndexedVariable.
+	self assert: n isAVariable equals: true.
+	

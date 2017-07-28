@@ -1,3 +1,3 @@
 accessing
-currentStatus: arg1
-	currentStatus := arg1
+currentStatus: aDictionary
+	currentStatus := aDictionary

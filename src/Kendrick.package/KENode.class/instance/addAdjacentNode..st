@@ -1,3 +1,4 @@
 adding
-addAdjacentNode: arg1
-	adjacentNodes add: arg1
+addAdjacentNode: aNodeLabel
+	adjacentNodes add: aNodeLabel
+	

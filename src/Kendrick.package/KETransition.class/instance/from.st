@@ -1,5 +1,7 @@
 accessing
 from
-	from isDictionary
+	"Return a compartment"
+
+		from isDictionary
 		ifTrue: [ ^ from ].
 	^ from asDictionary

@@ -1,3 +1,3 @@
 accessing
-tMax: arg1
-	tMax := arg1
+tMax: aNumber
+	tMax := aNumber

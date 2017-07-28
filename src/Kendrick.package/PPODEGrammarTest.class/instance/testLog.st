@@ -1,5 +1,4 @@
 tests
 testLog
-	self
-		parse: 'log(t)' rule: #log;
-		parse: 'log(-(beta + 5))' rule: #log
+	self parse: 'log(t)' rule: #log.
+	self parse: 'log(-(beta + 5))' rule: #log

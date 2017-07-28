@@ -1,3 +1,5 @@
 accessing
-attributes: arg1
-	attributes := Dictionary newFrom: arg1
+attributes: inputArray
+	"input must be an array of associations: {#status->#(#S #I #R). #age->#(#child #adult)}..."
+
+	attributes := Dictionary newFrom: inputArray

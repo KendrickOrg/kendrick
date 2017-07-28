@@ -1,5 +1,6 @@
 public-api
-maps: arg1
-	map := Map withId: arg1.
+maps: aMapEntity
+
+	map := Map withId: aMapEntity.
 	self attribute: map attributeToRegions.
-	borders := map borders
+	borders := map borders.

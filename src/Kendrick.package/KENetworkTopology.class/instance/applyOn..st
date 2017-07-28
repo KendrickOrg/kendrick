@@ -1,3 +1,3 @@
 instance creation
-applyOn: arg1
-	self subclassResponsibility
+applyOn: graph
+	self subclassResponsibility 

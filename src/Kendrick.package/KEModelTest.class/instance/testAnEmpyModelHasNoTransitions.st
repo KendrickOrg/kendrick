@@ -1,5 +1,5 @@
 tests
 testAnEmpyModelHasNoTransitions
-	| tmp1 |
-	tmp1 := KEModel new.
-	self assert: tmp1 transitions size equals: 0
+	| model |
+	model := KEModel new.
+	self assert: model transitions size equals: 0

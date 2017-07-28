@@ -1,14 +1,12 @@
 accessing
 transitions
-	| tmp1 tmp2 tmp3 |
-	transitions
-		ifNil: [ transitions := Dictionary new.
-			tmp1 := model transitions size.
-			tmp3 := tmp1.
-			1 to: tmp3 do: [ :tmp4 | 
-				tmp2 := nil.
-				tmp2 := model transitions at: tmp4.
-				(tmp2 from at: #status) ~= #empty
-					ifTrue: [ transitions at: tmp2 from ifAbsentPut: OrderedCollection new.
-						(transitions at: tmp2 from) add: tmp2 -> tmp4 ] ] ].
+	transitions ifNil: [ 
+		transitions := Dictionary new.
+		1 to: model transitions size do: [ :i||tr|
+			tr := model transitions at: i.
+			((tr from at: #status) ~= #empty) ifTrue: [ transitions at: tr from ifAbsentPut: OrderedCollection new.
+				(transitions at: tr from) add: (tr->i)
+				 ]
+			 ]
+		 ].
 	^ transitions

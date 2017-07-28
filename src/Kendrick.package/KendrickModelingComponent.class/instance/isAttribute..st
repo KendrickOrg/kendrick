@@ -1,3 +1,4 @@
 protected
-isAttribute: arg1
-	^ attributes keys includes: arg1
+isAttribute: attribute
+	
+	^ (attributes keys includes: attribute) 

@@ -1,15 +1,11 @@
 examples
 exampleRK4SolverOnSIRSimpleModel
-	| tmp1 tmp2 tmp3 |
-	tmp1 := self modelRK4SolverOnSIRSimpleModel.
-	tmp2 := KESimulator
-		new: #RungeKutta
-		from: 0.0
-		to: 0.3
-		by: 0.001.
-	tmp2 executeOn: tmp1.
-	tmp3 := KEDiagramBuilder new.
-	tmp3
-		data: (tmp2 allTimesSeriesContaining: '{#status: #I}');
-		xLabel: 'Time (year)'.
-	^ tmp3 open
+	"self new exampleRK4SolverOnSIRSimpleModel"
+	|model simulator dB|
+	model := self modelRK4SolverOnSIRSimpleModel.
+	simulator := KESimulator new: #RungeKutta from: 0.0 to: 0.3 by: 0.001.
+	simulator executeOn: model.
+	dB := KEDiagramBuilder new.
+	dB data: (simulator allTimesSeriesContaining: '{#status: #I}').
+	dB xLabel: 'Time (year)'.
+	^ dB open

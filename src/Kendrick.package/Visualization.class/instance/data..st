@@ -1,8 +1,14 @@
 public-api
-data: arg1
+data: anArray "should be full math-expression"
+
+	"refactor !!"
+
 	explicitDataSet := true.
-	builder = KEMapBuilder
-		ifTrue: [ ^ lazyDataBlock := [ self map: arg1 ] ].
-	(#(#sum #sqrt #size #log #peakOfEpidemic) includes: arg1 last)
-		ifTrue: [ self dataWithOp: arg1 ]
-		ifFalse: [ self dataWithCompartments: arg1 ]
+	
+	builder = KEMapBuilder ifTrue: [ ^ lazyDataBlock := [self map: anArray] ].
+
+	(#(sum sqrt size log peakOfEpidemic) includes: anArray last) ifTrue: [  
+			self dataWithOp: anArray 
+	] ifFalse: [  
+			self dataWithCompartments: anArray		
+	]

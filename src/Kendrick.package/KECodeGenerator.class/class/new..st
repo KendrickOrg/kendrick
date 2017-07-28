@@ -1,7 +1,7 @@
 as yet unclassified
-new: arg1
-	| tmp1 |
-	tmp1 := KECodeGenerator new.
-	arg1 = #CPP
-		ifTrue: [ tmp1 visitor: KECPPVisitor new ].
-	^ tmp1
+new: aGPL
+	|generator|
+	generator := KECodeGenerator new.
+	aGPL = #CPP ifTrue: [ generator visitor: (KECPPVisitor new) ].
+	
+	^ generator

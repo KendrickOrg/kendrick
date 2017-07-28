@@ -1,3 +1,4 @@
 as yet unclassified
-with: arg1
-	eqAsSymExpr := arg1
+with: symExpression
+
+	eqAsSymExpr := symExpression 

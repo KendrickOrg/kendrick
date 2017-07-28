@@ -1,12 +1,13 @@
 private
-fromNumber: arg1 to: arg2
-	| tmp2 |
-	arg2 isArray
-		ifTrue: [ tmp2 := 0.
-			arg2
-				do: [ :arg3 | 
-					tmp2 := tmp2 + 1.
-					arg3 isNumber
-						ifTrue: [ arg2 at: tmp2 put: arg1 ].
-					arg3 isArray
-						ifTrue: [ self fromNumber: arg1 to: arg3 ] ] ]
+fromNumber: aNumber to: anArray
+	"Created by ThanhNT 26/7/17"
+	|tmp|
+	anArray isArray ifTrue: [ 
+		tmp := 0.
+		anArray do: [ 
+			:each| 
+			tmp := tmp + 1.
+			each isNumber ifTrue: [ anArray at: tmp put: aNumber   ]. 
+			each isArray	  ifTrue: [ self fromNumber: aNumber  to: each ]		
+			]
+		 ].

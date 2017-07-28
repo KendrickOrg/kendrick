@@ -1,18 +1,23 @@
 utilities
 equationsToTransitions
-	| tmp1 |
-	tmp1 := KEEventGenerator from: self.
-	tmp1
-		do: [ :arg1 | 
-			arg1 fromStatus = #empty
-				ifTrue: [ arg1 rate: (arg1 rate remove: (KEVariable new symbol: #N)) ] ];
-		do: [ :arg2 | 
-			| tmp2 tmp3 |
-			tmp2 := arg2 fromStatus = #empty
+	|  events |
+	events := KEEventGenerator from: self.
+	events
+		do: [ :e | 
+			e fromStatus = #empty
+				ifTrue:
+					[ e rate: (e rate remove: (KEVariable new symbol: #N)) ]
+				].
+	events
+		do: [ :each | 
+			| from to |
+			from := each fromStatus = #empty
 				ifTrue: [ #empty ]
-				ifFalse: [ Dictionary newFrom: {(#status -> arg2 fromStatus)} ].
-			tmp3 := arg2 toStatus = #empty
+				ifFalse: [ Dictionary newFrom: {(#status -> each fromStatus)} ].
+			to := each toStatus = #empty
 				ifTrue: [ #empty ]
-				ifFalse: [ Dictionary newFrom: {(#status -> arg2 toStatus)} ].
-			self addTransitionFrom: tmp2 to: tmp3 probability: arg2 rate ].
+				ifFalse: [ Dictionary newFrom: {(#status -> each toStatus)} ].
+			self addTransitionFrom: from to: to probability: each rate ].
+
+	"why resetting the equations ?"
 	equations := OrderedCollection new

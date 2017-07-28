@@ -1,3 +1,4 @@
 as yet unclassified
 open
-	^ self new open
+	"self open"	
+ 	^self new open

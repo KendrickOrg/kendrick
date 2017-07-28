@@ -1,9 +1,11 @@
 general
-clones: arg1
-	self transitions: arg1 transitions.
+clones: aConcern
+	self transitions: aConcern transitions.
 	attributes := Dictionary new.
-	arg1 attributes
-		keysAndValuesDo: [ :arg2 :arg3 | attributes at: arg2 put: arg3 ].
+	aConcern attributes keysAndValuesDo: [ :k :v| 
+		attributes at: k put: v
+		].
 	parameters := Dictionary new.
-	arg1 parameters
-		keysAndValuesDo: [ :arg4 :arg5 | parameters at: arg4 put: arg5 ]
+	aConcern parameters keysAndValuesDo: [ :k :v| 
+		parameters at: k put: v
+		].

@@ -1,24 +1,20 @@
 as yet unclassified
-acceptKEIndexedVariable: arg1
-	| tmp1 tmp2 |
-	tmp2 := WriteStream on: (String new: 60).
-	tmp1 := parameters at: arg1 symbol ifAbsent: [  ].
-	tmp1
-		ifNil: [ isDeterministic
-				ifTrue: [ tmp2
-						nextPutAll:
-							'x(' , (compartments at: arg1 symbol) asString , ', '
-								, arg1 idExpression1 asString , ')' ]
-				ifFalse: [ tmp2
-						nextPutAll:
-							'x[' , (compartments at: arg1 symbol) asString , ']['
-								, arg1 idExpression1 asString , ']' ] ]
-		ifNotNil: [ (arg1 idExpression2 isNumerical
-				and: [ arg1 idExpression2 number = -1 ])
-				ifTrue: [ tmp2
-						nextPutAll: arg1 symbol asString , '[' , arg1 idExpression1 asString , ']' ]
-				ifFalse: [ tmp2
-						nextPutAll:
-							arg1 symbol asString , '[' , arg1 idExpression1 asString , ']['
-								, arg1 idExpression2 asString , ']' ] ].
-	^ tmp2 contents
+acceptKEIndexedVariable:  aNode 
+	|k aStream |
+	aStream := WriteStream on: (String new: 60).
+	k := parameters at: (aNode symbol) ifAbsent: [nil]. 
+	k ifNil: [ 	
+		isDeterministic ifTrue: [ aStream nextPutAll: 'x(', (compartments at: aNode symbol) asString, ', ', aNode idExpression1 asString, ')' ]	
+		ifFalse: [ aStream nextPutAll: 'x[', (compartments at: aNode symbol) asString, '][', aNode idExpression1 asString, ']' ]
+	] 
+	   ifNotNil:  [ 
+	((aNode idExpression2 isNumerical) and:[aNode idExpression2 number = -1])
+	ifTrue: [ 
+		aStream nextPutAll: aNode symbol asString, '[',  aNode  idExpression1 asString ,']' 
+		]
+	ifFalse: [
+		aStream nextPutAll: aNode symbol asString, '[',  aNode  idExpression1 asString ,'][', aNode  idExpression2 asString , ']'
+		]
+	 ].
+	^ aStream contents
+		

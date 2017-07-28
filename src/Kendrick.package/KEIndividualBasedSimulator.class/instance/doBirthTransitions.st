@@ -1,20 +1,37 @@
 as yet unclassified
 doBirthTransitions
-	self birthTransitions
-		do: [ :arg1 | 
-			| tmp1 tmp2 tmp3 tmp4 tmp5 |
-			model currentCompartment: arg1 key to.
-			tmp1 := (arg1 key probability value: model) abs.
-			tmp1 := tmp1 * (model atCompartment: arg1 key from).
-			tmp2 := (PoissonGenerator lambda: tmp1 * step) next.
-			tmp3 := tmp2.
-			tmp5 := tmp3.
-			1 to: tmp5 do: [ :tmp6 | 
-				tmp4 := nil.
-				tmp4 := KEIndividual new.
-				tmp4
-					currentStatus: arg1 key to;
-					updateAttributes: arg1 key to;
-					nextStatus: nil.
-				model population addIndividual: tmp4 ].
-			self transitionNbExecutions at: arg1 value put: tmp2 ]
+	"|rand|
+	rand := Random new."
+	self birthTransitions do: [ :e|
+		|r p| 
+		"model parameters at: #scope put: e key scope.
+		model parameters at: #contactingSource put: (e key from)."
+		"(e key from = #empty)
+		ifTrue: [ model parameters at: #inProcessingCompartment put: (e key to) ] 
+		ifFalse: [ model parameters at: #inProcessingCompartment put: (e key from) ]."
+		model currentCompartment: (e key to).
+		r := (e key probability value: model) abs.
+		"r isDictionary ifTrue: [ r := r values sum ]."
+		"p := 1 - (((r * step) negated) exp).
+		(p > (rand next)) ifTrue: [  
+			|newInd oldTimes|
+			newInd := KEIndividual new.
+			newInd currentStatus: e key to.
+			newInd updateAttributes: e key to.
+			newInd nextStatus: nil.
+			model population addIndividual: newInd.
+			oldTimes := self transitionNbExecutions at: e value.
+			self transitionNbExecutions at: e value put: (oldTimes + 1)
+			]"
+		r := r * (model atCompartment: e key from).
+		p := (PoissonGenerator lambda: (r * step)) next.
+		1 to: p do: [ :i||newInd|
+			newInd := KEIndividual new.
+			newInd currentStatus: e key to.
+			newInd updateAttributes: e key to.
+			newInd nextStatus: nil.
+			model population addIndividual: newInd.
+			 ].
+		self transitionNbExecutions at: e value put: p
+		]
+	

@@ -1,25 +1,24 @@
 as yet unclassified
-calProb: arg1 random: arg2
-	| tmp1 tmp2 tmp3 tmp4 tmp5 tmp6 tmp7 |
-	tmp3 := self transitions
-		at: arg1 currentStatus
-		ifAbsent: [ OrderedCollection new ].
-	tmp4 := tmp3 size.
-	tmp7 := tmp4.
-	1 to: tmp7 do: [ :tmp8 | 
-		| tmp10 |
-		tmp5 := nil.
-		tmp5 := arg1 currentStatus copy.
-		tmp5 at: #id put: arg1 id.
-		tmp10 := model.
-		tmp10
-			currentCompartment: tmp5;
-			nextCompartment: (tmp3 at: tmp8) key to.
-		tmp1 := ((tmp3 at: tmp8) key probability value: model) abs.
-		tmp2 := 1 - (step * tmp1) negated exp.
-		tmp2 > arg2 next
-			ifTrue: [ arg1 nextStatus: (tmp3 at: tmp8) key to.
-				tmp6 := self transitionNbExecutions at: (tmp3 at: tmp8) value.
-				^ self transitionNbExecutions
-					at: (tmp3 at: tmp8) value
-					put: tmp6 + 1 ] ]
+calProb: ind random: rand
+	|rate prob events|
+	events := self transitions at: ind currentStatus ifAbsent: [OrderedCollection new].
+	"Choose an event for execute on this individual"
+	1 to: events size do: [ :e||l|
+		"((events at: e) key from = #empty)
+		ifTrue: [ model parameters at: #inProcessingCompartment put: ((events at: e) key to) ] 
+		ifFalse: [ model parameters at: #inProcessingCompartment put: ((events at: e) key from) ]".
+		l := ind currentStatus copy.
+		l at: #id put: (ind id).
+		model currentCompartment: l.
+		model nextCompartment: ((events at: e) key to).
+		rate := ((events at: e) key probability value: model) abs.
+		"rate isDictionary ifTrue: [ rate := rate values sum ]."
+		prob := 1 - (((step * rate) negated) exp).
+		(prob > (rand next)) ifTrue: [ |oldTimes|
+			ind nextStatus: ((events at: e) key to).
+			oldTimes := self transitionNbExecutions at: (events at: e) value.
+			^ (self transitionNbExecutions at: (events at: e) value put: (oldTimes + 1))
+		].
+	 ]
+	
+	

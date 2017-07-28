@@ -1,3 +1,5 @@
 evaluating
 removeIndexedVariable
-	^ KEVariable new symbol: symbol
+	^ (KEVariable new symbol: symbol)
+		
+	

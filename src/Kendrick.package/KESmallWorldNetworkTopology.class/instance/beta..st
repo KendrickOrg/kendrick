@@ -1,3 +1,3 @@
 accessing
-beta: arg1
-	beta := arg1
+beta: aValueFrom0To1
+	beta := aValueFrom0To1 

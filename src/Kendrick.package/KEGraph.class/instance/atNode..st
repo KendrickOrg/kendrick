@@ -1,3 +1,3 @@
 accessing
-atNode: arg1
-	^ self nodes detect: [ :arg2 | arg2 label = arg1 ]
+atNode: aLabel
+	^ self nodes detect: [ :n | n label = aLabel ]

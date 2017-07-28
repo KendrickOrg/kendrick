@@ -1,3 +1,3 @@
 accessing
-K: arg1
-	K := arg1
+K: anEvenInteger
+	K := anEvenInteger 

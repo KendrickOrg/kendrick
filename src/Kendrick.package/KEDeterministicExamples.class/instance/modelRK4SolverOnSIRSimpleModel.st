@@ -1,20 +1,23 @@
 examples
 modelRK4SolverOnSIRSimpleModel
-	| tmp1 |
-	tmp1 := KEModel new.
-	tmp1
-		population: (KEPopulation size: 100000);
-		attributes: {(#status -> #(#S #I #R))};
-		atCompartment: {(#status -> #S)} put: 99999;
-		atCompartment: {(#status -> #I)} put: 1;
-		atCompartment: {(#status -> #R)} put: 0;
-		addParameters:
-			{(#beta -> 0.0052).
-			(#gamma -> 52)};
+	"self new exampleRK4SolverOnSIRSimpleModel"
+
+	| model |
+	model := KEModel new.
+	model population: (KEPopulation size: 100000).
+	model attributes: 
+		{#status->#(#S #I #R)}.
+	model atCompartment: { #status->#S } put: 99999.
+	model atCompartment: { #status->#I } put: 1.
+	model atCompartment: { #status->#R } put: 0.
+	model addParameters: {#beta->0.0052. #gamma->52}.
+	model
 		addTransitionFrom: '{#status: #S}'
-			to: '{#status: #I}'
-			probability: [ :arg1 | (arg1 atParameter: #beta) * (arg1 atCompartment: {(#status -> #I)}) ];
-		addTransitionFrom: '{#status: #I}'
-			to: '{#status: #R}'
-			probability: [ :arg2 | arg2 atParameter: #gamma ].
-	^ tmp1
+		to: '{#status: #I}'
+		probability: [ :m | 
+			(m atParameter: #beta) * 
+			(m atCompartment: {#status->#I}) ].
+	model addTransitionFrom: '{#status: #I}' 
+			to: '{#status: #R}' 
+			probability: [ :m | m atParameter: #gamma ].
+	^ model

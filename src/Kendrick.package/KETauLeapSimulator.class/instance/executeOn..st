@@ -1,10 +1,11 @@
 as yet unclassified
-executeOn: arg1
-	| tmp1 |
-	super executeOn: arg1.
-	tmp1 := tMin.
+executeOn: aModel
+	| t |
+	super executeOn: aModel.
+	t := tMin.
 	self saveCompartmentsValueAtTime: tMin.
-	[ tmp1 < tMax ]
-		whileTrue: [ self doTauLeapIteration: tmp1.
-			tmp1 := tmp1 + step.
-			self saveCompartmentsValueAtTime: tmp1 ]
+	[ t < tMax ]
+		whileTrue: [ 
+			self doTauLeapIteration: t.
+			t := t + step.
+			self saveCompartmentsValueAtTime: t ]

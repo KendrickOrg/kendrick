@@ -1,3 +1,3 @@
 grammar
 identifier2
-	^ squarebrackets / identifier
+   ^ squarebrackets / identifier

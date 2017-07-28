@@ -1,3 +1,3 @@
 accessing
-hasAnEventWithSameActionsIn: arg1
-	^ arg1 anySatisfy: [ :arg2 | arg2 actions = self actions ]
+hasAnEventWithSameActionsIn: eventList
+	^ eventList anySatisfy: [ :event | event actions = self actions ]

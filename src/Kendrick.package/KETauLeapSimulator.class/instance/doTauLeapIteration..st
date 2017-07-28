@@ -1,14 +1,18 @@
 as yet unclassified
-doTauLeapIteration: arg1
-	model t: arg1.
-	model transitions
-		do: [ :arg2 | 
-			| tmp1 tmp2 tmp3 |
-			(arg2 from at: #status) = #empty
-				ifTrue: [ model currentCompartment: arg2 to ]
-				ifFalse: [ model currentCompartment: arg2 from ].
-			model nextCompartment: arg2 to.
-			tmp3 := (arg2 probability value: model) abs.
-			tmp1 := tmp3 * (model atCompartment: arg2 from).
-			tmp2 := (PoissonGenerator lambda: tmp1 * step) next.
-			arg2 executeOn: model times: tmp2 ]
+doTauLeapIteration: t
+	model t: t. 
+	model transitions do: [ :tr|
+		|rate numPoisson prob|
+		"model parameters at: #scope put: tr scope.
+		model parameters at: #contactingSource put: (tr from)."
+		((tr from at: #status) = #empty)
+		ifTrue: [ model currentCompartment: (tr to) ] 
+		ifFalse: [ model currentCompartment: (tr from) ].
+		model nextCompartment: (tr to).
+		prob := (tr probability value: model) abs.
+		"prob isDictionary ifTrue: [ prob := prob values sum ]."
+		rate := prob * (model atCompartment: tr from).
+		numPoisson := (PoissonGenerator lambda: (rate * step)) next.
+		tr executeOn: model times: numPoisson   
+		 ].
+	

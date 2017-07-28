@@ -1,3 +1,3 @@
 as yet unclassified
-countries: arg1
-	^ KEMap new countries: arg1
+countries: aCollection
+	^ KEMap new countries: aCollection

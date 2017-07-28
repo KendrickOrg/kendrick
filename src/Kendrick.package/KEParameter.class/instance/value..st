@@ -1,14 +1,20 @@
 accessing
-value: arg1
-	| tmp1 tmp3 |
-	expression isArray
-		ifTrue: [ ^ expression ].
-	expression class = Interval
-		ifTrue: [ tmp1 := Array new: expression size.
-			tmp3 := 1.
-			expression
-				do: [ :arg2 | 
-					tmp1 at: tmp3 put: arg2.
-					tmp3 := tmp3 + 1 ].
-			^ tmp1 ].
-	^ expression value: arg1
+value: model
+	|s index|
+	"ThanhNT 13/7"
+	"This statement handles the case that expression is an array"
+	(expression isArray) ifTrue: [ ^expression ].
+	"Endof ThanhNT 13/7"
+	
+	"ThanhNT 18/7"
+	"These following statements handle the case that expression is an object of Interval"
+	"for example: t := (KEParameter new) expression: (10 to: 20)."
+	(expression class = Interval) 
+		ifTrue: [  
+				s := Array new: (expression size).
+				index := 1.
+				expression do: [ :each| s at: index put: each. index := index + 1].
+				^s.
+					].
+	"Endof ThanhNT 18/7"
+	^ expression value: model

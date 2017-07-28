@@ -1,20 +1,16 @@
 as yet unclassified
 testEquivalence
-	| tmp1 tmp2 tmp4 |
+
+
+	| resultsBefore resultsAfter |
 	self createModels.
+
 	beforeModel inspect.
 	afterModel keModel inspect.
-	tmp1 := (beforeDiagram data
-		collect: [ :arg1 | arg1 peakOfEpidemic floor ]) sorted
-		asOrderedCollection.
-	tmp2 := (afterDiagram data
-		collect: [ :arg2 | arg2 peakOfEpidemic floor ]) sorted
-		asOrderedCollection.
-	tmp4 := Transcript.
-	tmp4
-		show: tmp1;
-		cr;
-		show: tmp2;
-		cr;
-		cr.
-	self assert: tmp1 = tmp2
+
+	"correct (check inspector) -- but timeseries are presented in different order fix"
+
+	resultsBefore := (beforeDiagram data collect: [ :ts | ts peakOfEpidemic floor ]) sorted asOrderedCollection.
+	resultsAfter := (afterDiagram data collect: [ :ts | ts peakOfEpidemic floor ]) sorted asOrderedCollection.
+	Transcript show: resultsBefore; cr; show: resultsAfter; cr; cr.
+	self assert: resultsBefore = resultsAfter.

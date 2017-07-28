@@ -1,4 +1,3 @@
 adding
-addTransitionFrom: arg1 to: arg2 probability: arg3
-	self
-		addTransition: (KETransition from: arg1 to: arg2 probability: arg3)
+addTransitionFrom: aCompartment to: anotherCompartment probability: aBlock
+	self addTransition: (KETransition from: aCompartment to: anotherCompartment probability: aBlock)

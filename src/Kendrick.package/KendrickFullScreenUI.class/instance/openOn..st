@@ -1,5 +1,8 @@
 instance creation
-openOn: arg1
-	| tmp1 |
-	tmp1 := self openOn: arg1 with: self defaultRenderer.
-	^ tmp1
+openOn: aPage
+	| w |
+	w := self 
+		openOn: aPage 
+		with: self defaultRenderer.
+	"w extent: self class preferredExtent."
+	^ w

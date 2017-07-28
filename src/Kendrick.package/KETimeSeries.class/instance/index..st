@@ -1,3 +1,3 @@
 accessing
-index: arg1
-	index := arg1
+index: anObject
+	index := anObject

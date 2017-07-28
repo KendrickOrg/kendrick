@@ -1,3 +1,3 @@
 operators
-removeTransitionFrom: arg1 to: arg2
-	self addTransitionFrom: arg1 to: arg2 probability: 0
+removeTransitionFrom: aCompartment to: anotherCompartment
+	self addTransitionFrom: aCompartment to: anotherCompartment probability: 0

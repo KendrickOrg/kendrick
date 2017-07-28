@@ -1,3 +1,4 @@
 as yet unclassified
 kendrickDescription
-	^ self class name
+
+	^ self class name 

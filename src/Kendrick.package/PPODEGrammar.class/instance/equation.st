@@ -1,3 +1,3 @@
 grammar
 equation
-	^ odequation / simpleEquation
+   ^ odequation / simpleEquation 

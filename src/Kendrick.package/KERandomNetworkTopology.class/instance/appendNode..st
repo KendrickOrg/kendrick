@@ -1,3 +1,4 @@
 as yet unclassified
-appendNode: arg1
-	self subclassResponsibility
+appendNode: anAssociation
+	"Create edges following a topology for a Node of a graph (anAssociation=aNode->aGraph)"
+	self subclassResponsibility 

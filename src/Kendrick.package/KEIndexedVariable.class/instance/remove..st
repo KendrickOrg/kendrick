@@ -1,4 +1,6 @@
 removing
-remove: arg1
-	self symbol = arg1 symbol
-		ifTrue: [ ^ nil ]
+remove: aVariable
+	self symbol = aVariable symbol ifTrue: [ ^ nil ].
+	^ self
+		
+	

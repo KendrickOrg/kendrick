@@ -1,26 +1,32 @@
 public-api
-delay: arg1
-	| tmp1 tmp2 tmp3 tmp4 tmp5 tmp6 |
-	tmp1 := arg1 select: [ :arg2 | (#(#-- #--> #,) includes: arg2) not ].
-	delays add: tmp1.
-	tmp2 := tmp1 first.
-	tmp3 := self literalTransitionRefFor: tmp1 second.
-	tmp4 := tmp1 third.
-	tmp5 := self literalTransitionRefFor: tmp1 fourth.
-	tmp6 := {(tmp5 first key -> tmp1 fifth)}.
-	backEndEntity atAttribute: tmp5 first key add: tmp1 fifth.
-	(attributes at: tmp5 first key) add: tmp1 fifth.
-	backEndEntity
-		removeTransitionFrom: tmp3 to: tmp5;
-		addTransitionFrom: tmp3
-			to: tmp6
-			probability: [ :arg3 | arg3 atParameter: tmp4 ];
-		addTransitionFrom: tmp6
-			to: tmp5
-			probability: [ :arg4 | arg4 atParameter: tmp2 ];
-		addTransitionFrom: tmp6
-			to: #empty
-			probability: [ :arg5 | 
-			| tmp8 |
-			tmp8 := emptyRate.
-			arg5 atParameter: (tmp8 ifNil: [ #mu ] ifNotNil: [ tmp8 ]) ]
+delay: symExpression
+ 
+	"#(sigma , S -- lambda --> I  , E)"
+	| varList delay targetLeftNode initialRate targetRightNode newNode |
+	varList := symExpression 
+		select: [ :token | (#(-- --> ,) includes: token) not ].
+	delays add: varList.
+	delay := varList first.
+	targetLeftNode := self literalTransitionRefFor: varList second.
+	initialRate := varList third.
+	targetRightNode :=  self literalTransitionRefFor: varList fourth.
+	newNode := { targetRightNode first key -> varList fifth }.
+	
+	backEndEntity atAttribute: targetRightNode first key add: varList fifth.
+	(attributes at: targetRightNode first key) add: varList fifth.
+	
+	backEndEntity 
+		removeTransitionFrom: targetLeftNode  
+		to: targetRightNode.
+	backEndEntity 
+		addTransitionFrom: targetLeftNode  
+		to: newNode  
+    	probability: [ :aModel| aModel atParameter: initialRate ].
+	backEndEntity 
+    addTransitionFrom: newNode  
+    to: targetRightNode  
+    probability: [ :aModel| aModel atParameter: delay ].
+	backEndEntity 
+    addTransitionFrom: newNode 
+    to: #empty 
+    probability: [ :aModel| aModel atParameter: (emptyRate ifNil: [#mu]) "default value" ].

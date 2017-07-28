@@ -1,3 +1,3 @@
 printing
 checkNil
-	^ leftHandSide isNil & rightHandSide isNil
+	^ (leftHandSide isNil) & (rightHandSide isNil)

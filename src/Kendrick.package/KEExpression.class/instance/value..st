@@ -1,3 +1,3 @@
 testing
-value: arg1
-	^ self evaluateWithModel: arg1
+value: model
+	^ self evaluateWithModel: model

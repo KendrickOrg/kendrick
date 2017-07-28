@@ -1,3 +1,4 @@
 public-api
-legends: arg1
-	diag legends: arg1 asOrderedCollection
+legends: anArray
+
+	diag legends: anArray asOrderedCollection 

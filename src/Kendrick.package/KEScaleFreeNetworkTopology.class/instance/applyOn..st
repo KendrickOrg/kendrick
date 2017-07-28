@@ -1,12 +1,11 @@
 instance creation
-applyOn: arg1
-	| tmp1 |
-	activeNodes add: arg1 nodes first label.
-	tmp1 := m0 + 1.
-	2 to: tmp1 do: [ :tmp2 | 
-		activeNodes add: (arg1 nodes at: tmp2) label.
-		arg1
-			edgesFrom: arg1 nodes first label
-			toAll: (Array with: (arg1 nodes at: tmp2) label) ].
-	tmp1 := arg1 nodes size.
-	m0 + 2 to: tmp1 do: [ :tmp2 | self appendNode: (arg1 nodes at: tmp2) label -> arg1 ]
+applyOn: graph
+	"initialize with m0 degree"
+	activeNodes add: (graph nodes first) label.
+	2 to: (m0 + 1) do: [ :i| 
+		activeNodes add: (graph nodes at: i) label.
+		graph edgesFrom: (graph nodes first) label toAll: (Array with: (graph nodes at: i) label) 
+	].
+	(m0 + 2) to: graph nodes size do: [ :i|
+		self appendNode: (graph nodes at: i) label->graph
+		]

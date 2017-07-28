@@ -1,14 +1,15 @@
 tests
 testIsSeparableForBinaryExpression
-	| tmp1 tmp2 tmp3 tmp4 tmp5 |
-	tmp1 := 's=-(A+B+C)*E*D' parseAsAnEquation.
-	tmp2 := 's=-(A+B)*(-C)' parseAsAnEquation.
-	tmp3 := 's=(-E)*D*F*(A+B)' parseAsAnEquation.
-	tmp4 := 's=-A*B' parseAsAnEquation.
-	tmp5 := 's=(A+B)*(C+D)' parseAsAnEquation.
-	self
-		assert: true equals: tmp1 expression isSeparable;
-		assert: true equals: tmp2 expression isSeparable;
-		assert: true equals: tmp3 expression isSeparable;
-		assert: false equals: tmp4 expression isSeparable;
-		assert: true equals: tmp5 expression isSeparable
+	| s1 s2 s3 s4 s5 |
+	s1 := 's=-(A+B+C)*E*D' parseAsAnEquation.
+	s2 := 's=-(A+B)*(-C)' parseAsAnEquation.
+	s3 := 's=(-E)*D*F*(A+B)' parseAsAnEquation.
+	s4 := 's=-A*B' parseAsAnEquation.
+	s5 := 's=(A+B)*(C+D)' parseAsAnEquation.
+	self assert: true equals: s1 expression isSeparable.
+	self assert: true equals: s2 expression isSeparable.
+	self assert: true equals: s3 expression isSeparable.
+	self assert: false equals: s4 expression isSeparable.
+	self assert: true equals: s5 expression isSeparable.
+	
+	

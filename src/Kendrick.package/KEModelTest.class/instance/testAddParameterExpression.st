@@ -1,11 +1,10 @@
 tests
 testAddParameterExpression
-	| tmp1 |
-	tmp1 := KEModel new.
-	tmp1
-		addParameter: #beta value: [ :arg1 | arg1 t cos ];
-		addParameter: #gamma value: 'cos(t)';
-		t: 60.
-	self
-		assert: ((tmp1 parameters at: #beta) value: tmp1) equals: 60 cos;
-		assert: ((tmp1 parameters at: #gamma) value: tmp1) equals: 60 cos
+	|model |
+	model := KEModel new.
+	"two ways to specify a parameter as an expression"
+	model addParameter: #beta value: [ :m| (m t) cos ].
+	model addParameter: #gamma value: 'cos(t)'.
+	model t: 60.
+	self assert: (((model parameters) at: #beta) value: model) equals: (60 cos).
+	self assert: (((model parameters) at: #gamma) value: model) equals: (60 cos).

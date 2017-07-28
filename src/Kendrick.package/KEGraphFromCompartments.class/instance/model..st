@@ -1,3 +1,3 @@
 accessing
-model: arg1
-	model := arg1
+model: aKEModel
+	model := aKEModel

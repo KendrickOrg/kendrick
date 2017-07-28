@@ -1,8 +1,10 @@
 as yet unclassified
-parametersIn: arg1
-	| tmp2 |
-	tmp2 := arg1 table.
-	tmp2
-		display: [ :arg2 | arg2 parameters ];
-		column: 'Name' evaluated: [ :arg3 | arg3 asString ] width: 150;
-		column: 'Value' evaluated: [ :arg4 | arg4 asString ]
+parametersIn: constructor
+
+	"Show the list of parameters with its value"
+
+	constructor table
+		display: [ :model | model parameters] ;
+		column: 'Name' evaluated: [ :parameter| parameter asString] width:150;
+		column: 'Value' evaluated: [ :parameter | parameter asString]";
+		selectionAct: [:courbe | courbe selection inspect] on: $v entitled: 'View'"

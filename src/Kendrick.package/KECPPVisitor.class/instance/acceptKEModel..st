@@ -1,3 +1,3 @@
 as yet unclassified
-acceptKEModel: arg1
+acceptKEModel: aNode
 	self subclassResponsibility

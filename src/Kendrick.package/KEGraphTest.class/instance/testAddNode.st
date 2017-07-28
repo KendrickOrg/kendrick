@@ -1,5 +1,5 @@
 tests
 testAddNode
-	| tmp1 |
-	tmp1 := KEGraph nodes: 100.
-	self assert: tmp1 nodes size equals: 100
+	| g |
+	g := KEGraph nodes: 100.
+	self assert: g nodes size equals: 100

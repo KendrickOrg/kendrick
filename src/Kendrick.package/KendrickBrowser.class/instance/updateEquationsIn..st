@@ -1,7 +1,6 @@
 as yet unclassified
-updateEquationsIn: arg1
-	| tmp2 |
-	tmp2 := arg1 magritte.
-	tmp2
-		description: [ :arg2 | arg2 magritteDescription ];
-		onAnswer: [ :arg3 :arg4 :arg5 | browser update ]
+updateEquationsIn: constructor
+	"Update the value of equations"
+	constructor magritte
+			description: [:equation| equation  magritteDescription] ;
+			onAnswer: [ :compartment :presentation :v |  browser update ] . 

@@ -1,3 +1,3 @@
 testing
 isSeparable
-	^ expression isSeparable
+	^ (expression isSeparable)

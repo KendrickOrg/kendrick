@@ -1,3 +1,5 @@
 public-api
 testGillespie
-	^ self with: #testGillespie
+
+	^ self  
+		with: #testGillespie

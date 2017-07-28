@@ -1,3 +1,5 @@
 as yet unclassified
 diagram
-	^ self with: KEDiagramBuilder
+
+	^ self 
+		with: KEDiagramBuilder

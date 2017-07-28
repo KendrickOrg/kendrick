@@ -1,3 +1,3 @@
 printing
-printOn: arg1
-	arg1 nextPutAll: expression asString
+printOn: aStream
+	aStream nextPutAll: expression asString

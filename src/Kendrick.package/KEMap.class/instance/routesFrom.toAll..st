@@ -1,3 +1,4 @@
 as yet unclassified
-routesFrom: arg1 toAll: arg2
-	arg2 do: [ :arg3 | edges add: arg1 -> arg3 ]
+routesFrom: aCountryName toAll: countryNames
+	countryNames do: [ :toCountryName|
+		edges add: aCountryName -> toCountryName ]

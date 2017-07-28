@@ -1,4 +1,5 @@
 public-api
-population: arg1
-	population := arg1.
-	backEndEntity population: (KEPopulation size: arg1)
+population: anInteger
+
+	population := anInteger.
+	backEndEntity population: (KEPopulation size: anInteger).

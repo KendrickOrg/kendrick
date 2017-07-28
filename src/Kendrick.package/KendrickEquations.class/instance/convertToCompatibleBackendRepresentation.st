@@ -1,4 +1,7 @@
 as yet unclassified
 convertToCompatibleBackendRepresentation
-	^ ((eqAsSymExpr asString copyReplaceAll: '#' with: '' asTokens: false)
-		trimBoth: [ :arg1 | arg1 = $( | (arg1 = $)) ]) findTokens: '''.'''
+
+	^ ((eqAsSymExpr asString
+			copyReplaceAll: '#' with: '' asTokens: false)
+			trimBoth: [ :c | (c = $() | (c = $)) ]) 
+			findTokens: '''.'''

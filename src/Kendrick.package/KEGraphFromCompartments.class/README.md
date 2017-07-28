@@ -1,0 +1,1 @@
+Build a graph of compartments from a KEModel

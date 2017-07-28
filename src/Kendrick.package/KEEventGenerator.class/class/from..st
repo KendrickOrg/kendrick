@@ -1,3 +1,3 @@
 instance creation
-from: arg1
-	^ self new generateEvents: arg1
+from: aKEModel
+	^ self new generateEvents: aKEModel

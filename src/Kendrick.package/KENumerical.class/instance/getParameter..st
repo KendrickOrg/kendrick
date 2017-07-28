@@ -1,3 +1,3 @@
 evaluating
-getParameter: arg1
+getParameter: aDictionary
 	^ nil

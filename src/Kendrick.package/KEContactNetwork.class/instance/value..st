@@ -1,3 +1,3 @@
 accessing
-value: arg1
-	
+value: aModel
+	^ self

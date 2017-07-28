@@ -1,3 +1,4 @@
 public-api
-for: arg1
-	simulation := (Simulation withId: arg1) init
+for: simulationID
+
+	simulation := (Simulation withId: simulationID) init.

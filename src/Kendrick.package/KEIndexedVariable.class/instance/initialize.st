@@ -1,4 +1,6 @@
 initialization
 initialize
 	super initialize.
-	indexList := OrderedCollection new
+	indexList := OrderedCollection new.
+		
+	

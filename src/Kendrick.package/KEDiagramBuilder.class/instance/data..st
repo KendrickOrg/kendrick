@@ -1,4 +1,4 @@
 accessing
-data: arg1
-	super data: arg1.
+data: aCollection
+	super data: aCollection.
 	self buildLegends

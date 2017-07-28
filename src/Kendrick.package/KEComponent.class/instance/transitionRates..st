@@ -1,3 +1,6 @@
 public-api
-transitionRates: arg1
-	self transitions do: [ :arg2 | arg2 probability: arg1 ]
+transitionRates: anExpressionOrBlock
+	"setting same rate for all transitions"
+	self transitions do: [ :tr| 
+		tr probability: anExpressionOrBlock	
+	]

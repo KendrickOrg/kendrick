@@ -1,3 +1,3 @@
 printing
-getParameter: arg1
-	^ expression getParameter: arg1
+getParameter: aDictionary
+	^ expression getParameter: aDictionary

@@ -1,6 +1,5 @@
 adding
-updateIndividual: arg1
-	arg1
-		updateAttributes: arg1 nextStatus;
-		currentStatus: arg1 nextStatus;
-		nextStatus: nil
+updateIndividual: ind
+	ind updateAttributes: ind nextStatus.
+	ind currentStatus: ind nextStatus.
+	ind nextStatus: nil

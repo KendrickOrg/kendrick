@@ -1,3 +1,3 @@
 accessing
-actions: arg1
-	actions := arg1
+actions: aDictionary
+	actions := aDictionary

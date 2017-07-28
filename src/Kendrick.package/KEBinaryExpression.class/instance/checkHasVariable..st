@@ -1,4 +1,3 @@
 printing
-checkHasVariable: arg1
-	^ (leftHandSide checkHasVariable: arg1)
-		| (rightHandSide checkHasVariable: arg1)
+checkHasVariable: aDictionary
+	^ (leftHandSide checkHasVariable: aDictionary) | (rightHandSide checkHasVariable: aDictionary)

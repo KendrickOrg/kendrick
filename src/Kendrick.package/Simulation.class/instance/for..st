@@ -1,3 +1,4 @@
 public-api
-for: arg1
-	combo := Composition withId: arg1
+for: aComboID
+
+	combo := Composition withId: aComboID.

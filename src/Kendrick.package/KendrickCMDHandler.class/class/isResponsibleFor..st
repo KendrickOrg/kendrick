@@ -1,3 +1,8 @@
 as yet unclassified
-isResponsibleFor: arg1
-	^ arg1 includesSubCommand: self commandName
+isResponsibleFor: commandLineArguments
+
+	"commandLineArguments withFirstArgument: [ :arg|
+		(#('--epiRun') includes: arg)
+		ifTrue: [ ^ true ]]."
+	
+	^ commandLineArguments includesSubCommand: self commandName

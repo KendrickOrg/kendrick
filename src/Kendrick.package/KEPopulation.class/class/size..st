@@ -1,6 +1,6 @@
 as yet unclassified
-size: arg1
-	| tmp1 |
-	tmp1 := KEPopulation new.
-	tmp1 initialSize: arg1.
-	^ tmp1
+size: aNumber
+	|population|
+	population := KEPopulation new.
+	population initialSize: aNumber.
+	^ population

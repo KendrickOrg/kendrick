@@ -1,3 +1,5 @@
 as yet unclassified
-populationSize: arg1
-	model population: arg1
+populationSize: aNumber
+
+	model population: aNumber
+	

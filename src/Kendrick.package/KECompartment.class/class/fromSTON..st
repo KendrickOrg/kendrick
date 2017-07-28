@@ -1,3 +1,3 @@
 instance creation
-fromSTON: arg1
-	^ self from: (STON fromString: arg1)
+fromSTON: aSTONDescription
+	^ self from: (STON fromString: aSTONDescription)

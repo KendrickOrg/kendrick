@@ -1,3 +1,3 @@
 adding
-addNode: arg1
-	nodes add: (KENode new label: arg1)
+addNode: label
+	nodes add: (KENode new label: label)

@@ -1,3 +1,3 @@
 accessing
-stepper: arg1
-	stepper := arg1
+stepper: aStepper
+	stepper := aStepper

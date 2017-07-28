@@ -1,13 +1,9 @@
 private
-operateBetween: arg1 and: arg2
-	op = #+
-		ifTrue: [ ^ arg1 + arg2 ].
-	op = #-
-		ifTrue: [ ^ arg1 - arg2 ].
-	op = #*
-		ifTrue: [ ^ arg1 * arg2 ].
-	op = #/
-		ifTrue: [ ^ arg1 / arg2 ].
-	op = #'^'
-		ifTrue: [ ^ arg1 raisedTo: arg2 ].
-	^ arg1 + arg2
+operateBetween: left and: right
+	"Created by ThanhNT 26/7/17"
+	op = #+ ifTrue: [ ^(left + right) ].
+	op = #- ifTrue: [ ^(left - right) ].
+	op = #* ifTrue: [ ^(left * right) ].	
+	op = #/ ifTrue: [ ^(left / right) ].
+	op = #'^' ifTrue: [ ^(left raisedTo: right) ].
+	^(left + right).

@@ -1,4 +1,4 @@
 public-api
-allTransitionRefsForAttribute: arg1
-	^ (attributes at: arg1)
-		collect: [ :arg2 | '{#' , arg1 asString , ': #' , arg2 , '}' ]
+allTransitionRefsForAttribute: attribute
+	
+	^ (attributes at: attribute) collect: [:comp | '{#' , attribute asString , ': #' , comp , '}']

@@ -1,3 +1,3 @@
 accessing
 position
-	^ attributes at: #position ifAbsent: [  ]
+	^ attributes at: #position ifAbsent: [ nil ]

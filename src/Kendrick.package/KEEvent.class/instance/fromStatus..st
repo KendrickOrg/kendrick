@@ -1,3 +1,3 @@
 accessing
-fromStatus: arg1
-	fromStatus := arg1
+fromStatus: anObject
+	fromStatus := anObject

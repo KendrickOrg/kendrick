@@ -1,10 +1,9 @@
 as yet unclassified
-acceptKEUnaryExpression: arg1
-	| tmp1 |
-	tmp1 := WriteStream on: (String new: 60).
-	tmp1
-		nextPutAll: '(';
-		nextPutAll: arg1 op;
-		nextPutAll: (self visitNode: arg1 expression);
-		nextPutAll: ')'.
-	^ tmp1 contents
+acceptKEUnaryExpression: aNode
+	| aStream |
+	aStream := WriteStream on: (String new: 60).
+	aStream nextPutAll: '('.
+	aStream nextPutAll: aNode op.
+	aStream nextPutAll: (self visitNode: aNode expression).
+	aStream nextPutAll: ')'.
+	^ aStream contents

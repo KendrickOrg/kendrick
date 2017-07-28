@@ -1,3 +1,3 @@
 evaluating
-evaluateWithModel: arg1
+evaluateWithModel: aModel
 	^ number

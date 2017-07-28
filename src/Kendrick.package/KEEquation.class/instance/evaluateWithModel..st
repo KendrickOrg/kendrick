@@ -1,3 +1,3 @@
 evaluating
-evaluateWithModel: arg1
-	^ self expression evaluateWithModel: arg1
+evaluateWithModel: model
+	^ self expression evaluateWithModel: model

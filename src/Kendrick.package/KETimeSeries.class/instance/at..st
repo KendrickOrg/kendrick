@@ -1,3 +1,4 @@
 accessing
-at: arg1
-	^ data at: (index indexOf: arg1)
+at: anIndex
+	^ data at: (index indexOf: anIndex)
+	

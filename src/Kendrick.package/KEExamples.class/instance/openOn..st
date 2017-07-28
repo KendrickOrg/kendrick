@@ -1,28 +1,31 @@
 as yet unclassified
-openOn: arg1
-	| tmp1 tmp2 tmp4 tmp5 tmp6 |
-	tmp1 := self class selectors
-		select: [ :arg2 | (arg2 beginsWith: 'example') and: [ (arg2 endsWith: 'Icon') not ] ].
-	tmp1
-		do: [ :arg3 | 
-			[ tmp6 := self perform: (arg3 , #Icon) asSymbol ]
-				on: Error
-				do: [ tmp6 := self defaultIcon ].
-			tmp4 := Form
-				fromBinaryStream: (Base64MimeConverter mimeDecodeToBytes: tmp6 readStream).
-			tmp5 := (RTBitmap new form: tmp4) element.
-			tmp5
-				@ (RTPopup new text: arg3 asString);
-				when: TRMouseLeftClick
-					do: [ :arg4 | self class new perform: arg3 ];
-				when: TRMouseRightClick
-					do: [ :arg5 | (self class >> arg3) browse ];
-				@ (RTEventForwarder new eventClass: TRMouseDragging).
-			arg1 add: tmp5 ].
-	RTGridLayout new on: arg1 elements.
-	arg1 canvas
-		addMenu: 'back'
-		callback: [ self pressedBackButtonOn: arg1 ].
-	tmp2 := TRLabelShape new text: ' Left to run / Right for code'.
-	arg1 canvas addFixedShape: tmp2.
-	TRConstraint stickAtTheBottomOfTheWindow: tmp2
+openOn: v
+
+	| exampleSymbols icon64Mime form element  helpBar |
+
+	exampleSymbols := self class selectors 
+								select: [ :symbol | (symbol beginsWith: 'example') 
+															and: [ (symbol endsWith: 'Icon') not ] ].
+	exampleSymbols do: [ :k |
+		[icon64Mime := self perform: (k, #Icon) asSymbol.] 
+		on: Error do: 
+		[ icon64Mime := self defaultIcon ].
+		"form := TRPlatform current formClass fromBinaryStream: 
+							(TRPlatform current mimeDecodeToBytes: icon64Mime readStream)."
+		form := Form fromBinaryStream: 
+							(Base64MimeConverter mimeDecodeToBytes: icon64Mime readStream).
+		element := (RTBitmap new form: form) element.
+		element @ (RTPopup new text: k asString).
+		element when: TRMouseLeftClick do: [ :evt | self class new perform: k ].
+		element when: TRMouseRightClick do: [ :evt | (self class >> k) browse ].
+		element @ (RTEventForwarder new eventClass: TRMouseDragging). 
+		v add: element.
+	].
+
+	RTGridLayout new on: v elements.
+	
+	v canvas addMenu: 'back' callback: [ self pressedBackButtonOn: v ].
+	helpBar := TRLabelShape new text: ' Left to run / Right for code'.
+	v canvas addFixedShape: helpBar.
+	TRConstraint stickAtTheBottomOfTheWindow: helpBar.
+	

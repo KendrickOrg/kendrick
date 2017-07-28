@@ -1,7 +1,5 @@
 printing
-printOn: arg1
-	| tmp2 |
-	tmp2 := arg1.
-	tmp2
+printOn: aStream
+	aStream 
 		nextPutAll: '-';
 		nextPutAll: expression asString

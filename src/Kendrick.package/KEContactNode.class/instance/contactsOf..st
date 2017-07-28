@@ -1,15 +1,14 @@
 as yet unclassified
-contactsOf: arg1
-	| tmp1 tmp3 |
-	tmp1 := arg1 first.
-	tmp3 := 0.
-	self adjacentNodes
-		do: [ :arg2 | 
-			| tmp4 tmp5 |
-			tmp4 := Dictionary new.
-			arg1 size > 1
-				ifTrue: [ tmp5 := arg1 size.
-					2 to: tmp5 do: [ :tmp6 | tmp4 at: (arg1 at: tmp6) key put: (arg1 at: tmp6) value ] ].
-			tmp4 at: #node put: arg2.
-			tmp3 := tmp3 + (self sumAll: (tmp1 atCompartment: tmp4)) ].
-	^ tmp3
+contactsOf: arguments
+	"{model. attrbute1->value1. attribute2->value2}"
+	|model rs|
+	model := arguments first.
+	rs := 0.
+	self adjacentNodes do: [ :node||attributes|
+		attributes := Dictionary new.
+		(arguments size > 1) ifTrue: [ 
+			2 to: (arguments size) do: [ :i| attributes at: (arguments at: i) key put: (arguments at: i) value ] ].
+		attributes at: #node put: node.  
+		rs := rs + (self sumAll: (model atCompartment: attributes))
+	].
+ 	^ rs

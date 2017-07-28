@@ -1,3 +1,3 @@
 accessing
-solver: arg1
-	solver := arg1
+solver: aSolverName
+	solver := aSolverName

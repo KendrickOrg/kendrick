@@ -1,5 +1,6 @@
 adding
-removeIndividual: arg1
-	arg1 attributes at: #alive put: false.
-	self diedIndList add: arg1 id.
-	self individuals at: arg1 id put: arg1
+removeIndividual: ind
+	ind attributes at: #alive put: false.
+	self diedIndList add: ind id.
+	self individuals at: (ind id) put: ind.
+	

@@ -1,8 +1,11 @@
 public-api
 transitions
-	^ transitions
-		ifNil: [ transitions := backEndEntity transitions
-				collect: [ :arg1 | 
-					arg1 from associations first value -> nil
-						-> arg1 to associations first value ] ]
-		ifNotNil: [ transitions convertToCompatibleBackendRepresentation ]
+
+	^ transitions 
+		ifNotNil: [ transitions convertToCompatibleBackendRepresentation]
+		ifNil: [ 
+			transitions := 
+				backEndEntity transitions
+					collect: [ :t | (t from associations first value -> nil -> t to associations first value) ] 
+		]
+		

@@ -1,8 +1,8 @@
 as yet unclassified 
 modelRK4SolverOnSIRDemoMultiConcerns
-	| tmp1 |
-	tmp1 := KEModel new population: (KEPopulation size: 10000).
-	tmp1
+	| model |
+	model := KEModel new population: (KEPopulation size: 10000).
+	model
 		attributes:
 			{(#status -> #(#S #I #R)).
 			(#species -> #(#human #bird))};
@@ -34,4 +34,4 @@ modelRK4SolverOnSIRDemoMultiConcerns
 			(#species -> #bird)}
 			put: 0;
 		atParameter: #i assignValue: (1 to: 2).
-	^ tmp1
+	^ model

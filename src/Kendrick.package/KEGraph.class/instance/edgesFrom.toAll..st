@@ -1,3 +1,3 @@
 public
-edgesFrom: arg1 toAll: arg2
-	self edgesFrom: arg1 toAll: arg2 oneWay: false
+edgesFrom: aNode toAll: otherNodes
+	self edgesFrom: aNode toAll: otherNodes oneWay: false

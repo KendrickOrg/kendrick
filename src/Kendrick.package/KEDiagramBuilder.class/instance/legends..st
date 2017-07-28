@@ -1,3 +1,3 @@
 accessing
-legends: arg1
-	legends := arg1
+legends: aCollection
+	legends := aCollection

@@ -1,6 +1,8 @@
 as yet unclassified
 open
-	| tmp1 |
-	tmp1 := KEExamples models.
+	"Open the browser on the model collector"
+	|collection|
+	collection := KEExamples models.
+	
 	self buildBrowser.
-	browser openOn: tmp1
+	browser openOn: collection. 

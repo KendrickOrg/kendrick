@@ -1,9 +1,8 @@
 tests
 testParenthesis
-	self
-		parse: '(0)' rule: #parenthesis;
-		parse: '(1)' rule: #parenthesis;
-		parse: '(a)' rule: #parenthesis;
-		parse: '(a+b)' rule: #parenthesis;
-		parse: '((a))' rule: #parenthesis;
-		fail: ')a(' rule: #parenthesis
+	self parse: '(0)' rule: #parenthesis.
+	self parse: '(1)' rule: #parenthesis.
+	self parse: '(a)' rule: #parenthesis.
+	self parse: '(a+b)' rule: #parenthesis.
+	self parse: '((a))' rule: #parenthesis.
+	self fail: ')a(' rule: #parenthesis

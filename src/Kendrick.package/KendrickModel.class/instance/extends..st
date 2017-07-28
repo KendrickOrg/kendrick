@@ -1,7 +1,8 @@
 public-api
-extends: arg1
-	super extends: arg1.
-	structuralDependencies := {arg1}.
+extends: anotherConcernName
+
+	super extends: anotherConcernName.
+	structuralDependencies := {  anotherConcernName }.
 	transitions := OrderedCollection new.
 	extending := backEndEntity.
-	backEndEntity := KEModelPart dependOn: backEndEntity
+	backEndEntity := KEModelPart dependOn: backEndEntity.
