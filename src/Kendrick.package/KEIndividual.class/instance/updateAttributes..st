@@ -1,4 +1,4 @@
-as yet unclassified
+update
 updateAttributes: aDictionary
-	aDictionary keysAndValuesDo: [ :k :v| self attributes at: k put: v ]
+	aDictionary keysAndValuesDo: [ :k :v| attributes at: k put: v ]
 	
