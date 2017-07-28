@@ -1,5 +1,6 @@
 examples
 exampleNetWorkSimulatorOnSIR
+"self new exampleNetWorkSimulatorOnSIR"
 |model network spatialConcern sirConcern simulator db f|
 model := KEModel new population: (KEPopulation size: 100).
 

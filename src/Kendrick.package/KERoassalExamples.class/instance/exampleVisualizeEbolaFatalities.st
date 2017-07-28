@@ -1,4 +1,4 @@
-sources
+examples
 exampleVisualizeEbolaFatalities
 | b tab ds data |
 	"Preparing the data"

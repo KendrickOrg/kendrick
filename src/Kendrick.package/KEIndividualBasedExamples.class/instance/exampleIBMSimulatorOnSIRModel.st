@@ -2,10 +2,10 @@ examples
 exampleIBMSimulatorOnSIRModel
 	"self new exampleIBMSimulatorOnSIRModel"
 	|model simulator dB|
-	model := KEModel new population: (KEPopulation size: 100000).
+	model := KEModel new population: (KEPopulation size: 10000).
 	model addAttribute: #status value: #(#S #I #R).
-	model atCompartment: { #status->#S } put: 99999 atOthersPut: 0.
-	model atCompartment: { #status->#I } put: 1.
+	model atCompartment: { #status->#S } put: 9990 atOthersPut: 0.
+	model atCompartment: { #status->#I } put: 10.
 	model addParameters: {#beta->0.0052. #gamma->52}.
 	model addTransitionFrom: '{#status: #S}'
 		to: '{#status: #I}'
@@ -19,5 +19,4 @@ exampleIBMSimulatorOnSIRModel
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
 	dB data: (simulator allTimesSeriesContaining: '{#status: #I}').
-	^ dB open
-	
+	dB open

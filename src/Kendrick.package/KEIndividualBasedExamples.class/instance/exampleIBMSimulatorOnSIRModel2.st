@@ -19,6 +19,6 @@ exampleIBMSimulatorOnSIRModel2
 	simulator := KESimulator new: #IBM from: 0.0 to: 50 by: 0.1.
 	simulator executeOn:  model.
 	db := KEDiagramBuilder new data: (simulator allTimesSeriesContaining: '{#status:#I}').
-	^ db open
+	db open
 	
 	

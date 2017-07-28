@@ -1,4 +1,4 @@
-sources
+examples
 exampleVisualizeEbolaDataFromCaitlinRiversRepository
 | tab data minValue b lb ds1 ds2|
 	tab := RTTabTable new
