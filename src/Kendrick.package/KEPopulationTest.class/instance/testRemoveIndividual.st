@@ -6,5 +6,4 @@ testRemoveIndividual
 	population removeIndividual: (population individuals last).
 	
 	self assert: (population individuals size) equals: 1000.
-	self assert: (population diedIndList size) equals: 1.
-	self assert: (population individuals last) isAlive equals: false  
+	self assert: (population diedIndList size) equals: 1
