@@ -8,7 +8,6 @@ calProb: ind random: rand
 		ifTrue: [ model parameters at: #inProcessingCompartment put: ((events at: e) key to) ] 
 		ifFalse: [ model parameters at: #inProcessingCompartment put: ((events at: e) key from) ]".
 		l := ind currentStatus copy.
-		l at: #id put: (ind id).
 		model currentCompartment: l.
 		model nextCompartment: ((events at: e) key to).
 		rate := ((events at: e) key probability value: model) abs.

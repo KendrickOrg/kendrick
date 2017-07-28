@@ -13,8 +13,7 @@ individuals
 				n := n + 1.
 				ind updateAttributes: k.
 				ind currentStatus: k.
-				ind id: n.
-				individuals add: ind
+				individuals add: ind.
 				 ]
 			 ]
 		 ].
