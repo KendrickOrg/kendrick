@@ -1,15 +1,20 @@
 as yet unclassified
 updateIndividuals
 	"Update status for individuals of population"
-	model population individuals do: [ :ind| 
-		( ind nextStatus isNotNil ) 
-		ifTrue: [ 
-			((ind nextStatus at: #status) = #empty) 
-			ifTrue: [ model population removeIndividual: ind ] 
-			ifFalse: [ 
-				model population updateIndividual: ind ]
-			 ]
-		].
+	
+	"We remove individuals whose status are empty"
+	|dead|
+dead := model population individuals select: [ :ind|
+	( ind nextStatus isNotNil ) and: [ 	
+	((ind nextStatus at: #status) = #empty)]  ].
+
+dead do: [:ind| model population removeIndividual: ind ].
+
+	"Update individuals state with next status"
+model population individuals do: [:ind | 
+	(ind nextStatus isNotNil) ifTrue:[
+			model population updateIndividual: ind]].
+	
 	"Update compartments'size"
 
 	1 to: model transitions size do: [ :i|
