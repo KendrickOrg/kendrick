@@ -6,6 +6,6 @@ exampleRK4SolverOnSIRSimpleModel
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 0.3 by: 0.001.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
-	dB data: (simulator allTimesSeriesContaining: '{#status: #I}').
+	dB data: (simulator allTimesSeriesContaining: '{#status: #R}').
 	dB xLabel: 'Time (year)'.
 	^ dB open

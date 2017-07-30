@@ -19,6 +19,6 @@ exampleGillespieDirectOnSIRSimpleModel3
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
 	dB data: simulator timeSeries.
-	^ dB view
+	dB open
 	
 	

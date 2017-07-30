@@ -9,5 +9,5 @@ exampleRK4SolverOnMultiStrainModel
 	data addAll: (simulator allTimesSeriesContaining: '{#status: #I1}').
 	data addAll: (simulator allTimesSeriesContaining: '{#status: #I2}').
 	db := KEDiagramBuilder new data: data.
-	^ db open							
+	db open							
 														

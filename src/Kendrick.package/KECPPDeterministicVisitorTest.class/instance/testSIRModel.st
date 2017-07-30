@@ -1,6 +1,5 @@
-tests
+as yet unclassified
 testSIRModel
-	"self new testSIRModel"
 	| model visitor simulator|
 	model := KEModel new population: (KEPopulation size: 100000).
 	model attributes: {#status->#(#S #I #R)}.

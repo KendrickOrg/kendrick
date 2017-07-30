@@ -18,8 +18,5 @@ exampleRK4SolverOnMigrationTwoSpeciesModel
 		(f value: '{#status: #I, #species: #human}') }" (simulator allTimesSeriesContaining: {#status->#I. #species->#bird}).
 
 	db xLabel: 'Time (days)'.
-	"db legendTitle: 'Total of infectious'."
-	"db legends: { 'birds'. 'humans' }."
-
-	^ db open															
+	db open															
 														

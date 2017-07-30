@@ -1,7 +1,7 @@
 examples
 exampleRK4SolverOnMigrationModelWithDependentConcern
 "self new exampleRK4SolverOnMigrationModelWithDependentConcern"
-|model sirConcern eConcern spatialConcern simulator db|
+|model sirConcern eConcern spatialConcern simulator db tmp|
 sirConcern := KEModelPart new.
 sirConcern attributes: {#status->#(#S #I #R)}.
 sirConcern addParameters: {#lambda. #gamma}.
@@ -86,13 +86,15 @@ model atParameter: #mu assignValue: 0.0000365.
 	simulator executeOn: model.
 	
 	db := KEDiagramBuilder new.
-	db data: [|tmp| tmp := OrderedCollection new.
-	tmp addAll: (simulator allTimesSeriesContaining: '{#status: #I,#patch:1}').
-	tmp addAll: (simulator allTimesSeriesContaining: '{#status: #I,#patch:2}').
-	tmp addAll: (simulator allTimesSeriesContaining: '{#status: #I,#patch:3}').
-	tmp addAll: (simulator allTimesSeriesContaining: '{#status: #I,#patch:4}').
-	tmp addAll: (simulator allTimesSeriesContaining: '{#status: #I,#patch:5}').
-	tmp] value.
+	
+	tmp := OrderedCollection new.
+	tmp addAll: (simulator allTimesSeriesContaining: '{#status: #I,#patch:1}'); 
+	addAll: (simulator allTimesSeriesContaining: '{#status: #I,#patch:2}');
+	addAll: (simulator allTimesSeriesContaining: '{#status: #I,#patch:3}');
+	addAll: (simulator allTimesSeriesContaining: '{#status: #I,#patch:4}');
+	addAll: (simulator allTimesSeriesContaining: '{#status: #I,#patch:5}').
+	db data: tmp.
+	
 	db legends: { 'patch 1'. 'patch 2'. 'patch 3'. 'patch 4'. 'patch 5'}.
 	db legendTitle: 'Infectious'.
 	db xLabel: 'Time (days)'.

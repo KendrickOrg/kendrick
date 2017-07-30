@@ -9,7 +9,7 @@ exampleRK4SolverOnMultiInfectiousStatusModel
 	data addAll: (simulator allTimesSeriesContaining: '{#status:#I}').
 	data addAll: (simulator allTimesSeriesContaining: '{#status:#Is}').
 	db := KEDiagramBuilder new data: data.
-	^ db view
+	db open
 	 
 															
 														
