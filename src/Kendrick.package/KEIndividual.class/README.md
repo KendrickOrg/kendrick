@@ -1,6 +1,5 @@
 A KEIndividual represents an individual (or agent) in a model. Each individual has its own attributes such as: currentStatus, nextStatus, position, age, ...
 
-By default, KEIndividual has the following attributes: #id, #alive
 Why nextStatus, currentStatus are not defined as attributes ?
 
 Instance Variables
