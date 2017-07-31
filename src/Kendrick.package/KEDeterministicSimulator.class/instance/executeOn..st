@@ -23,13 +23,14 @@ executeOn: aModel
 				prob := ((e at: 1) probability value: model) abs.
 				"prob isDictionary ifTrue: [ prob := prob values sum ]."
 				"ThanhNT 30-July-2017"
-				prob isNumber ifTrue: [ (e at: 2)*(model atCompartment: (e at: 1) from)*prob ].
+				"prob isNumber ifTrue: [ (e at: 2)*(model atCompartment: (e at: 1) from)*prob ].
 				prob isArray 
 					ifTrue: [ 
 						self calculateBetween: (e at:2) 
 									with: (model atCompartment: (e at: 1) from) 
 									andArray: prob
-						].
+						]"
+				self calculateBetween: (e at: 2) with: (model atCompartment: (e at: 1) from) and: prob
 				"(e at: 2)*(model atCompartment: (e at: 1) from)*prob"
 				"Endof ThanhNT 30-July-2017"
 				]) sum.
