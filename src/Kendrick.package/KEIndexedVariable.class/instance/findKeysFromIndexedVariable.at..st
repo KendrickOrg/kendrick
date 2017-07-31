@@ -1,5 +1,4 @@
 as yet unclassified
-"protocol: private"
 findKeysFromIndexedVariable: aModel at: indexValues
 	| allAttributes position result found allStatus allSpecies allSpatials|
 	allAttributes := (aModel attributes).
