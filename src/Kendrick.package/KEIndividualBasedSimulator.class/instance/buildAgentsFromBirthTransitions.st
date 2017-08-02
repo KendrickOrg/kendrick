@@ -1,6 +1,6 @@
 as yet unclassified
-doBirthTransitions
-	"Built new agents from birth transitions (transitions from #empty to a compartment"
+buildAgentsFromBirthTransitions
+	"Built new agents from birth transitions (transitions from #empty to a compartment)"
 
 	"birthTransitions is a ordered collection of associations that represent transitions"
 
@@ -13,6 +13,9 @@ doBirthTransitions
 			r := (t key probability value: model) abs.
 			r := r * (model atCompartment: from).
 			p := (PoissonGenerator lambda: r * step) next.
+			
 			"Generate p agents"
 			p timesRepeat: [ model population addIndividual: (KEIndividual from: to) ].
+
+			"update the number of times this birth transition need to be executed, used in updateIndividuals"
 			self transitionNbExecutions at: t value put: p ]

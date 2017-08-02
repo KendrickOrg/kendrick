@@ -58,10 +58,10 @@ eConcern
 eConcern addParameter: #sigma.
 model integrate: eConcern.
 
-model atParameter: #beta assignValue: [ :aModel| |c val| 
+model atParameter: #beta assignValue: [ :aModel| |c result| 
 		c := aModel currentCompartment at: #patch.
-		c = 1 ifTrue: [ val := 0.75 ] ifFalse: [ val := 0.5 ].
-		val	
+		c = 1 ifTrue: [ result := 0.75 ] ifFalse: [ result := 0.5 ].
+		result	
 	].
 model atParameter: #mu assignValue: 0.0000365.
 	model atParameter: #sigma assignValue: 0.5.
