@@ -8,9 +8,7 @@ doBirthTransitions
 		p := (PoissonGenerator lambda: (r * step)) next.
 		1 to: p do: [ :i||newInd|
 			newInd := KEIndividual new.
-			newInd currentStatus: e key to.
 			newInd updateAttributes: e key to.
-			newInd nextStatus: nil.
 			model population addIndividual: newInd.
 			 ].
 		self transitionNbExecutions at: e value put: p
