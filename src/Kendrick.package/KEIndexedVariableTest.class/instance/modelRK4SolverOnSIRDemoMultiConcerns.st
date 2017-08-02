@@ -35,13 +35,5 @@ modelRK4SolverOnSIRDemoMultiConcerns
 			(#species -> #bird)}
 			put: 0;
 		atParameter: #i assignValue: (1 to: 2).
-	model     
-         atParameter: #delta
-         assignValue: #(
-                #(0.000365 0.00137)
-                #(0.000365 0.00137)
-                #(0.000365 0.00137)
-                #(0.000365 0.00137)
-                #(0.000365 0.00137)).
-		"atParameter: #i assignValue: #(#human #bird)."
+	
 	^ model

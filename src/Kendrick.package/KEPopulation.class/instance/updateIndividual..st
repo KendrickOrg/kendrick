@@ -1,4 +1,5 @@
 adding
 updateIndividual: ind
 	ind updateAttributes: ind nextStatus.
-	ind updateStatus
+	ind currentStatus: ind nextStatus.
+	ind nextStatus: nil

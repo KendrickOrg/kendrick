@@ -13,27 +13,32 @@ executeOn: aModel
 			(equations at: k) isEmpty 
 			ifTrue: [ tmp := 0 ]
 			ifFalse: [  
-				tmp := ((equations at: k) collect: [ :e|
-				|prob|
+				|coll|
+
+				"ThanhNT 31-July-2017"
+				"tmp :="				
+				coll :=
+				((equations at: k) collect: [ :e|
+				|prob p|
 				"model parameters at: #scope put: (e at: 1) scope."
 				(((e at: 1) from at: #status) = #empty) 
 				ifTrue: [ model currentCompartment: ((e at: 1) to) ] 
 				ifFalse: [ model currentCompartment: ((e at: 1) from) ].
 				model nextCompartment: ((e at: 1) to).
 				prob := ((e at: 1) probability value: model) abs.
+				p := self project: prob into: k.
 				"prob isDictionary ifTrue: [ prob := prob values sum ]."
 				"ThanhNT 30-July-2017"
-				"prob isNumber ifTrue: [ (e at: 2)*(model atCompartment: (e at: 1) from)*prob ].
-				prob isArray 
-					ifTrue: [ 
-						self calculateBetween: (e at:2) 
-									with: (model atCompartment: (e at: 1) from) 
-									andArray: prob
-						]"
-				self calculateBetween: (e at: 2) with: (model atCompartment: (e at: 1) from) and: prob
+				self calculateBetween: (e at: 2) 
+							with: (model atCompartment: (e at: 1) from) 
+							and: p   project: k.
 				"(e at: 2)*(model atCompartment: (e at: 1) from)*prob"
 				"Endof ThanhNT 30-July-2017"
-				]) sum.
+				]).
+				tmp := self sum: coll 
+				"sum"
+				"Endof ThanhNT 31-July-2017"
+				.
 			].
 			c at: i put: tmp.
 			i := i + 1
