@@ -6,3 +6,4 @@ exampleRK4SolverOnSIRDemoMultiConcerns
 	model := self getIndexedEquations4Model: model.
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 0.3 by: 0.0027.
 	simulator executeOn: model.
+	"self assert: (expr evaluateWithModel: model) equals: #(25 4)"

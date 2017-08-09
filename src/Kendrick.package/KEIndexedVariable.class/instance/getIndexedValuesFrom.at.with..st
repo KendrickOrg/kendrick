@@ -1,12 +1,7 @@
 private
 getIndexedValuesFrom: indexValues at: aModel with: strSymbol
 	indexValues size = 0 
-	ifTrue: [ 
-		|result|
-		result := (self getValueFromCompartmentsName: strSymbol at: aModel).
-		result isArray ifTrue: [ ^(result at: (result size)). ].
-		^result. 
-		]
+	ifTrue: [ ^(self getValueFromCompartmentsName: strSymbol at: aModel) ]
 	ifFalse: [  
 		|count temp arr attribute level|
 		arr := indexValues at: 1.

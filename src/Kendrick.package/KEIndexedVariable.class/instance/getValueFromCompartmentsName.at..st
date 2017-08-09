@@ -19,11 +19,7 @@ getValueFromCompartmentsName: tempKeys at: aModel
 				]"
 				"ifFalse: ["
 				count = (each values)	size & (groupKeys size = tempKeys size)
-					ifTrue: [ 
-						|result|
-						result := aModel atCompartment: each. 
-						^result.
-						]
+					ifTrue: [ ^ aModel atCompartment: each. ]
 				 	"]."
 				
 		]."endof allKeys 	do: [:each|"

@@ -29,9 +29,7 @@ evaluateWithModel: aModel
 	"multi-dimension array"
 	"indexValues do: [ :each| x := (x at: each) ]."
 	(aModel checkIndexedExpression: indexList ) ifTrue: [ 
-			|result|
-			result := self select: indexValues from: x.
-			^result.
+			^x.
 		 ]
 	ifFalse: 
 		[
