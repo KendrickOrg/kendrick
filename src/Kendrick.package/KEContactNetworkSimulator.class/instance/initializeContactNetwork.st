@@ -1,10 +1,10 @@
 initialization
 initializeContactNetwork
 	| gridSize |
-	gridSize := 400.
+	gridSize := 20.
 	network := KEKleinbergContactNetwork new
-		nodes: (1 to: gridSize);
-		n: 20;
+		nodes: (1 to: gridSize*gridSize);
+		n: gridSize;
 		p: 1;
 		q: 1;
 		r: 5;

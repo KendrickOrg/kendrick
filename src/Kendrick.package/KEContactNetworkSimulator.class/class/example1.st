@@ -1,21 +1,18 @@
 examples
 example1
-
 	| v g nodes edges nbNodes |
-	g := KEContactNetworkSimulator  new network.
+	g := KEContactNetworkSimulator new network.
 	v := RTView new.
-	nbNodes := 10.
+	nbNodes := 20.
 	nodes := (RTEllipse new
 		color: (Color purple alpha: 0.3);
 		size: 10) elementsOn: g nodes.
-	
 	nodes := (RTEllipse new
 		color: [ :e | 
 			e currentStatus == #I
 				ifTrue: [ Color red ]
 				ifFalse: [ Color green ] ];
 		size: 10) elementsOn: g nodes.
-
 	nodes @ RTDraggable.
 	v addAll: nodes.
 	edges := RTEdgeBuilder new
