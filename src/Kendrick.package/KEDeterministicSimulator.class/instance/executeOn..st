@@ -1,6 +1,6 @@
 public
 executeOn: aModel
-	|st ks system |
+	|st ks system|
 	super executeOn:aModel.
 	equations := model buildEquations.
 	system := ExplicitSystem block: [ :x :t| |c i|
@@ -13,11 +13,7 @@ executeOn: aModel
 			(equations at: k) isEmpty 
 			ifTrue: [ tmp := 0 ]
 			ifFalse: [  
-				|coll|
-
-				"ThanhNT 31-July-2017"
-				"tmp :="				
-				coll :=
+				tmp :=
 				((equations at: k) collect: [ :e|
 				|prob p|
 				"model parameters at: #scope put: (e at: 1) scope."
@@ -28,17 +24,11 @@ executeOn: aModel
 				prob := ((e at: 1) probability value: model) abs.
 				p := self project: prob into: k.
 				"prob isDictionary ifTrue: [ prob := prob values sum ]."
-				"ThanhNT 30-July-2017"
 				self calculateBetween: (e at: 2) 
 							with: (model atCompartment: (e at: 1) from) 
 							and: p   project: k.
-				"(e at: 2)*(model atCompartment: (e at: 1) from)*prob"
-				"Endof ThanhNT 30-July-2017"
-				]).
-				tmp := self sum: coll 
-				"sum"
-				"Endof ThanhNT 31-July-2017"
-				.
+				
+				]) sum	.
 			].
 			c at: i put: tmp.
 			i := i + 1
