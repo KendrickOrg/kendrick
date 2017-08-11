@@ -1,11 +1,18 @@
 examples
 example2
-	| v g s nodes edges nbNodes |
-	s := KEContactNetworkSimulator new.
-	g := s network.
-	10 timesRepeat: [ s step ].
+	| v g n nodes edges nbNodes |
+	n := KEContactNetworkSimulator
+		fromNetwork:
+			(KEKleinbergContactNetwork new
+				nodes: (1 to: 25 * 25);
+				n: 25;
+				p: 1;
+				q: 1;
+				r: 2).
+	g := n network.
+	10 timesRepeat: [ n step ].
 	v := RTView new.
-	nbNodes := 20.
+	nbNodes := g n.
 	nodes := (RTEllipse new
 		color: (Color purple alpha: 0.3);
 		size: 10) elementsOn: g nodes.
