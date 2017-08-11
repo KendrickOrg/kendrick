@@ -1,8 +1,7 @@
 as yet unclassified
 checkAllPositive: anArray
-	"Created by ThanhNT 19/7"
 	"Purpose: Determine all elements of an Array are positive or not."
-	"This function will return true if all of them are positive"
+	"This function will return true if all of anArray are positive"
 	"self new checkAllPositive: #(1 2 4 5 6 -7)"
 	|check|
 	anArray isNumber ifTrue: [ ^(anArray > 0) ].
