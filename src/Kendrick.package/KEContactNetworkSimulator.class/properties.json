@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "",
+	"super" : "KEIndividualBasedSimulator",
+	"category" : "Kendrick-Network",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"network",
+		"tau",
+		"gamma",
+		"rho",
+		"stepTime"
+	],
+	"name" : "KEContactNetworkSimulator",
+	"type" : "normal"
+}
