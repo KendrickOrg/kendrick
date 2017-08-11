@@ -1,15 +1,13 @@
 as yet unclassified 
-modelRK4SolverOnSIRDemoMultiConcerns
-	"self new modelRK4SolverOnSIRDemoMultiConcerns"
+modelSIRDemoMultiConcerns
+	"self new modelSIRDemoMultiConcerns"
 	| model |
 	model := KEModel new population: (KEPopulation size: 10000).
 	model
 		attributes:
 			{(#status -> #(#S #I #R)).
 			(#species -> #(#human #bird))};
-		atParameter: #gamma assignValue: #(5 1);
-		atParameter: #beta assignValue: #(5 4);
-		atParameter: #mu assignValue: #(1 2);
+
 		atCompartment:
 			{(#status -> #S).
 			(#species -> #human)}
@@ -35,13 +33,6 @@ modelRK4SolverOnSIRDemoMultiConcerns
 			(#species -> #bird)}
 			put: 0;
 		atParameter: #i assignValue: (1 to: 2).
-	model     
-         atParameter: #delta
-         assignValue: #(
-                #(0.000365 0.00137)
-                #(0.000365 0.00137)
-                #(0.000365 0.00137)
-                #(0.000365 0.00137)
-                #(0.000365 0.00137)).
-		"atParameter: #i assignValue: #(#human #bird)."
+	model atParameter: #beta assignValue: #(5 4).
+	model atParameter: #gamma assignValue: #(5 1).
 	^ model

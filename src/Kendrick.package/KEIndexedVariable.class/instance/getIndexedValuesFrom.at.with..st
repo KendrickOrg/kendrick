@@ -1,13 +1,17 @@
 private
 getIndexedValuesFrom: indexValues at: aModel with: strSymbol
-	indexValues size = 0 
-	ifTrue: [ ^(self getValueFromCompartmentsName: strSymbol at: aModel) ]
+	indexValues isEmpty
+	ifTrue: [ 
+		|result|
+		result := (self getValueFromCompartmentsName: strSymbol at: aModel).
+		result isArray ifTrue: [ ^(result at: (result size)). ].
+		^result. 
+		]
 	ifFalse: [  
 		|count temp arr attribute level|
 		arr := indexValues at: 1.
-		level := 0.
 		level := strSymbol occurrencesOf: $#.
-		"level := level - 1."
+		
 		attribute := (aModel attributes) at: ((aModel attributes) keys at: level).
 		temp := Array new: (arr size).
 		count := 1.
@@ -15,8 +19,7 @@ getIndexedValuesFrom: indexValues at: aModel with: strSymbol
 			:each|
 			|t newIndexValues races|
 			newIndexValues := indexValues copy.
-			races := attribute at: count.
-			races := strSymbol , races , '#'.
+			races := strSymbol , (attribute at: count) , '#'.
 			newIndexValues removeAtIndex: 1.
 			t := self getIndexedValuesFrom: newIndexValues at: aModel with: races.
 			temp at: count put: t.
