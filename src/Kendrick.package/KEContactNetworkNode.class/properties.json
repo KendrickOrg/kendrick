@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "Mal2DGridNode",
+	"category" : "Kendrick-Network",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"currentStatus",
+		"nextStatus",
+		"genInfected"
+	],
+	"name" : "KEContactNetworkNode",
+	"type" : "normal"
+}

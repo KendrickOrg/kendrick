@@ -1,6 +1,6 @@
 public
 executeOn: aModel
-	|st ks system|
+	|st ks system |
 	super executeOn:aModel.
 	equations := model buildEquations.
 	system := ExplicitSystem block: [ :x :t| |c i|
@@ -13,22 +13,27 @@ executeOn: aModel
 			(equations at: k) isEmpty 
 			ifTrue: [ tmp := 0 ]
 			ifFalse: [  
-				tmp :=
-				((equations at: k) collect: [ :e|
-				|prob p|
+				tmp := ((equations at: k) collect: [ :e|
+				|prob|
 				"model parameters at: #scope put: (e at: 1) scope."
 				(((e at: 1) from at: #status) = #empty) 
 				ifTrue: [ model currentCompartment: ((e at: 1) to) ] 
 				ifFalse: [ model currentCompartment: ((e at: 1) from) ].
 				model nextCompartment: ((e at: 1) to).
 				prob := ((e at: 1) probability value: model) abs.
-				p := self project: prob into: k.
 				"prob isDictionary ifTrue: [ prob := prob values sum ]."
-				self calculateBetween: (e at: 2) 
-							with: (model atCompartment: (e at: 1) from) 
-							and: p   project: k.
-				
-				]) sum	.
+				"ThanhNT 30-July-2017"
+				"prob isNumber ifTrue: [ (e at: 2)*(model atCompartment: (e at: 1) from)*prob ].
+				prob isArray 
+					ifTrue: [ 
+						self calculateBetween: (e at:2) 
+									with: (model atCompartment: (e at: 1) from) 
+									andArray: prob
+						]"
+				self calculateBetween: (e at: 2) with: (model atCompartment: (e at: 1) from) and: prob
+				"(e at: 2)*(model atCompartment: (e at: 1) from)*prob"
+				"Endof ThanhNT 30-July-2017"
+				]) sum.
 			].
 			c at: i put: tmp.
 			i := i + 1

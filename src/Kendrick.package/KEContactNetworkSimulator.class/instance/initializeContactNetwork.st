@@ -1,0 +1,3 @@
+initialization
+initializeContactNetwork
+	network run
