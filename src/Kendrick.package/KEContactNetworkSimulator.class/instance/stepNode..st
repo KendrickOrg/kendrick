@@ -1,7 +1,7 @@
 run
 stepNode: aNode
 	| n p |
-	n := self nbOfInfectedNeighborsOf: aNode.
+	n := network nbOfInfectedNeighborsOf: aNode.
 	aNode nextStatus: aNode currentStatus.
 	aNode currentStatus == #S
 		ifTrue: [ p := 1 - (1 - rho raisedTo: n).

@@ -1,5 +1,5 @@
 run
 updateGenInfected: aNode
 	| infectedNodes |
-	infectedNodes := self infectedNeighborsOf: aNode.
+	infectedNodes := network infectedNeighborsOf: aNode.
 	aNode genInfected: (infectedNodes collect:[:each | each genInfected]) atRandom +1
