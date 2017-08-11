@@ -9,8 +9,7 @@
 		"network",
 		"tau",
 		"gamma",
-		"rho",
-		"stepTime"
+		"rho"
 	],
 	"name" : "KEContactNetworkSimulator",
 	"type" : "normal"
