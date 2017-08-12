@@ -1,20 +1,27 @@
 as yet unclassified
 doGillespieIteration: t randoms: rands
-	|rates deltaT chosen|
+	| rates deltaT chosen additionalTrans |
 	rates := OrderedCollection new.
+	additionalTrans := OrderedCollection new.
 	model t: t.
-	model transitions do: [ :tr| 
-		"|prob|
-		((tr from at: #status) = #empty)
-		ifTrue: [ model currentCompartment: (tr to) ] 
-		ifFalse: [ model currentCompartment: (tr from) ].
-		model nextCompartment: (tr to).
-		prob := (tr probability value: model) abs.
-		rates add: (prob * (model atCompartment: tr from))."
-		self evaluateRates: rates from: tr.
-		].
-	(rates sum) = 0 ifTrue: [ ^ 0.0 ].
-	deltaT := (((rands second) ln) negated) / (rates sum).
-	chosen := self random: (rands first) select: rates.
-	(model transitions at: chosen) executeOn: model times: 1.
+	model transitions do:
+		[ :tr | self evaluateRates: rates from: tr ].
+	"| prob |
+			(tr from at: #status) = #empty
+				ifTrue: [ model currentCompartment: tr to ]
+				ifFalse: [ model currentCompartment: tr from ].
+			model nextCompartment: tr to.
+			prob := (tr probability value: model) abs.
+			rates add: prob * (model atCompartment: tr from) ]."
+	rates sum = 0
+		ifTrue: [ ^ 0.0 ].
+	deltaT := rands second ln negated / rates sum.
+	chosen := self random: rands first select: rates.
+	model transitions
+		do: [ :tr | 
+			(model checkTransition: tr)
+				ifTrue: [ additionalTrans add: tr ]
+				ifFalse: [ additionalTrans addAll: (model createMoreTransitions: tr) ] ].
+	(additionalTrans at: chosen) executeOn: model times: 1.
+	"(model transitions at: chosen) executeOn: model times: 1."
 	^ deltaT

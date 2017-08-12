@@ -3,7 +3,7 @@ evaluateRates: rates from: tr
 	|prob|
 	(model checkTransition: tr) ifFalse: [ self addMoreTransitionsFrom: tr ToEvaluateRates: rates. ]
 	ifTrue: [    
-		|p|
+		|p c comp|
 		((tr from at: #status) = #empty)
 		ifTrue: [ model currentCompartment: (tr to) ] 
 		ifFalse: [ model currentCompartment: (tr from) ].
@@ -11,5 +11,8 @@ evaluateRates: rates from: tr
 		prob := (tr probability value: model) abs.
 		prob isNumber ifTrue: [ p := prob ].
 		prob isArray ifTrue: [ p := self project: prob into: (tr from). ].
-		rates add: (p * (model atCompartment: tr from)).
+		comp := model atCompartment: tr from.
+		comp isNumber ifTrue: [ c := comp ].
+		comp isArray ifTrue: [ c := self project: comp into: (tr from). ].
+		rates add: (p * c).
 		].
