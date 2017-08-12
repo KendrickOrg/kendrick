@@ -1,3 +1,3 @@
-as yet unclassified
+accessing
 legend: text
 	networkLegend := text
