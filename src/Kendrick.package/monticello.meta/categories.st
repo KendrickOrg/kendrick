@@ -4,7 +4,6 @@ SystemOrganization addCategory: 'Kendrick-Examples'!
 SystemOrganization addCategory: 'Kendrick-Help'!
 SystemOrganization addCategory: 'Kendrick-IBM-Core'!
 SystemOrganization addCategory: 'Kendrick-InternalDSL'!
-SystemOrganization addCategory: 'Kendrick-Network'!
 SystemOrganization addCategory: 'Kendrick-ODE-Parser'!
 SystemOrganization addCategory: 'Kendrick-Obsolete'!
 SystemOrganization addCategory: 'Kendrick-Semantic-Model-Core'!
