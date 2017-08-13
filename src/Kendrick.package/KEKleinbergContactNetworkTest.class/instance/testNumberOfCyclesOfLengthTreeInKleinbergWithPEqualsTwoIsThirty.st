@@ -1,5 +1,5 @@
 tests
-testNumberOfCyclesOfLengthTreeInKleinbergWithPEqualsTwoIsIsThirty
+testNumberOfCyclesOfLengthTreeInKleinbergWithPEqualsTwoIsThirty
 	| grid2D node |
 	grid2D := KEKleinbergContactNetwork new
 		nodes: (1 to: 25 * 25);

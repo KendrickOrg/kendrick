@@ -1,9 +1,9 @@
 metrics
 c4: aNode
-	"Return the number of triangle (cycle of length 3) starting from aNode"
+	"Return the number of square (cycle of length 4) starting from aNode"
 
-	| pathTree cpt |
-	cpt := 0.
+	| pathTree res |
+	res := OrderedCollection new.
 	pathTree := OrderedCollection new.
 	pathTree := self pathOfLength: 3 startingFrom: aNode.
 	pathTree
@@ -11,5 +11,6 @@ c4: aNode
 			| neighbors |
 			neighbors := self neighborsOf: (eachPath at: 4).
 			(neighbors includes: aNode)
-				ifTrue: [ cpt := cpt + 1 ] ].
-	^ cpt //2
+				ifTrue: [ res addIfNotPresent: eachPath asSet ] ].
+	
+	^ res size
