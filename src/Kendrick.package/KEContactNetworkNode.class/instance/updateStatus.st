@@ -1,0 +1,4 @@
+accessing
+updateStatus
+
+	currentStatus := nextStatus
