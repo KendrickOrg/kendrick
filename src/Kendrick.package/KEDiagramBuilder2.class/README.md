@@ -1,1 +1,1 @@
-New interface for KEDiagramBuilder. I will replace KEDiagramBuilder in the future.
+New interface for KEDiagramBuilder
