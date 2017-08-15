@@ -1,6 +1,5 @@
 tests
 testCheckHasVariableInASigmaMathFunctionExpression
-	"self new testCheckHasVariableInASigmaMathFunctionExpression"
 	|dictionary ex|
 	dictionary := self createADictionaryForTest.
 	ex := (KESigmaFunctionExpression new) functionName: #sigma; functionExpr: (KEBinaryExpression new op: #*; leftHandSide: (KEVariable new symbol: #beta); rightHandSide: (KEIndexedVariable new symbol: #S)).

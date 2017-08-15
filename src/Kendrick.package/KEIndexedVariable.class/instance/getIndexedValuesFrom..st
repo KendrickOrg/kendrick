@@ -1,0 +1,3 @@
+private
+getIndexedValuesFrom: aModel
+
