@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "MalHexagonalLatticeGenerator",
+	"category" : "Kendrick-Network",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "KEHexagonalContactNetwork",
+	"type" : "normal"
+}

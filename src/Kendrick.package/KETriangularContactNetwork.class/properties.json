@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "MalTriangularLatticeGenerator",
+	"category" : "Kendrick-Network",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "KETriangularContactNetwork",
+	"type" : "normal"
+}
