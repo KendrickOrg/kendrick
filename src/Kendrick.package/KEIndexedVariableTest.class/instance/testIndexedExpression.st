@@ -1,7 +1,7 @@
-as yet unclassified 
+test
 testIndexedExpression
-	"self new exampleRK4SolverOnSIRDemoMultiConcerns"
+	"self new testIndexedExpression"
 	| model expr |
-	model := self modelRK4SolverOnSIRDemoMultiConcerns.
+	model := self modelSIRDemoMultiConcerns.
 	expr := self getIndexedExpressionForModel.
 	self assert: (expr evaluateWithModel: model) equals: #(25 4)
