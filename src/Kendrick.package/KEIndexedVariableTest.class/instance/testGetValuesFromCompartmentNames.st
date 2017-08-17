@@ -1,4 +1,4 @@
-test
+tests
 testGetValuesFromCompartmentNames
 	"self new testGetValuesFromCompartmentNames"
 	|model tmp array indexValues compNames|

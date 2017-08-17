@@ -1,4 +1,4 @@
-test
+tests
 testSelectValueOfParameter
 "self new testSelectValueOfParameter"
 |model tmp|

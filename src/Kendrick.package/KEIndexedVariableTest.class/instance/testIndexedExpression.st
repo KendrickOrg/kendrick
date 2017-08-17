@@ -1,4 +1,4 @@
-test
+tests
 testIndexedExpression
 	"self new testIndexedExpression"
 	| model expr |

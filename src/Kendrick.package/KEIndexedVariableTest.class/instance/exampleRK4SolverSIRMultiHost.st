@@ -1,4 +1,4 @@
-as yet unclassified 
+as yet unclassified
 exampleRK4SolverSIRMultiHost
 	"self new exampleRK4SolverSIRMultiHost"
 	| model simulator db|

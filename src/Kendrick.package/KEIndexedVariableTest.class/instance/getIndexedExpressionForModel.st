@@ -1,4 +1,4 @@
-as yet unclassified 
+as yet unclassified
 getIndexedExpressionForModel
 	|expr var1 var2|
 	var1 := KEIndexedVariable new symbol: #gamma; addIndex: (KEVariable new symbol: #i).

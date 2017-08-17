@@ -1,4 +1,4 @@
-test
+tests
 testFindValuesFromIndexedValues
 	"self new testFindValuesFromIndexedValues"
 	|model tmp array indexValues|
