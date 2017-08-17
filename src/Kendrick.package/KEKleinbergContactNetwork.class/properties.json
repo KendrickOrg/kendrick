@@ -1,11 +1,13 @@
 {
-	"commentStamp" : "",
-	"super" : "MalKleinbergGraphGenerator",
-	"category" : "Kendrick-Network",
-	"classinstvars" : [ ],
-	"pools" : [ ],
+	"classtraitcomposition" : "TMetric classTrait",
 	"classvars" : [ ],
 	"instvars" : [ ],
 	"name" : "KEKleinbergContactNetwork",
-	"type" : "normal"
+	"commentStamp" : "",
+	"super" : "MalKleinbergGraphGenerator",
+	"traitcomposition" : "TMetric",
+	"type" : "normal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"category" : "Kendrick-Network"
 }

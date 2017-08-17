@@ -1,3 +1,4 @@
-accessing
+as yet unclassified
 op: aSymbol
-	^ self new op: aSymbol
+
+^ super new op:aSymbol
