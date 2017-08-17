@@ -1,4 +1,4 @@
-as yet unclassified
+as yet unclassified 
 exampleGillespieSolverSIRMultiHost
 	"self new exampleGillespieSolverSIRMultiHost"
 
