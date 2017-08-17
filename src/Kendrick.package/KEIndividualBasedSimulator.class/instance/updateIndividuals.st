@@ -3,7 +3,7 @@ updateIndividuals
 	"Update status for individuals of population"
 	
 	"We remove individuals whose status are empty"
-	|dead|
+	|dead additionalTrans|
 dead := model population individuals select: [ :ind|
 	( ind nextStatus isNotNil ) and: [ 	
 	((ind nextStatus at: #status) = #empty)]  ].
@@ -17,9 +17,18 @@ model population individuals do: [:ind |
 	
 	"Update compartments'size"
 
-	1 to: model transitions size do: [ :i|
+	"1 to: model transitions" 
+	additionalTrans := OrderedCollection new.
+	model transitions do: [ :each|
+		(model checkTransition: each)
+		ifTrue: [ additionalTrans add: each ]
+		ifFalse: [ additionalTrans addAll: (model createMoreTransitions: each) ]
+		 ].
+	1 to: additionalTrans
+	size do: [ :i|
 		|tr|
-		tr := model transitions at: i.
+		"tr := model transitions at: i."
+		tr := additionalTrans at: i.
 		tr executeOn: model times: (self transitionNbExecutions at: i).
 		self transitionNbExecutions at: i put: 0
 		 ]
