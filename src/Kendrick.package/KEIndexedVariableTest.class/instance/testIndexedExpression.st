@@ -1,6 +1,5 @@
-test
+tests
 testIndexedExpression
-	"self new testIndexedExpression"
 	| model expr |
 	model := self modelSIRDemoMultiConcerns.
 	expr := self getIndexedExpressionForModel.

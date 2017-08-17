@@ -1,4 +1,4 @@
-as yet unclassified 
+models
 modelSIRMultiHostsMultiSpatials
 |model|
 model := KEModel new.
