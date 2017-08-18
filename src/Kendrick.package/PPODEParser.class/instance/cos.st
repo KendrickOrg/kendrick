@@ -1,8 +1,7 @@
 grammar
-cos 
-
-^ super cos  ==> [:nodes|
-	(KEMathFunctionExpression new)
-	functionName: #cos;
-	functionExpr: (nodes at: 5)
-	]
+cos
+	^ super cos
+		==> [ :nodes | 
+			KEMathFunctionExpression new
+				functionName: #cos;
+				functionExpr: (nodes at: 5) ]
