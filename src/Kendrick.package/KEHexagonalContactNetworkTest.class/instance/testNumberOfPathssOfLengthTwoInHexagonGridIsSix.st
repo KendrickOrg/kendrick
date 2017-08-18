@@ -1,10 +1,10 @@
 tests
 testNumberOfPathssOfLengthTwoInHexagonGridIsSix
-	| gridTriang node |
-	gridTriang := KEHexagonalContactNetwork new
+	| network node |
+	network := KEHexagonalContactNetwork new
 		nodes: (1 to: 6 * 6);
 		n: 6;
 		m: 6.
-	gridTriang run.
-	node := gridTriang nodes at: 16.
-	self assert: (gridTriang p2: node) equals: 6
+	network run.
+	node := network nodes at: 16.
+	self assert: (network p2: node) equals: 6

@@ -1,3 +1,3 @@
-as yet unclassified
+accessing
 nextStatus: aSymbol 
 	nextStatus := aSymbol
