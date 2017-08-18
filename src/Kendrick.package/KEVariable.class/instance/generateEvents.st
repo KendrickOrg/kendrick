@@ -1,8 +1,5 @@
 as yet unclassified
 generateEvents
-	| list e |
-	list := OrderedCollection new.
-	e := KEEvent new.
-	e rate: self.
-	list add: e.
-	^ list
+	"Generate an event from a variable"
+
+	^ OrderedCollection with: (KEEvent new rate: self)

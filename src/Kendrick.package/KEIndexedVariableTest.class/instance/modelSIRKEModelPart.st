@@ -1,4 +1,4 @@
-as yet unclassified 
+models
 modelSIRKEModelPart
 |model multiHostConcern|
 model := KEModel new.

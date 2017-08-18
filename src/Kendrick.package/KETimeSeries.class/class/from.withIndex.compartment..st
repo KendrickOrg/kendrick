@@ -1,4 +1,4 @@
-as yet unclassified
+instance creation
 from: anArray withIndex: anArrayOfTimeIndex compartment: aCompartmentName
 	^ super new
 		data: anArray;

@@ -1,4 +1,3 @@
-as yet unclassified
+accessing
 symbol: aSymbol
-
-^super new symbol: aSymbol
+	^ self new symbol: aSymbol

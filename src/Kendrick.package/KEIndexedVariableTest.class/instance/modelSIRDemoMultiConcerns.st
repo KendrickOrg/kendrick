@@ -1,4 +1,4 @@
-as yet unclassified 
+models
 modelSIRDemoMultiConcerns
 	"self new modelSIRDemoMultiConcerns"
 	| model |
