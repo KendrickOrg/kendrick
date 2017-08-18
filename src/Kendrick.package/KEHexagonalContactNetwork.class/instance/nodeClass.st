@@ -1,4 +1,3 @@
 configuration
 nodeClass
-
-^KEContactNetworkNode 
+	^ KEContactNetworkNode
