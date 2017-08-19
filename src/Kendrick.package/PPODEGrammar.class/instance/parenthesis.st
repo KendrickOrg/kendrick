@@ -1,3 +1,3 @@
 grammar
 parenthesis
-	^ $( asParser trim , terms , $) asParser trim
+^ $( asParser trim , terms , $) asParser trim

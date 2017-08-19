@@ -1,9 +1,10 @@
 accessing
 transitionNbExecutions
+	"Apparently a trick to execute many times a transitions"
 
-"Apparently a trick to execute many times a transitions"
-
+	| additionalTrans |
 	transitionNbExecutions
 		ifNil: [ transitionNbExecutions := OrderedCollection new.
-			model transitions do: [ :i | transitionNbExecutions add: 0 ] ].
+			additionalTrans := self generateMoreTransitions.
+			additionalTrans do: [ :i | transitionNbExecutions add: 0 ] ].
 	^ transitionNbExecutions
