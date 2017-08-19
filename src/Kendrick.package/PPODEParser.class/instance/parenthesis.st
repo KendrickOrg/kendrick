@@ -1,6 +1,3 @@
 grammar
 parenthesis
-
-^ super parenthesis ==> [:nodes |
-	nodes second
-	]
+	^ super parenthesis ==> [ :nodes | nodes second ]

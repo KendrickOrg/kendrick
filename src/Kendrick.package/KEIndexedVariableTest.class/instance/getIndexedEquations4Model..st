@@ -1,4 +1,4 @@
-as yet unclassified 
+as yet unclassified
 getIndexedEquations4Model: aModel
 	aModel atParameter: #beta assignValue: #(4e-4 2e-2) .
 	aModel atParameter: #gamma assignValue: #(5e-2 1e-1).

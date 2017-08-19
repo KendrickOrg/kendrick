@@ -1,6 +1,3 @@
 grammar
 expression
-
-^ super expression ==> [:nodes |
-	nodes
-	]
+	^ super expression ==> [ :nodes | nodes ]

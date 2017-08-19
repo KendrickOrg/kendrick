@@ -1,4 +1,3 @@
 grammar
 identifier
-
-^ super identifier flatten ==> [:string | (KEVariable new) symbol: string asSymbol]
+	^ super identifier flatten ==> [ :string | KEVariable symbol: string asSymbol ]
