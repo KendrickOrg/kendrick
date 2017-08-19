@@ -7,6 +7,6 @@ version043: spec
 			spec description: 'version 0.42'.
 			spec
 				"project: 'Moose' with: '6.1-baseline';"
-				project: 'PolyMath' with: '0.49-baseline';
+				project: 'PolyMath' with: '0.40-baseline';
 				project: 'Ston' with: '0.19'.
 			spec package: 'Kendrick' with: 'Kendrick-SergeStinckwich.682' ]
