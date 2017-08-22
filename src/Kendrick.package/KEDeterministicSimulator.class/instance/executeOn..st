@@ -22,12 +22,12 @@ executeOn: aModel
 				ifFalse: [ model currentCompartment: ((e at: 1) from) ].
 				model nextCompartment: ((e at: 1) to).
 				prob := ((e at: 1) probability value: model) abs.
-				p := self project: prob into: k.
+				"p := self project: prob into: k."
 				"prob isDictionary ifTrue: [ prob := prob values sum ]."
-				self calculateBetween: (e at: 2) 
+				"self calculateBetween: (e at: 2) 
 							with: (model atCompartment: (e at: 1) from) 
-							and: p   project: k.
-				
+							and: p   project: k."
+				(e at: 2)*prob*(model atCompartment: (e at: 1) from)
 				]) sum	.
 			].
 			c at: i put: tmp.
