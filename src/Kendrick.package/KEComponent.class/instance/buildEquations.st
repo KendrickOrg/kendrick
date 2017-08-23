@@ -2,8 +2,6 @@ adding
 buildEquations
 	"Return the suitable array for KESimulatorDeterministic in order to solve the equations."
 
-	"This method should be merge with equations method in the same class: issue #40"
-
 	| eq |
 	eq := Dictionary new.
 	self compartmentNames do: [ :k | eq at: k put: OrderedCollection new ].
