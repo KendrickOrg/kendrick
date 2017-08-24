@@ -1,4 +1,4 @@
-private
+as yet unclassified 
 pickVariableFrom: expression AtIndex: anIndex
 	| result |
 	expression class = KEBinaryExpression

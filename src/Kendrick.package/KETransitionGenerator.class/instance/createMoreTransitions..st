@@ -1,11 +1,11 @@
-private
+as yet unclassified 
 createMoreTransitions: tr
 	| trs species |
 	"Some transitions - in case multi hosts - doesnt have information"
 	"about species, such as From {status->#I} to {status->#R}. So we"
 	"should add the species into its keys"
 	"Run the exampleRK4SIRModelMultiHost in class KEIndexedVariableTest to know"
-	species := self attributes at: #species.
+	species := model attributes at: #species.
 	trs := Array new: species size.
 	1 to: species size do: [ :each | 
 		| t from to |
@@ -18,9 +18,6 @@ createMoreTransitions: tr
 		to at: #species put: (species at: each).
 		t from: from.
 		t to: to.
-		"tr probability class = KEIndexedVariable
-			ifTrue: [ t probability: (tr probability pickVariableAtIndexedValue: each) ]
-			ifFalse: [ t probability: tr probability ]."
 		t probability: (self pickVariableFrom: tr probability AtIndex: each).
 		trs at: each put: t ].
 	^ trs
