@@ -8,5 +8,6 @@ from: aKEModel
 		do: [ :each | 
 			(temp checkEnoughKeys: each)
 				ifTrue: [ result add: each ]
-				ifFalse: [ result addAll: (temp createMoreTransitions: each) ] ].
+				ifFalse: [ result addAll: (temp generateMoreTransitions: each) ] ].
+	"temp reAssignParameterN."
 	^ result
