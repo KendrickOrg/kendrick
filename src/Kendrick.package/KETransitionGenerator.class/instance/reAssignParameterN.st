@@ -6,9 +6,8 @@ reAssignParameterN
 		ifTrue: [ model
 				atParameter: #N
 				assignValue: [ :aModel | 
-					| c currentComp |
+					| c |
 					c := aModel currentCompartment copy.
 					c removeKey: #status.
-					"c := aModel currentCompartment at: #species."
-					"c := currentComp values."
-					aModel sizeOfPopulation: (c values) ] ]
+					
+					aModel sizeOfPopulation: c values ] ]
