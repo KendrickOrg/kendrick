@@ -9,5 +9,5 @@ from: aKEModel
 			(temp checkEnoughKeys: each)
 				ifTrue: [ result add: each ]
 				ifFalse: [ result addAll: (temp generateMoreTransitions: each) ] ].
-	"temp reAssignParameterN."
+	temp reAssignParameterN.
 	^ result

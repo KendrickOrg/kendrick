@@ -1,5 +1,6 @@
 private
 generateMoreTransitions
+	"Going to be remove"
 	| additionalTrans |
 	additionalTrans := OrderedCollection new.
 	model transitions

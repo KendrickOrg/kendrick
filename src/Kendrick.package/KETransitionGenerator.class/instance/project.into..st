@@ -1,6 +1,6 @@
 private
 project: anArray into: k
-	"Going to be removed"
+	"It seems to be removed soon"
 	| attributes indexValues x |
 	anArray isNumber
 		ifTrue: [ ^ anArray ].

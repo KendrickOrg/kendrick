@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"indexList"
+		"indexList",
+		"expression"
 	],
 	"name" : "KEIndexedVariable",
 	"type" : "normal"
