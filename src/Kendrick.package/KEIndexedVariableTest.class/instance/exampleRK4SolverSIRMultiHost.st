@@ -2,7 +2,7 @@ as yet unclassified
 exampleRK4SolverSIRMultiHost
 	"self new exampleRK4SolverSIRMultiHost"
 
-	| model simulator db generator from result |
+	| model simulator db |
 	model := self modelSIRMultiHost.
 	simulator := KESimulator
 		new: #RungeKutta
@@ -13,10 +13,3 @@ exampleRK4SolverSIRMultiHost
 	db := KEDiagramBuilder new
 		data: (simulator allTimesSeriesContaining: '{#status: #I}') sqrt.
 	db open
-	"generator := KETransitionGenerator new.
-	generator model: model.
-	generator reAssignParameterN.
-	from := Dictionary new: 2.
-	from add: #status -> #empty.
-	from add: #species -> #mosquito.
-	result := model atCompartment: from"

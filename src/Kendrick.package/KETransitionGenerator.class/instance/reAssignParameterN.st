@@ -1,6 +1,8 @@
 as yet unclassified 
 reAssignParameterN
 	| temp |
+	model class = KEModel
+	ifTrue: [  
 	temp := model atParameter: #N.
 	temp isArray
 		ifTrue: [ model
@@ -11,3 +13,4 @@ reAssignParameterN
 					c removeKey: #status.
 					
 					aModel sizeOfPopulation: c values ] ]
+			].
