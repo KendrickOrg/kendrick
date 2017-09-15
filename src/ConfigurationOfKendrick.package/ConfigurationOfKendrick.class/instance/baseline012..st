@@ -4,7 +4,8 @@ baseline012: spec
 
 	spec for: #'common' do: [
 		spec blessing: #'baseline'.
-		spec repository: 'http://smalltalkhub.com/mc/UMMISCO/Kendrick/main/'.
+		spec repository: 'http://smalltalkhub.com/mc/UMMISCO/Kendrick/main/';
+			repository: 'http://smalltalkhub.com/mc/SergeStinckwich/Moose-Algos-Graph-Generators/main'.
 		spec
 			project: 'PolyMath' with: [
 				spec
