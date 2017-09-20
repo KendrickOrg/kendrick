@@ -1,3 +1,3 @@
 adding
 addTransition: aTransition
-	transitions add: aTransition.
+	transitions add: aTransition
