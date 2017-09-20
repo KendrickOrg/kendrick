@@ -6,7 +6,6 @@ SystemOrganization addCategory: 'Kendrick-IBM-Core'!
 SystemOrganization addCategory: 'Kendrick-InternalDSL'!
 SystemOrganization addCategory: 'Kendrick-Network'!
 SystemOrganization addCategory: 'Kendrick-ODE-Parser'!
-SystemOrganization addCategory: 'Kendrick-Obsolete'!
 SystemOrganization addCategory: 'Kendrick-Semantic-Model-Core'!
 SystemOrganization addCategory: 'Kendrick-Spatial-Core'!
 SystemOrganization addCategory: 'Kendrick-Tests-Code-Generators'!
