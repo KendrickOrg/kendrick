@@ -1,0 +1,13 @@
+{
+	"classtraitcomposition" : "KETraitNetworkMetrics classTrait",
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "KEKleinbergContactNetwork",
+	"commentStamp" : "",
+	"super" : "MalKleinbergGraphGenerator",
+	"traitcomposition" : "KETraitNetworkMetrics",
+	"type" : "normal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"category" : "Kendrick-Network"
+}

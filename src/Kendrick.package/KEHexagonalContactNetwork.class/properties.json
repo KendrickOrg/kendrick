@@ -1,0 +1,13 @@
+{
+	"classtraitcomposition" : "KETraitNetworkMetrics classTrait",
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "KEHexagonalContactNetwork",
+	"commentStamp" : "",
+	"super" : "MalHexagonalLatticeGenerator",
+	"traitcomposition" : "KETraitNetworkMetrics",
+	"type" : "normal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"category" : "Kendrick-Network"
+}
