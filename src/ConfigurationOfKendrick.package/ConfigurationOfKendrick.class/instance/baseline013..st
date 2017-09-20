@@ -4,7 +4,7 @@ baseline013: spec
 
 	spec for: #'common' do: [
 		spec blessing: #'baseline'.
-		spec repository: 'http://smalltalkhub.com/mc/SergeStinckwich/Moose-Algos-Graph-Generators/main'.
+		spec repository: 'http://smalltalkhub.com/mc/UMMISCO/Kendrick/main/'.
 		spec 
 			project: 'Glamour' with: [
 				spec
