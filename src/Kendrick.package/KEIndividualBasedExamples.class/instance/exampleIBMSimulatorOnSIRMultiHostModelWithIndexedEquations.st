@@ -1,12 +1,12 @@
 examples
-exampleIBMSimulatorOnSIRMultiHostModel
-	"self new exampleIBMSimulatorOnSIRMultiHostModel"
+exampleIBMSimulatorOnSIRMultiHostModelWithIndexedEquations
+	"self new exampleIBMSimulatorOnSIRMultiHostModelWithIndexedEquations"
 
 	| model simulator db t |
 	
 	t := KEIndexedVariableTest new.
-	"model := t modelSIRMultiHost."
-	model := t modelSIRKEModelPart.
+	model := t modelSIRMultiHost.
+	
 	simulator := KESimulator
 		new: #IBM
 		from: 0.0

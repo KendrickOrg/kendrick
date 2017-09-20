@@ -1,9 +1,7 @@
 public
 executeOn: aModel
-	| rand1 rand2 t previousT | "count"
-	"ThanhNT"
-	"count := 1."
-	"Endof ThanhNT"
+	| rand1 rand2 t previousT |
+
 	super executeOn: aModel.
 	t := tMin.
 	previousT := t.
@@ -21,6 +19,5 @@ executeOn: aModel
 			"Only store in the result from step to step"
 			t > (previousT + step)
 				ifTrue: [ self saveCompartmentsValueAtTime: t.
-					previousT := t ].
-			"count := count + 1"
-			"(count > 130000) ifTrue: [ ^t. ]" ]
+					previousT := t ]
+ ]
