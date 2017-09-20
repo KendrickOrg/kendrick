@@ -4,8 +4,9 @@ baseline012: spec
 
 	spec for: #'common' do: [
 		spec blessing: #'baseline'.
-		spec repository: 'http://smalltalkhub.com/mc/UMMISCO/Kendrick/main/';
-			repository: 'http://smalltalkhub.com/mc/SergeStinckwich/Moose-Algos-Graph-Generators/main'.
+		spec
+			repository: 'http://smalltalkhub.com/mc/SergeStinckwich/Moose-Algos-Graph-Generators/main';
+			repository: 'http://smalltalkhub.com/mc/UMMISCO/Kendrick/main/'.
 		spec
 			project: 'PolyMath' with: [
 				spec
@@ -23,5 +24,4 @@ baseline012: spec
 					versionString: #'stable';
 					loads: #('Glamour-Magritte-Presentations' );
 					repository: 'http://smalltalkhub.com/mc/Moose/Glamour/main/' ].
-		spec package: 'Moose-Algos-Graph-Generators'.
 		spec package: 'Kendrick'. ]
