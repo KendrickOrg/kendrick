@@ -23,4 +23,5 @@ baseline012: spec
 					versionString: #'stable';
 					loads: #('Glamour-Magritte-Presentations' );
 					repository: 'http://smalltalkhub.com/mc/Moose/Glamour/main/' ].
+		spec package: 'Moose-Algos-Graph-Generators'.
 		spec package: 'Kendrick'. ]
