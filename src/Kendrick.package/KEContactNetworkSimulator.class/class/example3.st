@@ -1,13 +1,13 @@
 examples
 example3
-	| mean result graph n g |
+	| mean result graph|
 	result := (1 to: 100)
-		collect: [ :each | 
+		collect: [ :each | |n g|
 			graph := KETriangularContactNetwork new
 				nodes: (1 to: 25 * 25);
 				n: 25;
 				m: 25.
-			n := KEContactNetworkSimulator fromNetwork: graph.
+			n := self fromNetwork: graph.
 			g := n network.
 			50 timesRepeat: [ n step ].
 			graph r0 ].
@@ -15,4 +15,4 @@ example3
 	mean := 0.
 	result do: [ :each | mean := mean + each ].
 	mean := mean / result size.
-	mean
+	^mean
