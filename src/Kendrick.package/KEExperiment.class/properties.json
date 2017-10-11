@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "SergeStinckwich 10/11/2017 12:06",
 	"super" : "Object",
 	"category" : "Kendrick-Experiment",
 	"classinstvars" : [ ],
@@ -7,7 +7,6 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"name",
-		"model",
 		"runs",
 		"results",
 		"executeBlock"
