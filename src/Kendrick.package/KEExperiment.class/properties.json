@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Kendrick-Experiment",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"name",
+		"model",
+		"runs",
+		"results",
+		"executeBlock"
+	],
+	"name" : "KEExperiment",
+	"type" : "normal"
+}

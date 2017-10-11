@@ -1,6 +1,7 @@
 SystemOrganization addCategory: #Kendrick!
 SystemOrganization addCategory: 'Kendrick-Code-Generators'!
 SystemOrganization addCategory: 'Kendrick-Examples'!
+SystemOrganization addCategory: 'Kendrick-Experiment'!
 SystemOrganization addCategory: 'Kendrick-Help'!
 SystemOrganization addCategory: 'Kendrick-IBM-Core'!
 SystemOrganization addCategory: 'Kendrick-InternalDSL'!
