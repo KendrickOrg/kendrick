@@ -1,7 +1,7 @@
 examples
-exampleGillespieDirectOnSEIRMeaslesModel
-	"self new exampleGillespieDirectOnSEIRMeaslesModel"
-	|model simulator  diag |
+measlesModel
+	"self new measlesScriptForValidation"
+	|model|
 	model := KEModel new population: (KEPopulation size: 100000).
 	model attributes: {#status->#(#S #E #I #R)}.
 	model atCompartment: { #status->#S } put: 99999 atOthersPut: 0.
@@ -33,10 +33,10 @@ exampleGillespieDirectOnSEIRMeaslesModel
 	model addTransitionFrom: #empty
 		to: '{#status: #S}'
 		probability: [:m| (m atParameter: #mu)].
-	simulator := KESimulator new: #Gillespie from: 0.0 to: 150 by: 1.
-	simulator executeOn: model.
-	diag := (KEDiagramBuilder new) data: (simulator allTimesSeriesContaining: '{#status: #I}').
-	^ diag open
+	
+	^ model
+	
+	
 	
 	
 	
