@@ -1,7 +1,7 @@
 example
 example
-	| mean result experiment |
-	experiment := KEExperiment new
+	|  experiment result mean |
+	experiment := self class new
 		name: #experiment1;
 		runs: 100.
 	experiment

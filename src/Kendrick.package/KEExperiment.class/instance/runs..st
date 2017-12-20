@@ -1,3 +1,3 @@
 accessing
 runs: aNumber
-runs := aNumber
+	runs := aNumber

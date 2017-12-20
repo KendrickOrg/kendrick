@@ -1,4 +1,3 @@
 accessing
 executeBlock: aBlock
-
-executeBlock := aBlock
+	executeBlock := aBlock
