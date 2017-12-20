@@ -68,8 +68,8 @@ exampleGillespieDirectOnSIRMultiHostModel
 		((aModel atParameter: #beta) * 
 		(aModel atCompartment: {#status->#I})) sum
 		].
-	model atCompartment: { #status->#S. #species->#mosquito } put: 9990.
-	model atCompartment: { #status->#I. #species->#mosquito } put: 10.
+	model atCompartment: { #status->#S. #species->#mosquito } put: 9999.
+	model atCompartment: { #status->#I. #species->#mosquito } put: 1.
 	model atCompartment: { #status->#S. #species->#reservoir1 } put: 1000.
 	model atCompartment: { #status->#S. #species->#reservoir2 } put: 2000.
 

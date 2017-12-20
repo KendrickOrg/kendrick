@@ -1,5 +1,5 @@
 accessing
-timeSeriesAt: aCompartmentName
+timesSeriesAt: aCompartmentName
 
 "Return a time series according to the compartment name"
 "This is a bad design to expect to two differents types for the compartment name"
