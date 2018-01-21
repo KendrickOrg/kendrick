@@ -15,13 +15,7 @@ baseline011: spec
 				spec
 					className: #ConfigurationOfSton;
 					versionString: #'stable';
-					repository: 'http://ss3.gemstone.com/ss/STON' ];
-			project: 'Glamour' with: [
-				spec
-					className: #ConfigurationOfGlamour;
-					versionString: #'stable';
-					loads: #('Glamour-Magritte-Presentations' );
-					repository: 'http://smalltalkhub.com/mc/Moose/Glamour/main/' ].
+					repository: 'http://ss3.gemstone.com/ss/STON' ].
 		spec package: 'Kendrick'. ].
 		
 	
