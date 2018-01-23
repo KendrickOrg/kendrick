@@ -43,11 +43,10 @@ KendrickModel SEIRSQ
 	lambda: #(beta*I/(N-Q)).
 	
 Composition SEIRSQInfluenza
-	model: 'Influenza';
 	populationSize: 27500;
-	concern: 'SEIRSQ';
-	concern: 'Demographical';
-	concern: 'Biological';
+	model: 'SEIRSQ';
+	model: 'Demographical';
+	model: 'Biological';
 	lambda: #(beta*(I_patch/(N-Q_patch)) sum);
 	N: #(species_patch).
 	

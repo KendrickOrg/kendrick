@@ -36,9 +36,8 @@ KendrickModel SEIRSQ
     lambda: #(beta*I/(N-Q)).
 
 Composition SEIRSInfluenza
-    model: 'Influenza';
-    concern: 'SEIRSQ';
-    concern: 'Biological';
+    model: 'SEIRSQ';
+    model: 'Biological';
     lambda: #(beta*(I_country/(N-Q_country)) sum).
 
 Composition SEIRSInfluenzaSpatial

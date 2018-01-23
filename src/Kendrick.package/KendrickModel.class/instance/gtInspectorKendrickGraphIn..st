@@ -5,4 +5,4 @@ gtInspectorKendrickGraphIn: composite
 	<gtInspectorTag: #custom>
 	<gtInspectorTag: #kendrick>
 	
-	^ ((Composition Temp model: 'mTemp'; concern: self id) instVarNamed: #backEndEntity) gtInspectorKendrickGraphIn: composite
+	^ ((Composition Temp; concern: self id) instVarNamed: #backEndEntity) gtInspectorKendrickGraphIn: composite

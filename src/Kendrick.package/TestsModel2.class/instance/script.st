@@ -15,10 +15,9 @@ KendrickModel Biological
 	attribute: #(species -> human bird).
 	
 Composition SIRInfluenza
-	model: 'Influenza';
 	populationSize: 5500;
-	concern: 'Biological';
-	concern: 'SIR';
+	model: 'Biological';
+	model: 'SIR';
 	lambda: #(beta*I/N sum);
 	N: #(species).
 	

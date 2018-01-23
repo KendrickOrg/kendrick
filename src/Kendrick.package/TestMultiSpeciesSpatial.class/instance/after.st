@@ -39,10 +39,9 @@ KendrickModel Epidemiological
 	).
 		
 Composition MultiSpatialCombo
-	model: 'MultiSpeciesSpatial';
-	concern: 'Spatial';
-	concern: 'MultiHost';
-	concern: 'Epidemiological';
+	model: 'Spatial';
+	model: 'MultiHost';
+	model: 'Epidemiological';
 	"beta_patch: #(0.75 0.5 0.5 0.5 0.5);"
 	mu_species: #(0.0000365 0.00137);
 	sigma_species: #(0.5 0.67);

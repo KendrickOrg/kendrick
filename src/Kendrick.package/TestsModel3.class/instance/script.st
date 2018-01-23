@@ -33,10 +33,9 @@ KendrickModel SEIRS
 	addTransition: #(E -- mu --> Empty.).
 		
 Composition SEIRSInfluenza
-	model: 'Influenza';
-	concern: 'Demographical';
-	concern: 'Biological';
-	concern: 'SEIRS';
+	model: 'Demographical';
+	model: 'Biological';
+	model: 'SEIRS';
 	lambda: #(beta*I_patch/N sum);
 	N: #(patch_species).
 	

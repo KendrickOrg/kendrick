@@ -12,8 +12,7 @@ KendrickModel SEIR
 	).
         
 Composition Measles
-    model: 'Measles';
-    concern: 'SEIR'.
+    model: 'SEIR'.
     
 Scenario MeaslesParameters
 	 on: 'Measles';

@@ -32,10 +32,9 @@ KendrickModel Demographical
 		5 -- rho --> 1.).
 	
 Composition SEIIRSCombo
-	model: 'Influenza';
-	concern: 'SEIIRS';
-	concern: 'Demographical';
-	concern: 'Biological';
+	model: 'SEIIRS';
+	model: 'Demographical';
+	model: 'Biological';
 	lambda: #((beta1*(I1_patch/N))+(beta2*(I2_patch/N)) sum);
 	N: #(patch_species).
 	

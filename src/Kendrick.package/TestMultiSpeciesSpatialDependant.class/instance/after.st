@@ -37,11 +37,10 @@ KendrickModel SEIR
 	delay: #(sigma , S -- lambda --> I  , E).
 		
 Composition MultiSpeciesSpatial
-	model: 'Infuenza';
 	populationSize: 27500;
-	concern: 'Demographical';
-	concern: 'Biological';
-	concern: 'SEIR';
+	model: 'Demographical';
+	model: 'Biological';
+	model: 'SEIR';
 	mu_species: #(0.0000365 0.00137);
 	sigma_species: #(0.5 0.67);
 	gamma_species: #(0.25 0.233);

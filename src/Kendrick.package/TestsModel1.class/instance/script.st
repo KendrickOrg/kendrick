@@ -13,8 +13,7 @@ KendrickModel SIR
 	).
 
 Composition SIRInfluenza
-	model: 'Influenza';
-	concern: 'SIR'.
+	model: 'SIR'.
 	
 Scenario SIRInfluenza1
 	on: 'SIRInfluenza';

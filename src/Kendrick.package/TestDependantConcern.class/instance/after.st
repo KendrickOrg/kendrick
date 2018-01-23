@@ -34,9 +34,8 @@ KendrickModel SEIR
 	delay: #(sigma , S -- lambda --> I  , E).
 	
 Composition OneSpatialCombo
-	model: 'OneSpeciesSpatial';
-	concern: 'Spatial';
-	concern: 'SEIR';
+	model: 'Spatial';
+	model: 'SEIR';
 	beta_patch: #(0.75 0.5 0.5 0.5 0.5);
 	N: #(patch);
 	lambda: #(beta*I_patch/N); "check how this should work"

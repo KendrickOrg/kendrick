@@ -20,8 +20,7 @@ KendrickModel SpeciesConcern
 	attribute: #(species -> mosquito reservoir1 reservoir2).
 		
 Composition MultiMosquito
-	model: 'Mosquito';
-	concern: 'SpeciesConcern';	
+	model: 'SpeciesConcern';	
 	S_species: #(9999 1000 2000);
 	I_species: #(1 0 0);
 	"others: 0;"

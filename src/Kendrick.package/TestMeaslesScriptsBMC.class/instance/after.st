@@ -17,8 +17,7 @@ KendrickModel SEIR
 	delay: #(sigma , S -- lambda --> I  , E).
     
 Composition Measles
-    model: 'Measles';
-    concern: 'SEIR';
+    model: 'SEIR';
     lambda: #(beta*I).
     
 Scenario MeaslesParameters

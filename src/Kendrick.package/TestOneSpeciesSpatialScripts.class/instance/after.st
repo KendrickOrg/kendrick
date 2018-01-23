@@ -34,9 +34,8 @@ KendrickModel Epidemiological
 	).
 		
 Composition OneSpatialCombo
-	model: 'OneSpeciesSpatial';
-	concern: 'Spatial';
-	concern: 'Epidemiological';
+	model: 'Spatial';
+	model: 'Epidemiological';
 	beta_patch: #(0.75 0.5 0.5 0.5 0.5);
 	N: #(patch);
 	lambda: #(beta*I_patch/N); "check how this should work"
