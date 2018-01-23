@@ -1,6 +1,5 @@
 tests
 testEquationsToTransitions
-	"self new testEquationsToTransitions"
 	| model |
 	model := KEModel new.
 	model addEquation: 'S:t=mu*N - beta*S*I - mu*S'.

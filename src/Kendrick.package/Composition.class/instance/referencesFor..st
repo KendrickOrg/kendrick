@@ -3,7 +3,7 @@ referencesFor: anAttribute
 
 	|assoc|
 
-	assoc := (model attributes 
+	assoc := (self model attributes 
 		associations select: [ :as | as value includes: anAttribute ]) first.
 	^ assoc key asSymbol -> anAttribute asSymbol 
 

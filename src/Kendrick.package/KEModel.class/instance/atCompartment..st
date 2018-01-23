@@ -14,10 +14,9 @@ atCompartment: anObject
 	c := self attributes keys reject: [ :a | key keys includes: a ].
 	c isEmpty
 		ifTrue: [ ^ self population sizeOfACompartment: key ]
-		ifFalse: [ ^	(self atAttribute: c first)
+		ifFalse: [ ^ (self atAttribute: c first)
 				collect: [ :e | 
 					| tmp |
 					tmp := key copy.
 					tmp at: c first put: e.
-					self population sizeOfACompartment: tmp ] 
-				]
+					self population sizeOfACompartment: tmp ] ]

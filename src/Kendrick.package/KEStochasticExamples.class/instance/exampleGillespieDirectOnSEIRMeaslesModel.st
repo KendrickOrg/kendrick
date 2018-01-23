@@ -33,9 +33,9 @@ exampleGillespieDirectOnSEIRMeaslesModel
 	model addTransitionFrom: #empty
 		to: '{#status: #S}'
 		probability: [:m| (m atParameter: #mu)].
-	simulator := KESimulator new: #Gillespie from: 0.0 to: 0.5 by: 0.0027.
+	simulator := KESimulator new: #Gillespie from: 0.0 to: 0.5 step: 0.0027.
 	simulator executeOn: model.
-	diag := (KEDiagramBuilder new) data: (simulator allTimesSeriesContaining: '{#status: #I}').
+	diag := (KEDiagramBuilder new) data: (simulator timeSeriesOutputsAt: '{#status: #I}').
 	^ diag open
 	
 	

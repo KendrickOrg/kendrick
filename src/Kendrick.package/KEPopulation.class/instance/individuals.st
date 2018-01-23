@@ -1,7 +1,5 @@
 accessing
 individuals
-	"Return the individuals of a population"
-	"If the individuals does not exist, we create them"
 	individuals ifNil: [ 
 		|n|
 		n := 0.
@@ -13,7 +11,8 @@ individuals
 				n := n + 1.
 				ind updateAttributes: k.
 				ind currentStatus: k.
-				individuals add: ind.
+				ind id: n.
+				individuals add: ind
 				 ]
 			 ]
 		 ].

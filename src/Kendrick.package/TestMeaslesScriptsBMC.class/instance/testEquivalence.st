@@ -5,6 +5,9 @@ testEquivalence
 	| resultsBefore resultsAfter |
 	self createModels.
 
+	beforeModel inspect.
+	afterModel keModel inspect.
+
 	"correct (check inspector) -- but timeseries are presented in different order fix"
 
 	resultsBefore := (beforeDiagram data collect: [ :ts | ts peakOfEpidemic floor ]) sorted asOrderedCollection.

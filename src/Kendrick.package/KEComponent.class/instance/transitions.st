@@ -1,8 +1,7 @@
 accessing
 transitions
-"Return a collection of transitions of the model"
 
-	equations ifNotEmpty: [ self equationsToTransitions ].
+	equations isEmpty ifFalse: [ self equationsToTransitions ].
 	transitions isEmpty ifTrue: [  
 		"generate a transition rate matrix of 0"
 		self compartmentNames do: [ :e| 

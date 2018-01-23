@@ -51,7 +51,7 @@ exampleIBMSimulatorOnSIREbolaModel
 		ifFalse: [model atCompartment: { #status->#S. #country->each } put: 1000 ]
 	].
 	
-	simulator := KESimulator new: #IBM from: 0.0 to: 100 by: 0.1.
+	simulator := KESimulator new: #IBM from: 0.0 to: 100 step: 0.1.
 	simulator executeOn: model.
 	"(simulator timeSeriesAt: '{#status: #I, #country: #Guinea}') first save: 'I_Guinea_Det.txt'.
 	(simulator timeSeriesAt: '{#status: #I, #country: #Liberia}') first save: 'I_Liberia_Det.txt'.
@@ -59,7 +59,7 @@ exampleIBMSimulatorOnSIREbolaModel
 	(simulator timeSeriesAt: '{#status: #I, #country: #Nigeria}') first save: 'I_Nigeria_Det.txt'.
 	(simulator timeSeriesAt: '{#status: #I, #country: #Senegal}') first save: 'I_Senegal_Det.txt'.
 	(simulator timeSeriesAt: '{#status: #I, #country: #SierraLeone}') first save: 'I_SierraLeone_Det.txt'."
-	db := (KEDiagramBuilder new) data: (simulator allTimesSeriesContaining: '{#status: #	I}').
+	db := (KEDiagramBuilder new) data: (simulator timeSeriesOutputsAt: '{#status: #	I}').
 	db open.
 	db openMap: #africa 
 	   countries: (model atAttribute: #country) 

@@ -10,10 +10,10 @@ exampleGillespieDirectOnSIRSimpleModelWithODERepresentation
 	model addEquation: 'S:t=-beta*S*I'.
 	model addEquation: 'I:t=beta*S*I - gamma*I'.
 	model addEquation: 'R:t=gamma*I'.
-	simulator := KESimulator new: #Gillespie from: 0.0 to: 1.0 by: 0.001.
+	simulator := KESimulator new: #Gillespie from: 0.0 to: 1.0 step: 0.001.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
-	dB data: simulator timeSeries.
+	dB data: simulator timeSeriesOutputs.
 	^ dB view
 	
 	

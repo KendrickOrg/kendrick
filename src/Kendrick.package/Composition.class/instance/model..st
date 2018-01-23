@@ -1,6 +1,12 @@
-as yet unclassified
+accessing
 model: aString
+	|concern|
 
-	model := [ModelComponent withId: aString] on: Error do: [ ModelComponent new id: aString]. 
-	"the error should be a Comp. DNU here -- fix"
-	backEndEntity := model keModel 
+	concern := KendrickModel withId: aString.
+	(concerns includes: concern) ifFalse: [  "no duplicates"
+		concern extends do: [ :ext | 
+			self concern: ext 
+		]. "-- is this integrated in the backend ?" 
+		concerns add: concern.
+		self model integrate: concern.
+	]

@@ -1,4 +1,5 @@
 initialization
 initialize
 	super initialize.
-	attributes := Dictionary new
+	attributes := Dictionary new.
+	attributes at: #alive put: true

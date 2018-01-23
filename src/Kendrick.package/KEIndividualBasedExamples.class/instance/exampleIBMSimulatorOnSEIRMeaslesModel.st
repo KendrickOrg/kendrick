@@ -2,10 +2,10 @@ examples
 exampleIBMSimulatorOnSEIRMeaslesModel
 	"self new exampleIBMSimulatorOnSEIRMeaslesModel"
 	|model simulator diag|
-	model := KEModel new population: (KEPopulation size: 10000).
+	model := KEModel new population: (KEPopulation size: 100000).
 	model addAttribute: #status value: #(S E I R).
-	model atCompartment: { #status->#S } put: 9990 atOthersPut: 0.
-	model atCompartment: { #status->#I } put: 10.
+	model atCompartment: { #status->#S } put: 99999 atOthersPut: 0.
+	model atCompartment: { #status->#I } put: 1.
 	model addParameters: {
 		#beta->0.0000214. 
 		#gamma->0.143. 
@@ -45,9 +45,9 @@ exampleIBMSimulatorOnSEIRMeaslesModel
 		addTransitionFrom: #empty 
 		to: '{#status: #S}' 
 		probability: [ :m | m atParameter: #mu ].
-	simulator := KESimulator new: #IBM from: 0.0 to: 150 by: 1.
+	simulator := KESimulator new: #IBM from: 0.0 to: 150 step: 1.
 	simulator executeOn: model.
-	diag := (KEDiagramBuilder new) data: (simulator allTimesSeriesContaining: '{#status: #I}').
-	diag open
+	diag := (KEDiagramBuilder new) data: (simulator timeSeriesOutputsAt: '{#status: #I}').
+	^ diag view
 	
 	

@@ -44,9 +44,9 @@ exampleRK4SolverOnSEIRSModelWithQuarantine
 	model atCompartment: { #status->#R } put: 0.
 	model atCompartment: { #status->#E } put: 0.
 	
-	simulator := KESimulator new: #RungeKutta from: 0.0 to: 365 by: 1.
+	simulator := KESimulator new: #RungeKutta from: 0.0 to: 365 step: 1.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
-	dB data: (simulator timeSeries ).
+	dB data: (simulator timeSeriesOutputs ).
 	dB xLabel: 'Time (year)'.
 	dB open.

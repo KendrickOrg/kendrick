@@ -6,14 +6,14 @@ entitiesFor: attr
 	^ { 
 	
 		(attr collect: [:attribute | 
-			((concerns copy add: model; yourself) 
+			((concerns copy add: self model; yourself) 
 				select: [ :e | 
 					e attributes keys includes: attribute
 	 			]
 			)  ]) flatten.
 			
 		(attr collect: [:attribute | 
-			((concerns copy add: model; yourself) 
+			((concerns copy add: self model; yourself) 
 				select: [ :e | 
 					e attributes values first includes: attribute
 	 			]

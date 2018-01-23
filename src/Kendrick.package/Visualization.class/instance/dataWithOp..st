@@ -3,7 +3,7 @@ dataWithOp: anArray "should be full math-expression"
 	^ lazyDataBlock := [
 			diag data: 
 				((simulation 
-					allTimesSeriesContaining: 
+					timeSeriesOutputsAt: 
 						(simulation model transitionRefFor: anArray first))
 					perform: anArray last)
 			]

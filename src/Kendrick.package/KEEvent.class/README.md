@@ -1,4 +1,4 @@
-A KEEvent is an event generated from an ODE of an epidemiological model.
+A KEEvent is an event generated from an ode of epidemiological model.
 
 Instance Variables
 	actions:		<Dictionary>

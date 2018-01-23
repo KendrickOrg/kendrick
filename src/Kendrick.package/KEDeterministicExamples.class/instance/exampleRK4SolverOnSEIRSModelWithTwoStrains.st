@@ -50,12 +50,12 @@ exampleRK4SolverOnSEIRSModelWithTwoStrains
 	model atCompartment: { #status->#R } put: 0.
 	model atCompartment: { #status->#E } put: 0.
 
-	simulator := KESimulator new: #RungeKutta from: 0.0 to: 365 by: 1.
+	simulator := KESimulator new: #RungeKutta from: 0.0 to: 365 step: 1.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
 	data := OrderedCollection new.
-	data addAll: (simulator allTimesSeriesContaining: '{#status: #I1}').
-	data addAll: (simulator allTimesSeriesContaining: '{#status: #I2}').
+	data addAll: (simulator timeSeriesOutputsAt: '{#status: #I1}').
+	data addAll: (simulator timeSeriesOutputsAt: '{#status: #I2}').
 	dB data: data.
 	dB xLabel: 'Time (year)'.
 	dB open.

@@ -1,7 +1,6 @@
 adding
 removeIndividual: ind
-	"one individual died"
-
-	self diedIndList add: ind.
-	individuals remove: ind.	
-	Transcript show: (self diedIndList ) size; show: ' '; show: (self individuals size); cr.	
+	ind attributes at: #alive put: false.
+	self diedIndList add: ind id.
+	self individuals at: (ind id) put: ind.
+	

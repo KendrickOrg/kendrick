@@ -9,16 +9,16 @@ doesNotUnderstand: aMessage
 	variable := (variable asString trimRight: [: c | c =  $:]) asSymbol.
 	value := aMessage arguments first.
  
-	(model attributeValuesIncludes: variable)
+	(self model attributeValuesIncludes: variable)
 		ifTrue: [ 
 			explicitelySetCompartments add: variable.
 			compartments at: variable put: value.
-			model atCompartment: variable value: value. 
+			self model atCompartment: variable value: value. 
 		] ifFalse: [  
-		(model parameters keys includes: variable)
+		(self model parameters keys includes: variable)
 			ifTrue: [  
 				parameters at: variable put: value.
-				model atParameter: variable value: value. "can be array here treat differently"
+				self model atParameter: variable value: value. "can be array here treat differently"
 			] ifFalse: [ 
 					(aMessage selector asString includes: $_)
 						ifTrue: [ self addCompositeAtrributeOrParameter: variable value: value ]

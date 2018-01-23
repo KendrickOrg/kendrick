@@ -1,4 +1,4 @@
-accessing
+as yet unclassified
 size: aNumber
 	|population|
 	population := KEPopulation new.

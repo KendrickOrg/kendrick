@@ -1,4 +1,4 @@
-evaluating
+as yet unclassified
 evaluateWithModel: model
 	|x|
 	((model attributes at: #status ifAbsent: [OrderedCollection new]) includes: symbol)

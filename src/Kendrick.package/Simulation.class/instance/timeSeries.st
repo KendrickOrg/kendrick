@@ -1,4 +1,0 @@
-protected
-timeSeries
-
-	^ simulator timeSeries 

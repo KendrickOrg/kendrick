@@ -8,5 +8,5 @@ concern: aString
 			self concern: ext 
 		]. "-- is this integrated in the backend ?" 
 		concerns add: concern.
-		model integrate: concern.
+		self model integrate: concern.
 	]

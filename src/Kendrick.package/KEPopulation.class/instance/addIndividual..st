@@ -1,5 +1,12 @@
 adding
 addIndividual: ind
-	"A new individual is born"
-
-	self individuals add: ind
+	(self diedIndList isEmpty) 
+	ifFalse: [ 
+		ind id: (self diedIndList removeFirst).
+		self individuals at: (ind id) put: ind
+		]
+	ifTrue: [  
+		ind id: (self individuals size + 1).
+		self individuals add: ind
+		].
+	

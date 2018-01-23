@@ -1,4 +1,4 @@
-initialization
+accessing
 initialize
 	super initialize.
-	activeNodes := OrderedCollection new
+	activeNodes := OrderedCollection new.

@@ -15,10 +15,10 @@ exampleGillespieDirectOnSIRBioPEPAModel
 	model addTransitionFrom: '{#status: #I}'
 		to: '{#status: #R}'
 		probability: [ :m| (m atParameter: #gamma)].
-	simulator := KESimulator new: #Gillespie from: 0.0 to: 100 by: 1.
+	simulator := KESimulator new: #Gillespie from: 0.0 to: 100 step: 1.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
-	dB data: (simulator allTimesSeriesContaining: '{#status: #I}').
+	dB data: (simulator timeSeriesOutputsAt: '{#status: #I}').
 	^ dB view
 	
 	

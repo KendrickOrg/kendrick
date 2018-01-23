@@ -1,3 +1,5 @@
-accessing
+as yet unclassified
 number: aNumber
-	^ self new number: aNumber
+
+
+^super new number: aNumber

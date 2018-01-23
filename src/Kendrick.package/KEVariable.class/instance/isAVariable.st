@@ -1,3 +1,4 @@
 testing
 isAVariable
-	^ true
+
+^true

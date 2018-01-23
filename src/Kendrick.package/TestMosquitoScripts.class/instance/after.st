@@ -1,8 +1,8 @@
-accessing
+as yet unclassified
 after
 
 ModelComponent Mosquito
-	population: 4000;
+	population: 13000;
 	attribute: #(status -> S I R); 
 	parameters: #(mu gamma beta lambda rho);
 	mu: 12.17;
@@ -22,7 +22,7 @@ KendrickModel SpeciesConcern
 Composition MultiMosquito
 	model: 'Mosquito';
 	concern: 'SpeciesConcern';	
-	S_species: #(999 1000 2000);
+	S_species: #(9999 1000 2000);
 	I_species: #(1 0 0);
 	"others: 0;"
 	N: #(species);

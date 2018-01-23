@@ -5,6 +5,9 @@ testEquivalence
 	| resultsBefore resultsAfter beforeResults afterResults |
 	self createModels.
 
+	beforeModel inspect.
+	afterModel keModel inspect. 
+
 	"correct (check inspector) -- but timeseries are presented in different order fix"
 	"roundDownTo: 0.001"
 	beforeResults := beforeDiagram data sorted collect: [ :val | val roundDownTo: 0.001 ].

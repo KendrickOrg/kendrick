@@ -1,11 +1,11 @@
 as yet unclassified
 allCompositeReferencesFor: variablePlusAttributes
 
-	|attributes compartment entities compResults|
+	| compartment compResults|
 	compartment := variablePlusAttributes first.	
 	attributes := variablePlusAttributes allButFirst 
 						collect: [ :attribute |  
-							((concerns copy add: model; yourself) 
+							((concerns copy add: (self model); yourself) 
 								select: [ :e | e attributes keys includes: (attribute)]) first attributes associationAt: attribute ].
 	
 	compResults := {{ self referencesFor: compartment } asOrderedCollection } asOrderedCollection.

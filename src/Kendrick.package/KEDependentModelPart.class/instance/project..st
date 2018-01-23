@@ -1,4 +1,4 @@
-accessing
+as yet unclassified
 project: aTransitionList
 	"This function will project a transition rate matrix to the domain of this concern. The result is a transition rate matrix"
 	|result domain selectedTrs|

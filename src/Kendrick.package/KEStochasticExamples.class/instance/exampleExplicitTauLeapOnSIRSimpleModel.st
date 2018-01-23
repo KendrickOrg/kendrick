@@ -28,10 +28,10 @@ exampleExplicitTauLeapOnSIRSimpleModel
 	model addTransitionFrom: #empty 
 	 		to: '{#status: #S}' 
 			probability: [:aModel| (aModel atParameter: #mu)].
-	simulator := KESimulator new: #TauLeap from: 0 to: 0.4 by: 0.0027.
+	simulator := KESimulator new: #TauLeap from: 0 to: 0.4 step: 0.0027.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
-	dB data: simulator timeSeries.
+	dB data: simulator timeSeriesOutputs.
 	^ dB open
 	
 	

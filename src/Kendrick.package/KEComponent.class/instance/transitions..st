@@ -1,3 +1,3 @@
-accessing
-transitions: aTransitionCollection
-	transitions := aTransitionCollection
+as yet unclassified
+transitions: aTransitionList
+	transitions := aTransitionList 

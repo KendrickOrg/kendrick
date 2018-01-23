@@ -1,3 +1,5 @@
 accessing
 diedIndList
-	^ diedIndList
+	diedIndList ifNil: [ diedIndList := OrderedCollection new ].
+	^ diedIndList 
+	
