@@ -9,4 +9,4 @@ version042: spec
 				"project: 'Moose' with: '6.1-baseline';"
 				project: 'SciSmalltalk' with: '0.29-baseline';
 				project: 'Ston' with: '0.19'.
-			spec package: 'Kendrick' with: 'Kendrick-NickPapoulias.596' ]
+			spec package: 'Kendrick' with: 'Kendrick-NickPapoulias.597' ]
