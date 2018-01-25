@@ -3,5 +3,5 @@ allHierarchyTransitions
 
 	^ backEndEntity transitions copy 
 		addAll: (structuralDependencies 
-			flatCollect: [ :name | (KendrickModel withId: name) allHierarchyTransitions ]);
+			flatCollect: [ :name | (KendrickModel withId: name) allTransitions ]);
 		yourself

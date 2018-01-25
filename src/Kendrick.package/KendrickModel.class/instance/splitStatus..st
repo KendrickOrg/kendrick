@@ -14,7 +14,5 @@ splitStatus: symExpression
 			(attributes at: #status) 
 				add: (e asString , index asString) asSymbol].
 	].
-
-	backEndEntity transitions: (self allHierarchyTransitions 
-		select: [:tr| (statusCompartment includes: (tr from at: #status)) | (statusCompartment includes: (tr to at: #status)) ]).
+	backEndEntity transitions: self allHierarchyTransitions. 
 	backEndEntity splitStatus: { statusCompartment . symExpression second -> indexes }.
