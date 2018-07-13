@@ -2,4 +2,4 @@ symbolic versions
 development: spec
 	<symbolicVersion: #'development'>
 
-	spec for: #'common' version: '0.14-baseline'.
+	spec for: #'common' version: '0.15-baseline'.
