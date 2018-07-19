@@ -1,0 +1,125 @@
+Class {
+	#name : #Simulation,
+	#superclass : #KendrickInternalDSLEntities,
+	#instVars : [
+		'algo',
+		'from',
+		'to',
+		'step',
+		'simulator',
+		'combo',
+		'scenario',
+		'scenarios'
+	],
+	#category : 'Kendrick-InternalDSL'
+}
+
+{ #category : #'public-api' }
+Simulation >> compo [
+
+	^ combo
+]
+
+{ #category : #protected }
+Simulation >> execute [
+
+	simulator executeOn: combo model keModel.
+]
+
+{ #category : #'public-api' }
+Simulation >> for: aComboID [
+
+	combo := Composition withId: aComboID.
+]
+
+{ #category : #'public-api' }
+Simulation >> forModel: aModelID [
+
+	combo := Composition doesNotUnderstand: aModelID
+]
+
+{ #category : #'public-api' }
+Simulation >> from: aNumber [
+
+	from := aNumber
+]
+
+{ #category : #'public-api' }
+Simulation >> gillespie [
+
+	^ self  
+		with: #Gillespie
+]
+
+{ #category : #protected }
+Simulation >> init [
+
+	algo = #testGillespie
+		ifTrue: [ simulator := (KEGillespieSimulatorForTesting new). 
+							simulator tMin: from; tMax: to; step: step ]
+		ifFalse: [  simulator := KESimulator new: algo from: from to: to step: step ]
+]
+
+{ #category : #'public-api' }
+Simulation >> model [
+
+	^ combo model
+]
+
+{ #category : #'public-api' }
+Simulation >> rungeKutta [
+
+	^ self  
+		with: #RungeKutta
+]
+
+{ #category : #'public-api' }
+Simulation >> scenario: aScenarioID [
+	
+	scenario := Scenario withId: aScenarioID. 
+	combo := scenario composition.
+]
+
+{ #category : #'public-api' }
+Simulation >> scenarios: aScenarioIDArray [
+	
+	scenarios := aScenarioIDArray collect: [ :sId | Scenario withId: sId ].
+	combo := scenarios last composition.
+]
+
+{ #category : #'public-api' }
+Simulation >> step: aNumber [
+
+	step := aNumber
+]
+
+{ #category : #'public-api' }
+Simulation >> testGillespie [
+
+	^ self  
+		with: #testGillespie
+]
+
+{ #category : #protected }
+Simulation >> timeSeriesOutputs [
+
+	^ simulator timeSeriesOutputs 
+]
+
+{ #category : #protected }
+Simulation >> timeSeriesOutputsAt: anIdentifier [
+
+	^ simulator timeSeriesOutputsAt: anIdentifier 
+]
+
+{ #category : #'public-api' }
+Simulation >> to: aNumber [
+
+	to := aNumber
+]
+
+{ #category : #'public-api' }
+Simulation >> with: anAlgorithm [
+
+	algo := anAlgorithm 
+]

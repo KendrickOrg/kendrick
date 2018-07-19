@@ -1,4 +1,0 @@
-testing
-isAVariable
-
-^true

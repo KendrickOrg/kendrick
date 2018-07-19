@@ -1,3 +1,0 @@
-checking
-isExpressionWithMathFunction
-	^ true

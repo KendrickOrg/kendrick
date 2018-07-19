@@ -1,3 +1,0 @@
-testing
-isSeparable
-	^ (expression isSeparable)

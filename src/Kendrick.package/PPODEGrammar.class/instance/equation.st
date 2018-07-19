@@ -1,3 +1,0 @@
-grammar
-equation
-   ^ odequation / simpleEquation 

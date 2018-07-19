@@ -1,3 +1,0 @@
-checking
-checkNil
-	^ functionExpr isNil

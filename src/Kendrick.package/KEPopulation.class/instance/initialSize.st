@@ -1,3 +1,0 @@
-adding
-initialSize
-	^ initialSize 

@@ -1,3 +1,0 @@
-grammar
-index
-   ^ number / identifier

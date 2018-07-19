@@ -1,6 +1,0 @@
-accessing
-model
-
-	^ model 
-
-	

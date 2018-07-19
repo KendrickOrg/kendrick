@@ -1,3 +1,0 @@
-accessing
-bookName
-	^ 'Kendrick help'

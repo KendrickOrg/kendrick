@@ -1,3 +1,0 @@
-grammar
-factors
-	^ multiplication / power
