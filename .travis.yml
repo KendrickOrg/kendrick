@@ -1,0 +1,11 @@
+language: smalltalk
+sudo: false
+
+os:
+  - linux
+  - osx
+
+osx_image: xcode6.4
+
+smalltalk:
+  - Moose-6.1
