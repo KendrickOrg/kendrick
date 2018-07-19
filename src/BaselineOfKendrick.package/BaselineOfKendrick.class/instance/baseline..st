@@ -30,5 +30,5 @@ baseline: spec
 						versionString: #stable;
 						loads: #('Glamour-Magritte-Presentations');
 						repository: 'http://smalltalkhub.com/mc/Moose/Glamour/main/' ].
-			spec package: 'Kendrick'.
+			spec package: 'Kendrick' with: [ spec requires: #('Roassal2' 'PolyMath' 'Ston' 'Glamour' 'PetitParser')].
 			spec group: 'default' with: #(#Kendrick) ]
