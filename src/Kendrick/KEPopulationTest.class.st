@@ -4,7 +4,7 @@ Class {
 	#category : 'Kendrick-Tests-Semantic-Model-Core'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 KEPopulationTest >> testAddIndividual [
 	|population ind |
 	population := KEPopulation new.
@@ -15,7 +15,7 @@ KEPopulationTest >> testAddIndividual [
 	self assert: (population individuals size) equals: 1001 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 KEPopulationTest >> testRemoveIndividual [
 	|population  |
 	population := KEPopulation new.
@@ -27,7 +27,7 @@ KEPopulationTest >> testRemoveIndividual [
 	self assert: (population individuals last) isAlive equals: false  
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 KEPopulationTest >> testUpdateIndividual [
 	|population ind |
 	population := KEPopulation new.

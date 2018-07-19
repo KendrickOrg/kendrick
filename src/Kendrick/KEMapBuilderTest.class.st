@@ -4,7 +4,7 @@ Class {
 	#category : 'Kendrick-Tests-Semantic-Model-Core'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 KEMapBuilderTest >> testRoutesToTransitions [
 |m|
 m := KEMapBuilder new.

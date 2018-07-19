@@ -4,7 +4,7 @@ Class {
 	#category : 'Kendrick-Tests-Semantic-Model-Core'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 KEEventGeneratorTest >> testGenerateEvents1 [
 	|model population eventGenerator events|
 	model := KEModel new.
@@ -57,7 +57,7 @@ KEEventGeneratorTest >> testGenerateEventsOfMultiHostsModel [
 	self assert: (events size) equals: 4.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 KEEventGeneratorTest >> testGenerateEventsOfSIRMetapopulationModel [
 	|model events eventGenerator|
 	model := KEModel new.
@@ -71,7 +71,7 @@ KEEventGeneratorTest >> testGenerateEventsOfSIRMetapopulationModel [
 	self assert: (events size) equals: 6.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 KEEventGeneratorTest >> testGenerateEventsOfSIRModel [
 	|model events eventGenerator|
 	model := KEModel new.
