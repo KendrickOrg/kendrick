@@ -23,12 +23,6 @@ baseline: spec
 					with: [ spec
 						className: #ConfigurationOfSton;
 						versionString: #stable;
-						repository: 'http://ss3.gemstone.com/ss/STON' ];
-				project: 'Glamour'
-					with: [ spec
-						className: #ConfigurationOfGlamour;
-						versionString: #stable;
-						loads: #('Glamour-Magritte-Presentations');
-						repository: 'http://smalltalkhub.com/mc/Moose/Glamour/main/' ].
-			spec package: 'Kendrick' with: [ spec requires: #('Roassal2' 'PolyMath' 'Ston' 'Glamour' 'PetitParser')].
+						repository: 'http://ss3.gemstone.com/ss/STON' ].
+			spec package: 'Kendrick' with: [ spec requires: #('Roassal2' 'PolyMath' 'Ston' 'PetitParser')].
 			spec group: 'default' with: #(#Kendrick) ]
