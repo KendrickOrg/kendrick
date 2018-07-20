@@ -12,7 +12,7 @@ Class {
 	#category : 'Kendrick-InternalDSL'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 TestDependantConcern >> after [
 
 ModelComponent OneSpeciesSpatial	
@@ -123,7 +123,7 @@ Simulation SpatialRungeKutta rungeKutta
 	execute.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 TestDependantConcern >> before [
 
 |model sirConcern eConcern spatialConcern simulator db|
@@ -314,7 +314,7 @@ model atParameter: #lambda assignValue: [ :aModel| |c|
     simulator executeOn: model
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #benchmarking }
 TestDependantConcern >> bench [
 
 	| before after |
@@ -329,7 +329,7 @@ TestDependantConcern >> bench [
 	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #benchmarking }
 TestDependantConcern >> benchmark: aBlock times: anInteger [
 
 	"µ the average time in ms and τ standard deviation"
@@ -361,20 +361,20 @@ TestDependantConcern >> createModels [
 	afterDiagram := (Visualization withId: 'SpatialDiagramViz') open.	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 TestDependantConcern >> setUp [
 
 	KendrickInternalDSLEntities clearAll.
 	"KEGillespieSimulatorForTesting newSeed." "stochastic but reproducible each time"
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #running }
 TestDependantConcern >> tearDown [
 
 	KendrickInternalDSLEntities clearAll.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 TestDependantConcern >> testEquivalence [
 
 
