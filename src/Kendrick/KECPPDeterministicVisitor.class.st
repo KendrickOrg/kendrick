@@ -5,7 +5,7 @@ A KECPPDeterministicVisitor is a visitor that generates code C/C++ for the model
 Class {
 	#name : #KECPPDeterministicVisitor,
 	#superclass : #KECPPVisitor,
-	#category : 'Kendrick-Code-Generators'
+	#category : #'Kendrick-Obsolete-Code-Generators'
 }
 
 { #category : #'as yet unclassified' }

@@ -14,7 +14,7 @@ Class {
 	#instVars : [
 		'visitor'
 	],
-	#category : 'Kendrick-Code-Generators'
+	#category : #'Kendrick-Obsolete-Code-Generators'
 }
 
 { #category : #'as yet unclassified' }

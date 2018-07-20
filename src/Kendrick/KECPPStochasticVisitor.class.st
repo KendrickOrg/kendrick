@@ -5,7 +5,7 @@ A KECPPStochasticVisitor is a visitor that generates the code C/C++ for the mode
 Class {
 	#name : #KECPPStochasticVisitor,
 	#superclass : #KECPPVisitor,
-	#category : 'Kendrick-Code-Generators'
+	#category : #'Kendrick-Obsolete-Code-Generators'
 }
 
 { #category : #'as yet unclassified' }

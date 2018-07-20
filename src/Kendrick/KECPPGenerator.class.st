@@ -5,7 +5,7 @@ A KECPPGenerator generates the C/C++ code for the model specified in Kendrick la
 Class {
 	#name : #KECPPGenerator,
 	#superclass : #KECodeGenerator,
-	#category : 'Kendrick-Code-Generators'
+	#category : #'Kendrick-Obsolete-Code-Generators'
 }
 
 { #category : #'as yet unclassified' }

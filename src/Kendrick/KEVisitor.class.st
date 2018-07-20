@@ -5,7 +5,7 @@ A KEVisitor is a visitor that visits all nodes of the model and generate the cod
 Class {
 	#name : #KEVisitor,
 	#superclass : #KEEntity,
-	#category : 'Kendrick-Code-Generators'
+	#category : #'Kendrick-Obsolete-Code-Generators'
 }
 
 { #category : #'as yet unclassified' }

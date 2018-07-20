@@ -5,5 +5,5 @@ A KECPPExplicitTauLeapVisitor generates the explicit Tau-Leap simulation for the
 Class {
 	#name : #KECPPExplicitTauLeapVisitor,
 	#superclass : #KECPPStochasticVisitor,
-	#category : 'Kendrick-Code-Generators'
+	#category : #'Kendrick-Obsolete-Code-Generators'
 }

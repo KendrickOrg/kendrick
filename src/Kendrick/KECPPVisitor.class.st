@@ -77,7 +77,7 @@ Class {
 	#classInstVars : [
 		'aNode'
 	],
-	#category : 'Kendrick-Code-Generators'
+	#category : #'Kendrick-Obsolete-Code-Generators'
 }
 
 { #category : #'as yet unclassified' }

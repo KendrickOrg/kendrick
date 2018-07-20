@@ -5,5 +5,5 @@ A KECPPGillespieDirectVisitor generates the Gillespie direct simulation for the 
 Class {
 	#name : #KECPPGillespieDirectVisitor,
 	#superclass : #KECPPStochasticVisitor,
-	#category : 'Kendrick-Code-Generators'
+	#category : #'Kendrick-Obsolete-Code-Generators'
 }

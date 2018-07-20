@@ -5,7 +5,7 @@ A KECPPIndividualBasedVisitor is a visitor that generates code C/C++ for the mod
 Class {
 	#name : #KECPPIndividualBasedVisitor,
 	#superclass : #KECPPVisitor,
-	#category : 'Kendrick-Code-Generators'
+	#category : #'Kendrick-Obsolete-Code-Generators'
 }
 
 { #category : #'as yet unclassified' }
