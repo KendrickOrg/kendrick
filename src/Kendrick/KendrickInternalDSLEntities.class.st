@@ -19,7 +19,7 @@ KendrickInternalDSLEntities class >> cleanUpForInteractiveSessions [
 	"self cleanUpForInteractiveSessions"
 
 	KendrickInternalDSLEntities clearAll.
-	MooseModel resetMeta.
+	"MooseModel resetMeta."
 ]
 
 { #category : #'as yet unclassified' }
