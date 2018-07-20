@@ -4,7 +4,7 @@ A KEConcernTest is a test class for testing the behavior of KEConcern
 Class {
 	#name : #KEModelPartTest,
 	#superclass : #TestCase,
-	#category : 'Kendrick-Tests-Semantic-Model-Core'
+	#category : #'Kendrick-Tests-Core'
 }
 
 { #category : #'tests-as yet unclassified' }

@@ -5,7 +5,7 @@ A KEEventGenerator is responsible for generating an event list for each populati
 Class {
 	#name : #KEEventGenerator,
 	#superclass : #KEEntity,
-	#category : 'Kendrick-Semantic-Model-Core'
+	#category : #'Kendrick-Core'
 }
 
 { #category : #'as yet unclassified' }

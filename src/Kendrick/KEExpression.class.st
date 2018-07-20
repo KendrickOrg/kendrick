@@ -5,7 +5,7 @@ A KEExpression is an abtract class for all expressions in system.
 Class {
 	#name : #KEExpression,
 	#superclass : #KEEntity,
-	#category : 'Kendrick-Semantic-Model-Core'
+	#category : #'Kendrick-Core'
 }
 
 { #category : #meta }

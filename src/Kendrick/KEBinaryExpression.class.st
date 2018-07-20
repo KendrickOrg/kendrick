@@ -24,7 +24,7 @@ Class {
 		'leftHandSide',
 		'rightHandSide'
 	],
-	#category : 'Kendrick-Semantic-Model-Core'
+	#category : #'Kendrick-Core'
 }
 
 { #category : #comparing }

@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'model'
 	],
-	#category : 'Kendrick-Semantic-Model-Core'
+	#category : #'Kendrick-Core'
 }
 
 { #category : #'instance creation' }

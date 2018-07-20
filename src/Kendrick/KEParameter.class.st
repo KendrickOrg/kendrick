@@ -19,7 +19,7 @@ Class {
 		'symbol',
 		'expression'
 	],
-	#category : 'Kendrick-Semantic-Model-Core'
+	#category : #'Kendrick-Core'
 }
 
 { #category : #accessing }

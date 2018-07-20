@@ -14,7 +14,7 @@ Class {
 	#instVars : [
 		'idVariable'
 	],
-	#category : 'Kendrick-Semantic-Model-Core'
+	#category : #'Kendrick-Core'
 }
 
 { #category : #comparing }

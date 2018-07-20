@@ -7,7 +7,7 @@ Instance Variables
 Class {
 	#name : #KEEntity,
 	#superclass : #Object,
-	#category : 'Kendrick-Semantic-Model-Core'
+	#category : #'Kendrick-Core'
 }
 
 { #category : #meta }

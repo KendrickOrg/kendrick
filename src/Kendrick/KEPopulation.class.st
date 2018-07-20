@@ -35,7 +35,7 @@ Class {
 		'individuals',
 		'initialSize'
 	],
-	#category : 'Kendrick-Semantic-Model-Core'
+	#category : #'Kendrick-Core'
 }
 
 { #category : #'as yet unclassified' }

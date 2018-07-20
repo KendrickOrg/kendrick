@@ -24,7 +24,7 @@ Class {
 		'tVariable',
 		'expression'
 	],
-	#category : 'Kendrick-Semantic-Model-Core'
+	#category : #'Kendrick-Core'
 }
 
 { #category : #meta }

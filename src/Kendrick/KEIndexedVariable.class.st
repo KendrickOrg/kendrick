@@ -14,7 +14,7 @@ Class {
 	#instVars : [
 		'indexList'
 	],
-	#category : 'Kendrick-Semantic-Model-Core'
+	#category : #'Kendrick-Core'
 }
 
 { #category : #comparing }

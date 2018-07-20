@@ -23,7 +23,7 @@ transitions
 Class {
 	#name : #KEModelPart,
 	#superclass : #KEComponent,
-	#category : 'Kendrick-Semantic-Model-Core'
+	#category : #'Kendrick-Core'
 }
 
 { #category : #'as yet unclassified' }

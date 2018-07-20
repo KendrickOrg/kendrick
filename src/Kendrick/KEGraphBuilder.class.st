@@ -12,7 +12,7 @@ Class {
 	#instVars : [
 		'data'
 	],
-	#category : 'Kendrick-Semantic-Model-Core'
+	#category : #'Kendrick-Core'
 }
 
 { #category : #'as yet unclassified' }

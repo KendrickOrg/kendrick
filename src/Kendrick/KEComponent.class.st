@@ -10,7 +10,7 @@ Class {
 		'equations',
 		'transitions'
 	],
-	#category : 'Kendrick-Semantic-Model-Core'
+	#category : #'Kendrick-Core'
 }
 
 { #category : #adding }

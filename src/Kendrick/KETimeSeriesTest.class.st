@@ -1,7 +1,7 @@
 Class {
 	#name : #KETimeSeriesTest,
 	#superclass : #TestCase,
-	#category : 'Kendrick-Tests-Semantic-Model-Core'
+	#category : #'Kendrick-Tests-Core'
 }
 
 { #category : #tests }

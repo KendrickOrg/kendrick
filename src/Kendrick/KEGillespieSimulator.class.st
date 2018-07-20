@@ -5,7 +5,7 @@ A KEGillespieSimulator use the Gillespie's direct algorithm for simulating the d
 Class {
 	#name : #KEGillespieSimulator,
 	#superclass : #KEStochasticSimulator,
-	#category : 'Kendrick-Semantic-Model-Core'
+	#category : #'Kendrick-Core'
 }
 
 { #category : #'as yet unclassified' }

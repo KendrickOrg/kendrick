@@ -4,7 +4,7 @@ A KEDependentConcernTest is a test class for testing the behavior of KEDependent
 Class {
 	#name : #KEDependentModelPartTest,
 	#superclass : #TestCase,
-	#category : 'Kendrick-Tests-Semantic-Model-Core'
+	#category : #'Kendrick-Tests-Core'
 }
 
 { #category : #'tests-as yet unclassified' }

@@ -4,7 +4,7 @@ A dependent concern is a concern that depends on another one
 Class {
 	#name : #KEDependentModelPart,
 	#superclass : #KEModelPart,
-	#category : 'Kendrick-Semantic-Model-Core'
+	#category : #'Kendrick-Core'
 }
 
 { #category : #operators }

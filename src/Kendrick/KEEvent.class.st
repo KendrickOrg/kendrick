@@ -29,7 +29,7 @@ Class {
 		'fromStatus',
 		'toStatus'
 	],
-	#category : 'Kendrick-Semantic-Model-Core'
+	#category : #'Kendrick-Core'
 }
 
 { #category : #accessing }
