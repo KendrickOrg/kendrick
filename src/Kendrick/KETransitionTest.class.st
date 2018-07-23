@@ -11,7 +11,9 @@ KETransitionTest >> testAsString [
 		from: '{#status: #S}'
 		to: '{#status: #I}'
 		probability: [ :f :t :m | (m atParameter: #beta) * f * t ].
-	self assert: aTransition asString = 'From: {#status->#S} To: {#status->#I}'
+	self
+		assert: aTransition asString
+		equals: 'From: {#status->#S} To: {#status->#I}'
 ]
 
 { #category : #tests }
@@ -21,7 +23,9 @@ KETransitionTest >> testAsStringWithEmptyCompartment [
 		from: #empty
 		to: '{#status: #I}'
 		probability: [ :f :t :m | (m atParameter: #beta) * f * t ].
-	self assert: aTransition asString = 'From: {#status->#empty} To: {#status->#I}'
+	self
+		assert: aTransition asString
+		equals: 'From: {#status->#empty} To: {#status->#I}'
 ]
 
 { #category : #tests }
