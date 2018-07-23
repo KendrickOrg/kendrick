@@ -13,27 +13,11 @@ Class {
 	#category : #'Kendrick-Core'
 }
 
-{ #category : #accessing }
-KEDeterministicSimulator >> equations [
-	equations := Dictionary new.
-	model compartmentNames do: [ :k| equations at: k put: OrderedCollection new ].
-	model transitions do: [ :tr|
-		(tr from at: #status) = #empty ifTrue:
-			[ (equations at: tr to) add: (Array with: tr with: 1) ].
-		(tr to at: #status) = #empty ifTrue:
-			[ (equations at: tr from) add: (Array with: tr with: -1) ].
-		(((tr from at: #status) ~= #empty) and: [ (tr to at: #status) ~= #empty ]) ifTrue:[ 
-			(equations at: tr from) add: (Array with: tr with: -1).
-			(equations at: tr to) add: (Array with: tr with: 1) ]
-		 ].
-	^ equations
-]
-
 { #category : #public }
 KEDeterministicSimulator >> executeOn: aModel [
 	|st ks|
 	super executeOn:aModel.
-	self equations.
+	equations := model buildEquations.
 	system := ExplicitSystem block: [ :x :t| |c i|
 		c := Array new: (model population compartments size).
 		i := 1.
