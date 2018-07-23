@@ -1,5 +1,5 @@
 "
-A KEEquation is an odinary differential equation in system.
+A KEEquation is an ordinary differential equation.
 
 Instance Variables
 	expression:		<KEExpression>
@@ -27,13 +27,6 @@ Class {
 	#category : #'Kendrick-Core'
 }
 
-{ #category : #meta }
-KEEquation class >> annotation [
-	<MSEClass: #Equation super: #KEEntity>
-	<package: #KE>
-	^ self
-]
-
 { #category : #evaluating }
 KEEquation >> evaluateWithModel: model [
 	^ self expression evaluateWithModel: model
@@ -41,7 +34,6 @@ KEEquation >> evaluateWithModel: model [
 
 { #category : #accessing }
 KEEquation >> expression [
-	<MSEProperty: #expression type: #KEExpression>
 	^ expression
 ]
 
@@ -98,7 +90,6 @@ KEEquation >> printOn: aStream [
 
 { #category : #accessing }
 KEEquation >> tVariable [
-	<MSEProperty: #tVariable type: #KEVariable>
 	^ tVariable
 ]
 
@@ -109,7 +100,6 @@ KEEquation >> tVariable: aVariable [
 
 { #category : #accessing }
 KEEquation >> variable [
-	<MSEProperty: #variable type: #KEVariable>
 	^ variable
 ]
 
