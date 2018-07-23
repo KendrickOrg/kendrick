@@ -45,13 +45,6 @@ Class {
 	#category : #'Kendrick-Core'
 }
 
-{ #category : #meta }
-KESimulator class >> annotation [
-	<MSEClass: #Simulator super: #KEEntity >
-	<package: #KE>
-	^ self
-]
-
 { #category : #'as yet unclassified' }
 KESimulator class >> deterministicSolvers [
 	|algos|
@@ -79,7 +72,7 @@ KESimulator class >> passType: type [
 	"Add other algorithms following 3 categories: Deterministic | Stochastic | IBM"
 	((type = #IBMDiscreteTime) | (type = #IBMDiscreteSpace)) ifTrue: [ ^ KEIndividualBasedSimulator ].
 	(type = #RK4) ifTrue: [ ^ KEDeterministicSimulator ].
-	((type = #GillespieDirect) | (type = #GPUGillespie)| (type = #ExplicitTauLeap) | (type = #AdaptiveTauLeap)) ifTrue: [ ^ KEStochasticSimulator ].
+	((type = #GillespieDirect) | (type = #GPUGillespie)| (type = #ExplicitTauLeap) | (type = #AdaptiveTauLeap)) ifTrue: [ ^ KEStochasticSimulator ]
 ]
 
 { #category : #accessing }
