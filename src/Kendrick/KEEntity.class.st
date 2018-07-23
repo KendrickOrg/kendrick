@@ -1,18 +1,8 @@
 "
-A KEObject is xxxxxxxxx.
-
-Instance Variables
-
+KEEntity is the root class of all Kendrick entities
 "
 Class {
 	#name : #KEEntity,
 	#superclass : #Object,
 	#category : #'Kendrick-Core'
 }
-
-{ #category : #meta }
-KEEntity class >> annotation [
-	<MSEClass: #Entity super: #Object>
-	<package: #KE>
-	^ self
-]
