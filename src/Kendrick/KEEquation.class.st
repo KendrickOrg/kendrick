@@ -34,16 +34,6 @@ KEEquation class >> annotation [
 	^ self
 ]
 
-{ #category : #presentationMagritte }
-KEEquation >> descriptionExpression [
-	<magritteDescription>
-	^ MAStringDescription new
-		accessor: #expression;
-		label: 'Expression';
-		yourself
-
-]
-
 { #category : #evaluating }
 KEEquation >> evaluateWithModel: model [
 	^ self expression evaluateWithModel: model
