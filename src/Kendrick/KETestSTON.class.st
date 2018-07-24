@@ -4,11 +4,11 @@ Class {
 	#category : #'Kendrick-Tests-Core'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #tests }
 KETestSTON >> testParserSTONReader [
 	|reader aCollection dataOfComps compartments|
 	aCollection := #(S I R).
-	compartments ifNil: [ compartments := Dictionary new ].
+	compartments := Dictionary new.
 	aCollection isDictionary 
 	ifFalse: [ 
 		|key|
