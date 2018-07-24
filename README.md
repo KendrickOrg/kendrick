@@ -53,18 +53,17 @@ you can compile Kendrick from sources using the following command:
 wget -O- https://goo.gl/WUQxmp | bash
 ````
 
-## How to manually install the development version of Kendrick (0.49) from sources
+## How to manually install the development version of Kendrick from github
 
 * Download Pharo 6.1 VM depending of your platform: http://pharo.org/download
 * Load Kendrick: Open Pharo 6.1 image then right-click anywhere to open the main menu. Choose Playground to execute script. Paste the script below in Playground, select all then right-click and choose Do it to execute this.
 
 ```Smalltalk
 Metacello new
-    repository: 'http://smalltalkhub.com/mc/UMMISCO/Kendrick/main';
-    configuration:'Kendrick';
-    version: '0.49';
-    load
-````
+        repository: 'github://UMMISCO/Kendrick:master/src';
+        baseline: 'Kendrick';
+        load
+```
 ## How to invoke Kendrick
 
 ### DSL Editor
