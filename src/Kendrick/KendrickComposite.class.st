@@ -1,5 +1,5 @@
 Class {
 	#name : #KendrickComposite,
 	#superclass : #KendrickModelingComponent,
-	#category : 'Kendrick-InternalDSL'
+	#category : #'Kendrick-DSL-Internal'
 }

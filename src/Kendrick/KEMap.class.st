@@ -15,7 +15,7 @@ Class {
 	#instVars : [
 		'countries'
 	],
-	#category : 'Kendrick-Spatial-Core'
+	#category : #'Kendrick-Core-Spatial'
 }
 
 { #category : #'as yet unclassified' }

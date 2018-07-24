@@ -7,7 +7,7 @@ Having two groups of topology: random network topologies and non-random topology
 Class {
 	#name : #KENetworkTopology,
 	#superclass : #KEEntity,
-	#category : 'Kendrick-Spatial-Core'
+	#category : #'Kendrick-Core-Spatial'
 }
 
 { #category : #'as yet unclassified' }

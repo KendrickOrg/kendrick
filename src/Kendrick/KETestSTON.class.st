@@ -1,7 +1,7 @@
 Class {
 	#name : #KETestSTON,
 	#superclass : #TestCase,
-	#category : 'Kendrick-Tests-STON'
+	#category : #'Kendrick-Tests-Core'
 }
 
 { #category : #'as yet unclassified' }

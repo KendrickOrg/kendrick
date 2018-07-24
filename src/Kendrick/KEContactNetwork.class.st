@@ -4,7 +4,7 @@ KEContactNetwork represents a contact patterns between all subpopulations/indivi
 Class {
 	#name : #KEContactNetwork,
 	#superclass : #KEGraph,
-	#category : 'Kendrick-Spatial-Core'
+	#category : #'Kendrick-Core-Spatial'
 }
 
 { #category : #adding }

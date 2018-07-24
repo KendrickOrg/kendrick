@@ -9,7 +9,7 @@ Internal Representation and Key Implementation Points.
 Class {
 	#name : #KEContactNode,
 	#superclass : #KENode,
-	#category : 'Kendrick-Spatial-Core'
+	#category : #'Kendrick-Core-Spatial'
 }
 
 { #category : #'as yet unclassified' }

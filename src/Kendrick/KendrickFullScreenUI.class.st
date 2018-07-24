@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'window'
 	],
-	#category : 'Kendrick-InternalDSL'
+	#category : #'Kendrick-DSL-Internal'
 }
 
 { #category : #openning }

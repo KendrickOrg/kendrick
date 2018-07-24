@@ -11,7 +11,7 @@ Class {
 		'emptyRate',
 		'backEndEntity'
 	],
-	#category : 'Kendrick-InternalDSL'
+	#category : #'Kendrick-DSL-Internal'
 }
 
 { #category : #'public-api' }

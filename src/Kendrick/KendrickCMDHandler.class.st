@@ -1,7 +1,7 @@
 Class {
 	#name : #KendrickCMDHandler,
 	#superclass : #CommandLineHandler,
-	#category : 'Kendrick-InternalDSL'
+	#category : #'Kendrick-DSL-Internal'
 }
 
 { #category : #'as yet unclassified' }

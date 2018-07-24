@@ -5,7 +5,7 @@ A PPODEParser parses the ode equations input to the expressions implemented in S
 Class {
 	#name : #PPODEParser,
 	#superclass : #PPODEGrammar,
-	#category : 'Kendrick-ODE-Parser'
+	#category : #'Kendrick-DSL-ODE'
 }
 
 { #category : #grammar }

@@ -16,7 +16,7 @@ Class {
 		'currentStatus',
 		'nextStatus'
 	],
-	#category : 'Kendrick-IBM-Core'
+	#category : #'Kendrick-Core-IBM'
 }
 
 { #category : #meta }

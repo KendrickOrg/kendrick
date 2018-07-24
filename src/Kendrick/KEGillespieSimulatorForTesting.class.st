@@ -4,7 +4,7 @@ Class {
 	#classInstVars : [
 		'seed'
 	],
-	#category : 'Kendrick-InternalDSL'
+	#category : #'Kendrick-DSL-Internal'
 }
 
 { #category : #'as yet unclassified' }

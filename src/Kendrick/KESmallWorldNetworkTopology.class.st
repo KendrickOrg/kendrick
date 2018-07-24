@@ -12,7 +12,7 @@ Class {
 		'K',
 		'beta'
 	],
-	#category : 'Kendrick-Spatial-Core'
+	#category : #'Kendrick-Core-Spatial'
 }
 
 { #category : #accessing }

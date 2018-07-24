@@ -14,7 +14,7 @@ Class {
 	#instVars : [
 		'm0'
 	],
-	#category : 'Kendrick-Spatial-Core'
+	#category : #'Kendrick-Core-Spatial'
 }
 
 { #category : #'as yet unclassified' }

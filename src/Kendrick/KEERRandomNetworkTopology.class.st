@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'p'
 	],
-	#category : 'Kendrick-Spatial-Core'
+	#category : #'Kendrick-Core-Spatial'
 }
 
 { #category : #'as yet unclassified' }

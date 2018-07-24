@@ -1,7 +1,7 @@
 Class {
 	#name : #KEIndividualTest,
 	#superclass : #TestCase,
-	#category : 'Kendrick-Tests-IBM-Core'
+	#category : #'Kendrick-Tests-Core-IBM'
 }
 
 { #category : #tests }

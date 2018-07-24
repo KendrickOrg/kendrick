@@ -11,7 +11,7 @@ Class {
 		'scenario',
 		'scenarios'
 	],
-	#category : 'Kendrick-InternalDSL'
+	#category : #'Kendrick-DSL-Internal'
 }
 
 { #category : #'public-api' }

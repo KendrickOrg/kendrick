@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'eqAsSymExpr'
 	],
-	#category : 'Kendrick-InternalDSL'
+	#category : #'Kendrick-DSL-Internal'
 }
 
 { #category : #'as yet unclassified' }

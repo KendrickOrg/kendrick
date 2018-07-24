@@ -1,7 +1,7 @@
 Class {
 	#name : #KEContactNodeTest,
 	#superclass : #TestCase,
-	#category : 'Kendrick-Tests-Spatial-Core'
+	#category : #'Kendrick-Tests-Core-Spatial'
 }
 
 { #category : #'as yet unclassified' }

@@ -1,7 +1,7 @@
 Class {
 	#name : #KEGraphTest,
 	#superclass : #TestCase,
-	#category : 'Kendrick-Tests-Spatial-Core'
+	#category : #'Kendrick-Tests-Core-Spatial'
 }
 
 { #category : #tests }

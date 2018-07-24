@@ -1,7 +1,7 @@
 Class {
 	#name : #PPODEGrammarTest,
 	#superclass : #PPCompositeParserTest,
-	#category : 'Kendrick-Tests-ODE-Parser'
+	#category : #'Kendrick-Tests-DSL-ODE'
 }
 
 { #category : #accessing }

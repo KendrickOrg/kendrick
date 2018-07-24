@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'population'
 	],
-	#category : 'Kendrick-InternalDSL'
+	#category : #'Kendrick-DSL-Internal'
 }
 
 { #category : #protected }

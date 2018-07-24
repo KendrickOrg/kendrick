@@ -119,7 +119,7 @@ Class {
 		'odequation',
 		'expression'
 	],
-	#category : 'Kendrick-ODE-Parser'
+	#category : #'Kendrick-DSL-ODE'
 }
 
 { #category : #grammar }

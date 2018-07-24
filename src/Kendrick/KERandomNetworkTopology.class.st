@@ -18,7 +18,7 @@ Class {
 	#instVars : [
 		'activeNodes'
 	],
-	#category : 'Kendrick-Spatial-Core'
+	#category : #'Kendrick-Core-Spatial'
 }
 
 { #category : #accessing }

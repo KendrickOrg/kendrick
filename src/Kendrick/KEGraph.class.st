@@ -15,7 +15,7 @@ Class {
 		'nodes',
 		'edges'
 	],
-	#category : 'Kendrick-Spatial-Core'
+	#category : #'Kendrick-Core-Spatial'
 }
 
 { #category : #accessing }

@@ -1,7 +1,7 @@
 Class {
 	#name : #KendrickUI,
 	#superclass : #GTInspector,
-	#category : 'Kendrick-InternalDSL'
+	#category : #'Kendrick-DSL-Internal'
 }
 
 { #category : #openning }

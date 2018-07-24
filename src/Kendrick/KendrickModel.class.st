@@ -8,7 +8,7 @@ Class {
 		'map',
 		'borders'
 	],
-	#category : 'Kendrick-InternalDSL'
+	#category : #'Kendrick-DSL-Internal'
 }
 
 { #category : #'public-api' }

@@ -10,7 +10,7 @@ Class {
 		'lazyDataBlock',
 		'canvas'
 	],
-	#category : 'Kendrick-InternalDSL'
+	#category : #'Kendrick-DSL-Internal'
 }
 
 { #category : #'as yet unclassified' }

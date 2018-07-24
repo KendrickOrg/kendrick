@@ -19,7 +19,7 @@ Class {
 		'adjacentNodes',
 		'label'
 	],
-	#category : 'Kendrick-Spatial-Core'
+	#category : #'Kendrick-Core-Spatial'
 }
 
 { #category : #adding }
