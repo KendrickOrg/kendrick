@@ -108,7 +108,7 @@ Thus, it should be safe to depend on a fixed major version and moving minor vers
 This project uses gitflow management.
 
 This project contains two main branches:
-- **master** : This branch is a stable branch. Each version on this branch should be a stable release of Cormas, and ideally each commit modifying the source code of the project should be tagged with a version number.
+- **master** : This branch is a stable branch. Each version on this branch should be a stable release of Kendrick, and ideally each commit modifying the source code of the project should be tagged with a version number.
 - **development** : This branch contains the current development of this project. 
 
 ## Hot fix (not used at the moment)
