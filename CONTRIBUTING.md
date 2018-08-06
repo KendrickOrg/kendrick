@@ -3,7 +3,7 @@
 This file is currently not complete but will be improve step by step.
 
 # Update iceberg
-In a fresh Pharo 6.1, execute the following script in order to update Iceberg to the last version : 
+In a fresh Pharo 6.1 (downloaded from https://pharo.org/download or with PharoLauncher), execute the following script in order to update Iceberg to the last version : 
 
 ```Smalltalk
 MetacelloPharoPlatform select.
