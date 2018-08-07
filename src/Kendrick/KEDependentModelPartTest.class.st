@@ -21,8 +21,7 @@ KEDependentModelPartTest >> setUp [
 
 { #category : #initialization }
 KEDependentModelPartTest >> setUpMultiHostConcern [
-	multiHostConcern := KEModelPart new.
-	multiHostConcern addAttribute: #species value: #(#human #bird)
+	multiHostConcern := KEModelPart new addAttribute: #species value: #(#human #bird)
 ]
 
 { #category : #initialization }
@@ -59,7 +58,7 @@ KEDependentModelPartTest >> setUpSpatialConcern [
 	spatialConcern := KEModelPart new.
 	spatialConcern addAttribute: #patch value: (1 to: 5) asArray.
 	spatialConcern addParameter: #rho.
-	(1 to: 5) do: [ :i| 
+	1 to: 5 do: [ :i| 
 		(i < 5) 
 		ifTrue: [  
 			spatialConcern 
