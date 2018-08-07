@@ -18,19 +18,21 @@ BaselineOfKendrick >> baseline: spec [
 						className: #ConfigurationOfPetitParser;
 						versionString: #'development';
 						repository: 'http://www.smalltalkhub.com/mc/Moose/PetitParser/main' ];
-				project: 'Roassal2' with: [
+"				project: 'Roassal2' with: [
 				spec
 					className: #ConfigurationOfRoassal2;
 					versionString: #'stable';
-					repository: 'http://smalltalkhub.com/mc/ObjectProfile/Roassal2/main/' ];
+					repository: 'http://smalltalkhub.com/mc/ObjectProfile/Roassal2/main/' ];"
 				baseline: 'PolyMath'
     					with: [ spec repository: 'github://PolyMathOrg/PolyMath:master/src' ];
+				baseline: 'DataFrame'
+						with: [ spec repository: 'github://PolyMathOrg/DataFrame:master/' ];
 				project: 'Ston'
 					with: [ spec
 						className: #ConfigurationOfSton;
 						versionString: #stable;
 						repository: 'http://ss3.gemstone.com/ss/STON' ].
-			spec package: 'Kendrick' with: [ spec requires: #('Roassal2' 'PolyMath' 'Ston' 'PetitParser')].
+			spec package: 'Kendrick' with: [ spec requires: #('DataFrame' 'PolyMath' 'Ston' 'PetitParser')].
 			spec group: 'default' with: #(#Kendrick) ]
 
 ]
