@@ -4,12 +4,14 @@ A KEConcernTest is a test class for testing the behavior of KEConcern
 Class {
 	#name : #KEModelPartTest,
 	#superclass : #TestCase,
+	#instVars : [
+		'sirConcern'
+	],
 	#category : #'Kendrick-Tests-Core'
 }
 
-{ #category : #'tests-as yet unclassified' }
-KEModelPartTest >> sirConcern [
-| sirConcern |
+{ #category : #initialization }
+KEModelPartTest >> setUp [
 	sirConcern := KEModelPart new.
 	sirConcern attributes: 
 		{#status->#(#S #I #R)}.
@@ -34,11 +36,10 @@ KEModelPartTest >> sirConcern [
 			probability: [ :aModel | aModel atParameter: #mu ].
 	sirConcern addTransitionFrom: { #status -> #R } 
 			to: #empty 
-			probability: [ :aModel | aModel atParameter: #mu ].
-	^ sirConcern
+			probability: [ :aModel | aModel atParameter: #mu ]
 ]
 
-{ #category : #'tests-as yet unclassified' }
+{ #category : #tests }
 KEModelPartTest >> testAddAttributeValue [
 	|c|
 	c := KEModelPart new.
@@ -46,7 +47,7 @@ KEModelPartTest >> testAddAttributeValue [
 	self assert: c attributes size equals: 1
 ]
 
-{ #category : #'tests-as yet unclassified' }
+{ #category : #tests }
 KEModelPartTest >> testAddParameter [
 	|c|
 	c := KEModelPart new.
@@ -54,7 +55,7 @@ KEModelPartTest >> testAddParameter [
 	self assert: c parameters size equals: 1
 ]
 
-{ #category : #'tests-as yet unclassified' }
+{ #category : #tests }
 KEModelPartTest >> testAddParameterValue [
 	|c|
 	c := KEModelPart new.
@@ -62,7 +63,7 @@ KEModelPartTest >> testAddParameterValue [
 	self assert: c parameters size equals: 1
 ]
 
-{ #category : #'tests-as yet unclassified' }
+{ #category : #tests }
 KEModelPartTest >> testAddParameters [
 	|c|
 	c := KEModelPart new.
@@ -70,7 +71,7 @@ KEModelPartTest >> testAddParameters [
 	self assert: c parameters size equals: 2
 ]
 
-{ #category : #'tests-as yet unclassified' }
+{ #category : #tests }
 KEModelPartTest >> testAddTransitionFromToProbability [
 	|c|
 	c := KEModelPart new.
@@ -78,7 +79,7 @@ KEModelPartTest >> testAddTransitionFromToProbability [
 	self assert: c transitions size equals: 1
 ]
 
-{ #category : #'tests-as yet unclassified' }
+{ #category : #tests }
 KEModelPartTest >> testAtAttributeAdd [
 	|c|
 	c := KEModelPart new.
@@ -87,7 +88,7 @@ KEModelPartTest >> testAtAttributeAdd [
 	self assert: (c atAttribute: #status) size equals: 3 
 ]
 
-{ #category : #'tests-as yet unclassified' }
+{ #category : #tests }
 KEModelPartTest >> testAttributes [
 	|c|
 	c := KEModelPart new.
@@ -95,7 +96,7 @@ KEModelPartTest >> testAttributes [
 	self assert: c attributes size equals: 1
 ]
 
-{ #category : #'tests-as yet unclassified' }
+{ #category : #tests }
 KEModelPartTest >> testCompartmentNames [
 	|concern|
 	concern := KEModelPart new.
@@ -105,7 +106,7 @@ KEModelPartTest >> testCompartmentNames [
 	self assert: (concern compartmentNames first size) equals: 1
 ]
 
-{ #category : #'tests-as yet unclassified' }
+{ #category : #tests }
 KEModelPartTest >> testEquationsToTransitions [
 	|c|
 	c := KEModelPart new.
@@ -115,7 +116,7 @@ KEModelPartTest >> testEquationsToTransitions [
 	self assert: c transitions size equals: 6.
 ]
 
-{ #category : #'tests-as yet unclassified' }
+{ #category : #tests }
 KEModelPartTest >> testGenerateTensorSum [
 	|concern model|
 	concern := KEModelPart new.
@@ -129,7 +130,7 @@ KEModelPartTest >> testGenerateTensorSum [
 	
 ]
 
-{ #category : #'tests-as yet unclassified' }
+{ #category : #tests }
 KEModelPartTest >> testGenerateTensorSum2 [
 	|concern model|
 	concern := KEModelPart new.
@@ -143,7 +144,7 @@ KEModelPartTest >> testGenerateTensorSum2 [
 	
 ]
 
-{ #category : #'tests-as yet unclassified' }
+{ #category : #tests }
 KEModelPartTest >> testGenerateTransitionsFromAnd [
 	|t keys concern|
 	t := KETransition from: { #status->#S } to: { #status->#I } probability: [ :aModel| aModel atCompartment: { #status->#I } ].
@@ -152,12 +153,14 @@ KEModelPartTest >> testGenerateTransitionsFromAnd [
 	self assert: (concern generateTransitionsFrom: t and: keys) size equals: 3
 ]
 
-{ #category : #'tests-as yet unclassified' }
+{ #category : #tests }
 KEModelPartTest >> testSplitStatus [
-	|twoStrains|
-	twoStrains := KEModelPart extends: self sirConcern.
-	twoStrains splitStatus: { #(I). #strains->#(1 2) }.
-
+	| twoStrains |
+	twoStrains := KEModelPart extends: sirConcern.
+	twoStrains
+		splitStatus:
+			{#(I).
+			(#strains -> #(1 2))}.
 	self assert: (twoStrains atAttribute: #status) size equals: 5.
-	self assert: (twoStrains transitions size) equals: 12
+	self assert: twoStrains transitions size equals: 12
 ]

@@ -23,6 +23,5 @@ KEModel >> gtInspectorKendrickGraphIn: composite [
 
 { #category : #'*Kendrick-InternalDSL-DSL' }
 KEModel >> resetTime [
-
 	t := 0
 ]

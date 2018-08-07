@@ -175,13 +175,13 @@ dom size ~= aMatrix size ifTrue: [ ^ self error: 'Size of input is not compatibl
 	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 KEComponent >> initialize [
 	super initialize.
 	attributes := Dictionary new.
 	equations := OrderedCollection new.
 	transitions := OrderedCollection new.
-	parameters := Dictionary new.
+	parameters := Dictionary new
 ]
 
 { #category : #'as yet unclassified' }

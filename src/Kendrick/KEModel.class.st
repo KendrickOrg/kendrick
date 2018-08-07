@@ -73,7 +73,7 @@ KEModel >> atCompartment: anObject [
 					self population sizeOfACompartment: tmp ] ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 KEModel >> atCompartment: keyInput put: number [
 	|key|
 	((keyInput isDictionary) | (keyInput isSymbol)) ifTrue: [ key := keyInput ].
@@ -106,7 +106,7 @@ KEModel >> atCompartment: keyInput put: aNumber1 atOthersPut: aNumber2 [
 				ifFalse: [ self atCompartment: k put: aNumber2 ] ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 KEModel >> atParameter: aSymbol [
 	|p|
 	p := (self parameters at: aSymbol ifAbsent: [ nil ]).
@@ -115,7 +115,7 @@ KEModel >> atParameter: aSymbol [
 	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 KEModel >> atParameter: aSymbol assignValue: value [
 	self addParameter: aSymbol value: value 
 	
@@ -207,10 +207,9 @@ KEModel >> initCompartments [
 KEModel >> initialize [
 	super initialize.
 	t := 0.
-	self addParameter: #N value: [ :aModel| aModel population size].
-	self addParameter: #t value: [ :aModel| aModel t ].
+	self addParameter: #N value: [ :aModel | aModel population size ].
+	self addParameter: #t value: [ :aModel | aModel t ].
 	concerns := OrderedCollection new
-	
 ]
 
 { #category : #accessing }
@@ -266,7 +265,6 @@ KEModel >> resetCompartments [
 
 { #category : #'*Kendrick-InternalDSL-DSL' }
 KEModel >> resetTime [
-
 	t := 0
 ]
 

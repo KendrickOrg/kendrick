@@ -77,19 +77,19 @@ KEDependentModelPartTest >> setUpSpatialConcern [
 
 { #category : #tests }
 KEDependentModelPartTest >> testAddStatus [
-	|model concern sirTransitionMatrix|
-	model := KEModel new population: (KEPopulation new).
-	model integrate:  sirConcern.
-	model integrate:  multiHostConcern.
-	concern := KEModelPart dependOn: ( sirConcern).
+	| model concern sirTransitionMatrix |
+	model := KEModel new population: KEPopulation new.
+	model integrate: sirConcern.
+	model integrate: multiHostConcern.
+	concern := KEModelPart dependOn: sirConcern.
 	concern addStatus: #(E).
-	concern removeTransitionFrom: { #status->#S } to: { #status->#I }.
-	concern addTransitionFrom: { #status->#S } to: { #status->#E } probability: [ :aModel| aModel atParameter: #lambda ].
-	concern addTransitionFrom: { #status->#E } to: { #status->#I } probability: [ :aModel| aModel atParameter: #epsilon ].
-	concern addTransitionFrom: { #status->#E } to: #empty probability: [ :aModel| aModel atParameter: #mu ].
+	concern removeTransitionFrom: {(#status -> #S)} to: {(#status -> #I)}.
+	concern addTransitionFrom: {(#status -> #S)} to: {(#status -> #E)} probability: [ :aModel | aModel atParameter: #lambda ].
+	concern addTransitionFrom: {(#status -> #E)} to: {(#status -> #I)} probability: [ :aModel | aModel atParameter: #epsilon ].
+	concern addTransitionFrom: {(#status -> #E)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
 	concern addParameter: #epsilon.
 	sirTransitionMatrix := concern project: model transitions.
-	self assert: (concern generateSum: sirTransitionMatrix) size equals: 8 
+	self assert: (concern generateSum: sirTransitionMatrix) size equals: 8
 ]
 
 { #category : #tests }
@@ -111,18 +111,18 @@ KEDependentModelPartTest >> testGenerateSum [
 
 { #category : #tests }
 KEDependentModelPartTest >> testGenerateTensorSum [
-	|model concern|
-	model := KEModel new population: (KEPopulation new).
-	model integrate:  sirConcern.
-	model integrate:  spatialConcern.
-	concern := KEModelPart dependOn:  sirConcern.
+	| model concern |
+	model := KEModel new population: KEPopulation new.
+	model integrate: sirConcern.
+	model integrate: spatialConcern.
+	concern := KEModelPart dependOn: sirConcern.
 	concern atAttribute: #status add: #E.
-	concern removeTransitionFrom: { #status->#S } to: { #status->#I }.
-	concern addTransitionFrom: { #status->#S } to: { #status->#E } probability: [ :aModel| aModel atParameter: #lambda ].
-	concern addTransitionFrom: { #status->#E } to: { #status->#I } probability: [ :aModel| aModel atParameter: #epsilon ].
-	concern addTransitionFrom: { #status->#E } to: #empty probability: [ :aModel| aModel atParameter: #mu ].
+	concern removeTransitionFrom: {(#status -> #S)} to: {(#status -> #I)}.
+	concern addTransitionFrom: {(#status -> #S)} to: {(#status -> #E)} probability: [ :aModel | aModel atParameter: #lambda ].
+	concern addTransitionFrom: {(#status -> #E)} to: {(#status -> #I)} probability: [ :aModel | aModel atParameter: #epsilon ].
+	concern addTransitionFrom: {(#status -> #E)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
 	concern addParameter: #epsilon.
-	self assert: (concern generateTensorSum: model transitions) size equals: 60.
+	self assert: (concern generateTensorSum: model transitions) size equals: 60
 ]
 
 { #category : #tests }
@@ -137,42 +137,39 @@ KEDependentModelPartTest >> testProject [
 
 { #category : #tests }
 KEDependentModelPartTest >> testRemainingMatrixAfterProjecting [
-	|model concern|
-	model := KEModel new population: (KEPopulation new)..
+	| model concern |
+	model := KEModel new population: KEPopulation new.
 	model integrate: sirConcern.
-	model integrate:  multiHostConcern.
-	concern := KEModelPart dependOn:  sirConcern.
-	
-	self assert: (concern remainingMatrixAfterProjecting: model transitions) size equals: 4. 
-	
+	model integrate: multiHostConcern.
+	concern := KEModelPart dependOn: sirConcern.
+	self assert: (concern remainingMatrixAfterProjecting: model transitions) size equals: 4
 ]
 
 { #category : #tests }
 KEDependentModelPartTest >> testRemainingMatrixAfterProjecting2 [
-	|model concern |
-	model := KEModel new population: (KEPopulation new)..
-	model integrate:  sirConcern.
-	model integrate:  spatialConcern.
-	concern := KEModelPart dependOn:  sirConcern.
-	self assert: (concern remainingMatrixAfterProjecting: model transitions) size equals: 5. 
-	
+	| model concern |
+	model := KEModel new population: KEPopulation new.
+	model integrate: sirConcern.
+	model integrate: spatialConcern.
+	concern := KEModelPart dependOn: sirConcern.
+	self assert: (concern remainingMatrixAfterProjecting: model transitions) size equals: 5
 ]
 
 { #category : #tests }
 KEDependentModelPartTest >> testRemoveTransitionFromTo [
-	|model concern sirTransitionMatrix|
-	model := KEModel new population: (KEPopulation new).
-	model integrate:  sirConcern.
-	model integrate:  multiHostConcern.
+	| model concern sirTransitionMatrix |
+	model := KEModel new population: KEPopulation new.
+	model integrate: sirConcern.
+	model integrate: multiHostConcern.
 	concern := KEModelPart dependOn: sirConcern.
 	concern atAttribute: #status add: #E.
-	concern removeTransitionFrom: { #status->#S } to: { #status->#I }.
-	concern addTransitionFrom: { #status->#S } to: { #status->#E } probability: [ :aModel| aModel atParameter: #lambda ].
-	concern addTransitionFrom: { #status->#E } to: { #status->#I } probability: [ :aModel| aModel atParameter: #epsilon ].
-	concern addTransitionFrom: { #status->#E } to: #empty probability: [ :aModel| aModel atParameter: #mu ].
+	concern removeTransitionFrom: {(#status -> #S)} to: {(#status -> #I)}.
+	concern addTransitionFrom: {(#status -> #S)} to: {(#status -> #E)} probability: [ :aModel | aModel atParameter: #lambda ].
+	concern addTransitionFrom: {(#status -> #E)} to: {(#status -> #I)} probability: [ :aModel | aModel atParameter: #epsilon ].
+	concern addTransitionFrom: {(#status -> #E)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
 	concern addParameter: #epsilon.
 	sirTransitionMatrix := concern project: model transitions.
-	self assert: (concern generateSum: sirTransitionMatrix) size equals: 8 
+	self assert: (concern generateSum: sirTransitionMatrix) size equals: 8
 ]
 
 { #category : #tests }
@@ -228,16 +225,16 @@ KEDependentModelPartTest >> testSplitStatus3 [
 
 { #category : #tests }
 KEDependentModelPartTest >> testUpdateTransitionFromToProbability [
-	|model concern sirTransitionMatrix|
-	model := KEModel new population: (KEPopulation new).
-	model integrate:  sirConcern.
-	model integrate:  multiHostConcern.
-	concern := KEModelPart dependOn:  sirConcern.
+	| model concern sirTransitionMatrix |
+	model := KEModel new population: KEPopulation new.
+	model integrate: sirConcern.
+	model integrate: multiHostConcern.
+	concern := KEModelPart dependOn: sirConcern.
 	concern atAttribute: #status add: #Q.
-	concern updateTransitionFrom: { #status->#S } to: { #status->#I } probability: [:aModel| aModel atParameter: #lambda].
-	concern addTransitionFrom: { #status->#I } to: { #status->#Q } probability: [ :aModel| aModel atParameter: #nu ].
-	concern addTransitionFrom: { #status->#Q } to: { #status->#R } probability: [ :aModel| aModel atParameter: #epsilon ].
-	concern addTransitionFrom: { #status->#Q } to: #empty probability: [ :aModel| aModel atParameter: #mu ].
+	concern updateTransitionFrom: {(#status -> #S)} to: {(#status -> #I)} probability: [ :aModel | aModel atParameter: #lambda ].
+	concern addTransitionFrom: {(#status -> #I)} to: {(#status -> #Q)} probability: [ :aModel | aModel atParameter: #nu ].
+	concern addTransitionFrom: {(#status -> #Q)} to: {(#status -> #R)} probability: [ :aModel | aModel atParameter: #epsilon ].
+	concern addTransitionFrom: {(#status -> #Q)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
 	concern addParameters: #(#epsilon #nu #lambda).
 	sirTransitionMatrix := concern project: model transitions.
 	self assert: (concern generateSum: sirTransitionMatrix) size equals: 9

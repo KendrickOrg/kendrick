@@ -38,17 +38,10 @@ Class {
 	#category : #'Kendrick-Core'
 }
 
-{ #category : #'as yet unclassified' }
-KEPopulation class >> annotation [
-	<MSEClass: #Population super: #KEEntity>
-	<package: #KE>
-	^self
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 KEPopulation class >> size: aNumber [
 	|population|
-	population := KEPopulation new.
+	population := self new.
 	population initialSize: aNumber.
 	^ population
 ]
