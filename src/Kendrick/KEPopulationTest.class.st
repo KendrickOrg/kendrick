@@ -16,6 +16,11 @@ KEPopulationTest >> testAddIndividual [
 ]
 
 { #category : #tests }
+KEPopulationTest >> testNewPopulationIsEmpty [
+	self assert: KEPopulation new size equals: 0
+]
+
+{ #category : #tests }
 KEPopulationTest >> testRemoveIndividual [
 	|population  |
 	population := KEPopulation new.
