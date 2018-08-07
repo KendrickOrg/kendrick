@@ -2,18 +2,11 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/0wy09lhcta0017ri?svg=true)](https://ci.appveyor.com/project/SergeStinckwich/kendrick)
 [![Coverage Status](https://coveralls.io/repos/github/UMMISCO/kendrick/badge.svg?branch=master)](https://coveralls.io/github/UMMISCO/kendrick?branch=master)
 
-[![Join the chat at https://gitter.im/UMMISCO/kendrick](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/UMMISCO/kendrick?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/UMMISCO/kendrick/master/LICENSE)
 
-Kendrick: tools for simulating mathematical models of infectious disease. Classes of epidemic model include deterministic compartmental models, stochastic individual contact models, and individual-based network models.
-
-Kendrick provide a Domain-Specific Language and a Simulation Plaform for mathematical epidemiology modeling. It helps epidemiologists craft custom analyses cheaply. It's based on [Pharo](http://www.pharo.org/) and it's open source under MIT.
-
-All the development happens on SmalltalkHub at the moment: http://bit.ly/XrpsL2
+Kendrick provide a Domain-Specific Language and a Simulation Plaform for mathematical epidemiology modeling. It helps epidemiologists craft custom analyses cheaply. It's based on [Pharo](http://www.pharo.org/) and it's open source under MIT. Classes of epidemic model include deterministic compartmental models, stochastic individual contact models, and individual-based network models.
 
 Kendrick is based extensively on several tools of the meta-modeling platform [MOOSE](http://www.moosetechnology.org/) including [PetitParser](http://www.moosetechnology.org/tools/petitparser) and Roassal visualization engine.
-
-Github repository is only used to store [issues](https://github.com/UMMISCO/Kendrick/issues) list.
 
 ## Citation
 
@@ -25,7 +18,7 @@ You will find documentation about Kendrick DSL in the wiki : https://github.com/
 
 Kendrick is also described in a chapter of the [Agile Visualization book](http://agilevisualization.com/).
 
-## How to download pre-compiled stable versions of Kendrick 0.42 for your platform
+## How to install a stable version of Kendrick
 
 If you don't want to compile Kendrick on your machine, you can download pre-compiled versions of Kendrick for your platform of choice, follow the links below:
 
@@ -45,15 +38,12 @@ If you don't want to compile Kendrick on your machine, you can download pre-comp
 * apt-get -y install libfontconfig1:i386 
 * apt-get -y install libssl1.0.0:i386 
 
-## How to automagically install Kendrick 0.42 from sources
-
-On systems with a bash cmd-line (this includes Linux, Mac and Windows with Cygwin and/or the Windows 10 Bash sub-system) 
-you can compile Kendrick from sources using the following command:
+You can also install Kendrick 0.42 from source files. On systems with a bash cmd-line (this includes Linux, Mac and Windows with Cygwin and/or the Windows 10 Bash sub-system), you can compile Kendrick from sources using the following command:
 ```shell
 wget -O- https://goo.gl/WUQxmp | bash
 ````
 
-## How to manually install the development version of Kendrick from github
+## How to install the development version of Kendrick from github
 
 * Download Pharo 6.1 VM depending of your platform: http://pharo.org/download
 * Load Kendrick: Open Pharo 6.1 image then right-click anywhere to open the main menu. Choose Playground to execute script. Paste the script below in Playground, select all then right-click and choose Do it to execute this.
