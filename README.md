@@ -50,7 +50,7 @@ wget -O- https://goo.gl/WUQxmp | bash
 
 ```Smalltalk
 Metacello new
-        repository: 'github://UMMISCO/Kendrick:master/src';
+        repository: 'github://UMMISCO/kendrick:master/src';
         baseline: 'Kendrick';
         load
 ```
