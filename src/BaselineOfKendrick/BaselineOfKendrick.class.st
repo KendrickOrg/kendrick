@@ -13,6 +13,8 @@ BaselineOfKendrick >> baseline: spec [
 			spec blessing: #baseline.
 			spec repository: 'https://github.com/UMMISCO/Kendrick'.
 			spec
+				baseline: 'PetitParser2Core'
+    					with: [ spec repository: 'github://kursjan/petitparser2' ];
 				project: 'PetitParser' with: [
 					spec
 						className: #ConfigurationOfPetitParser;
