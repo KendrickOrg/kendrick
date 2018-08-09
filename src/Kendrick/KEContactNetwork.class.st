@@ -39,6 +39,25 @@ KEContactNetwork >> createNodeOf: ind [
 ]
 
 { #category : #'as yet unclassified' }
+KEContactNetwork >> edgesFrom: arguments [
+	"model. status"
+	|attributes group model sum|
+	arguments size <= 1 ifTrue: [ ^0. ].
+	model := arguments first.
+	attributes := Dictionary newFrom: { #status -> (arguments at: 2)}.
+	sum := 0.
+	group := model atCompartment: attributes.
+	1 to: (group size) do:
+	[  :i|
+		(group at: i) = 1 ifTrue: [ 
+				sum := sum + (((self 
+										nodes at: i) adjacentNodes) size).
+			 ]
+	].
+	^sum.
+]
+
+{ #category : #'as yet unclassified' }
 KEContactNetwork >> releaseNodeOf: ind [
 	"This function is just called in the case of network of individuals"
 	|adjacentNodeLabels currentNode|
