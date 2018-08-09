@@ -16,3 +16,36 @@ KEContactNetworkTest >> testContactsOf [
 	self assert: (network contactsOf: {model. #node->#'1'}) equals: 99
 	
 ]
+
+{ #category : #tests }
+KEContactNetworkTest >> testEdgesFrom [
+	"self new testEdgesFrom"
+	|model sirConcern spatialConcern network|
+	model := KEModel new population: (KEPopulation size: 10).
+
+	sirConcern := KEModelPart new.
+	sirConcern addAttribute: #status value: #(S I R).
+	
+
+	spatialConcern := KEModelPart new.
+	network := KEContactNetwork nodes: 10 topology: { #random. #p->1 }.
+	spatialConcern addParameter: #network value: network.
+	spatialConcern addAttribute: #node value: network allContacts.
+
+
+	model integrate: sirConcern.
+	model integrate: spatialConcern.
+
+	1 to: 7 do: [:i| model atCompartment: {#status->#S. #node->i asString asSymbol} put: 1].
+	model atCompartment: { #status->#I. #node->#'10' } put: 1.
+	model atCompartment: { #status->#I. #node->#'9' } put: 1.
+	model atCompartment: { #status->#R. #node->#'8' } put: 1.
+	
+	self assert: (network edgesFrom: {model. #I}) equals: 18.
+	self assert: (network edgesFrom: {model. #R}) equals: 9.
+	self assert: (network edgesFrom: {model. #S}) equals: 63.
+	
+	
+
+
+]
