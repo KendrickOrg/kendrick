@@ -49,3 +49,11 @@ KEContactNetworkTest >> testEdgesFrom [
 
 
 ]
+
+{ #category : #tests }
+KEContactNetworkTest >> testLoadNodesFromFile [
+	"self new testLoadNodesFromFile"
+	|network|
+	network := KEContactNetwork new.
+	network loadNodes: 10 fromFile: 'network.dat'.
+]

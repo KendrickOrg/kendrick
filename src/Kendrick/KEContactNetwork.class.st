@@ -58,6 +58,28 @@ KEContactNetwork >> edgesFrom: arguments [
 ]
 
 { #category : #'as yet unclassified' }
+KEContactNetwork >> loadNodes: numberOfNodes fromFile: fileName [
+	"this method will load network (nodes and edges) from file"
+	"Each line of file should be in format:  node   adjacentNode"
+	"For example:  1   21"
+	"It means the node 1 has contact with node 21"
+	|file line array source target|
+	1 to: numberOfNodes do:
+	[ :i| self addNode: (i asString asSymbol) ].
+	file := FileStream fileNamed: fileName.
+	[file atEnd] whileFalse:
+	[	
+		line := file nextLine. "Process the line"
+		array := line splitOn: Character tab.
+		source := array first.
+		target := array at: 2.
+		(self edges) add: source -> target.
+		(self nodes at: source) adjacentNodes add: target.
+	]	
+	file ifNotNil: [ file close ].
+]
+
+{ #category : #'as yet unclassified' }
 KEContactNetwork >> releaseNodeOf: ind [
 	"This function is just called in the case of network of individuals"
 	|adjacentNodeLabels currentNode|
