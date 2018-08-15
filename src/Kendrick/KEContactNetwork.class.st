@@ -39,6 +39,47 @@ KEContactNetwork >> createNodeOf: ind [
 ]
 
 { #category : #'as yet unclassified' }
+KEContactNetwork >> edgesFrom: arguments [
+	"model. status"
+	|attributes group model sum|
+	arguments size <= 1 ifTrue: [ ^0. ].
+	model := arguments first.
+	attributes := Dictionary newFrom: { #status-> (arguments at: 2) }.
+	sum := 0.
+	group := model atCompartment: attributes.
+	1 to: (group size) do: [ :i|
+		(group at: i) = 1 ifTrue: [ 
+				sum := sum + (((self 
+										nodes at: i) adjacentNodes) size
+									).
+			 ].
+	].
+	^sum.
+]
+
+{ #category : #'as yet unclassified' }
+KEContactNetwork >> loadNodes: numberOfNodes fromFile: fileName [
+    "this method will load network (nodes and edges) from file"
+    "Each line of file should be in format:  node   adjacentNode"
+    "For example:  1   21"
+    "It means the node 1 has contact with node 21"
+    |file line array source target|
+    1 to: numberOfNodes do:
+    [ :i| self addNode: (i asString asSymbol) ].
+    file := FileStream fileNamed: fileName.
+    [file atEnd] whileFalse:
+    [   
+        line := file nextLine. "Process the line"
+        array := line splitOn: Character tab.
+        source := array first.
+        target := array at: 2.
+        (self edges) add: source -> target.
+        (self atNode: source) adjacentNodes add: target.
+    ].   
+    file ifNotNil: [ file close ].
+]
+
+{ #category : #'as yet unclassified' }
 KEContactNetwork >> releaseNodeOf: ind [
 	"This function is just called in the case of network of individuals"
 	|adjacentNodeLabels currentNode|
