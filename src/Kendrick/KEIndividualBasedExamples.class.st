@@ -190,13 +190,17 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithBansalIdea [
 	sirConcern addParameters: { #beta. #gamma. #lambda }.
 	sirConcern addTransitionFrom: { #status->#S } to: { #status->#I } probability: 'lambda'.
 	sirConcern addTransitionFrom: { #status->#I } to: { #status->#R } probability: 'gamma'.
+	
 	spatialConcern := KEModelPart new.
 	network := KEContactNetwork nodes: 100 topology: { #random. #p->1 }.
+	network generateTransitions: spatialConcern.
 	spatialConcern addParameter: #network value: network.
 	spatialConcern addAttribute: #node value: network allContacts.
+	spatialConcern addParameter: #allConnects value: network edges size. 
 	spatialConcern addParameter: #iota value: [ :aModel|
-		((aModel atParameter: #network) edgesFrom: {aModel. #I}) / ((aModel atParameter: #network) edges size).
+		((aModel atParameter: #network) edgesFrom: {aModel. #I}) / (aModel atParameter: #allConnects).
 	 ].
+	
 	model integrate: sirConcern.
 	model integrate: spatialConcern.
 	model atParameter: #lambda assignValue: [ :aModel|

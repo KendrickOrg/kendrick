@@ -58,6 +58,14 @@ KEContactNetwork >> edgesFrom: arguments [
 ]
 
 { #category : #'as yet unclassified' }
+KEContactNetwork >> generateTransitions: aConcern [
+	1 to: (self nodes size) do: [ :i|
+		aConcern addTransitionFrom: { #node->i asString asSymbol } 
+				to: { #node->i asString asSymbol } probability: 0.
+		 ].
+]
+
+{ #category : #'as yet unclassified' }
 KEContactNetwork >> loadNodes: numberOfNodes fromFile: fileName [
     "this method will load network (nodes and edges) from file"
     "Each line of file should be in format:  node   adjacentNode"
