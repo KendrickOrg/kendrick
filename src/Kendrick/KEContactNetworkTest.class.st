@@ -49,7 +49,7 @@ KEContactNetworkTest >> testLoadNodesFromFile [
     "self new testLoadNodesFromFile"
     |degreeDistribution network temp|
     network := KEContactNetwork new.
-    network loadNodes: 10000 fromFile: 'network.dat'.
+    network loadNodes: 10000 fromFile: 'network.txt'.
    
     "20 elements represent 20 degrees of network"
     degreeDistribution := Array newFrom: #(0 0 0 0 0
