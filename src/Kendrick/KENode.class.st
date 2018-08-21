@@ -4,6 +4,7 @@ A KENode represents a node in graph (KEGraph).
 Instance Variables
 	adjacentNodes:		<OrderedCollection>
 	weights:		<Dictionary>
+	degree:           <Number>
 
 adjacentNodes
 	- a list of nodes linked to this node.
@@ -11,13 +12,17 @@ adjacentNodes
 weights
 	- a dictionary of weight list. The key is the weight name (ex: #beta, #gamma etc.). The value is a list of weight values that shows the interaction of this node and its linked nodes.
 
+degree
+          - a number of edges which rise from this node.
+
 "
 Class {
 	#name : #KENode,
 	#superclass : #KEEntity,
 	#instVars : [
 		'adjacentNodes',
-		'label'
+		'label',
+		'degree'
 	],
 	#category : #'Kendrick-Core-Spatial'
 }
@@ -29,8 +34,8 @@ KENode >> = aNode [
 
 { #category : #adding }
 KENode >> addAdjacentNode: aNodeLabel [
-	adjacentNodes add: aNodeLabel
-	
+	adjacentNodes add: aNodeLabel.
+	degree := degree + 1.
 ]
 
 { #category : #accessing }
@@ -38,10 +43,21 @@ KENode >> adjacentNodes [
 	^ adjacentNodes.
 ]
 
+{ #category : #accessing }
+KENode >> degree [
+	^degree.
+]
+
+{ #category : #accessing }
+KENode >> degree: aNumber [
+	degree := aNumber.
+]
+
 { #category : #initialization }
 KENode >> initialize [ 
 	super initialize.
 	adjacentNodes := OrderedCollection new.
+	degree := 0.
 
 ]
 

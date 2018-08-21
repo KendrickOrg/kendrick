@@ -4,16 +4,20 @@ The KEGraph represents a spatial structure of epidemiological models, each node 
     Instance Variables
 	edges:		<Object>
 	nodes:		<Object>
+	numberOfEdges:         <Number>
 
 
     Implementation Points
+
+numberOfEdges: to reduce leaked memory, instead of using a collection edges, I use this instance variable to store the number of edges in network 
 "
 Class {
 	#name : #KEGraph,
 	#superclass : #KEEntity,
 	#instVars : [
 		'nodes',
-		'edges'
+		'edges',
+		'numberOfEdges'
 	],
 	#category : #'Kendrick-Core-Spatial'
 }
@@ -59,9 +63,11 @@ KEGraph >> edgesFrom: aNode toAll: otherNodes [
 KEGraph >> edgesFrom: aNode toAll: otherNodes oneWay: boolean [
 	otherNodes do: [ :n|
 		edges add: aNode->n. 
+		numberOfEdges := numberOfEdges + 1.
 		(self atNode: aNode) addAdjacentNode: n.
 		boolean ifFalse: [ 
 			edges add: n->aNode.
+			numberOfEdges := numberOfEdges + 1.
 			(self atNode: n) addAdjacentNode: aNode ]
 	]
 ]
@@ -70,10 +76,21 @@ KEGraph >> edgesFrom: aNode toAll: otherNodes oneWay: boolean [
 KEGraph >> initialize [
 	super initialize.
 	nodes := OrderedCollection new.
-	edges := OrderedCollection new
+	edges := OrderedCollection new.
+	numberOfEdges := 0.
 ]
 
 { #category : #accessing }
 KEGraph >> nodes [
 	^ nodes
+]
+
+{ #category : #accessing }
+KEGraph >> numberOfEdges [
+	^numberOfEdges.
+]
+
+{ #category : #accessing }
+KEGraph >> numberOfEdges: aNumber [
+	numberOfEdges := aNumber.
 ]
