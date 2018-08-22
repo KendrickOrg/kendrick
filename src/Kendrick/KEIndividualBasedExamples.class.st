@@ -406,7 +406,7 @@ KEIndividualBasedExamples >> exampleIBM_SIR_Bansal_ScaleFree [
 	"self new exampleIBM_SIR_Bansal_ScaleFree"
 	"You can access the file network100.dat at: https://github.com/thanhbka85dn/kendrick/blob/master/network100.dat"
 	|model network spatialConcern sirConcern simulator db f|
-	model := KEModel new population: (KEPopulation size: 100).
+	model := KEModel new population: (KEPopulation size: 10000).
 	sirConcern := KEModelPart new.
 	sirConcern addAttribute: #status value: #(S I R).
 	sirConcern addParameters: { #beta. #gamma. #lambda }.
@@ -414,7 +414,7 @@ KEIndividualBasedExamples >> exampleIBM_SIR_Bansal_ScaleFree [
 	sirConcern addTransitionFrom: { #status->#I } to: { #status->#R } probability: 'gamma'.
 	spatialConcern := KEModelPart new.
 	network := KEContactNetwork new.
-	network loadNodes: 100 fromFile: 'network100.dat'.
+	network loadNodes: 10000 fromFile: 'network.dat'.
 	
 	spatialConcern addParameter: #network value: network.
 	
@@ -423,7 +423,7 @@ KEIndividualBasedExamples >> exampleIBM_SIR_Bansal_ScaleFree [
 	
 	spatialConcern addAttribute: #node value: network allContacts.
 	spatialConcern addParameter: #iota value: [ :aModel|
-		((aModel atParameter: #network) edgesFrom: {aModel. #I}) / 
+		((aModel atParameter: #network) edgesFrom: {aModel. #I}) / "((aModel atParameter: #network) edges size)"
 		
 				((aModel atParameter: #network) numberOfEdges)
 				.
@@ -435,9 +435,9 @@ KEIndividualBasedExamples >> exampleIBM_SIR_Bansal_ScaleFree [
 	 ].
 	model atParameter: #beta assignValue: 1.
 	model atParameter: #gamma assignValue: 0.1.
-	1 to: 99 do: [:i| model atCompartment: {#status->#S. #node->i asString asSymbol} put: 1].
-	model atCompartment: { #status->#I. #node->#'100' } put: 1.
-	simulator := KESimulator new: #IBM from: 0.0 to: 50 step: 0.1.
+	1 to: 9999 do: [:i| model atCompartment: {#status->#S. #node->i asString asSymbol} put: 1].
+	model atCompartment: { #status->#I. #node->#'10000' } put: 1.
+	simulator := KESimulator new: #IBM from: 0.0 to: 10 step: 0.5.
 	simulator executeOn: model.
 	f := [:name| |d tmp|
 		tmp := (simulator timeSeriesOutputsAt: name) collect: [ :e| e value ].

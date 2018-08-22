@@ -112,11 +112,16 @@ KESimulator >> model: anObject [
 
 { #category : #'as yet unclassified' }
 KESimulator >> saveCompartmentsValueAtTime: t [
-	model population compartments
+	"model population compartments
 		keysAndValuesDo: [ :k :v | 
 			| ts |
 			ts := timeSeriesOutputs detect: [ :e | e compartment = k ].
-			ts add: v atIndex: t ]
+			ts add: v atIndex: t ]"
+	timeSeriesOutputs do:
+	[ :e|  |temp|
+		temp := (model population compartments) at: (e compartment).
+		e add: temp atIndex: t.
+	].
 ]
 
 { #category : #accessing }
