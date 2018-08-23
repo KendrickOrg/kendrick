@@ -405,6 +405,9 @@ AABJRU5ErkJggg=='
 KEIndividualBasedExamples >> exampleIBM_SIR_Bansal_ScaleFree [
 	"self new exampleIBM_SIR_Bansal_ScaleFree"
 	"You can access the file network100.dat at: https://github.com/thanhbka85dn/kendrick/blob/master/network100.dat"
+	"Respectively, network1000.dat at: https://github.com/thanhbka85dn/kendrick/blob/master/network1000.dat"
+	"Scale free network with 10000 individual, network.dat at: https://github.com/thanhbka85dn/kendrick/blob/master/network.dat"
+	"Note that all scale networks above have p(k) ~ 'k to the minus 1.875 power'"
 	|model network spatialConcern sirConcern simulator db f|
 	model := KEModel new population: (KEPopulation size: 10000).
 	sirConcern := KEModelPart new.
@@ -437,7 +440,7 @@ KEIndividualBasedExamples >> exampleIBM_SIR_Bansal_ScaleFree [
 	model atParameter: #gamma assignValue: 0.1.
 	1 to: 9999 do: [:i| model atCompartment: {#status->#S. #node->i asString asSymbol} put: 1].
 	model atCompartment: { #status->#I. #node->#'10000' } put: 1.
-	simulator := KESimulator new: #IBM from: 0.0 to: 10 step: 0.5.
+	simulator := KESimulator new: #IBM from: 0.0 to: 50 step: 0.5.
 	simulator executeOn: model.
 	f := [:name| |d tmp|
 		tmp := (simulator timeSeriesOutputsAt: name) collect: [ :e| e value ].
