@@ -33,6 +33,16 @@ KEPopulationTest >> testRemoveIndividual [
 ]
 
 { #category : #tests }
+KEPopulationTest >> testSizeOfPopulationIsTheSameThanTheSumOfItsCompartment [
+	| model |
+	model := KEModel new.
+	model addAttribute: #status value: #(#S #I #R).
+	model atCompartment: {(#status -> #S)} put: 99 atOthersPut: 0.
+	model atCompartment: {(#status -> #I)} put: 1.
+	self assert: (model size == 100)
+]
+
+{ #category : #tests }
 KEPopulationTest >> testUpdateIndividual [
 	|population ind |
 	population := KEPopulation new.
