@@ -28,7 +28,7 @@ BaselineOfKendrick >> baseline: spec [
 				baseline: 'PolyMath'
     					with: [ spec repository: 'github://PolyMathOrg/PolyMath:master/src' ];
 				baseline: 'DataFrame'
-						with: [ spec repository: 'github://PolyMathOrg/DataFrame:master/' ];
+						with: [ spec repository: 'github://PolyMathOrg/DataFrame:master/src' ];
 				project: 'Ston'
 					with: [ spec
 						className: #ConfigurationOfSton;
