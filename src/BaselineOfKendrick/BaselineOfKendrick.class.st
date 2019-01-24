@@ -23,7 +23,7 @@ BaselineOfKendrick >> baseline: spec [
 				project: 'Roassal2' with: [
 				spec
 					className: #ConfigurationOfRoassal2;
-					versionString: #'stable';
+					versionString: '1.59';
 					repository: 'http://smalltalkhub.com/mc/ObjectProfile/Roassal2/main/' ];
 				baseline: 'PolyMath'
     					with: [ spec repository: 'github://PolyMathOrg/PolyMath:master/src' ];
