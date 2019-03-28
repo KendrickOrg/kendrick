@@ -35,7 +35,7 @@ BaselineOfKendrick >> baseline: spec [
 						className: #ConfigurationOfSton;
 						versionString: #stable;
 						repository: 'http://ss3.gemstone.com/ss/STON' ].
-			spec package: 'Kendrick' with: [ spec requires: #('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2')].
+			spec package: 'Kendrick' with: [ spec requires: #('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'CollectionExtensions')].
 			spec group: 'default' with: #(#Kendrick) ]
 
 ]
