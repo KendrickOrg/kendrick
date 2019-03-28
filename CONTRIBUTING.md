@@ -1,13 +1,13 @@
 # Contribution Guide for Kendrick
 
-This file is currently not complete but will be improve step by step.
+*This file is currently not complete but will be improve step by step.*
 
-In order to contribute to Kendrick on github we are using Iceberg. If you are using Pharo 6.1, you need to upgrade Iceberg with the following script.
+In order to contribute to Kendrick on github we are using Pharo 6.1 and Iceberg.
 
-In Pharo 6.1 on macOS, there is a font bug with last version of Roassal 2. You need to update your fonts, by unclick and click on the Use Free Type ... in the settings. This problem with be fixed when we move to Pharo 7.0.
+In Pharo 6.1 on macOS, there is a font bug with last version of Roassal 2. Before installing Kendrick, you need to update your fonts, by unclick and click on the Use Free Type ... in the settings. This problem with be fixed when we move to Pharo 7.0.
 
 # Update Iceberg (if you are using Pharo 6.1)
-In a fresh Pharo 6.1 (downloaded from https://pharo.org/download or with PharoLauncher), execute the following script in order to update Iceberg to the last version : 
+Then you need to update Iceberg to the last version, by executing the following script :
 
 ```Smalltalk
 MetacelloPharoPlatform select.
