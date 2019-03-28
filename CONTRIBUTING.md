@@ -2,6 +2,8 @@
 
 This file is currently not complete but will be improve step by step.
 
+In order to contribute to Kendrick on github we are using Iceberg. If you are using Pharo 6.1, you need to upgrade Iceberg with the following script. If you use Pharo 7.0.3, you don't need to upgrade.
+
 # Update Iceberg (if you are using Pharo 6.1)
 In a fresh Pharo 6.1 (downloaded from https://pharo.org/download or with PharoLauncher), execute the following script in order to update Iceberg to the last version : 
 
