@@ -13,6 +13,7 @@ BaselineOfKendrick >> baseline: spec [
 			spec blessing: #baseline.
 			spec repository: 'https://github.com/UMMISCO/Kendrick'.
 			spec
+				package: 'CollectionExtensions' with: [spec repository: 'http://smalltalkhub.com/mc/Moose/CollectionExtensions/main/'];
 				baseline: 'PetitParser2Core'
     					with: [ spec repository: 'github://kursjan/petitparser2' ];
 				project: 'PetitParser' with: [
