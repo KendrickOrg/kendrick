@@ -75,18 +75,23 @@ KEModel >> atCompartment: anObject [
 
 { #category : #accessing }
 KEModel >> atCompartment: keyInput put: number [
-	|key|
-	((keyInput isDictionary) | (keyInput isSymbol)) ifTrue: [ key := keyInput ].
-	keyInput isArray ifTrue: [ key := Dictionary newFrom: keyInput ].
-	keyInput isString ifTrue: [ key := ((STONReader on: keyInput readStream) allowComplexMapKeys: true) next ].
-	self initCompartments at: key ifAbsent: [ 
-		(self compartmentNames includes: key) ifFalse: [ ^ self error: 'No compartment names: ', key asString ].
-		initCompartments := Dictionary newFrom: (self compartmentNames collect: [:c| c->0]).
-		 ].
-	(population initialSize < (initCompartments values sum + number)) ifTrue: [ ^ self error: 'Total size of compartments is greater than the population size' ].
+	| key |
+	keyInput isDictionary | keyInput isSymbol
+		ifTrue: [ key := keyInput ].
+	keyInput isArray
+		ifTrue: [ key := Dictionary newFrom: keyInput ].
+	keyInput isString
+		ifTrue: [ key := ((STONReader on: keyInput readStream) allowComplexMapKeys: true) next ].
+	self initCompartments
+		at: key
+		ifAbsent: [ (self compartmentNames includes: key)
+				ifFalse: [ ^ self error: 'No compartment names: ' , key asString ].
+			initCompartments := Dictionary
+				newFrom: (self compartmentNames collect: [ :c | c -> 0 ]) ].
+	"population initialSize < (initCompartments values sum + number)
+		ifTrue: [ ^ self error: 'Total size of compartments is greater than the population size' ]."
 	initCompartments at: key put: number.
 	population compartments: initCompartments
-	
 ]
 
 { #category : #accessing }
@@ -209,7 +214,8 @@ KEModel >> initialize [
 	t := 0.
 	self addParameter: #N value: [ :aModel | aModel population size ].
 	self addParameter: #t value: [ :aModel | aModel t ].
-	concerns := OrderedCollection new
+	concerns := OrderedCollection new.
+	population := KEPopulation new.
 ]
 
 { #category : #accessing }

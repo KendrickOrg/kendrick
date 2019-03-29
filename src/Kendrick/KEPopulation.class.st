@@ -125,6 +125,13 @@ KEPopulation >> initialSize: aNumber [
 ]
 
 { #category : #adding }
+KEPopulation >> initialize [
+
+compartments := Dictionary new.
+
+]
+
+{ #category : #adding }
 KEPopulation >> removeIndividual: ind [
 	ind attributes at: #alive put: false.
 	self diedIndList add: ind id.

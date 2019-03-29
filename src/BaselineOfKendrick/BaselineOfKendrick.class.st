@@ -19,12 +19,7 @@ BaselineOfKendrick >> baseline: spec [
 						versionString: #development;
 						repository: 'http://www.smalltalkhub.com/mc/Moose/PetitParser/main' ];
 				baseline: 'PolyMath' with: [ spec repository: 'github://PolyMathOrg/PolyMath:master/src' ];
-				baseline: 'DataFrame' with: [ spec repository: 'github://PolyMathOrg/DataFrame:master/src' ];
-				project: 'Ston'
-					with: [ spec
-						className: #ConfigurationOfSton;
-						versionString: #stable;
-						repository: 'http://ss3.gemstone.com/ss/STON' ].
+				baseline: 'DataFrame' with: [ spec repository: 'github://PolyMathOrg/DataFrame:master/src' ].
 			spec
 				package: 'Kendrick'
 				with: [ spec requires: #('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'CollectionExtensions') ].
@@ -33,11 +28,19 @@ BaselineOfKendrick >> baseline: spec [
 		for: #'pharo6.x'
 		do: [ spec
 				project: 'Roassal2'
-				with: [ spec
+					with: [ spec
 						className: #ConfigurationOfRoassal2;
 						versionString: '1.59';
-						repository: 'http://smalltalkhub.com/mc/ObjectProfile/Roassal2/main/' ] ].
-	spec for: #'pharo7.x' do: [ spec baseline: 'PetitParser2Core' with: [ spec repository: 'github://kursjan/petitparser2' ];
-	baseline: 'Roassal2' with: [spec repository: 'github://ObjectProfile/Roassal2/src']		
-	]
+						repository: 'http://smalltalkhub.com/mc/ObjectProfile/Roassal2/main/' ];
+				project: 'Ston'
+					with: [ spec
+						className: #ConfigurationOfSton;
+						versionString: #stable;
+						repository: 'http://ss3.gemstone.com/ss/STON' ] ].
+	spec
+		for: #'pharo7.x'
+		do: [ spec
+				baseline: 'PetitParser2Core' with: [ spec repository: 'github://kursjan/petitparser2' ];
+				baseline: 'Roassal2' with: [ spec repository: 'github://ObjectProfile/Roassal2/src' ];
+				baseline: 'Ston' with: [ spec repository: 'github://svenc/ston/repository' ] ]
 ]
