@@ -8,4 +8,10 @@ os:
 osx_image: xcode6.4
 
 smalltalk:
-  - Moose-6.1
+ - Pharo64-6.1
+
+
+matrix:
+  fast_finish: true
+  allow_failures:
+  - smalltalk: Pharo64-6.1
