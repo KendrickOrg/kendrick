@@ -8,7 +8,7 @@ Kendrick provide a Domain-Specific Language and a Simulation Plaform for mathema
 
 Kendrick is based extensively on several tools of the meta-modeling platform [MOOSE](http://www.moosetechnology.org/) including [PetitParser](http://www.moosetechnology.org/tools/petitparser) and Roassal visualization engine.
 
-[![Screenshot](images/Screenshot 2019-03-29 at 09.36.17.png)](https://raw.githubusercontent.com/PolyMathOrg/DataFrame/master/images/Screenshot 2019-03-29 at 09.36.17.png)
+[![Screenshot](images/screenshot.png)](https://raw.githubusercontent.com/PolyMathOrg/DataFrame/master/images/screenshot.png)
 
 ## Citation
 
