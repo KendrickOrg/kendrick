@@ -42,5 +42,5 @@ BaselineOfKendrick >> baseline: spec [
 		do: [ spec
 				baseline: 'PetitParser2Core' with: [ spec repository: 'github://kursjan/petitparser2' ];
 				baseline: 'Roassal2' with: [ spec repository: 'github://ObjectProfile/Roassal2/src' ];
-				baseline: 'Ston' with: [ spec repository: 'github://svenc/ston/repository' ] ]
+				baseline: 'Ston' with: [ spec repository: 'github://svenvc/ston/repository' ] ]
 ]
