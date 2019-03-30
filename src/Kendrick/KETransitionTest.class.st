@@ -61,6 +61,6 @@ KETransitionTest >> testExecuteTransition [
 	model atCompartment: { #status->#I } put: 1.
 	model addParameters: {#beta->0.0052. #gamma->52}.
 	tr executeOn: model times: 1.
-	self assert: (model atCompartment: '{#status:#S}') equals: 9999.
-	self assert: (model atCompartment: '{#status:#I}') equals: 2.  
+	self assert: (model atCompartment: {#status -> #S}) equals: 9999.
+	self assert: (model atCompartment: {#status -> #I}) equals: 2.  
 ]
