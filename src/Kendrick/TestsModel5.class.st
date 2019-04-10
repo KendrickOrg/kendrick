@@ -99,41 +99,41 @@ TestsModel5 >> before [
 	SEIRSConcern addParameters: { #beta. #gamma. #mu. #sigma. #nu }.
 	SEIRSConcern addParameter: #lambda value: 'beta*I/N'.
 	SEIRSConcern
-		addTransitionFrom: '{#status: #S}'
-		to: '{#status: #E}'
+		addTransitionFrom: {#status -> #S}
+		to: {#status -> #E}
 		probability: [ :aModel | 
 			(aModel atParameter: #lambda) ].
 	SEIRSConcern 
-		addTransitionFrom: '{#status: #E}' 
-		to: '{#status: #I}' 
+		addTransitionFrom: {#status -> #E}
+		to: {#status -> #I} 
 		probability: [ :aModel | aModel atParameter: #sigma ].
 	SEIRSConcern 
-		addTransitionFrom: '{#status: #I}' 
-		to: '{#status: #R}' 
+		addTransitionFrom: {#status -> #I} 
+		to: {#status -> #R} 
 		probability: [ :aModel | aModel atParameter: #gamma ].
 	SEIRSConcern 
-		addTransitionFrom: '{#status: #R}' 
-		to: '{#status: #S}' 
+		addTransitionFrom: {#status -> #R}
+		to: {#status -> #S} 
 		probability: [ :aModel | aModel atParameter: #nu ].
 	SEIRSConcern 
-		addTransitionFrom: '{#status: #S}' 
+		addTransitionFrom: {#status -> #S} 
 		to: #empty 
 		probability: [ :aModel | aModel atParameter: #mu ].
 	SEIRSConcern 
-		addTransitionFrom: '{#status: #I}' 
+		addTransitionFrom: {#status -> #I} 
 		to: #empty 
 		probability: [ :aModel | aModel atParameter: #mu ].
 	SEIRSConcern 
-		addTransitionFrom: '{#status: #R}' 
+		addTransitionFrom: {#status -> #R}
 		to: #empty 
 		probability: [ :aModel | aModel atParameter: #mu ].
 	SEIRSConcern 
-		addTransitionFrom: '{#status: #E}' 
+		addTransitionFrom: {#status -> #E}
 		to: #empty 
 		probability: [ :aModel | aModel atParameter: #mu ].
 	SEIRSConcern 
 		addTransitionFrom: #empty 
-		to: '{#status: #S}' 
+		to: {#status -> #S} 
 		probability: [ :aModel | aModel atParameter: #mu ].
 	
 	twoStrains := KEModelPart dependOn: SEIRSConcern.
@@ -256,10 +256,10 @@ TestsModel5 >> before [
 		(KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)
 		].
 	dB data: { 
-		(f value: '{#status:#I1,#species:#bird}'). 
-		(f value: '{#status:#I1,#species: #human}').
-		(f value: '{#status:#I2,#species:#bird}'). 
-		(f value: '{#status:#I2,#species: #human}') }.
+		(f value: {#status -> #I1.#species -> #bird}). 
+		(f value: {#status -> #I1.#species -> #human}).
+		(f value: {#status ->#I2. #species -> #bird}). 
+		(f value: {#status -> #I2. #species -> #human}) }.
 
 	dB xLabel: 'Time (days)'.
 	dB legendTitle: 'Total of infectious'.

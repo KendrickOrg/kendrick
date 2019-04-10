@@ -72,12 +72,12 @@ model addParameter: #lambda value: [ :aModel|
         (aModel atParameter: #beta) * 
         (aModel atCompartment: {#status->#I}) ].
 model
-   addTransitionFrom: '{#status: #S}'
-   to: '{#status: #I}'
+   addTransitionFrom: {#status -> #S}
+   to: {#status -> #I}
    probability: [ :m | m atParameter: #lambda ].
 model 
-   addTransitionFrom: '{#status: #I}' 
-   to: '{#status: #R}' 
+   addTransitionFrom: {#status-> #I} 
+   to: {#status -> #R} 
         probability: [ :m | m atParameter: #gamma ].
     #(#S #I #R) do: [ :each| 
         model 
@@ -87,7 +87,7 @@ model
         ].
 model 
         addTransitionFrom: #empty 
-        to: '{#status: #S}' 
+        to: {#status -> #S}
         probability: [ :m | m atParameter: #mu ].
 
 multiHostConcern := KEModelPart new.
@@ -132,7 +132,7 @@ model atParameter: #lambda assignValue: [ :aModel|
 simulator := KESimulator new: #Gillespie from: 0.0 to: 0.5 step: 0.0027.
 
 simulator executeOn: model.
-db := (KEDiagramBuilder new) data: ((simulator timeSeriesOutputsAt: '{#status: #I}') sqrt).
+db := (KEDiagramBuilder new) data: ((simulator timeSeriesOutputsAt: {#status -> #I}) sqrt).
 db open.
 
 ^ simulator -> model

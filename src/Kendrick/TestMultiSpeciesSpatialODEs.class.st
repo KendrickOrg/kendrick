@@ -158,8 +158,8 @@ simulator := KESimulator new: #RungeKutta from: 0 to: 500 step: 1.
         (KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)
         ].
     db data: { 
-        (f value: '{#status:#I, #species:#bird}'). 
-        (f value: '{#status: #I, #species: #human}') }.
+        (f value: {#status -> #I. #species -> #bird}). 
+        (f value: {#status -> #I. #species -> #human}) }.
     db xLabel: 'Time (days)'.
     db legendTitle: 'Total of infectious'.
     db legends: { 'birds'. 'humans' }.

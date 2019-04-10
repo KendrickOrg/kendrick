@@ -199,21 +199,21 @@ seirsConcern addParameter: #lambda value: [ :aModel |
             (aModel atParameter: #beta) * 
             (aModel atCompartment: {#status->#I}) / (aModel atParameter: #N) ].
 seirsConcern
-        addTransitionFrom: '{#status: #S}'
-        to: '{#status: #E}'
+        addTransitionFrom: {#status -> #S}
+        to: {#status -> #E}
         probability: [ :aModel | 
             (aModel atParameter: #lambda) ].
     seirsConcern 
-        addTransitionFrom: '{#status: #E}' 
-        to: '{#status: #I}' 
+        addTransitionFrom: {#status -> #E} 
+        to: {#status -> #I} 
         probability: [ :aModel | aModel atParameter: #sigma ].
     seirsConcern 
-        addTransitionFrom: '{#status: #I}' 
-        to: '{#status: #R}' 
+        addTransitionFrom: {#status -> #I}
+        to: {#status -> #R} 
         probability: [ :aModel | aModel atParameter: #gamma ].
     seirsConcern 
-        addTransitionFrom: '{#status: #R}' 
-        to: '{#status: #S}' 
+        addTransitionFrom: {#status -> #R} 
+        to: {#status -> #S}
         probability: [ :aModel | aModel atParameter: #nu ].
     #(S E I R) do: [ :each| 
         seirsConcern 
@@ -223,7 +223,7 @@ seirsConcern
         ].
     seirsConcern 
         addTransitionFrom: #empty 
-        to: '{#status: #S}' 
+        to: {#status -> #S}
         probability: [ :aModel | aModel atParameter: #mu ].
 
 "Concerns integration"
@@ -301,8 +301,8 @@ simulator := KESimulator new: #RungeKutta from: 0 to: 500 step: 1.
         (KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)
         ].
     db data: { 
-        (f value: '{#status:#I, #species:#bird}'). 
-        (f value: '{#status: #I, #species: #human}') }.
+        (f value: {#status -> #I. #species -> #bird}). 
+        (f value: {#status ->  #I. #species ->#human}) }.
     db xLabel: 'Time (days)'.
     db legendTitle: 'Total of infectious'.
     db legends: { 'birds'. 'humans' }.
@@ -350,23 +350,23 @@ seirsConcern attributes: {#status->#(#S #E #I #R)}.
 seirsConcern addParameters: { #beta. #gamma. #mu. #sigma. #nu }.
 seirsConcern addParameter: #lambda value: [ :aModel | 
             (aModel atParameter: #beta) * 
-            (aModel atCompartment: {#status->#I}) / (aModel atParameter: #N) ].
+            (aModel atCompartment: {#status-> #I}) / (aModel atParameter: #N) ].
 seirsConcern
-        addTransitionFrom: '{#status: #S}'
-        to: '{#status: #E}'
+        addTransitionFrom: {#status -> #S}
+        to: {#status -> #E}
         probability: [ :aModel | 
             (aModel atParameter: #lambda) ].
     seirsConcern 
-        addTransitionFrom: '{#status: #E}' 
-        to: '{#status: #I}' 
+        addTransitionFrom: {#status -> #E} 
+        to: {#status -> #I}
         probability: [ :aModel | aModel atParameter: #sigma ].
     seirsConcern 
-        addTransitionFrom: '{#status: #I}' 
-        to: '{#status: #R}' 
+        addTransitionFrom: {#status -> #I}
+        to: {#status -> #R} 
         probability: [ :aModel | aModel atParameter: #gamma ].
     seirsConcern 
-        addTransitionFrom: '{#status: #R}' 
-        to: '{#status: #S}' 
+        addTransitionFrom: {#status -> #R}
+        to: {#status -> #S} 
         probability: [ :aModel | aModel atParameter: #nu ].
     #(S E I R) do: [ :each| 
         seirsConcern 
@@ -376,7 +376,7 @@ seirsConcern
         ].
     seirsConcern 
         addTransitionFrom: #empty 
-        to: '{#status: #S}' 
+        to: {#status -> #S}
         probability: [ :aModel | aModel atParameter: #mu ].
 
 "Concerns integration"

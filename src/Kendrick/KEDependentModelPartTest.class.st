@@ -31,13 +31,13 @@ KEDependentModelPartTest >> setUpSIRConcern [
 		{#status->#(#S #I #R)}.
 	sirConcern addParameters: {#beta. #gamma. #mu}.
 	sirConcern
-		addTransitionFrom: '{#status: #S}'
-		to: '{#status: #I}'
+		addTransitionFrom: {#status -> #S}
+		to: {#status -> #I}
 		probability: [ :aModel | 
 			(aModel atParameter: #beta) * 
 			(aModel atCompartment: {#status->#I}) ].
-	sirConcern addTransitionFrom: '{#status: #I}' 
-			to: '{#status: #R}' 
+	sirConcern addTransitionFrom: {#status -> #I} 
+			to: {#status -> #R} 
 			probability: [ :aModel | aModel atParameter: #gamma ].
 	sirConcern addTransitionFrom: #empty 
 			to: { #status -> #S } 

@@ -131,12 +131,12 @@ sirConcern := KEModelPart new.
 sirConcern attributes: {#status->#(#S #I #R)}.
 sirConcern addParameters: {#lambda. #gamma}.
 sirConcern
-    addTransitionFrom: '{#status: #S}'
-    to: '{#status: #I}'
+    addTransitionFrom: {#status -> #S}
+    to: {#status -> #I}
     probability: [ :aModel | aModel atParameter: #lambda ].
 sirConcern 
-    addTransitionFrom: '{#status: #I}' 
-    to: '{#status: #R}' 
+    addTransitionFrom: {#status -> #I}
+    to: {#status -> #R} 
     probability: [ :aModel | aModel atParameter: #gamma ].
 
 spatialConcern := KEModelPart new.
@@ -212,11 +212,11 @@ model atParameter: #lambda assignValue: [ :aModel| |c|
 
     db := KEDiagramBuilder new.
     db data: [|tmp| tmp := OrderedCollection new.
-    tmp addAll: (simulator timeSeriesOutputsAt: '{#status: #I,#patch:1}').
-    tmp addAll: (simulator timeSeriesOutputsAt: '{#status: #I,#patch:2}').
-    tmp addAll: (simulator timeSeriesOutputsAt: '{#status: #I,#patch:3}').
-    tmp addAll: (simulator timeSeriesOutputsAt: '{#status: #I,#patch:4}').
-    tmp addAll: (simulator timeSeriesOutputsAt: '{#status: #I,#patch:5}').
+    tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I. #patch -> 1}).
+    tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 2}).
+    tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 3}).
+    tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 4}).
+    tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 5}).
     tmp] value.
     db legends: { 'patch 1'. 'patch 2'. 'patch 3'. 'patch 4'. 'patch 5'}.
     db legendTitle: 'Infectious'.
@@ -234,12 +234,12 @@ sirConcern := KEModelPart new.
 sirConcern attributes: {#status->#(#S #I #R)}.
 sirConcern addParameters: {#lambda. #gamma}.
 sirConcern
-    addTransitionFrom: '{#status: #S}'
-    to: '{#status: #I}'
+    addTransitionFrom: {#status -> #S}
+    to: {#status -> #I}
     probability: [ :aModel | aModel atParameter: #lambda ].
 sirConcern 
-    addTransitionFrom: '{#status: #I}' 
-    to: '{#status: #R}' 
+    addTransitionFrom: {#status -> #I} 
+    to: {#status -> #R}
     probability: [ :aModel | aModel atParameter: #gamma ].
 
 spatialConcern := KEModelPart new.

@@ -18,42 +18,42 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSEIRMeaslesModel [
 		#mu->0.0000351. 
 		#sigma->0.125 }.
 	model
-		addTransitionFrom: '{#status: #S}'
-		to: '{#status: #E}'
+		addTransitionFrom: {#status -> #S}
+		to: {#status -> #E}
 		probability: [ :m | 
 			(m atParameter: #beta) * 
 			(m atCompartment: {#status->#I}) ].
 	model 
-		addTransitionFrom: '{#status: #E}' 
-		to: '{#status: #I}' 
+		addTransitionFrom: {#status -> #E}
+		to: {#status -> #I} 
 		probability: [ :m | m atParameter: #sigma ].
 	model 
-		addTransitionFrom: '{#status: #I}' 
-		to: '{#status: #R}' 
+		addTransitionFrom: {#status -> #I}
+		to: {#status -> #R} 
 		probability: [ :m | m atParameter: #gamma ].
 	model 
-		addTransitionFrom: '{#status: #S}' 
+		addTransitionFrom: {#status -> #S} 
 		to: #empty 
 		probability: [ :m | m atParameter: #mu ].
 	model 
-		addTransitionFrom: '{#status: #I}' 
+		addTransitionFrom: {#status -> #I}
 		to: #empty 
 		probability: [ :m | m atParameter: #mu ].
 	model 
-		addTransitionFrom: '{#status: #R}' 
+		addTransitionFrom: {#status -> #R} 
 		to: #empty 
 		probability: [ :m | m atParameter: #mu ].
 	model 
-		addTransitionFrom: '{#status: #E}' 
+		addTransitionFrom: {#status -> #E} 
 		to: #empty 
 		probability: [ :m | m atParameter: #mu ].
 	model 
 		addTransitionFrom: #empty 
-		to: '{#status: #S}' 
+		to: {#status -> #S} 
 		probability: [ :m | m atParameter: #mu ].
 	simulator := KESimulator new: #IBM from: 0.0 to: 150 step: 1.
 	simulator executeOn: model.
-	diag := (KEDiagramBuilder new) data: (simulator timeSeriesOutputsAt: '{#status: #I}').
+	diag := (KEDiagramBuilder new) data: (simulator timeSeriesOutputsAt: {#status -> #I}).
 	^ diag view
 	
 	
@@ -114,13 +114,7 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIREbolaModel [
 	
 	simulator := KESimulator new: #IBM from: 0.0 to: 100 step: 0.1.
 	simulator executeOn: model.
-	"(simulator timeSeriesAt: '{#status: #I, #country: #Guinea}') first save: 'I_Guinea_Det.txt'.
-	(simulator timeSeriesAt: '{#status: #I, #country: #Liberia}') first save: 'I_Liberia_Det.txt'.
-	(simulator timeSeriesAt: '{#status: #I, #country: #Niger}') first save: 'I_Niger_Det.txt'.
-	(simulator timeSeriesAt: '{#status: #I, #country: #Nigeria}') first save: 'I_Nigeria_Det.txt'.
-	(simulator timeSeriesAt: '{#status: #I, #country: #Senegal}') first save: 'I_Senegal_Det.txt'.
-	(simulator timeSeriesAt: '{#status: #I, #country: #SierraLeone}') first save: 'I_SierraLeone_Det.txt'."
-	db := (KEDiagramBuilder new) data: (simulator timeSeriesOutputsAt: '{#status: #	I}').
+	db := (KEDiagramBuilder new) data: (simulator timeSeriesOutputsAt: {#status -> #I}).
 	db open.
 	db openMap: #africa 
 	   countries: (model atAttribute: #country) 
@@ -138,18 +132,18 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModel [
 	model atCompartment: { #status->#S } put: 99999 atOthersPut: 0.
 	model atCompartment: { #status->#I } put: 1.
 	model addParameters: {#beta->0.0052. #gamma->52}.
-	model addTransitionFrom: '{#status: #S}'
-		to: '{#status: #I}'
+	model addTransitionFrom: {#status -> #S}
+		to: {#status -> #I}
 		probability: [ :m| 
 			(m atParameter: #beta) * 
 			(m atCompartment: {#status->#I})].
-	model addTransitionFrom: '{#status: #I}'
-		to: '{#status: #R}'
+	model addTransitionFrom: {#status -> #I}
+		to: {#status -> #R}
 		probability: [ :m| (m atParameter: #gamma) ].
 	simulator := KESimulator new: #IBM from: 0.0 to: 1.0 step: 0.0027.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
-	dB data: (simulator timeSeriesOutputsAt: '{#status: #I}').
+	dB data: (simulator timeSeriesOutputsAt: {#status -> #I}).
 	^ dB open
 	
 ]
@@ -163,18 +157,18 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModel2 [
 	model atCompartment: { #status->#S } put: 99 atOthersPut: 0.
 	model atCompartment: { #status->#I } put: 1.
 	model addParameters: {#beta->0.01. #gamma->0.1}.
-	model addTransitionFrom: '{#status:#S}' 
-			to: '{#status:#I}' 
+	model addTransitionFrom: {#status -> #S} 
+			to: {#status -> #I}
 			probability: [:aModel|
 				(aModel atParameter: #beta) *
 				(aModel atCompartment: {#status->#I})
 			].
-	model addTransitionFrom: '{#status:#I}' 
-			to: '{#status:#R}' 
+	model addTransitionFrom: {#status -> #I} 
+			to: {#status -> #R} 
 			probability: [:m|(m atParameter: #gamma)].
 	simulator := KESimulator new: #IBM from: 0.0 to: 50 step: 0.1.
 	simulator executeOn:  model.
-	db := KEDiagramBuilder new data: (simulator timeSeriesOutputsAt: '{#status:#I}').
+	db := KEDiagramBuilder new data: (simulator timeSeriesOutputsAt: {#status -> #I}).
 	^ db open
 	
 	
@@ -218,7 +212,7 @@ f := [:name| |d tmp|
 		1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
 		(KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)
 		].
-db := KEDiagramBuilder new data: { (f value: '{#status:#I}') }.
+db := KEDiagramBuilder new data: { (f value: {#status -> #I}) }.
 db open.
 ]
 
@@ -242,28 +236,28 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRMultiHostModel [
 		(aModel atParameter: #beta) * 
 		(aModel atCompartment: {#status->#I}) ].
 	model
-		addTransitionFrom: '{#status: #S}'
-		to: '{#status: #I}'
+		addTransitionFrom: {#status -> #S}
+		to: {#status -> #I}
 		probability: [ :m | m atParameter: #lambda ].
 	model 
-		addTransitionFrom: '{#status: #I}' 
-		to: '{#status: #R}' 
+		addTransitionFrom: {#status -> #I}
+		to: {#status -> #R} 
 		probability: [ :m | m atParameter: #gamma ].
 	model 
-		addTransitionFrom: '{#status: #S}' 
+		addTransitionFrom: {#status -> #S}
 		to: #empty 
 		probability: [ :m | m atParameter: #mu ].
 	model 
-		addTransitionFrom: '{#status: #I}' 
+		addTransitionFrom: {#status -> #I} 
 		to: #empty 
 		probability: [ :m | m atParameter: #mu ].
 	model 
-		addTransitionFrom: '{#status: #R}' 
+		addTransitionFrom: {#status -> #R}
 		to: #empty 
 		probability: [ :m | m atParameter: #mu ].
 	model 
 		addTransitionFrom: #empty 
-		to: '{#status: #S}' 
+		to:  {#status -> #S} 
 		probability: [ :m | m atParameter: #mu ].
 		
 	model integrate: multiHostConcern.	
@@ -305,7 +299,7 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRMultiHostModel [
 	
 	simulator := KESimulator new: #IBM from: 0.0 to: 0.5 step: 0.0027.
 	simulator executeOn: model.
-	db := (KEDiagramBuilder new) data: ((simulator timeSeriesOutputsAt: '{#status: #I}') sqrt).
+	db := (KEDiagramBuilder new) data: ((simulator timeSeriesOutputsAt: {#status -> #I}) sqrt).
 	^ db open
 	
 ]
@@ -398,7 +392,7 @@ f := [:name| |d tmp|
 		1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
 		(KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)
 		].
-db := KEDiagramBuilder new data: { (f value: '{#status:#I}') }.
+db := KEDiagramBuilder new data: { (f value: {#status -> #I}) }.
 db open.
 db := KENetworkBuilder new
 	data: simulator timeSeriesOutputs;

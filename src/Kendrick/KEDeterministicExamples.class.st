@@ -13,38 +13,38 @@ KEDeterministicExamples >> SEIRConcern [
 	SEIRConcern attributes: {#status->#(#S #E #I #R)}.
 	SEIRConcern addParameters: { #beta. #gamma. #mu. #sigma }.
 	SEIRConcern
-		addTransitionFrom: '{#status: #S}'
-		to: '{#status: #E}'
+		addTransitionFrom: {#status -> #S}
+		to: {#status -> #E}
 		probability: [ :aModel | 
 			(aModel atParameter: #beta) * 
 			(aModel atCompartment: {#status->#I}) ].
 	SEIRConcern 
-		addTransitionFrom: '{#status: #E}' 
-		to: '{#status: #I}' 
+		addTransitionFrom: {#status -> #E}
+		to: {#status -> #I}
 		probability: [ :aModel | aModel atParameter: #sigma ].
 	SEIRConcern 
-		addTransitionFrom: '{#status: #I}' 
-		to: '{#status: #R}' 
+		addTransitionFrom: {#status -> #I}
+		to: {#status -> #R} 
 		probability: [ :aModel | aModel atParameter: #gamma ].
 	SEIRConcern 
-		addTransitionFrom: '{#status: #S}' 
+		addTransitionFrom: {#status -> #S}
 		to: #empty 
 		probability: [ :aModel | aModel atParameter: #mu ].
 	SEIRConcern 
-		addTransitionFrom: '{#status: #I}' 
+		addTransitionFrom: {#status -> #I}
 		to: #empty 
 		probability: [ :aModel | aModel atParameter: #mu ].
 	SEIRConcern 
-		addTransitionFrom: '{#status: #R}' 
+		addTransitionFrom: {#status -> #R}
 		to: #empty 
 		probability: [ :aModel | aModel atParameter: #mu ].
 	SEIRConcern 
-		addTransitionFrom: '{#status: #E}' 
+		addTransitionFrom: {#status -> #E}
 		to: #empty 
 		probability: [ :aModel | aModel atParameter: #mu ].
 	SEIRConcern 
 		addTransitionFrom: #empty 
-		to: '{#status: #S}' 
+		to: {#status -> #S} 
 		probability: [ :aModel | aModel atParameter: #mu ].
 	^ SEIRConcern
 ]
@@ -61,41 +61,41 @@ KEDeterministicExamples >> SEIRSConcern [
 			(aModel atParameter: #beta) * 
 			(aModel atCompartment: {#status->#I}) / (aModel atParameter: #N) ].
 	SEIRSConcern
-		addTransitionFrom: '{#status: #S}'
-		to: '{#status: #E}'
+		addTransitionFrom: {#status -> #S}
+		to: {#status -> #E}
 		probability: [ :aModel | 
 			(aModel atParameter: #lambda) ].
 	SEIRSConcern 
-		addTransitionFrom: '{#status: #E}' 
-		to: '{#status: #I}' 
+		addTransitionFrom: {#status -> #E}
+		to: {#status -> #I} 
 		probability: [ :aModel | aModel atParameter: #sigma ].
 	SEIRSConcern 
-		addTransitionFrom: '{#status: #I}' 
-		to: '{#status: #R}' 
+		addTransitionFrom: {#status -> #I} 
+		to: {#status -> #R} 
 		probability: [ :aModel | aModel atParameter: #gamma ].
 	SEIRSConcern 
-		addTransitionFrom: '{#status: #R}' 
-		to: '{#status: #S}' 
+		addTransitionFrom: {#status -> #R} 
+		to: {#status -> #S}
 		probability: [ :aModel | aModel atParameter: #v ].
 	SEIRSConcern 
-		addTransitionFrom: '{#status: #S}' 
+		addTransitionFrom: {#status -> #S}
 		to: #empty 
 		probability: [ :aModel | aModel atParameter: #mu ].
 	SEIRSConcern 
-		addTransitionFrom: '{#status: #I}' 
+		addTransitionFrom: {#status -> #I}
 		to: #empty 
 		probability: [ :aModel | aModel atParameter: #mu ].
 	SEIRSConcern 
-		addTransitionFrom: '{#status: #R}' 
+		addTransitionFrom: {#status -> #R} 
 		to: #empty 
 		probability: [ :aModel | aModel atParameter: #mu ].
 	SEIRSConcern 
-		addTransitionFrom: '{#status: #E}' 
+		addTransitionFrom: {#status -> #E}
 		to: #empty 
 		probability: [ :aModel | aModel atParameter: #mu ].
 	SEIRSConcern 
 		addTransitionFrom: #empty 
-		to: '{#status: #S}' 
+		to: {#status-> #S} 
 		probability: [ :aModel | aModel atParameter: #mu ].
 	^ SEIRSConcern
 ]
@@ -109,13 +109,13 @@ KEDeterministicExamples >> SIRConcern [
 		{#status->#(#S #I #R)}.
 	SIRConcern addParameters: {#beta. #gamma}.
 	SIRConcern
-		addTransitionFrom: '{#status: #S}'
-		to: '{#status: #I}'
+		addTransitionFrom: {#status -> #S}
+		to: {#status -> #I}
 		probability: [ :aModel | 
 			(aModel atParameter: #beta) * 
 			(aModel atCompartment: {#status->#I}) ].
-	SIRConcern addTransitionFrom: '{#status: #I}' 
-			to: '{#status: #R}' 
+	SIRConcern addTransitionFrom: {#status -> #I}
+			to: {#status -> #R} 
 			probability: [ :aModel | aModel atParameter: #gamma ].
 	^ SIRConcern
 ]
@@ -144,13 +144,13 @@ KEDeterministicExamples >> exampleRK4SolverOn2SEIRMeaslesModelWithVaccination [
 	legends := OrderedCollection new.
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 100 step: 0.01.
 	simulator executeOn: model.
-	data addAll: (simulator timeSeriesOutputsAt: '{#status: #I}').
+	data addAll: (simulator timeSeriesOutputsAt: {#status -> #I}).
 	
 	model atParameter: #p assignValue: 0.0.
 	model resetCompartments.
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 100 step: 0.01.
 	simulator executeOn: model.
-	data addAll: (simulator timeSeriesOutputsAt: '{#status: #I}').
+	data addAll: (simulator timeSeriesOutputsAt: {#status -> #I}).
 	 
 	legends addAll: #('p = 0.7' 'p = 0.0').
 	diag := (KEDiagramBuilder new) data: data log.
@@ -171,12 +171,12 @@ sirConcern := KEModelPart new.
 sirConcern attributes: {#status->#(#S #I #R)}.
 sirConcern addParameters: {#lambda. #gamma}.
 sirConcern
-	addTransitionFrom: '{#status: #S}'
-	to: '{#status: #I}'
+	addTransitionFrom: {#status -> #S}
+	to: {#status ->  #I}
 	probability: [ :aModel | aModel atParameter: #lambda ].
 sirConcern 
-	addTransitionFrom: '{#status: #I}' 
-	to: '{#status: #R}' 
+	addTransitionFrom: {#status -> #I}
+	to: {#status -> #R} 
 	probability: [ :aModel | aModel atParameter: #gamma ].
 
 spatialConcern := KEModelPart new.
@@ -252,11 +252,11 @@ model atParameter: #mu assignValue: 0.0000365.
 	
 	db := KEDiagramBuilder new.
 	db data: [|tmp| tmp := OrderedCollection new.
-	tmp addAll: (simulator timeSeriesOutputsAt: '{#status: #I,#patch:1}').
-	tmp addAll: (simulator timeSeriesOutputsAt: '{#status: #I,#patch:2}').
-	tmp addAll: (simulator timeSeriesOutputsAt: '{#status: #I,#patch:3}').
-	tmp addAll: (simulator timeSeriesOutputsAt: '{#status: #I,#patch:4}').
-	tmp addAll: (simulator timeSeriesOutputsAt: '{#status: #I,#patch:5}').
+	tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I. #patch -> 1}).
+	tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 2}).
+	tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 3}).
+	tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 4}).
+	tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 5}).
 	tmp] value.
 	db legends: { 'patch 1'. 'patch 2'. 'patch 3'. 'patch 4'. 'patch 5'}.
 	db legendTitle: 'Infectious'.
@@ -277,11 +277,11 @@ KEDeterministicExamples >> exampleRK4SolverOnMigrationOneSpeciesModel [
 	
 	db := KEDiagramBuilder new.
 	db data: [|tmp| tmp := OrderedCollection new.
-	tmp addAll: (simulator timeSeriesOutputsAt: '{#status: #I,#patch:1}').
-	tmp addAll: (simulator timeSeriesOutputsAt: '{#status: #I,#patch:2}').
-	tmp addAll: (simulator timeSeriesOutputsAt: '{#status: #I,#patch:3}').
-	tmp addAll: (simulator timeSeriesOutputsAt: '{#status: #I,#patch:4}').
-	tmp addAll: (simulator timeSeriesOutputsAt: '{#status: #I,#patch:5}').
+	tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I. #patch -> 1}).
+	tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I. #patch -> 2}).
+	tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I. #patch -> 3}).
+	tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I. #patch -> 4}).
+	tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I. #patch -> 5}).
 	tmp] value.
 	db legends: { 'patch 1'. 'patch 2'. 'patch 3'. 'patch 4'. 'patch 5'}.
 	db legendTitle: 'Infectious'.
@@ -306,14 +306,8 @@ KEDeterministicExamples >> exampleRK4SolverOnMigrationTwoSpeciesModel [
 		1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
 		(KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)
 		].
-	db data: "{ 
-		(f value: '{#status:#I,#species:#bird}'). 
-		(f value: '{#status: #I, #species: #human}') }" (simulator timeSeriesOutputsAt: {#status->#I. #species->#bird}).
-
+	db data:  (simulator timeSeriesOutputsAt: {#status->#I. #species->#bird}).
 	db xLabel: 'Time (days)'.
-	"db legendTitle: 'Total of infectious'."
-	"db legends: { 'birds'. 'humans' }."
-
 	^ db open															
 														
 ]
@@ -326,8 +320,8 @@ KEDeterministicExamples >> exampleRK4SolverOnMultiInfectiousStatusModel [
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 50 step: 0.1.
 	simulator executeOn: model.
 	data := OrderedCollection new.
-	data addAll: (simulator timeSeriesOutputsAt: '{#status:#I}').
-	data addAll: (simulator timeSeriesOutputsAt: '{#status:#Is}').
+	data addAll: (simulator timeSeriesOutputsAt: {#status -> #I}).
+	data addAll: (simulator timeSeriesOutputsAt: {#status -> #Is}).
 	db := KEDiagramBuilder new data: data.
 	^ db view
 	 
@@ -343,8 +337,8 @@ KEDeterministicExamples >> exampleRK4SolverOnMultiStrainModel [
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 150 step: 0.1.
 	simulator executeOn: model.
 	data := OrderedCollection new.
-	data addAll: (simulator timeSeriesOutputsAt: '{#status: #I1}').
-	data addAll: (simulator timeSeriesOutputsAt: '{#status: #I2}').
+	data addAll: (simulator timeSeriesOutputsAt: {#status -> #I1}).
+	data addAll: (simulator timeSeriesOutputsAt: {#status -> #I2}).
 	db := KEDiagramBuilder new data: data.
 	^ db open							
 														
@@ -359,7 +353,7 @@ KEDeterministicExamples >> exampleRK4SolverOnMultipleRiskGroupsModel [
 	simulator executeOn: model.
 
 	db := KEDiagramBuilder new.
-	db data: (simulator timeSeriesOutputsAt: '{#status: #I}').
+	db data: (simulator timeSeriesOutputsAt: {#status -> #I}).
 	db yLabel: 'Infectious'.
 	^ db view
 															
@@ -435,7 +429,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSEIRMeaslesModelWithVaccination [
 	model := self modelRK4SolverOnSEIRMeaslesModelWithVaccination.
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 100 step: 0.01.
 	simulator executeOn: model.
-	diag := (KEDiagramBuilder new) data: ((simulator timeSeriesOutputsAt: '{#status: #I}') log).
+	diag := (KEDiagramBuilder new) data: ((simulator timeSeriesOutputsAt: {#status -> #I}) log).
 	diag yLabel: 'log(Infectious)'.
 	diag xLabel: 'Time (years)'.
 	^ diag view
@@ -552,8 +546,8 @@ KEDeterministicExamples >> exampleRK4SolverOnSEIRSModelWithTwoStrains [
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
 	data := OrderedCollection new.
-	data addAll: (simulator timeSeriesOutputsAt: '{#status: #I1}').
-	data addAll: (simulator timeSeriesOutputsAt: '{#status: #I2}').
+	data addAll: (simulator timeSeriesOutputsAt: {#status -> #I1}).
+	data addAll: (simulator timeSeriesOutputsAt: {#status -> #I2}).
 	dB data: data.
 	dB xLabel: 'Time (year)'.
 	dB open.
@@ -567,7 +561,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRDemographyModel [
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 146 step: 0.1.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
-	dB data: (simulator timeSeriesOutputsAt: '{#status: #I}').
+	dB data: (simulator timeSeriesOutputsAt: {#status -> #I}).
 	^ dB open
 ]
 
@@ -627,7 +621,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRMultiHostModel [
 	model := self modelRK4SolverOnSIRMultiHost.
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 0.5 step: 0.0027.
 	simulator executeOn: model.
-	db := (KEDiagramBuilder new) data: ((simulator timeSeriesOutputsAt: '{#status: #I}') sqrt).
+	db := (KEDiagramBuilder new) data: ((simulator timeSeriesOutputsAt: {#status -> #I}) sqrt).
 	^ db open
 	
 ]
@@ -688,7 +682,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRMultiHostModelTransitionByRate [
 	model := self modelRK4SolverOnSIRMultiHostModelTransitionByRate.
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 40.0 step: 0.01.
 	simulator executeOn: model.
-	db := (KEDiagramBuilder new) data: ((simulator timeSeriesOutputsAt: '{#status: #I}') sqrt).
+	db := (KEDiagramBuilder new) data: ((simulator timeSeriesOutputsAt: {#status -> #I}) sqrt).
 	^ db view
 	
 ]
@@ -700,7 +694,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRMultiHostModelWithODERepresentat
 	model := self modelRK4SolverOnSIRMultiHostModelWithODERepresentation.
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 0.5 step: 0.0027.
 	simulator executeOn: model.
-	db := (KEDiagramBuilder new) data: ((simulator timeSeriesOutputsAt: '{#status: #I}') sqrt).
+	db := (KEDiagramBuilder new) data: ((simulator timeSeriesOutputsAt: {#status -> #I}) sqrt).
 	^ db view
 	
 ]
@@ -713,7 +707,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRSimpleModel [
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 0.3 step: 0.001.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
-	dB data: (simulator timeSeriesOutputsAt: '{#status: #I}').
+	dB data: (simulator timeSeriesOutputsAt: {#status -> #I}).
 	dB xLabel: 'Time (year)'.
 	^ dB open
 ]
@@ -788,7 +782,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRSimpleModelWithTransitionProbabi
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 1.0 step: 0.0027.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
-	dB data: (simulator timeSeriesOutputsAt: '{#status: #I}').
+	dB data: (simulator timeSeriesOutputsAt: {#status -> #I}).
 	^ dB view
 ]
 
@@ -800,7 +794,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSeasonalForcingModel [
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 400 step: 0.01.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
-	dB data: ((simulator timeSeriesOutputsAt: '{#status: #I}') log).
+	dB data: ((simulator timeSeriesOutputsAt: {#status -> #I}) log).
 	^ dB view
 ]
 
@@ -1000,24 +994,24 @@ KEDeterministicExamples >> modelRK4SolverOnMultiInfectiousStatusModel [
 	model addParameter: #gamma1 value: 0.5.
 	model addParameter: #gamma2 value: 0.25.
 	model 
-		addTransitionFrom: '{#status: #S}' 
-		to: '{#status: #I}' 
+		addTransitionFrom: {#status -> #S}
+		to: {#status -> #I} 
 		probability: [ :m| 
 			((m atParameter: #beta1) * 
 			(m atCompartment: {#status->#I})) +
 			((m atParameter: #beta2) * 
 			(m atCompartment: {#status->#Is})) ].
 	model
-		addTransitionFrom: '{#status: #I}' 
-		to: '{#status: #Is}' 
+		addTransitionFrom: {#status -> #I}
+		to: {#status -> #Is} 
 		probability: [ :m| m atParameter: #delta ].
 	model 
-		addTransitionFrom: '{#status: #I}' 
-		to: '{#status:#R}' 
+		addTransitionFrom: {#status -> #I}
+		to: {#status -> #R}
 		probability: [ :m| m atParameter: #gamma1 ].
 	model
-		addTransitionFrom: '{#status: #Is}' 
-		to: '{#status: #R}' 
+		addTransitionFrom: {#status -> #Is} 
+		to: {#status -> #R} 
 		probability: [ :m| m atParameter: #gamma2 ].
 		
 	^ model
@@ -1040,41 +1034,41 @@ KEDeterministicExamples >> modelRK4SolverOnMultiStrainModel [
 	model addParameter: #mu value: 5e-5.
 	
 	model 
-		addTransitionFrom: '{#status:#S}' 
-		to: '{#status: #I1}' 
+		addTransitionFrom: {#status -> #S}
+		to: {#status -> #I1} 
 		probability: [ :m| 
 			(m atParameter: #beta1) * (m atCompartment: {#status->#I1}) ].
 	model
-		addTransitionFrom: '{#status:#S}' 
-		to: '{#status:#I2}' 
+		addTransitionFrom: {#status -> #S} 
+		to: {#status -> #I2} 
 		probability: [ :m| (m atParameter: #beta2) * (m atCompartment: {#status->#I2}) ].
 	model
-		addTransitionFrom: '{#status: #I1}' 
-		to: '{#status: #R}' 
+		addTransitionFrom: {#status -> #I1} 
+		to: {#status -> #R} 
 		probability: [ :m| (m atParameter: #gamma1) ].
 	model
-		addTransitionFrom: '{#status: #I2}' 
-		to: '{#status: #R}'
+		addTransitionFrom: {#status -> #I2}
+		to: {#status -> #R}
 		probability: [ :m| (m atParameter: #gamma2) ].
 	model
-		addTransitionFrom: '{#status: #S}' 
+		addTransitionFrom: {#status -> #S}
 		to: #empty 
 		probability: [ :m| (m atParameter: #mu) ].
 	model 
-		addTransitionFrom: '{#status: #I1}' 
+		addTransitionFrom: {#status -> #I1}
 		to: #empty 
 		probability: [ :m| (m atParameter: #mu) ].
 	model 
-		addTransitionFrom: '{#status: #I2}' 
+		addTransitionFrom: {#status -> #I2} 
 		to: #empty 
 		probability: [ :m| (m atParameter: #mu) ].
 	model
-		addTransitionFrom: '{#status: #R}' 
+		addTransitionFrom: {#status -> #R} 
 		to: #empty 
 		probability: [ :m| (m atParameter: #mu) ].
 	model
 		addTransitionFrom: #empty 
-		to: '{#status: #S}' 
+		to: {#status -> #S} 
 		probability: [ :m| (m atParameter: #mu) ].
 	^ model
 ]
@@ -1132,38 +1126,38 @@ KEDeterministicExamples >> modelRK4SolverOnSEIRMeasles [
 		#mu->0.0000351. 
 		#sigma->0.125 }.
 	model
-		addTransitionFrom: '{#status: #S}'
-		to: '{#status: #E}'
+		addTransitionFrom: {#status -> #S}
+		to: {#status -> #E}
 		probability: [ :m | 
 			(m atParameter: #beta) * 
 			(m atCompartment: {#status->#I}) ].
 	model 
-		addTransitionFrom: '{#status: #E}' 
-		to: '{#status: #I}' 
+		addTransitionFrom: {#status -> #E}
+		to: {#status -> #I} 
 		probability: [ :m | m atParameter: #sigma ].
 	model 
-		addTransitionFrom: '{#status: #I}' 
-		to: '{#status: #R}' 
+		addTransitionFrom: {#status -> #I}
+		to: {#status -> #R} 
 		probability: [ :m | m atParameter: #gamma ].
 	model 
-		addTransitionFrom: '{#status: #S}' 
+		addTransitionFrom: {#status -> #S}
 		to: #empty 
 		probability: [ :m | m atParameter: #mu ].
 	model 
-		addTransitionFrom: '{#status: #I}' 
+		addTransitionFrom: {#status -> #I} 
 		to: #empty 
 		probability: [ :m | m atParameter: #mu ].
 	model 
-		addTransitionFrom: '{#status: #R}' 
+		addTransitionFrom: {#status -> #R} 
 		to: #empty 
 		probability: [ :m | m atParameter: #mu ].
 	model 
-		addTransitionFrom: '{#status: #E}' 
+		addTransitionFrom: {#status -> #E} 
 		to: #empty 
 		probability: [ :m | m atParameter: #mu ].
 	model 
 		addTransitionFrom: #empty 
-		to: '{#status: #S}' 
+		to: {#status -> #S} 
 		probability: [ :m | m atParameter: #mu ].
 	^ model
 ]
@@ -1183,42 +1177,42 @@ KEDeterministicExamples >> modelRK4SolverOnSEIRMeaslesModelWithVaccination [
 		#sigma->45.625.
 		#p->0.7}.
 	model
-		addTransitionFrom: '{#status: #S}'
-		to: '{#status: #E}'
+		addTransitionFrom: {#status -> #S}
+		to: {#status -> #E}
 		probability: [ :m | 
 			(m atParameter: #beta) * 
 			(m atCompartment: {#status->#I}) ].
 	model 
-		addTransitionFrom: '{#status: #E}' 
-		to: '{#status: #I}' 
+		addTransitionFrom: {#status -> #E}
+		to: {#status -> #I} 
 		probability: [ :m | m atParameter: #sigma ].
 	model 
-		addTransitionFrom: '{#status: #I}' 
-		to: '{#status: #R}' 
+		addTransitionFrom: {#status -> #I} 
+		to: {#status -> #R} 
 		probability: [ :m | m atParameter: #gamma ].
 	model 
-		addTransitionFrom: '{#status: #S}' 
+		addTransitionFrom: {#status -> #S} 
 		to: #empty 
 		probability: [ :m | m atParameter: #mu ].
 	model 
-		addTransitionFrom: '{#status: #I}' 
+		addTransitionFrom: {#status -> #I} 
 		to: #empty 
 		probability: [ :m | m atParameter: #mu ].
 	model 
-		addTransitionFrom: '{#status: #R}' 
+		addTransitionFrom: {#status -> #R} 
 		to: #empty 
 		probability: [ :m | m atParameter: #mu ].
 	model 
-		addTransitionFrom: '{#status: #E}' 
+		addTransitionFrom: {#status -> #E} 
 		to: #empty 
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: #empty
-		to: '{#status: #S}'
+		to: {#status -> #S}
 		probability: [ :m | (m atParameter: #mu) * (1 - (m atParameter: #p)) ].
 	model 
 		addTransitionFrom: #empty 
-		to: '{#status: #R}' 
+		to: {#status -> #R} 
 		probability: [ :m | (m atParameter: #mu) * (m atParameter: #p) ].
 	^ model
 ]
@@ -1229,9 +1223,9 @@ KEDeterministicExamples >> modelRK4SolverOnSIRDemography [
 	| model |
 	model := KEModel new population: (KEPopulation size: 5000).
 	model attributes: {#status->#(#S #I #R)}.
-	model atCompartment: '{#status: #S}' put: 4975.
-	model atCompartment: '{#status: #I}' put: 25.
-	model atCompartment: '{#status: #R}' put: 0.
+	model atCompartment: {#status -> #S} put: 4975.
+	model atCompartment: {#status -> #I} put: 25.
+	model atCompartment: {#status -> #R} put: 0.
 	model addParameter: #beta value: 1 / 5000.
 	model addParameter: #gamma value: 1 / 10.0.
 	model addParameter: #mu value: 5e-4.
@@ -1261,28 +1255,28 @@ KEDeterministicExamples >> modelRK4SolverOnSIRMultiHost [
 		(aModel atParameter: #beta) * 
 		(aModel atCompartment: {#status->#I}) ].
 	model
-		addTransitionFrom: '{#status: #S}'
-		to: '{#status: #I}'
+		addTransitionFrom: {#status -> #S}
+		to: {#status -> #I}
 		probability: [ :m | m atParameter: #lambda ].
 	model 
-		addTransitionFrom: '{#status: #I}' 
-		to: '{#status: #R}' 
+		addTransitionFrom: {#status -> #I} 
+		to: {#status -> #R} 
 		probability: [ :m | m atParameter: #gamma ].
 	model 
-		addTransitionFrom: '{#status: #S}' 
+		addTransitionFrom: {#status -> #S}
 		to: #empty 
 		probability: [ :m | m atParameter: #mu ].
 	model 
-		addTransitionFrom: '{#status: #I}' 
+		addTransitionFrom: {#status -> #I} 
 		to: #empty 
 		probability: [ :m | m atParameter: #mu ].
 	model 
-		addTransitionFrom: '{#status: #R}' 
+		addTransitionFrom: {#status -> #R} 
 		to: #empty 
 		probability: [ :m | m atParameter: #mu ].
 	model 
 		addTransitionFrom: #empty 
-		to: '{#status: #S}' 
+		to: {#status -> #S}
 		probability: [ :m | m atParameter: #mu ].
 		
 	model integrate: multiHostConcern.	
@@ -1343,28 +1337,28 @@ KEDeterministicExamples >> modelRK4SolverOnSIRMultiHostModelTransitionByRate [
 		(aModel atParameter: #beta) * 
 		(aModel atCompartment: {#status->#I}) ].
 	model 
-		addTransitionFrom: '{#status: #S}' 
-		to: '{#status: #I}' 
+		addTransitionFrom: {#status -> #S}
+		to: {#status -> #I} 
 		probability: 'lambda' parseAsAnExpression.
 	model 
-		addTransitionFrom: '{#status: #I}' 
-		to: '{#status: #R}' 
+		addTransitionFrom: {#status -> #I} 
+		to: {#status -> #R} 
 		probability: 'gamma' parseAsAnExpression.
 	model 
-		addTransitionFrom: '{#status: #S}' 
+		addTransitionFrom: {#status -> #S}
 		to: #empty 
 		probability: 'mu' parseAsAnExpression.
 	model 
-		addTransitionFrom: '{#status: #I}' 
+		addTransitionFrom: {#status -> #I} 
 		to: #empty 
 		probability: 'mu' parseAsAnExpression.
 	model 
-		addTransitionFrom: '{#status: #R}' 
+		addTransitionFrom: {#status -> #R}
 		to: #empty 
 		probability: 'mu' parseAsAnExpression.
 	model 
 		addTransitionFrom: #empty 
-		to: '{#status: #S}' 
+		to: {#status -> #S} 
 		probability: 'mu' parseAsAnExpression.
 		
 	model integrate: multiHostConcern.	
@@ -1481,13 +1475,13 @@ KEDeterministicExamples >> modelRK4SolverOnSIRSimpleModel [
 	model atCompartment: { #status->#R } put: 0.
 	model addParameters: {#beta->0.0052. #gamma->52}.
 	model
-		addTransitionFrom: '{#status: #S}'
-		to: '{#status: #I}'
+		addTransitionFrom: {#status -> #S}
+		to: {#status -> #I}
 		probability: [ :m | 
 			(m atParameter: #beta) * 
 			(m atCompartment: {#status->#I}) ].
-	model addTransitionFrom: '{#status: #I}' 
-			to: '{#status: #R}' 
+	model addTransitionFrom:  {#status -> #I}
+			to: {#status -> #R} 
 			probability: [ :m | m atParameter: #gamma ].
 	^ model
 ]
@@ -1519,11 +1513,11 @@ KEDeterministicExamples >> modelRK4SolverOnSIRSimpleModelWithTransitionProbabili
 	model atCompartment: { #status->#S } put: 99999 atOthersPut: 0.
 	model atCompartment: { #status->#I } put: 1.
 	model addParameters: {#beta->0.0052. #gamma->52}.
-	model addTransitionFrom: '{#status: #S}'
-		to: '{#status: #I}'
+	model addTransitionFrom: {#status -> #S}
+		to: {#status -> #I}
 		probability: 'beta*I' parseAsAnExpression.
-	model addTransitionFrom: '{#status: #I}'
-		to: '{#status: #R}'
+	model addTransitionFrom: {#status -> #I}
+		to: {#status -> #R}
 		probability: 'gamma' parseAsAnExpression.
 	^ model
 ]

@@ -100,21 +100,21 @@ seirsConcern := KEModelPart new.
          (aModel atParameter: #beta) * 
          (aModel atCompartment: {#status->#I}) / (aModel atParameter: #N) ].
  seirsConcern
-     addTransitionFrom: '{#status: #S}'
-     to: '{#status: #E}'
+     addTransitionFrom: {#status -> #S}
+     to: {#status -> #E}
      probability: [ :aModel | 
          (aModel atParameter: #lambda) ].
  seirsConcern 
-     addTransitionFrom: '{#status: #E}' 
-     to: '{#status: #I}' 
+     addTransitionFrom: {#status -> #E} 
+     to: {#status -> #I} 
      probability: [ :aModel | aModel atParameter: #sigma ].
  seirsConcern 
-     addTransitionFrom: '{#status: #I}' 
-     to: '{#status: #R}' 
+     addTransitionFrom: {#status -> #I} 
+     to: {#status -> #R} 
      probability: [ :aModel | aModel atParameter: #gamma ].
  seirsConcern 
-     addTransitionFrom: '{#status: #R}' 
-     to: '{#status: #S}' 
+     addTransitionFrom: {#status -> #R}
+     to: {#status -> #S} 
      probability: [ :aModel | aModel atParameter: #v ].
  #(S E I R) do: [ :each| 
      seirsConcern 
@@ -124,7 +124,7 @@ seirsConcern := KEModelPart new.
      ].
  seirsConcern 
      addTransitionFrom: #empty 
-     to: '{#status: #S}' 
+     to: {#status -> #S}
      probability: [ :aModel | aModel atParameter: #mu ].
 
      model := KEModel new.
@@ -162,11 +162,11 @@ simulator := KESimulator new: #RungeKutta from: 0 to: 500 step: 1.
  simulator executeOn: model.
  db := KEDiagramBuilder new.
  db data: [|tmp| tmp := OrderedCollection new.
- tmp addAll: (simulator timeSeriesOutputsAt: '{#status: #I,#patch:1}').
- tmp addAll: (simulator timeSeriesOutputsAt: '{#status: #I,#patch:2}').
- tmp addAll: (simulator timeSeriesOutputsAt: '{#status: #I,#patch:3}').
- tmp addAll: (simulator timeSeriesOutputsAt: '{#status: #I,#patch:4}').
- tmp addAll: (simulator timeSeriesOutputsAt: '{#status: #I,#patch:5}').
+ tmp addAll: (simulator timeSeriesOutputsAt: {#status ->#I.#patch -> 1}).
+ tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 2}).
+ tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 3}).
+ tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 4}).
+ tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 5}).
  tmp] value.
  db legends: { 'patch 1'. 'patch 2'. 'patch 3'. 'patch 4'. 'patch 5'}.
  db legendTitle: 'Infectious'.

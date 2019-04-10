@@ -16,14 +16,14 @@ KESimulatorTest >> testAfterSimulationOfSIRModelThereAreThreeTimeSeries [
 			{(#beta -> 520).
 			(#gamma -> 52)}.
 	model
-		addTransitionFrom: '{#status: #S}'
-		to: '{#status: #I}'
+		addTransitionFrom: {#status -> #S}
+		to: {#status -> #I}
 		probability: [ :m | 
 			(m atParameter: #beta) * (m atCompartment: {(#status -> #I)})
 				/ (m atParameter: #N) ].
 	model
-		addTransitionFrom: '{#status: #I}'
-		to: '{#status: #R}'
+		addTransitionFrom: {#status -> #I}
+		to: {#status -> #R}
 		probability: [ :m | model atParameter: #gamma ].
 	simulator := KESimulator
 		new: #Gillespie
@@ -47,15 +47,15 @@ KESimulatorTest >> testKEDeterministicSimulationGiveAlwaysSameMax [
 	model atCompartment: { #status->#R } put: 0.
 	model addParameters: {#beta->0.0052. #gamma->52}.
 	model
-		addTransitionFrom: '{#status: #S}'
-		to: '{#status: #I}'
+		addTransitionFrom: {#status -> #S}
+		to: {#status -> #I}
 		probability: [ :m | 
 			(m atParameter: #beta) * 
 			(m atCompartment: {#status->#I}) ].
-	model addTransitionFrom: '{#status: #I}' 
-			to: '{#status: #R}' 
+	model addTransitionFrom: {#status -> #I} 
+			to: {#status -> #R} 
 			probability: [ :m | m atParameter: #gamma ].
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 0.3 step: 0.001.
 	simulator executeOn: model.
-self assert: (simulator timeSeriesOutputsAt: '{#status: #I}' )first data max closeTo: 66921.97353327252
+self assert: (simulator timeSeriesOutputsAt: {#status -> #I} )first data max closeTo: 66921.97353327252
 ]
