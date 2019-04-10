@@ -65,22 +65,9 @@ KEPopulation >> compartments [
 
 { #category : #accessing }
 KEPopulation >> compartments: aCollection [
-	|dataOfComps|
+	| dataOfComps |
 	self compartments ifNil: [ compartments := Dictionary new ].
-	aCollection isDictionary 
-	ifFalse: [ 
-		|reader|
-		reader := STONReader on: aCollection readStream.
-		reader allowComplexMapKeys: true.
-		dataOfComps := reader next
-	] 
-	ifTrue: [ dataOfComps := aCollection ].
-	dataOfComps keysAndValuesDo: [ :k :v|
-		compartments at: k put: v
-		 ].
-	
- 
-	
+	aCollection keysAndValuesDo: [ :k :v | compartments at: k put: v ]
 ]
 
 { #category : #accessing }
