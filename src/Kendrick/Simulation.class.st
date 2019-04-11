@@ -26,6 +26,22 @@ Simulation >> execute [
 	simulator executeOn: combo model keModel.
 ]
 
+{ #category : #protected }
+Simulation >> exportTimeSeriesOutputsAt: anIdentifier [
+	|t outDir filePath|
+		
+	"self class autoExport ifFalse: [ ^ self ]."
+	outDir := './Sources/', KendrickInternalDSLEntities currentProjectDir , '/Output/'. 
+	filePath := (outDir , self id , '.txt').
+	t :=  simulator timeSeriesOutputsAt: anIdentifier.
+	filePath asFileReference writeStreamDo:[ :stream | |c| 
+		c := t first data.
+		c do: [:elt|
+			(elt isNaN) ifTrue: [ stream nextPutAll: 0 asString; nextPut: Character lf ]
+		ifFalse: [stream nextPutAll: elt asString;  nextPut: Character lf ]]
+	]
+]
+
 { #category : #'public-api' }
 Simulation >> for: aComboID [
 
