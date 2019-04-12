@@ -95,7 +95,7 @@ model addParameters: {
         #sigma->0.125 }.
 simulator := KESimulator new: #RungeKutta from: 0.0 to: 150 step: 1.
 simulator executeOn: model.
-diag := (KEDiagramBuilder new) data: simulator timeSeriesOutputs.
+diag := (KEDiagramBuilder new) addData: simulator timeSeriesOutputs.
 diag xLabel: 'Time (days)'.
 diag open.
 
