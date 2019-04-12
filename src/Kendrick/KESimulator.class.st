@@ -163,7 +163,7 @@ KESimulator >> timeSeriesOutputsAt: aCompartmentName [
 	"Select from the DataFrame timeSeriesOutputs rows that includes aCompartmentName"
 
 	| names |
-	names := timeSeriesOutputs columnNames select: [ :each | each includesAllOf: aCompartmentName ].
-	
+	names := timeSeriesOutputs columnNames
+		select: [ :each | each includesAll: aCompartmentName ].
 	^ timeSeriesOutputs columns: names
 ]
