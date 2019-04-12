@@ -255,7 +255,7 @@ TestsModel5 >> before [
 		1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
 		(KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)
 		].
-	dB data: { 
+	dB addData: { 
 		(f value: {#status -> #I1.#species -> #bird}). 
 		(f value: {#status -> #I1.#species -> #human}).
 		(f value: {#status ->#I2. #species -> #bird}). 

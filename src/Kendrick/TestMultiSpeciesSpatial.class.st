@@ -235,7 +235,7 @@ simulator := KESimulator new: #RungeKutta from: 0 to: 500 step: 1.
         1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
         (KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)
         ].
-    db data: { 
+    db addData: { 
         (f value: {#status -> #I. #species ->#bird}). 
         (f value: {#status -> #I.#species -> #human}) }.
     db xLabel: 'Time (days)'.
