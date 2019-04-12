@@ -94,9 +94,11 @@ KESimulator >> executeOn: aModel [
 
 { #category : #initialization }
 KESimulator >> initializeTimeSeriesOutputs [
-	timeSeriesOutputs := OrderedCollection new.
-	model population compartments
-		keysDo: [ :each | timeSeriesOutputs add: (KETimeSeries new compartment: each) ]
+	"Initialize timeSeriesOutputs with a DataFrame"
+
+	| columnNames |
+	columnNames := (((model population compartments keysDo: [ :each | each ]) keys) asArray) collect: [: each|each associations ].
+	timeSeriesOutputs := DataFrame withColumnNames: columnNames
 ]
 
 { #category : #accessing }
@@ -112,11 +114,10 @@ KESimulator >> model: anObject [
 
 { #category : #'as yet unclassified' }
 KESimulator >> saveCompartmentsValueAtTime: t [
-	model population compartments
-		keysAndValuesDo: [ :k :v | 
-			| ts |
-			ts := timeSeriesOutputs detect: [ :e | e compartment = k ].
-			ts add: v atIndex: t ]
+	| ds values |
+	values := (model population compartments valuesDo: [ :each | each ]) values.
+	ds := DataSeries withValues: values name: t.
+	timeSeriesOutputs add: ds
 ]
 
 { #category : #accessing }
@@ -159,7 +160,10 @@ KESimulator >> timeSeriesOutputs [
 
 { #category : #accessing }
 KESimulator >> timeSeriesOutputsAt: aCompartmentName [
-	| association |
-	association := aCompartmentName.
-	^ self timeSeriesOutputs select: [ :t | t compartment associations includesAll: association ]
+	"Select from the DataFrame timeSeriesOutputs rows that includes aCompartmentName"
+
+	| names |
+	names := timeSeriesOutputs columnNames select: [ :each | each includesAllOf: aCompartmentName ].
+	
+	^ timeSeriesOutputs columns: names
 ]

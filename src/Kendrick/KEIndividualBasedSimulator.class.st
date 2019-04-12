@@ -77,7 +77,7 @@ KEIndividualBasedSimulator >> doBirthTransitions [
 			self transitionNbExecutions at: e value put: (oldTimes + 1)
 			]"
 		r := r * (model atCompartment: e key from).
-		p := (PoissonGenerator lambda: (r * step)) next.
+		p := (PMPoissonGenerator lambda: (r * step)) next.
 		1 to: p do: [ :i||newInd|
 			newInd := KEIndividual new.
 			newInd currentStatus: e key to.

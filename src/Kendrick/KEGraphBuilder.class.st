@@ -15,6 +15,12 @@ Class {
 	#category : #'Kendrick-Core'
 }
 
+{ #category : #adding }
+KEGraphBuilder >> addData: aDataFrame [
+
+data add: aDataFrame 
+]
+
 { #category : #'as yet unclassified' }
 KEGraphBuilder >> build [
 	self subclassResponsibility

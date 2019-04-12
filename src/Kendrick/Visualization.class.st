@@ -58,7 +58,7 @@ Visualization >> canvas [
 
 		simulation execute.
 		explicitDataSet 
-			ifFalse: [ diag data: simulation timeSeriesOutputs ]
+			ifFalse: [ diag addData: simulation timeSeriesOutputs ]
 			ifTrue: [ lazyDataBlock value ].
 		xLabel ifNotNil: [diag xLabel: xLabel].
 		KendrickInternalDSLEntities cleanUpForInteractiveSessions.
@@ -131,10 +131,11 @@ Visualization >> dataWithCompositeCompartments: anArray [ "should be full math-e
 { #category : #'public-api' }
 Visualization >> dataWithOp: anArray [ "should be full math-expression"
 	^ lazyDataBlock := [
-			diag data: 
+			diag addData: 
 				((simulation 
 					timeSeriesOutputsAt: 
-						(simulation model transitionRefFor: anArray first))
+					(STON fromString: 
+						(simulation model transitionRefFor: ( (anArray first))) ) associations )
 					perform: anArray last)
 			]
 ]
@@ -227,7 +228,7 @@ Visualization >> map [
 		with: KEMapBuilder
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'operators-mapping' }
 Visualization >> map: anArray [
 
 	"assume composite"
@@ -245,10 +246,12 @@ Visualization >> map: anArray [
 	self buildMapFrom: attribute given: compositeCompartments.	
 	
 	tSeries := compositeCompartments 
-		collect: [:compartment | (simulation timeSeriesOutputsAt: compartment) first]. 
+		collect: [:compartment | (simulation timeSeriesOutputsAt: compartment)]. 
 	
 	(#(sum sqrt size log peakOfEpidemic) includes: anArray last) ifTrue: [  
-			tSeries := tSeries collect: [ :ts | ts perform: anArray last ].
+			tSeries := tSeries collect: [ :ts | 
+				anArray last = #peakOfEpidemic ifTrue: [( ts perform: #max ) values first] 
+				ifFalse: [(ts perform: anArray last) values first ]].
 	].
 	
 "		anArray do: [:name | 
@@ -280,12 +283,17 @@ Visualization >> open [
 Visualization >> sumOverTimeSeries: name [
 
 	"refactor !!"
-	|d tmp|
-    tmp := (simulation timeSeriesOutputsAt: name) collect: [ :e| e value ].
+	|d df ds|
+    df := (simulation timeSeriesOutputsAt: ((STON fromString: name) associations)) collect: [ :e| e value ].
     d := OrderedCollection new.
-    1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
-    ^ (KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)
-   
+"Sum elements on each rows of the dataFrame df"
+
+ds := df columnNames inject:0 into: [ :sum :each | sum + (df column: each) ].
+
+"Create a new DataFrame with the previous sum with name"
+
+ds name: (STON fromString: name).
+^ds asDataFrame
 ]
 
 { #category : #protected }

@@ -34,44 +34,44 @@ Class {
 
 { #category : #'as yet unclassified' }
 KEDiagramBuilder >> build [
-|b normalize lb|
+	| b normalize lb |
+	self buildLegends.
 	b := RTGrapher new.
 	b extent: 400 @ 200.
-	normalize := RTMultiLinearColorForIdentity new 
-						objects: self legends;
-						colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
-	1 to: legends size do: [ :i|
-		|ds|
+	normalize := RTMultiLinearColorForIdentity new
+		objects: self legends;
+		colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
+	1 to: legends size do: [ :i | 
+		| ds |
 		ds := RTData new.
 		ds noDot.
-		ds points: (data at: i) value index.
+		ds points: (data at: i) rowNames.
 		ds x: #yourself.
-		ds y: [ :x| (data at: i) value at: x ].
+		ds y: [ :x | ((data at: i) row: x) contents first ].
 		ds connectColor: (normalize rtValue: (legends at: i)).
-		b add: ds.
-		 ].
-	xLabel ifNil: [ b axisX title: 'Time (days)' ] 
-	       ifNotNil: [ b axisX title: xLabel ].
-	yLabel ifNil: [ b axisY title: 'Number of individuals' ] 
-	       ifNotNil: [ b axisY title: yLabel ].
+		b add: ds ].
+	xLabel ifNil: [ b axisX title: 'Time (days)' ] ifNotNil: [ b axisX title: xLabel ].
+	yLabel
+		ifNil: [ b axisY title: 'Number of individuals' ]
+		ifNotNil: [ b axisY title: yLabel ].
 	b axisY noDecimal.
 	lb := RTLegendBuilder new.
 	lb view: b view.
 	self legendTitle ifNil: [ legendTitle := 'Compartments' ].
 	lb addText: legendTitle.
-	1 to: legends size do: [ :i| |c|
-		c:= (normalize rtValue: (legends at: i)).
+	1 to: legends size do: [ :i | 
+		| c |
+		c := normalize rtValue: (legends at: i).
 		lb addColor: c text: (legends at: i) ].
 	lb build.
 	"b build."
 	b view @ RTZoomableView.
-	^ b 
-	
+	^ b
 ]
 
 { #category : #'as yet unclassified' }
 KEDiagramBuilder >> buildLegends [
-	legends := data collect: [ :ts | ts compartment associations asString ]
+	legends := data collect: [ :each | each columnNames first ]
 ]
 
 { #category : #'as yet unclassified' }
