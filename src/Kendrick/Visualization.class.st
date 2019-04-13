@@ -285,7 +285,6 @@ Visualization >> sumOverTimeSeries: name [
 	"refactor !!"
 	|d df ds|
     df := (simulation timeSeriesOutputsAt: ((STON fromString: name) associations)) collect: [ :e| e value ].
-    d := OrderedCollection new.
 "Sum elements on each rows of the dataFrame df"
 
 ds := df columnNames inject:0 into: [ :sum :each | sum + (df column: each) ].
