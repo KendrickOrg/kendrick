@@ -50,6 +50,12 @@ KendrickModel >> allTransitions [
 ]
 
 { #category : #'public-api' }
+KendrickModel >> connectionMatrix: aMatrix [
+	borders := aMatrix
+
+]
+
+{ #category : #'public-api' }
 KendrickModel >> delay: symExpression [
  
 	"#(sigma , S -- lambda --> I  , E)"
@@ -154,7 +160,7 @@ KendrickModel >> keConcern [
 
 { #category : #'public-api' }
 KendrickModel >> maps: aMapEntity [
-
+	"should not be used because of ad hoc, will be raplaced by connectionMatrix"
 	map := Map withId: aMapEntity.
 	self attribute: map attributeToRegions.
 	borders := map borders.
@@ -178,6 +184,13 @@ KendrickModel >> splitStatus: symExpression [
 	].
 	backEndEntity transitions: self allHierarchyTransitions. 
 	backEndEntity splitStatus: { statusCompartment . symExpression second -> indexes }.
+]
+
+{ #category : #'public-api' }
+KendrickModel >> transitionRate: aSymbol [
+	"will replace the withTransitionRate as discussing about the surgar syntax with Mikal"
+	parameters at: aSymbol put: 0.
+	self imports: borders using: aSymbol
 ]
 
 { #category : #'public-api' }
