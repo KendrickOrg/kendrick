@@ -14,11 +14,6 @@ BaselineOfKendrick >> baseline: spec [
 			spec
 				package: 'CollectionExtensions'
 					with: [ spec repository: 'http://smalltalkhub.com/mc/Moose/CollectionExtensions/main/' ];
-				project: 'PetitParser'
-					with: [ spec
-						className: #ConfigurationOfPetitParser;
-						versionString: #development;
-						repository: 'http://www.smalltalkhub.com/mc/Moose/PetitParser/main' ];
 				baseline: 'PolyMath'
 					with: [ spec repository: 'github://PolyMathOrg/PolyMath:master/src' ];
 				baseline: 'DataFrame'
@@ -36,6 +31,11 @@ BaselineOfKendrick >> baseline: spec [
 						className: #ConfigurationOfRoassal2;
 						versionString: '1.59';
 						repository: 'http://smalltalkhub.com/mc/ObjectProfile/Roassal2/main/' ];
+					project: 'PetitParser'
+					with: [ spec
+						className: #ConfigurationOfPetitParser;
+						versionString: #development;
+						repository: 'http://www.smalltalkhub.com/mc/Moose/PetitParser/main' ];
 				project: 'Ston'
 					with: [ spec
 						className: #ConfigurationOfSton;
@@ -46,6 +46,8 @@ BaselineOfKendrick >> baseline: spec [
 		do: [ spec
 				baseline: 'PetitParser2Core'
 					with: [ spec repository: 'github://kursjan/petitparser2' ];
+					baseline: 'PetitParser'
+					with: [ spec repository: 'github://moosetechnology/PetitParser/src'];
 				baseline: 'Roassal2'
 					with: [ spec repository: 'github://ObjectProfile/Roassal2/src' ];
 				baseline: 'Ston' with: [ spec repository: 'github://svenvc/ston/repository' ] ]
