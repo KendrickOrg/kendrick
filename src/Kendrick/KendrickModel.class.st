@@ -192,10 +192,3 @@ KendrickModel >> transitionRate: aSymbol [
 	parameters at: aSymbol put: 0.
 	self imports: borders using: aSymbol
 ]
-
-{ #category : #'public-api' }
-KendrickModel >> withTransitionRate: aSymbolArray [
-
-	aSymbolArray do: [ :var | parameters at: var put: 0 ].
-	self imports: borders using: aSymbolArray first.
-]
