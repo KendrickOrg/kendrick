@@ -71,7 +71,10 @@ KEDiagramBuilder >> build [
 
 { #category : #'as yet unclassified' }
 KEDiagramBuilder >> buildLegends [
-	legends := data collect: [ :ts | ts compartment associations asString ]
+	legends ifNil: [ 
+		legends := data collect: [ :ts | ts compartment associations asString ]
+		 ]
+	
 ]
 
 { #category : #'as yet unclassified' }

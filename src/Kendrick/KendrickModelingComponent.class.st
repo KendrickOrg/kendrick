@@ -22,8 +22,11 @@ KendrickModelingComponent >> allLiteralTransitionRefsForAttribute: attribute [
 
 { #category : #'public-api' }
 KendrickModelingComponent >> allTransitionRefsForAttribute: attribute [
+	(attributes keys includes: attribute)
+		ifTrue: [ 
+			^ (attributes at: attribute) collect: [:comp | '{#' , attribute asString , ': #' , comp , '}'] 		].
+	^ {(self transitionRefFor: attribute)} asOrderedCollection
 	
-	^ (attributes at: attribute) collect: [:comp | '{#' , attribute asString , ': #' , comp , '}']
 ]
 
 { #category : #'public-api' }
@@ -182,8 +185,6 @@ KendrickModelingComponent >> transitionRates: anExpressionOrBlock [
 KendrickModelingComponent >> transitionRefFor: aCompartment [
 	
 	|assoc|
-
-	
 	aCompartment = 'Empty'
 		ifTrue: [ ^ #empty ].
 	assoc := (attributes associations select: [ :pair | pair value includes: aCompartment ]) first.

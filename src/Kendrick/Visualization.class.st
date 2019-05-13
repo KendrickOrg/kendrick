@@ -93,9 +93,6 @@ Visualization >> data: anArray [ "should be full math-expression"
 
 { #category : #'public-api' }
 Visualization >> dataWithCompartments: anArray [ "should be full math-expression"
-
-	|tSeries|
-		
 		^ lazyDataBlock := [		
 				(anArray first asString includes: $_)
 						ifTrue: [self dataWithCompositeCompartments: anArray]
@@ -114,10 +111,10 @@ Visualization >> dataWithCompositeCompartments: anArray [ "should be full math-e
 		
 		anArray do: [:name | 
 				tokens := name findTokens: '_'.
-					(simulation model allTransitionRefsForAttribute: tokens second) do: [:comp |  
+					(simulation model allLiteralTransitionRefsForAttribute: tokens second) do: [:comp |  
 						|compositeCompartment|
 						compositeCompartment 
-							:= (simulation model transitionRefFor: tokens first) allButLast.
+							:= (simulation model literalTransitionRefFor: tokens first) allButLast.
 						compositeCompartment := compositeCompartment , ' , ' , comp allButFirst.
 						tSeries add: (self sumOverTimeSeries: compositeCompartment).			
 					]	
@@ -134,7 +131,7 @@ Visualization >> dataWithOp: anArray [ "should be full math-expression"
 			diag data: 
 				((simulation 
 					timeSeriesOutputsAt: 
-						(simulation model transitionRefFor: anArray first))
+						(simulation model literalTransitionRefFor: anArray first))
 					perform: anArray last)
 			]
 ]
@@ -145,7 +142,7 @@ Visualization >> dataWithSimpleCompartments: anArray [ "should be full math-expr
 		^ diag data: 
 			(simulation 
 					timeSeriesOutputsAt: 
-						(simulation model transitionRefFor: anArray first))
+						(simulation model literalTransitionRefFor: anArray first))
 
 					
 			
