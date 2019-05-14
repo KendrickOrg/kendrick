@@ -54,6 +54,19 @@ ModelComponent >> atParameter: variable value: value [
 ]
 
 { #category : #protected }
+ModelComponent >> attributeKeyValueFrom: attributeKeyOrValue [
+	| attributeValue as |
+	"if an attribute key, return the corresponding association with attribute value taken from current compartment"
+	(attributes keys includes: attributeKeyOrValue)
+		ifTrue: [ attributeValue := backEndEntity currentCompartment at: attributeKeyOrValue.
+			^ {(attributeKeyOrValue -> attributeValue)} ].
+	"if an attribute value, return the corresponding association"
+	as := attributes associations
+		select: [ :arg2 | arg2 value includes: attributeKeyOrValue ].
+	^ {(as first key -> attributeKeyOrValue)}
+]
+
+{ #category : #protected }
 ModelComponent >> attributeOrParameter: aName [
 
 	^ (parameters keys includes: aName)
@@ -68,9 +81,10 @@ ModelComponent >> attributeOrParameter: aName [
 								tokens := aName findTokens: '_'.
 								(attributes keys includes: tokens first)
 									ifFalse: [  
-										c := backEndEntity currentCompartment at: tokens second.
-										assoc := (attributes associations select: [ :as | as value includes: tokens first ]).
-										backEndEntity atCompartment: { assoc first key -> tokens first asSymbol . tokens second -> c } 
+										|comp|
+										comp := OrderedCollection new.
+										tokens do: [ :att| comp addAll: (self attributeKeyValueFrom: att) ].
+										backEndEntity atCompartment: comp asArray
 									] ifTrue: [  
 										backEndEntity sizeOfPopulation: (tokens collect: [:t | (backEndEntity currentCompartment at: t)]) asArray.
 									]

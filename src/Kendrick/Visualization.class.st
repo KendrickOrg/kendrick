@@ -109,16 +109,19 @@ Visualization >> dataWithCompositeCompartments: anArray [ "should be full math-e
 		
 		tSeries := OrderedCollection new.
 		
-		anArray do: [:name | 
-				tokens := name findTokens: '_'.
-					(simulation model allLiteralTransitionRefsForAttribute: tokens second) do: [:comp |  
-						|compositeCompartment|
-						compositeCompartment 
-							:= (simulation model literalTransitionRefFor: tokens first) allButLast.
-						compositeCompartment := compositeCompartment , ' , ' , comp allButFirst.
-						tSeries add: (self sumOverTimeSeries: compositeCompartment).			
-					]	
-				].
+		anArray do: [:attributeKeyOrValue | 
+			|attKeys attValues compartmentName|
+			tokens := attributeKeyOrValue findTokens: '_'.
+			attKeys := tokens select: [ :t| simulation model attributes keys includes: t ].
+			attValues := tokens reject: [ :t| simulation model attributes keys includes: t ].
+			compartmentName := OrderedCollection new.
+			attValues do: [ :v| compartmentName addAll: (simulation model literalTransitionRefFor: v) ].
+			attKeys isEmpty 
+				ifTrue: [ tSeries add: (self sumOverTimeSeries: compartmentName) ]
+				ifFalse: [ 
+					attKeys do: [ :k| 
+						(simulation model allLiteralTransitionRefsForAttribute: k) do: [ :comp| 
+							tSeries add: (self sumOverTimeSeries: (compartmentName addAll: comp)) ] ] ] ].
 
 	^ diag data: tSeries.
 					
@@ -138,11 +141,15 @@ Visualization >> dataWithOp: anArray [ "should be full math-expression"
 
 { #category : #'public-api' }
 Visualization >> dataWithSimpleCompartments: anArray [ "should be full math-expression"
-
-		^ diag data: 
-			(simulation 
-					timeSeriesOutputsAt: 
-						(simulation model literalTransitionRefFor: anArray first))
+	
+		|tSeries|
+		
+		tSeries := OrderedCollection new.
+		
+		anArray do: [ :comp| 
+			tSeries addAll: (simulation timeSeriesOutputsAt: (simulation model literalTransitionRefFor: comp)) ].
+		^ diag data: tSeries
+			
 
 					
 			
@@ -278,10 +285,10 @@ Visualization >> sumOverTimeSeries: name [
 
 	"refactor !!"
 	|d tmp|
-    tmp := (simulation timeSeriesOutputsAt: name) collect: [ :e| e value ].
-    d := OrderedCollection new.
-    1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
-    ^ (KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)
+	tmp := (simulation timeSeriesOutputsAt: name) collect: [ :e| e value ].
+   d := OrderedCollection new.
+   1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
+   ^ (KETimeSeries from: d withIndex: tmp first index) compartment: (Dictionary newFrom: name) 
    
 ]
 
