@@ -10,7 +10,7 @@ Class {
 	#category : #'Kendrick-DSL-Internal'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #adding }
 Scenario >> addCompositeAtrributeOrParameter: variable value: value [
 
 	|variablePlusAttributes|
@@ -19,16 +19,11 @@ Scenario >> addCompositeAtrributeOrParameter: variable value: value [
 	"assume single attribute for the time being"
 	
 	(model attributeValuesIncludes: variablePlusAttributes first asSymbol)
-		ifTrue: [ 
-			self addCompositeAttribute: variablePlusAttributes value: value. 
-		] ifFalse: [  
-		(model parameters keys includes: variablePlusAttributes first asSymbol)
-			ifTrue: [  
-				self addCompositeParameter: variablePlusAttributes value: value.
-			] ifFalse: [ 
-					KendrickDSLSyntaxError 
-								signal: 'Undefined Variable Being Set: ' , variable asString ]. 
-		].
+		ifTrue: [ self addCompositeAttribute: variablePlusAttributes value: value ] 
+		ifFalse: [ 
+			(model parameters keys includes: variablePlusAttributes first asSymbol)
+				ifTrue: [ self addCompositeParameter: variablePlusAttributes value: value ] 
+				ifFalse: [ KendrickDSLSyntaxError signal: 'Undefined Variable Being Set: ' , variable asString ] ]
 	
 ]
 
@@ -110,28 +105,24 @@ Scenario >> addCompositeParameterWithTwoAttributes: variablePlusAttributes value
 { #category : #'as yet unclassified' }
 Scenario >> allCompositeReferencesFor: variablePlusAttributes [
 
-	|attributes compartment entities compResults|
-	compartment := variablePlusAttributes first.	
-	attributes := variablePlusAttributes allButFirst 
-						collect: [ :attribute |  
-							((concerns copy add: model; yourself) 
-								select: [ :e | e attributes keys includes: (attribute)]) first attributes associationAt: attribute ].
+	| attrKeys attrValues associations compartmentName|
 	
-	compResults := {{ self referencesFor: compartment } asOrderedCollection } asOrderedCollection.
+	attrKeys := variablePlusAttributes select: [ :att| backEndEntity attributes keys includes: att ].
+	attrValues := variablePlusAttributes reject: [ :att| backEndEntity attributes keys includes: att ].
 	
-	attributes do: [ :attribute | 
-		|newCompResults|
-		newCompResults := OrderedCollection new.
-		compResults do: [ :resultList | 
-			attribute value do: [ :value |
-					newCompResults add: (resultList copy add: attribute key -> value; yourself).
-			]
+	associations := attrKeys collect: [ :attKey| backEndEntity attributes associationAt: attKey ].	
+	compartmentName := {(attrValues collect: [ :attValue | self referencesFor: attValue ])
+								 asOrderedCollection} asOrderedCollection.
+								
+	associations do: [ :asso| 
+		|tmp|
+		tmp := OrderedCollection new.
+		compartmentName do: [ :name| 
+			asso value do: [ :v| tmp add: (name copy add: asso key -> v; yourself) ] ].
+		compartmentName := tmp
 		].
-		compResults := newCompResults.
-	].
 	
-	
-	^ compResults collect: [ :res | res asArray ]
+	^ compartmentName collect: [ :res | res asArray ]
 	
 ]
 

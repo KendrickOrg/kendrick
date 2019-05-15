@@ -121,7 +121,10 @@ Visualization >> dataWithCompositeCompartments: anArray [ "should be full math-e
 				ifFalse: [ 
 					attKeys do: [ :k| 
 						(simulation model allLiteralTransitionRefsForAttribute: k) do: [ :comp| 
-							tSeries add: (self sumOverTimeSeries: (compartmentName addAll: comp)) ] ] ] ].
+							|compositeComp|
+							compositeComp := compartmentName copy.
+							compositeComp add: comp.
+							tSeries add: (self sumOverTimeSeries: compositeComp) ] ] ] ].
 
 	^ diag data: tSeries.
 					
