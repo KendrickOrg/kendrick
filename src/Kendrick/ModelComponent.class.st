@@ -10,13 +10,20 @@ Class {
 { #category : #protected }
 ModelComponent >> addParameter: variable value: value [
 
-	value isNumber 
-		ifTrue: [backEndEntity addParameter: variable value: value]
-		ifFalse: [ "array" 
-			backEndEntity 
-				addParameter: variable 
-				value: (self covertSymbolicExpressionToBlock: value).
-		]
+	"value is an expression expressed as a string"
+	value isString 
+		ifTrue: [ backEndEntity atParameter: variable assignValue: value parseAsAnExpression ]
+		ifFalse: [ 
+			value isNumber 
+				ifTrue: [backEndEntity addParameter: variable value: value]
+				ifFalse: [ "array" 
+					backEndEntity 
+						addParameter: variable 
+						value: (self covertSymbolicExpressionToBlock: value).
+				]
+			]
+
+	
 ]
 
 { #category : #protected }
@@ -44,13 +51,20 @@ ModelComponent >> atCompartment: variable value: value [
 { #category : #protected }
 ModelComponent >> atParameter: variable value: value [
 
-	value isNumber 
-		ifTrue: [backEndEntity atParameter: variable assignValue: value]
-		ifFalse: [ "array" 
-			backEndEntity 
-				atParameter: variable 
-				assignValue: (self covertSymbolicExpressionToBlock: value).
-		]
+	"value is an expression expressed as a string"
+	value isString 
+		ifTrue: [ backEndEntity atParameter: variable assignValue: value parseAsAnExpression ]
+		ifFalse: [ 
+			value isNumber 
+				ifTrue: [backEndEntity addParameter: variable value: value]
+				ifFalse: [ "array" 
+					backEndEntity 
+						addParameter: variable 
+						value: (self covertSymbolicExpressionToBlock: value).
+				]
+			]
+
+	
 ]
 
 { #category : #protected }
