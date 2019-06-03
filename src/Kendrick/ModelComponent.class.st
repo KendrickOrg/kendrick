@@ -148,7 +148,7 @@ ModelComponent >> doesNotUnderstand: aMessage [
 			explicitelySetCompartments add: variable.
 			self atCompartment: variable value: value. 
 		] ifFalse: [  
-		(parameters keys includes: variable)
+		(self parameters keys includes: variable)
 			ifTrue: [  
 				parameters at: variable put: value.
 				self addParameter: variable value: value. "can be array here treat differently"

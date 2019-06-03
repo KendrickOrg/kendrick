@@ -215,6 +215,13 @@ Scenario >> others: anInteger [
 	
 ]
 
+{ #category : #accessing }
+Scenario >> parameters: anArray [
+	anArray do: [ :p| 
+		parameters at: p put: 0.
+		model parameters at: p put: 0 ]
+]
+
 { #category : #'as yet unclassified' }
 Scenario >> populationSize: aNumber [
 

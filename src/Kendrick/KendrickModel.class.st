@@ -102,7 +102,7 @@ KendrickModel >> doesNotUnderstand: aMessage [
 		ifTrue: [ 
 			explicitelySetCompartments add: {variable->value}.
 		] ifFalse: [  
-		(parameters keys includes: variable)
+		(self parameters keys includes: variable)
 			ifTrue: [  
 				parameters at: variable put: value.
 			] ifFalse: [ 

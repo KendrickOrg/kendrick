@@ -164,14 +164,14 @@ Composition >> doesNotUnderstand: aMessage [
 	variable := aMessage selector.
 	variable := (variable asString trimRight: [: c | c =  $:]) asSymbol.
 	value := aMessage arguments first.
- 
+	
 	(self model attributeValuesIncludes: variable)
 		ifTrue: [ 
 			explicitelySetCompartments add: variable.
 			compartments at: variable put: value.
 			self model atCompartment: variable value: value. 
 		] ifFalse: [  
-		(self model parameters keys includes: variable)
+		(self parameters keys includes: variable)
 			ifTrue: [  
 				parameters at: variable put: value.
 				self model atParameter: variable value: value. "can be array here treat differently"
@@ -264,6 +264,14 @@ Composition >> others: anInteger [
 
 	self model others: anInteger given: explicitelySetCompartments. "TODO: propagate to concerns as well"
 
+	
+]
+
+{ #category : #adding }
+Composition >> parameters: anArray [
+	anArray do: [ :p| 
+		parameters at: p put: 0.
+		self model parameters at: p put: 0 ].
 	
 ]
 
