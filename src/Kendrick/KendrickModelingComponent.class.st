@@ -69,13 +69,21 @@ KendrickModelingComponent >> allTransitionsFor: aFromToList [
 
 { #category : #'public-api' }
 KendrickModelingComponent >> attribute: anArray [
-
+	|attVals|
+	
+	attVals := (anArray allButFirst select: [:var | var ~= #->]).
+	(attVals includes: #':') 
+		ifTrue: [ attVals := ((attVals first) to: (attVals last)) ].
+	
+	attVals := (attVals collect: [ :var | var asString asSymbol]) asOrderedCollection.
+	
 	attributes 
 		at: anArray first 
-		put: ((anArray allButFirst select: [:var | var ~= #->]) collect: [ :var | var asString asSymbol]) asOrderedCollection.
+		put: attVals.
+
 	backEndEntity 
 		addAttribute: anArray first 
-		value: ((anArray allButFirst select: [:var | var ~= #->]) collect: [ :var | var asString asSymbol]). 
+		value: attVals asArray. 
 	
 ]
 
