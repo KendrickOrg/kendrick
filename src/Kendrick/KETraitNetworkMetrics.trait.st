@@ -63,6 +63,13 @@ KETraitNetworkMetrics >> cc4: aNode [
 ]
 
 { #category : #metrics }
+KETraitNetworkMetrics >> clustering: aNode [
+	"Clustering coefficient of a node"
+
+	^ (3 * self p2: aNode) / self c3: aNode
+]
+
+{ #category : #metrics }
 KETraitNetworkMetrics >> p2: aNode [
 	"Return the number of path of length 2 starting from aNode"
 
