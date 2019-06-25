@@ -23,7 +23,7 @@ BaselineOfKendrick >> baseline: spec [
 			spec
 				package: 'Kendrick'
 				with: [ spec
-						requires: #('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'CollectionExtensions') ].
+						requires: #('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'CollectionExtensions' 'MooseAlgos') ].
 			spec group: 'default' with: #(#Kendrick) ].
 	spec
 		for: #'pharo6.x'
