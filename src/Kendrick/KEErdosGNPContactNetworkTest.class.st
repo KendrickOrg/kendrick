@@ -53,8 +53,8 @@ KEErdosGNPContactNetworkTest >> testNumberOfPathssOfLengthTwoInHexagonGridIsSix 
 	| network node |
 	network := KEErdosGNPContactNetwork new
 		nodes: (1 to: 100);
-				probability: 0.02.
+		probability: 0.02.
 	network run.
 	node := network nodes at: 1.
-	self assert: (network p2: node) equals: 6
+	self assert: (network p2: node) equals: 6 
 ]
