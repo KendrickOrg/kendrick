@@ -17,7 +17,7 @@ BaselineOfKendrick >> baseline: spec [
 				baseline: 'PolyMath'
 					with: [ spec repository: 'github://PolyMathOrg/PolyMath:master/src' ];
 				baseline: 'DataFrame'
-					with: [ spec repository: 'github://PolyMathOrg/DataFrame:master/src:v2.0' ];
+					with: [ spec repository: 'github://PolyMathOrg/DataFrame:master/src' ];
 				baseline: 'MooseAlgos'
 					with: [ spec repository: 'github://moosetechnology/MooseAlgos:master/src' ].
 			spec
