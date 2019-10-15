@@ -15,11 +15,11 @@ BaselineOfKendrick >> baseline: spec [
 				package: 'CollectionExtensions'
 					with: [ spec repository: 'http://smalltalkhub.com/mc/Moose/CollectionExtensions/main/' ];
 				baseline: 'PolyMath'
-					with: [ spec repository: 'github://PolyMathOrg/PolyMath:master/src' ];
+					with: [ spec repository: 'github://PolyMathOrg/PolyMath:v1.0.1/src' ];
 				baseline: 'DataFrame'
-					with: [ spec repository: 'github://PolyMathOrg/DataFrame:master/src' ];
+					with: [ spec repository: 'github://PolyMathOrg/DataFrame:v2.0/src' ];
 				baseline: 'MooseAlgos'
-					with: [ spec repository: 'github://moosetechnology/MooseAlgos:master/src' ].
+					with: [ spec repository: 'github://moosetechnology/MooseAlgos:v1.1.7/src' ].
 			spec
 				package: 'Kendrick'
 				with: [ spec
