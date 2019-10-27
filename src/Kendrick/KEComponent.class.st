@@ -78,9 +78,8 @@ KEComponent >> atAttribute: aSymbol add: aValue [
 	attributes at: aSymbol put: newDomain
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 KEComponent >> attributes [
-	attributes ifNil: [ attributes := Dictionary new ].
 	^ attributes
 ]
 
