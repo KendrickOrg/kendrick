@@ -65,7 +65,6 @@ KEPopulation >> compartments [
 
 { #category : #accessing }
 KEPopulation >> compartments: aCollection [
-	| dataOfComps |
 	self compartments ifNil: [ compartments := Dictionary new ].
 	aCollection keysAndValuesDo: [ :k :v | compartments at: k put: v ]
 ]
