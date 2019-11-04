@@ -11,5 +11,5 @@ result
 Class {
 	#name : #KEStochasticSimulator,
 	#superclass : #KESimulator,
-	#category : #'Kendrick-Core'
+	#category : #'Kendrick-Core-Simulations'
 }

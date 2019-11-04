@@ -10,7 +10,7 @@ Class {
 		'stepper',
 		'equations'
 	],
-	#category : #'Kendrick-Core'
+	#category : #'Kendrick-Core-Simulations'
 }
 
 { #category : #public }

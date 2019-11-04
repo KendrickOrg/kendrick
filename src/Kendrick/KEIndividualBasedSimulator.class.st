@@ -10,7 +10,7 @@ Class {
 		'transitions',
 		'transitionNbExecutions'
 	],
-	#category : #'Kendrick-Core'
+	#category : #'Kendrick-Core-Simulations'
 }
 
 { #category : #accessing }

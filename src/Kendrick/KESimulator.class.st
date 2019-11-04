@@ -42,7 +42,7 @@ Class {
 		'algorithm',
 		'timeSeriesOutputs'
 	],
-	#category : #'Kendrick-Core'
+	#category : #'Kendrick-Core-Simulations'
 }
 
 { #category : #'as yet unclassified' }
