@@ -56,6 +56,12 @@ KendrickModel >> connectionMatrix: aMatrix [
 ]
 
 { #category : #'public-api' }
+KendrickModel >> connectionTopology: aTopologyPattern [
+	
+
+]
+
+{ #category : #'public-api' }
 KendrickModel >> delay: symExpression [
  
 	"#(sigma , S -- lambda --> I  , E)"
