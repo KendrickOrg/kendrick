@@ -73,7 +73,7 @@ KEDiagramBuilder >> build [
 
 { #category : #'as yet unclassified' }
 KEDiagramBuilder >> buildLegends [
-	legends := data collect: [ :each | each columnNames first ]
+	legends ifNil: [ legends := data collect: [ :each | each columnNames first ] ]
 ]
 
 { #category : #accessing }

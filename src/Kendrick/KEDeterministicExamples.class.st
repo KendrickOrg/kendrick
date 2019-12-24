@@ -87,9 +87,10 @@ KEDeterministicExamples >> exampleRK4SolverOn2SEIRMeaslesModelWithVaccination [
 	"self new exampleRK4SolverOn2SEIRMeaslesModelWithVaccination"
 
 	| model simulator diag data legends |
-	model := self modelRK4SolverOnSEIRMeaslesModelWithVaccination.
 	data := OrderedCollection new.
 	legends := OrderedCollection new.
+	model := self modelRK4SolverOnSEIRMeaslesModelWithVaccination.
+	model atParameter: #p assignValue: 0.7.
 	simulator := KESimulator
 		new: #RungeKutta
 		from: 0.0
