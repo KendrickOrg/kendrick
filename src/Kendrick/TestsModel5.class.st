@@ -94,7 +94,7 @@ TestsModel5 >> before [
 	
 	model := KEModel new.
 	model population: (KEPopulation size: 27500).
-	SEIRSConcern := KEModelPart new.
+      SEIRSConcern := KEModelPart new.
 	SEIRSConcern addAttribute: #status value: #(S E I R).
 	SEIRSConcern addParameters: { #beta. #gamma. #mu. #sigma. #nu }.
 	SEIRSConcern addParameter: #lambda value: 'beta*I/N'.

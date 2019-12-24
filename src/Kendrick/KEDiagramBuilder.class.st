@@ -1,24 +1,27 @@
 "
-A KEDiagramBuilder is the visualisation class of the system..
+A KEDiagramBuilder allows to plot multiple diseases dynamics in time.
 
 Instance Variables
 	data:		<Collection>
-	legends:		<OrderedCollection>
+	legends:	<OrderedCollection>
 	xLabel:		<String>
 	yLabel:		<String>
+	legendTitle: <String>
 
 data
-	- xxxxx
+	- Collection of DataFrame to be plotted.
 
 legends
 	- xxxxx
 
 xLabel
-	- xxxxx
+	- Label for x axis
 
 yLabel
-	- xxxxx
+	- Label for y axis
 
+legendTitle
+	- Legend of the diagram
 "
 Class {
 	#name : #KEDiagramBuilder,
@@ -64,7 +67,6 @@ KEDiagramBuilder >> build [
 		c := normalize rtValue: (legends at: i).
 		lb addColor: c text: (legends at: i) ].
 	lb build.
-	"b build."
 	b view @ RTZoomableView.
 	^ b
 ]
@@ -74,33 +76,28 @@ KEDiagramBuilder >> buildLegends [
 	legends := data collect: [ :each | each columnNames first ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 KEDiagramBuilder >> data: aCollection [
 	super data: aCollection.
 	self buildLegends
 ]
 
-{ #category : #'as yet unclassified' }
-KEDiagramBuilder >> dataAt: aCountryName [
-	^ data detect: [ :ts | (ts compartment at: #country) == aCountryName ]
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 KEDiagramBuilder >> legendTitle [
 	^ legendTitle
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 KEDiagramBuilder >> legendTitle: aString [
 	legendTitle := aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 KEDiagramBuilder >> legends [
 	^ legends
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 KEDiagramBuilder >> legends: aCollection [
 	legends := aCollection
 ]
@@ -115,22 +112,22 @@ KEDiagramBuilder >> view [
 	^ self build view
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 KEDiagramBuilder >> xLabel [
 	^ xLabel
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 KEDiagramBuilder >> xLabel: aString [
 	xLabel := aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 KEDiagramBuilder >> yLabel [
 	^ yLabel
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 KEDiagramBuilder >> yLabel: aString [
 	yLabel := aString
 ]

@@ -107,7 +107,8 @@ KEDeterministicExamples >> exampleRK4SolverOn2SEIRMeaslesModelWithVaccination [
 	simulator executeOn: model.
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
 	legends addAll: #('p = 0.7' 'p = 0.0').
-	diag := KEDiagramBuilder new data: data log.
+	diag := KEDiagramBuilder new.
+	diag data: data log.
 	diag legends: legends.
 	diag xLabel: 'Time (years)'.
 	diag yLabel: 'log(Infectious)'.
