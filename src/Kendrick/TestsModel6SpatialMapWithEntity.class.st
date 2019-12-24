@@ -258,7 +258,7 @@ model
 
 simulator := KESimulator new: #RungeKutta from: 0.0 to: 500 step: 1.
 simulator executeOn: model.
-map addData: (map countries collect: [:c| (simulator timeSeriesOutputsAt: {#status->#I. #species->#bird. #country->c}) first peakOfEpidemic ]).	
+map data: (map countries collect: [:c| ((simulator timeSeriesOutputsAt: {#status->#I. #species->#bird. #country->c}) columnAt:1) max ]).	
 map open.
 
 ^ {simulator . model . map}
