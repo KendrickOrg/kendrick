@@ -9,7 +9,7 @@ Class {
 	#category : #'Kendrick-DSL-Internal'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #adding }
 Composition >> addCompositeAtrributeOrParameter: variable value: value [
 
 	|variablePlusAttributes|
@@ -18,16 +18,10 @@ Composition >> addCompositeAtrributeOrParameter: variable value: value [
 	"assume single attribute for the time being"
 	
 	(self model attributeValuesIncludes: variablePlusAttributes first asSymbol)
-		ifTrue: [ 
-			self addCompositeAttribute: variablePlusAttributes value: value. 
-		] ifFalse: [  
-		(self model parameters keys includes: variablePlusAttributes first asSymbol)
-			ifTrue: [  
-				self addCompositeParameter: variablePlusAttributes value: value.
-			] ifFalse: [ 
-					KendrickDSLSyntaxError 
-								signal: 'Undefined Variable Being Set: ' , variable asString ]. 
-		].
+		ifTrue: [ self addCompositeAttribute: variablePlusAttributes value: value ] 
+		ifFalse: [ (self model parameters keys includes: variablePlusAttributes first asSymbol)
+			ifTrue: [ self addCompositeParameter: variablePlusAttributes value: value ] 
+			ifFalse: [ KendrickDSLSyntaxError signal: 'Undefined Variable Being Set: ' , variable asString ] ]
 	
 ]
 
@@ -109,28 +103,24 @@ Composition >> addCompositeParameterWithTwoAttributes: variablePlusAttributes va
 { #category : #'as yet unclassified' }
 Composition >> allCompositeReferencesFor: variablePlusAttributes [
 
-	| compartment compResults|
-	compartment := variablePlusAttributes first.	
-	attributes := variablePlusAttributes allButFirst 
-						collect: [ :attribute |  
-							((concerns copy add: (self model); yourself) 
-								select: [ :e | e attributes keys includes: (attribute)]) first attributes associationAt: attribute ].
+	| attrKeys attrValues associations compartmentName|
 	
-	compResults := {{ self referencesFor: compartment } asOrderedCollection } asOrderedCollection.
+	attrKeys := variablePlusAttributes select: [ :att| backEndEntity attributes keys includes: att ].
+	attrValues := variablePlusAttributes reject: [ :att| backEndEntity attributes keys includes: att ].
 	
-	attributes do: [ :attribute | 
-		|newCompResults|
-		newCompResults := OrderedCollection new.
-		compResults do: [ :resultList | 
-			attribute value do: [ :value |
-					newCompResults add: (resultList copy add: attribute key -> value; yourself).
-			]
+	associations := attrKeys collect: [ :attKey| backEndEntity attributes associationAt: attKey ].	
+	compartmentName := {(attrValues collect: [ :attValue | self referencesFor: attValue ])
+								 asOrderedCollection} asOrderedCollection.
+								
+	associations do: [ :asso| 
+		|tmp|
+		tmp := OrderedCollection new.
+		compartmentName do: [ :name| 
+			asso value do: [ :v| tmp add: (name copy add: asso key -> v; yourself) ] ].
+		compartmentName := tmp
 		].
-		compResults := newCompResults.
-	].
 	
-	
-	^ compResults collect: [ :res | res asArray ]
+	^ compartmentName collect: [ :res | res asArray ]
 	
 ]
 
@@ -174,14 +164,14 @@ Composition >> doesNotUnderstand: aMessage [
 	variable := aMessage selector.
 	variable := (variable asString trimRight: [: c | c =  $:]) asSymbol.
 	value := aMessage arguments first.
- 
+	
 	(self model attributeValuesIncludes: variable)
 		ifTrue: [ 
 			explicitelySetCompartments add: variable.
 			compartments at: variable put: value.
 			self model atCompartment: variable value: value. 
 		] ifFalse: [  
-		(self model parameters keys includes: variable)
+		(self parameters keys includes: variable)
 			ifTrue: [  
 				parameters at: variable put: value.
 				self model atParameter: variable value: value. "can be array here treat differently"
@@ -274,6 +264,14 @@ Composition >> others: anInteger [
 
 	self model others: anInteger given: explicitelySetCompartments. "TODO: propagate to concerns as well"
 
+	
+]
+
+{ #category : #adding }
+Composition >> parameters: anArray [
+	anArray do: [ :p| 
+		parameters at: p put: 0.
+		self model parameters at: p put: 0 ].
 	
 ]
 

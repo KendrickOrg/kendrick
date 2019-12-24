@@ -10,85 +10,106 @@ Class {
 	#category : #'Kendrick-DSL-Internal'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #adding }
 Scenario >> addCompositeAtrributeOrParameter: variable value: value [
 
 	|variablePlusAttributes|
 	
-	variablePlusAttributes := variable asString findTokens: '_'.
+	variablePlusAttributes := (variable asString findTokens: '_') collect: [:v| v asSymbol ].
 	"assume single attribute for the time being"
 	
-	(model attributeValuesIncludes: variablePlusAttributes first asSymbol)
-		ifTrue: [ 
-			self addCompositeAttribute: variablePlusAttributes value: value. 
-		] ifFalse: [  
-		(model parameters keys includes: variablePlusAttributes first asSymbol)
-			ifTrue: [  
-				self addCompositeParameter: variablePlusAttributes value: value.
-			] ifFalse: [ 
-					KendrickDSLSyntaxError 
-								signal: 'Undefined Variable Being Set: ' , variable asString ]. 
-		].
+	(model attributeValuesIncludes: variablePlusAttributes first)
+		"if true, that's initialization of compartments"
+		ifTrue: [ self addCompositeAttribute: variablePlusAttributes value: value ] 
+		"if false, that's to assign value to parameter"
+		ifFalse: [ 
+			(model parameters keys includes: variablePlusAttributes first )
+				ifTrue: [ self addCompositeParameter: variablePlusAttributes value: value ] 
+				ifFalse: [ KendrickDSLSyntaxError signal: 'Undefined Variable Being Set: ' , variable asString ] ]
 	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #adding }
 Scenario >> addCompositeAttribute: variablePlusAttributes value: value [
 
+	"this function also should be generalized for the case having more than two attributes after the underscore"
 	compartments at: variablePlusAttributes put: value.
 	(self allCompositeReferencesFor: variablePlusAttributes)
 		doWithIndex: [:ref :index|  
 			(value anySatisfy: [ :item | item isCollection ])
 				ifTrue: [ backEndEntity atCompartment: ref put: (value flatten at: index) ]
 				ifFalse: [ backEndEntity atCompartment: ref put: (value at: index) ]		
-		]
+		].
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #adding }
 Scenario >> addCompositeParameter: variablePlusAttributes value: value [
 
-	|entities entity |
-
-	"should be generilized"
+	|parameterName attrKeys attrValues distinctAttrKeys twoDimAttrKeys secondOccInd| 
 	
-	entities := self entitiesFor: variablePlusAttributes allButFirst.
+	"13/11/2019: maianh modified so that no implicit dimension is needed particularly for the 
+	case of beta. For example: beta_regions: #(#(0.1 0.2) #(0.2 0.1))
+	In this example, beta is two dimensional matrix but only one underscore syntax
+	(in the left hand side) for _regions, the other dimension is implicitly defined for also regions.
+	So it should be: beta_regions_regions: #(#(0.1 0.2) #(0.2 0.1)) and will be translated as: 
+	beta_region1_region1 = 0.1, beta_region1_region2 = 0.2 etc.
+	Other example: 
+	beta_species_age: #(
+		#(#(0.1 0.01) #(0.01 0.01))
+		#(#(0.01 0.1) #(0.06 0.06))
+		); 
+	should be beta_species_age_age, the implicit dimension is of age.
+	Supposing that after parameters, only attribute keys, no including attribute values after underscore
+	For example: do not consider rho_species_S"
 	
-	"Refactor this one ..."
-	
+	"add this to parameters of Scenario for tracing first"
 	parameters at: variablePlusAttributes put: value.
-	
-	((variablePlusAttributes size >= 3) and: [ entities second isEmpty ])
-		ifTrue: [ ^ self addCompositeParameterWithTwoAttributes: variablePlusAttributes value: value ].
-
-	
+	"pick the name of the parameter, it should be the first element of the input list"
+	parameterName := variablePlusAttributes first.
+	"pick the list of all attribute keys in the input list"
+	attrKeys := variablePlusAttributes select: [ :att| backEndEntity attributes keys includes: att ].
+	"pick the list of all attribute values in the second list"
+	attrValues := variablePlusAttributes reject: [ :att| backEndEntity attributes keys includes: att ].
+	"pick all the distinct attribute keys "
+	distinctAttrKeys := attrKeys asSet asOrderedCollection.
+	"pick all the attribute keys which appear more than one time after underscore"
+	twoDimAttrKeys := (attrKeys reject: [ :k| (attrKeys occurrencesOf: k) = 1 ]) asSet asOrderedCollection.
+	secondOccInd := Dictionary newFrom: (twoDimAttrKeys collect: [:k| k->(attrKeys lastIndexOf: k)]).
+	"translate from underscore syntax to back end"
 	backEndEntity 
-        addParameter: variablePlusAttributes first asSymbol
-        value: 
-        [ :aModel| |c index attrEnt compEnt|
-				attrEnt := entities first first. "for now suppose you have one of each"
-				compEnt := entities second. "or only attributes"
-            c := aModel currentCompartment at: variablePlusAttributes second.
-				index := (attrEnt attributes at: variablePlusAttributes second) indexOf: c.            
-				compEnt isEmpty
-					ifTrue: [value at: index]
+		addParameter: parameterName 
+		value: 
+		[ :aModel| |currentAttrValueIndex res isSecondDim|
+			"find the correct index of attribute keys' current value"
+			currentAttrValueIndex := Dictionary newFrom: (distinctAttrKeys collect: [:k| |ind|
+				ind := (aModel attributes at: k) indexOf: (aModel currentCompartment at: k).
+				(k->ind)]).
+			res := value at: (currentAttrValueIndex at: (attrKeys first)).
+			isSecondDim := false.
+			attrKeys allButFirst doWithIndex: [ :v :ind| 
+				(twoDimAttrKeys includes: v) 
+					ifTrue: [ 
+					((ind + 1) = (secondOccInd at: v)) 
+						ifTrue: [ isSecondDim := true ] 
+						ifFalse: [ isSecondDim := false. res := (res at: (currentAttrValueIndex at: v)) ] ]
 					ifFalse: [  
-						c := aModel currentCompartment at: compEnt first attributes keys first. "should pick the right attr here"
-						c = variablePlusAttributes last 
-							ifTrue: [ value last ]
-							ifFalse: [ 
-								value at: index.
-							]
-					]  
-        ].
+						isSecondDim 
+							ifTrue: [ res := (res collect: [ :e| e at: (currentAttrValueIndex at: v) ]) ]
+							ifFalse: [ res := (res at: (currentAttrValueIndex at: v)) ]
+					]
+				].
+			res ].
 
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #adding }
 Scenario >> addCompositeParameterWithTwoAttributes: variablePlusAttributes value: value [
 
 	|entities entityForSecond entityForThird |
 	
+	"should we remove entities because the model will be passed as argument of the block (aModel) has all
+	necessary information?"
 	entityForSecond := (self entitiesFor: {variablePlusAttributes second}) first first.
 	entityForThird := (self entitiesFor: {variablePlusAttributes third}) first first. 
 
@@ -99,8 +120,8 @@ Scenario >> addCompositeParameterWithTwoAttributes: variablePlusAttributes value
 			variablePlusAttributes last asSymbol = 'next' 
 				ifFalse: [c2 := aModel currentCompartment at: variablePlusAttributes third]
 				ifTrue: [c2 := aModel nextCompartment at: variablePlusAttributes third].
-			index1 := (entityForSecond attributes at: variablePlusAttributes second) indexOf: c1.
-			index2 := (entityForThird attributes at: variablePlusAttributes third) indexOf: c2.
+			index1 := (aModel attributes at: variablePlusAttributes second) indexOf: c1.
+			index2 := (aModel attributes at: variablePlusAttributes third) indexOf: c2.
 			(value at: index1) at: index2.
 	 ].
 
@@ -110,28 +131,24 @@ Scenario >> addCompositeParameterWithTwoAttributes: variablePlusAttributes value
 { #category : #'as yet unclassified' }
 Scenario >> allCompositeReferencesFor: variablePlusAttributes [
 
-	|attributes compartment entities compResults|
-	compartment := variablePlusAttributes first.	
-	attributes := variablePlusAttributes allButFirst 
-						collect: [ :attribute |  
-							((concerns copy add: model; yourself) 
-								select: [ :e | e attributes keys includes: (attribute)]) first attributes associationAt: attribute ].
+	| attrKeys attrValues associations compartmentName|
 	
-	compResults := {{ self referencesFor: compartment } asOrderedCollection } asOrderedCollection.
+	attrKeys := variablePlusAttributes select: [ :att| backEndEntity attributes keys includes: att ].
+	attrValues := variablePlusAttributes reject: [ :att| backEndEntity attributes keys includes: att ].
 	
-	attributes do: [ :attribute | 
-		|newCompResults|
-		newCompResults := OrderedCollection new.
-		compResults do: [ :resultList | 
-			attribute value do: [ :value |
-					newCompResults add: (resultList copy add: attribute key -> value; yourself).
-			]
+	associations := attrKeys collect: [ :attKey| backEndEntity attributes associationAt: attKey ].	
+	compartmentName := {(attrValues collect: [ :attValue | self referencesFor: attValue ])
+								 asOrderedCollection} asOrderedCollection.
+								
+	associations do: [ :asso| 
+		|tmp|
+		tmp := OrderedCollection new.
+		compartmentName do: [ :name| 
+			asso value do: [ :v| tmp add: (name copy add: asso key -> v; yourself) ] ].
+		compartmentName := tmp
 		].
-		compResults := newCompResults.
-	].
 	
-	
-	^ compResults collect: [ :res | res asArray ]
+	^ compartmentName collect: [ :res | res asArray ]
 	
 ]
 
@@ -176,7 +193,9 @@ Scenario >> doesNotUnderstand: aMessage [
 { #category : #'as yet unclassified' }
 Scenario >> entitiesFor: attr [ 
 
-	"first list entities with attributes, second list entities with values"
+	"return two lists: first list entities with attributes, second list entities with values
+	for example, entitiesFor: {species age} will return "
+	
 
 	^ { 
 	
@@ -222,6 +241,13 @@ Scenario >> others: anInteger [
 	model others: anInteger given: explicitelySetCompartments. "TODO: propagate to concerns as well"
 
 	
+]
+
+{ #category : #accessing }
+Scenario >> parameters: anArray [
+	anArray do: [ :p| 
+		parameters at: p put: 0.
+		model parameters at: p put: 0 ]
 ]
 
 { #category : #'as yet unclassified' }

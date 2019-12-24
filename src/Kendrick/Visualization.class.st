@@ -93,9 +93,6 @@ Visualization >> data: anArray [ "should be full math-expression"
 
 { #category : #'public-api' }
 Visualization >> dataWithCompartments: anArray [ "should be full math-expression"
-
-	|tSeries|
-		
 		^ lazyDataBlock := [		
 				(anArray first asString includes: $_)
 						ifTrue: [self dataWithCompositeCompartments: anArray]
@@ -112,16 +109,22 @@ Visualization >> dataWithCompositeCompartments: anArray [ "should be full math-e
 		
 		tSeries := OrderedCollection new.
 		
-		anArray do: [:name | 
-				tokens := name findTokens: '_'.
-					(simulation model allTransitionRefsForAttribute: tokens second) do: [:comp |  
-						|compositeCompartment|
-						compositeCompartment 
-							:= (simulation model transitionRefFor: tokens first) allButLast.
-						compositeCompartment := compositeCompartment , ' , ' , comp allButFirst.
-						tSeries add: (self sumOverTimeSeries: compositeCompartment).			
-					]	
-				].
+		anArray do: [:attributeKeyOrValue | 
+			|attKeys attValues compartmentName|
+			tokens := attributeKeyOrValue findTokens: '_'.
+			attKeys := tokens select: [ :t| simulation model attributes keys includes: t ].
+			attValues := tokens reject: [ :t| simulation model attributes keys includes: t ].
+			compartmentName := OrderedCollection new.
+			attValues do: [ :v| compartmentName addAll: (simulation model literalTransitionRefFor: v) ].
+			attKeys isEmpty 
+				ifTrue: [ tSeries add: (self sumOverTimeSeries: compartmentName) ]
+				ifFalse: [ 
+					attKeys do: [ :k| 
+						(simulation model allLiteralTransitionRefsForAttribute: k) do: [ :comp| 
+							|compositeComp|
+							compositeComp := compartmentName copy.
+							compositeComp add: comp.
+							tSeries add: (self sumOverTimeSeries: compositeComp) ] ] ] ].
 
 	^ diag data: tSeries.
 					
@@ -134,19 +137,22 @@ Visualization >> dataWithOp: anArray [ "should be full math-expression"
 			diag addData: 
 				((simulation 
 					timeSeriesOutputsAt: 
-					(STON fromString: 
-						(simulation model transitionRefFor: ( (anArray first))) ) associations )
+						(simulation model literalTransitionRefFor: anArray first))
 					perform: anArray last)
 			]
 ]
 
 { #category : #'public-api' }
 Visualization >> dataWithSimpleCompartments: anArray [ "should be full math-expression"
-
-		^ diag data: 
-			(simulation 
-					timeSeriesOutputsAt: 
-						(simulation model transitionRefFor: anArray first))
+	
+		|tSeries|
+		
+		tSeries := OrderedCollection new.
+		
+		anArray do: [ :comp| 
+			tSeries addAll: (simulation timeSeriesOutputsAt: (simulation model literalTransitionRefFor: comp)) ].
+		^ diag data: tSeries
+			
 
 					
 			

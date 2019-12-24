@@ -12,7 +12,7 @@ Class {
 	#category : #'Kendrick-DSL-Internal'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 TestsModel6SpatialMapWithEntity >> after [
 
 KendrickModel SEIRS
@@ -42,7 +42,7 @@ Map IndoChina
 	
 KendrickModel Demographical
 	 maps: 'IndoChina';
-	 withTransitionRate: #(rho).
+	 transitionRate: #rho.
 	    
 KendrickModel SEIRSQ
     extends: 'SEIRS';

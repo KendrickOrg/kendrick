@@ -22,8 +22,11 @@ KendrickModelingComponent >> allLiteralTransitionRefsForAttribute: attribute [
 
 { #category : #'public-api' }
 KendrickModelingComponent >> allTransitionRefsForAttribute: attribute [
+	(attributes keys includes: attribute)
+		ifTrue: [ 
+			^ (attributes at: attribute) collect: [:comp | '{#' , attribute asString , ': #' , comp , '}'] 		].
+	^ {(self transitionRefFor: attribute)} asOrderedCollection
 	
-	^ (attributes at: attribute) collect: [:comp | '{#' , attribute asString , ': #' , comp , '}']
 ]
 
 { #category : #'public-api' }
@@ -66,13 +69,21 @@ KendrickModelingComponent >> allTransitionsFor: aFromToList [
 
 { #category : #'public-api' }
 KendrickModelingComponent >> attribute: anArray [
-
+	|attVals|
+	
+	attVals := (anArray allButFirst select: [:var | var ~= #->]).
+	(attVals includes: #':') 
+		ifTrue: [ attVals := ((attVals first) to: (attVals last)) ].
+	
+	attVals := (attVals collect: [ :var | var asString asSymbol]) asOrderedCollection.
+	
 	attributes 
 		at: anArray first 
-		put: ((anArray allButFirst select: [:var | var ~= #->]) collect: [ :var | var asString asSymbol]) asOrderedCollection.
+		put: attVals.
+
 	backEndEntity 
 		addAttribute: anArray first 
-		value: ((anArray allButFirst select: [:var | var ~= #->]) collect: [ :var | var asString asSymbol]). 
+		value: attVals asArray. 
 	
 ]
 
@@ -182,8 +193,6 @@ KendrickModelingComponent >> transitionRates: anExpressionOrBlock [
 KendrickModelingComponent >> transitionRefFor: aCompartment [
 	
 	|assoc|
-
-	
 	aCompartment = 'Empty'
 		ifTrue: [ ^ #empty ].
 	assoc := (attributes associations select: [ :pair | pair value includes: aCompartment ]) first.
