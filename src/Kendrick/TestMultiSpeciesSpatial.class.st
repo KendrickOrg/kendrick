@@ -224,7 +224,6 @@ seirsConcern
             put: 500 
     ].
 
-"Run the model with RK4"
 simulator := KESimulator new: #RungeKutta from: 0 to: 500 step: 1.
     simulator executeOn: model.
     db := KEDiagramBuilder new.

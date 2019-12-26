@@ -1,5 +1,5 @@
 "
-KEEntity is the root class of all Kendrick entities
+KEEntity is the abstract root class of all Kendrick entities.
 "
 Class {
 	#name : #KEEntity,

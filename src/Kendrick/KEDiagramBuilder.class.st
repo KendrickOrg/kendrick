@@ -1,5 +1,5 @@
 "
-A KEDiagramBuilder allows to plot multiple diseases dynamics in time.
+A KEDiagramBuilder allows to plot multiple simulations outcomes.
 
 Instance Variables
 	data:		<Collection>
@@ -21,7 +21,7 @@ yLabel
 	- Label for y axis
 
 legendTitle
-	- Legend of the diagram
+	- Legend of the plot
 "
 Class {
 	#name : #KEDiagramBuilder,
