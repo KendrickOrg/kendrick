@@ -71,8 +71,7 @@ Visualization >> canvas [
 { #category : #protected }
 Visualization >> cleanUpForInteractiveSessions [
 
-	KendrickInternalDSLEntities clearAllInstances.
-	MooseModel resetMeta.
+	KendrickInternalDSLEntities clearAllInstances
 ]
 
 { #category : #'public-api' }

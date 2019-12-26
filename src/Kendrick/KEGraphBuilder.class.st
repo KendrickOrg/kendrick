@@ -1,10 +1,6 @@
 "
-For visualization of a Kendrick model
- 
-Internal Representation and Key Implementation Points.
+Root of all Kendrick visualization engines.
 
-
-    Implementation Points
 "
 Class {
 	#name : #KEGraphBuilder,
