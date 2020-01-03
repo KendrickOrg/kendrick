@@ -3,7 +3,7 @@ A KEDiagramBuilder allows to plot multiple simulations outcomes.
 
 Instance Variables
 	data:		<Collection>
-	legends:	<OrderedCollection>
+	legends:		<OrderedCollection>
 	xLabel:		<String>
 	yLabel:		<String>
 	legendTitle: <String>
