@@ -7,15 +7,13 @@ Collection of countries symbol
 
 - routes:		 <Collection>
 
-- map ??
 "
 Class {
 	#name : #KEMapBuilder,
 	#superclass : #KEGraphBuilder,
 	#instVars : [
 		'countries',
-		'routes',
-		'map'
+		'routes'
 	],
 	#category : #'Kendrick-Core'
 }
