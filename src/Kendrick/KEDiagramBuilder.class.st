@@ -97,7 +97,7 @@ KEDiagramBuilder >> legends [
 	^ legends
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 KEDiagramBuilder >> legends: aCollection [
 	legends := aCollection
 ]
