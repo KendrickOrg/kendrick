@@ -1308,7 +1308,7 @@ KEDeterministicExamples >> modelRK4SolverOnSIRSimpleModel [
 
 { #category : #examples }
 KEDeterministicExamples >> modelRK4SolverOnSIRSimpleModelWithODERepresentation [
-	"self new exampleRK4SolverOnSIRSimpleModelWithODERepresentation"
+	"self new modelRK4SolverOnSIRSimpleModelWithODERepresentation"
 
 	| model |
 	model := KEModel new population: (KEPopulation size: 100000).
