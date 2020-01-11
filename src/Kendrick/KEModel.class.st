@@ -164,7 +164,7 @@ KEModel >> gtInspectorGraphIn: composite [
 					|graph lab nodes|
 					graph := (KEGraphFromCompartments on: self) run.
 					lab := RTLabel new.
-					nodes := ((RTEllipse new size: 15; color:((Color blue alpha: 0.4))) + (lab text: [ :e | e model any asString ])) elementsOn: graph nodes.
+					nodes := ((RTEllipse new size: 15; color:((Color blue alpha: 0.4))) + (lab text: [ :e | e model associations asString ])) elementsOn: graph nodes.
 					nodes @ RTDraggable.
 					view addAll: nodes.
 					RTEdgeBuilder new view: view;shape: (RTArrowedLine new color: Color black; attachPoint: RTBorderAttachPoint new);source: graph edges connectFrom:#from to:#to.					.

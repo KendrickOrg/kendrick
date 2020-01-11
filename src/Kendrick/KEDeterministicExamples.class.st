@@ -1283,7 +1283,7 @@ KEDeterministicExamples >> modelRK4SolverOnSIRMultiHostModelWithODERepresentatio
 
 { #category : #examples }
 KEDeterministicExamples >> modelRK4SolverOnSIRSimpleModel [
-	"self new exampleRK4SolverOnSIRSimpleModel"
+	"self new modelRK4SolverOnSIRSimpleModel"
 
 	| model |
 	model := KEModel new.
