@@ -37,5 +37,5 @@ KEEquationTest >> testTransitionProbabilityIsCorrect [
 		addEquation: 'S:t=-beta*S*I';
 		addEquation: 'I:t=beta*S*I - gamma*I';
 		addEquation: 'R:t=gamma*I'.
-	self assert: model transitions first probability sign equals: 1
+	self assert: model transitions first probability sign equals: -1
 ]

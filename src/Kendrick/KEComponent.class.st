@@ -155,7 +155,7 @@ KEComponent >> equationsToTransitions [
 	equations := OrderedCollection new
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'generating events' }
 KEComponent >> generateEvents [
 	
 	| events |
@@ -176,20 +176,19 @@ KEComponent >> generateEvents [
 	^ events
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'api-configuration' }
 KEComponent >> imports: aMatrix [
-"constructing transitions using an adjacency matrix"
-|att dom|
-att := self attributes associations first key.
-dom := self attributes associations first value.
-dom size ~= aMatrix size ifTrue: [ ^ self error: 'Size of input is not compatible' ].
-1 to: aMatrix size do: [ :row| 
-	1 to: (aMatrix at: row) size do: [ :col|
-		(((aMatrix at: row) at: col) ~= 0) ifTrue: [ 
-			self addTransitionFrom: { att->(dom at: row) } to: { att->(dom at: col) } probability: ((aMatrix at: row) at: col) asString]
-	]
-]
-	
+	"constructing transitions using an adjacency matrix"
+	"SMELL: to be removed. No sender"
+	| att dom |
+	att := self attributes associations first key.
+	dom := self attributes associations first value.
+	dom size ~= aMatrix size
+		ifTrue: [ ^ self error: 'Size of input is not compatible' ].
+	1 to: aMatrix size do: [ :row | 
+		1 to: (aMatrix at: row) size do: [ :col | 
+			((aMatrix at: row) at: col) ~= 0
+				ifTrue: [ self addTransitionFrom: {(att -> (dom at: row))} to: {(att -> (dom at: col))} probability: ((aMatrix at: row) at: col) asString ] ] ]
 ]
 
 { #category : #initialization }
@@ -201,7 +200,7 @@ KEComponent >> initialize [
 	parameters := Dictionary new
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'generating events' }
 KEComponent >> mergeEventsWithSameActionsIn: eventList [
 	"This function will find all events with same actions and merge their rate in one event"
 	|newList|
