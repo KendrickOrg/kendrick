@@ -9,7 +9,7 @@ SmalltalkCISpec {
   #testing : {
     #categories : [ 'Kendrick-Tests-*', 'Kendrick-InternalDSL'],
      #coverage : {
-      #categories : [ 'Kendrick-*' ]
+      #categories : [ 'Kendrick-*', 'PPODE*']
     }
 }
 }
