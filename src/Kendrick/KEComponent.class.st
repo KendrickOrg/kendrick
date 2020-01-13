@@ -136,9 +136,9 @@ KEComponent >> equations [
 { #category : #accessing }
 KEComponent >> equationsToTransitions [
 	| eGenerator events |
-	eGenerator := KEEventGenerator new.
-	events := eGenerator generateEvents: self.
 	
+	events := self generateEvents.
+		
 	events
 		do: [ :e | 
 			e fromStatus = #empty
@@ -155,6 +155,27 @@ KEComponent >> equationsToTransitions [
 				ifFalse: [ Dictionary newFrom: {(#status -> each toStatus)} ].
 			self addTransitionFrom: from to: to probability: each rate ].
 	equations := OrderedCollection new
+]
+
+{ #category : #'as yet unclassified' }
+KEComponent >> generateEvents [
+	
+	| events |
+	events := OrderedCollection new.
+	self equations
+		do: [ :eq | 
+			| eventList |
+			eventList := eq generateEvents.
+			eventList
+				do: [ :anEvent | 
+					(anEvent hasAnEventWithOppositeRateIn: events)
+						ifTrue: [ | e |
+							e := anEvent findEventWithOppositeRateIn: events.
+							e actions addAll: anEvent actions.
+							e mapStatusWith: anEvent ]
+						ifFalse: [ events add: anEvent ] ] ].
+	events := self mergeEventsWithSameActionsIn: events.
+	^ events
 ]
 
 { #category : #'as yet unclassified' }
@@ -180,6 +201,29 @@ KEComponent >> initialize [
 	equations := OrderedCollection new.
 	transitions := OrderedCollection new.
 	parameters := Dictionary new
+]
+
+{ #category : #'as yet unclassified' }
+KEComponent >> mergeEventsWithSameActionsIn: eventList [
+	"This function will find all events with same actions and merge their rate in one event"
+	|newList|
+	newList := OrderedCollection new.
+	eventList do: [ :event|
+		(event hasAnEventWithSameActionsIn: newList)
+		ifTrue: [ |e|
+			e := event findEventWithSameActionsIn: newList.
+			e rate: ((KEBinaryExpression new) op: #+; leftHandSide: (e rate); rightHandSide: (event rate))
+			 ]
+		ifFalse: [ newList add: event ].
+		 ].
+	newList do: [ :each|
+		(each fromStatus = #empty) 
+		"ifTrue: [
+			each rate: (each rate remove: (KEVariable new symbol: #N)) ]"
+		ifFalse: [ each rate: (each rate remove: (KEVariable new symbol: each fromStatus)) ]
+		 ].
+	^ newList
+
 ]
 
 { #category : #'as yet unclassified' }

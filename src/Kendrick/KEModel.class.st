@@ -156,14 +156,6 @@ KEModel >> currentCompartment: aCompartment [
 ]
 
 { #category : #'as yet unclassified' }
-KEModel >> generateEvents [
-	| eventGenerator  events |
-	eventGenerator := KEEventGenerator new.
-	events := eventGenerator generateEvents: self.
-	^ events
-]
-
-{ #category : #'as yet unclassified' }
 KEModel >> gtInspectorGraphIn: composite [
 	<gtInspectorPresentationOrder: 30>
 	composite roassal2
