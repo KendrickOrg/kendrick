@@ -138,13 +138,12 @@ KEComponent >> equationsToTransitions [
 	| eGenerator events |
 	eGenerator := KEEventGenerator new.
 	events := eGenerator generateEvents: self.
+	
 	events
 		do: [ :e | 
 			e fromStatus = #empty
-				ifTrue:
-					[ e rate: (e rate remove: (KEVariable new symbol: #N)) ]
-			"|symbol|
-			symbol := parameters keyAtValue: #sizeOfPopulation ifAbsent: [#N]." ].
+				ifTrue: [ "|symbol|
+			symbol := parameters keyAtValue: #sizeOfPopulation ifAbsent: [#N]." e rate: (e rate remove: (KEVariable new symbol: #N)) ] ].
 	events
 		do: [ :each | 
 			| from to |
@@ -198,16 +197,15 @@ KEComponent >> transitionRates: anExpressionOrBlock [
 
 { #category : #accessing }
 KEComponent >> transitions [
+	equations isNotEmpty
+		ifTrue: [ self equationsToTransitions ].
 
-	equations isEmpty ifFalse: [ self equationsToTransitions ].
-	transitions isEmpty ifTrue: [  
-		"generate a transition rate matrix of 0"
-		self compartmentNames do: [ :e| 
-			transitions addAll: (self compartmentNames collect: [:f| 
-				KETransition from: e to: f probability: 0
-			])
-		]	
-	].
+"generate a transition rate matrix of 0"
+	transitions isEmpty
+		ifTrue: [ self compartmentNames
+				do: [ :e | 
+					transitions
+						addAll: (self compartmentNames collect: [ :f | KETransition from: e to: f probability: 0 ]) ] ].
 	^ transitions
 ]
 
