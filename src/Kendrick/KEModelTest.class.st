@@ -222,11 +222,9 @@ KEModelTest >> testEquationsToTransitions [
 
 { #category : #tests }
 KEModelTest >> testGenerateEvents1 [
-	| model population events |
+	| model events |
 	model := KEModel new.
-	population := KEPopulation new.
 	events := model
-		population: population;
 		addEquation: 'S:t=-betaI*S*I-betaH*S*H-betaF*S*F';
 		addEquation: 'E:t=betaI*S*I+betaH*S*H+betaF*S*F-alpha*E';
 		addEquation: 'I:t=alpha*E';
@@ -238,16 +236,16 @@ KEModelTest >> testGenerateEvents1 [
 KEModelTest >> testGenerateEventsOfMultiDiseasesModel [
 	| model events |
 	model := KEModel new.
-	model population: KEPopulation new.
-	 model addEquation: 'SS:t=mu*N-beta1*SS*(IS+II+IR)-beta2*SS*(SI+II+RI)-mu*SS';
-	 addEquation: 'IS:t=beta1*SS*(IS+II+IR)-beta2*IS*(SI+II+RI)-(mu+sigma1)*IS';
-	 addEquation: 'SI:t=beta2*SS*(SI+II+RI)-beta1*SI*(IS+II+IR)-(mu+sigma2)*SI';
-	 addEquation: 'RS:t=sigma1*IS-beta2*RS*(SI+II+RI)-mu*RS';
-	 addEquation: 'SR:t=sigma2*SI-beta1*SR*(IS+II+IR)-mu*SR';
-	 addEquation: 'II:t=beta1*SI*(IS+II+IR)+beta2*IS*(SI+II+RI)-(sigma1+sigma2+mu)*II';
-	 addEquation: 'RI:t=beta2*RS*(SI+II+RI)+sigma1*II-(mu+sigma2)*RI';
-	 addEquation: 'IR:t=beta1*SR*(IS+II+IR)+sigma2*II-(mu+sigma1)*IR';
-	 addEquation: 'RR:t=sigma1*IR+sigma2*RI-mu*RR'.
+	model
+		addEquation: 'SS:t=mu*N-beta1*SS*(IS+II+IR)-beta2*SS*(SI+II+RI)-mu*SS';
+		addEquation: 'IS:t=beta1*SS*(IS+II+IR)-beta2*IS*(SI+II+RI)-(mu+sigma1)*IS';
+		addEquation: 'SI:t=beta2*SS*(SI+II+RI)-beta1*SI*(IS+II+IR)-(mu+sigma2)*SI';
+		addEquation: 'RS:t=sigma1*IS-beta2*RS*(SI+II+RI)-mu*RS';
+		addEquation: 'SR:t=sigma2*SI-beta1*SR*(IS+II+IR)-mu*SR';
+		addEquation: 'II:t=beta1*SI*(IS+II+IR)+beta2*IS*(SI+II+RI)-(sigma1+sigma2+mu)*II';
+		addEquation: 'RI:t=beta2*RS*(SI+II+RI)+sigma1*II-(mu+sigma2)*RI';
+		addEquation: 'IR:t=beta1*SR*(IS+II+IR)+sigma2*II-(mu+sigma1)*IR';
+		addEquation: 'RR:t=sigma1*IR+sigma2*RI-mu*RR'.
 	events := model generateEvents.
 	self assert: events size equals: 22
 ]

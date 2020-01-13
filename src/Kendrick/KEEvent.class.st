@@ -97,9 +97,9 @@ KEEvent >> mapStatusWith: anEvent [
 KEEvent >> printOn: aStream [
 	aStream
 		nextPutAll: fromStatus asString;
-		nextPutAll: '-->';
+		nextPutAll: ' -> ';
 		nextPutAll: toStatus asString;
-		nextPutAll: ': ';
+		nextPutAll: ' = ';
 		nextPutAll: rate asString
 ]
 

@@ -135,10 +135,8 @@ KEComponent >> equations [
 
 { #category : #accessing }
 KEComponent >> equationsToTransitions [
-	| eGenerator events |
-	
+	|  events |
 	events := self generateEvents.
-		
 	events
 		do: [ :e | 
 			e fromStatus = #empty
