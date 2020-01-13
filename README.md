@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/UMMISCO/kendrick/master/LICENSE)
 [![Pharo version](https://img.shields.io/badge/Pharo-6.1-%23aac9ff.svg)](https://pharo.org/download)
 
-Kendrick provide a Domain-Specific Language and a Simulation Plaform for mathematical epidemiology modeling. It helps epidemiologists craft custom analyses cheaply. It's based on [Pharo](http://www.pharo.org/) and it's open source under MIT. Classes of epidemic model include deterministic compartmental models, stochastic individual contact models, and individual-based network models.
+Kendrick provide an embedded Domain-Specific Language and a Simulation Plaform for mathematical epidemiology modeling. It helps epidemiologists craft custom analyses cheaply. It's based on [Pharo](http://www.pharo.org/) and it's open source under MIT licence. Classes of epidemic model include deterministic compartmental models, stochastic individual contact models, and individual-based network models.
 
 Kendrick is based extensively on several Pharo ecosystem tools including [PetitParser](http://www.moosetechnology.org/tools/petitparser) and Roassal visualization engine.
 
@@ -13,7 +13,9 @@ Kendrick is based extensively on several Pharo ecosystem tools including [PetitP
 ## Citation
 
 If you are using Kendrick for research, please cite our work as:
-> BUI Thi Mai Anh, Mikal Ziane, Serge Stinckwich, HO Tuong Vinh, Benjamin Roche, Nick Papoulias (2016). *Separation of Concerns in Epidemiological Modelling*, Companion Proceedings of the 15th International Conference on Modularity, pages 196-200 URL: http://dl.acm.org/citation.cfm?id=2892699
+
+> Mai Anh BUI T., Nick Papoulias, Serge Stinckwich, Mikal Ziane & Benjamin Roche (2019), *The Kendrick modelling platform: language abstractions and tools for epidemiology*, BMC Bioinformatics volume 20, Article number: 312 URL:
+https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-2843-0
 
 ## Documentation
 You will find documentation about Kendrick DSL in the wiki : https://github.com/UMMISCO/kendrick/wiki
