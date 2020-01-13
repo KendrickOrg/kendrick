@@ -200,12 +200,13 @@ KEComponent >> transitions [
 	equations isNotEmpty
 		ifTrue: [ self equationsToTransitions ].
 
-"generate a transition rate matrix of 0"
-	transitions isEmpty
+	"generate a transition rate matrix of 0"
+		transitions isEmpty
 		ifTrue: [ self compartmentNames
 				do: [ :e | 
 					transitions
 						addAll: (self compartmentNames collect: [ :f | KETransition from: e to: f probability: 0 ]) ] ].
+
 	^ transitions
 ]
 
