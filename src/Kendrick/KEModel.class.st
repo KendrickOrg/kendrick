@@ -165,7 +165,7 @@ KEModel >> gtInspectorGraphIn: composite [
 			graph := (KEGraphFromCompartments on: self) run.
 			lab := RTLabel new.
 			nodes := (RTEllipse new
-				size: 15;
+				size: 18;
 				color: (Color blue alpha: 0.4)) + (lab text: [ :e | e model associations asString ]) elementsOn: graph nodes.
 			nodes @ RTDraggable.
 			view addAll: nodes.
@@ -175,8 +175,9 @@ KEModel >> gtInspectorGraphIn: composite [
 					(RTArrowedLine new
 						color: Color black;
 						attachPoint: RTBorderAttachPoint new);
+				labelElement: [ :e | 'rate' ] fontSize: 12;
 				source: graph edges connectFrom: #from to: #to.
-			(RTLayoutBuilder new forceWithCharge: -450) on: view elements.
+			(RTLayoutBuilder new forceWithCharge: -300) on: view elements.
 			view ]
 ]
 
