@@ -5,6 +5,13 @@ Class {
 }
 
 { #category : #tests }
+KEModelTest >> testANewModelHasTwoParameters [
+	| model |
+	model := KEModel new.
+	self assert: model parameters size equals: 2
+]
+
+{ #category : #tests }
 KEModelTest >> testAddAttributeValue [
 	|model|
 	model := KEModel new.
