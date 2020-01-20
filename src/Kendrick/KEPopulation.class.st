@@ -95,16 +95,6 @@ KEPopulation >> individuals [
 	^ individuals
 ]
 
-{ #category : #adding }
-KEPopulation >> initialSize [
-	^ initialSize 
-]
-
-{ #category : #adding }
-KEPopulation >> initialSize: aNumber [
-	initialSize := aNumber
-]
-
 { #category : #initialization }
 KEPopulation >> initialize [
 

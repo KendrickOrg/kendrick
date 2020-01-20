@@ -63,7 +63,6 @@ TestMosquitoScripts >> before [
 
 | model multiHostConcern simulator db |
 model := KEModel new.
-model population: (KEPopulation size: 13000).
 model attributes: {(#status -> #(#S #I #R))}.
 model addParameter: #mu value: 12.17.
 model addParameter: #gamma value: 52.

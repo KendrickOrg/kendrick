@@ -138,7 +138,6 @@ spatialConcern
 						probability: [ :aModel | aModel atParameter: #rho ]].
 	spatialConcern addTransitionFrom: {(#patch -> 5)} to: {(#patch -> 1)} probability: [ :aModel | aModel atParameter: #rho ].
 	model := KEModel new.
-	model population: (KEPopulation size: 5000).
 	model integrate: spatialConcern.
 	model integrate: sirConcern.
 	eConcern := KEModelPart dependOn: sirConcern.
@@ -423,7 +422,6 @@ KEDeterministicExamples >> exampleRK4SolverOnSEIRSModelWithQuarantine [
 
 	| model SEIRConcern SEIRSConcern QuarantineConcern simulator dB |
 	model := KEModel new.
-	model population: (KEPopulation size: 5000).
 	SEIRConcern := KEModelPart new.
 	SEIRConcern attributes: {(#status -> #(#S #E #I #R))}.
 	SEIRConcern addParameters: {#beta . #gamma . #mu . #sigma}.
@@ -473,7 +471,6 @@ KEDeterministicExamples >> exampleRK4SolverOnSEIRSModelWithTwoStrains [
 
 	| model SEIRConcern SEIRSConcern twoStrains simulator dB data |
 	model := KEModel new.
-	model population: (KEPopulation size: 5000).
 	SEIRConcern := KEModelPart new.
 	SEIRConcern attributes: {(#status -> #(#S #E #I #R))}.
 	SEIRConcern addParameters: {#beta . #gamma . #mu . #sigma}.
@@ -680,7 +677,6 @@ KEDeterministicExamples >> modelRK4SolverOnMigrationOneSpeciesModel [
 	spatialConcern := self spatialConcern.
 	
 	model := KEModel new.
-	model population: (KEPopulation size: 25000).
 	model integrate: spatialConcern.
 	model integrate: SEIRSConcern.
 	
@@ -726,7 +722,7 @@ KEDeterministicExamples >> modelRK4SolverOnMigrationTwoSpeciesModel [
 	SEIRSConcern := self SEIRSConcern.
 	multihostConcern := self multiHostConcern.
 	
-	model := KEModel new population: (KEPopulation size: 27500).
+	model := KEModel new.
 	model integrate: spatialConcern.
 	model integrate: multihostConcern.
 	model integrate: SEIRSConcern.
@@ -801,7 +797,7 @@ KEDeterministicExamples >> modelRK4SolverOnMigrationTwoSpeciesModel [
 KEDeterministicExamples >> modelRK4SolverOnMultiInfectiousStatusModel [
 	"self new exampleRK4SolverOnMultiInfectiousStatusModel"
 	|model|
-	model := KEModel new population: (KEPopulation size: 500).
+	model := KEModel new.
 	model attributes: {#status->#(S I Is R)}.
 	model atCompartment: { #status->#S } put: 450.
 	model atCompartment: { #status->#I } put: 10.
@@ -840,7 +836,7 @@ KEDeterministicExamples >> modelRK4SolverOnMultiInfectiousStatusModel [
 { #category : #examples }
 KEDeterministicExamples >> modelRK4SolverOnMultiStrainModel [
 	|model|
-	model := KEModel new population: (KEPopulation size: 10000).
+	model := KEModel new.
 	model attributes: {#status->#(#S #I1 #I2 #R)}.
 	model atCompartment: { #status->#S } put: 9900.
 	model atCompartment: { #status->#I1 } put: 99.
@@ -898,7 +894,7 @@ KEDeterministicExamples >> modelRK4SolverOnMultipleRiskGroupsModel [
 	"self new exampleRK4SolverOnMultipleRiskGroupsModel"
 	| model riskGroupConcern |
 	riskGroupConcern := self riskGroupConcern.
-	model := KEModel new population: (KEPopulation size: 100000).
+	model := KEModel new.
 	model attributes: {#status->#(S I)}.
 	model addParameter: #beta value: 16e-9.
 	model addParameter: #gamma value: 0.2.
@@ -936,7 +932,7 @@ KEDeterministicExamples >> modelRK4SolverOnSEIRMeasles [
 	"self new exampleRK4SolverOnSEIRMeaslesModel"
 
 	| model |
-	model := KEModel new population: (KEPopulation size: 100000).
+	model := KEModel new.
 	model addAttribute: #status value: #(S E I R).
 	model atCompartment: { #status->#S } put: 99999 atOthersPut: 0.
 	model atCompartment: { #status->#I } put: 1.
@@ -986,7 +982,7 @@ KEDeterministicExamples >> modelRK4SolverOnSEIRMeasles [
 KEDeterministicExamples >> modelRK4SolverOnSEIRMeaslesModelWithVaccination [
 	"self new exampleRK4SolverOnSEIRMeaslesModelWithVaccination"
 	| model |
-	model := KEModel new population: (KEPopulation size: 100000).
+	model := KEModel new.
 	model addAttribute: #status value: #(S E I R).
 	model atCompartment: { #status->#S } put: 99999 atOthersPut: 0.
 	model atCompartment: { #status->#I } put: 1.
@@ -1041,7 +1037,7 @@ KEDeterministicExamples >> modelRK4SolverOnSEIRMeaslesModelWithVaccination [
 KEDeterministicExamples >> modelRK4SolverOnSIRDemography [
 	"self new exampleRK4SolverOnSIRDemographyModel"
 	| model |
-	model := KEModel new population: (KEPopulation size: 5000).
+	model := KEModel new.
 	model attributes: {#status->#(#S #I #R)}.
 	model atCompartment: {#status -> #S} put: 4975.
 	model atCompartment: {#status -> #I} put: 25.
@@ -1066,7 +1062,6 @@ KEDeterministicExamples >> modelRK4SolverOnSIRMultiHost [
 		value: #(#mosquito #reservoir1 #reservoir2).
 	
 	model := KEModel new.
-	model population: (KEPopulation size: 13000).
 	model addAttribute: #status value: #(#S #I #R).
 	model addParameter: #mu value: 12.17.
 	model addParameter: #gamma value: 52.
@@ -1148,7 +1143,6 @@ KEDeterministicExamples >> modelRK4SolverOnSIRMultiHostModelTransitionByRate [
 		addAttribute: #species 
 		value: #(#mosquito #reservoir1 #reservoir2).
 	model := KEModel new.
-	model population: (KEPopulation size: 13000).
 	model attributes: {(#status -> #(#S #I #R))}.
 	model addParameter: #mu value: 12.17.
 	model addParameter: #gamma value: 52.
@@ -1230,7 +1224,6 @@ KEDeterministicExamples >> modelRK4SolverOnSIRMultiHostModelWithODERepresentatio
 		addAttribute: #species 
 		value: #(#mosquito #reservoir1 #reservoir2).
 	model := KEModel new.
-	model population: (KEPopulation size: 13000).
 	model attributes: {(#status -> #(#S #I #R))}.
 	model addParameter: #mu value: 12.17.
 	model addParameter: #gamma value: 52.
@@ -1287,7 +1280,6 @@ KEDeterministicExamples >> modelRK4SolverOnSIRSimpleModel [
 
 	| model |
 	model := KEModel new.
-	model population: (KEPopulation size: 100000).
 	model attributes: 
 		{#status->#(#S #I #R)}.
 	model atCompartment: { #status->#S } put: 99999.
@@ -1311,7 +1303,7 @@ KEDeterministicExamples >> modelRK4SolverOnSIRSimpleModelWithODERepresentation [
 	"self new modelRK4SolverOnSIRSimpleModelWithODERepresentation"
 
 	| model |
-	model := KEModel new population: (KEPopulation size: 100000).
+	model := KEModel new.
 	model attributes: {#status->#(#S #I #R)}.
 	model atCompartment: { #status->#S } put: 99999.
 	model atCompartment: { #status->#I } put: 1.
@@ -1328,7 +1320,7 @@ KEDeterministicExamples >> modelRK4SolverOnSIRSimpleModelWithODERepresentation [
 KEDeterministicExamples >> modelRK4SolverOnSIRSimpleModelWithTransitionProbabilityAsExpression [
 	"self new exampleRK4SolverOnSIRSimpleModel"
 	| model |
-	model := KEModel new population: (KEPopulation size: 100000).
+	model := KEModel new.
 	model attributes: {#status->#(#S #I #R)}.
 	model atCompartment: { #status->#S } put: 99999 atOthersPut: 0.
 	model atCompartment: { #status->#I } put: 1.
@@ -1347,7 +1339,7 @@ KEDeterministicExamples >> modelRK4SolverOnSeasonalForcingModel [
 	"self new exampleRK4SolverOnSeasonalForcingModel"
 
 	| model |
-	model := KEModel new population: (KEPopulation size: 100000).
+	model := KEModel new.
 	model attributes: { #status->#(#S #E #I #R) }.
 	model atCompartment: { #status->#S } put: 99999 atOthersPut: 0.
 	model atCompartment: { #status->#I } put: 1.

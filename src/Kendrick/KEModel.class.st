@@ -126,7 +126,6 @@ KEModel >> atStatus: aSymbol put: aNumber [
 	(self atAttribute: #status) ifNil: [ ^ self error: 'The model does not contain the attribute #status' ].
 	((self atAttribute: #status) includes: aSymbol) ifFalse: [ ^ self error: 'THe model does not contain the status', aSymbol asString ].
 	self initCompartments ifNil: [ initCompartments := Dictionary newFrom: (self compartmentNames collect: [:c| c->0]) ].
-	(population initialSize < (initCompartments values sum + aNumber)) ifTrue: [ ^ self error: 'Total size of compartments is greater than the population size' ].
 	coms := (initCompartments keys select: [ :k| (k at: #status) = aSymbol ]).
 	nb :=  coms size.
 	((aNumber \\ nb) > 0) ifTrue: [  
@@ -164,8 +163,8 @@ KEModel >> gtInspectorGraphIn: composite [
 			| graph lab nodes |
 			graph := (KEGraphFromCompartments on: self) run.
 			lab := RTLabel new.
-			nodes := (RTEllipse new
-				size: 18;
+			nodes := (RTBox new
+				size: 40;
 				color: (Color blue alpha: 0.4)) + (lab text: [ :e | e model associations asString ]) elementsOn: graph nodes.
 			nodes @ RTDraggable.
 			view addAll: nodes.

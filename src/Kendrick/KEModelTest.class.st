@@ -93,7 +93,7 @@ KEModelTest >> testAtAttribute [
 { #category : #tests }
 KEModelTest >> testAtCompartment [
 	|model compartment|
-	model := KEModel new population: (KEPopulation size: 100000).
+	model := KEModel new.
 	model attributes: { #status->#(S I R). #region->#(A B C) }.
 	model atCompartment: { #status->#S. #region->#A } put: 99999 atOthersPut: 0.
 	compartment := model atCompartment: { #status -> #S. #region -> #A.}.
@@ -103,7 +103,7 @@ KEModelTest >> testAtCompartment [
 { #category : #tests }
 KEModelTest >> testAtCompartment2 [
 	|model |
-	model := KEModel new population: (KEPopulation size: 100000).
+	model := KEModel new.
 	model attributes: { #status->#(S I R). #region->#(A B C) }.
 	model atCompartment: { #status->#S. #region->#A } put: 99999 atOthersPut: 0.
 	model atCompartment: { #status->#I. #region->#A } put: 1.
@@ -117,7 +117,6 @@ KEModelTest >> testAtCompartment2 [
 KEModelTest >> testAtCompartmentPut [
 	|model|
 	model := KEModel new.
-	model population: (KEPopulation size: 100000).
 	model addAttribute: #status value: #(S I R).
 	model atCompartment: { #status->#S } put: 100000.
 	self assert: (model atCompartment: {#status->#S}) equals: 100000.
@@ -128,7 +127,6 @@ KEModelTest >> testAtCompartmentPut [
 KEModelTest >> testAtCompartmentPutAtOthersPut [
 	|model|
 	model := KEModel new.
-	model population: (KEPopulation size: 100000).
 	model addAttribute: #status value: #(S I R).
 	model atCompartment: { #status->#S } put: 100000 atOthersPut: 0.
 	self assert: (model atCompartment: {#status->#S}) equals: 100000.
@@ -167,7 +165,6 @@ KEModelTest >> testAtParameterAssignValue [
 KEModelTest >> testAtStatusPut [
 	|model|
 	model := KEModel new.
-	model population: (KEPopulation size: 100000).
 	model addAttribute: #status value: #(S I R).
 	model addAttribute: #country value: #(A B C).
 	model atStatus: #S put: 100000.
@@ -181,7 +178,6 @@ KEModelTest >> testAtStatusPut [
 KEModelTest >> testAtStatusPut2 [
 	|model|
 	model := KEModel new.
-	model population: (KEPopulation size: 100).
 	model addAttribute: #status value: #(S I R).
 	model addAttribute: #node value: ((1 to: 100) collect: [:i| i asString asSymbol]).
 	model atStatus: #S put: 99.
@@ -295,7 +291,7 @@ KEModelTest >> testGenerateEventsOfSIRModel [
 { #category : #tests }
 KEModelTest >> testIntegrate [
 	|model concern|
-	model := KEModel new population: (KEPopulation size: 1000).
+	model := KEModel new.
 	concern := KEModelPart new.
 	concern addAttribute: #status value: #(S I R).
 	concern 
@@ -318,7 +314,7 @@ KEModelTest >> testIntegrate [
 { #category : #tests }
 KEModelTest >> testModelWithTwoCompartmentsOfSizeNineAneOneHasATotalSizeOfTen [
 	| model |
-	model := KEModel new population: (KEPopulation size: 10).
+	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R))}.
 	model atCompartment: {(#status -> #S)} put: 9.
 	model atCompartment: {(#status -> #I)} put: 1.
@@ -329,7 +325,7 @@ KEModelTest >> testModelWithTwoCompartmentsOfSizeNineAneOneHasATotalSizeOfTen [
 { #category : #tests }
 KEModelTest >> testSizeOfEachCompartmentSizeOfSIRModel [
 	| model |
-	model := KEModel new population: (KEPopulation size: 100000).
+	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R))}.
 	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 1.

@@ -21,7 +21,7 @@ KETransitionTest >> testAsStringWithEmptyCompartment [
 { #category : #tests }
 KETransitionTest >> testEvaluateProbability [
 	| tr model rs |
-	model := KEModel new population: (KEPopulation size: 10001).
+	model := KEModel new.
 	model attributes: {(#status -> #(S I R))}.
 	model atCompartment: {(#status -> #S)} put: 10000 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 1.
@@ -38,7 +38,7 @@ KETransitionTest >> testEvaluateProbability [
 KETransitionTest >> testExecuteTransition [
 	| tr model |
 	tr := KETransition from: {#status -> #S} to: {#status -> #I} probability: [ :f :t :m | (m atParameter: #beta) * f * t ].
-	model := KEModel new population: (KEPopulation size: 10001).
+	model := KEModel new.
 	model attributes: {(#status -> #(S I R))}.
 	model atCompartment: {(#status -> #S)} put: 10000 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 1.

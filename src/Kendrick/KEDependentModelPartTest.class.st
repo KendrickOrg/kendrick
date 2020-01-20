@@ -78,7 +78,7 @@ KEDependentModelPartTest >> setUpSpatialConcern [
 { #category : #tests }
 KEDependentModelPartTest >> testAddStatus [
 	| model concern sirTransitionMatrix |
-	model := KEModel new population: KEPopulation new.
+	model := KEModel new.
 	model integrate: sirConcern.
 	model integrate: multiHostConcern.
 	concern := KEModelPart dependOn: sirConcern.
@@ -95,7 +95,7 @@ KEDependentModelPartTest >> testAddStatus [
 { #category : #tests }
 KEDependentModelPartTest >> testGenerateSum [
 	| model concern sirTransitionMatrix |
-	model := KEModel new population: KEPopulation new.
+	model := KEModel new.
 	model integrate: sirConcern.
 	model integrate: multiHostConcern.
 	concern := KEModelPart dependOn: sirConcern.
@@ -112,7 +112,7 @@ KEDependentModelPartTest >> testGenerateSum [
 { #category : #tests }
 KEDependentModelPartTest >> testGenerateTensorSum [
 	| model concern |
-	model := KEModel new population: KEPopulation new.
+	model := KEModel new.
 	model integrate: sirConcern.
 	model integrate: spatialConcern.
 	concern := KEModelPart dependOn: sirConcern.
@@ -128,7 +128,7 @@ KEDependentModelPartTest >> testGenerateTensorSum [
 { #category : #tests }
 KEDependentModelPartTest >> testProject [
 	| model concern |
-	model := KEModel new population: KEPopulation new.
+	model := KEModel new.
 	model integrate: sirConcern.
 	model integrate: multiHostConcern.
 	concern := KEModelPart dependOn: sirConcern.
@@ -138,7 +138,7 @@ KEDependentModelPartTest >> testProject [
 { #category : #tests }
 KEDependentModelPartTest >> testRemainingMatrixAfterProjecting [
 	| model concern |
-	model := KEModel new population: KEPopulation new.
+	model := KEModel new.
 	model integrate: sirConcern.
 	model integrate: multiHostConcern.
 	concern := KEModelPart dependOn: sirConcern.
@@ -148,7 +148,7 @@ KEDependentModelPartTest >> testRemainingMatrixAfterProjecting [
 { #category : #tests }
 KEDependentModelPartTest >> testRemainingMatrixAfterProjecting2 [
 	| model concern |
-	model := KEModel new population: KEPopulation new.
+	model := KEModel new.
 	model integrate: sirConcern.
 	model integrate: spatialConcern.
 	concern := KEModelPart dependOn: sirConcern.
@@ -158,7 +158,7 @@ KEDependentModelPartTest >> testRemainingMatrixAfterProjecting2 [
 { #category : #tests }
 KEDependentModelPartTest >> testRemoveTransitionFromTo [
 	| model concern sirTransitionMatrix |
-	model := KEModel new population: KEPopulation new.
+	model := KEModel new.
 	model integrate: sirConcern.
 	model integrate: multiHostConcern.
 	concern := KEModelPart dependOn: sirConcern.
@@ -183,7 +183,7 @@ KEDependentModelPartTest >> testSplitStatus [
 			(#index -> #(1 2))}.
 	self assert: (twoStrains atAttribute: #status) size equals: 5.
 	self assert: twoStrains transitions size equals: 12.
-	model := KEModel new population: KEPopulation new.
+	model := KEModel new.
 	model integrate: sirConcern.
 	model integrate: twoStrains.
 	self assert: model transitions size equals: 9
@@ -199,7 +199,7 @@ KEDependentModelPartTest >> testSplitStatus2 [
 	self assert: (twoStrains atAttribute: #status) size equals: 7.
 	self assert: (twoStrains transitions size) equals: 16.
 	
-	model := KEModel new population: (KEPopulation new).
+	model := KEModel new.
 	model integrate:  sirConcern.
 	model integrate: twoStrains.
 	
@@ -216,7 +216,7 @@ KEDependentModelPartTest >> testSplitStatus3 [
 	self assert: (twoStrains atAttribute: #status) size equals: 7.
 	self assert: (twoStrains transitions size) equals: 16.
 	
-	model := KEModel new population: (KEPopulation new).
+	model := KEModel new.
 	model integrate:  sirConcern.
 	model integrate: twoStrains.
 	
@@ -226,7 +226,7 @@ KEDependentModelPartTest >> testSplitStatus3 [
 { #category : #tests }
 KEDependentModelPartTest >> testUpdateTransitionFromToProbability [
 	| model concern sirTransitionMatrix |
-	model := KEModel new population: KEPopulation new.
+	model := KEModel new.
 	model integrate: sirConcern.
 	model integrate: multiHostConcern.
 	concern := KEModelPart dependOn: sirConcern.

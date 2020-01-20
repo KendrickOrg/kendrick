@@ -87,7 +87,7 @@ Simulation MeaslesRKSim rungeKutta
 TestMeaslesScriptsODEsBMC >> before [
 
 | model simulator diag |
-model := KEModel new population: (KEPopulation size: 100000).
+model := KEModel new.
 model addAttribute: #status value: #(S E I R).
 model atCompartment: { #status->#S } put: 99999 atOthersPut: 0.
 model atCompartment: { #status->#I } put: 1.
@@ -114,8 +114,8 @@ diag open.
 { #category : #'as yet unclassified' }
 TestMeaslesScriptsODEsBMC >> beforeBench [
 
-| model simulator diag |
-model := KEModel new population: (KEPopulation size: 100000).
+| model simulator |
+model := KEModel new.
 model addAttribute: #status value: #(S E I R).
 model atCompartment: { #status->#S } put: 99999 atOthersPut: 0.
 model atCompartment: { #status->#I } put: 1.

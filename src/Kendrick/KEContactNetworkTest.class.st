@@ -7,7 +7,7 @@ Class {
 { #category : #'as yet unclassified' }
 KEContactNetworkTest >> testContactsOf [
 	|model network|
-	model := KEModel new population: (KEPopulation size: 100).
+	model := KEModel new.
 	network := KEContactNetwork nodes: 100 topology: { #random. #p->1 }.
 	model addAttribute: #node value: network allContacts.
 	model addAttribute: #network value: {network}.

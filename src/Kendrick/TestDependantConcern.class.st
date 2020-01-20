@@ -159,7 +159,7 @@ spatialConcern addParameter: #rho.
 ]. 
 
 model := KEModel new.
-model population: (KEPopulation size: 5000).
+model population.
 model integrate: spatialConcern.
 model integrate: sirConcern.
 
@@ -229,7 +229,7 @@ model atParameter: #lambda assignValue: [ :aModel| |c|
 { #category : #'as yet unclassified' }
 TestDependantConcern >> beforeBench [
 
-|model sirConcern eConcern spatialConcern simulator db|
+|model sirConcern eConcern spatialConcern simulator |
 sirConcern := KEModelPart new.
 sirConcern attributes: {#status->#(#S #I #R)}.
 sirConcern addParameters: {#lambda. #gamma}.
@@ -262,7 +262,7 @@ spatialConcern addParameter: #rho.
 ]. 
 
 model := KEModel new.
-model population: (KEPopulation size: 5000).
+model population.
 model integrate: spatialConcern.
 model integrate: sirConcern.
 

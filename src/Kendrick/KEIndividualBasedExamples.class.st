@@ -9,7 +9,7 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSEIRMeaslesModel [
 	"self new exampleIBMSimulatorOnSEIRMeaslesModel"
 
 	| model simulator diag |
-	model := KEModel new population: (KEPopulation size: 100000).
+	model := KEModel new.
 	model addAttribute: #status value: #(S E I R).
 	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 1.
@@ -51,7 +51,7 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIREbolaModel [
 			spatialConcern addTransitionFrom: {(#country -> (countries at: i))} to: {(#country -> (countries at: j))} probability: [ :aModel | aModel atParameter: #rho ].
 			spatialConcern addTransitionFrom: {(#country -> (countries at: j))} to: {(#country -> (countries at: i))} probability: [ :aModel | aModel atParameter: #rho ] ] ].
 	model := KEModel new.
-	model population: (KEPopulation size: 6000).
+	model population.
 	model addAttribute: #status value: #(S I R).
 	model addParameter: #gamma value: 0.1.
 	model addParameter: #beta value: 0.0002.
@@ -113,7 +113,7 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModel [
 	"self new exampleIBMSimulatorOnSIRModel"
 
 	| model simulator dB |
-	model := KEModel new population: (KEPopulation size: 100000).
+	model := KEModel new.
 	model addAttribute: #status value: #(#S #I #R).
 	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 1.
@@ -139,7 +139,7 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModel2 [
 	"self new exampleIBMSimulatorOnSIRModel2"
 
 	| model simulator db |
-	model := KEModel new population: (KEPopulation size: 100).
+	model := KEModel new.
 	model addAttribute: #status value: #(#S #I #R).
 	model atCompartment: {(#status -> #S)} put: 99 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 1.
@@ -164,7 +164,7 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithContactNetworkAmon
 	"self new exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals"
 
 	| model network spatialConcern sirConcern simulator db f |
-	model := KEModel new population: (KEPopulation size: 100).
+	model := KEModel new.
 	sirConcern := KEModelPart new.
 	sirConcern addAttribute: #status value: #(S I R).
 	sirConcern addParameters: {#beta . #gamma . #lambda}.
@@ -227,7 +227,6 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRMultiHostModel [
 	multiHostConcern := KEModelPart new.
 	multiHostConcern addAttribute: #species value: #(#mosquito #reservoir1 #reservoir2).
 	model := KEModel new.
-	model population: (KEPopulation size: 13000).
 	model addAttribute: #status value: #(#S #I #R).
 	model addParameter: #mu value: 12.17.
 	model addParameter: #gamma value: 52.
@@ -330,7 +329,7 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRMultiHostModel [
 KEIndividualBasedExamples >> exampleNetWorkSimulatorOnSIR [
 "self new exampleNetWorkSimulatorOnSIR"
 	| model network spatialConcern sirConcern simulator db f |
-	model := KEModel new population: (KEPopulation size: 100).
+	model := KEModel new.
 	sirConcern := KEModelPart new.
 	sirConcern addAttribute: #status value: #(S I R).
 	sirConcern addParameters: {#beta . #gamma . #lambda}.

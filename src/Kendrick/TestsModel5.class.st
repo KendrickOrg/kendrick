@@ -93,7 +93,6 @@ TestsModel5 >> before [
 	| model SEIRSConcern twoStrains multiHostConcern spatialConcern simulator dB f|
 	
 	model := KEModel new.
-	model population: (KEPopulation size: 27500).
       SEIRSConcern := KEModelPart new.
 	SEIRSConcern addAttribute: #status value: #(S E I R).
 	SEIRSConcern addParameters: { #beta. #gamma. #mu. #sigma. #nu }.

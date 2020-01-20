@@ -8,7 +8,7 @@ Class {
 KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModel [
 	"self new exampleExplicitTauLeapOnSIRSimpleModel"
 	|model simulator  dB |
-	model := KEModel new population: (KEPopulation size: 5000).
+	model := KEModel new.
 	model attributes: {#status->#(#S #I #R)}.
 	model atCompartment: { #status->#S } put: 4975 atOthersPut: 0.
 	model atCompartment: { #status->#I } put: 25.
@@ -48,7 +48,7 @@ KEStochasticExamples >> exampleGillespieDirectOnSEIRMeaslesModel [
 	"self new exampleGillespieDirectOnSEIRMeaslesModel"
 
 	| model simulator diag |
-	model := KEModel new population: (KEPopulation size: 100000).
+	model := KEModel new.
 	model attributes: {(#status -> #(#S #E #I #R))}.
 	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 1.
@@ -84,7 +84,7 @@ KEStochasticExamples >> exampleGillespieDirectOnSIRBioPEPAModel [
 	"self new exampleGillespieDirectOnSIRBioPEPAModel"
 
 	| model simulator dB |
-	model := KEModel new population: (KEPopulation size: 100).
+	model := KEModel new.
 	model addAttribute: #status value: #(S I R).
 	model atCompartment: {(#status -> #S)} put: 99 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 1.
@@ -113,7 +113,6 @@ KEStochasticExamples >> exampleGillespieDirectOnSIRMultiHostModel [
 	multiHostConcern := KEModelPart new.
 	multiHostConcern addAttribute: #species value: #(#mosquito #reservoir1 #reservoir2).
 	model := KEModel new.
-	model population: (KEPopulation size: 13000).
 	model addAttribute: #status value: #(#S #I #R).
 	model addParameter: #mu value: 12.17.
 	model addParameter: #gamma value: 52.
@@ -196,7 +195,7 @@ KEStochasticExamples >> exampleGillespieDirectOnSIRSimpleModel [
 	"self new exampleGillespieDirectOnSIRSimpleModel"
 
 	| model simulator dB |
-	model := KEModel new population: (KEPopulation size: 10000).
+	model := KEModel new.
 	model addAttribute: #status value: #(#S #I #R).
 	model atCompartment: {(#status -> #S)} put: 9999 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 1.
@@ -225,7 +224,7 @@ KEStochasticExamples >> exampleGillespieDirectOnSIRSimpleModel3 [
 	"self new exampleGillespieDirectOnSIRSimpleModel3"
 
 	| model simulator dB |
-	model := KEModel new population: (KEPopulation size: 100).
+	model := KEModel new.
 	model addAttribute: #status value: #(#S #I #R).
 	model atCompartment: {(#status -> #S)} put: 99 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 1.
@@ -254,7 +253,7 @@ KEStochasticExamples >> exampleGillespieDirectOnSIRSimpleModelWithODERepresentat
 	"self new exampleGillespieDirectOnSIRSimpleModelWithODERepresentation"
 
 	| model simulator dB |
-	model := KEModel new population: (KEPopulation size: 100000).
+	model := KEModel new.
 	model addAttribute: #status value: #(#S #I #R).
 	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 1.
@@ -296,7 +295,6 @@ KEStochasticExamples >> exampleGillespieSimulatorOnSIREbolaModel [
 				to: {(#country -> (countries at: i))}
 				probability: [ :aModel | aModel atParameter: #rho ] ] ].
 	model := KEModel new.
-	model population: (KEPopulation size: 6000).
 	model addAttribute: #status value: #(S I R).
 	model addParameter: #gamma value: 0.1.
 	model addParameter: #beta value: 0.0002.

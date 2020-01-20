@@ -98,7 +98,6 @@ Visualization SEIRSInfluenzaViz
 TestsModel6SpatialMap >> before [
 |model SEIRSConcern simulator multiHostConcern spatialConcern quarantineConcern map|
 model := KEModel new.
-model population: (KEPopulation size: 27500).
 
 SEIRSConcern := KEModelPart new.
 SEIRSConcern addAttribute: #status value: #(S E I R).

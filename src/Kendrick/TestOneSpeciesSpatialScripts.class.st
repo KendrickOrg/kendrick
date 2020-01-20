@@ -128,7 +128,6 @@ seirsConcern := KEModelPart new.
      probability: [ :aModel | aModel atParameter: #mu ].
 
      model := KEModel new.
- model population: (KEPopulation size: 5000).
  model integrate: spatialConcern.
  model integrate: seirsConcern.
 

@@ -97,8 +97,8 @@ Visualization SpatialDiagramViz diagram
 { #category : #'as yet unclassified' }
 TestMultiSpeciesSpatial >> before [
 
-|model sirConcern eConcern spatialConcern simulator db multiHostConcern seirsConcern f |
-model := KEModel new population: (KEPopulation size: 27500).
+|model spatialConcern simulator db multiHostConcern seirsConcern f |
+model := KEModel new.
 
 "Multi-host concern"
 multiHostConcern := KEModelPart new.

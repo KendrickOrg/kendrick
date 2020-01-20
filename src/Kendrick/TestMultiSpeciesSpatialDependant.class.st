@@ -162,8 +162,8 @@ Simulation SpatialRungeKutta rungeKutta
 { #category : #'as yet unclassified' }
 TestMultiSpeciesSpatialDependant >> before [
 
-|model sirConcern eConcern spatialConcern simulator db multiHostConcern seirsConcern f |
-model := KEModel new population: (KEPopulation size: 27500).
+|model spatialConcern simulator db multiHostConcern seirsConcern f |
+model := KEModel new.
 
 "Multi-host concern"
 multiHostConcern := KEModelPart new.
@@ -315,8 +315,8 @@ simulator := KESimulator new: #RungeKutta from: 0 to: 500 step: 1.
 { #category : #'as yet unclassified' }
 TestMultiSpeciesSpatialDependant >> beforeBench [
 
-|model sirConcern eConcern spatialConcern simulator db multiHostConcern seirsConcern f |
-model := KEModel new population: (KEPopulation size: 27500).
+|model  spatialConcern simulator multiHostConcern seirsConcern f |
+model := KEModel new.
 
 "Multi-host concern"
 multiHostConcern := KEModelPart new.

@@ -7,7 +7,7 @@ Class {
 { #category : #tests }
 KESimulatorTest >> testAfterSimulationOfSIRModelThereAreThreeTimeSeries [
 	| model simulator |
-	model := KEModel new population: (KEPopulation size: 100000).
+	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R))}.
 	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 1.
@@ -34,7 +34,6 @@ KESimulatorTest >> testKEDeterministicSimulationGiveAlwaysSameMax [
 
 |model simulator |
 	model := KEModel new.
-	model population: (KEPopulation size: 100000).
 	model attributes: 
 		{#status->#(#S #I #R)}.
 	model atCompartment: { #status->#S } put: 99999.
