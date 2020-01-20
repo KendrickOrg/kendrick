@@ -5,7 +5,7 @@ A KETauLeapSimulator improves the Gillespie's direct method by using the TauLeap
 Class {
 	#name : #KETauLeapSimulator,
 	#superclass : #KEStochasticSimulator,
-	#category : #'Kendrick-Core-Simulations'
+	#category : #'Kendrick-Core'
 }
 
 { #category : #'as yet unclassified' }

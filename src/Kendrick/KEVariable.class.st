@@ -105,6 +105,7 @@ KEVariable >> sign [
 
 { #category : #testing }
 KEVariable >> symbol [
+	<MSEProperty: #symbol type: #String>
 	^ symbol
 ]
 

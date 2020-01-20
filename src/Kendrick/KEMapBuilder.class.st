@@ -1,19 +1,13 @@
 "
-A map to show the infection dynamic.
-
-
-- countries: 	<Collection>
-Collection of countries symbol
-
-- routes:		 <Collection>
-
+A map show the infection dynamic of an infectious disease
 "
 Class {
 	#name : #KEMapBuilder,
 	#superclass : #KEGraphBuilder,
 	#instVars : [
 		'countries',
-		'routes'
+		'routes',
+		'map'
 	],
 	#category : #'Kendrick-Core'
 }
@@ -58,6 +52,16 @@ KEMapBuilder >> initialize [
 	super initialize.
 	countries := OrderedCollection new.
 	routes := OrderedCollection new
+]
+
+{ #category : #'as yet unclassified' }
+KEMapBuilder >> map [
+	^ map
+]
+
+{ #category : #'as yet unclassified' }
+KEMapBuilder >> map: aMap [
+	map := aMap
 ]
 
 { #category : #'as yet unclassified' }

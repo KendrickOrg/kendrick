@@ -42,14 +42,14 @@ Class {
 		'algorithm',
 		'timeSeriesOutputs'
 	],
-	#category : #'Kendrick-Core-Simulations'
+	#category : #'Kendrick-Core'
 }
 
 { #category : #'as yet unclassified' }
 KESimulator class >> deterministicSolvers [
 	|algos|
 	algos := Dictionary new.
-	algos at: #AB2 put: #PMAB2Stepper; at: #AB3 put: #PMAB3Stepper; at: #AB4 put: #PMAB4Stepper; at: #AM3 put: #PMAM3Stepper; at: #AM4 put: #PMAM4Stepper; at: #BDF2 put: #PMBDF2Stepper; at: #BDF3 put: #PMBDF3Stepper; at: #BDF4 put: #PMBDF4Stepper; at: #BeckwardEuler put: #PMImplicitStepper; at: #Euler put: #PMExplicitStepper; at: #Heun put: #PMHeunStepper; at: #ImplicitMidPoint put: #PMImplicitMidpointStepper; at: #Midpoint put: #PMMidpointStepper; at: #RungeKutta put: #PMRungeKuttaStepper; at: #Trapezoid put: #PMTrapezoidStepper.
+	algos at: #AB2 put: #AB2Stepper; at: #AB3 put: #AB3Stepper; at: #AB4 put: #AB4Stepper; at: #AM3 put: #AM3Stepper; at: #AM4 put: #AM4Stepper; at: #BDF2 put: #BDF2Stepper; at: #BDF3 put: #BDF3Stepper; at: #BDF4 put: #BDF4Stepper; at: #BeckwardEuler put: #ImplicitStepper; at: #Euler put: #ExplicitStepper; at: #Heun put: #HeunStepper; at: #ImplicitMidPoint put: #ImplicitMidpointStepper; at: #Midpoint put: #MidpointStepper; at: #RungeKutta put: #RungeKuttaStepper; at: #Trapezoid put: #TrapezoidStepper.
 	^ algos
 ]
 
@@ -94,11 +94,9 @@ KESimulator >> executeOn: aModel [
 
 { #category : #initialization }
 KESimulator >> initializeTimeSeriesOutputs [
-	"Initialize timeSeriesOutputs with a DataFrame"
-
-	| columnNames |
-	columnNames := (((model population compartments keysDo: [ :each | each ]) keys) asArray) collect: [: each|each associations ].
-	timeSeriesOutputs := DataFrame withColumnNames: columnNames
+	timeSeriesOutputs := OrderedCollection new.
+	model population compartments
+		keysDo: [ :each | timeSeriesOutputs add: (KETimeSeries new compartment: each) ]
 ]
 
 { #category : #accessing }
@@ -114,10 +112,11 @@ KESimulator >> model: anObject [
 
 { #category : #'as yet unclassified' }
 KESimulator >> saveCompartmentsValueAtTime: t [
-	| ds values |
-	values := (model population compartments valuesDo: [ :each | each ]) values.
-	ds := DataSeries withValues: values name: t.
-	timeSeriesOutputs add: ds
+	model population compartments
+		keysAndValuesDo: [ :k :v | 
+			| ts |
+			ts := timeSeriesOutputs detect: [ :e | e compartment = k ].
+			ts add: v atIndex: t ]
 ]
 
 { #category : #accessing }
@@ -160,10 +159,7 @@ KESimulator >> timeSeriesOutputs [
 
 { #category : #accessing }
 KESimulator >> timeSeriesOutputsAt: aCompartmentName [
-	"Select from the DataFrame timeSeriesOutputs rows that includes aCompartmentName"
-
-	| names |
-	names := timeSeriesOutputs columnNames
-		select: [ :each | each includesAll: aCompartmentName ].
-	^ timeSeriesOutputs columns: names
+	| association |
+	association := aCompartmentName.
+	^ self timeSeriesOutputs select: [ :t | t compartment associations includesAll: association ]
 ]

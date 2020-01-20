@@ -10,7 +10,7 @@ Class {
 		'stepper',
 		'equations'
 	],
-	#category : #'Kendrick-Core-Simulations'
+	#category : #'Kendrick-Core'
 }
 
 { #category : #public }
@@ -18,7 +18,7 @@ KEDeterministicSimulator >> executeOn: aModel [
 	|st ks|
 	super executeOn:aModel.
 	equations := model buildEquations.
-	system := PMExplicitSystem block: [ :x :t| |c i|
+	system := ExplicitSystem block: [ :x :t| |c i|
 		c := Array new: (model population compartments size).
 		i := 1.
 		model population compartments keysDo: [ :k| model population compartments at: k put: (x at: i).

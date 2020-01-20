@@ -132,7 +132,7 @@ model atParameter: #lambda assignValue: [ :aModel|
 simulator := KESimulator new: #Gillespie from: 0.0 to: 0.5 step: 0.0027.
 
 simulator executeOn: model.
-db := (KEDiagramBuilder new) addData: ((simulator timeSeriesOutputsAt: {#status -> #I}) sqrt).
+db := (KEDiagramBuilder new) data: ((simulator timeSeriesOutputsAt: {#status -> #I}) sqrt).
 db open.
 
 ^ simulator -> model
@@ -168,6 +168,9 @@ TestMosquitoScripts >> tearDown [
 TestMosquitoScripts >> testEquivalence [
 
 	self createModels.
+
+	beforeModel inspect.
+	afterModel keModel inspect.
 
 	"gillepsie is stochastic -- need reproducible stochastic sim to properly compare"
 ]

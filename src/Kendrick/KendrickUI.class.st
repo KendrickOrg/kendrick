@@ -67,7 +67,7 @@ KendrickUI class >> splashLogo [
 	| logoMorph logoPath |
 	logoPath := SmalltalkImage current lastImagePath asFileReference
 		parent / '.res/kendrickLogo.png'.
-	logoMorph := (ImageReadWriter formFromFileNamed: logoPath)
+	logoMorph := (ImageReadWriter formFromStream: logoPath readStream)
 		asMorph.
 	logoMorph openCenteredInWorld.
 	[ (Delay forSeconds: 3) wait.

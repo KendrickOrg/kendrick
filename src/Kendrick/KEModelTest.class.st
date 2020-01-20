@@ -5,13 +5,6 @@ Class {
 }
 
 { #category : #tests }
-KEModelTest >> testANewModelHasTwoParameters [
-	| model |
-	model := KEModel new.
-	self assert: model parameters size equals: 2
-]
-
-{ #category : #tests }
 KEModelTest >> testAddAttributeValue [
 	|model|
 	model := KEModel new.
@@ -225,71 +218,6 @@ KEModelTest >> testEquationsToTransitions [
 	model addEquation: 'I:t=beta*S*I - gamma*I - mu*I'.
 	model addEquation: 'R:t=gamma*I - mu*R'.
 	self assert: model transitions size equals: 6
-]
-
-{ #category : #tests }
-KEModelTest >> testGenerateEvents1 [
-	| model events |
-	model := KEModel new.
-	events := model
-		addEquation: 'S:t=-betaI*S*I-betaH*S*H-betaF*S*F';
-		addEquation: 'E:t=betaI*S*I+betaH*S*H+betaF*S*F-alpha*E';
-		addEquation: 'I:t=alpha*E';
-		generateEvents.
-	self assert: events size equals: 2
-]
-
-{ #category : #tests }
-KEModelTest >> testGenerateEventsOfMultiDiseasesModel [
-	| model events |
-	model := KEModel new.
-	model
-		addEquation: 'SS:t=mu*N-beta1*SS*(IS+II+IR)-beta2*SS*(SI+II+RI)-mu*SS';
-		addEquation: 'IS:t=beta1*SS*(IS+II+IR)-beta2*IS*(SI+II+RI)-(mu+sigma1)*IS';
-		addEquation: 'SI:t=beta2*SS*(SI+II+RI)-beta1*SI*(IS+II+IR)-(mu+sigma2)*SI';
-		addEquation: 'RS:t=sigma1*IS-beta2*RS*(SI+II+RI)-mu*RS';
-		addEquation: 'SR:t=sigma2*SI-beta1*SR*(IS+II+IR)-mu*SR';
-		addEquation: 'II:t=beta1*SI*(IS+II+IR)+beta2*IS*(SI+II+RI)-(sigma1+sigma2+mu)*II';
-		addEquation: 'RI:t=beta2*RS*(SI+II+RI)+sigma1*II-(mu+sigma2)*RI';
-		addEquation: 'IR:t=beta1*SR*(IS+II+IR)+sigma2*II-(mu+sigma1)*IR';
-		addEquation: 'RR:t=sigma1*IR+sigma2*RI-mu*RR'.
-	events := model generateEvents.
-	self assert: events size equals: 22
-]
-
-{ #category : #tests }
-KEModelTest >> testGenerateEventsOfMultiHostsModel [
-	| model  events dsdt didt |
-	model := KEModel new.
-	dsdt := 'S[i]:t=mu[i]*N[i]-sum(j, beta[i][j]*I[j])*S[i]-mu[i]*S[i]'.
-	didt := 'I[i]:t=sum(j, beta[i][j]*I[j])*S[i]-(mu[i]+v)*I[i]'.
-	model addEquation: dsdt.
-	model addEquation: didt.
-	events := model generateEvents.
-	self assert: events size equals: 4
-]
-
-{ #category : #tests }
-KEModelTest >> testGenerateEventsOfSIRMetapopulationModel [
-	| model events |
-	model := KEModel new.
-	model addEquation: 'S:t=mu*N-beta*S*I-mu*S'.
-	model addEquation: 'I:t=beta*S*I-v*I-mu*I'.
-	model addEquation: 'R:t=v*I-mu*R'.
-	events := model generateEvents.
-	self assert: events size equals: 6
-]
-
-{ #category : #tests }
-KEModelTest >> testGenerateEventsOfSIRModel [
-	| model events |
-	model := KEModel new.
-	model
-		addEquation: 'S:t=-beta*S*I';
-		addEquation: 'I:t=beta*S*I-gamma*I';
-		addEquation: 'R:t=gamma*I'.
-	events := model generateEvents.
-	self assert: events size equals: 2
 ]
 
 { #category : #tests }

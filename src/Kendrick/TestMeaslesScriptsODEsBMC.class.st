@@ -104,7 +104,7 @@ model addParameters: {
         #sigma->0.125 }.
 simulator := KESimulator new: #RungeKutta from: 0.0 to: 150 step: 1.
 simulator executeOn: model.
-diag := (KEDiagramBuilder new) addData: simulator timeSeriesOutputs.
+diag := (KEDiagramBuilder new) data: simulator timeSeriesOutputs.
 diag xLabel: 'Time (days)'.
 diag open.
 
@@ -201,8 +201,13 @@ TestMeaslesScriptsODEsBMC >> testEquivalence [
 	| resultsBefore resultsAfter |
 	self createModels.
 
-	resultsBefore := (beforeDiagram data collect: [ :ts | ts max floor ]) collect: [: each| each values ].
-	resultsAfter := (afterDiagram data collect: [ :ts | ts max floor ]) collect: [: each| each values ].
-	self assert: resultsBefore = resultsAfter
-	
+	beforeModel inspect.
+	afterModel keModel inspect.
+
+	"correct (check inspector) -- but timeseries are presented in different order fix"
+
+	resultsBefore := (beforeDiagram data collect: [ :ts | ts peakOfEpidemic floor ]) sorted asOrderedCollection.
+	resultsAfter := (afterDiagram data collect: [ :ts | ts peakOfEpidemic floor ]) sorted asOrderedCollection.
+	Transcript show: resultsBefore; cr; show: resultsAfter; cr; cr.
+	self assert: resultsBefore = resultsAfter.
 ]

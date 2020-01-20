@@ -77,12 +77,11 @@ KENetworkBuilder >> colors: anArray [
 	colors := anArray
 ]
 
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 KENetworkBuilder >> initialize [
 	super initialize.
 	status := OrderedCollection new.
 	colors := OrderedCollection new.
-	
 ]
 
 { #category : #'as yet unclassified' }
@@ -126,7 +125,7 @@ KENetworkBuilder >> viewDataAtTime: time [
 	status isEmpty ifTrue: [ ^ self error: 'You should set up the status that you want to view with the network' ].
 	status size > 1 ifTrue: [ isAtIndividualLevel := true ] ifFalse: [ isAtIndividualLevel := false ].
 	timeIndex := data first indexOfTime: time.
-	vizData := Dictionary new. 
+	vizData := Dictionary new.
 	network allContacts do: [ :c|
 		vizData at: c put: (Dictionary newFrom: (status collect: [:e| e->0 ] )) ].
 	data do: [ :ts| |node stt|

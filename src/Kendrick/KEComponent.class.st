@@ -78,8 +78,9 @@ KEComponent >> atAttribute: aSymbol add: aValue [
 	attributes at: aSymbol put: newDomain
 ]
 
-{ #category : #accessing }
+{ #category : #'as yet unclassified' }
 KEComponent >> attributes [
+	attributes ifNil: [ attributes := Dictionary new ].
 	^ attributes
 ]
 
@@ -135,13 +136,16 @@ KEComponent >> equations [
 
 { #category : #accessing }
 KEComponent >> equationsToTransitions [
-	|  events |
-	events := self generateEvents.
+	| eGenerator events |
+	eGenerator := KEEventGenerator new.
+	events := eGenerator generateEvents: self.
 	events
 		do: [ :e | 
 			e fromStatus = #empty
-				ifTrue: [ "|symbol|
-			symbol := parameters keyAtValue: #sizeOfPopulation ifAbsent: [#N]." e rate: (e rate remove: (KEVariable new symbol: #N)) ] ].
+				ifTrue:
+					[ e rate: (e rate remove: (KEVariable new symbol: #N)) ]
+			"|symbol|
+			symbol := parameters keyAtValue: #sizeOfPopulation ifAbsent: [#N]." ].
 	events
 		do: [ :each | 
 			| from to |
@@ -155,40 +159,20 @@ KEComponent >> equationsToTransitions [
 	equations := OrderedCollection new
 ]
 
-{ #category : #'generating events' }
-KEComponent >> generateEvents [
-	
-	| events |
-	events := OrderedCollection new.
-	self equations
-		do: [ :eq | 
-			| eventList |
-			eventList := eq generateEvents.
-			eventList
-				do: [ :anEvent | 
-					(anEvent hasAnEventWithOppositeRateIn: events)
-						ifTrue: [ | e |
-							e := anEvent findEventWithOppositeRateIn: events.
-							e actions addAll: anEvent actions.
-							e mapStatusWith: anEvent ]
-						ifFalse: [ events add: anEvent ] ] ].
-	events := self mergeEventsWithSameActionsIn: events.
-	^ events
-]
-
-{ #category : #'api-configuration' }
+{ #category : #'as yet unclassified' }
 KEComponent >> imports: aMatrix [
-	"constructing transitions using an adjacency matrix"
-	"SMELL: to be removed. No sender"
-	| att dom |
-	att := self attributes associations first key.
-	dom := self attributes associations first value.
-	dom size ~= aMatrix size
-		ifTrue: [ ^ self error: 'Size of input is not compatible' ].
-	1 to: aMatrix size do: [ :row | 
-		1 to: (aMatrix at: row) size do: [ :col | 
-			((aMatrix at: row) at: col) ~= 0
-				ifTrue: [ self addTransitionFrom: {(att -> (dom at: row))} to: {(att -> (dom at: col))} probability: ((aMatrix at: row) at: col) asString ] ] ]
+"constructing transitions using an adjacency matrix"
+|att dom|
+att := self attributes associations first key.
+dom := self attributes associations first value.
+dom size ~= aMatrix size ifTrue: [ ^ self error: 'Size of input is not compatible' ].
+1 to: aMatrix size do: [ :row| 
+	1 to: (aMatrix at: row) size do: [ :col|
+		(((aMatrix at: row) at: col) ~= 0) ifTrue: [ 
+			self addTransitionFrom: { att->(dom at: row) } to: { att->(dom at: col) } probability: ((aMatrix at: row) at: col) asString]
+	]
+]
+	
 ]
 
 { #category : #initialization }
@@ -198,29 +182,6 @@ KEComponent >> initialize [
 	equations := OrderedCollection new.
 	transitions := OrderedCollection new.
 	parameters := Dictionary new
-]
-
-{ #category : #'generating events' }
-KEComponent >> mergeEventsWithSameActionsIn: eventList [
-	"This function will find all events with same actions and merge their rate in one event"
-	|newList|
-	newList := OrderedCollection new.
-	eventList do: [ :event|
-		(event hasAnEventWithSameActionsIn: newList)
-		ifTrue: [ |e|
-			e := event findEventWithSameActionsIn: newList.
-			e rate: ((KEBinaryExpression new) op: #+; leftHandSide: (e rate); rightHandSide: (event rate))
-			 ]
-		ifFalse: [ newList add: event ].
-		 ].
-	newList do: [ :each|
-		(each fromStatus = #empty) 
-		"ifTrue: [
-			each rate: (each rate remove: (KEVariable new symbol: #N)) ]"
-		ifFalse: [ each rate: (each rate remove: (KEVariable new symbol: each fromStatus)) ]
-		 ].
-	^ newList
-
 ]
 
 { #category : #'as yet unclassified' }
@@ -238,16 +199,16 @@ KEComponent >> transitionRates: anExpressionOrBlock [
 
 { #category : #accessing }
 KEComponent >> transitions [
-	equations isNotEmpty
-		ifTrue: [ self equationsToTransitions ].
 
-	"generate a transition rate matrix of 0"
-		transitions isEmpty
-		ifTrue: [ self compartmentNames
-				do: [ :e | 
-					transitions
-						addAll: (self compartmentNames collect: [ :f | KETransition from: e to: f probability: 0 ]) ] ].
-
+	equations isEmpty ifFalse: [ self equationsToTransitions ].
+	transitions isEmpty ifTrue: [  
+		"generate a transition rate matrix of 0"
+		self compartmentNames do: [ :e| 
+			transitions addAll: (self compartmentNames collect: [:f| 
+				KETransition from: e to: f probability: 0
+			])
+		]	
+	].
 	^ transitions
 ]
 

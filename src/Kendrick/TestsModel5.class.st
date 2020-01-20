@@ -94,7 +94,7 @@ TestsModel5 >> before [
 	
 	model := KEModel new.
 	model population: (KEPopulation size: 27500).
-      SEIRSConcern := KEModelPart new.
+	SEIRSConcern := KEModelPart new.
 	SEIRSConcern addAttribute: #status value: #(S E I R).
 	SEIRSConcern addParameters: { #beta. #gamma. #mu. #sigma. #nu }.
 	SEIRSConcern addParameter: #lambda value: 'beta*I/N'.
@@ -255,7 +255,7 @@ TestsModel5 >> before [
 		1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
 		(KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)
 		].
-	dB addData: { 
+	dB data: { 
 		(f value: {#status -> #I1.#species -> #bird}). 
 		(f value: {#status -> #I1.#species -> #human}).
 		(f value: {#status ->#I2. #species -> #bird}). 

@@ -212,11 +212,11 @@ model atParameter: #lambda assignValue: [ :aModel| |c|
 
     db := KEDiagramBuilder new.
     db data: [|tmp| tmp := OrderedCollection new.
-    tmp add: (simulator timeSeriesOutputsAt: {#status -> #I. #patch -> 1}).
-    tmp add: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 2}).
-    tmp add: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 3}).
-    tmp add: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 4}).
-    tmp add: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 5}).
+    tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I. #patch -> 1}).
+    tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 2}).
+    tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 3}).
+    tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 4}).
+    tmp addAll: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 5}).
     tmp] value.
     db legends: { 'patch 1'. 'patch 2'. 'patch 3'. 'patch 4'. 'patch 5'}.
     db legendTitle: 'Infectious'.
@@ -381,8 +381,13 @@ TestDependantConcern >> testEquivalence [
 	| resultsBefore resultsAfter |
 	self createModels.
 
-	resultsBefore := (beforeDiagram data collect: [ :ts | ts max floor ]) collect: [: each| each values ].
-	resultsAfter := (afterDiagram data collect: [ :ts | ts max floor ]) collect: [: each| each values ].
-	self assert: resultsBefore = resultsAfter
-	
+	beforeModel inspect.
+	afterModel keModel inspect.
+
+	"correct (check inspector) -- but timeseries are presented in different order fix"
+
+	resultsBefore := (beforeDiagram data collect: [ :ts | ts peakOfEpidemic floor ]) sorted asOrderedCollection.
+	resultsAfter := (afterDiagram data collect: [ :ts | ts peakOfEpidemic floor ]) sorted asOrderedCollection.
+	Transcript show: resultsBefore; cr; show: resultsAfter; cr; cr.
+	self assert: resultsBefore = resultsAfter.
 ]

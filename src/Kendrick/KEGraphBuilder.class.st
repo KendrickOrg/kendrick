@@ -1,6 +1,10 @@
 "
-Root of all Kendrick visualization engines.
+For visualization of a Kendrick model
+ 
+Internal Representation and Key Implementation Points.
 
+
+    Implementation Points
 "
 Class {
 	#name : #KEGraphBuilder,
@@ -10,12 +14,6 @@ Class {
 	],
 	#category : #'Kendrick-Core'
 }
-
-{ #category : #adding }
-KEGraphBuilder >> addData: aDataFrame [
-
-data add: aDataFrame 
-]
 
 { #category : #'as yet unclassified' }
 KEGraphBuilder >> build [
