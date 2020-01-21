@@ -100,6 +100,12 @@ KendrickModelingComponent >> attributes [
 ]
 
 { #category : #'public-api' }
+KendrickModelingComponent >> backEndModel [
+
+^backEndEntity 
+]
+
+{ #category : #'public-api' }
 KendrickModelingComponent >> equations: anArrayOfSymExpressions [
 
 	equations :=
