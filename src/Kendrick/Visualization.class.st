@@ -53,19 +53,17 @@ Visualization >> buildMapFrom: attribute given: compositeCompartments [
 
 { #category : #protected }
 Visualization >> canvas [
+	^ canvas
+		ifNil: [ simulation execute.
+			explicitDataSet
+				ifFalse: [ 
+				 simulation timeSeriesOutputs columnNames do: [ :each | diag addData: (simulation timeSeriesOutputsAt: each) ] ]
+				ifTrue: [ lazyDataBlock value ].
+			xLabel ifNotNil: [ diag xLabel: xLabel ].
+			KendrickInternalDSLEntities cleanUpForInteractiveSessions.
 
-	^ canvas ifNil: [  
-
-		simulation execute.
-		explicitDataSet 
-			ifFalse: [ diag addData: simulation timeSeriesOutputs ]
-			ifTrue: [ lazyDataBlock value ].
-		xLabel ifNotNil: [diag xLabel: xLabel].
-		KendrickInternalDSLEntities cleanUpForInteractiveSessions.
-
-		"self halt."
-
-		canvas := diag build build view canvas]
+			"self halt."
+			canvas := diag build build view canvas ]
 ]
 
 { #category : #protected }
