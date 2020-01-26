@@ -42,5 +42,13 @@ BaselineOfKendrick >> baseline: spec [
 				baseline: 'PetitParser2Core' with: [ spec repository: 'github://kursjan/petitparser2' ];
 				baseline: 'PetitParser' with: [ spec repository: 'github://moosetechnology/PetitParser/src' ];
 				baseline: 'Roassal2' with: [ spec repository: 'github://ObjectProfile/Roassal2/src' ];
+				baseline: 'Ston' with: [ spec repository: 'github://svenvc/ston/repository' ] ].
+			
+	spec
+		for: #'pharo8.x'
+		do: [ spec
+				baseline: 'PetitParser2Core' with: [ spec repository: 'github://kursjan/petitparser2' ];
+				baseline: 'PetitParser' with: [ spec repository: 'github://moosetechnology/PetitParser/src' ];
+				baseline: 'Roassal2' with: [ spec repository: 'github://ObjectProfile/Roassal2/src' ];
 				baseline: 'Ston' with: [ spec repository: 'github://svenvc/ston/repository' ] ]
 ]
