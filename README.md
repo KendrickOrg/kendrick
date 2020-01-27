@@ -6,7 +6,7 @@
 
 Kendrick provide an embedded Domain-Specific Language and a Simulation Plaform for mathematical epidemiology modeling. It helps epidemiologists craft custom analyses cheaply. It's based on [Pharo](http://www.pharo.org/) and it's open source under MIT licence. Classes of epidemic model include deterministic compartmental models, stochastic individual contact models, and individual-based network models.
 
-Kendrick is based extensively on several Pharo ecosystem tools including [PetitParser](http://www.moosetechnology.org/tools/petitparser) and Roassal visualization engine.
+Kendrick is based extensively on several Pharo ecosystem tools including [PetitParser](http://www.moosetechnology.org/tools/petitparser) and [Roassal](http://agilevisualization.com/) visualization engine.
 
 [![Screenshot](images/screenshot.png)](https://raw.githubusercontent.com/PolyMathOrg/DataFrame/master/images/screenshot.png)
 
