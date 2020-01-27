@@ -69,8 +69,6 @@ Metacello new
 	onWarningLog;
   	load.
 	
-
-	
 "Re-initialize libgit2"
 (Smalltalk at: #LGitLibrary) initialize.
 
