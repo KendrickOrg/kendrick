@@ -96,6 +96,7 @@ In your Pharo 6.1 image, load now the last development version of Kendrick :
 Metacello new
         githubUser: 'XXX' project: 'kendrick' commitish: 'master' path: 'src';
         baseline: 'Kendrick';
+	onWarningLog;
         load
 ```
 where you replace XXX with your github user name.
