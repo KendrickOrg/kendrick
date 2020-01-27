@@ -55,6 +55,7 @@ wget -O- https://goo.gl/WUQxmp | bash
 Metacello new
         repository: 'github://UMMISCO/kendrick';
         baseline: 'Kendrick';
+        onWarningLog ;
         load
 ```
 ## How to invoke Kendrick
