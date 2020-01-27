@@ -13,7 +13,7 @@ BaselineOfKendrick >> baseline: spec [
 			spec repository: 'https://github.com/UMMISCO/Kendrick'.
 			spec
 				package: 'CollectionExtensions' with: [ spec repository: 'http://smalltalkhub.com/mc/Moose/CollectionExtensions/main/' ];
-				baseline: 'PolyMath' with: [ spec repository: 'github://PolyMathOrg/PolyMath:v1.0.2/src' ];
+				baseline: 'PolyMath' with: [ spec repository: 'github://PolyMathOrg/PolyMath/src' ];
 				baseline: 'DataFrame' with: [ spec repository: 'github://PolyMathOrg/DataFrame:v2.0/src' ];
 				baseline: 'MooseAlgos' with: [ spec repository: 'github://moosetechnology/MooseAlgos:v1.1.8/src' ].
 			spec package: 'Kendrick' with: [ spec requires: #('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'CollectionExtensions' 'MooseAlgos') ].
