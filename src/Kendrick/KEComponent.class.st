@@ -91,8 +91,10 @@ KEComponent >> attributes: inputArray [
 
 { #category : #'as yet unclassified' }
 KEComponent >> buildEquations [
-	"Return the suitable array for KESimulatorDeterministic in order to solve the equations."
+	"Return the suitable Dictionary for KESimulatorDeterministic in order to solve the equations."
 	"This method should be merge with equations method in the same class: issue #40"
+	
+	"Seems to returns a Dictionary with keys are dictionary and values are orderedCollection ..."
 
 	| eq |
 	eq := Dictionary new.
@@ -111,6 +113,8 @@ KEComponent >> buildEquations [
 
 { #category : #'as yet unclassified' }
 KEComponent >> compartmentNames [
+
+"Return a Dictionary"
 	|names expand keys|
 	names := OrderedCollection new.
 	self attributes keys do: [ :e| 
@@ -128,7 +132,7 @@ KEComponent >> compartmentNames [
 	^ (keys collect: [ :e| Dictionary newFrom: e ])
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 KEComponent >> equations [
 	^ equations
 ]
