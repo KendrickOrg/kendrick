@@ -90,7 +90,7 @@ Visualization SEIIRSInfluenzaViz diagram
 TestsModel5 >> before [
 
 		
-	| model SEIRSConcern twoStrains multiHostConcern spatialConcern simulator dB f|
+	| model SEIRSConcern twoStrains multiHostConcern spatialConcern simulator dB data |
 	
 	model := KEModel new.
       SEIRSConcern := KEModelPart new.
@@ -247,18 +247,13 @@ TestsModel5 >> before [
 	
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 500 step: 1.
 	simulator executeOn: model.
-	dB := KEDiagramBuilder new.
-	f := [:name| |d tmp|
-		tmp := (simulator timeSeriesOutputsAt: name) collect: [ :e| e value ].
-		d := OrderedCollection new.
-		1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
-		(KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)
-		].
-	dB addData: { 
-		(f value: {#status -> #I1.#species -> #bird}). 
-		(f value: {#status -> #I1.#species -> #human}).
-		(f value: {#status ->#I2. #species -> #bird}). 
-		(f value: {#status -> #I2. #species -> #human}) }.
+	
+		data := OrderedCollection new.
+	data add: (simulator timeSeriesOutputsAt: {#status -> #I1.#species -> #bird}).
+	data add: (simulator timeSeriesOutputsAt:  {#status -> #I1.#species -> #human}).
+	data add: (simulator timeSeriesOutputsAt:   {#status ->#I2. #species -> #bird}).
+	data add: (simulator timeSeriesOutputsAt:  {#status -> #I2. #species -> #human}).
+	dB := KEDiagramBuilder new data: data.
 
 	dB xLabel: 'Time (days)'.
 	dB legendTitle: 'Total of infectious'.

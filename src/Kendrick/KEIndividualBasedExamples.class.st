@@ -163,7 +163,7 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModel2 [
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals [
 	"self new exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals"
 
-	| model network spatialConcern sirConcern simulator db f |
+	| model network spatialConcern sirConcern simulator db data|
 	model := KEModel new.
 	sirConcern := KEModelPart new.
 	sirConcern addAttribute: #status value: #(S I R).
@@ -209,13 +209,10 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithContactNetworkAmon
 		to: 50
 		step: 0.1.
 	simulator executeOn: model.
-	f := [ :name | 
-	| d tmp |
-	tmp := (simulator timeSeriesOutputsAt: name) collect: [ :e | e value ].
-	d := OrderedCollection new.
-	1 to: tmp first data size do: [ :k | d add: (tmp collect: [ :e | e data at: k ]) sum ].
-	(KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name) ].
-	db := KEDiagramBuilder new addData: {(f value: {(#status -> #I)})}.
+		simulator executeOn: model.
+	data := OrderedCollection new.
+	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	db := KEDiagramBuilder new data: data.
 	db open
 ]
 
@@ -328,7 +325,8 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRMultiHostModel [
 { #category : #examples }
 KEIndividualBasedExamples >> exampleNetWorkSimulatorOnSIR [
 "self new exampleNetWorkSimulatorOnSIR"
-	| model network spatialConcern sirConcern simulator db f |
+"Problem to debug to this method due to Dataframe apparently"
+	| model network spatialConcern sirConcern simulator db data |
 	model := KEModel new.
 	sirConcern := KEModelPart new.
 	sirConcern addAttribute: #status value: #(S I R).
@@ -374,13 +372,9 @@ KEIndividualBasedExamples >> exampleNetWorkSimulatorOnSIR [
 		to: 50
 		step: 0.1.
 	simulator executeOn: model.
-	f := [ :name | 
-	| d tmp |
-	tmp := (simulator timeSeriesOutputsAt: name) collect: [ :e | e value ].
-	d := OrderedCollection new.
-	1 to: tmp first data size do: [ :k | d add: (tmp collect: [ :e | e data at: k ]) sum ].
-	(KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name) ].
-	db := KEDiagramBuilder new data: {(f value: {(#status -> #I)})}.
+	data := OrderedCollection new.
+	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	db := KEDiagramBuilder new data: data.
 	db open.
 	db := KENetworkBuilder new
 		data: simulator timeSeriesOutputs;
