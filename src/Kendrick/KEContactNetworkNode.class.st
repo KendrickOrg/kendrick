@@ -6,7 +6,7 @@ Class {
 		'nextStatus',
 		'genInfected'
 	],
-	#category : #'Kendrick-Network'
+	#category : #'Kendrick-Core-Network'
 }
 
 { #category : #accessing }

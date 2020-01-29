@@ -7,7 +7,7 @@ Class {
 		'gamma',
 		'rho'
 	],
-	#category : #'Kendrick-Network'
+	#category : #'Kendrick-Core-Network'
 }
 
 { #category : #examples }

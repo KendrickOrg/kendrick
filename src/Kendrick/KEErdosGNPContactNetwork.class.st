@@ -3,7 +3,7 @@ Class {
 	#superclass : #MalErdosRenyiGNPGraphGenerator,
 	#traits : 'KETraitNetworkMetrics',
 	#classTraits : 'KETraitNetworkMetrics classTrait',
-	#category : #'Kendrick-Network'
+	#category : #'Kendrick-Core-Network'
 }
 
 { #category : #metrics }

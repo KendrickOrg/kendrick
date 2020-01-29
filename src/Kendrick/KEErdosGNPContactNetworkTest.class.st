@@ -1,7 +1,7 @@
 Class {
 	#name : #KEErdosGNPContactNetworkTest,
 	#superclass : #TestCase,
-	#category : #'Kendrick-Network'
+	#category : #'Kendrick-Core-Network'
 }
 
 { #category : #tests }

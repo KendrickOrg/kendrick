@@ -9,7 +9,7 @@ This trait implement various metrics used in all contact networks.
 "
 Trait {
 	#name : #KETraitNetworkMetrics,
-	#category : #'Kendrick-Network'
+	#category : #'Kendrick-Core-Network'
 }
 
 { #category : #metrics }
