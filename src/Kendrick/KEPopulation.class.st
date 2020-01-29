@@ -117,10 +117,8 @@ KEPopulation >> reset [
 
 { #category : #accessing }
 KEPopulation >> size [
-	| s |
-	s := 0.
-	compartments do: [:each | s := s + each ].
-	^ s
+	compartments ifEmpty:  [ ^ 0 ].
+	^ compartments sum
 ]
 
 { #category : #'as yet unclassified' }
