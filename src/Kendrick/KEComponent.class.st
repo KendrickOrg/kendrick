@@ -114,7 +114,9 @@ KEComponent >> buildEquations [
 { #category : #'as yet unclassified' }
 KEComponent >> compartmentNames [
 
-"Return a Dictionary"
+"Return an Array containing Dictionaries ..."
+"What a mess !!!"
+
 	|names expand keys|
 	names := OrderedCollection new.
 	self attributes keys do: [ :e| 

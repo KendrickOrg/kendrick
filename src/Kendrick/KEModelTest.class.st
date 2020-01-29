@@ -203,13 +203,13 @@ KEModelTest >> testAttributes [
 
 { #category : #tests }
 KEModelTest >> testCompartmentNames [
-	|model|
-	model := KEModel new.
-	model attributes: { 
-		#status->#(#S #I #R). 
-		#species->#(#mosquito #reservoir1 #reservoir2) }.
-	self assert: (model compartmentNames size) equals: 9.
-	self assert: (model compartmentNames first size) equals: 2 
+	| model |
+	model := KEModel new
+		attributes:
+			{(#status -> #(#S #I #R)).
+			(#species -> #(#mosquito #reservoir1 #reservoir2))}.
+	self assert: model compartmentNames size equals: 9.
+	self assert: model compartmentNames first size equals: 2
 ]
 
 { #category : #tests }
@@ -326,6 +326,15 @@ KEModelTest >> testModelWithTwoCompartmentsOfSizeNineAneOneHasATotalSizeOfTen [
 	model atCompartment: {(#status -> #I)} put: 1.
 	model atCompartment: {(#status -> #R)} put: 0.
 	self assert: model population size equals: 10
+]
+
+{ #category : #tests }
+KEModelTest >> testSIRModelHasThreeCompartments [
+	| model |
+	model := KEModel new
+		attributes:
+			{(#status -> #(#S #I #R))}.
+	self assert: model compartmentNames size equals: 3
 ]
 
 { #category : #tests }
