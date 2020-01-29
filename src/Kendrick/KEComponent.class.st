@@ -15,7 +15,9 @@ Class {
 
 { #category : #adding }
 KEComponent >> addAttribute: aSymbol value: aDomain [
-	self attributes at: aSymbol put: aDomain
+
+"A domain is an array of symbols like #(#S #I #R)"
+	attributes at: aSymbol put: aDomain
 ]
 
 { #category : #adding }
@@ -63,15 +65,19 @@ KEComponent >> addTransitionFrom: aCompartment to: anotherCompartment probabilit
 	self addTransition: (KETransition from: aCompartment to: anotherCompartment probability: aBlock)
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 KEComponent >> atAttribute: aSymbol [
-	^ attributes at: aSymbol ifAbsent: [ nil ]
+	^ attributes at: aSymbol
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #adding }
 KEComponent >> atAttribute: aSymbol add: aValue [
-	|newDomain|
-	attributes at: aSymbol ifAbsent: [ ^ self error: 'Cannot find attribute ', aSymbol asString ].
+
+"Add a new value to an existing attribute"
+	| newDomain |
+	attributes
+		at: aSymbol
+		ifAbsent: [ ^ self error: 'Cannot find attribute ' , aSymbol asString ].
 	newDomain := OrderedCollection new.
 	newDomain addAll: (attributes at: aSymbol).
 	newDomain add: aValue.
@@ -83,9 +89,10 @@ KEComponent >> attributes [
 	^ attributes
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #modifying }
 KEComponent >> attributes: inputArray [
-	"input must be an array of associations: {#status->#(#S #I #R). #age->#(#child #adult)}..."
+	"Input array is an array of associations like {#status->#(#S #I #R). #age->#(#child #adult)}"
+
 	attributes := Dictionary newFrom: inputArray
 ]
 
