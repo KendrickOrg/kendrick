@@ -65,6 +65,9 @@ KEPopulation >> compartments [
 
 { #category : #accessing }
 KEPopulation >> compartments: aCollection [
+
+"Why we should allow user to modify the compartments like that?"
+
 	self compartments ifNil: [ compartments := Dictionary new ].
 	aCollection keysAndValuesDo: [ :k :v | compartments at: k put: v ]
 ]

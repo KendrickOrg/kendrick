@@ -35,13 +35,10 @@ KEPopulationTest >> testRemoveIndividual [
 { #category : #tests }
 KEPopulationTest >> testSizeOfPopulationIsTheSameThanTheSumOfItsCompartment [
 	| model compartmentSSize compartmentISize |
-	model := KEModel
-		new
-		addAttribute: #status value: #(#S #I #R).
+	model := KEModel new addAttribute: #status value: #(#S #I #R).
 	compartmentSSize := 99.
 	compartmentISize := 1.
-	model atCompartment: {(#status -> #S)} put: compartmentSSize atOthersPut: 0.
-	model atCompartment: {(#status -> #I)} put: compartmentISize.
+	model atCompartment: {(#status -> #S)} put: compartmentSSize; atCompartment: {(#status -> #I)} put: compartmentISize; atCompartment: {(#status -> #R)} put: 0.
 	self assert: model population size equals: compartmentSSize + compartmentISize
 ]
 
