@@ -60,16 +60,16 @@ KEPopulation >> addIndividual: ind [
 
 { #category : #adding }
 KEPopulation >> compartments [
+"Return a dictionary"
 	^ compartments
 ]
 
 { #category : #accessing }
-KEPopulation >> compartments: aCollection [
-
-"Why we should allow user to modify the compartments like that?"
+KEPopulation >> compartments: aDictionary [
+	"Why we should allow user to modify the compartments like that?"
 
 	self compartments ifNil: [ compartments := Dictionary new ].
-	aCollection keysAndValuesDo: [ :k :v | compartments at: k put: v ]
+	aDictionary keysAndValuesDo: [ :k :v | compartments at: k put: v ]
 ]
 
 { #category : #accessing }
@@ -100,9 +100,7 @@ KEPopulation >> individuals [
 
 { #category : #initialization }
 KEPopulation >> initialize [
-
-compartments := Dictionary new.
-
+	compartments := Dictionary new
 ]
 
 { #category : #adding }
