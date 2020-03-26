@@ -1,14 +1,14 @@
-Extension { #name : #RubSHTextStylerST80 }
+Extension { #name : #SHRBTextStyler }
 
 { #category : #'*Kendrick-InternalDSL-DSL' }
-RubSHTextStylerST80 >> visitMessageNode: aMessageNode [
+SHRBTextStyler >> visitMessageNode: aMessageNode [
 	| style link |
 	style := #keyword.
 	(Symbol findInternedSelector: aMessageNode selector asString)
 		ifNil: [ 
-			style := (Symbol selectorThatStartsCaseSensitive: aMessageNode selector asString skipping: nil) isNil
-				ifTrue: [ #keyword ]
-				ifFalse: [ #keyword ] ].
+			style := (Symbol selectorThatStartsCaseSensitive: aMessageNode selector asString skipping: nil)
+				ifNil: [ #keyword ]
+				ifNotNil: [ #keyword ] ].
 	link := TextMethodLink selector: aMessageNode selector.
 	self styleOpenParenthese: aMessageNode.
 	aMessageNode selectorParts
