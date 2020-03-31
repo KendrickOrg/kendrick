@@ -51,6 +51,7 @@ wget -O- https://goo.gl/WUQxmp | bash
 
 * Download Pharo 6.1 VM depending of your platform: http://pharo.org/download
 * Load Kendrick: Open Pharo 6.1 image then right-click anywhere to open the main menu. Choose Playground to execute script. Paste the script below in Playground, select all then right-click and choose Do it to execute this.
+* You need first to update the Iceberg version in your image. See CONTRIBUTING.md for more details.
 
 ```Smalltalk
 Metacello new
