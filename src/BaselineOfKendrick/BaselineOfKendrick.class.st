@@ -1,7 +1,7 @@
 Class {
 	#name : #BaselineOfKendrick,
 	#superclass : #BaselineOf,
-	#category : 'BaselineOfKendrick'
+	#category : #BaselineOfKendrick
 }
 
 { #category : #baselines }
@@ -46,6 +46,14 @@ BaselineOfKendrick >> baseline: spec [
 			
 	spec
 		for: #'pharo8.x'
+		do: [ spec
+				baseline: 'PetitParser2Core' with: [ spec repository: 'github://kursjan/petitparser2' ];
+				baseline: 'PetitParser' with: [ spec repository: 'github://moosetechnology/PetitParser/src' ];
+				baseline: 'Roassal2' with: [ spec repository: 'github://ObjectProfile/Roassal2/src' ];
+				baseline: 'Ston' with: [ spec repository: 'github://svenvc/ston/repository' ] ].
+			
+	spec
+		for: #'pharo9.x'
 		do: [ spec
 				baseline: 'PetitParser2Core' with: [ spec repository: 'github://kursjan/petitparser2' ];
 				baseline: 'PetitParser' with: [ spec repository: 'github://moosetechnology/PetitParser/src' ];
