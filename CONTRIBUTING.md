@@ -158,11 +158,11 @@ If at some point, you see than the original Kendrick repository is ahead from yo
 
 ![pull feature in your own](img/github_cp.png)
 
-To compare you can define sources (1) and target (2) for the update. Once it's done, you can use the pull request mechanism (3) to merge the original cormas code to your own.
+To compare you can define sources (1) and target (2) for the update. Once it's done, you can use the pull request mechanism (3) to merge the original Kendrick code to your own.
 
 ![pull feature in your own with PR](img/github_pr_fork.png)
 
-The last step in this process, you'll just have to go back to your cormas Pharo a pull into your cormas image in the VM.
+The last step in this process, you'll just have to go back to your Kendrick Pharo a pull into your Kendrick image in the VM.
 
 ### Sync your fork with the Kendrick main repository
 
@@ -190,5 +190,4 @@ Ounce your pull request is integrated, some cleanups are maybe required:
 # Release management (not used at the moment)
 
 # Branch management (to be defined)
-
 
