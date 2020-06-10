@@ -136,7 +136,7 @@ Remote URL: https://github.com/UMMISC/kendrick.git
 
 After doing modifications in your image, open Iceberg tool, commit the changes in your Kendrick repository. Cherry-pick the modifications that you want to include in your commit. Then push your commit to your fork. It's more convenient to divide your changes in meaninfull and simple commits, which makes it easier to check for those who need to proofread it.
 
-![iceberge](https://github.com/cormas/cormas/img/iceberg_pharo.png)
+![iceberge](images/iceberg_pharo.png)
 
 #### From GitHub UI
 
@@ -144,7 +144,7 @@ In the GitHub interface, create a Pull Request (PR) from your commit.
 You have to give some information about what is the purpose of you pull request. Then submit it to Kendrick main repository.
 This will notify Kendrick core developers team that an improvement or bug fix is pending.
 
-![create a pull request from github](img/github_pr.png)
+![create a pull request from github](images/github_pr.png)
 
 As the main core developers, you have to review the open PRs. When merging the pull request, select *Create a merge commit* not  squash and merge. Try to avoid (except in case of emergency) to review your own commits.
 
@@ -156,11 +156,11 @@ You can proceed in two different ways to update your fork. You can either use gi
 
 If at some point, you see than the original Kendrick repository is ahead from your own fork (2 in the following picture) you can synchronize your own repository with all the newest features add to the original using compare (3)
 
-![pull feature in your own](img/github_cp.png)
+![pull feature in your own](images/github_cp.png)
 
 To compare you can define sources (1) and target (2) for the update. Once it's done, you can use the pull request mechanism (3) to merge the original Kendrick code to your own.
 
-![pull feature in your own with PR](img/github_pr_fork.png)
+![pull feature in your own with PR](images/github_pr_fork.png)
 
 The last step in this process, you'll just have to go back to your Kendrick Pharo a pull into your Kendrick image in the VM.
 
