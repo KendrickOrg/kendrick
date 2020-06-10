@@ -136,7 +136,7 @@ Remote URL: https://github.com/UMMISC/kendrick.git
 
 After doing modifications in your image, open Iceberg tool, commit the changes in your Kendrick repository. Cherry-pick the modifications that you want to include in your commit. Then push your commit to your fork. It's more convenient to divide your changes in meaninfull and simple commits, which makes it easier to check for those who need to proofread it.
 
-![iceberge](img/iceberg_pharo.png)
+![iceberge](https://github.com/cormas/cormas/img/iceberg_pharo.png)
 
 #### From GitHub UI
 
