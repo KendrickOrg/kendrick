@@ -128,7 +128,7 @@ Open Iceberg, open Kendrick repository, click on repositories, then + button (ad
 
 Remote name: upstream
 
-Remote URL: https://github.com/UMMISC/kendrick.git
+Remote URL: https://github.com/UMMISCO/kendrick.git
 
 ## Send some changes to the original Kendrick repository
 
