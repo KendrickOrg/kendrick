@@ -169,7 +169,7 @@ ModelComponent >> initialize [
 ]
 
 { #category : #protected }
-ModelComponent >> integrate: concern. [
+ModelComponent >> integrate: concern [.
 
 	backEndEntity integrate: concern keConcern.
 	parameters addAll: concern parameters.

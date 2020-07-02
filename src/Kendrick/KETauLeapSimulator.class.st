@@ -22,7 +22,7 @@ KETauLeapSimulator >> doTauLeapIteration: t [
 		prob := (tr probability value: model) abs.
 		"prob isDictionary ifTrue: [ prob := prob values sum ]."
 		rate := prob * (model atCompartment: tr from).
-		numPoisson := (PoissonGenerator lambda: (rate * step)) next.
+		numPoisson := (PMPoissonGenerator lambda: (rate * step)) next.
 		tr executeOn: model times: numPoisson   
 		 ].
 	
