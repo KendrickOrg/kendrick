@@ -23,11 +23,6 @@ BaselineOfKendrick >> baseline: spec [
 					with: [ spec repository: 'github://PolyMathOrg/DataFrame:v2.0/src' ];
 				baseline: 'MooseAlgos'
 					with: [ spec repository: 'github://moosetechnology/MooseAlgos:v1.1.8/src' ].
-			spec
-				package: 'Kendrick'
-				with: [ spec
-						requires:
-							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'CollectionExtensions' 'MooseAlgos') ].
 			spec group: 'default' with: #(#Kendrick) ].
 	spec
 		for: #'pharo6.x'
@@ -46,7 +41,13 @@ BaselineOfKendrick >> baseline: spec [
 					with: [ spec
 						className: #ConfigurationOfSton;
 						versionString: #stable;
-						repository: 'http://ss3.gemstone.com/ss/STON' ] ].
+						repository: 'http://ss3.gemstone.com/ss/STON' ].
+			spec
+				package: 'Kendrick'
+				with: [ spec
+						requires:
+							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'CollectionExtensions' 'MooseAlgos') ]
+			].
 	spec
 		for: #'pharo7.x'
 		do: [ spec
@@ -57,7 +58,12 @@ BaselineOfKendrick >> baseline: spec [
 				baseline: 'Roassal2'
 					with: [ spec repository: 'github://ObjectProfile/Roassal2/src' ];
 				baseline: 'Ston'
-					with: [ spec repository: 'github://svenvc/ston/repository' ] ].
+					with: [ spec repository: 'github://svenvc/ston/repository' ].
+			spec
+				package: 'Kendrick'
+				with: [ spec
+						requires:
+							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'CollectionExtensions' 'MooseAlgos') ]].
 	spec
 		for: #'pharo8.x'
 		do: [ spec
@@ -70,7 +76,13 @@ BaselineOfKendrick >> baseline: spec [
 				baseline: 'Ston'
 					with: [ spec repository: 'github://svenvc/ston/repository' ];
 				baseline: 'Roassal3'
-					with: [ spec repository: 'github://ObjectProfile/Roassal3/src' ] ].
+					with: [ spec repository: 'github://ObjectProfile/Roassal3' ].
+			spec
+				package: 'Kendrick'
+				with: [ spec
+						requires:
+							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'Roassal3' 'CollectionExtensions' 'MooseAlgos') ]
+			 ].
 	spec
 		for: #'pharo9.x'
 		do: [ spec
@@ -83,5 +95,10 @@ BaselineOfKendrick >> baseline: spec [
 				baseline: 'Ston'
 					with: [ spec repository: 'github://svenvc/ston/repository' ];
 				baseline: 'Roassal3'
-					with: [ spec repository: 'github://ObjectProfile/Roassal3/src' ] ]
+					with: [ spec repository: 'github://ObjectProfile/Roassal3' ].
+			spec
+				package: 'Kendrick'
+				with: [ spec
+						requires:
+							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'Roassal3' 'CollectionExtensions' 'MooseAlgos') ]]
 ]
