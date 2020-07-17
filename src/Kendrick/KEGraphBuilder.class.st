@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'data'
 	],
-	#category : #'Kendrick-Core'
+	#category : #'Kendrick-Core-Visualisation-Roassal2'
 }
 
 { #category : #adding }

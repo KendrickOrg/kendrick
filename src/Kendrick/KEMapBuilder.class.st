@@ -15,7 +15,7 @@ Class {
 		'countries',
 		'routes'
 	],
-	#category : #'Kendrick-Core'
+	#category : #'Kendrick-Core-Visualisation-Roassal2'
 }
 
 { #category : #'as yet unclassified' }
