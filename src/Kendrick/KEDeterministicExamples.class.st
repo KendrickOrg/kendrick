@@ -1,7 +1,7 @@
 Class {
 	#name : #KEDeterministicExamples,
 	#superclass : #KEExamples,
-	#category : 'Kendrick-Examples'
+	#category : #'Kendrick-Examples'
 }
 
 { #category : #examples }
@@ -353,14 +353,15 @@ KEDeterministicExamples >> exampleRK4SolverOnMultiStrainModel [
 	simulator := KESimulator
 		new: #RungeKutta
 		from: 0.0
-		to: 150
+		to: 70
 		step: 0.1.
 	simulator executeOn: model.
 	data := OrderedCollection new.
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #I1)}).
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #I2)}).
 	db := KEDiagramBuilder new data: data.
-	db open
+	db roassal3plot open.
+	db open.
 ]
 
 { #category : #examples }
