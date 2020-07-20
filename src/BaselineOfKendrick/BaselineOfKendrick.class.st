@@ -75,9 +75,7 @@ BaselineOfKendrick >> baseline: spec [
 				baseline: 'Ston'
 					with: [ spec repository: 'github://svenvc/ston/repository' ];
 				baseline: 'Roassal3'
-					with: [ spec repository: 'github://ObjectProfile/Roassal3' ];
-				baseline: 'GToolkitExamples'
-					with: [ spec repository: 'github://feenkcom/gtoolkit-examples:v0.7.23/src' ].
+					with: [ spec repository: 'github://ObjectProfile/Roassal3' ].
 			spec
 				package: 'Kendrick'
 				with: [ spec
