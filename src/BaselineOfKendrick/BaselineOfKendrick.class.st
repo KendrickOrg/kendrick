@@ -46,8 +46,7 @@ BaselineOfKendrick >> baseline: spec [
 				package: 'Kendrick'
 				with: [ spec
 						requires:
-							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'CollectionExtensions' 'MooseAlgos') ]
-			].
+							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'CollectionExtensions' 'MooseAlgos') ] ].
 	spec
 		for: #'pharo7.x'
 		do: [ spec
@@ -63,7 +62,7 @@ BaselineOfKendrick >> baseline: spec [
 				package: 'Kendrick'
 				with: [ spec
 						requires:
-							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'CollectionExtensions' 'MooseAlgos') ]].
+							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'CollectionExtensions' 'MooseAlgos') ] ].
 	spec
 		for: #'pharo8.x'
 		do: [ spec
@@ -76,13 +75,14 @@ BaselineOfKendrick >> baseline: spec [
 				baseline: 'Ston'
 					with: [ spec repository: 'github://svenvc/ston/repository' ];
 				baseline: 'Roassal3'
-					with: [ spec repository: 'github://ObjectProfile/Roassal3' ].
+					with: [ spec repository: 'github://ObjectProfile/Roassal3' ];
+				baseline: 'GToolkitExamples'
+					with: [ spec repository: 'github://feenkcom/gtoolkit-examples:v0.7.23/src' ].
 			spec
 				package: 'Kendrick'
 				with: [ spec
 						requires:
-							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'Roassal3' 'CollectionExtensions' 'MooseAlgos') ]
-			 ].
+							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'Roassal3' 'CollectionExtensions' 'MooseAlgos') ] ].
 	spec
 		for: #'pharo9.x'
 		do: [ spec
@@ -100,5 +100,5 @@ BaselineOfKendrick >> baseline: spec [
 				package: 'Kendrick'
 				with: [ spec
 						requires:
-							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'Roassal3' 'CollectionExtensions' 'MooseAlgos') ]]
+							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'Roassal3' 'CollectionExtensions' 'MooseAlgos') ] ]
 ]
