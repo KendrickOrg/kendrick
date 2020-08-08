@@ -18,7 +18,7 @@ If you are using Kendrick for research, please cite our work as:
 https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-2843-0
 
 ## Documentation
-You will find documentation about Kendrick DSL in the wiki : https://github.com/UMMISCO/kendrick/wiki
+You will find documentation about Kendrick DSL in the wiki : https://github.com/UNU-Macau/kendrick/wiki
 
 Kendrick is also described in a chapter of the [Agile Visualization book](http://agilevisualization.com/).
 
@@ -55,7 +55,7 @@ wget -O- https://goo.gl/WUQxmp | bash
 
 ```Smalltalk
 Metacello new
-        repository: 'github://UMMISCO/kendrick';
+        repository: 'github://UNU-Macau/kendrick';
         baseline: 'Kendrick';
         onWarningLog ;
         load
