@@ -120,7 +120,7 @@ KEModel >> atParameter: aSymbol assignValue: value [
 
 { #category : #accessing }
 KEModel >> atStatus: aSymbol put: aNumber [
-	"Initialize cardinality of a status with a cardinality.
+"Initialize cardinality of a status with a cardinality.
 	A status can involved many compartments.
 	Put roughtly the same cardinality in each compartments.
 	Don't see any models using this method (except tests).
@@ -131,7 +131,7 @@ KEModel >> atStatus: aSymbol put: aNumber [
 		ifNil: [ ^ self error: 'The model does not contain the attribute #status' ].
 	((self atAttribute: #status) includes: aSymbol)
 		ifFalse: [ ^ self
-				error: 'THe model does not contain the status' , aSymbol asString ].
+				error: 'The model does not contain the status' , aSymbol asString ].
 	self initCompartments.
 	coms := initCompartments keys
 		select: [ :k | (k at: #status) = aSymbol ].
