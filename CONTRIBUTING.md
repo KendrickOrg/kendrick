@@ -103,7 +103,7 @@ You need an ssh key in order to commit on github. Open Iceberg tool, and then cl
 
 ## Fork the Kendrick repository
 
-All changes you'll do will be versionned in your own fork of the [Kendrick repository](https://github.com/UMMISCO/kendrick). Then, from your fork you'll be able to issue pull requests to Kendrick, where they will be reviewed, and luckily, integrated.
+All changes you'll do will be versionned in your own fork of the [Kendrick repository](https://github.com/UNU-Macau/kendrick). Then, from your fork you'll be able to issue pull requests to Kendrick, where they will be reviewed, and luckily, integrated.
 
 Go to Kendrick github's repository and click on the fork button on the top right. Yes, this means that you'll need a github account to contribute to kendrick.
 
@@ -128,7 +128,7 @@ Open Iceberg, open Kendrick repository, click on repositories, then + button (ad
 
 Remote name: upstream
 
-Remote URL: https://github.com/UMMISCO/kendrick.git
+Remote URL: https://github.com/UNU-Macau/kendrick.git
 
 ## Send some changes to the original Kendrick repository
 
