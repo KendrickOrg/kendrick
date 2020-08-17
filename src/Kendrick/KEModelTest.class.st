@@ -289,10 +289,22 @@ KEModelTest >> testIntegrate [
 ]
 
 { #category : #tests }
+KEModelTest >> testModelWithSixCompartments [
+|model|
+model := KEModel new.
+model addAttribute: #status value: #(S I R).
+model addAttribute: #country value: #(Vietnam France).
+model initializeCompartments.
+self assert: model population compartments size equals:6
+
+]
+
+{ #category : #tests }
 KEModelTest >> testModelWithTwoCompartmentsOfSizeNineAneOneHasATotalSizeOfTen [
 	| model |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R))}.
+	model initializeCompartments.
 	model atCompartment: {(#status -> #S)} put: 9.
 	model atCompartment: {(#status -> #I)} put: 1.
 	model atCompartment: {(#status -> #R)} put: 0.
@@ -313,6 +325,7 @@ KEModelTest >> testSizeOfEachCompartmentSizeOfSIRModel [
 	| model |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R))}.
+	model initializeCompartments.
 	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 1.
 	self assert: (model sizeOfPopulation: #(#S)) equals: 99999.
@@ -326,6 +339,7 @@ KEModelTest >> testWhenCompartmentDoesNotExistRaiseAnError [
 	model := KEModel new.
 	model addAttribute: #status value: #(S I R).
 	model addAttribute: #country value: #(A B C).
+	model initializeCompartments.
 	self
 		should: [ model atCompartment: {(#status -> #S)} put: 100 ]
 		raise: Error

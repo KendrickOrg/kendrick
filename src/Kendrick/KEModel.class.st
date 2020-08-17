@@ -205,6 +205,15 @@ KEModel >> initialize [
 	population := KEPopulation new.
 ]
 
+{ #category : #initialization }
+KEModel >> initializeCompartments [
+	"Initialize compartments with cardinalities at 0"
+
+	initCompartments := Dictionary
+		newFrom: (self compartmentNames collect: [ :c | c -> 0 ]).
+	population compartments: initCompartments
+]
+
 { #category : #accessing }
 KEModel >> integrate: aConcern [
 	concerns add: aConcern.
