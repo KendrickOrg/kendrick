@@ -161,34 +161,6 @@ KEModelTest >> testAtParameterAssignValue [
 ]
 
 { #category : #tests }
-KEModelTest >> testAtStatusPut [
-	|model|
-	model := KEModel new.
-	model addAttribute: #status value: #(S I R).
-	model addAttribute: #country value: #(A B C).
-	model atStatus: #S put: 100000.
-	self should: (model atCompartment: {#status->#S. #country->#A}) >= 33333.
-	self should: (model atCompartment: {#status->#S. #country->#B}) >= 33333.
-	self should: (model atCompartment: {#status->#S. #country->#C}) >= 33333.
-	
-]
-
-{ #category : #tests }
-KEModelTest >> testAtStatusPut2 [
-	|model|
-	model := KEModel new.
-	model addAttribute: #status value: #(S I R).
-	model addAttribute: #node value: ((1 to: 100) collect: [:i| i asString asSymbol]).
-	model atStatus: #S put: 99.
-	self should: (model atCompartment: {#status->#S. #node->#'1'}) = 1.
-	self should: (model atCompartment: {#status->#S. #node->#'2'}) = 1.
-	self should: (model atCompartment: {#status->#S. #node->#'3'}) = 1.
-	self should: (model atCompartment: {#status->#S. #node->#'100'}) >= 0.
-	
-	
-]
-
-{ #category : #tests }
 KEModelTest >> testAttributes [
 	|model|
 	model := KEModel new.
