@@ -319,3 +319,14 @@ KEModelTest >> testSizeOfEachCompartmentSizeOfSIRModel [
 	self assert: (model sizeOfPopulation: #(#I)) equals: 1.
 	self assert: (model sizeOfPopulation: #(#R)) equals: 0
 ]
+
+{ #category : #tests }
+KEModelTest >> testWhenCompartmentDoesNotExistRaiseAnError [
+	| model |
+	model := KEModel new.
+	model addAttribute: #status value: #(S I R).
+	model addAttribute: #country value: #(A B C).
+	self
+		should: [ model atCompartment: {(#status -> #S)} put: 100 ]
+		raise: Error
+]
