@@ -1,5 +1,5 @@
 <p align="center">
-<h1 align="center">[Kendrick]</h1>
+<h1 align="center">Kendrick</h1>
   <p align="center">
     DSL and Simulation Plarform for Epidemiology Modeling
     <br>
