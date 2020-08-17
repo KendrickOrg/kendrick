@@ -1,3 +1,17 @@
+<p align="center">
+<h1 align="center">[Kendrick]</h1>
+  <p align="center">
+    DSL and Simulation Plarform for Epidemiology Modeling
+    <br>
+    <a href="https://github.com/UNU-Macau/kendrick/wiki"><strong>Explore the docs »</strong></a>
+    <br>
+    <br>
+    <a href="https://github.com/UNU-Macau/kendrick/issues/new?labels=Type%3A+Defect">Report a defect</a>
+    |
+    <a href="https://github.com/UNU-Macau/kendrick/issues/new?labels=Type%3A+Feature">Request feature</a>
+  </p>
+</p>
+
 
 [![Pharo version](https://img.shields.io/badge/Pharo-6.1-%23aac9ff.svg)](https://pharo.org/download)
 [![Build Status](https://travis-ci.org/UNU-Macau/kendrick.svg?branch=master)](https://travis-ci.org/UNU-Macau/kendrick)
