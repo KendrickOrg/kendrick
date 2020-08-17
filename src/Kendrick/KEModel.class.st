@@ -51,11 +51,11 @@ KEModel >> addParameters: input [
 
 { #category : #accessing }
 KEModel >> atCompartment: anObject [
+	"Return cardinality of a compartment"
+
 	| key c |
-	"anObject = #empty
-		ifTrue: [ ^ self atParameter: #N ]."
 	anObject isDictionary
-		ifTrue: [ key := anObject ].
+		ifTrue: [ key := anObject].
 	anObject isArray
 		ifTrue: [ key := Dictionary newFrom: anObject ].
 	key
@@ -120,19 +120,25 @@ KEModel >> atParameter: aSymbol assignValue: value [
 
 { #category : #accessing }
 KEModel >> atStatus: aSymbol put: aNumber [
+"Initialize cardinality of a status with a cardinality.
+	A status can involved many compartments.
+	Put roughtly the same cardinality in each compartments.
+	Don't see any models using this method (except tests).
+	Should be removed."
+
 	| nb coms |
 	(self atAttribute: #status)
 		ifNil: [ ^ self error: 'The model does not contain the attribute #status' ].
 	((self atAttribute: #status) includes: aSymbol)
 		ifFalse: [ ^ self
-				error: 'THe model does not contain the status' , aSymbol asString ].
+				error: 'The model does not contain the status' , aSymbol asString ].
 	self initCompartments.
 	coms := initCompartments keys
 		select: [ :k | (k at: #status) = aSymbol ].
 	nb := coms size.
 	aNumber \\ nb > 0
-		ifTrue: [ 1 to: aNumber \\ nb do:
-				[ :i | initCompartments at: (coms at: i) put: aNumber // nb + 1 ] ].
+		ifTrue:
+			[ 1 to: aNumber \\ nb do: [ :i | initCompartments at: (coms at: i) put: aNumber // nb + 1 ] ].
 	aNumber \\ nb + 1 to: nb do: [ :i | initCompartments at: (coms at: i) put: aNumber // nb ].
 	population compartments: initCompartments
 ]
