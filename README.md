@@ -1,7 +1,7 @@
 
 [![Pharo version](https://img.shields.io/badge/Pharo-6.1-%23aac9ff.svg)](https://pharo.org/download)
 [![Build Status](https://travis-ci.org/UNU-Macau/kendrick.svg?branch=master)](https://travis-ci.org/UNU-Macau/kendrick)
-[![Coverage Status](https://coveralls.io/repos/github/UMMISCO/kendrick/badge.svg?branch=master)](https://coveralls.io/github/UMMISCO/kendrick?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/UNU-Macau/kendrick/badge.svg?branch=master)](https://coveralls.io/github/UNU-Macau/kendrick?branch=master)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/UNU-Macau/kendrick/master/LICENSE)
 
 Kendrick provides an embedded Domain-Specific Language and a Simulation Plaform for mathematical epidemiology modeling. It helps epidemiologists craft custom analyses cheaply. It's based on [Pharo](http://www.pharo.org/) and it's open source under MIT licence. Classes of epidemic model include deterministic compartmental models, stochastic individual contact models, and individual-based network models.
