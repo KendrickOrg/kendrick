@@ -1,3 +1,7 @@
+"
+I'm a compartment with a cardinality and a name.
+
+"
 Class {
 	#name : #KECompartment,
 	#superclass : #KEEntity,
@@ -25,6 +29,5 @@ KECompartment >> compartmentName [
 
 { #category : #accessing }
 KECompartment >> compartmentName: aName [
-
-compartmentName := aName
+	compartmentName := aName
 ]
