@@ -163,7 +163,7 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModel2 [
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithBansalIdea [ 
 	"self new exampleIBMSimulatorOnSIRModelWithBansalIdea"
 	|model network spatialConcern sirConcern simulator db f|
-	model := KEModel new population: (KEPopulation size: 100).
+	model := KEModel new.
 	sirConcern := KEModelPart new.
 	sirConcern addAttribute: #status value: #(S I R). 
 	sirConcern addParameters: { #beta. #gamma. #lambda }.
@@ -372,7 +372,7 @@ KEIndividualBasedExamples >> exampleIBM_SIR_Bansal_ScaleFree [
 	"Scale free network with 10000 individual, network.dat at: https://github.com/thanhbka85dn/kendrick/blob/master/network.dat"
 	"Note that all scale networks above have p(k) ~ 'k to the minus 1.875 power'"
 	|model network spatialConcern sirConcern simulator db f|
-	model := KEModel new population: (KEPopulation size: 10000).
+	model := KEModel new.
 	sirConcern := KEModelPart new.
 	sirConcern addAttribute: #status value: #(S I R).
 	sirConcern addParameters: { #beta. #gamma. #lambda }.
@@ -380,13 +380,11 @@ KEIndividualBasedExamples >> exampleIBM_SIR_Bansal_ScaleFree [
 	sirConcern addTransitionFrom: { #status->#I } to: { #status->#R } probability: 'gamma'.
 	spatialConcern := KEModelPart new.
 	network := KEContactNetwork new.
-	network loadNodes: 10000 fromFile: 'network.dat'.
+	network loadNodes: 10000 fromFile: 'assets/data/network.dat'.
 	
 	spatialConcern addParameter: #network value: network.
 	
 	network generateTransitions: spatialConcern.
-	
-	
 	spatialConcern addAttribute: #node value: network allContacts.
 	spatialConcern addParameter: #iota value: [ :aModel|
 		((aModel atParameter: #network) edgesFrom: {aModel. #I}) / "((aModel atParameter: #network) edges size)"
