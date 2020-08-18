@@ -9,7 +9,7 @@ Instance Variables
 	temporalParameters:		<Dictionary>
 
 equations
-	- a list of odinary differential equations of mathematical model
+	- a list of ordinary differential equations
 
 parameters
 	- a list of common parameters of model

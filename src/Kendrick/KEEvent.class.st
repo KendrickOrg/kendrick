@@ -1,5 +1,5 @@
 "
-A KEEvent is an event generated from an ode of epidemiological model.
+A KEEvent is an event generated from an ODE of epidemiological model.
 
 Instance Variables
 	actions:		<Dictionary>
@@ -81,7 +81,6 @@ KEEvent >> hasAnEventWithSameActionsIn: eventList [
 KEEvent >> initialize [
 	super initialize.
 	actions := Dictionary new.
-	rate := nil.
 	toStatus := #empty.
 	fromStatus := #empty
 ]

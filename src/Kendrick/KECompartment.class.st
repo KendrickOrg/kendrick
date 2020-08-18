@@ -14,7 +14,7 @@ Class {
 
 { #category : #accessing }
 KECompartment >> cardinality [
-^cardinality 
+	^ cardinality
 ]
 
 { #category : #accessing }
