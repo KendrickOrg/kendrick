@@ -108,6 +108,29 @@ KEDiagramBuilder >> open [
 ]
 
 { #category : #'as yet unclassified' }
+KEDiagramBuilder >> plot [
+    | c p x y |
+    c := RSChart new.
+    1 to: legends size do: [ :i | 
+        p := RSLinePlot new.
+        x := (data at: i) rowNames.
+        y := x collect: [ :j | ((data at: i) row: j) contents first ].
+        p x: x y: y.
+        c addPlot: p ].
+        
+    c addDecoration: RSVerticalTick new integer.
+    c addDecoration: RSHorizontalTick new integer.
+    
+    xLabel ifNil: [ c xlabel: 'Time (days)' ] ifNotNil: [ c xlabel: xLabel ].
+    yLabel
+        ifNil: [ c ylabel: 'Number of individuals' ]
+        ifNotNil: [ c ylabel: yLabel ].    
+    c title: legendTitle. 
+    
+    ^c
+]
+
+{ #category : #'as yet unclassified' }
 KEDiagramBuilder >> roassal3plot [
 	| c p x y |
 	c := RSChart new.
