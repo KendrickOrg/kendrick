@@ -12,9 +12,10 @@ BaselineOfKendrick >> baseline: spec [
 		do: [ spec blessing: #baseline.
 			spec repository: 'https://github.com/UMMISCO/Kendrick'.
 			spec
-				package: 'CollectionExtensions'
-					with: [ spec
-						repository: 'http://smalltalkhub.com/mc/Moose/CollectionExtensions/main/' ];
+				baseline:'CollectionExtensions'
+				with:[spec 
+					repository:'github://pharo-contributions/CollectionExtensions:v1.0.1'
+					];
 				baseline: 'PolyMath'
 					with: [ spec
 						repository: 'github://PolyMathOrg/PolyMath/src';
