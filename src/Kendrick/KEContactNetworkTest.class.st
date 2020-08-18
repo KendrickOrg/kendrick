@@ -21,7 +21,7 @@ KEContactNetworkTest >> testContactsOf [
 KEContactNetworkTest >> testEdgesFromStatus [
 	"self new testEdgesFromStatus"
 	|model network spatialConcern sirConcern |
-	model := KEModel new population: (KEPopulation size: 10).
+	model := KEModel new.
 
 	sirConcern := KEModelPart new.
 	sirConcern addAttribute: #status value: #(S I R).
@@ -42,30 +42,4 @@ KEContactNetworkTest >> testEdgesFromStatus [
 	self assert: (network edgesFrom: {model. #I}) equals: 18.
 	self assert: (network edgesFrom: {model. #R}) equals: 9.
 	self assert: (network edgesFrom: {model. #S}) equals: 63.
-]
-
-{ #category : #tests }
-KEContactNetworkTest >> testLoadNodesFromFile [
-    "self new testLoadNodesFromFile"
-    |degreeDistribution network temp|
-    network := KEContactNetwork new.
-    network loadNodes: 10000 fromFile: 'network.txt'.
-   
-    "20 elements represent 20 degrees of network"
-    degreeDistribution := Array newFrom: #(0 0 0 0 0
-                                                        0 0 0 0 0
-                                                        0 0 0 0 0
-                                                        0 0 0 0 0
-                                                        ).
-   
-    temp := 0.
-    1 to: 10000 do:
-    [:i| |degree|
-        degree := ((network nodes) at: i ) adjacentNodes size.
-        degree > 0 & degree <= 20 ifTrue: [ 
-            temp := degreeDistribution at: degree.
-            degreeDistribution at: degree put: (temp + 1).
-        ].
-    ].
-    self assert: (network edges) size equals: 100746.
 ]

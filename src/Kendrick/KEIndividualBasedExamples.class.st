@@ -1,7 +1,7 @@
 Class {
 	#name : #KEIndividualBasedExamples,
 	#superclass : #KEExamples,
-	#category : 'Kendrick-Examples'
+	#category : #'Kendrick-Examples'
 }
 
 { #category : #examples }
@@ -165,7 +165,7 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithBansalIdea [
 	|model network spatialConcern sirConcern simulator db f|
 	model := KEModel new population: (KEPopulation size: 100).
 	sirConcern := KEModelPart new.
-	sirConcern addAttribute: #status value: #(S I R).
+	sirConcern addAttribute: #status value: #(S I R). 
 	sirConcern addParameters: { #beta. #gamma. #lambda }.
 	sirConcern addTransitionFrom: { #status->#S } to: { #status->#I } probability: 'lambda'.
 	sirConcern addTransitionFrom: { #status->#I } to: { #status->#R } probability: 'gamma'.
