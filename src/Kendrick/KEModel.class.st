@@ -256,13 +256,6 @@ KEModel >> population: aPopulation [
 	population := aPopulation
 ]
 
-{ #category : #accessing }
-KEModel >> resetCompartments [
-	"Reinitialize the model with the initial compartments list"
-
-	population compartments: initialCompartments
-]
-
 { #category : #'*Kendrick-InternalDSL-DSL' }
 KEModel >> resetTime [
 	t := 0
