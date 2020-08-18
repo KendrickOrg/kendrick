@@ -12,9 +12,6 @@ BaselineOfKendrick >> baseline: spec [
 		do: [ spec blessing: #baseline.
 			spec repository: 'https://github.com/UMMISCO/Kendrick'.
 			spec
-				package: 'CollectionExtensions'
-					with: [ spec
-						repository: 'http://smalltalkhub.com/mc/Moose/CollectionExtensions/main/' ];
 				baseline: 'PolyMath'
 					with: [ spec
 						repository: 'github://PolyMathOrg/PolyMath/src';
@@ -46,7 +43,7 @@ BaselineOfKendrick >> baseline: spec [
 				package: 'Kendrick'
 				with: [ spec
 						requires:
-							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'CollectionExtensions' 'MooseAlgos') ] ].
+							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'MooseAlgos') ] ].
 	spec
 		for: #'pharo7.x'
 		do: [ spec
@@ -62,7 +59,7 @@ BaselineOfKendrick >> baseline: spec [
 				package: 'Kendrick'
 				with: [ spec
 						requires:
-							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'CollectionExtensions' 'MooseAlgos') ] ].
+							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'MooseAlgos') ] ].
 	spec
 		for: #'pharo8.x'
 		do: [ spec
@@ -80,7 +77,7 @@ BaselineOfKendrick >> baseline: spec [
 				package: 'Kendrick'
 				with: [ spec
 						requires:
-							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'Roassal3' 'CollectionExtensions' 'MooseAlgos') ] ].
+							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'Roassal3' 'MooseAlgos') ] ].
 	spec
 		for: #'pharo9.x'
 		do: [ spec
@@ -98,5 +95,5 @@ BaselineOfKendrick >> baseline: spec [
 				package: 'Kendrick'
 				with: [ spec
 						requires:
-							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'Roassal3' 'CollectionExtensions' 'MooseAlgos') ] ]
+							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'Roassal3'  'MooseAlgos') ] ]
 ]

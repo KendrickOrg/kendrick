@@ -98,8 +98,8 @@ KEDeterministicExamples >> exampleRK4SolverOn2SEIRMeaslesModelWithVaccination [
 		step: 0.01.
 	simulator executeOn: model.
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	model := self modelRK4SolverOnSEIRMeaslesModelWithVaccination.
 	model atParameter: #p assignValue: 0.0.
-	model resetCompartments.
 	simulator := KESimulator
 		new: #RungeKutta
 		from: 0.0
