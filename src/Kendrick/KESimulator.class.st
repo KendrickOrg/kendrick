@@ -39,7 +39,6 @@ Class {
 		'tMin',
 		'tMax',
 		'step',
-		'algorithm',
 		'timeSeriesOutputs'
 	],
 	#category : #'Kendrick-Core-Simulations'
@@ -77,7 +76,6 @@ KESimulator class >> passType: type [
 
 { #category : #accessing }
 KESimulator >> algorithm [
-	<MSEProperty: #algorithm type: #String>
 	^ algorithm
 ]
 
