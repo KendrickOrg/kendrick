@@ -46,42 +46,50 @@ Class {
 
 { #category : #'as yet unclassified' }
 KESimulator class >> deterministicSolvers [
-	|algos|
-	algos := Dictionary new.
-	algos at: #AB2 put: #PMAB2Stepper; at: #AB3 put: #PMAB3Stepper; at: #AB4 put: #PMAB4Stepper; at: #AM3 put: #PMAM3Stepper; at: #AM4 put: #PMAM4Stepper; at: #BDF2 put: #PMBDF2Stepper; at: #BDF3 put: #PMBDF3Stepper; at: #BDF4 put: #PMBDF4Stepper; at: #BeckwardEuler put: #PMImplicitStepper; at: #Euler put: #PMExplicitStepper; at: #Heun put: #PMHeunStepper; at: #ImplicitMidPoint put: #PMImplicitMidpointStepper; at: #Midpoint put: #PMMidpointStepper; at: #RungeKutta put: #PMRungeKuttaStepper; at: #Trapezoid put: #PMTrapezoidStepper.
-	^ algos
+	| algorithms |
+	algorithms := Dictionary new.
+	algorithms
+		at: #AB2 put: PMAB2Stepper;
+		at: #AB3 put: PMAB3Stepper;
+		at: #AB4 put: PMAB4Stepper;
+		at: #AM3 put: PMAM3Stepper;
+		at: #AM4 put: PMAM4Stepper;
+		at: #BDF2 put: PMBDF2Stepper;
+		at: #BDF3 put: PMBDF3Stepper;
+		at: #BDF4 put: PMBDF4Stepper;
+		at: #BeckwardEuler put: PMImplicitStepper;
+		at: #Euler put: PMExplicitStepper;
+		at: #Heun put: PMHeunStepper;
+		at: #ImplicitMidPoint put: PMImplicitMidpointStepper;
+		at: #Midpoint put: PMMidpointStepper;
+		at: #RungeKutta put: PMRungeKuttaStepper;
+		at: #Trapezoid put: PMTrapezoidStepper.
+	^ algorithms
 ]
 
 { #category : #meta }
 KESimulator class >> new: algorithm from: tMin to: tMax step: step [
-	(self deterministicSolvers keys includes: algorithm) ifTrue: 
-		[ ^ (KEDeterministicSimulator new) tMin: tMin; tMax: tMax; step: step; algorithm: (self deterministicSolvers at: algorithm) ].
-	algorithm = #Gillespie ifTrue: 
-		[ ^ (KEGillespieSimulator new) tMin: tMin; tMax: tMax; step: step ].
-	"algorithm = #GPUGillespie ifTrue: 
-		[ ^ (KEGPUStochasticSimulator new) tMin: tMin; tMax: tMax; step: step ]."
-	algorithm = #TauLeap ifTrue: 
-		[ ^ (KETauLeapSimulator new) tMin: tMin; tMax: tMax; step: step ].
-	algorithm = #IBM ifTrue:
-		[ ^ (KEIndividualBasedSimulator new) tMin: tMin; tMax: tMax; step: step ]
-]
-
-{ #category : #meta }
-KESimulator class >> passType: type [
-	"Add other algorithms following 3 categories: Deterministic | Stochastic | IBM"
-	((type = #IBMDiscreteTime) | (type = #IBMDiscreteSpace)) ifTrue: [ ^ KEIndividualBasedSimulator ].
-	(type = #RK4) ifTrue: [ ^ KEDeterministicSimulator ].
-	((type = #GillespieDirect) | (type = #GPUGillespie)| (type = #ExplicitTauLeap) | (type = #AdaptiveTauLeap)) ifTrue: [ ^ KEStochasticSimulator ]
-]
-
-{ #category : #accessing }
-KESimulator >> algorithm [
-	^ algorithm
-]
-
-{ #category : #accessing }
-KESimulator >> algorithm: anObject [
-	algorithm := anObject
+	(self deterministicSolvers keys includes: algorithm)
+		ifTrue: [ ^ KEDeterministicSimulator new
+				tMin: tMin;
+				tMax: tMax;
+				step: step;
+				algorithm: (self deterministicSolvers at: algorithm) ].
+	algorithm = #Gillespie
+		ifTrue: [ ^ KEGillespieSimulator new
+				tMin: tMin;
+				tMax: tMax;
+				step: step ].
+	algorithm = #TauLeap
+		ifTrue: [ ^ KETauLeapSimulator new
+				tMin: tMin;
+				tMax: tMax;
+				step: step ].
+	algorithm = #IBM
+		ifTrue: [ ^ KEIndividualBasedSimulator new
+				tMin: tMin;
+				tMax: tMax;
+				step: step ]
 ]
 
 { #category : #public }
