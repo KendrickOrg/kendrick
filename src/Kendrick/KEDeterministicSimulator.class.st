@@ -25,21 +25,24 @@ KEDeterministicSimulator >> algorithm: aSymbol [
 
 { #category : #public }
 KEDeterministicSimulator >> executeOn: aModel [
-	"Ask a model, it's equations then solve them with an ODE solver"
+	"Ask a model its equations then solve them with an ODE solver"
 
-	| st ks system |
+	| st ks system c |
 	super executeOn: aModel.
 	equations := model buildEquations.
-	
 	system := PMExplicitSystem
 		block: [ :x :t | 
-			| c i |
-			c := Array new: model population compartments size.
+			| i |
 			i := 1.
+			"Create an array the size of model's compartments size"
+			c := Array new: model population compartments size.
+
+			"Populate compartments cardinalities with x values"
 			model population compartments
 				keysDo: [ :k | 
 					model population compartments at: k put: (x at: i).
 					i := i + 1 ].
+			
 			i := 1.
 			model population compartments
 				keysDo: [ :k | 
@@ -49,19 +52,16 @@ KEDeterministicSimulator >> executeOn: aModel [
 						ifFalse: [ tmp := ((equations at: k)
 								collect: [ :e | 
 									| prob |
-									"model parameters at: #scope put: (e at: 1) scope."
 									((e at: 1) from at: #status) = #empty
 										ifTrue: [ model currentCompartment: (e at: 1) to ]
 										ifFalse: [ model currentCompartment: (e at: 1) from ].
 									model nextCompartment: (e at: 1) to.
 									prob := ((e at: 1) probability value: model) abs.
-									"prob isDictionary ifTrue: [ prob := prob values sum ]."
 									(e at: 2) * prob * (model atCompartment: (e at: 1) from) ])
 								sum ].
 					c at: i put: tmp.
 					i := i + 1 ].
 			c ].
-		
 	self stepper: (self algorithm onSystem: system).
 	st := model population compartments values.
 	ks := model population compartments keys.
