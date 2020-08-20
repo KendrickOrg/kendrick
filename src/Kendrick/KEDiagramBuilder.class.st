@@ -125,6 +125,7 @@ KEDiagramBuilder >> plot [
     yLabel
         ifNil: [ c ylabel: 'Number of individuals' ]
         ifNotNil: [ c ylabel: yLabel ].    
+	 self legendTitle ifNil: [ legendTitle := '' ].
     c title: legendTitle. 
     
     ^c
