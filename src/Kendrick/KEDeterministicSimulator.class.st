@@ -13,12 +13,24 @@ Class {
 	#category : #'Kendrick-Core-Simulations'
 }
 
+{ #category : #accessing }
+KEDeterministicSimulator >> algorithm [
+	^ algorithm
+]
+
+{ #category : #accessing }
+KEDeterministicSimulator >> algorithm: aSymbol [
+	algorithm := aSymbol
+]
+
 { #category : #public }
 KEDeterministicSimulator >> executeOn: aModel [
-"Ask a model, it's equations then solve them with an ODE solver"
+	"Ask a model, it's equations then solve them with an ODE solver"
+
 	| st ks system |
 	super executeOn: aModel.
 	equations := model buildEquations.
+	
 	system := PMExplicitSystem
 		block: [ :x :t | 
 			| c i |
@@ -49,7 +61,8 @@ KEDeterministicSimulator >> executeOn: aModel [
 					c at: i put: tmp.
 					i := i + 1 ].
 			c ].
-	self stepper: ((Smalltalk at: self algorithm) onSystem: system).
+		
+	self stepper: (self algorithm onSystem: system).
 	st := model population compartments values.
 	ks := model population compartments keys.
 	(tMin to: tMax by: step)
