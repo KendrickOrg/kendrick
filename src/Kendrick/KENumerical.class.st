@@ -39,7 +39,7 @@ KENumerical >> checkHasVariable: aDictionary [
 
 { #category : #evaluating }
 KENumerical >> checkNil [
-	^ number = nil
+	^ number isNil
 ]
 
 { #category : #evaluating }
@@ -64,7 +64,6 @@ KENumerical >> normalize [
 
 { #category : #evaluating }
 KENumerical >> number [
-	<MSEProperty: #number type: #Number>
 	^ number
 ]
 
