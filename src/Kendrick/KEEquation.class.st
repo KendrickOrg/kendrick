@@ -62,6 +62,7 @@ KEEquation >> generateEvents [
 
 { #category : #printing }
 KEEquation >> printOn: aStream [
+
 	aStream
 		nextPutAll: variable asString;
 		nextPutAll: ':';

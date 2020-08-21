@@ -197,7 +197,6 @@ KEBinaryExpression >> isSeparable [
 
 { #category : #accessing }
 KEBinaryExpression >> leftHandSide [
-	<MSEProperty: #leftHandSide type: #KEExpression>
 	^ leftHandSide
 ]
 
@@ -242,7 +241,6 @@ KEBinaryExpression >> normalize [
 
 { #category : #accessing }
 KEBinaryExpression >> op [
-	<MSEProperty: #op type: #String>
 	^ op
 ]
 
@@ -262,16 +260,25 @@ KEBinaryExpression >> printOn: aStream [
 { #category : #removing }
 KEBinaryExpression >> remove: aVariable [
 	"This function is reserved for the reformulation of rate expression to probability of contact of an event generated from an equation"
-	|new|
-	new := (KEBinaryExpression new) op: op; leftHandSide: (leftHandSide remove: aVariable); rightHandSide: (rightHandSide remove: aVariable).
-	new checkNil ifTrue: [ ^ nil ].
+
+	| new |
+	new := self class  new
+		op: op;
+		leftHandSide: (leftHandSide remove: aVariable);
+		rightHandSide: (rightHandSide remove: aVariable).
+	new checkNil
+		ifTrue: [ ^ nil ].
 	new leftHandSide ifNil: [ ^ rightHandSide ].
 	new rightHandSide ifNil: [ ^ leftHandSide ].
-	new leftHandSide isUnaryExpression & new leftHandSide checkNil ifTrue: [ ^ (KEUnaryExpression new) op: #-; expression: rightHandSide ].
-	new rightHandSide isUnaryExpression & new rightHandSide checkNil ifTrue: [ ^ (KEUnaryExpression new) op: #-; expression: leftHandSide ].
-	 ^ new
-
-
+	new leftHandSide isUnaryExpression & new leftHandSide checkNil
+		ifTrue: [ ^ KEUnaryExpression new
+				op: #-;
+				expression: rightHandSide ].
+	new rightHandSide isUnaryExpression & new rightHandSide checkNil
+		ifTrue: [ ^ KEUnaryExpression new
+				op: #-;
+				expression: leftHandSide ].
+	^ new
 ]
 
 { #category : #evaluating }
@@ -286,7 +293,6 @@ KEBinaryExpression >> removeIndexedVariable [
 
 { #category : #accessing }
 KEBinaryExpression >> rightHandSide [
-	<MSEProperty: #rightHandSide type: #KEExpression>
 	^ rightHandSide
 ]
 
