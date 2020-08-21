@@ -256,11 +256,6 @@ KEModel >> population: aPopulation [
 	population := aPopulation
 ]
 
-{ #category : #'*Kendrick-InternalDSL-DSL' }
-KEModel >> resetTime [
-	t := 0
-]
-
 { #category : #'as yet unclassified' }
 KEModel >> sizeOfPopulation [
 	^ population size

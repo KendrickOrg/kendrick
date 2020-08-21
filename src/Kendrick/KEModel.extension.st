@@ -25,8 +25,3 @@ KEModel >> gtInspectorKendrickGraphIn: composite [
 			(RTLayoutBuilder new forceWithCharge: -450) on: view elements.
 			view ]
 ]
-
-{ #category : #'*Kendrick-InternalDSL-DSL' }
-KEModel >> resetTime [
-	t := 0
-]
