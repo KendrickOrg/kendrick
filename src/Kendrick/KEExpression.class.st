@@ -29,11 +29,6 @@ KEExpression >> evaluateWithModel: aModel [
 ]
 
 { #category : #testing }
-KEExpression >> isAContactVariable [
-	^ false
-]
-
-{ #category : #testing }
 KEExpression >> isAVariable [
 	^ false
 ]
@@ -49,27 +44,12 @@ KEExpression >> isBinaryExpression [
 ]
 
 { #category : #testing }
-KEExpression >> isCouplingExpression [
-	^ false
-]
-
-{ #category : #testing }
-KEExpression >> isExpression [
-	^ true
-]
-
-{ #category : #testing }
 KEExpression >> isExpressionWithMathFunction [
 	^ false
 ]
 
 { #category : #testing }
 KEExpression >> isExpressionWithSigmaMathFunction [
-	^ false
-]
-
-{ #category : #testing }
-KEExpression >> isMovementExpression [
 	^ false
 ]
 

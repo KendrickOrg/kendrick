@@ -38,11 +38,6 @@ ifFalse:[^false]
 ]
 
 { #category : #printing }
-KEUnaryExpression >> checkHasVariable: aDictionary [
-	^ expression checkHasVariable: aDictionary
-]
-
-{ #category : #printing }
 KEUnaryExpression >> checkNil [
 	^ expression isNil
 ]
@@ -87,11 +82,6 @@ KEUnaryExpression >> generateEvents [
 		list add:e.		
 		].
 ^ list
-]
-
-{ #category : #printing }
-KEUnaryExpression >> getParameter: aDictionary [
-	^ expression getParameter: aDictionary
 ]
 
 { #category : #testing }

@@ -31,11 +31,6 @@ anExpression isAVariable
 ^false
 ]
 
-{ #category : #printing }
-KEVariable >> checkHasVariable: aDictionary [
-	^ aDictionary at: symbol ifAbsent: [ ^ false ]
-]
-
 { #category : #testing }
 KEVariable >> checkNil [
 	^ (symbol isNil)
@@ -43,12 +38,11 @@ KEVariable >> checkNil [
 
 { #category : #'as yet unclassified' }
 KEVariable >> evaluateWithModel: model [
-	|x|
-	((model attributes at: #status ifAbsent: [OrderedCollection new]) includes: symbol)
-	ifTrue: [ 
-		^ model atCompartment: { #status->symbol } ].
-	x := model atParameter: symbol.
-	^ x
+	((model attributes at: #status ifAbsent: [ OrderedCollection new ])
+		includes: symbol)
+		ifTrue: [ ^ model atCompartment: {(#status -> symbol)} ].
+^ model atParameter: symbol.
+
 ]
 
 { #category : #'as yet unclassified' }
@@ -59,14 +53,6 @@ KEVariable >> generateEvents [
 	e rate: self.
 	list add: e.
 	^ list
-]
-
-{ #category : #printing }
-KEVariable >> getParameter: aDictionary [
-	|p|
-	p := aDictionary at: symbol ifAbsent: [ ^ nil ].
-	p ifNil: [ ^ nil ].
-	p ifNotNil: [ ^ p symbol ]
 ]
 
 { #category : #testing }
@@ -89,8 +75,9 @@ KEVariable >> printOn: aStream [
 { #category : #removing }
 KEVariable >> remove: aVariable [
 	"This function is reserved for the reformulation of rate expression to probability of contact of an event generated from an equation"
-	self = aVariable ifTrue: [ ^ nil ].
-	^ self
+
+	self = aVariable
+		ifTrue: [ ^ nil ]
 ]
 
 { #category : #evaluating }

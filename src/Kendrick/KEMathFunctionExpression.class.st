@@ -32,11 +32,6 @@ KEMathFunctionExpression >> = aMathExp [
 ]
 
 { #category : #checking }
-KEMathFunctionExpression >> checkHasVariable: aDictionary [
-	^ functionExpr checkHasVariable: aDictionary
-]
-
-{ #category : #checking }
 KEMathFunctionExpression >> checkNil [
 	^ functionExpr isNil
 ]
@@ -83,11 +78,6 @@ KEMathFunctionExpression >> generateEvents [
 	e rate: functionExpr.
 	list add: e.
 	^ list
-]
-
-{ #category : #printing }
-KEMathFunctionExpression >> getParameter: aDictionary [
-	^ functionExpr getParameter: aDictionary
 ]
 
 { #category : #checking }

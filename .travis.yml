@@ -3,13 +3,11 @@ sudo: false
 
 os:
   - linux
-  - osx
 
 osx_image: xcode6.4
 
 smalltalk:
  - Pharo64-6.1
-
 
 matrix:
   fast_finish: true

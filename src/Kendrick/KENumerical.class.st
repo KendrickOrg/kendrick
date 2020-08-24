@@ -33,11 +33,6 @@ KENumerical >> = aNumerical [
 ]
 
 { #category : #evaluating }
-KENumerical >> checkHasVariable: aDictionary [
-	^ false
-]
-
-{ #category : #evaluating }
 KENumerical >> checkNil [
 	^ number isNil
 ]
@@ -45,11 +40,6 @@ KENumerical >> checkNil [
 { #category : #evaluating }
 KENumerical >> evaluateWithModel: aModel [
 	^ number
-]
-
-{ #category : #evaluating }
-KENumerical >> getParameter: aDictionary [
-	^ nil
 ]
 
 { #category : #printing }

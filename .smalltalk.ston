@@ -7,7 +7,7 @@ SmalltalkCISpec {
     }
   ],
   #testing : {
-    #categories : [ 'Kendrick-Core-Network', Kendrick-Tests-*'],
+    #categories : [ 'Kendrick-Core-Network', 'Kendrick-Tests-*'],
      #coverage : {
       #categories : [ 'Kendrick-*', 'PPODE*']
     }

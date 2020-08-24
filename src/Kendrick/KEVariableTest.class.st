@@ -28,6 +28,14 @@ KEVariableTest >> testEvaluateWithModel2 [
 ]
 
 { #category : #tests }
+KEVariableTest >> testGenerateEvents [
+	| g |
+	g := KEVariable new.
+	g symbol: #gamma.
+	self assert: g generateEvents size equals:1
+]
+
+{ #category : #tests }
 KEVariableTest >> testName [
 	| g |
 	g := KEVariable new.

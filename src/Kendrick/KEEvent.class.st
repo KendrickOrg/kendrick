@@ -38,11 +38,6 @@ KEEvent >> actions [
 ]
 
 { #category : #accessing }
-KEEvent >> actions: aDictionary [
-	actions := aDictionary
-]
-
-{ #category : #accessing }
 KEEvent >> addOneIndividualTo: aStatus [
 	actions at: aStatus put: 1.
 ]
@@ -108,8 +103,8 @@ KEEvent >> rate [
 ]
 
 { #category : #accessing }
-KEEvent >> rate: anObject [
-	rate := anObject
+KEEvent >> rate: aKEExpression [
+	rate := aKEExpression
 ]
 
 { #category : #accessing }

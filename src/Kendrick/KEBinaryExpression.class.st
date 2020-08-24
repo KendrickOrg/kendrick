@@ -40,11 +40,6 @@ anExpression isBinaryExpression ifTrue:[
 ]
 
 { #category : #printing }
-KEBinaryExpression >> checkHasVariable: aDictionary [
-	^ (leftHandSide checkHasVariable: aDictionary) | (rightHandSide checkHasVariable: aDictionary)
-]
-
-{ #category : #printing }
 KEBinaryExpression >> checkNil [
 	^ (leftHandSide isNil) & (rightHandSide isNil)
 ]
@@ -160,15 +155,6 @@ ifTrue:[
 	list addAll:l2.
 	].
 ^list
-]
-
-{ #category : #printing }
-KEBinaryExpression >> getParameter: aDictionary [
-	|p|
-	p := leftHandSide getParameter: aDictionary.
-	p ifNil: [ p := rightHandSide getParameter: aDictionary ].
-	^ p
-	
 ]
 
 { #category : #testing }
@@ -335,8 +321,7 @@ KEBinaryExpression >> separateExpression [
 
 { #category : #testing }
 KEBinaryExpression >> sign [
-
-(op = #*) ifTrue: [^(rightHandSide sign) * (leftHandSide sign)] "ifFalse:[^0]" ifFalse: [^1]
-"Modify ^1 for these cases with op = +, - for example: (A+B)*K"
-
+	op = #*
+		ifTrue: [ ^ rightHandSide sign * leftHandSide sign ]
+		ifFalse: [ ^ 1 ]
 ]
