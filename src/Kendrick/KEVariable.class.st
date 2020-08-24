@@ -43,12 +43,11 @@ KEVariable >> checkNil [
 
 { #category : #'as yet unclassified' }
 KEVariable >> evaluateWithModel: model [
-	|x|
-	((model attributes at: #status ifAbsent: [OrderedCollection new]) includes: symbol)
-	ifTrue: [ 
-		^ model atCompartment: { #status->symbol } ].
-	x := model atParameter: symbol.
-	^ x
+	((model attributes at: #status ifAbsent: [ OrderedCollection new ])
+		includes: symbol)
+		ifTrue: [ ^ model atCompartment: {(#status -> symbol)} ].
+^ model atParameter: symbol.
+
 ]
 
 { #category : #'as yet unclassified' }
