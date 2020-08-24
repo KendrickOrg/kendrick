@@ -103,8 +103,8 @@ KEEvent >> rate [
 ]
 
 { #category : #accessing }
-KEEvent >> rate: anObject [
-	rate := anObject
+KEEvent >> rate: aKEExpression [
+	rate := aKEExpression
 ]
 
 { #category : #accessing }
