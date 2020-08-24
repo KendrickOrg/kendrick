@@ -7,7 +7,6 @@ os:
 osx_image: xcode6.4
 
 smalltalk:
- - Pharo64-6.1
  - Pharo64-8.0
 
 matrix:
