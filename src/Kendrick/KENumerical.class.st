@@ -47,11 +47,6 @@ KENumerical >> evaluateWithModel: aModel [
 	^ number
 ]
 
-{ #category : #evaluating }
-KENumerical >> getParameter: aDictionary [
-	^ nil
-]
-
 { #category : #printing }
 KENumerical >> isNumerical [
 	^ true

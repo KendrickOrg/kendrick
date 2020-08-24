@@ -89,11 +89,6 @@ KEUnaryExpression >> generateEvents [
 ^ list
 ]
 
-{ #category : #printing }
-KEUnaryExpression >> getParameter: aDictionary [
-	^ expression getParameter: aDictionary
-]
-
 { #category : #testing }
 KEUnaryExpression >> isSeparable [
 	^ (expression isSeparable)

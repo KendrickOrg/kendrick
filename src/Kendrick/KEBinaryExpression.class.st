@@ -162,15 +162,6 @@ ifTrue:[
 ^list
 ]
 
-{ #category : #printing }
-KEBinaryExpression >> getParameter: aDictionary [
-	|p|
-	p := leftHandSide getParameter: aDictionary.
-	p ifNil: [ p := rightHandSide getParameter: aDictionary ].
-	^ p
-	
-]
-
 { #category : #testing }
 KEBinaryExpression >> isBinaryExpression [
 	^ true
