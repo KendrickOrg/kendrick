@@ -32,11 +32,6 @@ KEMathFunctionExpression >> = aMathExp [
 ]
 
 { #category : #checking }
-KEMathFunctionExpression >> checkHasVariable: aDictionary [
-	^ functionExpr checkHasVariable: aDictionary
-]
-
-{ #category : #checking }
 KEMathFunctionExpression >> checkNil [
 	^ functionExpr isNil
 ]

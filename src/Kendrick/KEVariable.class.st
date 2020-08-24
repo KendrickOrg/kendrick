@@ -31,11 +31,6 @@ anExpression isAVariable
 ^false
 ]
 
-{ #category : #printing }
-KEVariable >> checkHasVariable: aDictionary [
-	^ aDictionary at: symbol ifAbsent: [ ^ false ]
-]
-
 { #category : #testing }
 KEVariable >> checkNil [
 	^ (symbol isNil)

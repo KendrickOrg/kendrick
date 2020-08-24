@@ -40,11 +40,6 @@ anExpression isBinaryExpression ifTrue:[
 ]
 
 { #category : #printing }
-KEBinaryExpression >> checkHasVariable: aDictionary [
-	^ (leftHandSide checkHasVariable: aDictionary) | (rightHandSide checkHasVariable: aDictionary)
-]
-
-{ #category : #printing }
 KEBinaryExpression >> checkNil [
 	^ (leftHandSide isNil) & (rightHandSide isNil)
 ]
