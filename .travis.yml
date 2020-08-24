@@ -7,7 +7,7 @@ os:
 osx_image: xcode6.4
 
 smalltalk:
- - Pharo64-8.0
+ - Pharo64-6.1
 
 matrix:
   fast_finish: true
