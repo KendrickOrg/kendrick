@@ -117,10 +117,13 @@ KEDiagramBuilder >> plot [
 		
     c := RSChart new.
     1 to: legends size do: [ :i | 
+		  | d |
+		  d := normalize rtValue: (legends at: i).
+				
         p := RSLinePlot new.
         x := (data at: i) rowNames.
         y := x collect: [ :j | ((data at: i) row: j) contents first ].
-        p x: x y: y.
+        p x: x y: y; color: d.
         c addPlot: p ].
         
     c addDecoration: RSVerticalTick new integer.
