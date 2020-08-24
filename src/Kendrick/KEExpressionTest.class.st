@@ -5,16 +5,6 @@ Class {
 }
 
 { #category : #tests }
-KEExpressionTest >> createADictionaryForTest [
-	|dictionary|
-	dictionary := Dictionary new.
-	dictionary at: #S put: true.
-	dictionary at: #I put: true.
-	dictionary at: #R put: true.
-	^ dictionary
-]
-
-{ #category : #tests }
 KEExpressionTest >> test3Plus7Is10 [
 	| e a b o m |
 	
@@ -47,30 +37,6 @@ KEExpressionTest >> testBuildABinaryExpression [
 		leftHandSide: a;
 		rightHandSide: b.
 	self assert: e op equals: #+
-]
-
-{ #category : #tests }
-KEExpressionTest >> testCheckHasVariableInABinaryExpression [
-	|dictionary ex|
-	dictionary := self createADictionaryForTest.
-	ex := (KEBinaryExpression new) op: #+; leftHandSide: (KEVariable new symbol: #beta); rightHandSide: (KEVariable new symbol: #I).
-	self assert: (ex checkHasVariable: dictionary) equals: true.
-]
-
-{ #category : #tests }
-KEExpressionTest >> testCheckHasVariableInASigmaMathFunctionExpression [
-	|dictionary ex|
-	dictionary := self createADictionaryForTest.
-	ex := (KESigmaFunctionExpression new) functionName: #sigma; functionExpr: (KEBinaryExpression new op: #*; leftHandSide: (KEVariable new symbol: #beta); rightHandSide: (KEIndexedVariable new symbol: #S)).
-	self assert: (ex checkHasVariable: dictionary) equals: true.
-]
-
-{ #category : #tests }
-KEExpressionTest >> testCheckHasVariableInAnUnaryExpression [
-	|dictionary ex|
-	dictionary := self createADictionaryForTest.
-	ex := (KEUnaryExpression new) op: #-; expression: (KEBinaryExpression new op: #*; leftHandSide: (KEVariable new symbol: #beta); rightHandSide: (KEVariable new symbol: #S)).
-	self assert: (ex checkHasVariable: dictionary) equals: true.
 ]
 
 { #category : #tests }

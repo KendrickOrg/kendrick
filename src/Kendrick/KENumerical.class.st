@@ -33,11 +33,6 @@ KENumerical >> = aNumerical [
 ]
 
 { #category : #evaluating }
-KENumerical >> checkHasVariable: aDictionary [
-	^ false
-]
-
-{ #category : #evaluating }
 KENumerical >> checkNil [
 	^ number isNil
 ]
