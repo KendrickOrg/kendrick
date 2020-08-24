@@ -85,11 +85,6 @@ KEMathFunctionExpression >> generateEvents [
 	^ list
 ]
 
-{ #category : #printing }
-KEMathFunctionExpression >> getParameter: aDictionary [
-	^ functionExpr getParameter: aDictionary
-]
-
 { #category : #checking }
 KEMathFunctionExpression >> isExpressionWithMathFunction [
 	^ true
