@@ -364,6 +364,79 @@ KEDeterministicExamples >> exampleRK4SolverOnMultiStrainModel [
 	db open.
 ]
 
+{ #category : #'as yet unclassified' }
+KEDeterministicExamples >> exampleRK4SolverOnMultiStrainModelWithPlotVisualization [
+	| model simulator db data |
+
+	model := KEModel new.
+	model attributes: {#status->#(#S #I1 #I2 #R)}.
+	model atCompartment: { #status->#S } put: 9900.
+	model atCompartment: { #status->#I1 } put: 99.
+	model atCompartment: { #status->#I2 } put: 1.
+	model atCompartment: { #status->#R } put: 0.
+	
+	model addParameter: #beta1 value: 0.00002.
+	model addParameter: #beta2 value: 0.00018.
+	model addParameter: #gamma1 value: 0.1.
+	model addParameter: #gamma2 value: 1.
+	model addParameter: #mu value: 5e-5.
+	
+	model 
+		addTransitionFrom: {#status -> #S}
+		to: {#status -> #I1} 
+		probability: [ :m| 
+			(m atParameter: #beta1) * (m atCompartment: {#status->#I1}) ].
+	model
+		addTransitionFrom: {#status -> #S} 
+		to: {#status -> #I2} 
+		probability: [ :m| (m atParameter: #beta2) * (m atCompartment: {#status->#I2}) ].
+	model
+		addTransitionFrom: {#status -> #I1} 
+		to: {#status -> #R} 
+		probability: [ :m| (m atParameter: #gamma1) ].
+	model
+		addTransitionFrom: {#status -> #I2}
+		to: {#status -> #R}
+		probability: [ :m| (m atParameter: #gamma2) ].
+	model
+		addTransitionFrom: {#status -> #S}
+		to: #empty 
+		probability: [ :m| (m atParameter: #mu) ].
+	model 
+		addTransitionFrom: {#status -> #I1}
+		to: #empty 
+		probability: [ :m| (m atParameter: #mu) ].
+	model 
+		addTransitionFrom: {#status -> #I2} 
+		to: #empty 
+		probability: [ :m| (m atParameter: #mu) ].
+	model
+		addTransitionFrom: {#status -> #R} 
+		to: #empty 
+		probability: [ :m| (m atParameter: #mu) ].
+	model
+		addTransitionFrom: #empty 
+		to: {#status -> #S} 
+		probability: [ :m| (m atParameter: #mu) ].
+	
+	simulator := KESimulator
+		new: #RungeKutta
+		from: 0.0
+		to: 70
+		step: 0.1.
+	simulator executeOn: model.
+	data := OrderedCollection new.
+	data add: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
+	data add: (simulator timeSeriesOutputsAt: {(#status -> #I1)}).
+	data add: (simulator timeSeriesOutputsAt: {(#status -> #I2)}).
+	data add: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
+	
+	db := KEDiagramBuilder new data: data.
+	db xLabel: 'Time (days)'.
+	db yLabel: 'Infectious'.
+	db plot 
+]
+
 { #category : #examples }
 KEDeterministicExamples >> exampleRK4SolverOnMultipleRiskGroupsModel [
 	"self new exampleRK4SolverOnMultipleRiskGroupsModel"
