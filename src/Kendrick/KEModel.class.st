@@ -30,8 +30,7 @@ Class {
 	#instVars : [
 		'population',
 		'concerns',
-		't',
-		'initialCompartments'
+		't'
 	],
 	#category : #'Kendrick-Core'
 }
@@ -80,13 +79,13 @@ KEModel >> atCompartment: keyInput put: number [
 		ifTrue: [ key := keyInput ].
 	keyInput isArray
 		ifTrue: [ key := Dictionary newFrom: keyInput ].
-	self initialCompartments
+	population compartments
 		at: key
-		ifAbsent: [ (self compartmentNames includes: key)
+		ifAbsent: [(self compartmentNames includes: key)
 				ifFalse: [ ^ self error: 'No compartment names: ' , key asString ].
-			self initialCompartments ].
-	initialCompartments at: key put: number.
-	population compartments: initialCompartments
+		 ].
+		population compartments at:key put: number.
+	
 ]
 
 { #category : #accessing }
@@ -96,8 +95,8 @@ KEModel >> atCompartment: keyInput put: aNumber1 atOthersPut: aNumber2 [
 		ifTrue: [ key := keyInput ].
 	keyInput isArray
 		ifTrue: [ key := Dictionary newFrom: keyInput ].
-	self initialCompartments
-		keysDo: [ :k | 
+		self compartmentNames 
+		do: [ :k | 
 			k = key
 				ifTrue: [ self atCompartment: k put: aNumber1 ]
 				ifFalse: [ self atCompartment: k put: aNumber2 ] ]
@@ -185,14 +184,6 @@ KEModel >> gtInspectorKendrickGraphIn: composite [
 			view ]
 ]
 
-{ #category : #accessing }
-KEModel >> initialCompartments [
-	"return the initial collection of compartments with their cardinality. If this collection does not exist, put all cardinality to 0"
-
-	initialCompartments ifNil: [ self initializeCompartments ].
-	^ initialCompartments
-]
-
 { #category : #initialization }
 KEModel >> initialize [
 	super initialize.
@@ -207,9 +198,8 @@ KEModel >> initialize [
 KEModel >> initializeCompartments [
 	"Initialize compartments with cardinalities at 0"
 
-	initialCompartments := Dictionary
-		newFrom: (self compartmentNames collect: [ :c | c -> 0 ]).
-	population compartments: initialCompartments
+	population compartments: (Dictionary
+		newFrom: (self compartmentNames collect: [ :c | c -> 0 ]))
 ]
 
 { #category : #accessing }
@@ -221,7 +211,10 @@ KEModel >> integrate: aConcern [
 	aConcern parameters
 		keysAndValuesDo: [ :k :v | self addParameter: k value: v ].
 	self population reset.
-	initialCompartments := nil
+	
+	"Need to reinitialize the compartments because integrate: change the compartments"
+	"If we have a tensor sums between 2 models that generate a new model should not be necessary anymore"
+	self initializeCompartments 
 ]
 
 { #category : #accessing }

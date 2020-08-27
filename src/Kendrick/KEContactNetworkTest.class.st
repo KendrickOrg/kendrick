@@ -33,7 +33,6 @@ KEContactNetworkTest >> testEdgesFromStatus [
 
 	model integrate: sirConcern.
 	model integrate: spatialConcern.
-
 	1 to: 7 do: [:i| model atCompartment: {#status->#S. #node->i asString asSymbol} put: 1].
 	model atCompartment: { #status->#I. #node->#'10' } put: 1.
 	model atCompartment: { #status->#I. #node->#'9' } put: 1.
