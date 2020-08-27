@@ -148,13 +148,12 @@ KEComponent >> equations [
 
 { #category : #accessing }
 KEComponent >> equationsToTransitions [
-	|  events |
+	| events |
 	events := self generateEvents.
 	events
 		do: [ :e | 
 			e fromStatus = #empty
-				ifTrue: [ "|symbol|
-			symbol := parameters keyAtValue: #sizeOfPopulation ifAbsent: [#N]." e rate: (e rate remove: (KEVariable new symbol: #N)) ] ].
+				ifTrue: [  e rate: (e rate remove: (KEVariable new symbol: #N)) ] ].
 	events
 		do: [ :each | 
 			| from to |
