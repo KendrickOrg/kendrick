@@ -136,25 +136,26 @@ KEComponent >> changeParameter: aSymbol value: aNumericalOrAnExpressionOrABlock 
 
 { #category : #'as yet unclassified' }
 KEComponent >> compartmentNames [
+	"Return an Array containing Dictionaries ...
+	What a mess !!!"
 
-"Return an Array containing Dictionaries ..."
-"What a mess !!!"
-
-	|names expand keys|
+	| names expand keys |
 	names := OrderedCollection new.
-	self attributes keys do: [ :e| 
-		names add: ((self atAttribute: e) collect: [ :v| (e->v) ])
-	].
-	expand := [ :prefix :list| 
-		list isEmpty
+	self attributes keys
+		do: [ :e | names add: ((self atAttribute: e) collect: [ :v | e -> v ]) ].
+	expand := [ :prefix :list | 
+	list isEmpty
 		ifTrue: [ Array with: prefix ]
-		ifFalse: [ |tail|
+		ifFalse: [ | tail |
 			tail := list allButFirst: 1.
-			list first inject: #() into: [ :all :each|
-				all, (expand value: (prefix copyWith: each) value: tail) ] ] ].
+			list first
+				inject: #()
+				into:
+					[ :all :each | all , (expand value: (prefix copyWith: each) value: tail) ] ] ].
 	keys := expand value: #() value: names.
-	keys = #(#()) ifTrue: [ keys := #() ].
-	^ (keys collect: [ :e| Dictionary newFrom: e ])
+	keys = #(#())
+		ifTrue: [ keys := #() ].
+	^ keys collect: [ :e | Dictionary newFrom: e ]
 ]
 
 { #category : #accessing }
@@ -164,13 +165,12 @@ KEComponent >> equations [
 
 { #category : #accessing }
 KEComponent >> equationsToTransitions [
-	|  events |
+	| events |
 	events := self generateEvents.
 	events
 		do: [ :e | 
 			e fromStatus = #empty
-				ifTrue: [ "|symbol|
-			symbol := parameters keyAtValue: #sizeOfPopulation ifAbsent: [#N]." e rate: (e rate remove: (KEVariable new symbol: #N)) ] ].
+				ifTrue: [  e rate: (e rate remove: (KEVariable new symbol: #N)) ] ].
 	events
 		do: [ :each | 
 			| from to |
