@@ -109,45 +109,40 @@ KEDiagramBuilder >> open [
 
 { #category : #'as yet unclassified' }
 KEDiagramBuilder >> plot [
-    | c p x y lb normalize|
-	
+	| c p x y lb normalize |
 	normalize := RTMultiLinearColorForIdentity new
 		objects: self legends;
 		colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
-		
-    c := RSChart new.
-    1 to: legends size do: [ :i | 
-		  | d |
-		  d := normalize rtValue: (legends at: i).
-				
-        p := RSLinePlot new.
-        x := (data at: i) rowNames.
-        y := x collect: [ :j | ((data at: i) row: j) contents first ].
-        p x: x y: y; color: d.
-        c addPlot: p ].
-        
-    c addDecoration: RSVerticalTick new integer.
-    c addDecoration: RSHorizontalTick new integer.
-    
-    xLabel ifNil: [ c xlabel: 'Time (days)' ] ifNotNil: [ c xlabel: xLabel ].
-    yLabel
-        ifNil: [ c ylabel: 'Number of individuals' ]
-        ifNotNil: [ c ylabel: yLabel ].   
-
-	 self legendTitle ifNil: [ legendTitle := '' ].
-    c title: legendTitle.
-	 c build.
-	
+	c := RSChart new.
+	1 to: legends size do: [ :i | 
+		| d |
+		d := normalize rtValue: (legends at: i).
+		p := RSLinePlot new.
+		x := (data at: i) rowNames.
+		y := x collect: [ :j | ((data at: i) row: j) contents first ].
+		p
+			x: x y: y;
+			color: d.
+		c addPlot: p ].
+	c addDecoration: RSVerticalTick new asFloat.
+	c addDecoration: RSHorizontalTick new asFloat.
+	xLabel
+		ifNil: [ c xlabel: 'Time (days)' ]
+		ifNotNil: [ c xlabel: xLabel ].
+	yLabel
+		ifNil: [ c ylabel: 'Number of individuals' ]
+		ifNotNil: [ c ylabel: yLabel ].
+	self legendTitle ifNil: [ legendTitle := '' ].
+	c title: legendTitle.
+	c build.
 	lb := RSLegend new.
 	lb container: c canvas.
 	1 to: legends size do: [ :i | 
 		| d |
 		d := normalize rtValue: (legends at: i).
-		lb text: (legends at: i) withBoxColor: d
-	].
+		lb text: (legends at: i) withBoxColor: d ].
 	lb build.
 	lb canvas open
-	
 ]
 
 { #category : #'as yet unclassified' }
