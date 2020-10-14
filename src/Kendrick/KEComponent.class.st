@@ -119,6 +119,22 @@ KEComponent >> buildEquations [
 ]
 
 { #category : #'as yet unclassified' }
+KEComponent >> changeParameter: aSymbol value: aNumericalOrAnExpressionOrABlock [
+	
+	| expression |
+ 	aSymbol ifNotEmpty: [  
+	aNumericalOrAnExpressionOrABlock isNumber 
+	ifTrue: [ expression := (KENumerical new number: aNumericalOrAnExpressionOrABlock) ]
+	ifFalse: [ 
+		aNumericalOrAnExpressionOrABlock isString 
+		ifTrue: [ expression := (aNumericalOrAnExpressionOrABlock parseAsAnExpression) ]
+		ifFalse: [ expression := aNumericalOrAnExpressionOrABlock ]
+	].
+].
+	parameters at: aSymbol put: (KEParameter new symbol: aSymbol; expression: expression)
+]
+
+{ #category : #'as yet unclassified' }
 KEComponent >> compartmentNames [
 	"Return an Array containing Dictionaries ...
 	What a mess !!!"
