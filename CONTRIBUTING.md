@@ -113,7 +113,7 @@ In your Pharo 6.1 image, load now the last development version of Kendrick :
 
 ```Smalltalk
 Metacello new
-        githubUser: 'XXX' project: 'kendrick' commitish: 'master' path: 'src';
+        githubUser: 'XXX' project: 'kendrick' commitish: 'master';
         baseline: 'Kendrick';
 	onWarningLog;
         load
