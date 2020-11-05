@@ -122,6 +122,33 @@ where you replace XXX with your github user name.
 
 PS: at the moment, we have only one master branch, so all development happens on this branch. We will use two branches when we release a first version of Kendrick.
 
+If you have problems loading with the previous script, use the following one:
+
+``Smalltalk
+| count |
+count := 1.
+Transcript open.
+[ true ] whileTrue: [ [
+		^ Metacello new
+		githubUser: 'XXX' project: 'kendrick' commitish: 'master'
+        baseline: 'Kendrick';
+	onConflictUseLoaded;
+        onWarningLog ;
+        load.
+	]
+	on: IceGenericError "Failed to connect to github.com: Interrupted system call"
+	do: [ : ex |
+		Notification signal:
+	        	String cr ,
+			ex description,
+			String cr ,
+			'RETRYING ',
+			count asString.
+		(Delay forSeconds: 2) wait.
+		ex retry
+	].
+	count := count + 1 ]```
+
 ## Add main Kendrick repository as remote
 
 Open Iceberg, open Kendrick repository, click on repositories, then + button (add remote).
