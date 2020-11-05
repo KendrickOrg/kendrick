@@ -113,7 +113,7 @@ In your Pharo 6.1 image, load now the last development version of Kendrick :
 
 ```Smalltalk
 Metacello new
-        githubUser: 'XXX' project: 'kendrick' commitish: 'master';
+        githubUser: 'XXX' project: 'kendrick' commitish: 'master' path:'src';
         baseline: 'Kendrick';
 	onWarningLog;
         load
@@ -130,7 +130,7 @@ count := 1.
 Transcript open.
 [ true ] whileTrue: [ [
 		^ Metacello new
-		githubUser: 'XXX' project: 'kendrick' commitish: 'master'
+		githubUser: 'XXX' project: 'kendrick' commitish: 'master' path:'src';
         baseline: 'Kendrick';
 	onConflictUseLoaded;
         onWarningLog ;
