@@ -35,7 +35,7 @@ Go to Kendrick github's repository and click on the fork button on the top right
 
 ## Load your fork version of Kendrick in your image
 
-In your Pharo 6.1 image, load now the last development version of Kendrick :
+In your Pharo 8.0 image, load now the last development version of Kendrick :
 
 ```Smalltalk
 Metacello new
