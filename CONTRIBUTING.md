@@ -124,7 +124,7 @@ PS: at the moment, we have only one master branch, so all development happens on
 
 If you have problems loading with the previous script, use the following one:
 
-``Smalltalk
+```Smalltalk
 | count |
 count := 1.
 Transcript open.
@@ -147,7 +147,8 @@ Transcript open.
 		(Delay forSeconds: 2) wait.
 		ex retry
 	].
-	count := count + 1 ]```
+	count := count + 1 ]
+```
 
 ## Add main Kendrick repository as remote
 
