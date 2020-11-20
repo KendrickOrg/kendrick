@@ -91,5 +91,5 @@ BaselineOfKendrick >> baseline: spec [
 				package: 'Kendrick'
 				with: [ spec
 						requires:
-							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'Roassal3' 'MooseAlgos') ] ]
+							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'MooseAlgos') ] ]
 ]
