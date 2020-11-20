@@ -360,8 +360,7 @@ KEDeterministicExamples >> exampleRK4SolverOnMultiStrainModel [
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #I1)}).
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #I2)}).
 	db := KEDiagramBuilder new data: data.
-	db roassal3plot open.
-	db open.
+	db plot
 ]
 
 { #category : #'as yet unclassified' }
