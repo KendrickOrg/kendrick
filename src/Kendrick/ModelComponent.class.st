@@ -103,7 +103,7 @@ ModelComponent >> attributeOrParameter: aName [
 										backEndEntity sizeOfPopulation: (tokens collect: [:t | (backEndEntity currentCompartment at: t)]) asArray.
 									]
 							]
-							ifFalse: [backEndEntity sizeOfPopulation: (backEndEntity currentCompartment at: aName asSymbol)] 
+							ifFalse: [backEndEntity sizeOfPopulation: (Array with: (backEndEntity currentCompartment at: aName asSymbol))] 
 				] "assume attribute name"
 				ifFalse: [
 								backEndEntity atCompartment: { assoc first key -> aName }

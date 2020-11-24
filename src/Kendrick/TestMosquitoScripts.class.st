@@ -108,7 +108,7 @@ model
         ].
 model atParameter: #N assignValue: [ :aModel| |c| 
         c := aModel currentCompartment at: #species.
-        aModel sizeOfPopulation: c
+        aModel sizeOfPopulation: c asArray
         ].
 model addParameter: #rho value: [ :aModel| |c val|
         c := aModel currentCompartment at: #species.

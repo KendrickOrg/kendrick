@@ -146,6 +146,7 @@ KEPopulation >> sizeOfCompartments: keys [
 
 { #category : #accessing }
 KEPopulation >> sizeOfPopulation: array [
+	"what is doing this method?"
 	| c |
 	c := 0.
 	self compartments

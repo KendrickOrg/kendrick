@@ -1,5 +1,7 @@
 "
-A dependent concern is a concern that depends on another one
+A dependent concern is a concern that depends on another one.
+
+Is this class, really useful ? This class is used in only method: KModelPart>>dependOn:
 "
 Class {
 	#name : #KEDependentModelPart,

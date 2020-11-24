@@ -252,15 +252,12 @@ KEModel >> sizeOfPopulation [
 ]
 
 { #category : #accessing }
-KEModel >> sizeOfPopulation: anArrayOfValues [
-	"anArrayOfValues describe a subpopulation like {#S. #human. #female}. Returns the nb of individus that verify this property"
+KEModel >> sizeOfPopulation: aCompartmentArray [
 
-	| array |
-	array := OrderedCollection new.
-	anArrayOfValues isArray
-		ifTrue: [ array addAll: anArrayOfValues ]
-		ifFalse: [ array add: anArrayOfValues ].
-	^ self population sizeOfPopulation: array
+	"aCompartmentArray describe a subpopulation like {#S. #human. #female}. Returns the cardinality of compartments that verify this property
+	call sizeOfPopulation: on the population"
+
+	^ self population sizeOfPopulation: aCompartmentArray
 ]
 
 { #category : #accessing }
