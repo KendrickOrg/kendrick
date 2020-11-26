@@ -165,7 +165,7 @@ spatialConcern
 		assignValue: [ :aModel | 
 			| c |
 			c := aModel currentCompartment at: #patch.
-			aModel sizeOfPopulation: c ].
+			aModel sizeOfPopulation: (Array with: c) ].
 	model atParameter: #rho assignValue: 0.03.
 	model
 		atParameter: #lambda
@@ -764,7 +764,7 @@ KEDeterministicExamples >> modelRK4SolverOnMigrationOneSpeciesModel [
 	model atParameter: #gamma assignValue: 0.233.
 	model atParameter: #N assignValue: [ :aModel| |c| 
 		c := aModel currentCompartment at: #patch.
-		aModel sizeOfPopulation: c
+		aModel sizeOfPopulation: (Array with: c).
 		].
 	model atParameter: #rho assignValue: 0.1. 
 	model atParameter: #lambda assignValue: [ :aModel| |c|
