@@ -80,7 +80,7 @@ Composition >> addCompositeParameter: variablePlusAttributes value: value [
 { #category : #'as yet unclassified' }
 Composition >> addCompositeParameterWithTwoAttributes: variablePlusAttributes value: value [
 
-	|entities entityForSecond entityForThird |
+	| entityForSecond entityForThird |
 	
 	entityForSecond := (self entitiesFor: {variablePlusAttributes second}) first first.
 	entityForThird := (self entitiesFor: {variablePlusAttributes third}) first first. 

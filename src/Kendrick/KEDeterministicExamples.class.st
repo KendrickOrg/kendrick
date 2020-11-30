@@ -165,7 +165,7 @@ spatialConcern
 		assignValue: [ :aModel | 
 			| c |
 			c := aModel currentCompartment at: #patch.
-			aModel sizeOfPopulation: c ].
+			aModel sizeOfPopulation: (Array with: c) ].
 	model atParameter: #rho assignValue: 0.03.
 	model
 		atParameter: #lambda
@@ -753,10 +753,9 @@ KEDeterministicExamples >> modelRK4SolverOnMigrationOneSpeciesModel [
 	model integrate: spatialConcern.
 	model integrate: SEIRSConcern.
 	
-	model atParameter: #beta assignValue: [ :aModel| |c val| 
+	model atParameter: #beta assignValue: [ :aModel| |c| 
 		c := aModel currentCompartment at: #patch.
-		c = 1 ifTrue: [ val := 0.42 ] ifFalse: [ val := 0.28 ].
-		val	
+		c = 1 ifTrue: [ 0.42 ] ifFalse: [ 0.28 ]
 	].
 	model atParameter: #v assignValue: 0.00274.
 	model atParameter: #mu assignValue: 0.00137.
@@ -764,7 +763,7 @@ KEDeterministicExamples >> modelRK4SolverOnMigrationOneSpeciesModel [
 	model atParameter: #gamma assignValue: 0.233.
 	model atParameter: #N assignValue: [ :aModel| |c| 
 		c := aModel currentCompartment at: #patch.
-		aModel sizeOfPopulation: c
+		aModel sizeOfPopulation: (Array with: c).
 		].
 	model atParameter: #rho assignValue: 0.1. 
 	model atParameter: #lambda assignValue: [ :aModel| |c|

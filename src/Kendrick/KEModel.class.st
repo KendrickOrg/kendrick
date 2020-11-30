@@ -227,6 +227,7 @@ KEModel >> name [
 
 { #category : #'as yet unclassified' }
 KEModel >> nextCompartment [
+
 	^ self parameters at: #nextCompartment ifAbsent: [ nil ]
 ]
 
@@ -244,11 +245,6 @@ KEModel >> population [
 { #category : #accessing }
 KEModel >> population: aPopulation [
 	population := aPopulation
-]
-
-{ #category : #'as yet unclassified' }
-KEModel >> sizeOfPopulation [
-	^ population size
 ]
 
 { #category : #accessing }
