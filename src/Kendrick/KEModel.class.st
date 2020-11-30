@@ -246,11 +246,6 @@ KEModel >> population: aPopulation [
 	population := aPopulation
 ]
 
-{ #category : #'as yet unclassified' }
-KEModel >> sizeOfPopulation [
-	^ population size
-]
-
 { #category : #accessing }
 KEModel >> sizeOfPopulation: aCompartmentArray [
 
