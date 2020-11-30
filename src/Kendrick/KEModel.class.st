@@ -227,6 +227,7 @@ KEModel >> name [
 
 { #category : #'as yet unclassified' }
 KEModel >> nextCompartment [
+
 	^ self parameters at: #nextCompartment ifAbsent: [ nil ]
 ]
 
