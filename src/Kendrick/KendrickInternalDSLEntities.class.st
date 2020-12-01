@@ -115,15 +115,13 @@ KendrickInternalDSLEntities class >> storedInstances [
 
 { #category : #'as yet unclassified' }
 KendrickInternalDSLEntities class >> withId: anId [
-	
-	|inImage inDisk|
 
-	inImage := (self storedInstances select: [ :instance | instance id = anId ]).
-	inImage isEmpty 	
+	| inImage |
+	inImage := self storedInstances select: [ :instance | 
+		           instance id = anId ].
+	inImage isEmpty
 		ifFalse: [ ^ inImage first ]
-		ifTrue: [  
-			^ self pathLookUpFor: anId
-		]
+		ifTrue: [ ^ self pathLookUpFor: anId ]
 ]
 
 { #category : #'as yet unclassified' }
