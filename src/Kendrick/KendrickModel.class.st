@@ -1,3 +1,10 @@
+"
+KendrickModel is part of Kendrick DSL to express epi models.
+
+```
+KendrickModel nameOfModel
+```
+"
 Class {
 	#name : #KendrickModel,
 	#superclass : #KendrickComposite,
@@ -146,7 +153,7 @@ KendrickModel >> gtInspectorKendrickGraphIn: composite [
 	^ ((Composition Temp concern: self id) instVarNamed: #backEndEntity) gtInspectorKendrickGraphIn: composite
 ]
 
-{ #category : #protected }
+{ #category : #'public-api' }
 KendrickModel >> initialize [
 
 	super initialize.
@@ -166,10 +173,12 @@ KendrickModel >> keConcern [
 
 { #category : #'public-api' }
 KendrickModel >> maps: aMapEntity [
-	"should not be used because of ad hoc, will be raplaced by connectionMatrix"
+
+	"should not be used because of ad hoc, will be replaced by connectionMatrix"
+
 	map := Map withId: aMapEntity.
 	self attribute: map attributeToRegions.
-	borders := map borders.
+	borders := map borders
 ]
 
 { #category : #'public-api' }
