@@ -1,0 +1,15 @@
+SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'Kendrick',
+      #directory : 'src',
+      #platforms : [ #pharo ]
+    }
+  ],
+  #testing : {
+    #categories : [ 'Kendrick-Core-Network', 'Kendrick-Tests-*'],
+     #coverage : {
+      #categories : [ 'Kendrick-*', 'PPODE*']
+    }
+}
+}
