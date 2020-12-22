@@ -15,7 +15,7 @@ Class {
 { #category : #accessing }
 TestsModel6SpatialMapWithEntity >> after [
 
-KendrickModel SEIRS
+KModel SEIRS
     attribute: #(status -> S E I R);
     parameters: #(beta lambda gamma mu sigma nu);
     lambda: #(beta*I/N);
@@ -27,7 +27,7 @@ KendrickModel SEIRS
         status -- mu --> Empty.
         Empty -- mu --> S.).
 
-KendrickModel Biological
+KModel Biological
     attribute: #(species -> human bird).
 
 Map IndoChina
@@ -40,11 +40,11 @@ Map IndoChina
       #(0 0 1 0 0)
    ).
 	
-KendrickModel Demographical
+KModel Demographical
 	 maps: 'IndoChina';
 	 transitionRate: #rho.
 	    
-KendrickModel SEIRSQ
+KModel SEIRSQ
     extends: 'SEIRS';
     parameters: #(delta epsilon);
     addStatus: #(Q);

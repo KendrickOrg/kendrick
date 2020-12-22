@@ -18,7 +18,7 @@ TestOneSpeciesSpatialScripts >> after [
 ModelComponent OneSpeciesSpatial	
 	population: 5000.
 
-KendrickModel Spatial
+KModel Spatial
 	attribute: #(patch -> 1  2  3  4  5);
 	parameters: #(rho);
 	rho: 0.03;
@@ -30,7 +30,7 @@ KendrickModel Spatial
 		5 -- rho --> 1.
 	).
 		
-KendrickModel Epidemiological
+KModel Epidemiological
 	attribute: #(status -> S  E  I  R);
 	parameters: #(beta lambda sigma gamma v mu);
 	v: 0.00274;

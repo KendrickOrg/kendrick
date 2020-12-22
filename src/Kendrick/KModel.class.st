@@ -6,7 +6,7 @@ KendrickModel nameOfModel
 ```
 "
 Class {
-	#name : #KendrickModel,
+	#name : #KModel,
 	#superclass : #KendrickComposite,
 	#instVars : [
 		'delays',
@@ -19,14 +19,14 @@ Class {
 }
 
 { #category : #'public-api' }
-KendrickModel >> addStatus: symExpression [
+KModel >> addStatus: symExpression [
 
 	(attributes at: #status) add: symExpression first.
 	backEndEntity addStatus: symExpression.
 ]
 
 { #category : #'public-api' }
-KendrickModel >> addTransition: symExpression [
+KModel >> addTransition: symExpression [
 
 	|newTransition| 
 
@@ -41,35 +41,35 @@ KendrickModel >> addTransition: symExpression [
 ]
 
 { #category : #'public-api' }
-KendrickModel >> allHierarchyTransitions [
+KModel >> allHierarchyTransitions [
 
 	^ backEndEntity transitions copy 
 		addAll: (structuralDependencies 
-			flatCollect: [ :name | (KendrickModel withId: name) allTransitions ]);
+			flatCollect: [ :name | (KModel withId: name) allTransitions ]);
 		yourself
 ]
 
 { #category : #'public-api' }
-KendrickModel >> allTransitions [
+KModel >> allTransitions [
 
 	^ ((Composition Temp concern: self id) instVarNamed: #backEndEntity) transitions copy 
 		
 ]
 
 { #category : #'public-api' }
-KendrickModel >> connectionMatrix: aMatrix [
+KModel >> connectionMatrix: aMatrix [
 	borders := aMatrix
 
 ]
 
 { #category : #'public-api' }
-KendrickModel >> connectionTopology: aTopologyPattern [
+KModel >> connectionTopology: aTopologyPattern [
 	
 
 ]
 
 { #category : #'public-api' }
-KendrickModel >> delay: symExpression [
+KModel >> delay: symExpression [
  
 	"#(sigma , S -- lambda --> I  , E)"
 	| varList delay targetLeftNode initialRate targetRightNode newNode |
@@ -103,7 +103,7 @@ KendrickModel >> delay: symExpression [
 ]
 
 { #category : #'public-api' }
-KendrickModel >> doesNotUnderstand: aMessage [
+KModel >> doesNotUnderstand: aMessage [
 
 	|variable value|
 	
@@ -127,14 +127,14 @@ KendrickModel >> doesNotUnderstand: aMessage [
 ]
 
 { #category : #'public-api' }
-KendrickModel >> extends [
+KModel >> extends [
 
 	^ structuralDependencies
 
 ]
 
 { #category : #'public-api' }
-KendrickModel >> extends: anotherConcernName [
+KModel >> extends: anotherConcernName [
 
 	super extends: anotherConcernName.
 	structuralDependencies := {  anotherConcernName }.
@@ -144,7 +144,7 @@ KendrickModel >> extends: anotherConcernName [
 ]
 
 { #category : #'as yet unclassified' }
-KendrickModel >> gtInspectorKendrickGraphIn: composite [
+KModel >> gtInspectorKendrickGraphIn: composite [
 
 	<gtInspectorPresentationOrder: -20>
 	<gtInspectorTag: #custom>
@@ -154,7 +154,7 @@ KendrickModel >> gtInspectorKendrickGraphIn: composite [
 ]
 
 { #category : #'public-api' }
-KendrickModel >> initialize [
+KModel >> initialize [
 
 	super initialize.
 
@@ -165,14 +165,14 @@ KendrickModel >> initialize [
 ]
 
 { #category : #protected }
-KendrickModel >> keConcern [
+KModel >> keConcern [
 
 	^ backEndEntity.
 
 ]
 
 { #category : #'public-api' }
-KendrickModel >> maps: aMapEntity [
+KModel >> maps: aMapEntity [
 
 	"should not be used because of ad hoc, will be replaced by connectionMatrix"
 
@@ -182,7 +182,7 @@ KendrickModel >> maps: aMapEntity [
 ]
 
 { #category : #'public-api' }
-KendrickModel >> splitStatus: symExpression [
+KModel >> splitStatus: symExpression [
 
 	"splitStatus: {  #(I). index->#(1 2) }.
 	splitStatus: #(I index #(1 2))"
@@ -202,7 +202,7 @@ KendrickModel >> splitStatus: symExpression [
 ]
 
 { #category : #'public-api' }
-KendrickModel >> transitionRate: aSymbol [
+KModel >> transitionRate: aSymbol [
 	"will replace the withTransitionRate as discussing about the surgar syntax with Mikal"
 	parameters at: aSymbol put: 0.
 	self imports: borders using: aSymbol

@@ -15,7 +15,7 @@ Class {
 { #category : #'as yet unclassified' }
 TestsModel5 >> after [
 
-KendrickModel SEIRS
+KModel SEIRS
     attribute: #(status -> S E I R);
     parameters: #(beta lambda gamma mu sigma nu);
     lambda: #(beta*I/N);
@@ -27,15 +27,15 @@ KendrickModel SEIRS
         status -- mu --> Empty.
         Empty -- mu --> S.).
 
-KendrickModel SEIIRS
+KModel SEIIRS
 	extends: 'SEIRS';
 	parameters: #(beta1 beta2);
 	splitStatus: #(I index #(1 2)).
 
-KendrickModel Biological
+KModel Biological
 	attribute: #(species -> human bird).
 	
-KendrickModel Demographical
+KModel Demographical
 	attribute: #(patch -> 1  2  3  4  5);
 	parameters: #(rho);
 	transitions: #(
@@ -282,7 +282,7 @@ TestsModel5 >> script [
 
 ModelComponent Influenza.
 
-KendrickModel SIR
+KModel SIR
 	attribute: #(status -> S I R);
 	parameters: #(beta lambda gamma mu);
 	lambda: #(beta*I/N);
@@ -293,22 +293,22 @@ KendrickModel SIR
 		Empty -- mu --> S.
 	).	
 		
-KendrickModel SEIRS
+KModel SEIRS
 	extends: 'SIR';
 	parameters: #(sigma nu);
 	delay: #(sigma , S -- lambda --> I  , E);
 	addTransition:	#(R -- nu --> S.);
 	addTransition: #(E -- mu --> Empty.).
 
-KendrickModel SEIIRS
+KModel SEIIRS
 	extends: 'SEIRS';
 	parameters: #(beta1 beta2);
 	splitStatus: #(I strains #(1 2)).
 
-KendrickModel Biological
+KModel Biological
 	attribute: #(species -> human bird).
 	
-KendrickModel Demographical
+KModel Demographical
 	attribute: #(patch -> 1  2  3  4  5);
 	parameters: #(rho);
 	rho: 0.03;
