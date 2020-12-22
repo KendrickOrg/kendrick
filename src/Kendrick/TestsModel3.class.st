@@ -7,7 +7,7 @@ Class {
 { #category : #'as yet unclassified' }
 TestsModel3 >> script [
 
-KendrickModel SIR
+KModel SIR
 	attribute: #(status -> S I R);
 	parameters: #(beta lambda gamma mu);
 	lambda: #(beta*I/N);
@@ -17,10 +17,10 @@ KendrickModel SIR
 		status -- mu --> Empty.
 		Empty -- mu --> S.).
 
-KendrickModel Biological
+KModel Biological
 	attribute: #(species -> human bird).
 	
-KendrickModel Demographical
+KModel Demographical
 	attribute: #(patch -> 1  2  3  4  5);
 	parameters: #(rho);
 	rho: 0.03;
@@ -31,7 +31,7 @@ KendrickModel Demographical
 		4 -- rho --> 5.
 		5 -- rho --> 1.).
 		
-KendrickModel SEIRS
+KModel SEIRS
 	extends: 'SIR';
 	parameters: #(sigma nu);
 	delay: #(sigma , S -- lambda --> I  , E);

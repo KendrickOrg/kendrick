@@ -15,7 +15,7 @@ Class {
 { #category : #'as yet unclassified' }
 TestMeaslesScriptsBMC >> after [
 
-KendrickModel SIR
+KModel SIR
 	attribute: #(status -> S I R);
 	parameters: #(beta lambda gamma mu);
 	transitions: #(
@@ -25,7 +25,7 @@ KendrickModel SIR
 		Empty -- mu --> S.
 	).	
     
-KendrickModel SEIR
+KModel SEIR
 	extends: 'SIR';
 	parameters: #(sigma);
 	delay: #(sigma , S -- lambda --> I  , E).

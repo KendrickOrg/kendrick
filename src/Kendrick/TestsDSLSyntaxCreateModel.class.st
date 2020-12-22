@@ -6,7 +6,7 @@ Class {
 
 { #category : #initialization }
 TestsDSLSyntaxCreateModel >> script [ 
-	KendrickModel SIRDemography
+	KModel SIRDemography
 	attribute: #(status -> S I R);
 	parameters: #(beta lambda gamma b mu);
 	transitions: #(
@@ -37,7 +37,7 @@ TestsDSLSyntaxCreateModel >> tearDown [
 TestsDSLSyntaxCreateModel >> testCreateModelAttributes [ 
 	|model|
 	self script.
-	model := KendrickModel withId: 'SIRDemography'.
+	model := KModel withId: 'SIRDemography'.
 
 	self assert: (model keConcern attributes at: #status) size equals: 3
 ]
@@ -46,7 +46,7 @@ TestsDSLSyntaxCreateModel >> testCreateModelAttributes [
 TestsDSLSyntaxCreateModel >> testCreateModelAttributesValue [ 
 	|model|
 	self script.
-	model := KendrickModel withId: 'SIRDemography'.
+	model := KModel withId: 'SIRDemography'.
 
 	self assert: (model keConcern attributes at: #status) equals: #(#S #I #R)
 ]
@@ -55,7 +55,7 @@ TestsDSLSyntaxCreateModel >> testCreateModelAttributesValue [
 TestsDSLSyntaxCreateModel >> testCreateModelTransitions [ 
 	|model|
 	self script.
-	model := KendrickModel withId: 'SIRDemography'.
+	model := KModel withId: 'SIRDemography'.
 
 	self assert: (model keConcern) transitions size equals: 6
 

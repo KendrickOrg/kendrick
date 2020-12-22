@@ -7,7 +7,7 @@ Class {
 { #category : #'as yet unclassified' }
 TestsModel1 >> script [
 	
-KendrickModel SIR
+KModel SIR
 	attribute: #(status -> S I R);
 	parameters: #(beta lambda gamma mu);
 	lambda: #(beta*I/N);
@@ -23,7 +23,6 @@ Composition SIRInfluenza
 	
 Scenario SIRInfluenza1
 	on: 'SIRInfluenza';
-	populationSize: 5000;
 	S: 4990;
 	I: 10;
 	others: 0;

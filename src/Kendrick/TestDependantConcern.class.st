@@ -18,7 +18,7 @@ TestDependantConcern >> after [
 ModelComponent OneSpeciesSpatial	
 	population: 5000.
 
-KendrickModel Spatial
+KModel Spatial
 	attribute: #(patch -> 1  2  3  4  5);
 	parameters: #(rho);
 	rho: 0.03;
@@ -30,7 +30,7 @@ KendrickModel Spatial
 		5 -- rho --> 1.
 	).
 		
-KendrickModel SIR
+KModel SIR
 	attribute: #(status -> S I R);
 	parameters: #(beta lambda sigma gamma mu);
 	mu: 0.0000365;
@@ -41,7 +41,7 @@ KendrickModel SIR
 		I -- gamma --> R.
 	).
 
-KendrickModel SEIR
+KModel SEIR
 	extends: 'SIR';
 	parameters: #(sigma);
 	sigma: 0.5;
@@ -76,7 +76,7 @@ TestDependantConcern >> afterBench [
 ModelComponent OneSpeciesSpatial	
 	population: 5000.
 
-KendrickModel Spatial
+KModel Spatial
 	attribute: #(patch -> 1  2  3  4  5);
 	parameters: #(rho);
 	rho: 0.03;
@@ -88,7 +88,7 @@ KendrickModel Spatial
 		5 -- rho --> 1.
 	).
 		
-KendrickModel SIR
+KModel SIR
 	attribute: #(status -> S I R);
 	parameters: #(beta lambda sigma gamma mu);
 	mu: 0.0000365;
@@ -99,7 +99,7 @@ KendrickModel SIR
 		I -- gamma --> R.
 	).
 
-KendrickModel SEIR
+KModel SEIR
 	extends: 'SIR';
 	parameters: #(sigma);
 	sigma: 0.5;

@@ -136,7 +136,7 @@ Composition >> compartments [
 Composition >> concern: aString [
 	|concern|
 
-	concern := KendrickModel withId: aString.
+	concern := KModel withId: aString.
 	(concerns includes: concern) ifFalse: [  "no duplicates"
 		concern extends do: [ :ext | 
 			self concern: ext 
@@ -249,7 +249,7 @@ Composition >> model [
 Composition >> model: aString [
 	|concern|
 
-	concern := KendrickModel withId: aString.
+	concern := KModel withId: aString.
 	(concerns includes: concern) ifFalse: [  "no duplicates"
 		concern extends do: [ :ext | 
 			self concern: ext 

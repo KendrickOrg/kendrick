@@ -29,7 +29,7 @@ ModelComponent Mosquito
 		Empty -- mu --> S.
 	).
 
-KendrickModel SpeciesConcern
+KModel SpeciesConcern
 	attribute: #(species -> mosquito reservoir1 reservoir2).
 		
 Composition MultiMosquito

@@ -6,7 +6,7 @@ Class {
 
 { #category : #'as yet unclassified' }
 TestsDSLSyntaxCreateComposition >> script [
-	KendrickModel SIRDemography
+	KModel SIRDemography
 	attribute: #(status -> S I R);
 	parameters: #(beta lambda gamma b mu);
 	transitions: #(
@@ -17,7 +17,7 @@ TestsDSLSyntaxCreateComposition >> script [
 	);
 	lambda: #(beta*I/N).
 
-	KendrickModel AgeStructure
+	KModel AgeStructure
 	attribute: #(age -> J A);
 	parameters: #(m);
 	transitions: #(
@@ -49,8 +49,8 @@ TestsDSLSyntaxCreateComposition >> tearDown [
 TestsDSLSyntaxCreateComposition >> testCreateModel [ 
 	|model1 model2 model|
 	self script.
-	model1 := KendrickModel withId: 'SIRDemography'.
-	model2 := KendrickModel withId: 'AgeStructure'.
+	model1 := KModel withId: 'SIRDemography'.
+	model2 := KModel withId: 'AgeStructure'.
 	model := Composition withId: 'AgeSIRModel'.
 
 	self assert: (model1 keConcern attributes at: #status) size equals: 3.

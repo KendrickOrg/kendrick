@@ -7,7 +7,7 @@ Class {
 { #category : #'as yet unclassified' }
 TestsModel2 >> script [
 	
-KendrickModel SIR
+KModel SIR
 	attribute: #(status -> S I R);
 	parameters: #(beta lambda gamma mu);
 	lambda: #(beta*I/N);
@@ -17,11 +17,10 @@ KendrickModel SIR
 		status -- mu --> Empty.
 		Empty -- mu --> S.).
 
-KendrickModel Biological
+KModel Biological
 	attribute: #(species -> human bird).
 	
 Composition SIRInfluenza
-	populationSize: 5500;
 	model: 'Biological';
 	model: 'SIR';
 	lambda: #(beta*I/N sum);
