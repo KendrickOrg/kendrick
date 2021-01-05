@@ -268,11 +268,13 @@ Composition >> others: anInteger [
 ]
 
 { #category : #adding }
-Composition >> parameters: anArray [
-	anArray do: [ :p| 
-		parameters at: p put: 0.
-		self model parameters at: p put: 0 ].
-	
+Composition >> parameters: aCollectionOfParameters [
+	"Why do need to initialize parameters to zero ? they might be unitialized. By initializing parameter to zero, we are not able to distinguish an un-initialized parameter from a parameter set to zero."
+
+	aCollectionOfParameters
+		do: [ :p | 
+			parameters at: p put: 0.
+			self model parameters at: p put: 0 ]
 ]
 
 { #category : #'as yet unclassified' }

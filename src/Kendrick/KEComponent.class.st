@@ -31,11 +31,6 @@ KEComponent >> addEquations: aCollectionOfEquations [
 ]
 
 { #category : #'as yet unclassified' }
-KEComponent >> addParameter: aSymbol [
-	self addParameter: aSymbol value: nil
-]
-
-{ #category : #'as yet unclassified' }
 KEComponent >> addParameter: aSymbol value: aNumericalOrAnExpressionOrABlock [
 	|expression|
 	aNumericalOrAnExpressionOrABlock isNumber 
@@ -46,13 +41,6 @@ KEComponent >> addParameter: aSymbol value: aNumericalOrAnExpressionOrABlock [
 		ifFalse: [ expression := aNumericalOrAnExpressionOrABlock ]
 	].
 	parameters at: aSymbol put: (KEParameter new symbol: aSymbol; expression: expression)
-]
-
-{ #category : #'as yet unclassified' }
-KEComponent >> addParameters: input [
-	input do: [ :e| self addParameter: e ]
-	
-	
 ]
 
 { #category : #'as yet unclassified' }

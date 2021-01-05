@@ -33,16 +33,15 @@ Class {
 }
 
 { #category : #adding }
-KEModel >> addParameter: input [
-	self addParameter: input key value: input value
-	
+KEModel >> addParameter: aParameter [
+"A parameter is an association between a symbol and a value"
+	self addParameter: aParameter key value: aParameter value
 ]
 
 { #category : #adding }
-KEModel >> addParameters: input [
-	input do: [ :e| self addParameter: e key value: e value ]
-	
-	
+KEModel >> addParameters: parametersCollection [
+	parametersCollection
+		do: [ :p | self addParameter: p ]
 ]
 
 { #category : #accessing }
