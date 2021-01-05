@@ -1,5 +1,9 @@
 "
 Abstract class of KEConcern and KEModel
+
+
+- parameters: Collection<KEParameter>
+
 "
 Class {
 	#name : #KEComponent,
@@ -30,7 +34,7 @@ KEComponent >> addEquations: aCollectionOfEquations [
 	aCollectionOfEquations do: [ :eachString | self addEquation: eachString ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #parameters }
 KEComponent >> addParameter: aSymbol value: aNumericalOrAnExpressionOrABlock [
 	|expression|
 	aNumericalOrAnExpressionOrABlock isNumber 
@@ -106,7 +110,7 @@ KEComponent >> buildEquations [
 	^eq
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #parameters }
 KEComponent >> changeParameter: aSymbol value: aNumericalOrAnExpressionOrABlock [
 	
 	| expression |
@@ -225,8 +229,9 @@ KEComponent >> mergeEventsWithSameActionsIn: eventList [
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #parameters }
 KEComponent >> parameters [
+"Return collection of KEParameters"
 	^ parameters
 ]
 
