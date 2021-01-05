@@ -3,7 +3,7 @@ A KEParameter represents a parameter in the context of an epidemiological model.
 
 Instance Variables
 	expression:		<Object>
-	symbol:		<Object>
+	symbol:		<Symbol>
 
 expression
 	- is a KEExpression or a Block
