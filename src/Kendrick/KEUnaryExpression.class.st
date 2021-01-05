@@ -50,8 +50,7 @@ KEUnaryExpression >> evaluateWithModel: aModel [
 ]
 
 { #category : #accessing }
-KEUnaryExpression >> expression [ 
-	<MSEProperty: #expression type: #KEExpression>
+KEUnaryExpression >> expression [
 	^ expression
 ]
 
@@ -109,7 +108,6 @@ KEUnaryExpression >> normalize [
 
 { #category : #accessing }
 KEUnaryExpression >> op [
-	<MSEProperty: #op type: #String>
 	^ op
 ]
 

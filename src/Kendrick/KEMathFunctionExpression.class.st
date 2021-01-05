@@ -50,7 +50,6 @@ expressionValue := functionExpr evaluateWithModel: aModel.
 
 { #category : #acessing }
 KEMathFunctionExpression >> functionExpr [
-	<MSEProperty: #functionExpr type: #KEExpression>
 	^ functionExpr
 ]
 
@@ -61,7 +60,6 @@ KEMathFunctionExpression >> functionExpr: anExpression [
 
 { #category : #acessing }
 KEMathFunctionExpression >> functionName [
-	<MSEProperty: #function type: #String>
 	^ functionName
 ]
 
