@@ -42,16 +42,16 @@ KEModelPart class >> extends: aConcern [
 	^ c
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #parameters }
 KEModelPart >> addParameter: aSymbol [
+	"Apparently this is possible to have parameter with un-initialized value in KEModelPart (concern) but not for KEModel"
+
 	self addParameter: aSymbol value: nil
 ]
 
-{ #category : #'as yet unclassified' }
-KEModelPart >> addParameters: input [
-	input do: [ :e| self addParameter: e ]
-	
-	
+{ #category : #parameters }
+KEModelPart >> addParameters: collectionOfParameters [
+	collectionOfParameters do: [ :p | self addParameter: p ]
 ]
 
 { #category : #general }

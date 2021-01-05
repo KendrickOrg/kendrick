@@ -32,13 +32,13 @@ Class {
 	#category : #'Kendrick-Core'
 }
 
-{ #category : #adding }
+{ #category : #parameters }
 KEModel >> addParameter: aParameter [
 "A parameter is an association between a symbol and a value"
 	self addParameter: aParameter key value: aParameter value
 ]
 
-{ #category : #adding }
+{ #category : #parameters }
 KEModel >> addParameters: parametersCollection [
 	parametersCollection
 		do: [ :p | self addParameter: p ]
@@ -98,7 +98,7 @@ KEModel >> atCompartment: keyInput put: aNumber1 atOthersPut: aNumber2 [
 				ifFalse: [ self atCompartment: k put: aNumber2 ] ]
 ]
 
-{ #category : #accessing }
+{ #category : #parameters }
 KEModel >> atParameter: aSymbol [
 	|p|
 	p := (self parameters at: aSymbol ifAbsent: [ nil ]).
@@ -107,7 +107,7 @@ KEModel >> atParameter: aSymbol [
 	
 ]
 
-{ #category : #accessing }
+{ #category : #parameters }
 KEModel >> atParameter: aSymbol assignValue: value [
 	self addParameter: aSymbol value: value 
 	
