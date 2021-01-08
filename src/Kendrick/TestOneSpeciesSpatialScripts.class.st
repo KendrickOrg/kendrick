@@ -142,7 +142,7 @@ model atParameter: #beta assignValue: [ :aModel| |c val|
  model atParameter: #gamma assignValue: 0.25.
  model atParameter: #N assignValue: [ :aModel| |c| 
      c := aModel currentCompartment at: #patch.
-     aModel sizeOfPopulation: c asArray
+     aModel sizeOfPopulation: {c} 
      ].
  model atParameter: #rho assignValue: 0.03. 
  model atParameter: #lambda assignValue: [ :aModel| |c|
