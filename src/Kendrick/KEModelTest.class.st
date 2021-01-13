@@ -114,21 +114,20 @@ KEModelTest >> testAtCompartment2 [
 
 { #category : #tests }
 KEModelTest >> testAtCompartmentPut [
-	|model|
+	| model |
 	model := KEModel new.
-	model addAttribute: #status value: #(S I R).
-	model atCompartment: { #status->#S } put: 100000.
-	self assert: (model atCompartment: {#status->#S}) equals: 100000.
-	
+	model attributes:{#status ->  #(S I R)}.
+	model atCompartment: {(#status -> #S)} put: 100000.
+	self assert: (model atCompartment: {(#status -> #S)}) equals: 100000
 ]
 
 { #category : #tests }
 KEModelTest >> testAtCompartmentPutAtOthersPut [
-	|model|
+	| model |
 	model := KEModel new.
-	model addAttribute: #status value: #(S I R).
-	model atCompartment: { #status->#S } put: 100000 atOthersPut: 0.
-	self assert: (model atCompartment: {#status->#S}) equals: 100000.
+	model attributes:{#status -> #(S I R)}.
+	model atCompartment: {(#status -> #S)} put: 100000 atOthersPut: 0.
+	self assert: (model atCompartment: {(#status -> #S)}) equals: 100000
 ]
 
 { #category : #tests }

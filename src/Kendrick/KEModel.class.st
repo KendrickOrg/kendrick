@@ -7,7 +7,11 @@ Instance Variables
 	parameters:		<Dictionary>
 	population:		<KEPopulation>
 	temporalParameters:		<Dictionary>
-
+	concerns: Collection of concerns 
+	
+concerns:
+	- a collection of concerns (this collection is not used that much in the code)
+	
 equations
 	- a collection of ordinary differential equations
 
