@@ -10,7 +10,7 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSEIRMeaslesModel [
 
 	| model simulator diag |
 	model := KEModel new.
-	model addAttribute: #status value: #(S E I R).
+	model attributes: {#status -> #(S E I R)}.
 	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 1.
 	model
@@ -19,21 +19,46 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSEIRMeaslesModel [
 			(#gamma -> 0.143).
 			(#mu -> 0.0000351).
 			(#sigma -> 0.125)}.
-	model addTransitionFrom: {(#status -> #S)} to: {(#status -> #E)} probability: [ :m | (m atParameter: #beta) * (m atCompartment: {(#status -> #I)}) ].
-	model addTransitionFrom: {(#status -> #E)} to: {(#status -> #I)} probability: [ :m | m atParameter: #sigma ].
-	model addTransitionFrom: {(#status -> #I)} to: {(#status -> #R)} probability: [ :m | m atParameter: #gamma ].
-	model addTransitionFrom: {(#status -> #S)} to: #empty probability: [ :m | m atParameter: #mu ].
-	model addTransitionFrom: {(#status -> #I)} to: #empty probability: [ :m | m atParameter: #mu ].
-	model addTransitionFrom: {(#status -> #R)} to: #empty probability: [ :m | m atParameter: #mu ].
-	model addTransitionFrom: {(#status -> #E)} to: #empty probability: [ :m | m atParameter: #mu ].
-	model addTransitionFrom: #empty to: {(#status -> #S)} probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #S)}
+		to: {(#status -> #E)}
+		probability: [ :m | (m atParameter: #beta) * (m atCompartment: {(#status -> #I)}) ].
+	model
+		addTransitionFrom: {(#status -> #E)}
+		to: {(#status -> #I)}
+		probability: [ :m | m atParameter: #sigma ].
+	model
+		addTransitionFrom: {(#status -> #I)}
+		to: {(#status -> #R)}
+		probability: [ :m | m atParameter: #gamma ].
+	model
+		addTransitionFrom: {(#status -> #S)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #I)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #R)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #E)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: #empty
+		to: {(#status -> #S)}
+		probability: [ :m | m atParameter: #mu ].
 	simulator := KESimulator
 		new: #IBM
 		from: 0.0
 		to: 150
 		step: 1.
 	simulator executeOn: model.
-	diag := KEDiagramBuilder new addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	diag := KEDiagramBuilder new
+		addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
 	diag open
 ]
 
@@ -114,15 +139,21 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModel [
 
 	| model simulator dB |
 	model := KEModel new.
-	model addAttribute: #status value: #(#S #I #R).
+	model attributes:{#status -> #(#S #I #R)}.
 	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 1.
 	model
 		addParameters:
 			{(#beta -> 0.0052).
 			(#gamma -> 52)}.
-	model addTransitionFrom: {(#status -> #S)} to: {(#status -> #I)} probability: [ :m | (m atParameter: #beta) * (m atCompartment: {(#status -> #I)}) ].
-	model addTransitionFrom: {(#status -> #I)} to: {(#status -> #R)} probability: [ :m | m atParameter: #gamma ].
+	model
+		addTransitionFrom: {(#status -> #S)}
+		to: {(#status -> #I)}
+		probability: [ :m | (m atParameter: #beta) * (m atCompartment: {(#status -> #I)}) ].
+	model
+		addTransitionFrom: {(#status -> #I)}
+		to: {(#status -> #R)}
+		probability: [ :m | m atParameter: #gamma ].
 	simulator := KESimulator
 		new: #IBM
 		from: 0.0
@@ -140,65 +171,103 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModel2 [
 
 	| model simulator db |
 	model := KEModel new.
-	model addAttribute: #status value: #(#S #I #R).
+	model attributes:{#status -> #(#S #I #R)}.
 	model atCompartment: {(#status -> #S)} put: 99 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 1.
 	model
 		addParameters:
 			{(#beta -> 0.01).
 			(#gamma -> 0.1)}.
-	model addTransitionFrom: {(#status -> #S)} to: {(#status -> #I)} probability: [ :aModel | (aModel atParameter: #beta) * (aModel atCompartment: {(#status -> #I)}) ].
-	model addTransitionFrom: {(#status -> #I)} to: {(#status -> #R)} probability: [ :m | m atParameter: #gamma ].
+	model
+		addTransitionFrom: {(#status -> #S)}
+		to: {(#status -> #I)}
+		probability: [ :aModel | 
+			(aModel atParameter: #beta)
+				* (aModel atCompartment: {(#status -> #I)}) ].
+	model
+		addTransitionFrom: {(#status -> #I)}
+		to: {(#status -> #R)}
+		probability: [ :m | m atParameter: #gamma ].
 	simulator := KESimulator
 		new: #IBM
 		from: 0.0
 		to: 50
 		step: 0.1.
 	simulator executeOn: model.
-	db := KEDiagramBuilder new addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	db := KEDiagramBuilder new
+		addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
 	db open
 ]
 
 { #category : #examples }
-KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithBansalIdea [ 
+KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithBansalIdea [
 	"self new exampleIBMSimulatorOnSIRModelWithBansalIdea"
-	|model network spatialConcern sirConcern simulator db f|
+
+	| model network spatialConcern sirConcern simulator db f |
 	model := KEModel new.
 	sirConcern := KEModelPart new.
-	sirConcern addAttribute: #status value: #(S I R). 
-	sirConcern addParameters: { #beta. #gamma. #lambda }.
-	sirConcern addTransitionFrom: { #status->#S } to: { #status->#I } probability: 'lambda'.
-	sirConcern addTransitionFrom: { #status->#I } to: { #status->#R } probability: 'gamma'.
-	
+	sirConcern attributes: {#status -> #(S I R)}.
+	sirConcern addParameters: {#beta . #gamma . #lambda}.
+	sirConcern
+		addTransitionFrom: {(#status -> #S)}
+		to: {(#status -> #I)}
+		probability: 'lambda'.
+	sirConcern
+		addTransitionFrom: {(#status -> #I)}
+		to: {(#status -> #R)}
+		probability: 'gamma'.
 	spatialConcern := KEModelPart new.
-	network := KEContactNetwork nodes: 100 topology: { #random. #p->1 }.
+	network := KEContactNetwork
+		nodes: 100
+		topology:
+			{#random.
+			(#p -> 1)}.
 	network generateTransitions: spatialConcern.
 	spatialConcern addParameter: #network value: network.
 	spatialConcern addAttribute: #node value: network allContacts.
-	spatialConcern addParameter: #allConnects value: network edges size. 
-	spatialConcern addParameter: #iota value: [ :aModel|
-		((aModel atParameter: #network) edgesFrom: {aModel. #I}) / (aModel atParameter: #allConnects).
-	 ].
-	
+	spatialConcern addParameter: #allConnects value: network edges size.
+	spatialConcern
+		addParameter: #iota
+		value: [ :aModel | 
+			((aModel atParameter: #network)
+				edgesFrom:
+					{aModel.
+					#I}) / (aModel atParameter: #allConnects) ].
 	model integrate: sirConcern.
 	model integrate: spatialConcern.
-	model atParameter: #lambda assignValue: [ :aModel|
-		(aModel atParameter: #iota)*(aModel atParameter: #beta)
-	 ].
+	model
+		atParameter: #lambda
+		assignValue:
+			[ :aModel | (aModel atParameter: #iota) * (aModel atParameter: #beta) ].
 	model atParameter: #beta assignValue: 1.
 	model atParameter: #gamma assignValue: 0.1.
-	1 to: 99 do: [:i| model atCompartment: {#status->#S. #node->i asString asSymbol} put: 1].
-	model atCompartment: { #status->#I. #node->#'100' } put: 1.
-	simulator := KESimulator new: #IBM from: 0.0 to: 50 step: 0.1.
+	1 to: 99 do: [ :i | 
+		model
+			atCompartment:
+				{(#status -> #S).
+				(#node -> i asString asSymbol)}
+			put: 1 ].
+	model
+		atCompartment:
+			{(#status -> #I).
+			(#node -> #'100')}
+		put: 1.
+	simulator := KESimulator
+		new: #IBM
+		from: 0.0
+		to: 50
+		step: 0.1.
 	simulator executeOn: model.
-	f := [:name| |d tmp|
-		tmp := (simulator timeSeriesOutputsAt: name) collect: [ :e| e value ].
-		d := OrderedCollection new.
-		1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
-		(KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)
-		].
-	db := KEDiagramBuilder new data: { (f value: '{#status:#I}') }.
-	db open.
+	f := [ :name | 
+	| d tmp |
+	tmp := (simulator timeSeriesOutputsAt: name)
+		collect: [ :e | e value ].
+	d := OrderedCollection new.
+	1 to: tmp first data size do: [ :k | d add: (tmp collect: [ :e | e data at: k ]) sum ].
+	(KETimeSeries from: d withIndex: tmp first index)
+		compartment: (STON fromString: name) ].
+	db := KEDiagramBuilder new data: {(f value: '{#status:#I}')}.
+	db open
 ]
 
 { #category : #examples }
@@ -264,19 +333,43 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRMultiHostModel [
 
 	| model multiHostConcern simulator db |
 	multiHostConcern := KEModelPart new.
-	multiHostConcern addAttribute: #species value: #(#mosquito #reservoir1 #reservoir2).
+	multiHostConcern
+		addAttribute: #species
+		value: #(#mosquito #reservoir1 #reservoir2).
 	model := KEModel new.
-	model addAttribute: #status value: #(#S #I #R).
+	model attributes:{#status -> #(#S #I #R)}.
 	model addParameter: #mu value: 12.17.
 	model addParameter: #gamma value: 52.
 	model addParameter: #beta value: 1.
-	model addParameter: #lambda value: [ :aModel | (aModel atParameter: #beta) * (aModel atCompartment: {(#status -> #I)}) ].
-	model addTransitionFrom: {(#status -> #S)} to: {(#status -> #I)} probability: [ :m | m atParameter: #lambda ].
-	model addTransitionFrom: {(#status -> #I)} to: {(#status -> #R)} probability: [ :m | m atParameter: #gamma ].
-	model addTransitionFrom: {(#status -> #S)} to: #empty probability: [ :m | m atParameter: #mu ].
-	model addTransitionFrom: {(#status -> #I)} to: #empty probability: [ :m | m atParameter: #mu ].
-	model addTransitionFrom: {(#status -> #R)} to: #empty probability: [ :m | m atParameter: #mu ].
-	model addTransitionFrom: #empty to: {(#status -> #S)} probability: [ :m | m atParameter: #mu ].
+	model
+		addParameter: #lambda
+		value: [ :aModel | 
+			(aModel atParameter: #beta)
+				* (aModel atCompartment: {(#status -> #I)}) ].
+	model
+		addTransitionFrom: {(#status -> #S)}
+		to: {(#status -> #I)}
+		probability: [ :m | m atParameter: #lambda ].
+	model
+		addTransitionFrom: {(#status -> #I)}
+		to: {(#status -> #R)}
+		probability: [ :m | m atParameter: #gamma ].
+	model
+		addTransitionFrom: {(#status -> #S)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #I)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #R)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: #empty
+		to: {(#status -> #S)}
+		probability: [ :m | m atParameter: #mu ].
 	model integrate: multiHostConcern.
 	model
 		atParameter: #mu
@@ -308,7 +401,11 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRMultiHostModel [
 			c = #reservoir2
 				ifTrue: [ val := #(0.02 0 0) ].
 			val ].
-	model atParameter: #lambda assignValue: [ :aModel | ((aModel atParameter: #beta) * (aModel atParameter: #rho) * (aModel atCompartment: {(#status -> #I)})) sum ].
+	model
+		atParameter: #lambda
+		assignValue: [ :aModel | 
+			((aModel atParameter: #beta) * (aModel atParameter: #rho)
+				* (aModel atCompartment: {(#status -> #I)})) sum ].
 	model
 		atCompartment:
 			{(#status -> #S).
@@ -360,7 +457,8 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRMultiHostModel [
 		to: 0.5
 		step: 0.0027.
 	simulator executeOn: model.
-	db := KEDiagramBuilder new addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}) sqrt.
+	db := KEDiagramBuilder new
+		addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}) sqrt.
 	db open
 ]
 

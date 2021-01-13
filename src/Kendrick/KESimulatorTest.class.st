@@ -13,13 +13,18 @@ KESimulatorTest >> testAfterSimulationOfSIRModelThereAreThreeTimeSeries [
 	model atCompartment: {(#status -> #I)} put: 1.
 	model
 		addParameters:
-			{(#beta -> 520).
-			(#gamma -> 52)}.
+			{#beta -> 520.
+			#gamma -> 52}.
 	model
 		addTransitionFrom: {(#status -> #S)}
 		to: {(#status -> #I)}
-		probability: [ :m | (m atParameter: #beta) * (m atCompartment: {(#status -> #I)}) / (m atParameter: #N) ].
-	model addTransitionFrom: {(#status -> #I)} to: {(#status -> #R)} probability: [ :m | model atParameter: #gamma ].
+		probability: [ :m | 
+			(m atParameter: #beta) * (m atCompartment: {(#status -> #I)})
+				/ (m atParameter: #N) ].
+	model
+		addTransitionFrom: {(#status -> #I)}
+		to: {(#status -> #R)}
+		probability: [ :m | model atParameter: #gamma ].
 	simulator := KESimulator
 		new: #Gillespie
 		from: 0.0

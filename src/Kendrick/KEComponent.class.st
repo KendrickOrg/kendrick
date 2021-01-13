@@ -1,8 +1,8 @@
 "
 Abstract class of KEConcern and KEModel
 
-
-- parameters: Collection<KEParameter>
+- parameters: Collection <KEParameter>
+- attributes: Dictionary of attribute (attribute name -> possible values)
 
 "
 Class {
@@ -78,12 +78,14 @@ KEComponent >> atAttribute: aSymbol add: aValue [
 
 { #category : #accessing }
 KEComponent >> attributes [
+"Return attributes as a Dictionary"
 	^ attributes
 ]
 
 { #category : #modifying }
 KEComponent >> attributes: inputArray [
-	"Input array is an array of associations like {#status->#(#S #I #R). #age->#(#child #adult)}"
+	"Input array is an array of associations like {#status->#(#S #I #R). #age->#(#child #adult)}
+	Should be deprecated because we should be able to add only one attributes. Multiple attributes are set when we sum multiple concerns."
 
 	attributes := Dictionary newFrom: inputArray
 ]
