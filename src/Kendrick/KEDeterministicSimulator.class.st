@@ -1,5 +1,5 @@
 "
-A KEDeterministicSimulator is the deterministic simulation of the system.
+A KEDeterministicSimulator is the deterministic simulation of an epidemiological model.
 
 "
 Class {
