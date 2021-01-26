@@ -49,9 +49,8 @@ KEGillespieSimulator >> executeOn: aModel [
 			r1 := rand1 next.
 			r2 := rand2 next.
 			deltaT := self doGillespieIteration: t.
-			"enlever pour voir ce qui se passe"
-			deltaT = 0.0
-				ifTrue: [ ^ self ].
+			deltaT = 0
+				ifTrue: [ ^ self ]. "Stop the iteration if deltaT is zero"
 			t := t + deltaT.
 			"Only store in the result from step to step"
 			t > (previousT + step)
