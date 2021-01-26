@@ -14,10 +14,11 @@ Class {
 
 { #category : #public }
 KEGillespieSimulator >> doGillespieIteration: t [
-	| rates deltaT chosen |
+	| rates deltaT chosen transitions |
 	rates := OrderedCollection new.
 	model t: t.
-	model transitions
+	transitions := model transitions.
+	transitions
 		do: [ :tr | 
 			| prob |
 			(tr from at: #status) = #empty
@@ -30,7 +31,7 @@ KEGillespieSimulator >> doGillespieIteration: t [
 		ifTrue: [ ^ 0.0 ].
 	deltaT := rand2 next ln negated / rates sum.
 	chosen := self rouletteWheelSelectAmong: rates.
-	(model transitions at: chosen) executeOn: model times: 1.
+	(transitions at: chosen) executeOn: model times: 1.
 	^ deltaT
 ]
 
@@ -61,14 +62,18 @@ KEGillespieSimulator >> executeOn: aModel [
 { #category : #public }
 KEGillespieSimulator >> rouletteWheelSelectAmong: rates [
 	"Step 6 of the Gillespie's direct algorithm
-	Implementation of the roulette wheel selection"
+	Implementation of the roulette wheel selection
+	also called fitness proportionate selection in GA
+	https://en.wikipedia.org/wiki/Fitness_proportionate_selection
+	"
 
-	| sum count r |
+	| sum count r proportion |
 	r := rand1 next.
 	sum := rates sum.
+	proportion := sum * r.
 	count := 0.
 	1 to: rates size do: [ :i | 
 		count := count + (rates at: i).
-		count >= (sum * r)
+		count >= proportion
 			ifTrue: [ ^ i ] ]
 ]
