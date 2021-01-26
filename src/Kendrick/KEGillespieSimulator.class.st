@@ -48,8 +48,8 @@ KEGillespieSimulator >> executeOn: aModel [
 		whileTrue: [ | deltaT r1 r2 |
 			r1 := rand1 next.
 			r2 := rand2 next.
-			deltaT := self
-				doGillespieIteration: t.
+			deltaT := self doGillespieIteration: t.
+			"enlever pour voir ce qui se passe"
 			deltaT = 0.0
 				ifTrue: [ ^ self ].
 			t := t + deltaT.
@@ -73,8 +73,9 @@ KEGillespieSimulator >> rouletteWheelSelectAmong: rates [
 	sum := rates sum.
 	proportion := sum * r.
 	accumulator := 0.
-	rates doWithIndex: [ :i :each| 
-		accumulator := accumulator + each.
-		accumulator >= proportion
-			ifTrue: [ ^ i ] ]
+	rates
+		doWithIndex: [ :each :i | 
+			accumulator := accumulator + each.
+			accumulator >= proportion
+				ifTrue: [ ^ i ] ]
 ]
