@@ -65,15 +65,16 @@ KEGillespieSimulator >> rouletteWheelSelectAmong: rates [
 	Implementation of the roulette wheel selection
 	also called fitness proportionate selection in GA
 	https://en.wikipedia.org/wiki/Fitness_proportionate_selection
+	We are using here a linear walk, a bisecting walk would be faster.
 	"
 
-	| sum count r proportion |
+	| sum accumulator r proportion |
 	r := rand1 next.
 	sum := rates sum.
 	proportion := sum * r.
-	count := 0.
-	1 to: rates size do: [ :i | 
-		count := count + (rates at: i).
-		count >= proportion
+	accumulator := 0.
+	rates doWithIndex: [ :i :each| 
+		accumulator := accumulator + each.
+		accumulator >= proportion
 			ifTrue: [ ^ i ] ]
 ]
