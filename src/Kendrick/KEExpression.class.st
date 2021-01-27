@@ -8,13 +8,6 @@ Class {
 	#category : #'Kendrick-Core'
 }
 
-{ #category : #meta }
-KEExpression class >> annotation [
-	<MSEClass: #Expression super: #KEEntity >
-	<package: #KE>
-	^ self
-]
-
 { #category : #testing }
 KEExpression >> addExpression: anExpression [
 	^ KEBinaryExpression new

@@ -146,23 +146,6 @@ KEDiagramBuilder >> plot [
 ]
 
 { #category : #'as yet unclassified' }
-KEDiagramBuilder >> roassal3plot [
-	| c p x y |
-	c := RSChart new.
-	1 to: legends size do: [ :i | 
-		p := RSLinePlot new.
-		x := (data at: i) rowNames.
-		y := x collect: [ :j | ((data at: i) row: j) contents first ].
-		p x: x y: y.
-		c addPlot: p ].
-	c addDecoration: RSVerticalTick new integer.
-	c addDecoration: RSHorizontalTick new integer.
-	c xlabel: 'Time (days)'.
-	c ylabel: 'Number of individuals'.
-	^ c
-]
-
-{ #category : #'as yet unclassified' }
 KEDiagramBuilder >> view [
 	^ self build view
 ]

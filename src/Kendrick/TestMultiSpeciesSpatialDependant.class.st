@@ -17,10 +17,10 @@ TestMultiSpeciesSpatialDependant >> after [
 
 ModelComponent Infuenza.
 	
-KendrickModel Biological
+KModel Biological
 	attribute: #(species -> human bird).
 	
-KendrickModel Demographical
+KModel Demographical
 	attribute: #(patch -> 1  2  3  4  5);
 	parameters: #(rho);
 	rho: 0.03;
@@ -32,7 +32,7 @@ KendrickModel Demographical
 		5 -- rho --> 1.
 	).
 		
-KendrickModel SIR
+KModel SIR
 	attribute: #(status -> S I R);
 	parameters: #(beta lambda gamma mu v);
 	gamma: 0.25;
@@ -43,7 +43,7 @@ KendrickModel SIR
 		R -- v --> S.
 	).	
 		
-KendrickModel SEIR
+KModel SEIR
 	extends: 'SIR';
 	parameters: #(sigma);
 	addTransition:	#(Empty -- mu --> S.);
@@ -51,7 +51,6 @@ KendrickModel SEIR
 	delay: #(sigma , S -- lambda --> I  , E).
 		
 Composition MultiSpeciesSpatial
-	populationSize: 27500;
 	model: 'Demographical';
 	model: 'Biological';
 	model: 'SEIR';
@@ -93,10 +92,10 @@ TestMultiSpeciesSpatialDependant >> afterBench [
 
 ModelComponent Infuenza.
 	
-KendrickModel Biological
+KModel Biological
 	attribute: #(species -> human bird).
 	
-KendrickModel Demographical
+KModel Demographical
 	attribute: #(patch -> 1  2  3  4  5);
 	parameters: #(rho);
 	rho: 0.03;
@@ -108,7 +107,7 @@ KendrickModel Demographical
 		5 -- rho --> 1.
 	).
 		
-KendrickModel SIR
+KModel SIR
 	attribute: #(status -> S I R);
 	parameters: #(beta lambda gamma mu v);
 	gamma: 0.25;
@@ -119,7 +118,7 @@ KendrickModel SIR
 		R -- v --> S.
 	).	
 		
-KendrickModel SEIR
+KModel SEIR
 	extends: 'SIR';
 	parameters: #(sigma);
 	addTransition:	#(Empty -- mu --> S.);

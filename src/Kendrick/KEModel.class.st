@@ -1,27 +1,28 @@
 "
-A KEModel represents a mathematical model of epidemiology. It contains a population on which the disease is studied, a list of ODEs, a list of common parameters and a simulator.
+A KEModel represents a mathematical model of epidemiology.
+It contains a population on which the disease is studied, a list of ODEs, a list of parameters.
 
 Instance Variables
 	equations:		<OrderedCollection>
 	parameters:		<Dictionary>
 	population:		<KEPopulation>
-	populationIDs:		<OrderedCollection>
 	temporalParameters:		<Dictionary>
-
+	concerns: Collection of concerns 
+	
+concerns:
+	- a collection of concerns (this collection is not used that much in the code)
+	
 equations
-	- a list of ordinary differential equations
+	- a collection of ordinary differential equations
 
 parameters
-	- a list of common parameters of model
+	- a collection of parameters of model
 
 population
 	- a population on which the epidemic is investigated
 
-populationIDs
-	- each sub-population in population has an ID. This variable gets all the sub-population IDs
-
 temporalParameters
-	- Beside the fixed parameter, during runtime, model will have some parameters that will be changed depending on current context. The temporalParameters variable store all these values.
+	- beside the fixed parameter, during runtime, model will have some parameters that will be changed depending on current context. The temporalParameters variable store all these values.
 
 "
 Class {
@@ -35,17 +36,16 @@ Class {
 	#category : #'Kendrick-Core'
 }
 
-{ #category : #adding }
-KEModel >> addParameter: input [
-	self addParameter: input key value: input value
-	
+{ #category : #parameters }
+KEModel >> addParameter: aParameter [
+"A parameter is an association between a symbol and a value"
+	self addParameter: aParameter key value: aParameter value
 ]
 
-{ #category : #adding }
-KEModel >> addParameters: input [
-	input do: [ :e| self addParameter: e key value: e value ]
-	
-	
+{ #category : #parameters }
+KEModel >> addParameters: parametersCollection [
+	parametersCollection
+		do: [ :p | self addParameter: p ]
 ]
 
 { #category : #accessing }
@@ -102,7 +102,7 @@ KEModel >> atCompartment: keyInput put: aNumber1 atOthersPut: aNumber2 [
 				ifFalse: [ self atCompartment: k put: aNumber2 ] ]
 ]
 
-{ #category : #accessing }
+{ #category : #parameters }
 KEModel >> atParameter: aSymbol [
 	|p|
 	p := (self parameters at: aSymbol ifAbsent: [ nil ]).
@@ -111,7 +111,7 @@ KEModel >> atParameter: aSymbol [
 	
 ]
 
-{ #category : #accessing }
+{ #category : #parameters }
 KEModel >> atParameter: aSymbol assignValue: value [
 	self addParameter: aSymbol value: value 
 	
@@ -230,6 +230,7 @@ KEModel >> name [
 
 { #category : #'as yet unclassified' }
 KEModel >> nextCompartment [
+
 	^ self parameters at: #nextCompartment ifAbsent: [ nil ]
 ]
 
@@ -249,21 +250,13 @@ KEModel >> population: aPopulation [
 	population := aPopulation
 ]
 
-{ #category : #'as yet unclassified' }
-KEModel >> sizeOfPopulation [
-	^ population size
-]
-
 { #category : #accessing }
-KEModel >> sizeOfPopulation: anArrayOfValues [
-	"anArrayOfValues describe a subpopulation like {#S. #human. #female}. Returns the nb of individus that verify this property"
+KEModel >> sizeOfPopulation: aCompartmentArray [
 
-	| array |
-	array := OrderedCollection new.
-	anArrayOfValues isArray
-		ifTrue: [ array addAll: anArrayOfValues ]
-		ifFalse: [ array add: anArrayOfValues ].
-	^ self population sizeOfPopulation: array
+	"aCompartmentArray describe a subpopulation like {#S. #human. #female}. Returns the cardinality of compartments that verify this property
+	call sizeOfPopulation: on the population"
+
+	^ self population sizeOfPopulation: aCompartmentArray
 ]
 
 { #category : #accessing }

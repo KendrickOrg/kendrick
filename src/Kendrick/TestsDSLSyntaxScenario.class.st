@@ -6,7 +6,7 @@ Class {
 
 { #category : #'as yet unclassified' }
 TestsDSLSyntaxScenario >> script [ 
-	KendrickModel SIRDemography
+	KModel SIRDemography
 	attribute: #(status -> S I R);
 	parameters: #(beta lambda gamma b mu);
 	transitions: #(
@@ -17,7 +17,7 @@ TestsDSLSyntaxScenario >> script [
 	);
 	lambda: #(beta*I/N).
 
-	KendrickModel AgeStructure
+	KModel AgeStructure
 	attribute: #(age -> J A);
 	parameters: #(m);
 	transitions: #(

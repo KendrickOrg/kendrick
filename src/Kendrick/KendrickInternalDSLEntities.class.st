@@ -1,3 +1,6 @@
+"
+storedInstances: <OrderedCollection> all Kendrick entities are stored here
+"
 Class {
 	#name : #KendrickInternalDSLEntities,
 	#superclass : #Object,
@@ -18,8 +21,7 @@ KendrickInternalDSLEntities class >> cleanUpForInteractiveSessions [
 
 	"self cleanUpForInteractiveSessions"
 
-	KendrickInternalDSLEntities clearAll.
-	"MooseModel resetMeta."
+	KendrickInternalDSLEntities clearAll
 ]
 
 { #category : #'as yet unclassified' }
@@ -48,30 +50,29 @@ KendrickInternalDSLEntities class >> currentProjectDir: aProjectDir [
 
 { #category : #'as yet unclassified' }
 KendrickInternalDSLEntities class >> doesNotUnderstand: aMessage [
-	
+	"If there is a Kendrick entity with same name, remove it"
 
-	
-	[self storedInstances 
-		remove: (self storedInstances detect: [:i | 
-			i id asSymbol = aMessage selector  ])] 
-		on: NotFound do: [  ].
+	[ 
+	self storedInstances remove: (self storedInstances detect: [ :i | 
+			 i id asSymbol = aMessage selector ]) ]
+		on: NotFound
+		do: [  ].
 
+	"Create a new instance of KendrickModel with the selector as ID"
 	^ self new id: aMessage selector
 ]
 
 { #category : #'as yet unclassified' }
 KendrickInternalDSLEntities class >> entityExistsIn: path [
-	
-	path exists 	
-				ifTrue: [ 
-					|rs entity|
-					rs :=  path readStream. 
-					entity := Compiler evaluate: rs upToEnd.
-					rs close.  
-					^ entity
-				]
-				ifFalse: [ NotFoundError signal: 'NO such entity: ' , path asString ]	
-			
+
+	path exists
+		ifTrue: [ 
+			| rs entity |
+			rs := path readStream.
+			entity := OpalCompiler evaluate: rs upToEnd.
+			rs close.
+			^ entity ]
+		ifFalse: [ NotFound signal: 'No such entity: ' , path asString ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -94,17 +95,16 @@ KendrickInternalDSLEntities class >> new [
 
 { #category : #'as yet unclassified' }
 KendrickInternalDSLEntities class >> pathLookUpFor: anId [
-	
-	|inDisk|
-	
-	inDisk := (self entityFilesDir: self currentProjectDir) / self asString / (anId asString , '.kendrick'). "currentProject"
-	[^ self entityExistsIn: inDisk] 
-		on: NotFoundError
-		do: [  
-			inDisk := self entityFilesDir / self asString / (anId asString , '.kendrick'). "library"
-			^ self entityExistsIn: inDisk.
-		]
-			
+
+	| inDisk |
+	inDisk := (self entityFilesDir: self currentProjectDir)
+	          / self asString / (anId asString , '.kendrick'). "currentProject"
+	[ ^ self entityExistsIn: inDisk ]
+		on: NotFound
+		do: [ 
+			inDisk := self entityFilesDir / self asString
+			          / (anId asString , '.kendrick'). "library"
+			^ self entityExistsIn: inDisk ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -115,15 +115,13 @@ KendrickInternalDSLEntities class >> storedInstances [
 
 { #category : #'as yet unclassified' }
 KendrickInternalDSLEntities class >> withId: anId [
-	
-	|inImage inDisk|
 
-	inImage := (self storedInstances select: [ :instance | instance id = anId ]).
-	inImage isEmpty 	
+	| inImage |
+	inImage := self storedInstances select: [ :instance | 
+		           instance id = anId ].
+	inImage isEmpty
 		ifFalse: [ ^ inImage first ]
-		ifTrue: [  
-			^ self pathLookUpFor: anId
-		]
+		ifTrue: [ ^ self pathLookUpFor: anId ]
 ]
 
 { #category : #'as yet unclassified' }

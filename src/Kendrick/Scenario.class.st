@@ -106,7 +106,7 @@ Scenario >> addCompositeParameter: variablePlusAttributes value: value [
 { #category : #adding }
 Scenario >> addCompositeParameterWithTwoAttributes: variablePlusAttributes value: value [
 
-	|entities entityForSecond entityForThird |
+	| entityForSecond entityForThird |
 	
 	"should we remove entities because the model will be passed as argument of the block (aModel) has all
 	necessary information?"

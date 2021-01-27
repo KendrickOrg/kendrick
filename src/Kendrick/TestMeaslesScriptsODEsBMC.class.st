@@ -15,7 +15,7 @@ Class {
 { #category : #'as yet unclassified' }
 TestMeaslesScriptsODEsBMC >> after [
 
-KendrickModel SEIR
+KModel SEIR
 	attribute: #(status -> S E I R);
 	parameters: #(beta sigma gamma mu);
 	equations: #(
@@ -37,7 +37,6 @@ Scenario MeaslesParameters
     
 Scenario MeaslesPopulation
     on: 'Measles';
-    populationSize: 100000;
     S: 99999;
     I: 1;
     others: 0.

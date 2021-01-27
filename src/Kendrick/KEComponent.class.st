@@ -1,5 +1,9 @@
 "
 Abstract class of KEConcern and KEModel
+
+- parameters: Collection <KEParameter>
+- attributes: Dictionary of attribute (attribute name -> possible values)
+
 "
 Class {
 	#name : #KEComponent,
@@ -30,12 +34,7 @@ KEComponent >> addEquations: aCollectionOfEquations [
 	aCollectionOfEquations do: [ :eachString | self addEquation: eachString ]
 ]
 
-{ #category : #'as yet unclassified' }
-KEComponent >> addParameter: aSymbol [
-	self addParameter: aSymbol value: nil
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #parameters }
 KEComponent >> addParameter: aSymbol value: aNumericalOrAnExpressionOrABlock [
 	|expression|
 	aNumericalOrAnExpressionOrABlock isNumber 
@@ -46,13 +45,6 @@ KEComponent >> addParameter: aSymbol value: aNumericalOrAnExpressionOrABlock [
 		ifFalse: [ expression := aNumericalOrAnExpressionOrABlock ]
 	].
 	parameters at: aSymbol put: (KEParameter new symbol: aSymbol; expression: expression)
-]
-
-{ #category : #'as yet unclassified' }
-KEComponent >> addParameters: input [
-	input do: [ :e| self addParameter: e ]
-	
-	
 ]
 
 { #category : #'as yet unclassified' }
@@ -86,12 +78,14 @@ KEComponent >> atAttribute: aSymbol add: aValue [
 
 { #category : #accessing }
 KEComponent >> attributes [
+"Return attributes as a Dictionary"
 	^ attributes
 ]
 
 { #category : #modifying }
 KEComponent >> attributes: inputArray [
-	"Input array is an array of associations like {#status->#(#S #I #R). #age->#(#child #adult)}"
+	"Input array is an array of associations like {#status->#(#S #I #R). #age->#(#child #adult)}
+	Should be deprecated because we should be able to add only one attributes. Multiple attributes are set when we sum multiple concerns."
 
 	attributes := Dictionary newFrom: inputArray
 ]
@@ -118,7 +112,7 @@ KEComponent >> buildEquations [
 	^eq
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #parameters }
 KEComponent >> changeParameter: aSymbol value: aNumericalOrAnExpressionOrABlock [
 	
 	| expression |
@@ -237,8 +231,9 @@ KEComponent >> mergeEventsWithSameActionsIn: eventList [
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #parameters }
 KEComponent >> parameters [
+"Return collection of KEParameters"
 	^ parameters
 ]
 

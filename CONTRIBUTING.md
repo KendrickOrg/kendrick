@@ -21,81 +21,7 @@
 
 *This file is currently not complete but will be improve step by step.*
 
-In order to contribute to Kendrick on github we are using Pharo 6.1 and Iceberg.
-
-In Pharo 6.1 on MacOS, there is a font bug with last version of Roassal 2. Before installing Kendrick, you need to update your fonts, by unclick and click on the Use Free Type ... in the settings. This problem with be fixed when we move to Pharo 7.0.
-
-# Update Iceberg (if you are using Pharo 6.1)
-Then you need to update Iceberg to the last version, by executing the following script :
-
-```Smalltalk
-"Unregister all iceberg repository adapters since we are going to unload all code related to it.
-Otherwise obsolete instances will stay".
-IceMetacelloRepositoryAdapter allInstances do: #unregister.
-Smalltalk globals at: #IceSystemEventListener ifPresent: #unregisterSystemAnnouncements.
-
-MetacelloPharoPlatform select.
-#(
-    'BaselineOfTonel'
-    'BaselineOfLibGit'
-    'BaselineOfIceberg'
-    'MonticelloTonel-Core'
-    'MonticelloTonel-FileSystem'
-    'MonticelloTonel-Tests'
-    'Iceberg-UI' 
-    'Iceberg-TipUI'
-    'Iceberg-Plugin-Pharo' 
-    'Iceberg-Plugin-Metacello' 
-    'Iceberg-Plugin-GitHub' 
-    'Iceberg-Plugin' 
-    'Iceberg-Metacello-Integration' 
-    'Iceberg-Libgit-Tonel' 
-    'Iceberg-Libgit-Filetree' 
-    'Iceberg-Libgit' 
-    'Iceberg-Tests'
-    'Iceberg-Memory'
-    'Iceberg-UI-Tests'
-    'Iceberg-Core' 
-    'Iceberg-Changes' 
-    'Iceberg-Adapters' 
-    'Iceberg'
-    'Iceberg-GitCommand'
-    'Iceberg-SmartUI'
-    'Iceberg-Pharo6'
-    'LibGit-Core') 
-do: [ :each | (each asPackageIfAbsent: [ nil ]) ifNotNil: #removeFromSystem ].
-"update icons (iceberg needs some new)"
-ThemeIcons current: ThemeIcons loadDefault.
-
-"Loading Tonel before trying to load Iceberg.
-This is required to load iceberg packages and dependencies in Tonel format"
-Metacello new
-  baseline: 'Tonel';
-  repository: 'github://pharo-vcs/tonel:v1.0.12';
-  load.
-
-"Updating Metacello"
-Metacello new
-    baseline: 'Metacello';
-    repository: 'github://metacello/metacello:pharo-6.1_dev/repository';
-    onConflict: [ :ex | ex allow ];
-    load.
-
-"load iceberg"
-Metacello new
-  	baseline: 'Iceberg';
-  	repository: 'github://pharo-vcs/iceberg:v1.5.?';
-	onWarningLog;
-  	load.
-	
-"Re-initialize libgit2"
-(Smalltalk at: #LGitLibrary) initialize.
-
-"In some case Pharo/Calypso can have a problem with Obsolete classes. If you encounter this problem just execute this command and retry your action:
-
-Smalltalk compilerClass recompileAll
-"
-```
+In order to contribute to Kendrick on github we are using Pharo 8.0 and Iceberg.
 
 ## Setup Iceberg
 
@@ -109,11 +35,11 @@ Go to Kendrick github's repository and click on the fork button on the top right
 
 ## Load your fork version of Kendrick in your image
 
-In your Pharo 6.1 image, load now the last development version of Kendrick :
+In your Pharo 8.0 image, load now the last development version of Kendrick :
 
 ```Smalltalk
 Metacello new
-        githubUser: 'XXX' project: 'kendrick' commitish: 'master' path: 'src';
+        githubUser: 'XXX' project: 'kendrick' commitish: 'master' path:'src';
         baseline: 'Kendrick';
 	onWarningLog;
         load
@@ -121,6 +47,34 @@ Metacello new
 where you replace XXX with your github user name.
 
 PS: at the moment, we have only one master branch, so all development happens on this branch. We will use two branches when we release a first version of Kendrick.
+
+If you have problems loading with the previous script, use the following one:
+
+```Smalltalk
+| count |
+count := 1.
+Transcript open.
+[ true ] whileTrue: [ [
+		^ Metacello new
+		githubUser: 'XXX' project: 'kendrick' commitish: 'master' path:'src';
+        baseline: 'Kendrick';
+	onConflictUseLoaded;
+        onWarningLog ;
+        load.
+	]
+	on: IceGenericError "Failed to connect to github.com: Interrupted system call"
+	do: [ : ex |
+		Notification signal:
+	        	String cr ,
+			ex description,
+			String cr ,
+			'RETRYING ',
+			count asString.
+		(Delay forSeconds: 2) wait.
+		ex retry
+	].
+	count := count + 1 ]
+```
 
 ## Add main Kendrick repository as remote
 

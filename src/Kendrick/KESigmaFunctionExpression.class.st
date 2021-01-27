@@ -47,7 +47,6 @@ KESigmaFunctionExpression >> evaluateWithModel: aModel [
 
 { #category : #accessing }
 KESigmaFunctionExpression >> idVariable [
-	<MSEProperty: #idVariable type: #String>
 	^ idVariable
 ]
 

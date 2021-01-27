@@ -80,7 +80,7 @@ Composition >> addCompositeParameter: variablePlusAttributes value: value [
 { #category : #'as yet unclassified' }
 Composition >> addCompositeParameterWithTwoAttributes: variablePlusAttributes value: value [
 
-	|entities entityForSecond entityForThird |
+	| entityForSecond entityForThird |
 	
 	entityForSecond := (self entitiesFor: {variablePlusAttributes second}) first first.
 	entityForThird := (self entitiesFor: {variablePlusAttributes third}) first first. 
@@ -136,7 +136,7 @@ Composition >> compartments [
 Composition >> concern: aString [
 	|concern|
 
-	concern := KendrickModel withId: aString.
+	concern := KModel withId: aString.
 	(concerns includes: concern) ifFalse: [  "no duplicates"
 		concern extends do: [ :ext | 
 			self concern: ext 
@@ -249,7 +249,7 @@ Composition >> model [
 Composition >> model: aString [
 	|concern|
 
-	concern := KendrickModel withId: aString.
+	concern := KModel withId: aString.
 	(concerns includes: concern) ifFalse: [  "no duplicates"
 		concern extends do: [ :ext | 
 			self concern: ext 
@@ -268,11 +268,13 @@ Composition >> others: anInteger [
 ]
 
 { #category : #adding }
-Composition >> parameters: anArray [
-	anArray do: [ :p| 
-		parameters at: p put: 0.
-		self model parameters at: p put: 0 ].
-	
+Composition >> parameters: aCollectionOfParameters [
+	"Why do need to initialize parameters to zero ? they might be unitialized. By initializing parameter to zero, we are not able to distinguish an un-initialized parameter from a parameter set to zero."
+
+	aCollectionOfParameters
+		do: [ :p | 
+			parameters at: p put: 0.
+			self model parameters at: p put: 0 ]
 ]
 
 { #category : #'as yet unclassified' }

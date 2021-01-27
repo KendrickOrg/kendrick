@@ -13,8 +13,8 @@
 </p>
 
 
-[![Pharo version](https://img.shields.io/badge/Pharo-6.1-%23aac9ff.svg)](https://pharo.org/download)
-[![Build Status](https://travis-ci.org/UNU-Macau/kendrick.svg?branch=master)](https://travis-ci.org/UNU-Macau/kendrick)
+[![Pharo version](https://img.shields.io/badge/Pharo-8.0-%23aac9ff.svg)](https://pharo.org/download)
+![CI](https://github.com/UNU-Macau/kendrick/workflows/CI/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/UNU-Macau/kendrick/badge.svg?branch=master)](https://coveralls.io/github/UNU-Macau/kendrick?branch=master)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/UNU-Macau/kendrick/master/LICENSE)
 
@@ -63,8 +63,8 @@ wget -O- https://goo.gl/WUQxmp | bash
 
 ## How to install the development version of Kendrick from github
 
-* Download Pharo 6.1 VM depending of your platform: http://pharo.org/download
-* Load Kendrick: Open Pharo 6.1 image then right-click anywhere to open the main menu. Choose Playground to execute script. Paste the script below in Playground, select all then right-click and choose Do it to execute this.
+* Download Pharo 8.0 VM depending of your platform: http://pharo.org/download
+* Load Kendrick: Open Pharo 8.0 image then right-click anywhere to open the main menu. Choose Playground to execute script. Paste the script below in Playground, select all then right-click and choose Do it to execute this.
 * You need first to update the Iceberg version in your image. See CONTRIBUTING.md for more details.
 
 ```Smalltalk

@@ -15,7 +15,7 @@ Class {
 { #category : #'as yet unclassified' }
 TestsModel6SpatialMap >> after [
 
-KendrickModel SEIRS
+KModel SEIRS
     attribute: #(status -> S E I R);
     parameters: #(beta lambda gamma mu sigma nu);
     lambda: #(beta*I/N);
@@ -27,10 +27,10 @@ KendrickModel SEIRS
         status -- mu --> Empty.
         Empty -- mu --> S.).
 
-KendrickModel Biological
+KModel Biological
     attribute: #(species -> human bird).
 
-KendrickModel Demographical
+KModel Demographical
     attribute: #(country -> MyanmarBurma Cambodia Laos Thailand Vietnam);
     parameters: #(rho);
     transitions: #(
@@ -40,7 +40,7 @@ KendrickModel Demographical
         Laos -- rho --> MyanmarBurma.
         MyanmarBurma -- rho --> Thailand.).
 
-KendrickModel SEIRSQ
+KModel SEIRSQ
     extends: 'SEIRS';
     parameters: #(delta epsilon);
     addStatus: #(Q);

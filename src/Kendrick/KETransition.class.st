@@ -1,5 +1,6 @@
 "
-A KETransition is a changement from a compartment to another one.
+A KETransition is a transition from a compartment to another one in a SAN.
+from and to are compartments.
 
 "
 Class {
@@ -48,11 +49,15 @@ KETransition >> from [
 
 { #category : #accessing }
 KETransition >> from: aCompartment [
-	|reader|
-	(aCompartment isDictionary) "| (aCompartment isSymbol)" ifTrue: [ ^ from := aCompartment ].
-	aCompartment = #empty ifTrue: [ ^ self from: { #status -> #empty } ].
-	(aCompartment isArray) ifTrue: [ ^ from := Dictionary newFrom: aCompartment ].
-	(reader := STONReader on: aCompartment readStream) allowComplexMapKeys: true.
+	| reader |
+	aCompartment isDictionary
+		ifTrue: [ ^ from := aCompartment ].
+	aCompartment = #empty
+		ifTrue: [ ^ self from: {(#status -> #empty)} ].
+	aCompartment isArray
+		ifTrue: [ ^ from := Dictionary newFrom: aCompartment ].
+	(reader := STONReader on: aCompartment readStream)
+		allowComplexMapKeys: true.
 	^ from := reader next
 ]
 

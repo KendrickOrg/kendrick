@@ -103,7 +103,7 @@ ModelComponent >> attributeOrParameter: aName [
 										backEndEntity sizeOfPopulation: (tokens collect: [:t | (backEndEntity currentCompartment at: t)]) asArray.
 									]
 							]
-							ifFalse: [backEndEntity sizeOfPopulation: (backEndEntity currentCompartment at: aName asSymbol)] 
+							ifFalse: [backEndEntity sizeOfPopulation: (Array with: (backEndEntity currentCompartment at: aName asSymbol))] 
 				] "assume attribute name"
 				ifFalse: [
 								backEndEntity atCompartment: { assoc first key -> aName }
@@ -114,24 +114,22 @@ ModelComponent >> attributeOrParameter: aName [
 
 { #category : #protected }
 ModelComponent >> covertSymbolicExpressionToBlock: anArray [
-
-			|body|
-
-			body := (anArray collect: [ :token | 
-				self tokenAsString: token
-			]) inject: '' into: [ :expr :token | 
-				(#(sum sqrt size) includes: token)
-					ifFalse: [expr , ' ' , token]
-					ifTrue: [ '(' , expr , ')' , token  ]
-			].
-			"the argument is superficial here since it is captured (backward compatibility)"
-	
-			^ Compiler new		evaluate: '[:aModel |' , body , ']'
-					in: thisContext sender
-					to: thisContext sender receiver
-					notifying: nil
-					ifFail: [^nil]
-					logged: false.
+	| body |
+	body := (anArray collect: [ :token | self tokenAsString: token ])
+		inject: ''
+		into: [ :expr :token | 
+			(#(sum sqrt size) includes: token)
+				ifFalse: [ expr , ' ' , token ]
+				ifTrue: [ '(' , expr , ')' , token ] ].
+	"the argument is superficial here since it is captured (backward compatibility)"
+	^ OpalCompiler new
+		source: '[:aModel |' , body , ']';
+		context: thisContext sender;
+		receiver: thisContext sender receiver;
+		requestor: nil;
+		failBlock: [ ^ nil ];
+		logged: false;
+		evaluate
 ]
 
 { #category : #'public-api' }
