@@ -72,8 +72,8 @@ KEContactNetwork >> loadNodes: numberOfNodes fromFile: fileName [
 	|file line array source target|
 	1 to: numberOfNodes do:
 	[ :i| self addNode: (i asString asSymbol) ].
-	file := fileName asFileReference.
-	[file atEnd] whileFalse:
+	file := fileName asFileReference exists.
+	[file atEnd] whileFalse:  
 	[	
 		line := file nextLine. "Process the line"
 		array := line splitOn: Character tab.
