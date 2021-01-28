@@ -8,7 +8,7 @@ Class {
 	#instVars : [
 		'frequencies'
 	],
-	#category : #'Kendrick-Core'
+	#category : #'Kendrick-Core-Simulations'
 }
 
 { #category : #'instance creation' }

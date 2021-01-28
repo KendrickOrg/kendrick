@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'maxValue'
 	],
-	#category : #'Kendrick-Core'
+	#category : #'Kendrick-Core-Simulations'
 }
 
 { #category : #accessing }
