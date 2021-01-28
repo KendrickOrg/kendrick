@@ -5,7 +5,7 @@ Class {
 		'total',
 		'cumulativeDensityPoint'
 	],
-	#category : #'Kendrick-Core'
+	#category : #'Kendrick-Core-Simulations'
 }
 
 { #category : #accessing }
@@ -26,15 +26,15 @@ BisectingSearchProportionalSelection >> initialize: size [
 ]
 
 { #category : #converting }
-BisectingSearchProportionalSelection >> normalize [  
-	| accumulator |	
-	total := frequencies sum. 
+BisectingSearchProportionalSelection >> normalize [
+	| accumulator |
+	total := frequencies sum.
 	cumulativeDensityPoint := nil.
 	accumulator := 0.
-	frequencies doWithIndex: [ :i |
-		accumulator := ((accumulator + i)/((total) asFloat)).
-		cumulativeDensityPoint add: accumulator
-		 ]
+	frequencies
+		doWithIndex: [ :i | 
+			accumulator := (accumulator + i) / total asFloat.
+			cumulativeDensityPoint add: accumulator ]
 ]
 
 { #category : #examples }
