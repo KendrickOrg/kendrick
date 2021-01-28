@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #accessing }
-StochasticAcceptanceProportionalSelection >> at: index put: value [ [ 
+StochasticAcceptanceProportionalSelection >> at: index put: value [
 	| lastX |
 	
 	lastX := frequencies at: index.
@@ -19,13 +19,11 @@ StochasticAcceptanceProportionalSelection >> at: index put: value [ [
 			].
 			frequencies at: index put: value.
 			 
-	 ]
 ]
 
 { #category : #initialization }
-StochasticAcceptanceProportionalSelection >> initialize: size [ [ 
+StochasticAcceptanceProportionalSelection >> initialize: size [  
 	
 	super initialize: size.
 	maxValue := 0
-	 ]
 ]
