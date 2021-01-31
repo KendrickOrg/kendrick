@@ -36,6 +36,31 @@ BisectingSearchProportionalSelection >> normalize [
 ]
 
 { #category : #examples }
-BisectingSearchProportionalSelection >> sample [
-	self shouldBeImplemented 
+BisectingSearchProportionalSelection >> sample [ 
+		| mid deb end element|
+		
+		element := ((0.0 to: 1.0) atRandom) asFloat.
+		deb := 0.0.
+		end := (frequencies size) - 1.
+		mid := (deb + end)/2.
+		[deb < end ] whileTrue: [ 
+					((frequencies at: element) == element) 
+							ifTrue: [^element].
+										
+					((frequencies at: element) > element)
+							ifTrue: [ end := element - 1 ].
+							
+					((frequencies at: element) < element)
+							ifFalse: [ deb := element + 1 ].
+							
+					mid := (deb + end)/2.
+										
+					^deb					
+						 ]
+							
+							
+		 
+			
+		
+		
 ]
