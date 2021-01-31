@@ -3,7 +3,7 @@ Class {
 	#superclass : #ProportionalSelection,
 	#instVars : [
 		'total',
-		'cumulativeDensityPoint'
+		'cumulativeDensityFunction'
 	],
 	#category : #'Kendrick-Core-Simulations'
 }
@@ -19,9 +19,7 @@ BisectingSearchProportionalSelection >> at: index put: value [
 
 { #category : #initialization }
 BisectingSearchProportionalSelection >> initialize: size [
-	
 	super initialize: size.
-	cumulativeDensityPoint := nil.
 	total := 0
 ]
 
@@ -29,16 +27,15 @@ BisectingSearchProportionalSelection >> initialize: size [
 BisectingSearchProportionalSelection >> normalize [
 	| accumulator |
 	total := frequencies sum.
-	cumulativeDensityPoint := nil.
+	cumulativeDensityFunction := OrderedCollection new.
 	accumulator := 0.
 	frequencies
-		doWithIndex: [ :i | 
-			accumulator := (accumulator + i) / total asFloat.
-			cumulativeDensityPoint add: accumulator ]
+		do: [ :each | 
+			accumulator := accumulator + (each / total) asFloat.
+			cumulativeDensityFunction add: accumulator ]
 ]
 
 { #category : #examples }
 BisectingSearchProportionalSelection >> sample [
-	^ cumulativeDensityPoint atRandom 
-	
+	self shouldBeImplemented 
 ]
