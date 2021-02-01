@@ -39,26 +39,26 @@ BisectingSearchProportionalSelection >> normalize [
 BisectingSearchProportionalSelection >> sample [ 
 		| middle begin end element|
 		
-		element := ((0.0 to: 1.0) atRandom) asFloat.
+		element := 10 atRandom asFloat.
 		begin := 0.0.
 		end := (frequencies size) - 1.
 		middle := (begin + end)/2.
+		
 		[begin < end ] whileTrue: [ 
-					((frequencies at: element) == element) 
-							ifTrue: [^element].
+					((frequencies at: middle) == element) 
+							ifTrue: [^middle].
 										
-					((frequencies at: element) > element)
-							ifTrue: [ end := element - 1 ]
-							ifFalse: [ begin := element + 1 ].
+					((frequencies at: middle) > element)
+							ifTrue: [end := middle - 1]
+							ifFalse: [begin := middle + 1].
 							
-					middle := (begin + end)/2.
-										
-					^begin					
-						 ]
+				
+							
+					^begin 			
+				 ]
 							
 							
 		 
 			
-		
 		
 ]
