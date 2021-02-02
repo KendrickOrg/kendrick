@@ -29,7 +29,7 @@ self subclassResponsibility
 
 { #category : #acccessing }
 ProportionalSelection >> from: aCollection [
-aCollection doWithIndex:[:i :each| self at: i put: each]
+aCollection doWithIndex:[:each :i| self at: i put: each]
 	 
 ]
 
