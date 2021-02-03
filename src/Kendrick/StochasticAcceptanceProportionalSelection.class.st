@@ -10,16 +10,11 @@ Class {
 { #category : #accessing }
 StochasticAcceptanceProportionalSelection >> at: index put: value [
 	| lastX |
-	
-lastX := frequencies at: index.
-(value > maxValue)
-	ifTrue: [ maxValue := value ].
-	
-((lastX == maxValue) & (value < lastX))
-	ifTrue: [ 
-		maxValue := (frequencies max) asFloat ].
-	
-frequencies at: index put: value.
+	lastX := frequencies at: index.
+	maxValue := maxValue max: value.
+	lastX == maxValue & (value < lastX)
+		ifTrue: [ maxValue := frequencies max asFloat ].
+	frequencies at: index put: value
 ]
 
 { #category : #initialization }
@@ -35,13 +30,11 @@ StochasticAcceptanceProportionalSelection >> normalize [
 ]
 
 { #category : #acccessing }
-StochasticAcceptanceProportionalSelection >> sample [ 
-	|freqs x i|
-	
-	freqs := frequencies.
+StochasticAcceptanceProportionalSelection >> sample [
+	| x i |
 	x := Random new next.
-	i := ((frequencies size) * x) asInteger.
-	 [ i > 0 ] whileTrue: [ 
-		(x >= ((freqs at: i) quo: maxValue))
-			ifTrue: [ ^i ] ]
+	i := (frequencies size * x) asInteger.
+	[ i > 0 ]
+		whileTrue: [ x >= ((frequencies at: i) quo: maxValue)
+				ifTrue: [ ^ i ] ]
 ]
