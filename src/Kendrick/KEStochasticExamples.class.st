@@ -1,7 +1,7 @@
 Class {
 	#name : #KEStochasticExamples,
 	#superclass : #KEExamples,
-	#category : 'Kendrick-Examples'
+	#category : #'Kendrick-Examples'
 }
 
 { #category : #examples }
@@ -37,7 +37,7 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModel [
 	simulator := KESimulator new: #TauLeap from: 0 to: 0.4 step: 0.0027.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
-	dB data: simulator timeSeriesOutputs.
+	dB addData: simulator timeSeriesOutputs.
 	^ dB open
 	
 	
