@@ -29,7 +29,7 @@ StochasticAcceptanceProportionalSelection >> normalize [
 	"nothing"
 ]
 
-{ #category : #acccessing }
+{ #category : #accessing }
 StochasticAcceptanceProportionalSelection >> sample [
 	| x i |
 	x := Random new next.

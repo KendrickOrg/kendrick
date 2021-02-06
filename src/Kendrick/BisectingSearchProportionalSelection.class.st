@@ -20,7 +20,7 @@ BisectingSearchProportionalSelection >> initialize: size [
 	total := 0
 ]
 
-{ #category : #converting }
+{ #category : #'as yet unclassified' }
 BisectingSearchProportionalSelection >> normalize [
 	| accumulator |
 	total := frequencies sum.
@@ -29,7 +29,7 @@ BisectingSearchProportionalSelection >> normalize [
 
 ]
 
-{ #category : #examples }
+{ #category : #accessing }
 BisectingSearchProportionalSelection >> sample [
 	| middle begin end value |
 	value := Random new next.
