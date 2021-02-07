@@ -31,10 +31,12 @@ StochasticAcceptanceProportionalSelection >> normalize [
 
 { #category : #accessing }
 StochasticAcceptanceProportionalSelection >> sample [
-	| x i |
-	x := Random new next.
-	i := (frequencies size * x) asInteger.
-	[ i > 0 ]
-		whileTrue: [ x >= ((frequencies at: i) quo: maxValue)
+	| rng n |
+	rng := Random new.
+	n := frequencies size.
+	[ true ]
+		whileTrue: [ | i |
+			i := n atRandom.
+			rng next < ((frequencies at: i) / maxValue)
 				ifTrue: [ ^ i ] ]
 ]
