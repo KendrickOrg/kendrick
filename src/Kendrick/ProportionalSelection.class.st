@@ -16,24 +16,24 @@ ProportionalSelection class >> from: aCollection [
 	^ (self new) initialize: (aCollection size); from: aCollection
 ]
 
-{ #category : #acccessing }
+{ #category : #accessing }
 ProportionalSelection >> at: index [
 	^ frequencies at: index
 ]
 
-{ #category : #acccessing }
+{ #category : #accessing }
 ProportionalSelection >> at:index put:value [
 
 self subclassResponsibility 
 ]
 
-{ #category : #acccessing }
+{ #category : #accessing }
 ProportionalSelection >> from: aCollection [
 aCollection doWithIndex:[:each :i| self at: i put: each]
 	 
 ]
 
-{ #category : #acccessing }
+{ #category : #initialize }
 ProportionalSelection >> initialize: size [
 	frequencies := Array new: size withAll:0
 ]
@@ -44,7 +44,7 @@ ProportionalSelection >> normalize [
 self subclassResponsibility 
 ]
 
-{ #category : #acccessing }
+{ #category : #accessing }
 ProportionalSelection >> sample [ 
 self subclassResponsibility 
 ]
