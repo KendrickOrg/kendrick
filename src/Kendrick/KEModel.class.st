@@ -251,6 +251,19 @@ KEModel >> population: aPopulation [
 ]
 
 { #category : #accessing }
+KEModel >> rates [
+	^ transitions
+		collect: [ :tr | 
+			| prob |
+			(tr from at: #status) = #empty
+				ifTrue: [ self currentCompartment: tr to ]
+				ifFalse: [ self currentCompartment: tr from ].
+			self nextCompartment: tr to.
+			prob := (tr probability value: self) abs.
+			prob * (self atCompartment: tr from) ]
+]
+
+{ #category : #accessing }
 KEModel >> sizeOfPopulation: aCompartmentArray [
 
 	"aCompartmentArray describe a subpopulation like {#S. #human. #female}. Returns the cardinality of compartments that verify this property

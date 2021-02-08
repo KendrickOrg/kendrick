@@ -15,25 +15,16 @@ Class {
 
 { #category : #public }
 KEGillespieSimulator >> doGillespieIteration: t [
-	| rates deltaT chosen transitions selection |
+	| rates deltaT chosen selection |
 	model t: t.
-	transitions := model transitions.
-	rates := transitions
-		collect: [ :tr | 
-			| prob |
-			(tr from at: #status) = #empty
-				ifTrue: [ model currentCompartment: tr to ]
-				ifFalse: [ model currentCompartment: tr from ].
-			model nextCompartment: tr to.
-			prob := (tr probability value: model) abs.
-			prob * (model atCompartment: tr from) ].
+	rates := model rates.
 	rates sum = 0
 		ifTrue: [ ^ 0.0 ].
 	deltaT := rand2 next ln negated / rates sum.
 	selection := proportionalSelectionClass from: rates.
 	selection normalize.
 	chosen := selection sample.
-	(transitions at: chosen) executeOn: model times: 1.
+	(model transitions at: chosen) executeOn: model times: 1.
 	^ deltaT
 ]
 
