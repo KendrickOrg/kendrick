@@ -109,7 +109,6 @@ KESimulator >> initializeTimeSeriesOutputs [
 
 { #category : #accessing }
 KESimulator >> model [
-	<MSEProperty: #model type: #KEModel>
 	^ model
 ]
 
@@ -128,7 +127,6 @@ KESimulator >> saveCompartmentsValueAtTime: t [
 
 { #category : #accessing }
 KESimulator >> step [
-	<MSEProperty: #step type: #Number>
 	^ step
 ]
 
@@ -139,7 +137,6 @@ KESimulator >> step: aNumber [
 
 { #category : #accessing }
 KESimulator >> tMax [
-	<MSEProperty: #tMax type: #Number>
 	^ tMax
 ]
 
@@ -150,7 +147,6 @@ KESimulator >> tMax: aNumber [
 
 { #category : #accessing }
 KESimulator >> tMin [
-	<MSEProperty: #tMin type: #Number>
 	^ tMin
 ]
 
