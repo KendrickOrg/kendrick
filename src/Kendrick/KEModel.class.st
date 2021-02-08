@@ -133,6 +133,12 @@ KEModel >> currentCompartment: aCompartment [
 ]
 
 { #category : #'as yet unclassified' }
+KEModel >> executeEventAtRateIndex: anInteger [
+
+(self transitions at: anInteger ) executeOn: self times: 1.
+]
+
+{ #category : #'as yet unclassified' }
 KEModel >> gtInspectorGraphIn: composite [
 	<gtInspectorPresentationOrder: 30>
 	composite roassal2
