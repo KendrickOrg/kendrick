@@ -15,18 +15,17 @@ Class {
 { #category : #public }
 KEGillespieSimulator >> doGillespieIteration: t [
 	| rates deltaT chosen transitions |
-	rates := OrderedCollection new.
 	model t: t.
 	transitions := model transitions.
-	transitions
-		do: [ :tr | 
+	rates := transitions
+		collect: [ :tr | 
 			| prob |
 			(tr from at: #status) = #empty
 				ifTrue: [ model currentCompartment: tr to ]
 				ifFalse: [ model currentCompartment: tr from ].
 			model nextCompartment: tr to.
 			prob := (tr probability value: model) abs.
-			rates add: prob * (model atCompartment: tr from) ].
+			prob * (model atCompartment: tr from) ].
 	rates sum = 0
 		ifTrue: [ ^ 0.0 ].
 	deltaT := rand2 next ln negated / rates sum.
