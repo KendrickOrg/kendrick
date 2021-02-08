@@ -7,14 +7,15 @@ Class {
 	#superclass : #KEStochasticSimulator,
 	#instVars : [
 		'rand1',
-		'rand2'
+		'rand2',
+		'proportionalSelectionClass'
 	],
 	#category : #'Kendrick-Core-Simulations'
 }
 
 { #category : #public }
 KEGillespieSimulator >> doGillespieIteration: t [
-	| rates deltaT chosen transitions |
+	| rates deltaT chosen transitions selection |
 	model t: t.
 	transitions := model transitions.
 	rates := transitions
@@ -29,7 +30,9 @@ KEGillespieSimulator >> doGillespieIteration: t [
 	rates sum = 0
 		ifTrue: [ ^ 0.0 ].
 	deltaT := rand2 next ln negated / rates sum.
-	chosen := self rouletteWheelSelectAmong: rates.
+	selection := proportionalSelectionClass from: rates.
+	selection normalize.
+	chosen := selection sample.
 	(transitions at: chosen) executeOn: model times: 1.
 	^ deltaT
 ]
@@ -38,6 +41,8 @@ KEGillespieSimulator >> doGillespieIteration: t [
 KEGillespieSimulator >> executeOn: aModel [
 	| t previousT |
 	super executeOn: aModel.
+	self
+		proportionalSelectionClass: StochasticAcceptanceProportionalSelection.
 	t := tMin.
 	previousT := t.
 	rand1 := Random new.
@@ -49,7 +54,7 @@ KEGillespieSimulator >> executeOn: aModel [
 			r2 := rand2 next.
 			deltaT := self doGillespieIteration: t.
 			deltaT = 0
-				ifTrue: [ ^ self ]. "Stop the iteration if deltaT is zero"
+				ifTrue: [ ^ self ].	"Stop the iteration if deltaT is zero"
 			t := t + deltaT.
 			"Only store in the result from step to step"
 			t > (previousT + step)
@@ -57,23 +62,7 @@ KEGillespieSimulator >> executeOn: aModel [
 					previousT := t ] ]
 ]
 
-{ #category : #public }
-KEGillespieSimulator >> rouletteWheelSelectAmong: rates [
-	"Step 6 of the Gillespie's direct algorithm
-	Implementation of the roulette wheel selection
-	also called fitness proportionate selection in GA
-	https://en.wikipedia.org/wiki/Fitness_proportionate_selection
-	We are using here a linear walk, a bisecting walk would be faster.
-	"
-
-	| sum accumulator r proportion |
-	r := rand1 next.
-	sum := rates sum.
-	proportion := sum * r.
-	accumulator := 0.
-	rates
-		doWithIndex: [ :each :i | 
-			accumulator := accumulator + each.
-			accumulator >= proportion
-				ifTrue: [ ^ i ] ]
+{ #category : #accessing }
+KEGillespieSimulator >> proportionalSelectionClass: aClass [
+	proportionalSelectionClass := aClass
 ]
