@@ -24,7 +24,7 @@ KEGillespieSimulator >> doGillespieIteration: t [
 	selection := proportionalSelectionClass from: rates.
 	selection normalize.
 	chosen := selection sample.
-	(model transitions at: chosen) executeOn: model times: 1.
+	model executeEventAtRateIndex: chosen.
 	^ deltaT
 ]
 
