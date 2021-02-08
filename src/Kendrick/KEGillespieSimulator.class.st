@@ -14,9 +14,8 @@ Class {
 }
 
 { #category : #public }
-KEGillespieSimulator >> doGillespieIteration: t [
+KEGillespieSimulator >> doGillespieIteration [
 	| rates deltaT chosen selection |
-	model t: t.
 	rates := model rates.
 	rates sum = 0
 		ifTrue: [ ^ 0.0 ].
@@ -43,7 +42,8 @@ KEGillespieSimulator >> executeOn: aModel [
 		whileTrue: [ | deltaT r1 r2 |
 			r1 := rand1 next.
 			r2 := rand2 next.
-			deltaT := self doGillespieIteration: t.
+			model t: t.
+			deltaT := self doGillespieIteration.
 			deltaT = 0
 				ifTrue: [ ^ self ].	"Stop the iteration if deltaT is zero"
 			t := t + deltaT.
