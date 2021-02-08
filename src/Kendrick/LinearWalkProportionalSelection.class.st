@@ -29,9 +29,10 @@ LinearWalkProportionalSelection >> normalize [
 LinearWalkProportionalSelection >> sample [
 	| accumulator cumulativeDensityPoint |
 	accumulator := 0.
-	cumulativeDensityPoint := total atRandom.
-	frequencies doWithIndex: [ :each :i | 
-		accumulator := accumulator + each.
-		accumulator >= cumulativeDensityPoint
-			ifTrue: [ ^ i ] ]
+	cumulativeDensityPoint :=  (Random new next)*total.
+	frequencies
+		doWithIndex: [ :each :i | 
+			accumulator := accumulator + each.
+			accumulator >= cumulativeDensityPoint
+				ifTrue: [ ^ i ] ]
 ]
