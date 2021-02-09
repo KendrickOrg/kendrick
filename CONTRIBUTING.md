@@ -48,7 +48,7 @@ where you replace XXX with your github user name.
 
 PS: at the moment, we have only one master branch, so all development happens on this branch. We will use two branches when we release a first version of Kendrick.
 
-If you have problems loading with the previous script, use the following one:
+If you have problems loading with the previous script due to network issues, use the following one:
 
 ```Smalltalk
 | count |
