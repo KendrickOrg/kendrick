@@ -7,40 +7,55 @@ Class {
 { #category : #examples }
 KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModel [
 	"self new exampleExplicitTauLeapOnSIRSimpleModel"
-	|model simulator  dB |
-	model := KEModel new.
-	model attributes: {#status->#(#S #I #R)}.
-	model atCompartment: { #status->#S } put: 4975 atOthersPut: 0.
-	model atCompartment: { #status->#I } put: 25.
-	model addParameters: {#beta->0.073. #gamma->36.5. #mu->0.01825}.
 
-	model addTransitionFrom: {#status -> #S}
-			to: {#status -> #I} 
-			probability: [ :aModel| 
-				(aModel atParameter: #beta) *
-				(aModel atCompartment: {#status->#I}) ].	
-	model addTransitionFrom: {#status -> #I}
-			to: {#status -> #R} 
-			probability: [:aModel| (aModel atParameter: #gamma)].
-	model addTransitionFrom: {#status -> #S} 
-			to: #empty 
-			probability: [:aModel| (aModel atParameter: #mu)].
-	model addTransitionFrom: {#status -> #I}
-			to: #empty 
-			probability: [:aModel| (aModel atParameter: #mu)].
-	model addTransitionFrom: {#status -> #R}
-			to: #empty 
-			probability: [:aModel| (aModel atParameter: #mu)].
-	model addTransitionFrom: #empty 
-	 		to: {#status -> #S}
-			probability: [:aModel| (aModel atParameter: #mu)].
-	simulator := KESimulator new: #TauLeap from: 0 to: 0.4 step: 0.0027.
+	| model simulator dB |
+	model := KEModel new.
+	model attributes: {(#status -> #(#S #I #R))}.
+	model atCompartment: {(#status -> #S)} put: 4975 atOthersPut: 0.
+	model atCompartment: {(#status -> #I)} put: 25.
+	model
+		addParameters:
+			{(#beta -> 0.073).
+			(#gamma -> 36.5).
+			(#mu -> 0.01825)}.
+	model
+		addTransitionFrom: {(#status -> #S)}
+		to: {(#status -> #I)}
+		probability: [ :aModel | 
+			(aModel atParameter: #beta)
+				* (aModel atCompartment: {(#status -> #I)}) ].
+	model
+		addTransitionFrom: {(#status -> #I)}
+		to: {(#status -> #R)}
+		probability: [ :aModel | aModel atParameter: #gamma ].
+	model
+		addTransitionFrom: {(#status -> #S)}
+		to: #empty
+		probability: [ :aModel | aModel atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #I)}
+		to: #empty
+		probability: [ :aModel | aModel atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #R)}
+		to: #empty
+		probability: [ :aModel | aModel atParameter: #mu ].
+	model
+		addTransitionFrom: #empty
+		to: {(#status -> #S)}
+		probability: [ :aModel | aModel atParameter: #mu ].
+	simulator := KESimulator
+		new: #TauLeap
+		from: 0
+		to: 0.4
+		step: 0.0027.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
-	dB addData: simulator timeSeriesOutputs.
+	"dB addData: simulator timeSeriesOutputs."
+	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
+	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
 	^ dB open
-	
-	
 ]
 
 { #category : #examples }
@@ -281,7 +296,9 @@ KEStochasticExamples >> exampleGillespieSimulatorOnSIREbolaModel [
 
 	| model simulator db spatialConcern countries |
 	spatialConcern := KEModelPart new.
-	spatialConcern addAttribute: #country value: #(#Liberia #Guinea #SierraLeone #Nigeria #Senegal #Niger).
+	spatialConcern
+		addAttribute: #country
+		value: #(#Liberia #Guinea #SierraLeone #Nigeria #Senegal #Niger).
 	spatialConcern addParameter: #rho.
 	countries := spatialConcern atAttribute: #country.
 	1 to: 5 do: [ :i | 
@@ -298,7 +315,11 @@ KEStochasticExamples >> exampleGillespieSimulatorOnSIREbolaModel [
 	model addAttribute: #status value: #(S I R).
 	model addParameter: #gamma value: 0.1.
 	model addParameter: #beta value: 0.0002.
-	model addParameter: #lambda value: [ :aModel | (aModel atParameter: #beta) * (aModel atCompartment: {(#status -> #I)}) ].
+	model
+		addParameter: #lambda
+		value: [ :aModel | 
+			(aModel atParameter: #beta)
+				* (aModel atCompartment: {(#status -> #I)}) ].
 	model addEquation: 'S:t=-lambda*S'.
 	model addEquation: 'I:t=lambda*S-gamma*I'.
 	model addEquation: 'R:t=gamma*I'.
@@ -346,7 +367,13 @@ KEStochasticExamples >> exampleGillespieSimulatorOnSIREbolaModel [
 		to: 100
 		step: 0.1.
 	simulator executeOn: model.
-	db := KEDiagramBuilder new addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	db open.
-	db openMap: #africa countries: (model atAttribute: #country) coloredBy: #peakOfEpidemic
+	db := KEDiagramBuilder new
+		addData: (simulator timeSeriesOutputsAt: {(#status -> #S)});
+		addData: (simulator timeSeriesOutputsAt: {(#status -> #I)});
+		addData: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
+	db open
+	"	db
+		openMap: #africa
+		countries: (model atAttribute: #country)
+		coloredBy: #peakOfEpidemic"
 ]

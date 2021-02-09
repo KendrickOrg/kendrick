@@ -681,11 +681,13 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRSimpleModel [
 	simulator := KESimulator
 		new: #RungeKutta
 		from: 0.0
-		to: 0.3
+		to: 0.20
 		step: 0.001.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
+	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
 	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
 	dB xLabel: 'Time (year)'.
 	^ dB open
 ]
