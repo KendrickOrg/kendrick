@@ -48,7 +48,7 @@ where you replace XXX with your github user name.
 
 PS: at the moment, we have only one master branch, so all development happens on this branch. We will use two branches when we release a first version of Kendrick.
 
-If you have problems loading with the previous script, use the following one:
+If you have problems loading with the previous script due to network issues, use the following one:
 
 ```Smalltalk
 | count |
@@ -88,7 +88,7 @@ Remote URL: https://github.com/UNU-Macau/kendrick.git
 
 #### From Pharo Iceberg
 
-After doing modifications in your image, open Iceberg tool, commit the changes in your Kendrick repository. Cherry-pick the modifications that you want to include in your commit. Then push your commit to your fork. It's more convenient to divide your changes in meaninfull and simple commits, which makes it easier to check for those who need to proofread it.
+After doing modifications in your image, open Iceberg tool, commit the changes in your Kendrick repository. Cherry-pick the modifications that you want to include in your commit. Then push your commit to your fork. It's more convenient to divide your changes in meaningful and simple commits, which makes it easier to check for those who need to proofread it.
 
 ![iceberge](images/iceberg_pharo.png)
 
