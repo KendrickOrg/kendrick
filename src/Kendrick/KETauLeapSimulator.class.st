@@ -5,12 +5,15 @@ A KETauLeapSimulator improves the Gillespie's direct method by using the TauLeap
 Class {
 	#name : #KETauLeapSimulator,
 	#superclass : #KEStochasticSimulator,
+	#instVars : [
+		'proportionalSelectionClass'
+	],
 	#category : #'Kendrick-Core-Simulations'
 }
 
 { #category : #'as yet unclassified' }
-KETauLeapSimulator >> doTauLeapIteration: t [
-	model t: t. 
+KETauLeapSimulator >> doTauLeapIteration [
+	
 	model transitions do: [ :tr|
 		|rate numPoisson prob|
 		"model parameters at: #scope put: tr scope.
@@ -36,7 +39,13 @@ KETauLeapSimulator >> executeOn: aModel [
 	self saveCompartmentsValueAtTime: tMin.
 	[ t < tMax ]
 		whileTrue: [ 
-			self doTauLeapIteration: t.
+			model t: t. 
+			self doTauLeapIteration.
 			t := t + step.
 			self saveCompartmentsValueAtTime: t ]
+]
+
+{ #category : #accessing }
+KETauLeapSimulator >> proportionalSelectionClass: aClass [
+	proportionalSelectionClass := aClass
 ]
