@@ -77,20 +77,45 @@ KEStochasticExamples >> exampleGillespieDirectOnSEIRMeaslesModel [
 		addTransitionFrom: {(#status -> #S)}
 		to: {(#status -> #E)}
 		probability: [ :m | (m atParameter: #beta) * (m atCompartment: {(#status -> #I)}) ].
-	model addTransitionFrom: {(#status -> #E)} to: {(#status -> #I)} probability: [ :m | m atParameter: #sigma ].
-	model addTransitionFrom: {(#status -> #I)} to: {(#status -> #R)} probability: [ :m | m atParameter: #gamma ].
-	model addTransitionFrom: {(#status -> #S)} to: #empty probability: [ :m | m atParameter: #mu ].
-	model addTransitionFrom: {(#status -> #I)} to: #empty probability: [ :m | m atParameter: #mu ].
-	model addTransitionFrom: {(#status -> #R)} to: #empty probability: [ :m | m atParameter: #mu ].
-	model addTransitionFrom: {(#status -> #E)} to: #empty probability: [ :m | m atParameter: #mu ].
-	model addTransitionFrom: #empty to: {(#status -> #S)} probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #E)}
+		to: {(#status -> #I)}
+		probability: [ :m | m atParameter: #sigma ].
+	model
+		addTransitionFrom: {(#status -> #I)}
+		to: {(#status -> #R)}
+		probability: [ :m | m atParameter: #gamma ].
+	model
+		addTransitionFrom: {(#status -> #S)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #I)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #R)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #E)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: #empty
+		to: {(#status -> #S)}
+		probability: [ :m | m atParameter: #mu ].
 	simulator := KESimulator
 		new: #Gillespie
 		from: 0.0
 		to: 0.5
 		step: 0.0027.
 	simulator executeOn: model.
-	diag := KEDiagramBuilder new addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	diag := KEDiagramBuilder new
+		addData: (simulator timeSeriesOutputsAt: {(#status -> #S)});
+		addData: (simulator timeSeriesOutputsAt: {(#status -> #E)});
+		addData: (simulator timeSeriesOutputsAt: {(#status -> #I)});
+		addData: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
 	diag open
 ]
 
@@ -107,8 +132,14 @@ KEStochasticExamples >> exampleGillespieDirectOnSIRBioPEPAModel [
 		addParameters:
 			{(#beta -> 1.4247).
 			(#gamma -> 0.1429)}.
-	model addTransitionFrom: {(#status -> #S)} to: {(#status -> #I)} probability: [ :m | (m atParameter: #beta) * (m atCompartment: {(#status -> #I)}) ].
-	model addTransitionFrom: {(#status -> #I)} to: {(#status -> #R)} probability: [ :m | m atParameter: #gamma ].
+	model
+		addTransitionFrom: {(#status -> #S)}
+		to: {(#status -> #I)}
+		probability: [ :m | (m atParameter: #beta) * (m atCompartment: {(#status -> #I)}) ].
+	model
+		addTransitionFrom: {(#status -> #I)}
+		to: {(#status -> #R)}
+		probability: [ :m | m atParameter: #gamma ].
 	simulator := KESimulator
 		new: #Gillespie
 		from: 0.0
@@ -116,7 +147,9 @@ KEStochasticExamples >> exampleGillespieDirectOnSIRBioPEPAModel [
 		step: 1.
 	simulator executeOn: model.
 	dB := KEDiagramBuilder new.
-	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
+		dB addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+			dB addData: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
 	dB open
 ]
 
