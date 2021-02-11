@@ -128,15 +128,15 @@ KEComponent >> changeParameter: aSymbol value: aNumericalOrAnExpressionOrABlock 
 	parameters at: aSymbol put: (KEParameter new symbol: aSymbol; expression: expression)
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 KEComponent >> compartmentNames [
 	"Return an Array containing Dictionaries ...
 	What a mess !!!"
 
 	| names expand keys |
 	names := OrderedCollection new.
-	self attributes keys
-		do: [ :e | names add: ((self atAttribute: e) collect: [ :v | e -> v ]) ].
+	self attributes
+		keysDo: [ :e | names add: ((self atAttribute: e) collect: [ :v | e -> v ]) ].
 	expand := [ :prefix :list | 
 	list isEmpty
 		ifTrue: [ Array with: prefix ]
