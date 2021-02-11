@@ -88,7 +88,8 @@ Remote URL: https://github.com/UNU-Macau/kendrick.git
 
 #### From Pharo Iceberg
 
-After doing modifications in your image, open Iceberg tool, commit the changes in your Kendrick repository. Cherry-pick the modifications that you want to include in your commit. Then push your commit to your fork. It's more convenient to divide your changes in meaningful and simple commits, which makes it easier to check for those who need to proofread it.
+Please use a different branch for each PR that you want to send to the Kendrick project.
+After doing the modifications in your image, open Iceberg tool, commit the changes of your branch in your Kendrick repository. Cherry-pick the modifications that you want to include in your commit. Then push your commit to your fork. It's more convenient to divide your changes in meaningful and simple commits, which makes it easier to check for those who need to proofread it.
 
 ![iceberge](images/iceberg_pharo.png)
 
