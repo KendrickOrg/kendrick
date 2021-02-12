@@ -58,6 +58,53 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModel [
 	^ dB open
 ]
 
+{ #category : #'as yet unclassified' }
+KEStochasticExamples >> exampleExplicitTauLeapOnSISWithDemographyModel [
+	"self new exampleExplicitTauLeapOnSIRSimpleModel"
+
+	| model simulator dB |
+	model := KEModel new.
+	model attributes: {(#status -> #(#S #I))}.
+	model atCompartment: {(#status -> #S)} put: 70 atOthersPut: 0.
+	model atCompartment: {(#status -> #I)} put: 30.
+	model
+		addParameters:
+			{(#beta -> 0.03).
+			(#gamma -> 0.01)}.
+	model
+		addTransitionFrom: {(#status -> #S)}
+		to: {(#status -> #I)}
+		probability: [ :m | 
+			-1 * (m atParameter: #beta)
+				* (m atCompartment: {(#status -> #S)})
+				* (m atCompartment: {(#status -> #I)}) 
+				/ (m atParameter: #N) 
+				+ (m atParameter: #gamma)
+				* (m atCompartment: {(#status -> #I)})].
+	model
+		addTransitionFrom: {(#status -> #I)}
+		to: {(#status -> #S)}
+		probability: [ :m | 
+				 (m atParameter: #beta)
+				* (m atCompartment: {(#status -> #S)})
+				* (m atCompartment: {(#status -> #I)}) 
+				- (m atParameter: #gamma)
+				* (m atCompartment: {(#status -> #I)})].
+	
+	
+	simulator := KESimulator
+		new: #TauLeap
+		from: 0
+		to: 3650
+		step: 0.1.
+	simulator executeOn: model.
+	dB := KEDiagramBuilder new.
+	"dB addData: simulator timeSeriesOutputs."
+	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
+	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	^ dB open
+]
+
 { #category : #examples }
 KEStochasticExamples >> exampleGillespieDirectOnSEIRMeaslesModel [
 	"self new exampleGillespieDirectOnSEIRMeaslesModel"

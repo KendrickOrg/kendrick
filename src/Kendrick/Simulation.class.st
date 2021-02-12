@@ -109,6 +109,13 @@ Simulation >> step: aNumber [
 	step := aNumber
 ]
 
+{ #category : #'as yet unclassified' }
+Simulation >> tauleap [
+
+	^ self  
+		with: #TauLeap 
+]
+
 { #category : #'public-api' }
 Simulation >> testGillespie [
 
