@@ -91,15 +91,13 @@ KEIndexedVariable >> isAnIndexedVariable [
 ]
 
 { #category : #printing }
-KEIndexedVariable >> printOn: aStream [	
-	aStream 
-			nextPutAll: symbol asString.
-	indexList do: [ :each|
-		aStream nextPutAll: '[', each asString, ']'
-		 ]
-	
-		
-	
+KEIndexedVariable >> printOn: aStream [
+	aStream nextPutAll: symbol asString.
+	indexList
+		do: [ :each | 
+			aStream
+				nextPutAll: '[' , each asString;
+				nextPutAll: ']' ]
 ]
 
 { #category : #removing }

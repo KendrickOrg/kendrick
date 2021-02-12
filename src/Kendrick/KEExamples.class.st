@@ -8,17 +8,16 @@ Class {
 	#classInstVars : [
 		'ModelExample'
 	],
-	#category : 'Kendrick-Examples'
+	#category : #'Kendrick-Examples'
 }
 
 { #category : #'as yet unclassified' }
 KEExamples class >> models [
-   |models deterministic methods|   
-	models := OrderedCollection new.
+	|  deterministic methods |
+
 	deterministic := KEDeterministicExamples new.
-	methods := (KEDeterministicExamples selectors 
-			select: [ :symbol | (symbol beginsWith: 'model') ]).
-	methods do:[ :m | models add:(deterministic perform: m) ].
-	
-	^ models
+	methods := KEDeterministicExamples selectors
+		select: [ :symbol | symbol beginsWith: 'model' ].
+	^methods collect: [ :m | deterministic perform: m ].
+
 ]
