@@ -69,6 +69,11 @@ KEExpression >> negated [
 ]
 
 { #category : #testing }
+KEExpression >> removeVariable: aVariable [
+	self subclassResponsibility
+]
+
+{ #category : #testing }
 KEExpression >> value: model [
 	^ self evaluateWithModel: model
 ]

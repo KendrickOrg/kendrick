@@ -100,17 +100,18 @@ KEIndexedVariable >> printOn: aStream [
 				nextPutAll: ']' ]
 ]
 
-{ #category : #removing }
-KEIndexedVariable >> remove: aVariable [
-	self symbol = aVariable symbol ifTrue: [ ^ nil ].
-	^ self
-		
-	
-]
-
 { #category : #evaluating }
 KEIndexedVariable >> removeIndexedVariable [
 	^ (KEVariable new symbol: symbol)
 		
 	
+]
+
+{ #category : #removing }
+KEIndexedVariable >> removeVariable: aVariable [
+	"This function is reserved for the reformulation of rate expression to probability of contact of an event generated from an equation"
+
+	self symbol = aVariable symbol
+		ifTrue: [ ^ nil ].
+	^ self
 ]

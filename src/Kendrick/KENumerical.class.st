@@ -69,14 +69,15 @@ KENumerical >> printOn: aStream [
 ]
 
 { #category : #evaluating }
-KENumerical >> remove: aVariable [
-	"This function is reserved for the reformulation of rate expression to probability of contact of an event generated from an equation"
+KENumerical >> removeIndexedVariable [
 	^ self
 ]
 
 { #category : #evaluating }
-KENumerical >> removeIndexedVariable [
-	^ self
+KENumerical >> removeVariable: aVariable [
+	"This function is reserved for the reformulation of rate expression to probability of contact of an event generated from an equation"
+
+	
 ]
 
 { #category : #evaluating }

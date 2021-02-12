@@ -196,43 +196,61 @@ self assert: '-beta' equals: minusBeta asString.
 
 { #category : #tests }
 KEExpressionTest >> testRemoveAVariableFromABinaryExpression [
-	|e n|
-	e := (KEBinaryExpression new op: #*;leftHandSide: (KEVariable new symbol:#S);rightHandSide: (KEMathFunctionExpression new functionName: #cos; functionExpr: (KEVariable new symbol: #t))).
-	n := e remove: (KEVariable new symbol: #S).
+	| e n |
+	e := KEBinaryExpression new
+		op: #*;
+		leftHandSide: (KEVariable new symbol: #S);
+		rightHandSide:
+			(KEMathFunctionExpression new
+				functionName: #cos;
+				functionExpr: (KEVariable new symbol: #t)).
+	n := e removeVariable: (KEVariable new symbol: #S).
 	self assert: n isExpressionWithMathFunction equals: true.
-	self assert: n equals: (KEMathFunctionExpression new functionName: #cos; functionExpr: (KEVariable new symbol: #t)).
-	
+	self
+		assert: n
+		equals:
+			(KEMathFunctionExpression new
+				functionName: #cos;
+				functionExpr: (KEVariable new symbol: #t))
 ]
 
 { #category : #tests }
 KEExpressionTest >> testRemoveAVariableFromANumber [
-	|e n|
-	e := (KENumerical new number: 200).
-	n := e remove: (KEVariable new symbol: #S).
-	self assert: n equals: (KENumerical new number: 200).
-	
+	"don't understand the meaning of this test"
+
+	| e n |
+	e := KENumerical new number: 200.
+	n := e removeVariable: (KEVariable new symbol: #S).
+	self assert: n equals: (KENumerical new number: 200)
 ]
 
 { #category : #tests }
 KEExpressionTest >> testRemoveAVariableFromAVariable [
-	|e n|
-	e := (KEVariable new symbol: #S).
-	n := e remove: (KEVariable new symbol: #S).
-	self assert: n equals: nil.
-	
+	| e n |
+	e := KEVariable new symbol: #S.
+	n := e removeVariable: (KEVariable new symbol: #S).
+	self assert: n equals: nil
 ]
 
 { #category : #tests }
 KEExpressionTest >> testRemoveAVariableFromAnUnaryExpression [
-	|e n|
-	e := (KEUnaryExpression new) op:#-; expression: (KEVariable new symbol: #S).
-	n := e remove: (KEVariable new symbol: #S).
+	| e n |
+	e := KEUnaryExpression new
+		op: #-;
+		expression: (KEVariable new symbol: #S).
+	n := e removeVariable: (KEVariable new symbol: #S).
 	self assert: n isUnaryExpression equals: true.
 	self assert: n expression equals: nil.
-	e := (KEUnaryExpression new) op: #-; expression: (KEBinaryExpression new op:#*;leftHandSide: (KEVariable new symbol: #S);rightHandSide: (KEVariable new symbol: #I)).
-	n := e remove: (KEVariable new symbol: #S).
+	e := KEUnaryExpression new
+		op: #-;
+		expression:
+			(KEBinaryExpression new
+				op: #*;
+				leftHandSide: (KEVariable new symbol: #S);
+				rightHandSide: (KEVariable new symbol: #I)).
+	n := e removeVariable: (KEVariable new symbol: #S).
 	self assert: n isUnaryExpression equals: true.
-	self assert: n expression equals: (KEVariable new symbol: #I).
+	self assert: n expression equals: (KEVariable new symbol: #I)
 ]
 
 { #category : #tests }

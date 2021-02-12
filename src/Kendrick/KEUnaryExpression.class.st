@@ -101,9 +101,11 @@ KEUnaryExpression >> negated [
 
 { #category : #converting }
 KEUnaryExpression >> normalize [
-	|e|
+	| e |
 	e := expression normalize.
-	e isUnaryExpression ifTrue: [^ (e expression)] ifFalse: [^ ((KEUnaryExpression new) op: #-; expression: e)].
+	e isUnaryExpression
+		ifTrue: [ ^ e expression ]
+		ifFalse: [ ^ (self op: #-) expression: e ]
 ]
 
 { #category : #accessing }
@@ -123,15 +125,6 @@ KEUnaryExpression >> printOn: aStream [
 		nextPutAll: expression asString
 ]
 
-{ #category : #removing }
-KEUnaryExpression >> remove: aVariable [
-	"This function is reserved for the reformulation of rate expression to probability of contact of an event generated from an equation"
-	|new|
-	new := (KEUnaryExpression new) op: #-.
-	new expression: (expression remove: aVariable).
-	^ new
-]
-
 { #category : #evaluating }
 KEUnaryExpression >> removeIndexedVariable [
 	"This function is reserved for the reformulation of rate expression to probability of contact of an event generated from an equation"
@@ -139,6 +132,13 @@ KEUnaryExpression >> removeIndexedVariable [
 	new := self copy.
 	new expression: (expression removeIndexedVariable).
 	^ new
+]
+
+{ #category : #removing }
+KEUnaryExpression >> removeVariable: aVariable [
+	"This function is reserved for the reformulation of rate expression to probability of contact of an event generated from an equation"
+
+	^ (self op: #-) expression: (expression removeVariable: aVariable)
 ]
 
 { #category : #testing }
