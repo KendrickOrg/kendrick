@@ -243,15 +243,25 @@ KEBinaryExpression >> printOn: aStream [
 		nextPutAll: rightHandSide asString
 ]
 
+{ #category : #evaluating }
+KEBinaryExpression >> removeIndexedVariable [
+	|new|
+	new := self copy.
+	new leftHandSide: (new leftHandSide removeIndexedVariable).
+	new rightHandSide: (new rightHandSide removeIndexedVariable).
+	^ new.
+
+]
+
 { #category : #removing }
-KEBinaryExpression >> remove: aVariable [
+KEBinaryExpression >> removeVariable: aVariable [
 	"This function is reserved for the reformulation of rate expression to probability of contact of an event generated from an equation"
 
 	| new |
-	new := self class  new
+	new := self class new
 		op: op;
-		leftHandSide: (leftHandSide remove: aVariable);
-		rightHandSide: (rightHandSide remove: aVariable).
+		leftHandSide: (leftHandSide removeVariable: aVariable);
+		rightHandSide: (rightHandSide removeVariable: aVariable).
 	new checkNil
 		ifTrue: [ ^ nil ].
 	new leftHandSide ifNil: [ ^ rightHandSide ].
@@ -265,16 +275,6 @@ KEBinaryExpression >> remove: aVariable [
 				op: #-;
 				expression: leftHandSide ].
 	^ new
-]
-
-{ #category : #evaluating }
-KEBinaryExpression >> removeIndexedVariable [
-	|new|
-	new := self copy.
-	new leftHandSide: (new leftHandSide removeIndexedVariable).
-	new rightHandSide: (new rightHandSide removeIndexedVariable).
-	^ new.
-
 ]
 
 { #category : #accessing }

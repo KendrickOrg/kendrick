@@ -97,18 +97,19 @@ KEMathFunctionExpression >> printOn: aStream [
 		nextPutAll: ')'
 ]
 
-{ #category : #removing }
-KEMathFunctionExpression >> remove: aVariable [
-	"This function is reserved for the reformulation of rate expression to probability of contact of an event generated from an equation"
-	^ self
-]
-
 { #category : #evaluating }
 KEMathFunctionExpression >> removeIndexedVariable [
 	|new|
 	new := self copy.
 	new functionExpr: functionExpr removeIndexedVariable.
 	^ new
+]
+
+{ #category : #removing }
+KEMathFunctionExpression >> removeVariable: aVariable [
+	"This function is reserved for the reformulation of rate expression to probability of contact of an event generated from an equation"
+
+	^ self
 ]
 
 { #category : #acessing }
