@@ -35,6 +35,8 @@ KETauLeapSimulator >> doTauLeapIteration [
 KETauLeapSimulator >> executeOn: aModel [
 	| t |
 	super executeOn: aModel.
+	self
+		proportionalSelectionClass: StochasticAcceptanceProportionalSelection.
 	t := tMin.
 	self saveCompartmentsValueAtTime: tMin.
 	[ t < tMax ]
