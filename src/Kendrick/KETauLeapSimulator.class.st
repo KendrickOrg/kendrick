@@ -38,8 +38,3 @@ KETauLeapSimulator >> executeOn: aModel [
 			t := t + step.
 			self saveCompartmentsValueAtTime: t ]
 ]
-
-{ #category : #accessing }
-KETauLeapSimulator >> proportionalSelectionClass: aClass [
-	proportionalSelectionClass := aClass
-]
