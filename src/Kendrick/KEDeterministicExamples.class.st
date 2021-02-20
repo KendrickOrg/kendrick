@@ -625,6 +625,40 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRDemographyModel [
 ]
 
 { #category : #'as yet unclassified' }
+KEDeterministicExamples >> exampleRK4SolverOnSIRDemographyModelWithRoassal3 [
+	"self new exampleRK4SolverOnSIRDemographyModelWithRoassal3"
+
+	| model simulator dB data|
+	model := KEModel new.
+	model addAttribute: #status value: #(#S #I #R).
+	model atCompartment: {(#status -> #S)} put: 0.7 atOthersPut: 0.
+	model atCompartment: {(#status -> #I)} put: 0.2.
+	model atCompartment: {(#status -> #R)} put: 0.1.
+	model
+		addParameters:
+			{(#beta -> 1.4246).
+			(#gamma -> 0.14286).
+			(#mu -> 0.00003913894)}.
+	model addEquation: 'S:t= mu -beta*S*I - mu*S'.
+	model addEquation: 'I:t= beta*S*I - gamma*I - mu*I'.
+	model addEquation: 'R:t= gamma*I - mu*R'.
+	
+	simulator := KESimulator
+		new: #RungeKutta
+		from: 0.0
+		to: 200
+		step: 1.
+	simulator executeOn: model.
+	
+	data := OrderedCollection new.
+	data add: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
+	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	data add: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
+	dB := KEDiagramsBuilder new data: data.
+	dB plot 
+]
+
+{ #category : #'as yet unclassified' }
 KEDeterministicExamples >> exampleRK4SolverOnSIRModelWithRoassal3 [
 	"self new exampleRK4SolverOnSIRModelWithRoassal3"
 
