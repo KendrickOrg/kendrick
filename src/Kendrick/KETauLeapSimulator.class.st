@@ -16,15 +16,9 @@ KETauLeapSimulator >> doTauLeapIteration [
 	
 	model transitions do: [ :tr|
 		|rate numPoisson prob|
-		"model parameters at: #scope put: tr scope.
-		model parameters at: #contactingSource put: (tr from)."
-		((tr from at: #status) = #empty)
-		ifTrue: [ model currentCompartment: (tr to) ] 
-		ifFalse: [ model currentCompartment: (tr from) ].
-		model nextCompartment: (tr to).
+		
 		prob := (tr probability value: model) abs.
-		"prob isDictionary ifTrue: [ prob := prob values sum ]."
-		rate := prob * (model atCompartment: tr from).
+		rate := prob * (model atCompartment: tr from) atRandom.
 		numPoisson := (PMPoissonGenerator lambda: (rate * step)) next.
 		tr executeOn: model times: numPoisson   
 		 ].
@@ -43,9 +37,4 @@ KETauLeapSimulator >> executeOn: aModel [
 			self doTauLeapIteration.
 			t := t + step.
 			self saveCompartmentsValueAtTime: t ]
-]
-
-{ #category : #accessing }
-KETauLeapSimulator >> proportionalSelectionClass: aClass [
-	proportionalSelectionClass := aClass
 ]
