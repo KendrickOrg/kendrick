@@ -9,5 +9,5 @@ Class {
 
 { #category : #'code-critics' }
 ManifestKendrick class >> ruleRBMethodSourceContainsLinefeedsRuleV1FalsePositive [
-	^ #(#(#(#RGMethodDefinition #(#KEDiagramsBuilder #plotLog #false)) #'2021-02-21T13:32:08.331237+01:00') )
+	^ #(#(#(#RGMethodDefinition #(#KEChart #plotLog #false)) #'2021-02-21T13:32:08.331237+01:00') )
 ]
