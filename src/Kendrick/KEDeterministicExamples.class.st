@@ -654,7 +654,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRDemographyModelWithRoassal3 [
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
-	dB := KEDiagramsBuilder new data: data.
+	dB := KEChart new data: data.
 	dB plot 
 ]
 
@@ -707,7 +707,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRModelWithLogVisualisationInRoass
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
-	dB := KEDiagramsBuilder new data: data.
+	dB := KEChart new data: data.
 	dB plotLog
 ]
 
@@ -739,7 +739,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRModelWithRoassal3 [
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
-	dB := KEDiagramsBuilder new data: data.
+	dB := KEChart new data: data.
 	dB plot 
 ]
 
@@ -792,7 +792,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRModelWithSqrtVisualisationInRoas
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
-	dB := KEDiagramsBuilder new data: data.
+	dB := KEChart new data: data.
 	dB plotSqrt
 ]
 
