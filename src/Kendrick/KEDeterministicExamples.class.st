@@ -660,8 +660,8 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRDemographyModelWithRoassal3 [
 
 { #category : #'as yet unclassified' }
 KEDeterministicExamples >> exampleRK4SolverOnSIRModelWithLogVisualisationInRoassal3 [
-
-	| model simulator dB data|
+"self new exampleRK4SolverOnSIRModelWithLogVisualisationInRoassal3"
+	| model simulator dB data |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R))}.
 	model atCompartment: {(#status -> #S)} put: 4975 atOthersPut: 0.
@@ -698,18 +698,16 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRModelWithLogVisualisationInRoass
 		to: {(#status -> #S)}
 		probability: [ :aModel | aModel atParameter: #mu ].
 	simulator := KESimulator
-		new: #RungeKutta 
+		new: #RungeKutta
 		from: 0
 		to: 0.4
 		step: 0.0027.
 	simulator executeOn: model.
-
 	data := OrderedCollection new.
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
 	dB := KEDiagramsBuilder new data: data.
-	
 	dB plotLog
 ]
 
@@ -747,8 +745,8 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRModelWithRoassal3 [
 
 { #category : #'as yet unclassified' }
 KEDeterministicExamples >> exampleRK4SolverOnSIRModelWithSqrtVisualisationInRoassal3 [
-
-	| model simulator dB data|
+"self new exampleRK4SolverOnSIRModelWithSqrtVisualisationInRoassal3"
+	| model simulator dB data |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R))}.
 	model atCompartment: {(#status -> #S)} put: 4975 atOthersPut: 0.
@@ -785,19 +783,17 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRModelWithSqrtVisualisationInRoas
 		to: {(#status -> #S)}
 		probability: [ :aModel | aModel atParameter: #mu ].
 	simulator := KESimulator
-		new: #RungeKutta 
+		new: #RungeKutta
 		from: 0
 		to: 0.4
 		step: 0.0027.
 	simulator executeOn: model.
-
 	data := OrderedCollection new.
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
 	dB := KEDiagramsBuilder new data: data.
-	
-	dB plotSqrt 
+	dB plotSqrt
 ]
 
 { #category : #examples }
