@@ -191,6 +191,15 @@ KEModel >> gtInspectorKendrickGraphIn: composite [
 ]
 
 { #category : #'as yet unclassified' }
+KEModel >> gtInspectorKendrickGraphInRoassal3: composite [
+	<gtInspectorPresentationOrder: -20>
+	<gtInspectorTag: #kendrick>
+	composite roassal3
+		title: 'Graph';
+		initializeCanvas: [ self visualize  ]
+]
+
+{ #category : #'as yet unclassified' }
 KEModel >> gtInspectorViewInRoassal3: composite [
 	<gtInspectorPresentationOrder: -10>
 	composite roassal3
