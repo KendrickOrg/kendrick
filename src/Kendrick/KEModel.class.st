@@ -304,3 +304,39 @@ KEModel >> t [
 KEModel >> t: aNumber [
 	t := aNumber
 ]
+
+{ #category : #'as yet unclassified' }
+KEModel >> visualize [
+		
+	|graph c nodes edges|
+	c := RSCanvas new.
+	
+	graph := (KEGraphFromCompartments on: self) run.
+	nodes := graph nodes collect: [ :l | 
+	| label box |
+	label := RSLabel new 
+		text: l;
+		color: Color white;
+		yourself.
+	
+	box := RSBox new
+		extent: label extent + 5;
+		color: '#235959';
+		border: (RSBorder new color: '#2c80ff'; yourself);
+		yourself.
+		
+	{ box. label } asGroup asShapeFor: l] as: RSGroup.
+	nodes @ RSDraggable.
+	c addAll: nodes.
+	
+   RSFlowLayout on: nodes. 
+   edges := RSEdgeBuilder line
+		canvas: c;
+		color: (Color black); 
+    	attachPoint: (RSHorizontalAttachPoint new );
+		source: graph edges connectFrom: #from to: #to. 
+		edges do: [ :e | e pushBack ].
+				
+	c @ RSCanvasController.
+   ^c 
+]
