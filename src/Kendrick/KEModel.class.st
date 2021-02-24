@@ -190,6 +190,14 @@ KEModel >> gtInspectorKendrickGraphIn: composite [
 			view ]
 ]
 
+{ #category : #'as yet unclassified' }
+KEModel >> gtInspectorViewInRoassal3: composite [
+	<gtInspectorPresentationOrder: -10>
+	composite roassal3
+		title: 'View';
+		initializeCanvas: [ self visualize  ]
+]
+
 { #category : #initialization }
 KEModel >> initialize [
 	super initialize.
