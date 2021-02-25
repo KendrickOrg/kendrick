@@ -310,6 +310,7 @@ KEModel >> visualize [
 		
 	|graph c nodes edges|
 	c := RSCanvas new.
+	c color: Color gray.
 	
 	graph := (KEGraphFromCompartments on: self) run.
 	nodes := graph nodes collect: [ :l | 
@@ -322,6 +323,7 @@ KEModel >> visualize [
 	box := RSBox new
 		extent: label extent + 5;
 		color: '#235959';
+		model: l;
 		border: (RSBorder new color: '#2c80ff'; yourself);
 		yourself.
 		
@@ -330,12 +332,14 @@ KEModel >> visualize [
 	c addAll: nodes.
 	
    RSFlowLayout on: nodes. 
-   edges := RSEdgeBuilder line
-		canvas: c;
-		color: (Color black); 
-    	attachPoint: (RSHorizontalAttachPoint new );
-		source: graph edges connectFrom: #from to: #to. 
-		edges do: [ :e | e pushBack ].
+ 
+	edges := RSEdgeBuilder arrowedDirectedBezier 
+			color: Color red;
+			canvas: c;
+			shapes: c shapes;
+			withBorderAttachPoint;
+			attachPoint: (RSHorizontalAttachPoint new );
+	source: graph edges connectFrom: #from to: #to. 
 				
 	c @ RSCanvasController.
    ^c 
