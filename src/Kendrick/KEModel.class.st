@@ -190,6 +190,23 @@ KEModel >> gtInspectorKendrickGraphIn: composite [
 			view ]
 ]
 
+{ #category : #'as yet unclassified' }
+KEModel >> gtInspectorKendrickGraphInRoassal3: composite [
+	<gtInspectorPresentationOrder: -20>
+	<gtInspectorTag: #kendrick>
+	composite roassal3
+		title: 'Graph';
+		initializeCanvas: [ self visualize  ]
+]
+
+{ #category : #'as yet unclassified' }
+KEModel >> gtInspectorViewInRoassal3: composite [
+	<gtInspectorPresentationOrder: -10>
+	composite roassal3
+		title: 'View';
+		initializeCanvas: [ self visualize  ]
+]
+
 { #category : #initialization }
 KEModel >> initialize [
 	super initialize.
@@ -286,4 +303,44 @@ KEModel >> t [
 { #category : #accessing }
 KEModel >> t: aNumber [
 	t := aNumber
+]
+
+{ #category : #'as yet unclassified' }
+KEModel >> visualize [
+		
+	|graph c nodes edges|
+	c := RSCanvas new.
+	c color: Color gray.
+	
+	graph := (KEGraphFromCompartments on: self) run.
+	nodes := graph nodes collect: [ :l | 
+	| label box |
+	label := RSLabel new 
+		text: l;
+		color: Color white;
+		yourself.
+	
+	box := RSBox new
+		extent: label extent + 5;
+		color: '#235959';
+		model: l;
+		border: (RSBorder new color: '#2c80ff'; yourself);
+		yourself.
+		
+	{ box. label } asGroup asShapeFor: l] as: RSGroup.
+	nodes @ RSDraggable.
+	c addAll: nodes.
+	
+   RSFlowLayout on: nodes. 
+ 
+	edges := RSEdgeBuilder arrowedDirectedBezier 
+			color: Color red;
+			canvas: c;
+			shapes: c shapes;
+			withBorderAttachPoint;
+			attachPoint: (RSHorizontalAttachPoint new );
+	source: graph edges connectFrom: #from to: #to. 
+				
+	c @ RSCanvasController.
+   ^c 
 ]

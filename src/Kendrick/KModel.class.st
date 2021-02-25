@@ -153,6 +153,16 @@ KModel >> gtInspectorKendrickGraphIn: composite [
 	^ ((Composition Temp concern: self id) instVarNamed: #backEndEntity) gtInspectorKendrickGraphIn: composite
 ]
 
+{ #category : #'as yet unclassified' }
+KModel >> gtInspectorKendrickGraphInRoassal3:  composite [
+
+	<gtInspectorPresentationOrder: -20>
+	<gtInspectorTag: #custom>
+	<gtInspectorTag: #kendrick>
+
+	^ ((Composition Temp concern: self id) instVarNamed: #backEndEntity) gtInspectorKendrickGraphInRoassal3: composite
+]
+
 { #category : #'public-api' }
 KModel >> initialize [
 

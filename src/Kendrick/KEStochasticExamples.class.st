@@ -107,7 +107,7 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithPlotHistogramV
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
-	dB := KEDiagramsBuilder new data: data.
+	dB := KEChart new data: data.
 	dB plotHistogram
 ]
 
@@ -160,7 +160,7 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithPlotScatterViz
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
-	dB := KEDiagramsBuilder new data: data.
+	dB := KEChart new data: data.
 	dB plotScatter
 ]
 
@@ -214,7 +214,7 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithRoassal3 [
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
 	data add: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
-	dB := KEDiagramsBuilder new data: data.
+	dB := KEChart new data: data.
 	dB plot
 ]
 

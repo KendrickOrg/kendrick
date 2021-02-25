@@ -1,7 +1,8 @@
 Class {
-	#name : #KEDiagramsBuilder,
-	#superclass : #KEPlot,
+	#name : #KEChart,
+	#superclass : #KEEntity,
 	#instVars : [
+		'data',
 		'xLabel',
 		'yLabel',
 		'legends',
@@ -11,38 +12,48 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-KEDiagramsBuilder >> buildLegends [
+KEChart >> buildLegends [
 	legends ifNil: [ legends := data collect: [ :each | each columnNames first ] ]
 ]
 
 { #category : #accessing }
-KEDiagramsBuilder >> data: aCollection [
-	super data: aCollection.
-	self buildLegends
+KEChart >> data [ 
+	^data 
 ]
 
 { #category : #accessing }
-KEDiagramsBuilder >> legendTitle [
+KEChart >> data: aCollection [
+	data := aCollection.
+	self buildLegends
+]
+
+{ #category : #initialization }
+KEChart >> initialize [
+	data := OrderedCollection new
+]
+
+{ #category : #accessing }
+KEChart >> legendTitle [
 	^ legendTitle
 ]
 
 { #category : #accessing }
-KEDiagramsBuilder >> legendTitle: aString [
+KEChart >> legendTitle: aString [
 	legendTitle := aString
 ]
 
 { #category : #accessing }
-KEDiagramsBuilder >> legends [
+KEChart >> legends [
 	^ legends
 ]
 
 { #category : #accessing }
-KEDiagramsBuilder >> legends: aCollection [
+KEChart >> legends: aCollection [
 	legends := aCollection
 ]
 
 { #category : #'as yet unclassified' }
-KEDiagramsBuilder >> plot [
+KEChart >> plot [
 	| c p x y lb normalize |
 	normalize := RTMultiLinearColorForIdentity new
 		objects: self legends;
@@ -80,7 +91,7 @@ KEDiagramsBuilder >> plot [
 ]
 
 { #category : #'as yet unclassified' }
-KEDiagramsBuilder >> plotHistogram [
+KEChart >> plotHistogram [
 	| c p x y lb normalize |
 	normalize := RTMultiLinearColorForIdentity new
 		objects: self legends;
@@ -122,7 +133,7 @@ KEDiagramsBuilder >> plotHistogram [
 ]
 
 { #category : #'as yet unclassified' }
-KEDiagramsBuilder >> plotLog [
+KEChart >> plotLog [
 	| c p x y lb normalize |
 	normalize := RTMultiLinearColorForIdentity new
 		objects: self legends;
@@ -165,7 +176,7 @@ KEDiagramsBuilder >> plotLog [
 ]
 
 { #category : #'as yet unclassified' }
-KEDiagramsBuilder >> plotScatter [
+KEChart >> plotScatter [
 	| c p x y lb normalize |
 	normalize := RTMultiLinearColorForIdentity new
 		objects: self legends;
@@ -207,7 +218,7 @@ KEDiagramsBuilder >> plotScatter [
 ]
 
 { #category : #'as yet unclassified' }
-KEDiagramsBuilder >> plotSqrt [
+KEChart >> plotSqrt [
 	| c p x y lb normalize |
 	normalize := RTMultiLinearColorForIdentity new
 		objects: self legends;
@@ -249,21 +260,21 @@ KEDiagramsBuilder >> plotSqrt [
 ]
 
 { #category : #accessing }
-KEDiagramsBuilder >> xLabel [
+KEChart >> xLabel [
 	^ xLabel
 ]
 
 { #category : #accessing }
-KEDiagramsBuilder >> xLabel: aString [
+KEChart >> xLabel: aString [
 	xLabel := aString
 ]
 
 { #category : #accessing }
-KEDiagramsBuilder >> yLabel [
+KEChart >> yLabel [
 	^ yLabel
 ]
 
 { #category : #accessing }
-KEDiagramsBuilder >> yLabel: aString [
+KEChart >> yLabel: aString [
 	yLabel := aString
 ]
