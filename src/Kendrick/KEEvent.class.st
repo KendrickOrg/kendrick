@@ -129,3 +129,9 @@ KEEvent >> updateCardinalityOf: aStatus [
 	^ aStatus 
 	
 ]
+
+{ #category : #'as yet unclassified' }
+KEEvent >> updateCardinalityOf: aStatus by: aNumber [
+
+	actions at: aStatus put: aNumber
+]
