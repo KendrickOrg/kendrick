@@ -27,7 +27,8 @@ Class {
 		'rate',
 		'actions',
 		'fromStatus',
-		'toStatus'
+		'toStatus',
+		'updateCardinalityOf'
 	],
 	#category : #'Kendrick-Core'
 }
@@ -120,4 +121,11 @@ KEEvent >> toStatus [
 { #category : #accessing }
 KEEvent >> toStatus: anObject [
 	toStatus := anObject
+]
+
+{ #category : #accessing }
+KEEvent >> updateCardinalityOf: aStatus [ 
+	
+	^ aStatus 
+	
 ]
