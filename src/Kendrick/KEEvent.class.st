@@ -126,7 +126,7 @@ KEEvent >> toStatus: anObject [
 { #category : #accessing }
 KEEvent >> updateCardinalityOf: aStatus [ 
 	
-	^ aStatus 
+	^ actions at: aStatus
 	
 ]
 
