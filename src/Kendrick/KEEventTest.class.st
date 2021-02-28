@@ -23,7 +23,7 @@ KEEventTest >> testCreateAnEventThatAddAnIndividualFromStatusS [
 	|e|
 	e := KEEvent new.
 	e addOneIndividualTo: #S.
-	self assert: (e actions at: #S) equals: 1.
+	self assert: (e updateCardinalityOf: #S) equals: 1.
 
 ]
 
