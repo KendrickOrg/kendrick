@@ -27,8 +27,7 @@ Class {
 		'rate',
 		'actions',
 		'fromStatus',
-		'toStatus',
-		'updateCardinalityOf'
+		'toStatus'
 	],
 	#category : #'Kendrick-Core'
 }
