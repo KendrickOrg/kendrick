@@ -6,14 +6,16 @@ Class {
 
 { #category : #tests }
 KEEventTest >> testCompareActionsOf2Events [
-	|e1 e2|
-	e1 := KEEvent new.
-	e1 actions at: #S put: -1.
-	e1 actions at: #I put: 1.
-	e2 := KEEvent new.
-	e2 actions at: #I put: 1.
-	e2 actions at: #S put: -1.
-	self assert: (e1 actions = e2 actions) equals: true
+	| e1 e2 |
+    e1 := KEEvent new.
+    e1 updateCardinalityOf:#S by: -1.
+    e1 updateCardinalityOf:#I by: 1.
+    e2 := KEEvent new.
+    e2 updateCardinalityOf:#I by: 1.
+    e2 updateCardinalityOf:#S by: -1.
+ 
+    self assert: (e1 updateCardinalityOf: #S) equals: (e2 updateCardinalityOf:#S).
+    self assert: (e1 updateCardinalityOf: #I) equals: (e2 updateCardinalityOf:#I)
 ]
 
 { #category : #tests }
@@ -21,7 +23,7 @@ KEEventTest >> testCreateAnEventThatAddAnIndividualFromStatusS [
 	|e|
 	e := KEEvent new.
 	e addOneIndividualTo: #S.
-	self assert: (e actions at: #S) equals: 1.
+	self assert: (e updateCardinalityOf: #S) equals: 1.
 
 ]
 
@@ -30,7 +32,7 @@ KEEventTest >> testCreateAnEventThatRemoveAnIndividualFromStatusS [
 	|e|
 	e := KEEvent new.
 	e removeOneIndividualFrom: #S.
-	self assert: (e actions at: #S) equals: -1.
+	self assert: (e updateCardinalityOf: #S) equals: -1.
 
 ]
 
@@ -67,8 +69,12 @@ KEEventTest >> testEventsWithSameActions [
 e1 := KEEvent new.
 e2 := KEEvent new.
 
-e1 actions at: #S put: 1; at: #I put: -1.
-e2 actions at: #I put: -1; at: #S put: 1.
+e1 updateCardinalityOf: #S by: 1.
+e1 updateCardinalityOf: #I by: -1.
+
+e2 updateCardinalityOf: #S by: 1.
+e2 updateCardinalityOf: #I by: -1.
+
 
 listEvents := OrderedCollection new.
 listEvents add: e1.

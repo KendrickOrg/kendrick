@@ -121,3 +121,16 @@ KEEvent >> toStatus [
 KEEvent >> toStatus: anObject [
 	toStatus := anObject
 ]
+
+{ #category : #accessing }
+KEEvent >> updateCardinalityOf: aStatus [ 
+	
+	^ actions at: aStatus
+	
+]
+
+{ #category : #'as yet unclassified' }
+KEEvent >> updateCardinalityOf: aStatus by: aNumber [
+
+	actions at: aStatus put: aNumber
+]
