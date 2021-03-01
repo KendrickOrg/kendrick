@@ -1,10 +1,22 @@
+"
+KEChart is the main class to plot results of simulation in Kendrick.
+
+How to use KEChar:
+
+	chart := KEChart new
+		addDataFrame: df1;
+		addDataFrame: df2;
+		addDataFrame: df3.
+	chart plot
+
+will plot on the same chart, the 3 dataframes df1, df2 and df3.
+"
 Class {
 	#name : #KEChart,
 	#superclass : #KEEntity,
 	#instVars : [
 		'xLabel',
 		'yLabel',
-		'legends',
 		'legendTitle',
 		'dataFrames'
 	],
