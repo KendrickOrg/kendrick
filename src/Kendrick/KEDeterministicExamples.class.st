@@ -328,7 +328,7 @@ KEDeterministicExamples >> exampleRK4SolverOnMigrationTwoSpeciesModel [
 KEDeterministicExamples >> exampleRK4SolverOnMultiInfectiousStatusModel [
 	"self new exampleRK4SolverOnMultiInfectiousStatusModel"
 
-	| model simulator db data |
+	| model simulator chart |
 	model := self modelRK4SolverOnMultiInfectiousStatusModel.
 	simulator := KESimulator
 		new: #RungeKutta
@@ -336,18 +336,17 @@ KEDeterministicExamples >> exampleRK4SolverOnMultiInfectiousStatusModel [
 		to: 50
 		step: 0.1.
 	simulator executeOn: model.
-	data := OrderedCollection new.
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #Is)}).
-	db := KEDiagramBuilder new data: data.
-	db open
+	chart := KEChart new
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)});
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #Is)}).
+	chart plot
 ]
 
 { #category : #examples }
 KEDeterministicExamples >> exampleRK4SolverOnMultiStrainModel [
 	"self new exampleRK4SolverOnMultiStrainModel"
 
-	| model simulator db data |
+	| model simulator chart |
 	model := self modelRK4SolverOnMultiStrainModel.
 	simulator := KESimulator
 		new: #RungeKutta
@@ -355,11 +354,9 @@ KEDeterministicExamples >> exampleRK4SolverOnMultiStrainModel [
 		to: 70
 		step: 0.1.
 	simulator executeOn: model.
-	data := OrderedCollection new.
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I1)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I2)}).
-	db := KEDiagramBuilder new data: data.
-	db plot
+	chart  := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I1)});
+	addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I2)}).
+	chart plot
 ]
 
 { #category : #'as yet unclassified' }
