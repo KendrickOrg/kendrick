@@ -97,7 +97,7 @@ Visualization SpatialDiagramViz diagram
 { #category : #'as yet unclassified' }
 TestMultiSpeciesSpatial >> before [
 
-|model spatialConcern simulator db multiHostConcern seirsConcern f |
+|model spatialConcern simulator chart multiHostConcern seirsConcern f |
 model := KEModel new.
 
 "Multi-host concern"
@@ -226,24 +226,24 @@ seirsConcern
 
 simulator := KESimulator new: #RungeKutta from: 0 to: 500 step: 1.
     simulator executeOn: model.
-    db := KEDiagramBuilder new.
+   chart := KEChart new. 
 
     f := [:name| |df ds|
       df := (simulator timeSeriesOutputsAt: name) collect: [ :e| e value ].
 ds := df columnNames inject:0 into: [ :sum :each | sum + (df column: each) ].
 ds name: name.
-ds asDataFrame
+
         ].
-    db addData: { 
+    chart addDataFrame: { 
         (f value: {#status -> #I. #species ->#bird}). 
         (f value: {#status -> #I.#species -> #human}) }.
-    db xLabel: 'Time (days)'.
-    db legendTitle: 'Total of infectious'.
-    db legends: { 'birds'. 'humans' }.
+   
+    chart legendTitle: 'Total of infectious'.
+    
 
-    db open.
+    chart plot.
 
-	^ { simulator . model . db}
+	^ { simulator . model . chart}
 ]
 
 { #category : #'as yet unclassified' }
