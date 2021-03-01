@@ -2,28 +2,23 @@ Class {
 	#name : #KEChart,
 	#superclass : #KEEntity,
 	#instVars : [
-		'data',
 		'xLabel',
 		'yLabel',
 		'legends',
-		'legendTitle'
+		'legendTitle',
+		'dataFrames'
 	],
 	#category : #'Kendrick-Core-Visualisation-Roassal3'
 }
 
 { #category : #accessing }
 KEChart >> addDataFrame: aDataFrame [
-	data add: aDataFrame
-]
-
-{ #category : #'as yet unclassified' }
-KEChart >> buildLegends [
-	legends ifNil: [ legends := data collect: [ :each | each columnNames first ] ]
+	dataFrames add: aDataFrame
 ]
 
 { #category : #initialization }
 KEChart >> initialize [
-	data := OrderedCollection new.
+	dataFrames := OrderedCollection new.
 	legendTitle := ''
 ]
 
@@ -34,32 +29,27 @@ KEChart >> legendTitle: aString [
 
 { #category : #accessing }
 KEChart >> legends [
-	^ legends
+	^ dataFrames collect: [ :each | each columnNames first ]
 ]
 
-{ #category : #accessing }
-KEChart >> legends: aCollection [
-	legends := aCollection
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #'public - plots' }
 KEChart >> plot [
 	| c p x y lb normalize |
-	self buildLegends.
 	normalize := RTMultiLinearColorForIdentity new
 		objects: self legends;
 		colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
 	c := RSChart new.
-	1 to: legends size do: [ :i | 
-		| d |
-		d := normalize rtValue: (legends at: i).
-		p := RSLinePlot new.
-		x := (data at: i) rowNames.
-		y := x collect: [ :j | ((data at: i) row: j) contents first ].
-		p
-			x: x y: y;
-			color: d.
-		c addPlot: p ].
+	self legends
+		withIndexDo: [ :each :i | 
+			| d |
+			d := normalize rtValue: each.
+			p := RSLinePlot new.
+			x := (dataFrames at: i) rowNames.
+			y := x collect: [ :j | ((dataFrames at: i) row: j) contents first ].
+			p
+				x: x y: y;
+				color: d.
+			c addPlot: p ].
 	c addDecoration: RSVerticalTick new asFloat.
 	c addDecoration: RSHorizontalTick new asFloat.
 	xLabel
@@ -72,7 +62,7 @@ KEChart >> plot [
 	c build.
 	lb := RSLegend new.
 	lb container: c canvas.
-	legends
+	self legends
 		do: [ :each | 
 			| d |
 			d := normalize rtValue: each.
@@ -81,24 +71,24 @@ KEChart >> plot [
 	lb canvas open
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'public - plots' }
 KEChart >> plotHistogram [
 	| c p x y lb normalize |
-		self buildLegends.
 	normalize := RTMultiLinearColorForIdentity new
 		objects: self legends;
 		colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
 	c := RSChart new.
-	1 to: legends size do: [ :i | 
-		| d |
-		d := normalize rtValue: (legends at: i).
-		p := RSBarPlot new.
-		x := (data at: i) rowNames.
-		y := x collect: [ :j | ((data at: i) row: j) contents first ].
-		p
-			x: x y: y;
-			color: d.
-		c addPlot: p ].
+	self legends
+		withIndexDo: [ :each :i | 
+			| d |
+			d := normalize rtValue: each.
+			p := RSBarPlot new.
+			x := (dataFrames at: i) rowNames.
+			y := x collect: [ :j | ((dataFrames at: i) row: j) contents first ].
+			p
+				x: x y: y;
+				color: d.
+			c addPlot: p ].
 	c addDecoration: RSVerticalTick new asFloat.
 	c
 		addDecoration:
@@ -115,7 +105,7 @@ KEChart >> plotHistogram [
 	c build.
 	lb := RSLegend new.
 	lb container: c canvas.
-	legends
+	self legends
 		do: [ :each | 
 			| d |
 			d := normalize rtValue: each.
@@ -124,68 +114,65 @@ KEChart >> plotHistogram [
 	lb canvas open
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'public - plots' }
 KEChart >> plotLog [
 	| c p x y lb normalize |
-		self buildLegends.
-	normalize := RTMultiLinearColorForIdentity new
-		objects: self legends;
-		colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
-	#(yLog)
-		do: [ :sel | 
-			c := RSChart new.
-			1 to: legends size do: [ :i | 
-				| d |
-				d := normalize rtValue: (legends at: i).
-				p := RSLinePlot new.
-				x := (data at: i) rowNames.
-				y := x collect: [ :j | ((data at: i) row: j) contents first ].
-				p
-					x: x y: y log;
-					color: d.
-				c addPlot: p ].
-			c addDecoration: RSVerticalTick new asFloat.
-			c addDecoration: RSHorizontalTick new asFloat.
-			c perform: sel.
-			c yLog.
-			"c title: sel."
-			xLabel
-				ifNil: [ c xlabel: 'Time (days)' ]
-				ifNotNil: [ c xlabel: xLabel ].
-			yLabel
-				ifNil: [ c ylabel: 'Log (Number of individuals)' ]
-				ifNotNil: [ c ylabel: yLabel ].
-			c title: legendTitle.
-			c build.
-			lb := RSLegend new.
-			lb container: c canvas.
-			legends
-				do: [ :each | 
-					| d |
-					d := normalize rtValue: each.
-					lb text: each withBoxColor: d ].
-			lb build.
-			lb canvas open ]
-]
-
-{ #category : #'as yet unclassified' }
-KEChart >> plotScatter [
-	| c p x y lb normalize |
-		self buildLegends.
 	normalize := RTMultiLinearColorForIdentity new
 		objects: self legends;
 		colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
 	c := RSChart new.
-	1 to: legends size do: [ :i | 
-		| d |
-		d := normalize rtValue: (legends at: i).
-		p := RSScatterPlot new.
-		x := (data at: i) rowNames.
-		y := x collect: [ :j | ((data at: i) row: j) contents first ].
-		p
-			x: x y: y;
-			color: d.
-		c addPlot: p ].
+	self legends
+		withIndexDo: [ :each :i | 
+			| d |
+			d := normalize rtValue: each.
+			p := RSLinePlot new.
+			x := (dataFrames at: i) rowNames.
+			y := x collect: [ :j | ((dataFrames at: i) row: j) contents first ].
+			p
+				x: x y: y log;
+				color: d.
+			c addPlot: p ].
+	c addDecoration: RSVerticalTick new asFloat.
+	c addDecoration: RSHorizontalTick new asFloat.
+	c perform: #yLog.
+	c yLog.
+	xLabel
+		ifNil: [ c xlabel: 'Time (days)' ]
+		ifNotNil: [ c xlabel: xLabel ].
+	yLabel
+		ifNil: [ c ylabel: 'Log (Number of individuals)' ]
+		ifNotNil: [ c ylabel: yLabel ].
+	c title: legendTitle.
+	c build.
+	lb := RSLegend new.
+	lb container: c canvas.
+	self legends
+		do: [ :each | 
+			| d |
+			d := normalize rtValue: each.
+			lb text: each withBoxColor: d ].
+	lb build.
+	lb canvas open
+]
+
+{ #category : #'public - plots' }
+KEChart >> plotScatter [
+	| c p x y lb normalize |
+	normalize := RTMultiLinearColorForIdentity new
+		objects: self legends;
+		colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
+	c := RSChart new.
+	self legends
+		withIndexDo: [ :each :i | 
+			| d |
+			d := normalize rtValue: each.
+			p := RSScatterPlot new.
+			x := (dataFrames at: i) rowNames.
+			y := x collect: [ :j | ((dataFrames at: i) row: j) contents first ].
+			p
+				x: x y: y;
+				color: d.
+			c addPlot: p ].
 	c addDecoration: RSVerticalTick new asFloat.
 	c
 		addDecoration:
@@ -202,7 +189,7 @@ KEChart >> plotScatter [
 	c build.
 	lb := RSLegend new.
 	lb container: c canvas.
-	legends
+	self legends
 		do: [ :each | 
 			| d |
 			d := normalize rtValue: each.
@@ -211,47 +198,45 @@ KEChart >> plotScatter [
 	lb canvas open
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'public - plots' }
 KEChart >> plotSqrt [
 	| c p x y lb normalize |
-		self buildLegends.
 	normalize := RTMultiLinearColorForIdentity new
 		objects: self legends;
 		colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
-	#(ySqrt)
-		do: [ :sel | 
-			c := RSChart new.
-			1 to: legends size do: [ :i | 
-				| d |
-				d := normalize rtValue: (legends at: i).
-				p := RSLinePlot new.
-				x := (data at: i) rowNames.
-				y := x collect: [ :j | ((data at: i) row: j) contents first ].
-				p
-					x: x y: y sqrt;
-					color: d.
-				c addPlot: p ].
-			c addDecoration: RSVerticalTick new asFloat.
-			c addDecoration: RSHorizontalTick new asFloat.
-			c perform: sel.
-			c ySqrt.
-			xLabel
-				ifNil: [ c xlabel: 'Time (days)' ]
-				ifNotNil: [ c xlabel: xLabel ].
-			yLabel
-				ifNil: [ c ylabel: 'Sqrt (Number of individuals)' ]
-				ifNotNil: [ c ylabel: yLabel ].
-			c title: legendTitle.
-			c build.
-			lb := RSLegend new.
-			lb container: c canvas.
-			legends
-				do: [ :each | 
-					| d |
-					d := normalize rtValue: each.
-					lb text: each withBoxColor: d ].
-			lb build.
-			lb canvas open ]
+	c := RSChart new.
+	self legends
+		withIndexDo: [ :each :i | 
+			| d |
+			d := normalize rtValue: each.
+			p := RSLinePlot new.
+			x := (dataFrames at: i) rowNames.
+			y := x collect: [ :j | ((dataFrames at: i) row: j) contents first ].
+			p
+				x: x y: y sqrt;
+				color: d.
+			c addPlot: p ].
+	c addDecoration: RSVerticalTick new asFloat.
+	c addDecoration: RSHorizontalTick new asFloat.
+	c perform: #ySqrt.
+	c ySqrt.
+	xLabel
+		ifNil: [ c xlabel: 'Time (days)' ]
+		ifNotNil: [ c xlabel: xLabel ].
+	yLabel
+		ifNil: [ c ylabel: 'Sqrt (Number of individuals)' ]
+		ifNotNil: [ c ylabel: yLabel ].
+	c title: legendTitle.
+	c build.
+	lb := RSLegend new.
+	lb container: c canvas.
+	self legends
+		do: [ :each | 
+			| d |
+			d := normalize rtValue: each.
+			lb text: each withBoxColor: d ].
+	lb build.
+	lb canvas open
 ]
 
 { #category : #accessing }
