@@ -306,7 +306,7 @@ KEDeterministicExamples >> exampleRK4SolverOnMigrationOneSpeciesModel [
 KEDeterministicExamples >> exampleRK4SolverOnMigrationTwoSpeciesModel [
 	"self new exampleRK4SolverOnMigrationTwoSpeciesModel"
 
-	| model simulator db |
+	| model simulator chart |
 	model := self modelRK4SolverOnMigrationTwoSpeciesModel.
 	simulator := KESimulator
 		new: #RungeKutta
@@ -314,15 +314,14 @@ KEDeterministicExamples >> exampleRK4SolverOnMigrationTwoSpeciesModel [
 		to: 500
 		step: 1.
 	simulator executeOn: model.
-	db := KEDiagramBuilder new.
-	db
-		addData:
+	chart := KEChart new
+		addDataFrame:
 			(simulator
 				timeSeriesOutputsAt:
 					{(#status -> #I).
 					(#species -> #bird)}).
-	db xLabel: 'Time (days)'.
-	db open
+	chart xLabel: 'Time (days)'.
+	chart plot
 ]
 
 { #category : #examples }
@@ -440,7 +439,7 @@ KEDeterministicExamples >> exampleRK4SolverOnMultiStrainModelWithPlotVisualizati
 KEDeterministicExamples >> exampleRK4SolverOnMultipleRiskGroupsModel [
 	"self new exampleRK4SolverOnMultipleRiskGroupsModel"
 
-	| model simulator db |
+	| model simulator chart |
 	model := self modelRK4SolverOnMultipleRiskGroupsModel.
 	simulator := KESimulator
 		new: #RungeKutta
@@ -448,10 +447,11 @@ KEDeterministicExamples >> exampleRK4SolverOnMultipleRiskGroupsModel [
 		to: 30
 		step: 0.01.
 	simulator executeOn: model.
-	db := KEDiagramBuilder new.
-	db addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	db yLabel: 'Infectious'.
-	db open
+	chart := KEChart new
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #S)});
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart yLabel: 'Infectious'.
+	chart plot
 ]
 
 { #category : #examples }
@@ -842,7 +842,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRMultiHostModelWithODERepresentat
 KEDeterministicExamples >> exampleRK4SolverOnSIRSimpleModel [
 	"self new exampleRK4SolverOnSIRSimpleModel"
 
-	| model simulator dB |
+	| model simulator chart |
 	model := self modelRK4SolverOnSIRSimpleModel.
 	simulator := KESimulator
 		new: #RungeKutta
@@ -850,12 +850,9 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRSimpleModel [
 		to: 0.20
 		step: 0.001.
 	simulator executeOn: model.
-	dB := KEDiagramBuilder new.
-	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
-	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
-	dB xLabel: 'Time (year)'.
-	^ dB open
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #S)}); addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}); addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
+	chart xLabel: 'Time (year)'.
+	chart plot
 ]
 
 { #category : #examples }
@@ -897,7 +894,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRSimpleModelWithTransitionProbabi
 KEDeterministicExamples >> exampleRK4SolverOnSeasonalForcingModel [
 	"self new exampleRK4SolverOnSeasonalForcingModel"
 
-	| model simulator dB |
+	| model simulator chart |
 	model := self modelRK4SolverOnSeasonalForcingModel.
 	simulator := KESimulator
 		new: #RungeKutta
@@ -905,9 +902,10 @@ KEDeterministicExamples >> exampleRK4SolverOnSeasonalForcingModel [
 		to: 400
 		step: 0.01.
 	simulator executeOn: model.
-	dB := KEDiagramBuilder new.
-	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}) log.
-	dB open
+	chart := KEChart
+		new
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}) log.
+	chart plot
 ]
 
 { #category : #examples }

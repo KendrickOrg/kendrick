@@ -8,7 +8,7 @@ Class {
 KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModel [
 	"self new exampleExplicitTauLeapOnSIRSimpleModel"
 
-	| model simulator dB |
+	| model simulator chart |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R))}.
 	model atCompartment: {(#status -> #S)} put: 4975 atOthersPut: 0.
@@ -50,12 +50,8 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModel [
 		to: 0.4
 		step: 0.0027.
 	simulator executeOn: model.
-	dB := KEDiagramBuilder new.
-	"dB addData: simulator timeSeriesOutputs."
-	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
-	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
-	^ dB open
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #S)}); addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}); addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
+	chart plot
 ]
 
 { #category : #'as yet unclassified' }
