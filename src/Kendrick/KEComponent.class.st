@@ -183,7 +183,6 @@ KEComponent >> equationsToTransitions [
 
 { #category : #'generating events' }
 KEComponent >> generateEvents [
-	
 	| events |
 	events := OrderedCollection new.
 	self equations
@@ -195,7 +194,7 @@ KEComponent >> generateEvents [
 					(anEvent hasAnEventWithOppositeRateIn: events)
 						ifTrue: [ | e |
 							e := anEvent findEventWithOppositeRateIn: events.
-							e actions addAll: anEvent actions.
+							"e actions addAll: anEvent actions."
 							e mapStatusWith: anEvent ]
 						ifFalse: [ events add: anEvent ] ] ].
 	events := self mergeEventsWithSameActionsIn: events.

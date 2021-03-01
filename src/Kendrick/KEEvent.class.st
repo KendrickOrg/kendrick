@@ -2,13 +2,9 @@
 A KEEvent is an event generated from an ODE of epidemiological model.
 
 Instance Variables
-	actions:		<Dictionary>
 	fromStatus:		<Symbol>
 	rate:		<KEExpression>
 	toStatus:		<Symbol>
-
-actions
-	- a list of actions that shows how the event affect on model
 
 fromStatus
 	- The current status taken by the event
@@ -25,7 +21,6 @@ Class {
 	#superclass : #KEEntity,
 	#instVars : [
 		'rate',
-		'actions',
 		'fromStatus',
 		'toStatus'
 	],
@@ -33,13 +28,8 @@ Class {
 }
 
 { #category : #accessing }
-KEEvent >> actions [
-	^ actions
-]
-
-{ #category : #accessing }
 KEEvent >> addOneIndividualTo: aStatus [
-	actions at: aStatus put: 1.
+	toStatus := aStatus
 ]
 
 { #category : #accessing }
@@ -49,7 +39,10 @@ KEEvent >> findEventWithOppositeRateIn: eventList [
 
 { #category : #accessing }
 KEEvent >> findEventWithSameActionsIn: eventList [
-	^ eventList detect: [ :event | event actions = actions ] ifNone: [ nil ]
+	^ eventList
+		detect:
+			[ :event | (event fromStatus = self fromStatus) & (event toStatus = self toStatus) ] 
+		ifNone: [ nil ]
 ]
 
 { #category : #accessing }
@@ -69,13 +62,12 @@ KEEvent >> hasAnEventWithOppositeRateIn: eventList [
 
 { #category : #accessing }
 KEEvent >> hasAnEventWithSameActionsIn: eventList [
-	^ eventList anySatisfy: [ :event | event actions = self actions ]
+	^ eventList anySatisfy: [ :event | event fromStatus = self fromStatus & (event toStatus = self toStatus) ]
 ]
 
 { #category : #initialization }
 KEEvent >> initialize [
 	super initialize.
-	actions := Dictionary new.
 	toStatus := #empty.
 	fromStatus := #empty
 ]
@@ -109,7 +101,7 @@ KEEvent >> rate: aKEExpression [
 
 { #category : #accessing }
 KEEvent >> removeOneIndividualFrom: aStatus [
-	actions at: aStatus put: -1.
+fromStatus := aStatus
 ]
 
 { #category : #accessing }
@@ -120,17 +112,4 @@ KEEvent >> toStatus [
 { #category : #accessing }
 KEEvent >> toStatus: anObject [
 	toStatus := anObject
-]
-
-{ #category : #accessing }
-KEEvent >> updateCardinalityOf: aStatus [ 
-	
-	^ actions at: aStatus
-	
-]
-
-{ #category : #'as yet unclassified' }
-KEEvent >> updateCardinalityOf: aStatus by: aNumber [
-
-	actions at: aStatus put: aNumber
 ]
