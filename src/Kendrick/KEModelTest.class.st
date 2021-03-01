@@ -208,7 +208,7 @@ KEModelTest >> testGenerateEvents1 [
 		addEquation: 'E:t=betaI*S*I+betaH*S*H+betaF*S*F-alpha*E';
 		addEquation: 'I:t=alpha*E';
 		generateEvents.
-	self assert: events size equals: 2
+	self assert: events size equals: 4
 ]
 
 { #category : #tests }
@@ -226,7 +226,7 @@ KEModelTest >> testGenerateEventsOfMultiDiseasesModel [
 		addEquation: 'IR:t=beta1*SR*(IS+II+IR)+sigma2*II-(mu+sigma1)*IR';
 		addEquation: 'RR:t=sigma1*IR+sigma2*RI-mu*RR'.
 	events := model generateEvents.
-	self assert: events size equals: 22
+	self assert: events size equals: 34
 ]
 
 { #category : #tests }
