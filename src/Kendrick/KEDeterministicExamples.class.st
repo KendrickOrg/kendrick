@@ -628,7 +628,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRDemographyModel [
 KEDeterministicExamples >> exampleRK4SolverOnSIRDemographyModelWithRoassal3 [
 	"self new exampleRK4SolverOnSIRDemographyModelWithRoassal3"
 
-	| model simulator dB data|
+	| model simulator chart |
 	model := KEModel new.
 	model addAttribute: #status value: #(#S #I #R).
 	model atCompartment: {(#status -> #S)} put: 0.7 atOthersPut: 0.
@@ -642,26 +642,24 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRDemographyModelWithRoassal3 [
 	model addEquation: 'S:t= mu -beta*S*I - mu*S'.
 	model addEquation: 'I:t= beta*S*I - gamma*I - mu*I'.
 	model addEquation: 'R:t= gamma*I - mu*R'.
-	
 	simulator := KESimulator
 		new: #RungeKutta
 		from: 0.0
 		to: 200
 		step: 1.
 	simulator executeOn: model.
-	
-	data := OrderedCollection new.
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
-	dB := KEChart new data: data.
-	dB plot 
+	chart := KEChart new
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #S)});
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)});
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
+	chart plot
 ]
 
 { #category : #'as yet unclassified' }
 KEDeterministicExamples >> exampleRK4SolverOnSIRModelWithLogVisualisationInRoassal3 [
-"self new exampleRK4SolverOnSIRModelWithLogVisualisationInRoassal3"
-	| model simulator dB data |
+	"self new exampleRK4SolverOnSIRModelWithLogVisualisationInRoassal3"
+
+	| model simulator chart |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R))}.
 	model atCompartment: {(#status -> #S)} put: 4975 atOthersPut: 0.
@@ -703,19 +701,18 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRModelWithLogVisualisationInRoass
 		to: 0.4
 		step: 0.0027.
 	simulator executeOn: model.
-	data := OrderedCollection new.
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
-	dB := KEChart new data: data.
-	dB plotLog
+	chart := KEChart new
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #S)});
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)});
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
+	chart plotLog
 ]
 
 { #category : #'as yet unclassified' }
 KEDeterministicExamples >> exampleRK4SolverOnSIRModelWithRoassal3 [
 	"self new exampleRK4SolverOnSIRModelWithRoassal3"
 
-	| model simulator dB data|
+	| model simulator chart |
 	model := KEModel new.
 	model addAttribute: #status value: #(#S #I #R).
 	model atCompartment: {(#status -> #S)} put: 0.7 atOthersPut: 0.
@@ -727,26 +724,24 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRModelWithRoassal3 [
 	model addEquation: 'S:t=-beta*S*I'.
 	model addEquation: 'I:t=beta*S*I - gamma*I'.
 	model addEquation: 'R:t=gamma*I'.
-	
 	simulator := KESimulator
 		new: #RungeKutta
 		from: 0.0
 		to: 70
 		step: 0.1.
 	simulator executeOn: model.
-	
-	data := OrderedCollection new.
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
-	dB := KEChart new data: data.
-	dB plot 
+	chart := KEChart new
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #S)});
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)});
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
+	chart plot
 ]
 
 { #category : #'as yet unclassified' }
 KEDeterministicExamples >> exampleRK4SolverOnSIRModelWithSqrtVisualisationInRoassal3 [
-"self new exampleRK4SolverOnSIRModelWithSqrtVisualisationInRoassal3"
-	| model simulator dB data |
+	"self new exampleRK4SolverOnSIRModelWithSqrtVisualisationInRoassal3"
+
+	| model simulator chart |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R))}.
 	model atCompartment: {(#status -> #S)} put: 4975 atOthersPut: 0.
@@ -788,12 +783,11 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRModelWithSqrtVisualisationInRoas
 		to: 0.4
 		step: 0.0027.
 	simulator executeOn: model.
-	data := OrderedCollection new.
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
-	dB := KEChart new data: data.
-	dB plotSqrt
+	
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #S)});
+	addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)});
+	addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
+	chart plotSqrt
 ]
 
 { #category : #examples }
@@ -1175,11 +1169,11 @@ KEDeterministicExamples >> modelRK4SolverOnMultipleRiskGroupsModel [
 
 { #category : #examples }
 KEDeterministicExamples >> modelRK4SolverOnSEIRMeasles [
-	"self new exampleRK4SolverOnSEIRMeaslesModel"
+	"self new modelRK4SolverOnSEIRMeasles"
 
 	| model |
 	model := KEModel new.
-	model attributes: {#status -> #(S E I R)}.
+	model attributes: {(#status -> #(S E I R))}.
 	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 1.
 	model
@@ -1191,8 +1185,7 @@ KEDeterministicExamples >> modelRK4SolverOnSEIRMeasles [
 	model
 		addTransitionFrom: {(#status -> #S)}
 		to: {(#status -> #E)}
-		probability:
-			[ :m | (m atParameter: #beta) * (m atCompartment: {(#status -> #I)}) ].
+		probability: [ :m | (m atParameter: #beta) * (m atCompartment: {(#status -> #I)}) ].
 	model
 		addTransitionFrom: {(#status -> #E)}
 		to: {(#status -> #I)}
@@ -1226,11 +1219,11 @@ KEDeterministicExamples >> modelRK4SolverOnSEIRMeasles [
 
 { #category : #examples }
 KEDeterministicExamples >> modelRK4SolverOnSEIRMeaslesModelWithVaccination [
-	"self new exampleRK4SolverOnSEIRMeaslesModelWithVaccination"
+	"self new modelRK4SolverOnSEIRMeaslesModelWithVaccination"
 
 	| model |
 	model := KEModel new.
-	model attributes:{#status->#(S E I R)}.
+	model attributes: {(#status -> #(S E I R))}.
 	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 1.
 	model
@@ -1243,8 +1236,7 @@ KEDeterministicExamples >> modelRK4SolverOnSEIRMeaslesModelWithVaccination [
 	model
 		addTransitionFrom: {(#status -> #S)}
 		to: {(#status -> #E)}
-		probability:
-			[ :m | (m atParameter: #beta) * (m atCompartment: {(#status -> #I)}) ].
+		probability: [ :m | (m atParameter: #beta) * (m atCompartment: {(#status -> #I)}) ].
 	model
 		addTransitionFrom: {(#status -> #E)}
 		to: {(#status -> #I)}
@@ -1282,13 +1274,14 @@ KEDeterministicExamples >> modelRK4SolverOnSEIRMeaslesModelWithVaccination [
 
 { #category : #examples }
 KEDeterministicExamples >> modelRK4SolverOnSIRDemography [
-	"self new exampleRK4SolverOnSIRDemographyModel"
+	"self new modelRK4SolverOnSIRDemography"
+
 	| model |
 	model := KEModel new.
-	model attributes: {#status->#(#S #I #R)}.
-	model atCompartment: {#status -> #S} put: 4975.
-	model atCompartment: {#status -> #I} put: 25.
-	model atCompartment: {#status -> #R} put: 0.
+	model attributes: {(#status -> #(#S #I #R))}.
+	model atCompartment: {(#status -> #S)} put: 4975.
+	model atCompartment: {(#status -> #I)} put: 25.
+	model atCompartment: {(#status -> #R)} put: 0.
 	model addParameter: #beta value: 1 / 5000.
 	model addParameter: #gamma value: 1 / 10.0.
 	model addParameter: #mu value: 5e-4.
