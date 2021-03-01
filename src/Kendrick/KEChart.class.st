@@ -146,7 +146,6 @@ KEChart >> plotLog [
 			c addPlot: p ].
 	c addDecoration: RSVerticalTick new asFloat.
 	c addDecoration: RSHorizontalTick new asFloat.
-	c perform: #yLog.
 	c yLog.
 	xLabel
 		ifNil: [ c xlabel: 'Time (days)' ]
@@ -230,7 +229,6 @@ KEChart >> plotSqrt [
 			c addPlot: p ].
 	c addDecoration: RSVerticalTick new asFloat.
 	c addDecoration: RSHorizontalTick new asFloat.
-	c perform: #ySqrt.
 	c ySqrt.
 	xLabel
 		ifNil: [ c xlabel: 'Time (days)' ]
