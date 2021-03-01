@@ -90,7 +90,7 @@ Visualization SEIIRSInfluenzaViz diagram
 TestsModel5 >> before [
 
 		
-	| model SEIRSConcern twoStrains multiHostConcern spatialConcern simulator dB data |
+	| model SEIRSConcern twoStrains multiHostConcern spatialConcern simulator chart |
 	
 	model := KEModel new.
       SEIRSConcern := KEModelPart new.
@@ -248,19 +248,14 @@ TestsModel5 >> before [
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 500 step: 1.
 	simulator executeOn: model.
 	
-		data := OrderedCollection new.
-	data add: (simulator timeSeriesOutputsAt: {#status -> #I1.#species -> #bird}).
-	data add: (simulator timeSeriesOutputsAt:  {#status -> #I1.#species -> #human}).
-	data add: (simulator timeSeriesOutputsAt:   {#status ->#I2. #species -> #bird}).
-	data add: (simulator timeSeriesOutputsAt:  {#status -> #I2. #species -> #human}).
-	dB := KEDiagramBuilder new data: data.
-
-	dB xLabel: 'Time (days)'.
-	dB legendTitle: 'Total of infectious'.
-	dB legends: { 'birds strains 1'. 'humans strains 1'. 'birds strains 2'. 'humans strains 2' }.
-	dB open.
 	
-	^ {simulator . model . dB}
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {#status -> #I1.#species -> #bird});
+	addDataFrame: (simulator timeSeriesOutputsAt:  {#status -> #I1.#species -> #human});
+	addDataFrame: (simulator timeSeriesOutputsAt:   {#status ->#I2. #species -> #bird});
+	addDataFrame: (simulator timeSeriesOutputsAt:  {#status -> #I2. #species -> #human}).
+
+	chart legendTitle: 'Total of infectious'.
+	chart plot
 ]
 
 { #category : #'as yet unclassified' }
