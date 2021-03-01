@@ -77,3 +77,34 @@ KEEventTest >> testEventsWithSameActions [
 		assert: true
 		equals: (e2 hasAnEventWithSameActionsIn: listEvents)
 ]
+
+{ #category : #tests }
+KEEventTest >> testVerifyGenerateEventOnSumOfTwoConcerns [
+	| model model1 model2 e1 e2 e3 e4 events |
+	
+	model1 := KEModelPart new.
+	model1 addTransition: (KETransition from: {#status -> #S} to: {#status -> #I} probability: 'beta*S*I' parseAsAnExpression).
+	
+	model2 := KEModelPart new.
+	model2 addTransition: (KETransition from: {#status -> #I} to: {#status -> #R} probability: 'gamma*I' parseAsAnExpression).
+		
+	model := KEModel new.	
+	model integrate: model1.
+	model integrate: model2.
+	
+	e1 := KEEvent new fromStatus:#S; toStatus:#I.
+	e2 := KEEvent new fromStatus:#I; toStatus:#S.
+	e3 := KEEvent new fromStatus:#I; toStatus:#R.
+	e4 := KEEvent new fromStatus:#R; toStatus:#I.
+	
+	events := OrderedCollection new 
+		add: e1;
+		add: e2;
+		add: e3;
+		add: e4;
+		yourself.
+	
+self assert: (model transitions size) equals: (events size).
+	
+
+]
