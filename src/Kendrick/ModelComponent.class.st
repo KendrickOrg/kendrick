@@ -206,9 +206,8 @@ ModelComponent >> others: anInteger given: explicitelySetCompInOtherEntity [
 
 { #category : #'public-api' }
 ModelComponent >> population: anInteger [
-
 	population := anInteger.
-	backEndEntity population: (KEPopulation size: anInteger).
+	backEndEntity population: (KEPopulation size: anInteger) "We still use size: method here?"
 ]
 
 { #category : #protected }
