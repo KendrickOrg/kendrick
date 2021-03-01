@@ -131,7 +131,10 @@ KEComponent >> changeParameter: aSymbol value: aNumericalOrAnExpressionOrABlock 
 { #category : #accessing }
 KEComponent >> compartmentNames [
 	"Return an Array containing Dictionaries ...
-	What a mess !!!"
+	What a mess !!!
+	The array is built only by doing a cross-product of attributes.
+	We should do that built using the compartments of the model instead.
+	"
 
 	| names expand keys |
 	names := OrderedCollection new.

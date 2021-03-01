@@ -68,7 +68,8 @@ KEPopulation >> compartments [
 KEPopulation >> compartments: aDictionary [
 	"Why we should allow user to modify the compartments like that?"
 
-	self compartments ifNil: [ compartments := Dictionary new ].
+	self compartments ifNil: [ compartments := Dictionary new ]. "This line can be removed, after reset had been remove"
+
 	aDictionary keysAndValuesDo: [ :k :v | compartments at: k put: v ]
 ]
 
@@ -113,6 +114,7 @@ KEPopulation >> removeIndividual: ind [
 
 { #category : #accessing }
 KEPopulation >> reset [
+	"Should be removed in the future"
 	compartments := nil
 ]
 

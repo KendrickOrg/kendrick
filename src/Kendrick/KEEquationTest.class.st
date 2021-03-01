@@ -33,7 +33,8 @@ KEEquationTest >> testNumberOfTransitionsIsCorrect [
 KEEquationTest >> testTransitionProbabilityIsCorrect [
 	| model |
 	model := KEModel new.
-	model attributes: {(#status -> #(#S #I #R))};
+	model
+		attributes: {(#status -> #(#S #I #R))};
 		addEquation: 'S:t=-beta*S*I';
 		addEquation: 'I:t=beta*S*I - gamma*I';
 		addEquation: 'R:t=gamma*I'.

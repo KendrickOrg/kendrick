@@ -313,9 +313,7 @@ KEModelTest >> testModelWithTwoCompartmentsOfSizeNineAneOneHasATotalSizeOfTen [
 { #category : #tests }
 KEModelTest >> testSIRModelHasThreeCompartments [
 	| model |
-	model := KEModel new
-		attributes:
-			{(#status -> #(#S #I #R))}.
+	model := KEModel new attributes: {(#status -> #(#S #I #R))}.
 	self assert: model compartmentNames size equals: 3
 ]
 
