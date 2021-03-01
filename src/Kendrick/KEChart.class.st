@@ -11,30 +11,20 @@ Class {
 	#category : #'Kendrick-Core-Visualisation-Roassal3'
 }
 
+{ #category : #accessing }
+KEChart >> addDataFrame: aDataFrame [
+	data add: aDataFrame
+]
+
 { #category : #'as yet unclassified' }
 KEChart >> buildLegends [
 	legends ifNil: [ legends := data collect: [ :each | each columnNames first ] ]
 ]
 
-{ #category : #accessing }
-KEChart >> data [ 
-	^data 
-]
-
-{ #category : #accessing }
-KEChart >> data: aCollection [
-	data := aCollection.
-	self buildLegends
-]
-
 { #category : #initialization }
 KEChart >> initialize [
-	data := OrderedCollection new
-]
-
-{ #category : #accessing }
-KEChart >> legendTitle [
-	^ legendTitle
+	data := OrderedCollection new.
+	legendTitle := ''
 ]
 
 { #category : #accessing }
@@ -55,6 +45,7 @@ KEChart >> legends: aCollection [
 { #category : #'as yet unclassified' }
 KEChart >> plot [
 	| c p x y lb normalize |
+	self buildLegends.
 	normalize := RTMultiLinearColorForIdentity new
 		objects: self legends;
 		colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
@@ -77,15 +68,15 @@ KEChart >> plot [
 	yLabel
 		ifNil: [ c ylabel: 'Number of individuals' ]
 		ifNotNil: [ c ylabel: yLabel ].
-	self legendTitle ifNil: [ legendTitle := '' ].
 	c title: legendTitle.
 	c build.
 	lb := RSLegend new.
 	lb container: c canvas.
-	legends do: [ :each | 
-		| d |
-		d := normalize rtValue: each.
-		lb text: each withBoxColor: d ].
+	legends
+		do: [ :each | 
+			| d |
+			d := normalize rtValue: each.
+			lb text: each withBoxColor: d ].
 	lb build.
 	lb canvas open
 ]
@@ -93,6 +84,7 @@ KEChart >> plot [
 { #category : #'as yet unclassified' }
 KEChart >> plotHistogram [
 	| c p x y lb normalize |
+		self buildLegends.
 	normalize := RTMultiLinearColorForIdentity new
 		objects: self legends;
 		colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
@@ -119,15 +111,15 @@ KEChart >> plotHistogram [
 	yLabel
 		ifNil: [ c ylabel: 'Number of individuals' ]
 		ifNotNil: [ c ylabel: yLabel ].
-	self legendTitle ifNil: [ legendTitle := '' ].
 	c title: legendTitle.
 	c build.
 	lb := RSLegend new.
 	lb container: c canvas.
-	legends do: [ :each | 
-		| d |
-		d := normalize rtValue: each.
-		lb text: each withBoxColor: d ].
+	legends
+		do: [ :each | 
+			| d |
+			d := normalize rtValue: each.
+			lb text: each withBoxColor: d ].
 	lb build.
 	lb canvas open
 ]
@@ -135,6 +127,7 @@ KEChart >> plotHistogram [
 { #category : #'as yet unclassified' }
 KEChart >> plotLog [
 	| c p x y lb normalize |
+		self buildLegends.
 	normalize := RTMultiLinearColorForIdentity new
 		objects: self legends;
 		colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
@@ -162,15 +155,15 @@ KEChart >> plotLog [
 			yLabel
 				ifNil: [ c ylabel: 'Log (Number of individuals)' ]
 				ifNotNil: [ c ylabel: yLabel ].
-			self legendTitle ifNil: [ legendTitle := '' ].
 			c title: legendTitle.
 			c build.
 			lb := RSLegend new.
 			lb container: c canvas.
-			legends do: [ :each | 
-				| d |
-				d := normalize rtValue: each.
-				lb text: each withBoxColor: d ].
+			legends
+				do: [ :each | 
+					| d |
+					d := normalize rtValue: each.
+					lb text: each withBoxColor: d ].
 			lb build.
 			lb canvas open ]
 ]
@@ -178,6 +171,7 @@ KEChart >> plotLog [
 { #category : #'as yet unclassified' }
 KEChart >> plotScatter [
 	| c p x y lb normalize |
+		self buildLegends.
 	normalize := RTMultiLinearColorForIdentity new
 		objects: self legends;
 		colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
@@ -204,15 +198,15 @@ KEChart >> plotScatter [
 	yLabel
 		ifNil: [ c ylabel: 'Number of individuals' ]
 		ifNotNil: [ c ylabel: yLabel ].
-	self legendTitle ifNil: [ legendTitle := '' ].
 	c title: legendTitle.
 	c build.
 	lb := RSLegend new.
 	lb container: c canvas.
-	legends do: [ :each | 
-		| d |
-		d := normalize rtValue: each.
-		lb text: each withBoxColor: d ].
+	legends
+		do: [ :each | 
+			| d |
+			d := normalize rtValue: each.
+			lb text: each withBoxColor: d ].
 	lb build.
 	lb canvas open
 ]
@@ -220,6 +214,7 @@ KEChart >> plotScatter [
 { #category : #'as yet unclassified' }
 KEChart >> plotSqrt [
 	| c p x y lb normalize |
+		self buildLegends.
 	normalize := RTMultiLinearColorForIdentity new
 		objects: self legends;
 		colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
@@ -246,32 +241,22 @@ KEChart >> plotSqrt [
 			yLabel
 				ifNil: [ c ylabel: 'Sqrt (Number of individuals)' ]
 				ifNotNil: [ c ylabel: yLabel ].
-			self legendTitle ifNil: [ legendTitle := '' ].
 			c title: legendTitle.
 			c build.
 			lb := RSLegend new.
 			lb container: c canvas.
-			legends do: [ :each | 
-				| d |
-				d := normalize rtValue: each.
-				lb text: each withBoxColor: d ].
+			legends
+				do: [ :each | 
+					| d |
+					d := normalize rtValue: each.
+					lb text: each withBoxColor: d ].
 			lb build.
 			lb canvas open ]
 ]
 
 { #category : #accessing }
-KEChart >> xLabel [
-	^ xLabel
-]
-
-{ #category : #accessing }
 KEChart >> xLabel: aString [
 	xLabel := aString
-]
-
-{ #category : #accessing }
-KEChart >> yLabel [
-	^ yLabel
 ]
 
 { #category : #accessing }

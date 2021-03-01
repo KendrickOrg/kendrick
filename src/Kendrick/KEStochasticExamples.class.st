@@ -60,8 +60,9 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModel [
 
 { #category : #'as yet unclassified' }
 KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithPlotHistogramVizInRoassal3 [
-"self new exampleExplicitTauLeapOnSIRSimpleModelWithPlotHistogramVizInRoassal3"
-	| model simulator dB data |
+	"self new exampleExplicitTauLeapOnSIRSimpleModelWithPlotHistogramVizInRoassal3"
+
+	| model simulator chart |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R))}.
 	model atCompartment: {(#status -> #S)} put: 4975 atOthersPut: 0.
@@ -103,18 +104,17 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithPlotHistogramV
 		to: 0.4
 		step: 0.0027.
 	simulator executeOn: model.
-	data := OrderedCollection new.
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
-	dB := KEChart new data: data.
-	dB plotHistogram
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #S)});
+	addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)});
+	addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
+	chart plotHistogram
 ]
 
 { #category : #'as yet unclassified' }
 KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithPlotScatterVizInRoassal3 [
-"self new exampleExplicitTauLeapOnSIRSimpleModelWithPlotScatterVizInRoassal3"
-	| model simulator dB data |
+	"self new exampleExplicitTauLeapOnSIRSimpleModelWithPlotScatterVizInRoassal3"
+
+	| model simulator chart |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R))}.
 	model atCompartment: {(#status -> #S)} put: 4975 atOthersPut: 0.
@@ -156,19 +156,17 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithPlotScatterViz
 		to: 0.4
 		step: 0.0027.
 	simulator executeOn: model.
-	data := OrderedCollection new.
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
-	dB := KEChart new data: data.
-	dB plotScatter
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #S)});
+	addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)});
+	addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
+	chart plotScatter
 ]
 
 { #category : #examples }
 KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithRoassal3 [
 	"self new exampleExplicitTauLeapOnSIRSimpleModel"
 
-	| model simulator dB data |
+	| model simulator chart |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R))}.
 	model atCompartment: {(#status -> #S)} put: 4975 atOthersPut: 0.
@@ -210,12 +208,10 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithRoassal3 [
 		to: 0.4
 		step: 0.0027.
 	simulator executeOn: model.
-	data := OrderedCollection new.
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
-	dB := KEChart new data: data.
-	dB plot
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #S)});
+	addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)});
+	addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
+	chart plot
 ]
 
 { #category : #'as yet unclassified' }
