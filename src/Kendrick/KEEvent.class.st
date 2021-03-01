@@ -87,6 +87,14 @@ KEEvent >> mapStatusWith: anEvent [
 	(toStatus = #empty) & (anEvent toStatus ~= #empty) ifTrue: [ toStatus := anEvent toStatus ]
 ]
 
+{ #category : #'API-merging' }
+KEEvent >> mergeWith: anEvent [ 
+	|e|
+	e := KEEvent new.
+	
+	^ actions at: e put: anEvent.
+]
+
 { #category : #printing }
 KEEvent >> printOn: aStream [
 	aStream
