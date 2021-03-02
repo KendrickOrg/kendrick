@@ -392,7 +392,7 @@ KEDeterministicExamples >> exampleRK4SolverOnMultiStrainModel [
 
 { #category : #'as yet unclassified' }
 KEDeterministicExamples >> exampleRK4SolverOnMultiStrainModelWithPlotVisualization [
-	| model simulator db data |
+	| model simulator chart |
 
 	model := KEModel new.
 	model attributes: {#status->#(#S #I1 #I2 #R)}.
@@ -451,16 +451,14 @@ KEDeterministicExamples >> exampleRK4SolverOnMultiStrainModelWithPlotVisualizati
 		to: 70
 		step: 0.1.
 	simulator executeOn: model.
-	data := OrderedCollection new.
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I1)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I2)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
 	
-	db := KEDiagramBuilder new data: data.
-	db xLabel: 'Time (days)'.
-	db yLabel: 'Infectious'.
-	db plot 
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #S)});
+							   addDataFrame:  (simulator timeSeriesOutputsAt: {(#status -> #I1)});
+								addDataFrame:  (simulator timeSeriesOutputsAt: {(#status -> #I2)});
+								addDataFrame:  (simulator timeSeriesOutputsAt: {(#status -> #R)}).
+	
+	chart yLabel: 'Infectious'.
+	chart plotHistogram  
 ]
 
 { #category : #examples }
