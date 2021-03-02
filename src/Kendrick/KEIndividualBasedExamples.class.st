@@ -271,7 +271,7 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithBansalIdea [
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals [
 	"self new exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals"
 
-	| model network spatialConcern sirConcern simulator db data|
+	| model network spatialConcern sirConcern simulator chart |
 	model := KEModel new.
 	sirConcern := KEModelPart new.
 	sirConcern addAttribute: #status value: #(S I R).
@@ -317,11 +317,9 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithContactNetworkAmon
 		to: 50
 		step: 0.1.
 	simulator executeOn: model.
-		simulator executeOn: model.
-	data := OrderedCollection new.
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	db := KEDiagramBuilder new data: data.
-	db open
+
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart plotHistogram 
 ]
 
 { #category : #examples }
