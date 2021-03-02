@@ -326,7 +326,7 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithContactNetworkAmon
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRMultiHostModel [
 	"self new exampleIBMSimulatorOnSIRMultiHostModel"
 
-	| model multiHostConcern simulator db |
+	| model multiHostConcern simulator chart |
 	multiHostConcern := KEModelPart new.
 	multiHostConcern
 		addAttribute: #species
@@ -452,9 +452,8 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRMultiHostModel [
 		to: 0.5
 		step: 0.0027.
 	simulator executeOn: model.
-	db := KEDiagramBuilder new
-		addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}) sqrt.
-	db open
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart plotSqrt
 ]
 
 { #category : #examples }
