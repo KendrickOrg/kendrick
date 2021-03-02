@@ -509,7 +509,7 @@ KEIndividualBasedExamples >> exampleIBM_SIR_Bansal_ScaleFree [
 KEIndividualBasedExamples >> exampleNetWorkSimulatorOnSIR [
 "self new exampleNetWorkSimulatorOnSIR"
 "Problem to debug to this method due to Dataframe apparently"
-	| model network spatialConcern sirConcern simulator db data |
+	| model network spatialConcern sirConcern simulator chart db|
 	model := KEModel new.
 	sirConcern := KEModelPart new.
 	sirConcern addAttribute: #status value: #(S I R).
@@ -555,10 +555,11 @@ KEIndividualBasedExamples >> exampleNetWorkSimulatorOnSIR [
 		to: 50
 		step: 0.1.
 	simulator executeOn: model.
-	data := OrderedCollection new.
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	db := KEDiagramBuilder new data: data.
-	db open.
+
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+
+	chart plot.
+	
 	db := KENetworkBuilder new
 		data: simulator timeSeriesOutputs;
 		network: (model atParameter: #network);
