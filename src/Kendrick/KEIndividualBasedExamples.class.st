@@ -65,7 +65,7 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSEIRMeaslesModel [
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSIREbolaModel [
 	"self new exampleIBMSimulatorOnSIREbolaModel"
 
-	| model simulator db spatialConcern countries |
+	| model simulator chart spatialConcern countries |
 	spatialConcern := KEModelPart new.
 	spatialConcern addAttribute: #country value: #(#Liberia #Guinea #SierraLeone #Nigeria #Senegal #Niger).
 	spatialConcern addParameter: #rho.
@@ -127,9 +127,9 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIREbolaModel [
 		to: 100
 		step: 0.1.
 	simulator executeOn: model.
-	db := KEDiagramBuilder new addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	db open.
-	db openMap: #africa countries: (model atAttribute: #country) coloredBy: #peakOfEpidemic
+	chart := KEChart new addDataFrame:  (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart plot.
+	"chart openMap: #africa countries: (model atAttribute: #country) coloredBy: #peakOfEpidemic"
 ]
 
 { #category : #examples }
