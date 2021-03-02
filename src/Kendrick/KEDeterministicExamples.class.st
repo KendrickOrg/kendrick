@@ -1135,7 +1135,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRMultiHostModelTransitionByRate [
 KEDeterministicExamples >> exampleRK4SolverOnSIRMultiHostModelWithODERepresentation [
 	"self new exampleRK4SolverOnSIRMultiHostModelWithODERepresentation"
 
-	| model simulator db |
+	| model simulator chart |
 	model := self modelRK4SolverOnSIRMultiHostModelWithODERepresentation.
 	simulator := KESimulator
 		new: #RungeKutta
@@ -1143,8 +1143,8 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRMultiHostModelWithODERepresentat
 		to: 0.5
 		step: 0.0027.
 	simulator executeOn: model.
-	db := KEDiagramBuilder new addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}) sqrt.
-	db open
+	chart := KEChart new addDataFrame:  (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart plot 
 ]
 
 { #category : #examples }
