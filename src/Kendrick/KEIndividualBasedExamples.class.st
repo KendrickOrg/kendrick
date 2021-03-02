@@ -200,7 +200,7 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModel2 [
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithBansalIdea [
 	"self new exampleIBMSimulatorOnSIRModelWithBansalIdea"
 
-	| model network spatialConcern sirConcern simulator db f |
+	| model network spatialConcern sirConcern simulator chart f |
 	model := KEModel new.
 	sirConcern := KEModelPart new.
 	sirConcern attributes: {#status -> #(S I R)}.
@@ -263,8 +263,8 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithBansalIdea [
 	1 to: tmp first data size do: [ :k | d add: (tmp collect: [ :e | e data at: k ]) sum ].
 	(KETimeSeries from: d withIndex: tmp first index)
 		compartment: (STON fromString: name) ].
-	db := KEDiagramBuilder new data: {(f value: '{#status:#I}')}.
-	db open
+	chart := KEChart new addDataFrame: {(f value: '{#status:#I}')}.
+	chart plot
 ]
 
 { #category : #examples }
