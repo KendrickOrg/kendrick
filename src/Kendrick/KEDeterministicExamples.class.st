@@ -86,42 +86,74 @@ KEDeterministicExamples >> SIRDemographyConcern [
 KEDeterministicExamples >> exampleRK4SolverOn2SEIRMeaslesModelWithVaccination [
 	"self new exampleRK4SolverOn2SEIRMeaslesModelWithVaccination"
 
-	| model simulator diag data legends |
-	data := OrderedCollection new.
-	legends := OrderedCollection new.
-	model := self modelRK4SolverOnSEIRMeaslesModelWithVaccination.
-	model atParameter: #p assignValue: 0.7.
+	| model simulator chart|
+	
+	model := KEModel new.
+	model attributes: {(#status -> #(S E I R))}.
+	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
+	model atCompartment: {(#status -> #I)} put: 1.
+	model
+		addParameters:
+			{(#beta -> 0.00782).
+			(#gamma -> 52.14).
+			(#mu -> 0.0128).
+			(#sigma -> 45.625).
+			(#p -> 0.7)}.
+	model
+		addTransitionFrom: {(#status -> #S)}
+		to: {(#status -> #E)}
+		probability: [ :m | (m atParameter: #beta) * (m atCompartment: {(#status -> #I)}) ].
+	model
+		addTransitionFrom: {(#status -> #E)}
+		to: {(#status -> #I)}
+		probability: [ :m | m atParameter: #sigma ].
+	model
+		addTransitionFrom: {(#status -> #I)}
+		to: {(#status -> #R)}
+		probability: [ :m | m atParameter: #gamma ].
+	model
+		addTransitionFrom: {(#status -> #S)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #I)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #R)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #E)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: #empty
+		to: {(#status -> #S)}
+		probability: [ :m | (m atParameter: #mu) * (1 - (m atParameter: #p)) ].
+	model
+		addTransitionFrom: #empty
+		to: {(#status -> #R)}
+		probability: [ :m | (m atParameter: #mu) * (m atParameter: #p) ].
+
 	simulator := KESimulator
 		new: #RungeKutta
 		from: 0.0
 		to: 100
 		step: 0.01.
 	simulator executeOn: model.
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	model := self modelRK4SolverOnSEIRMeaslesModelWithVaccination.
-	model atParameter: #p assignValue: 0.0.
-	simulator := KESimulator
-		new: #RungeKutta
-		from: 0.0
-		to: 100
-		step: 0.01.
-	simulator executeOn: model.
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	legends addAll: #('p = 0.7' 'p = 0.0').
-	diag := KEDiagramBuilder new.
-	diag data: data log.
-	diag legends: legends.
-	diag xLabel: 'Time (years)'.
-	diag yLabel: 'log(Infectious)'.
-	diag legendTitle: 'Vaccination Rate'.
-	^ diag open
+	
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart xLabel: 'Time (years)'.
+	chart legendTitle: 'Vaccination Rate'.
+	chart plotLog
 ]
 
 { #category : #examples }
 KEDeterministicExamples >> exampleRK4SolverOnMigrationModelWithDependentConcern [
 	"self new exampleRK4SolverOnMigrationModelWithDependentConcern"
 
-	| model sirConcern eConcern spatialConcern simulator db |
+	| model sirConcern eConcern spatialConcern simulator chart |
 	sirConcern := KEModelPart new.
 	sirConcern attributes: {(#status -> #(#S #I #R))}.
 	sirConcern addParameters: {#lambda . #gamma}.
@@ -215,44 +247,44 @@ spatialConcern
 		to: 500
 		step: 1.
 	simulator executeOn: model.
-	db := KEDiagramBuilder new.
-	db
-		addData:
+	chart := KEChart new.
+	chart
+		addDataFrame:
 			(simulator
 				timeSeriesOutputsAt:
 					{(#status -> #I).
 					(#patch -> 1)});
-		addData:
+		addDataFrame:
 			(simulator
 				timeSeriesOutputsAt:
 					{(#status -> #I).
 					(#patch -> 2)});
-		addData:
+		addDataFrame:
 			(simulator
 				timeSeriesOutputsAt:
 					{(#status -> #I).
 					(#patch -> 3)});
-		addData:
+		addDataFrame:
 			(simulator
 				timeSeriesOutputsAt:
 					{(#status -> #I).
 					(#patch -> 4)});
-		addData:
+		addDataFrame:
 			(simulator
 				timeSeriesOutputsAt:
 					{(#status -> #I).
 					(#patch -> 5)}).
-	db legends: {'patch 1' . 'patch 2' . 'patch 3' . 'patch 4' . 'patch 5'}.
-	db legendTitle: 'Infectious'.
-	db xLabel: 'Time (days)'.
-	db open
+	
+	chart legendTitle: 'Infectious'.
+	chart xLabel: 'Time (days)'.
+	chart plot 
 ]
 
 { #category : #examples }
 KEDeterministicExamples >> exampleRK4SolverOnMigrationOneSpeciesModel [
 	"self new exampleRK4SolverOnMigrationOneSpeciesModel"
 
-	| model simulator db |
+	| model simulator chart |
 	model := self modelRK4SolverOnMigrationOneSpeciesModel.
 	simulator := KESimulator
 		new: #RungeKutta
@@ -260,9 +292,9 @@ KEDeterministicExamples >> exampleRK4SolverOnMigrationOneSpeciesModel [
 		to: 500
 		step: 1.
 	simulator executeOn: model.
-	db := KEDiagramBuilder new.
-	db
-		data:
+	chart := KEChart new.
+	chart
+		addDataFrame:
 			[ | tmp |
 			tmp := OrderedCollection new.
 			tmp
@@ -296,10 +328,9 @@ KEDeterministicExamples >> exampleRK4SolverOnMigrationOneSpeciesModel [
 							{(#status -> #I).
 							(#patch -> 5)}).
 			tmp ] value.
-	db legends: {'patch 1' . 'patch 2' . 'patch 3' . 'patch 4' . 'patch 5'}.
-	db legendTitle: 'Infectious'.
-	db xLabel: 'Time (days)'.
-	^ db open
+	
+	chart legendTitle: 'Infectious'.
+	chart plotHistogram 
 ]
 
 { #category : #examples }
@@ -361,7 +392,7 @@ KEDeterministicExamples >> exampleRK4SolverOnMultiStrainModel [
 
 { #category : #'as yet unclassified' }
 KEDeterministicExamples >> exampleRK4SolverOnMultiStrainModelWithPlotVisualization [
-	| model simulator db data |
+	| model simulator chart |
 
 	model := KEModel new.
 	model attributes: {#status->#(#S #I1 #I2 #R)}.
@@ -420,16 +451,14 @@ KEDeterministicExamples >> exampleRK4SolverOnMultiStrainModelWithPlotVisualizati
 		to: 70
 		step: 0.1.
 	simulator executeOn: model.
-	data := OrderedCollection new.
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I1)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I2)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
 	
-	db := KEDiagramBuilder new data: data.
-	db xLabel: 'Time (days)'.
-	db yLabel: 'Infectious'.
-	db plot 
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #S)});
+							   addDataFrame:  (simulator timeSeriesOutputsAt: {(#status -> #I1)});
+								addDataFrame:  (simulator timeSeriesOutputsAt: {(#status -> #I2)});
+								addDataFrame:  (simulator timeSeriesOutputsAt: {(#status -> #R)}).
+	
+	chart yLabel: 'Infectious'.
+	chart plotHistogram  
 ]
 
 { #category : #examples }
@@ -455,42 +484,133 @@ KEDeterministicExamples >> exampleRK4SolverOnMultipleRiskGroupsModel [
 KEDeterministicExamples >> exampleRK4SolverOnSEIRMeaslesModel [
 	"self new exampleRK4SolverOnSEIRMeaslesModel"
 
-	| model simulator diag |
-	model := self modelRK4SolverOnSEIRMeasles.
+	| model simulator chart |
+	
+	model := KEModel new.
+	model attributes: {(#status -> #(S E I R))}.
+	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
+	model atCompartment: {(#status -> #I)} put: 1.
+	model
+		addParameters:
+			{(#beta -> 0.0000214).
+			(#gamma -> 0.143).
+			(#mu -> 0.0000351).
+			(#sigma -> 0.125)}.
+	model
+		addTransitionFrom: {(#status -> #S)}
+		to: {(#status -> #E)}
+		probability: [ :m | (m atParameter: #beta) * (m atCompartment: {(#status -> #I)}) ].
+	model
+		addTransitionFrom: {(#status -> #E)}
+		to: {(#status -> #I)}
+		probability: [ :m | m atParameter: #sigma ].
+	model
+		addTransitionFrom: {(#status -> #I)}
+		to: {(#status -> #R)}
+		probability: [ :m | m atParameter: #gamma ].
+	model
+		addTransitionFrom: {(#status -> #S)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #I)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #R)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #E)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: #empty
+		to: {(#status -> #S)}
+		probability: [ :m | m atParameter: #mu ].
 	simulator := KESimulator
 		new: #RungeKutta
 		from: 0.0
 		to: 365
 		step: 1.
 	simulator executeOn: model.
-	diag := KEDiagramBuilder new addData: simulator timeSeriesOutputs.
-	diag xLabel: 'Time (days)'.
-	^ diag open
+	chart := KEChart new addDataFrame: simulator timeSeriesOutputs.
+
+	chart plotScatter 
+	
+	
 ]
 
 { #category : #examples }
 KEDeterministicExamples >> exampleRK4SolverOnSEIRMeaslesModelWithVaccination [
 	"self new exampleRK4SolverOnSEIRMeaslesModelWithVaccination"
 
-	| model simulator diag |
-	model := self modelRK4SolverOnSEIRMeaslesModelWithVaccination.
+	| model simulator chart |
+	
+	model := KEModel new.
+	model attributes: {(#status -> #(S E I R))}.
+	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
+	model atCompartment: {(#status -> #I)} put: 1.
+	model
+		addParameters:
+			{(#beta -> 0.00782).
+			(#gamma -> 52.14).
+			(#mu -> 0.0128).
+			(#sigma -> 45.625).
+			(#p -> 0.7)}.
+	model
+		addTransitionFrom: {(#status -> #S)}
+		to: {(#status -> #E)}
+		probability: [ :m | (m atParameter: #beta) * (m atCompartment: {(#status -> #I)}) ].
+	model
+		addTransitionFrom: {(#status -> #E)}
+		to: {(#status -> #I)}
+		probability: [ :m | m atParameter: #sigma ].
+	model
+		addTransitionFrom: {(#status -> #I)}
+		to: {(#status -> #R)}
+		probability: [ :m | m atParameter: #gamma ].
+	model
+		addTransitionFrom: {(#status -> #S)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #I)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #R)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #E)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: #empty
+		to: {(#status -> #S)}
+		probability: [ :m | (m atParameter: #mu) * (1 - (m atParameter: #p)) ].
+	model
+		addTransitionFrom: #empty
+		to: {(#status -> #R)}
+		probability: [ :m | (m atParameter: #mu) * (m atParameter: #p) ].
 	simulator := KESimulator
 		new: #RungeKutta
 		from: 0.0
 		to: 100
 		step: 0.01.
 	simulator executeOn: model.
-	diag := KEDiagramBuilder new addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}) log.
-	diag yLabel: 'log(Infectious)'.
-	diag xLabel: 'Time (years)'.
-	^ diag open
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart yLabel: 'log(Infectious)'.
+	chart xLabel: 'Time (years)'.
+	chart plotLog 
 ]
 
 { #category : #examples }
 KEDeterministicExamples >> exampleRK4SolverOnSEIRSModelWithQuarantine [
 	"self new exampleRK4SolverOnSEIRSModelWithQuarantine"
 
-	| model SEIRConcern SEIRSConcern QuarantineConcern simulator dB |
+	| model SEIRConcern SEIRSConcern QuarantineConcern simulator chart |
 	model := KEModel new.
 	SEIRConcern := KEModelPart new.
 	SEIRConcern attributes: {(#status -> #(#S #E #I #R))}.
@@ -529,17 +649,16 @@ KEDeterministicExamples >> exampleRK4SolverOnSEIRSModelWithQuarantine [
 		to: 365
 		step: 1.
 	simulator executeOn: model.
-	dB := KEDiagramBuilder new.
-	dB addData: simulator timeSeriesOutputs.
-	dB xLabel: 'Time (year)'.
-	dB open
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputs).
+	chart  xLabel: 'Time (year)'.
+	chart  plot 
 ]
 
 { #category : #examples }
 KEDeterministicExamples >> exampleRK4SolverOnSEIRSModelWithTwoStrains [
 	"self new exampleRK4SolverOnSEIRSModelWithTwoStrains"
 
-	| model SEIRConcern SEIRSConcern twoStrains simulator dB data |
+	| model SEIRConcern SEIRSConcern twoStrains simulator chart |
 	model := KEModel new.
 	SEIRConcern := KEModelPart new.
 	SEIRConcern attributes: {(#status -> #(#S #E #I #R))}.
@@ -595,20 +714,20 @@ KEDeterministicExamples >> exampleRK4SolverOnSEIRSModelWithTwoStrains [
 		to: 365
 		step: 1.
 	simulator executeOn: model.
-	dB := KEDiagramBuilder new.
-	data := OrderedCollection new.
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I1)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I2)}).
-	dB data: data.
-	dB xLabel: 'Time (year)'.
-	dB open
+
+	chart := KEChart new 
+		addDataFrame:  (simulator timeSeriesOutputsAt: {(#status -> #I1)});
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I2)}).
+
+	chart xLabel: 'Time (year)'.
+	chart plot
 ]
 
 { #category : #examples }
 KEDeterministicExamples >> exampleRK4SolverOnSIRDemographyModel [
 	"self new exampleRK4SolverOnSIRDemographyModel"
 
-	| model simulator dB |
+	| model simulator chart |
 	model := self modelRK4SolverOnSIRDemography.
 	simulator := KESimulator
 		new: #RungeKutta
@@ -616,9 +735,8 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRDemographyModel [
 		to: 146
 		step: 0.1.
 	simulator executeOn: model.
-	dB := KEDiagramBuilder new.
-	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	dB open
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart plot 
 ]
 
 { #category : #'as yet unclassified' }
@@ -791,39 +909,233 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRModelWithSqrtVisualisationInRoas
 KEDeterministicExamples >> exampleRK4SolverOnSIRMultiHostModel [
 	"self new exampleRK4SolverOnSIRMultiHostModel"
 
-	| model simulator db |
-	model := self modelRK4SolverOnSIRMultiHost.
+	
+	| model simulator chart multiHostConcern|
+	
+	multiHostConcern := KEModelPart new.
+	multiHostConcern
+		addAttribute: #species
+		value: #(#mosquito #reservoir1 #reservoir2).
+	model := KEModel new.
+	model attributes:{#status -> #(#S #I #R)}.
+	model addParameter: #mu value: 12.17.
+	model addParameter: #gamma value: 52.
+	model addParameter: #beta value: 1.
+	model
+		addParameter: #lambda
+		value: [ :aModel | 
+			(aModel atParameter: #beta)
+				* (aModel atCompartment: {(#status -> #I)}) ].
+	model
+		addTransitionFrom: {(#status -> #S)}
+		to: {(#status -> #I)}
+		probability: [ :m | m atParameter: #lambda ].
+	model
+		addTransitionFrom: {(#status -> #I)}
+		to: {(#status -> #R)}
+		probability: [ :m | m atParameter: #gamma ].
+	model
+		addTransitionFrom: {(#status -> #S)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #I)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: {(#status -> #R)}
+		to: #empty
+		probability: [ :m | m atParameter: #mu ].
+	model
+		addTransitionFrom: #empty
+		to: {(#status -> #S)}
+		probability: [ :m | m atParameter: #mu ].
+	model integrate: multiHostConcern.
+	model
+		atParameter: #mu
+		assignValue: [ :aModel | 
+			| c val |
+			c := aModel currentCompartment at: #species.
+			c = #mosquito
+				ifTrue: [ val := 12.17 ].
+			c = #reservoir1
+				ifTrue: [ val := 0.05 ].
+			c = #reservoir2
+				ifTrue: [ val := 0.05 ].
+			val ].
+	model
+		atParameter: #N
+		assignValue: [ :aModel | 
+			| c |
+			c := aModel currentCompartment at: #species.
+			aModel sizeOfPopulation: c ].
+	model
+		addParameter: #rho
+		value: [ :aModel | 
+			| c val |
+			c := aModel currentCompartment at: #species.
+			c = #mosquito
+				ifTrue: [ val := #(0 0.02 0.02) ].
+			c = #reservoir1
+				ifTrue: [ val := #(0.02 0 0) ].
+			c = #reservoir2
+				ifTrue: [ val := #(0.02 0 0) ].
+			val ].
+	model
+		atParameter: #lambda
+		assignValue: [ :aModel | 
+			((aModel atParameter: #beta) * (aModel atParameter: #rho)
+				* (aModel atCompartment: {(#status -> #I)})) sum ].
+	model
+		atCompartment:
+			{(#status -> #S).
+			(#species -> #mosquito)}
+		put: 9999.
+	model
+		atCompartment:
+			{(#status -> #I).
+			(#species -> #mosquito)}
+		put: 1.
+	model
+		atCompartment:
+			{(#status -> #R).
+			(#species -> #mosquito)}
+		put: 0.
+	model
+		atCompartment:
+			{(#status -> #S).
+			(#species -> #reservoir1)}
+		put: 1000.
+	model
+		atCompartment:
+			{(#status -> #I).
+			(#species -> #reservoir1)}
+		put: 0.
+	model
+		atCompartment:
+			{(#status -> #R).
+			(#species -> #reservoir1)}
+		put: 0.
+	model
+		atCompartment:
+			{(#status -> #S).
+			(#species -> #reservoir2)}
+		put: 2000.
+	model
+		atCompartment:
+			{(#status -> #I).
+			(#species -> #reservoir2)}
+		put: 0.
+	model
+		atCompartment:
+			{(#status -> #R).
+			(#species -> #reservoir2)}
+		put: 0.
+	
 	simulator := KESimulator
 		new: #RungeKutta
 		from: 0.0
 		to: 0.5
 		step: 0.0027.
 	simulator executeOn: model.
-	db := KEDiagramBuilder new addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}) sqrt.
-	db open
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart plotSqrt 
 ]
 
 { #category : #examples }
 KEDeterministicExamples >> exampleRK4SolverOnSIRMultiHostModelTransitionByRate [
 	"self new exampleRK4SolverOnSIRMultiHostModelTransitionByRate"
 
-	| model simulator db |
-	model := self modelRK4SolverOnSIRMultiHostModelTransitionByRate.
+	| model simulator chart multiHostConcern|
+	
+	multiHostConcern := KEModelPart new.
+	multiHostConcern 
+		addAttribute: #species 
+		value: #(#mosquito #reservoir1 #reservoir2).
+	model := KEModel new.
+	model attributes: {(#status -> #(#S #I #R))}.
+	model addParameter: #mu value: 12.17.
+	model addParameter: #gamma value: 52.
+	model addParameter: #beta value: 1.
+	model addParameter: #lambda value: [ :aModel| 
+		(aModel atParameter: #beta) * 
+		(aModel atCompartment: {#status->#I}) ].
+	model 
+		addTransitionFrom: {#status -> #S}
+		to: {#status -> #I} 
+		probability: 'lambda' parseAsAnExpression.
+	model 
+		addTransitionFrom: {#status -> #I} 
+		to: {#status -> #R} 
+		probability: 'gamma' parseAsAnExpression.
+	model 
+		addTransitionFrom: {#status -> #S}
+		to: #empty 
+		probability: 'mu' parseAsAnExpression.
+	model 
+		addTransitionFrom: {#status -> #I} 
+		to: #empty 
+		probability: 'mu' parseAsAnExpression.
+	model 
+		addTransitionFrom: {#status -> #R}
+		to: #empty 
+		probability: 'mu' parseAsAnExpression.
+	model 
+		addTransitionFrom: #empty 
+		to: {#status -> #S} 
+		probability: 'mu' parseAsAnExpression.
+		
+	model integrate: multiHostConcern.	
+	model 
+		atParameter: #mu
+		assignValue: 
+		[ :aModel| |c val| 
+			c := aModel currentCompartment at: #species.
+			c = #mosquito ifTrue: [ val := 12.17 ].
+			c = #reservoir1 ifTrue: [ val := 0.05 ].
+			c = #reservoir2 ifTrue: [ val := 0.05 ].
+			val
+		].
+	model atParameter: #N assignValue: [ :aModel| |c| 
+		c := aModel currentCompartment at: #species.
+		aModel sizeOfPopulation: c
+		].
+	model addParameter: #rho value: [ :aModel| |c val|
+		c := aModel currentCompartment at: #species.
+		c = #mosquito ifTrue: [ val := #(0 0.02 0.02) ].
+		c = #reservoir1 ifTrue: [ val := #(0.02 0 0) ].
+		c = #reservoir2 ifTrue: [ val := #(0.02 0 0) ].
+		val
+		].
+	model atParameter: #lambda assignValue: [ :aModel|
+		((aModel atParameter: #beta) * 
+		(aModel atParameter: #rho) * 
+		(aModel atCompartment: {#status->#I})) sum
+		].
+	model atCompartment: { #status->#S. #species->#mosquito } put: 9999.
+	model atCompartment: { #status->#I. #species->#mosquito } put: 1.
+	model atCompartment: { #status->#R. #species->#mosquito } put: 0.
+	model atCompartment: { #status->#S. #species->#reservoir1 } put: 1000.
+	model atCompartment: { #status->#I. #species->#reservoir1 } put: 0.
+	model atCompartment: { #status->#R. #species->#reservoir1 } put: 0.
+	model atCompartment: { #status->#S. #species->#reservoir2 } put: 2000.
+	model atCompartment: { #status->#I. #species->#reservoir2 } put: 0.
+	model atCompartment: { #status->#R. #species->#reservoir2 } put: 0.
 	simulator := KESimulator
 		new: #RungeKutta
 		from: 0.0
 		to: 40.0
 		step: 0.01.
 	simulator executeOn: model.
-	db := KEDiagramBuilder new addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}) sqrt.
-	db open
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart plotLog 
 ]
 
 { #category : #examples }
 KEDeterministicExamples >> exampleRK4SolverOnSIRMultiHostModelWithODERepresentation [
 	"self new exampleRK4SolverOnSIRMultiHostModelWithODERepresentation"
 
-	| model simulator db |
+	| model simulator chart |
 	model := self modelRK4SolverOnSIRMultiHostModelWithODERepresentation.
 	simulator := KESimulator
 		new: #RungeKutta
@@ -831,8 +1143,8 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRMultiHostModelWithODERepresentat
 		to: 0.5
 		step: 0.0027.
 	simulator executeOn: model.
-	db := KEDiagramBuilder new addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}) sqrt.
-	db open
+	chart := KEChart new addDataFrame:  (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart plot 
 ]
 
 { #category : #examples }
@@ -856,35 +1168,52 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRSimpleModel [
 KEDeterministicExamples >> exampleRK4SolverOnSIRSimpleModelWithODERepresentation [
 	"self new exampleRK4SolverOnSIRSimpleModelWithODERepresentation"
 
-	| model simulator dB |
-	model := self modelRK4SolverOnSIRSimpleModelWithODERepresentation.
+	| model simulator chart |
+	model := KEModel new.
+	model attributes: {#status->#(#S #I #R)}.
+	model atCompartment: { #status->#S } put: 99999.
+	model atCompartment: { #status->#I } put: 1.
+	model atCompartment: { #status->#R } put: 0.
+		
+	model addParameters: {#beta->0.0052. #gamma->52}.
+	model addEquation: 'S:t=-beta*S*I'.
+	model addEquation: 'I:t=beta*S*I - gamma*I'.
+	model addEquation: 'R:t=gamma*I'.
 	simulator := KESimulator
 		new: #RungeKutta
 		from: 0.0
 		to: 0.3
 		step: 0.0027.
 	simulator executeOn: model.
-	dB := KEDiagramBuilder new.
-	dB addData: simulator timeSeriesOutputs.
-	dB xLabel: 'Time (year)'.
-	dB open
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputs).
+	chart xLabel: 'Time (year)'.
+	chart plot
 ]
 
 { #category : #examples }
 KEDeterministicExamples >> exampleRK4SolverOnSIRSimpleModelWithTransitionProbabilityAsExpression [
 	"self new exampleRK4SolverOnSIRSimpleModelWithTransitionProbabilityAsExpression"
 
-	| model simulator dB |
-	model := self modelRK4SolverOnSIRSimpleModelWithTransitionProbabilityAsExpression.
+	| model simulator chart |
+	model := KEModel new.
+	model attributes: {#status->#(#S #I #R)}.
+	model atCompartment: { #status->#S } put: 99999 atOthersPut: 0.
+	model atCompartment: { #status->#I } put: 1.
+	model addParameters: {#beta->0.0052. #gamma->52}.
+	model addTransitionFrom: {#status -> #S}
+		to: {#status -> #I}
+		probability: 'beta*I' parseAsAnExpression.
+	model addTransitionFrom: {#status -> #I}
+		to: {#status -> #R}
+		probability: 'gamma' parseAsAnExpression.
 	simulator := KESimulator
 		new: #RungeKutta
 		from: 0.0
 		to: 1.0
 		step: 0.0027.
 	simulator executeOn: model.
-	dB := KEDiagramBuilder new.
-	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	dB open
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart plot 
 ]
 
 { #category : #examples }

@@ -161,7 +161,7 @@ Simulation SpatialRungeKutta rungeKutta
 { #category : #'as yet unclassified' }
 TestMultiSpeciesSpatialDependant >> before [
 
-|model spatialConcern simulator db multiHostConcern seirsConcern data |
+|model spatialConcern simulator chart multiHostConcern seirsConcern|
 model := KEModel new.
 
 "Multi-host concern"
@@ -291,17 +291,17 @@ seirsConcern
 "Run the model with RK4"
 simulator := KESimulator new: #RungeKutta from: 0 to: 500 step: 1.
     simulator executeOn: model.
-	data := OrderedCollection new.
-	data add: (simulator timeSeriesOutputsAt: {#status -> #I. #species -> #bird}).
-	data add: (simulator timeSeriesOutputsAt: {#status ->  #I. #species ->#human}).
-	db := KEDiagramBuilder new data: data.
-    db xLabel: 'Time (days)'.
-    db legendTitle: 'Total of infectious'.
-    db legends: { 'birds'. 'humans' }.
+	
+	chart := KEChart new 
+		addDataFrame: (simulator timeSeriesOutputsAt: {#status -> #I. #species -> #bird});
+		addDataFrame: (simulator timeSeriesOutputsAt: {#status ->  #I. #species ->#human}).
 
-    db open.
+ 
+   chart legendTitle: 'Total of infectious'.
+   
+	chart plot.
 
-	^ { simulator . model . db}
+	^ { simulator . model . chart}
 ]
 
 { #category : #'as yet unclassified' }

@@ -8,7 +8,7 @@ Class {
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSEIRMeaslesModel [
 	"self new exampleIBMSimulatorOnSEIRMeaslesModel"
 
-	| model simulator diag |
+	| model simulator chart |
 	model := KEModel new.
 	model attributes: {#status -> #(S E I R)}.
 	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
@@ -57,16 +57,15 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSEIRMeaslesModel [
 		to: 150
 		step: 1.
 	simulator executeOn: model.
-	diag := KEDiagramBuilder new
-		addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	diag open
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart plot 
 ]
 
 { #category : #examples }
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSIREbolaModel [
 	"self new exampleIBMSimulatorOnSIREbolaModel"
 
-	| model simulator db spatialConcern countries |
+	| model simulator chart spatialConcern countries |
 	spatialConcern := KEModelPart new.
 	spatialConcern addAttribute: #country value: #(#Liberia #Guinea #SierraLeone #Nigeria #Senegal #Niger).
 	spatialConcern addParameter: #rho.
@@ -128,16 +127,16 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIREbolaModel [
 		to: 100
 		step: 0.1.
 	simulator executeOn: model.
-	db := KEDiagramBuilder new addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	db open.
-	db openMap: #africa countries: (model atAttribute: #country) coloredBy: #peakOfEpidemic
+	chart := KEChart new addDataFrame:  (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart plot.
+	"chart openMap: #africa countries: (model atAttribute: #country) coloredBy: #peakOfEpidemic"
 ]
 
 { #category : #examples }
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModel [
 	"self new exampleIBMSimulatorOnSIRModel"
 
-	| model simulator dB |
+	| model simulator chart |
 	model := KEModel new.
 	model attributes:{#status -> #(#S #I #R)}.
 	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
@@ -160,16 +159,15 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModel [
 		to: 1.0
 		step: 0.0027.
 	simulator executeOn: model.
-	dB := KEDiagramBuilder new.
-	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	dB open
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart plot 
 ]
 
 { #category : #examples }
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModel2 [
 	"self new exampleIBMSimulatorOnSIRModel2"
 
-	| model simulator db |
+	| model simulator chart |
 	model := KEModel new.
 	model attributes:{#status -> #(#S #I #R)}.
 	model atCompartment: {(#status -> #S)} put: 99 atOthersPut: 0.
@@ -194,16 +192,15 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModel2 [
 		to: 50
 		step: 0.1.
 	simulator executeOn: model.
-	db := KEDiagramBuilder new
-		addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	db open
+	chart := KEChart new addDataFrame:  (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart plot 
 ]
 
 { #category : #examples }
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithBansalIdea [
 	"self new exampleIBMSimulatorOnSIRModelWithBansalIdea"
 
-	| model network spatialConcern sirConcern simulator db f |
+	| model network spatialConcern sirConcern simulator chart f |
 	model := KEModel new.
 	sirConcern := KEModelPart new.
 	sirConcern attributes: {#status -> #(S I R)}.
@@ -266,15 +263,15 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithBansalIdea [
 	1 to: tmp first data size do: [ :k | d add: (tmp collect: [ :e | e data at: k ]) sum ].
 	(KETimeSeries from: d withIndex: tmp first index)
 		compartment: (STON fromString: name) ].
-	db := KEDiagramBuilder new data: {(f value: '{#status:#I}')}.
-	db open
+	chart := KEChart new addDataFrame: {(f value: '{#status:#I}')}.
+	chart plot
 ]
 
 { #category : #examples }
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals [
 	"self new exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals"
 
-	| model network spatialConcern sirConcern simulator db data|
+	| model network spatialConcern sirConcern simulator chart |
 	model := KEModel new.
 	sirConcern := KEModelPart new.
 	sirConcern addAttribute: #status value: #(S I R).
@@ -320,18 +317,16 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithContactNetworkAmon
 		to: 50
 		step: 0.1.
 	simulator executeOn: model.
-		simulator executeOn: model.
-	data := OrderedCollection new.
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	db := KEDiagramBuilder new data: data.
-	db open
+
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart plotHistogram 
 ]
 
 { #category : #examples }
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRMultiHostModel [
 	"self new exampleIBMSimulatorOnSIRMultiHostModel"
 
-	| model multiHostConcern simulator db |
+	| model multiHostConcern simulator chart |
 	multiHostConcern := KEModelPart new.
 	multiHostConcern
 		addAttribute: #species
@@ -457,9 +452,8 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRMultiHostModel [
 		to: 0.5
 		step: 0.0027.
 	simulator executeOn: model.
-	db := KEDiagramBuilder new
-		addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}) sqrt.
-	db open
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart plotSqrt
 ]
 
 { #category : #examples }
@@ -469,7 +463,7 @@ KEIndividualBasedExamples >> exampleIBM_SIR_Bansal_ScaleFree [
 	"Respectively, network1000.dat at: https://github.com/thanhbka85dn/kendrick/blob/master/network1000.dat"
 	"Scale free network with 10000 individual, network.dat at: https://github.com/thanhbka85dn/kendrick/blob/master/network.dat"
 	"Note that all scale networks above have p(k) ~ 'k to the minus 1.875 power'"
-	|model network spatialConcern sirConcern simulator db f|
+	|model network spatialConcern sirConcern simulator chart f|
 	model := KEModel new.
 	sirConcern := KEModelPart new.
 	sirConcern addAttribute: #status value: #(S I R).
@@ -507,15 +501,15 @@ KEIndividualBasedExamples >> exampleIBM_SIR_Bansal_ScaleFree [
 		1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
 		(KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)
 		].
-	db := KEDiagramBuilder new data: { (f value: '{#status:#I}') }.
-	db open.
+	chart := KEChart new addDataFrame:  { (f value: '{#status:#I}') }.
+	chart plot.
 ]
 
 { #category : #examples }
 KEIndividualBasedExamples >> exampleNetWorkSimulatorOnSIR [
 "self new exampleNetWorkSimulatorOnSIR"
 "Problem to debug to this method due to Dataframe apparently"
-	| model network spatialConcern sirConcern simulator db data |
+	| model network spatialConcern sirConcern simulator chart db|
 	model := KEModel new.
 	sirConcern := KEModelPart new.
 	sirConcern addAttribute: #status value: #(S I R).
@@ -561,10 +555,11 @@ KEIndividualBasedExamples >> exampleNetWorkSimulatorOnSIR [
 		to: 50
 		step: 0.1.
 	simulator executeOn: model.
-	data := OrderedCollection new.
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	db := KEDiagramBuilder new data: data.
-	db open.
+
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+
+	chart plot.
+	
 	db := KENetworkBuilder new
 		data: simulator timeSeriesOutputs;
 		network: (model atParameter: #network);

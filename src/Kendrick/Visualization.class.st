@@ -66,6 +66,13 @@ Visualization >> canvas [
 			canvas := diag build build view canvas ]
 ]
 
+{ #category : #'as yet unclassified' }
+Visualization >> chart [
+
+	^ self 
+		with: KEChart 
+]
+
 { #category : #protected }
 Visualization >> cleanUpForInteractiveSessions [
 

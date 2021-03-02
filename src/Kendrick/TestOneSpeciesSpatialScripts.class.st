@@ -73,7 +73,7 @@ Visualization SpatialDiagramViz diagram
 { #category : #'as yet unclassified' }
 TestOneSpeciesSpatialScripts >> before [
 
-| spatialConcern seirsConcern model simulator db |
+| spatialConcern seirsConcern model simulator chart |
 spatialConcern := KEModelPart new.
  spatialConcern addAttribute: #patch value: (1 to: 5) asArray.
  spatialConcern addParameter: #rho.
@@ -159,20 +159,19 @@ model atCompartment: { #status->#S. #patch->1 } put: 900 atOthersPut: 0.
 
 simulator := KESimulator new: #RungeKutta from: 0 to: 500 step: 1.
  simulator executeOn: model.
- db := KEDiagramBuilder new.
- db data: [|tmp| tmp := OrderedCollection new.
+ chart := KEChart new. 
+ chart addDataFrame: [|tmp| tmp := OrderedCollection new.
  tmp add: (simulator timeSeriesOutputsAt: {#status ->#I.#patch -> 1}).
  tmp add: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 2}).
  tmp add: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 3}).
  tmp add: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 4}).
  tmp add: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 5}).
  tmp] value.
- db legends: { 'patch 1'. 'patch 2'. 'patch 3'. 'patch 4'. 'patch 5'}.
- db legendTitle: 'Infectious'.
- db xLabel: 'Time (days)'.
- db open.
+ 
+ chart legendTitle: 'Infectious'.
+ chart plot. 
 
-	^ {simulator . model . db}
+	^ {simulator . model . chart}
 ]
 
 { #category : #'as yet unclassified' }

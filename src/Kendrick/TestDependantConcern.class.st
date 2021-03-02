@@ -126,7 +126,7 @@ Simulation SpatialRungeKutta rungeKutta
 { #category : #accessing }
 TestDependantConcern >> before [
 
-|model sirConcern eConcern spatialConcern simulator db|
+|model sirConcern eConcern spatialConcern simulator chart|
 sirConcern := KEModelPart new.
 sirConcern attributes: {#status->#(#S #I #R)}.
 sirConcern addParameters: {#lambda. #gamma}.
@@ -210,20 +210,20 @@ model atParameter: #lambda assignValue: [ :aModel| |c|
     simulator := KESimulator new: #RungeKutta from: 0 to: 500 step: 1.
     simulator executeOn: model.
 
-    db := KEDiagramBuilder new.
-    db data: [|tmp| tmp := OrderedCollection new.
-    tmp add: (simulator timeSeriesOutputsAt: {#status -> #I. #patch -> 1}).
-    tmp add: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 2}).
-    tmp add: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 3}).
-    tmp add: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 4}).
-    tmp add: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 5}).
+   	 chart := KEChart new.
+    chart addDataFrame: [|tmp| tmp := DataFrame new.
+    tmp addDataFrame: (simulator timeSeriesOutputsAt: {#status -> #I. #patch -> 1}).
+    tmp addDataFrame:(simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 2}).
+    tmp addDataFrame: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 3}).
+    tmp addDataFrame: (simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 4}).
+    tmp addDataFrame:(simulator timeSeriesOutputsAt: {#status -> #I.#patch -> 5}).
     tmp] value.
-    db legends: { 'patch 1'. 'patch 2'. 'patch 3'. 'patch 4'. 'patch 5'}.
-    db legendTitle: 'Infectious'.
-    db xLabel: 'Time (days)'.
-    db open.
+    
+    chart legendTitle: 'Infectious'.
+   
+    chart plot.
 
-	^ {simulator . model . db}
+	^ {simulator . model . chart}
 ]
 
 { #category : #'as yet unclassified' }

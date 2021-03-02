@@ -92,7 +92,7 @@ Simulation MeaslesRKSim rungeKutta
 { #category : #'as yet unclassified' }
 TestMeaslesScriptsBMC >> before [
 
-| model simulator diag |
+| model simulator chart |
 model := KEModel new.
 model addAttribute: #status value: #(S E I R).
 model atCompartment: { #status->#S } put: 99999 atOthersPut: 0.
@@ -110,11 +110,11 @@ model addParameters: {
         #sigma->0.125 }.
 simulator := KESimulator new: #RungeKutta from: 0.0 to: 150 step: 1.
 simulator executeOn: model.
-diag := (KEDiagramBuilder new) addData: simulator timeSeriesOutputs.
-diag xLabel: 'Time (days)'.
-diag open.
+chart := KEChart new addDataFrame: (simulator timeSeriesOutputs).
 
-^ {simulator . model . diag}
+chart plot.
+
+^ {simulator . model . chart}
 ]
 
 { #category : #'as yet unclassified' }

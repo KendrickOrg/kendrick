@@ -214,7 +214,7 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithRoassal3 [
 KEStochasticExamples >> exampleExplicitTauLeapOnSISWithDemographyModel [
 	"self new exampleExplicitTauLeapOnSIRSimpleModel"
 
-	| model simulator dB |
+	| model simulator chart |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I))}.
 	model atCompartment: {(#status -> #S)} put: 70 atOthersPut: 0.
@@ -250,18 +250,18 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSISWithDemographyModel [
 		to: 3650
 		step: 0.1.
 	simulator executeOn: model.
-	dB := KEDiagramBuilder new.
+	chart := KEChart new 
 	"dB addData: simulator timeSeriesOutputs."
-	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
-	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	^ dB open
+		addDataFrame:  (simulator timeSeriesOutputsAt: {(#status -> #S)});
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart plot 
 ]
 
 { #category : #examples }
 KEStochasticExamples >> exampleGillespieDirectOnSEIRMeaslesModel [
 	"self new exampleGillespieDirectOnSEIRMeaslesModel"
 
-	| model simulator diag |
+	| model simulator chart |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #E #I #R))}.
 	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
@@ -310,19 +310,19 @@ KEStochasticExamples >> exampleGillespieDirectOnSEIRMeaslesModel [
 		to: 0.5
 		step: 0.0027.
 	simulator executeOn: model.
-	diag := KEDiagramBuilder new
-		addData: (simulator timeSeriesOutputsAt: {(#status -> #S)});
-		addData: (simulator timeSeriesOutputsAt: {(#status -> #E)});
-		addData: (simulator timeSeriesOutputsAt: {(#status -> #I)});
-		addData: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
-	diag open
+	chart := KEChart new 
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #S)});
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #E)});
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)});
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
+	chart plot 
 ]
 
 { #category : #examples }
 KEStochasticExamples >> exampleGillespieDirectOnSIRBioPEPAModel [
 	"self new exampleGillespieDirectOnSIRBioPEPAModel"
 
-	| model simulator dB |
+	| model simulator chart |
 	model := KEModel new.
 	model addAttribute: #status value: #(S I R).
 	model atCompartment: {(#status -> #S)} put: 99 atOthersPut: 0.
@@ -345,18 +345,18 @@ KEStochasticExamples >> exampleGillespieDirectOnSIRBioPEPAModel [
 		to: 100
 		step: 1.
 	simulator executeOn: model.
-	dB := KEDiagramBuilder new.
-	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #S)}).
-		dB addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-			dB addData: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
-	dB open
+	chart := KEChart new  
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #S)});
+		addDataFrame:  (simulator timeSeriesOutputsAt: {(#status -> #I)});
+		addDataFrame:  (simulator timeSeriesOutputsAt: {(#status -> #R)}).
+	chart plot 
 ]
 
 { #category : #examples }
 KEStochasticExamples >> exampleGillespieDirectOnSIRMultiHostModel [
 	"self new exampleGillespieDirectOnSIRMultiHostModel"
 
-	| model multiHostConcern simulator db |
+	| model multiHostConcern simulator chart |
 	multiHostConcern := KEModelPart new.
 	multiHostConcern addAttribute: #species value: #(#mosquito #reservoir1 #reservoir2).
 	model := KEModel new.
@@ -431,17 +431,17 @@ KEStochasticExamples >> exampleGillespieDirectOnSIRMultiHostModel [
 		to: 0.5
 		step: 0.0027.
 	simulator executeOn: model.
-	db := KEDiagramBuilder new addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}) sqrt.
-	db xLabel: 'Time (year)'.
-	db yLabel: 'sqrt(Infectious)'.
-	db open
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}) sqrt.
+	chart xLabel: 'Time (year)'.
+
+	chart plotSqrt
 ]
 
 { #category : #examples }
 KEStochasticExamples >> exampleGillespieDirectOnSIRSimpleModel [
 	"self new exampleGillespieDirectOnSIRSimpleModel"
 
-	| model simulator dB |
+	| model simulator chart |
 	model := KEModel new.
 	model addAttribute: #status value: #(#S #I #R).
 	model atCompartment: {(#status -> #S)} put: 9999 atOthersPut: 0.
@@ -461,16 +461,15 @@ KEStochasticExamples >> exampleGillespieDirectOnSIRSimpleModel [
 		to: 1.0
 		step: 0.001.
 	simulator executeOn: model.
-	dB := KEDiagramBuilder new.
-	dB addData: simulator timeSeriesOutputs.
-	dB open
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputs).
+	chart plotHistogram 
 ]
 
 { #category : #examples }
 KEStochasticExamples >> exampleGillespieDirectOnSIRSimpleModel3 [
 	"self new exampleGillespieDirectOnSIRSimpleModel3"
 
-	| model simulator dB |
+	| model simulator chart  |
 	model := KEModel new.
 	model addAttribute: #status value: #(#S #I #R).
 	model atCompartment: {(#status -> #S)} put: 99 atOthersPut: 0.
@@ -490,16 +489,15 @@ KEStochasticExamples >> exampleGillespieDirectOnSIRSimpleModel3 [
 		to: 200
 		step: 0.01.
 	simulator executeOn: model.
-	dB := KEDiagramBuilder new.
-	dB addData: simulator timeSeriesOutputs.
-	dB open
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputs).
+	chart plotScatter 
 ]
 
 { #category : #examples }
 KEStochasticExamples >> exampleGillespieDirectOnSIRSimpleModelWithODERepresentation [
 	"self new exampleGillespieDirectOnSIRSimpleModelWithODERepresentation"
 
-	| model simulator dB |
+	| model simulator chart |
 	model := KEModel new.
 	model addAttribute: #status value: #(#S #I #R).
 	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
@@ -517,16 +515,15 @@ KEStochasticExamples >> exampleGillespieDirectOnSIRSimpleModelWithODERepresentat
 		to: 1.0
 		step: 0.001.
 	simulator executeOn: model.
-	dB := KEDiagramBuilder new.
-	dB addData: simulator timeSeriesOutputs.
-	dB open
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputs).
+	chart plot 
 ]
 
 { #category : #examples }
 KEStochasticExamples >> exampleGillespieSimulatorOnSIREbolaModel [
 	"self new exampleGillespieSimulatorOnSIREbolaModel"
 
-	| model simulator db spatialConcern countries |
+	| model simulator chart spatialConcern countries |
 	spatialConcern := KEModelPart new.
 	spatialConcern
 		addAttribute: #country
@@ -599,11 +596,11 @@ KEStochasticExamples >> exampleGillespieSimulatorOnSIREbolaModel [
 		to: 100
 		step: 0.1.
 	simulator executeOn: model.
-	db := KEDiagramBuilder new
-		addData: (simulator timeSeriesOutputsAt: {(#status -> #S)});
-		addData: (simulator timeSeriesOutputsAt: {(#status -> #I)});
-		addData: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
-	db open
+	chart := KEChart new 
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #S)});
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)});
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
+	chart plot 
 	"	db
 		openMap: #africa
 		countries: (model atAttribute: #country)

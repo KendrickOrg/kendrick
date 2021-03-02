@@ -61,7 +61,7 @@ Visualization MosquitoDiagramViz diagram
 { #category : #'as yet unclassified' }
 TestMosquitoScripts >> before [
 
-| model multiHostConcern simulator db |
+| model multiHostConcern simulator chart |
 model := KEModel new.
 model attributes: {(#status -> #(#S #I #R))}.
 model addParameter: #mu value: 12.17.
@@ -131,8 +131,8 @@ model atParameter: #lambda assignValue: [ :aModel|
 simulator := KESimulator new: #Gillespie from: 0.0 to: 0.5 step: 0.0027.
 
 simulator executeOn: model.
-db := (KEDiagramBuilder new) addData: ((simulator timeSeriesOutputsAt: {#status -> #I}) sqrt).
-db open.
+chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {#status -> #I}).
+chart plot.
 
 ^ simulator -> model
 ]
