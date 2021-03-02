@@ -284,7 +284,7 @@ spatialConcern
 KEDeterministicExamples >> exampleRK4SolverOnMigrationOneSpeciesModel [
 	"self new exampleRK4SolverOnMigrationOneSpeciesModel"
 
-	| model simulator db |
+	| model simulator chart |
 	model := self modelRK4SolverOnMigrationOneSpeciesModel.
 	simulator := KESimulator
 		new: #RungeKutta
@@ -292,9 +292,9 @@ KEDeterministicExamples >> exampleRK4SolverOnMigrationOneSpeciesModel [
 		to: 500
 		step: 1.
 	simulator executeOn: model.
-	db := KEDiagramBuilder new.
-	db
-		data:
+	chart := KEChart new.
+	chart
+		addDataFrame:
 			[ | tmp |
 			tmp := OrderedCollection new.
 			tmp
@@ -328,10 +328,9 @@ KEDeterministicExamples >> exampleRK4SolverOnMigrationOneSpeciesModel [
 							{(#status -> #I).
 							(#patch -> 5)}).
 			tmp ] value.
-	db legends: {'patch 1' . 'patch 2' . 'patch 3' . 'patch 4' . 'patch 5'}.
-	db legendTitle: 'Infectious'.
-	db xLabel: 'Time (days)'.
-	^ db open
+	
+	chart legendTitle: 'Infectious'.
+	chart plotHistogram 
 ]
 
 { #category : #examples }
