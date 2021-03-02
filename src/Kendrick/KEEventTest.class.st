@@ -32,6 +32,32 @@ KEEventTest >> testCreateAnEventThatRemoveAnIndividualFromStatusS [
 ]
 
 { #category : #tests }
+KEEventTest >> testEventsNumberOfTheSumfTwoConcernsAreTheProductOfTheirEventsNumber [
+	| model model1 multiHostConcern |
+	model1 := KEModelPart new.
+	model1
+		addTransition:
+			(KETransition
+				from: {(#status -> #S)}
+				to: {(#status -> #I)}
+				probability: 'beta*S*I' parseAsAnExpression).
+	model1
+		addTransition:
+			(KETransition
+				from: {(#status -> #I)}
+				to: {(#status -> #R)}
+				probability: 'gamma*I' parseAsAnExpression).
+	multiHostConcern := KEModelPart new.
+	multiHostConcern addAttribute: #species value: #(#human #bird).
+	model := KEModel new.
+	model integrate: model1.
+	model integrate: multiHostConcern.
+	self
+		assert: model generateEvents size
+		equals: model1 generateEvents size * multiHostConcern generateEvents size
+]
+
+{ #category : #tests }
 KEEventTest >> testEventsWithOppositeRate [
 	| e1 e2 si s i beta minusBetaSI betaSI listEvents |
 	e1 := KEEvent new.
@@ -79,7 +105,7 @@ KEEventTest >> testEventsWithSameActions [
 ]
 
 { #category : #tests }
-KEEventTest >> testVerifyGenerateEventOnSumOfTwoConcerns [
+KEEventTest >> testVerifyNumberOfEventOfSumOfTwoConcerns [
 	| model model1 multiHostConcern |
 	model1 := KEModelPart new.
 	model1
