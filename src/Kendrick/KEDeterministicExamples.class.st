@@ -610,7 +610,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSEIRMeaslesModelWithVaccination [
 KEDeterministicExamples >> exampleRK4SolverOnSEIRSModelWithQuarantine [
 	"self new exampleRK4SolverOnSEIRSModelWithQuarantine"
 
-	| model SEIRConcern SEIRSConcern QuarantineConcern simulator dB |
+	| model SEIRConcern SEIRSConcern QuarantineConcern simulator chart |
 	model := KEModel new.
 	SEIRConcern := KEModelPart new.
 	SEIRConcern attributes: {(#status -> #(#S #E #I #R))}.
@@ -649,10 +649,9 @@ KEDeterministicExamples >> exampleRK4SolverOnSEIRSModelWithQuarantine [
 		to: 365
 		step: 1.
 	simulator executeOn: model.
-	dB := KEDiagramBuilder new.
-	dB addData: simulator timeSeriesOutputs.
-	dB xLabel: 'Time (year)'.
-	dB open
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputs).
+	chart  xLabel: 'Time (year)'.
+	chart  plot 
 ]
 
 { #category : #examples }
