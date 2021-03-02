@@ -8,7 +8,7 @@ Class {
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSEIRMeaslesModel [
 	"self new exampleIBMSimulatorOnSEIRMeaslesModel"
 
-	| model simulator diag |
+	| model simulator chart |
 	model := KEModel new.
 	model attributes: {#status -> #(S E I R)}.
 	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
@@ -57,9 +57,8 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSEIRMeaslesModel [
 		to: 150
 		step: 1.
 	simulator executeOn: model.
-	diag := KEDiagramBuilder new
-		addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	diag open
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart plot 
 ]
 
 { #category : #examples }
