@@ -658,7 +658,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSEIRSModelWithQuarantine [
 KEDeterministicExamples >> exampleRK4SolverOnSEIRSModelWithTwoStrains [
 	"self new exampleRK4SolverOnSEIRSModelWithTwoStrains"
 
-	| model SEIRConcern SEIRSConcern twoStrains simulator dB data |
+	| model SEIRConcern SEIRSConcern twoStrains simulator chart |
 	model := KEModel new.
 	SEIRConcern := KEModelPart new.
 	SEIRConcern attributes: {(#status -> #(#S #E #I #R))}.
@@ -714,13 +714,13 @@ KEDeterministicExamples >> exampleRK4SolverOnSEIRSModelWithTwoStrains [
 		to: 365
 		step: 1.
 	simulator executeOn: model.
-	dB := KEDiagramBuilder new.
-	data := OrderedCollection new.
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I1)}).
-	data add: (simulator timeSeriesOutputsAt: {(#status -> #I2)}).
-	dB data: data.
-	dB xLabel: 'Time (year)'.
-	dB open
+
+	chart := KEChart new 
+		addDataFrame:  (simulator timeSeriesOutputsAt: {(#status -> #I1)});
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I2)}).
+
+	chart xLabel: 'Time (year)'.
+	chart plot
 ]
 
 { #category : #examples }
