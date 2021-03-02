@@ -727,7 +727,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSEIRSModelWithTwoStrains [
 KEDeterministicExamples >> exampleRK4SolverOnSIRDemographyModel [
 	"self new exampleRK4SolverOnSIRDemographyModel"
 
-	| model simulator dB |
+	| model simulator chart |
 	model := self modelRK4SolverOnSIRDemography.
 	simulator := KESimulator
 		new: #RungeKutta
@@ -735,9 +735,8 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRDemographyModel [
 		to: 146
 		step: 0.1.
 	simulator executeOn: model.
-	dB := KEDiagramBuilder new.
-	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	dB open
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart plot 
 ]
 
 { #category : #'as yet unclassified' }
