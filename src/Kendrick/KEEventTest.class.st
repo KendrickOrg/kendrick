@@ -80,36 +80,24 @@ KEEventTest >> testEventsWithSameActions [
 
 { #category : #tests }
 KEEventTest >> testVerifyGenerateEventOnSumOfTwoConcerns [
-	| model model1 multiHostConcern e1 e2 e3 e4 events |
-	
+	| model model1 multiHostConcern |
 	model1 := KEModelPart new.
-	model1 addTransition: (KETransition from: {#status -> #S} to: {#status -> #I} probability: 'beta*S*I' parseAsAnExpression).
-	model1 addTransition: (KETransition from: {#status -> #I} to: {#status -> #R} probability: 'gamma*I' parseAsAnExpression).
-	
-	"model2 := KEModelPart new.
-	model2 addTransition: (KETransition from: {#status -> #I} to: {#status -> #R} probability: 'gamma*I' parseAsAnExpression)."
+	model1
+		addTransition:
+			(KETransition
+				from: {(#status -> #S)}
+				to: {(#status -> #I)}
+				probability: 'beta*S*I' parseAsAnExpression).
+	model1
+		addTransition:
+			(KETransition
+				from: {(#status -> #I)}
+				to: {(#status -> #R)}
+				probability: 'gamma*I' parseAsAnExpression).
 	multiHostConcern := KEModelPart new.
-	multiHostConcern 
-		addAttribute: #species 
-		value: #(#human #bird).
-		
-	model := KEModel new.	
+	multiHostConcern addAttribute: #species value: #(#human #bird).
+	model := KEModel new.
 	model integrate: model1.
 	model integrate: multiHostConcern.
-	
-	e1 := KEEvent new fromStatus:#S; toStatus:#I.
-	e2 := KEEvent new fromStatus:#I; toStatus:#S.
-	e3 := KEEvent new fromStatus:#I; toStatus:#R.
-	e4 := KEEvent new fromStatus:#R; toStatus:#I.
-	
-	events := OrderedCollection new 
-		add: e1;
-		add: e2;
-		add: e3;
-		add: e4;
-		yourself.
-	
-self assert: (model transitions size) equals: (events size).
-	
-
+	self assert: model generateEvents size equals: 4
 ]
