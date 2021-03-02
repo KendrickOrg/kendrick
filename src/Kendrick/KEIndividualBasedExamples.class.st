@@ -463,7 +463,7 @@ KEIndividualBasedExamples >> exampleIBM_SIR_Bansal_ScaleFree [
 	"Respectively, network1000.dat at: https://github.com/thanhbka85dn/kendrick/blob/master/network1000.dat"
 	"Scale free network with 10000 individual, network.dat at: https://github.com/thanhbka85dn/kendrick/blob/master/network.dat"
 	"Note that all scale networks above have p(k) ~ 'k to the minus 1.875 power'"
-	|model network spatialConcern sirConcern simulator db f|
+	|model network spatialConcern sirConcern simulator chart f|
 	model := KEModel new.
 	sirConcern := KEModelPart new.
 	sirConcern addAttribute: #status value: #(S I R).
@@ -501,8 +501,8 @@ KEIndividualBasedExamples >> exampleIBM_SIR_Bansal_ScaleFree [
 		1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
 		(KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)
 		].
-	db := KEDiagramBuilder new data: { (f value: '{#status:#I}') }.
-	db open.
+	chart := KEChart new addDataFrame:  { (f value: '{#status:#I}') }.
+	chart plot.
 ]
 
 { #category : #examples }
