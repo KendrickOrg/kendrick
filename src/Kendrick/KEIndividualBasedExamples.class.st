@@ -136,7 +136,7 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIREbolaModel [
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModel [
 	"self new exampleIBMSimulatorOnSIRModel"
 
-	| model simulator dB |
+	| model simulator chart |
 	model := KEModel new.
 	model attributes:{#status -> #(#S #I #R)}.
 	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
@@ -159,9 +159,8 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModel [
 		to: 1.0
 		step: 0.0027.
 	simulator executeOn: model.
-	dB := KEDiagramBuilder new.
-	dB addData: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
-	dB open
+	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart plot 
 ]
 
 { #category : #examples }
