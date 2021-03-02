@@ -153,7 +153,7 @@ KEDeterministicExamples >> exampleRK4SolverOn2SEIRMeaslesModelWithVaccination [
 KEDeterministicExamples >> exampleRK4SolverOnMigrationModelWithDependentConcern [
 	"self new exampleRK4SolverOnMigrationModelWithDependentConcern"
 
-	| model sirConcern eConcern spatialConcern simulator db |
+	| model sirConcern eConcern spatialConcern simulator chart |
 	sirConcern := KEModelPart new.
 	sirConcern attributes: {(#status -> #(#S #I #R))}.
 	sirConcern addParameters: {#lambda . #gamma}.
@@ -247,37 +247,37 @@ spatialConcern
 		to: 500
 		step: 1.
 	simulator executeOn: model.
-	db := KEDiagramBuilder new.
-	db
-		addData:
+	chart := KEChart new.
+	chart
+		addDataFrame:
 			(simulator
 				timeSeriesOutputsAt:
 					{(#status -> #I).
 					(#patch -> 1)});
-		addData:
+		addDataFrame:
 			(simulator
 				timeSeriesOutputsAt:
 					{(#status -> #I).
 					(#patch -> 2)});
-		addData:
+		addDataFrame:
 			(simulator
 				timeSeriesOutputsAt:
 					{(#status -> #I).
 					(#patch -> 3)});
-		addData:
+		addDataFrame:
 			(simulator
 				timeSeriesOutputsAt:
 					{(#status -> #I).
 					(#patch -> 4)});
-		addData:
+		addDataFrame:
 			(simulator
 				timeSeriesOutputsAt:
 					{(#status -> #I).
 					(#patch -> 5)}).
-	db legends: {'patch 1' . 'patch 2' . 'patch 3' . 'patch 4' . 'patch 5'}.
-	db legendTitle: 'Infectious'.
-	db xLabel: 'Time (days)'.
-	db open
+	
+	chart legendTitle: 'Infectious'.
+	chart xLabel: 'Time (days)'.
+	chart plot 
 ]
 
 { #category : #examples }
