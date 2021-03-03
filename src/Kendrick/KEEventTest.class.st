@@ -105,6 +105,18 @@ KEEventTest >> testEventsWithSameActions [
 ]
 
 { #category : #tests }
+KEEventTest >> testODEDemographyModelHas6Events [
+	| model |
+	model := KEModelPart new.
+	model attributes: {(#status -> #(#S #I #R))}.
+	model addParameters: {#beta . #gamma . #mu}.
+	model addEquation: 'S:t=mu*N-beta*S*I-mu*S'.
+	model addEquation: 'I:t=beta*S*I-gamma*I-mu*I'.
+	model addEquation: 'R:t=gamma*I-mu*R'.
+	self assert: model generateEvents size equals: 6
+]
+
+{ #category : #tests }
 KEEventTest >> testVerifyNumberOfEventOfSumOfTwoConcerns [
 	| model model1 multiHostConcern |
 	model1 := KEModelPart new.
