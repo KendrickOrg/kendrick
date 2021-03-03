@@ -200,10 +200,10 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModel2 [
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithBansalIdea [
 	"self new exampleIBMSimulatorOnSIRModelWithBansalIdea"
 
-	| model network spatialConcern sirConcern simulator chart f |
+	| model network spatialConcern sirConcern simulator chart |
 	model := KEModel new.
 	sirConcern := KEModelPart new.
-	sirConcern attributes: {#status -> #(S I R)}.
+	sirConcern attributes: {(#status -> #(S I R))}.
 	sirConcern addParameters: {#beta . #gamma . #lambda}.
 	sirConcern
 		addTransitionFrom: {(#status -> #S)}
@@ -255,15 +255,10 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithBansalIdea [
 		to: 50
 		step: 0.1.
 	simulator executeOn: model.
-	f := [ :name | 
-	| d tmp |
-	tmp := (simulator timeSeriesOutputsAt: name)
-		collect: [ :e | e value ].
-	d := OrderedCollection new.
-	1 to: tmp first data size do: [ :k | d add: (tmp collect: [ :e | e data at: k ]) sum ].
-	(KETimeSeries from: d withIndex: tmp first index)
-		compartment: (STON fromString: name) ].
-	chart := KEChart new addDataFrame: {(f value: '{#status:#I}')}.
+	chart := KEChart new
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #S)});
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)});
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
 	chart plot
 ]
 
@@ -459,50 +454,69 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRMultiHostModel [
 { #category : #examples }
 KEIndividualBasedExamples >> exampleIBM_SIR_Bansal_ScaleFree [
 	"self new exampleIBM_SIR_Bansal_ScaleFree"
+
 	"You can access the file network100.dat at: https://github.com/thanhbka85dn/kendrick/blob/master/network100.dat"
+
 	"Respectively, network1000.dat at: https://github.com/thanhbka85dn/kendrick/blob/master/network1000.dat"
+
 	"Scale free network with 10000 individual, network.dat at: https://github.com/thanhbka85dn/kendrick/blob/master/network.dat"
+
 	"Note that all scale networks above have p(k) ~ 'k to the minus 1.875 power'"
-	|model network spatialConcern sirConcern simulator chart f|
+
+	| model network spatialConcern sirConcern simulator chart f |
 	model := KEModel new.
 	sirConcern := KEModelPart new.
 	sirConcern addAttribute: #status value: #(S I R).
-	sirConcern addParameters: { #beta. #gamma. #lambda }.
-	sirConcern addTransitionFrom: { #status->#S } to: { #status->#I } probability: 'lambda'.
-	sirConcern addTransitionFrom: { #status->#I } to: { #status->#R } probability: 'gamma'.
+	sirConcern addParameters: {#beta . #gamma . #lambda}.
+	sirConcern
+		addTransitionFrom: {(#status -> #S)}
+		to: {(#status -> #I)}
+		probability: 'lambda'.
+	sirConcern
+		addTransitionFrom: {(#status -> #I)}
+		to: {(#status -> #R)}
+		probability: 'gamma'.
 	spatialConcern := KEModelPart new.
 	network := KEContactNetwork new.
 	network loadNodes: 10000 fromFile: 'assets/data/network.dat'.
-	
 	spatialConcern addParameter: #network value: network.
-	
 	network generateTransitions: spatialConcern.
 	spatialConcern addAttribute: #node value: network allContacts.
-	spatialConcern addParameter: #iota value: [ :aModel|
-		((aModel atParameter: #network) edgesFrom: {aModel. #I}) / "((aModel atParameter: #network) edges size)"
-		
-				((aModel atParameter: #network) numberOfEdges)
-				.
-	 ].
+	spatialConcern
+		addParameter: #iota
+		value: [ :aModel | 
+			((aModel atParameter: #network)
+				edgesFrom:
+					{aModel.
+					#I}) / (aModel atParameter: #network) numberOfEdges	"((aModel atParameter: #network) edges size)" ].
 	model integrate: sirConcern.
 	model integrate: spatialConcern.
-	model atParameter: #lambda assignValue: [ :aModel|
-		(aModel atParameter: #iota)*(aModel atParameter: #beta)
-	 ].
+	model
+		atParameter: #lambda
+		assignValue:
+			[ :aModel | (aModel atParameter: #iota) * (aModel atParameter: #beta) ].
 	model atParameter: #beta assignValue: 1.
 	model atParameter: #gamma assignValue: 0.1.
-	1 to: 9999 do: [:i| model atCompartment: {#status->#S. #node->i asString asSymbol} put: 1].
-	model atCompartment: { #status->#I. #node->#'10000' } put: 1.
-	simulator := KESimulator new: #IBM from: 0.0 to: 50 step: 0.5.
+	1 to: 9999 do: [ :i | 
+		model
+			atCompartment:
+				{(#status -> #S).
+				(#node -> i asString asSymbol)}
+			put: 1 ].
+	model
+		atCompartment:
+			{(#status -> #I).
+			(#node -> #'10000')}
+		put: 1.
+	simulator := KESimulator
+		new: #IBM
+		from: 0.0
+		to: 50
+		step: 0.5.
 	simulator executeOn: model.
-	f := [:name| |d tmp|
-		tmp := (simulator timeSeriesOutputsAt: name) collect: [ :e| e value ].
-		d := OrderedCollection new.
-		1 to: tmp first data size do: [ :k| d add: (tmp collect: [:e| e data at: k]) sum ].
-		(KETimeSeries from: d withIndex: tmp first index) compartment: (STON fromString: name)
-		].
-	chart := KEChart new addDataFrame:  { (f value: '{#status:#I}') }.
-	chart plot.
+	chart := KEChart new
+		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart plot
 ]
 
 { #category : #examples }
