@@ -33,14 +33,6 @@ KEEvent >> addOneIndividualTo: aStatus [
 ]
 
 { #category : #accessing }
-KEEvent >> findEventWithSameActionsIn: eventList [
-	^ eventList
-		detect:
-			[ :event | (event fromStatus = self fromStatus) & (event toStatus = self toStatus) ] 
-		ifNone: [ nil ]
-]
-
-{ #category : #accessing }
 KEEvent >> fromStatus [
 	^ fromStatus
 ]
