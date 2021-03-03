@@ -311,6 +311,26 @@ KEModelTest >> testModelWithTwoCompartmentsOfSizeNineAneOneHasATotalSizeOfTen [
 ]
 
 { #category : #tests }
+KEModelTest >> testSIRModelBasedOnTransitionsHasThreeEquations [
+|model|
+model := KEModel new.
+	model
+		addTransition:
+			(KETransition
+				from: {(#status -> #S)}
+				to: {(#status -> #I)}
+				probability: 'beta*S*I' parseAsAnExpression).
+model
+		addTransition:
+			(KETransition
+				from: {(#status -> #I)}
+				to: {(#status -> #R)}
+				probability: 'gamma*I' parseAsAnExpression).
+
+self assert: model buildEquations size equals: 3
+]
+
+{ #category : #tests }
 KEModelTest >> testSIRModelHasThreeCompartments [
 	| model |
 	model := KEModel new attributes: {(#status -> #(#S #I #R))}.
