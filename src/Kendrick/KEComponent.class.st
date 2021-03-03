@@ -194,11 +194,12 @@ KEComponent >> generateEvents [
 					(anEvent hasAnEventWithOppositeRateIn: events)
 						ifTrue: [ | e |
 							e := anEvent findEventWithOppositeRateIn: events.
+							"e fromStatus: anEvent fromStatus.
+							e toStatus: anEvent toStatus."
 							"e actions addAll: anEvent actions."
 							e mapStatusWith: anEvent ]
 						ifFalse: [ events add: anEvent ] ] ].
-	events := self mergeEventsWithSameActionsIn: events.
-	^ events
+	^ self mergeEventsWithSameActionsIn: events
 ]
 
 { #category : #initialization }
