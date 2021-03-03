@@ -33,11 +33,6 @@ KEEvent >> addOneIndividualTo: aStatus [
 ]
 
 { #category : #accessing }
-KEEvent >> findEventWithOppositeRateIn: eventList [
-	^ eventList detect: [ :event | event rate negated = rate ] ifNone: [ nil ]
-]
-
-{ #category : #accessing }
 KEEvent >> findEventWithSameActionsIn: eventList [
 	^ eventList
 		detect:
