@@ -61,7 +61,6 @@ Visualization >> canvas [
 				ifTrue: [ lazyDataBlock value ].
 			xLabel ifNotNil: [ diag xLabel: xLabel ].
 			KendrickInternalDSLEntities cleanUpForInteractiveSessions.
-			self halt.
 			canvas := diag build open ]
 ]
 
