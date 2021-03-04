@@ -30,21 +30,15 @@ KEChart >> addDataFrame: aDataFrame [
 
 { #category : #'public - plots' }
 KEChart >> build [
-	| c p x y lb normalize |
-	normalize := RTMultiLinearColorForIdentity new
-		objects: self legends;
-		colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
+	| c p x y lb  |
 	c := RSChart new.
 	self legends
 		withIndexDo: [ :each :i | 
-			| d |
-			d := normalize rtValue: each.
 			p := RSLinePlot new.
 			x := (dataFrames at: i) rowNames.
 			y := x collect: [ :j | ((dataFrames at: i) row: j) contents first ].
 			p
-				x: x y: y;
-				color: d.
+				x: x y: y.
 			c addPlot: p ].
 	c addDecoration: RSVerticalTick new asFloat.
 	c addDecoration: RSHorizontalTick new asFloat.
@@ -60,9 +54,7 @@ KEChart >> build [
 	lb container: c canvas.
 	self legends
 		do: [ :each | 
-			| d |
-			d := normalize rtValue: each.
-			lb text: each withBoxColor: d ].
+			lb text: each].
 	lb build.
 	^ lb canvas
 ]
@@ -85,21 +77,15 @@ KEChart >> legends [
 
 { #category : #'public - plots' }
 KEChart >> plot [
-	| c p x y lb normalize |
-	normalize := RTMultiLinearColorForIdentity new
-		objects: self legends;
-		colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
+	| c p x y lb |
 	c := RSChart new.
 	self legends
 		withIndexDo: [ :each :i | 
-			| d |
-			d := normalize rtValue: each.
 			p := RSLinePlot new.
 			x := (dataFrames at: i) rowNames.
 			y := x collect: [ :j | ((dataFrames at: i) row: j) contents first ].
 			p
-				x: x y: y;
-				color: d.
+				x: x y: y.
 			c addPlot: p ].
 	c addDecoration: RSVerticalTick new asFloat.
 	c addDecoration: RSHorizontalTick new asFloat.
@@ -115,30 +101,22 @@ KEChart >> plot [
 	lb container: c canvas.
 	self legends
 		do: [ :each | 
-			| d |
-			d := normalize rtValue: each.
-			lb text: each withBoxColor: d ].
+			lb text: each].
 	lb build.
 	lb canvas open
 ]
 
 { #category : #'public - plots' }
 KEChart >> plotHistogram [
-	| c p x y lb normalize |
-	normalize := RTMultiLinearColorForIdentity new
-		objects: self legends;
-		colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
+	| c p x y lb |
 	c := RSChart new.
 	self legends
 		withIndexDo: [ :each :i | 
-			| d |
-			d := normalize rtValue: each.
 			p := RSBarPlot new.
 			x := (dataFrames at: i) rowNames.
 			y := x collect: [ :j | ((dataFrames at: i) row: j) contents first ].
 			p
-				x: x y: y;
-				color: d.
+				x: x y: y.
 			c addPlot: p ].
 	c addDecoration: RSVerticalTick new asFloat.
 	c
@@ -158,30 +136,22 @@ KEChart >> plotHistogram [
 	lb container: c canvas.
 	self legends
 		do: [ :each | 
-			| d |
-			d := normalize rtValue: each.
-			lb text: each withBoxColor: d ].
+			lb text: each ].
 	lb build.
 	lb canvas open
 ]
 
 { #category : #'public - plots' }
 KEChart >> plotLog [
-	| c p x y lb normalize |
-	normalize := RTMultiLinearColorForIdentity new
-		objects: self legends;
-		colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
+	| c p x y lb  |
 	c := RSChart new.
 	self legends
 		withIndexDo: [ :each :i | 
-			| d |
-			d := normalize rtValue: each.
-			p := RSLinePlot new.
+				p := RSLinePlot new.
 			x := (dataFrames at: i) rowNames.
 			y := x collect: [ :j | ((dataFrames at: i) row: j) contents first ].
 			p
-				x: x y: y log;
-				color: d.
+				x: x y: y log.
 			c addPlot: p ].
 	c addDecoration: RSVerticalTick new asFloat.
 	c addDecoration: RSHorizontalTick new asFloat.
@@ -198,30 +168,22 @@ KEChart >> plotLog [
 	lb container: c canvas.
 	self legends
 		do: [ :each | 
-			| d |
-			d := normalize rtValue: each.
-			lb text: each withBoxColor: d ].
+				lb text: each ].
 	lb build.
 	lb canvas open
 ]
 
 { #category : #'public - plots' }
 KEChart >> plotScatter [
-	| c p x y lb normalize |
-	normalize := RTMultiLinearColorForIdentity new
-		objects: self legends;
-		colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
+	| c p x y lb  |
 	c := RSChart new.
 	self legends
 		withIndexDo: [ :each :i | 
-			| d |
-			d := normalize rtValue: each.
 			p := RSScatterPlot new.
 			x := (dataFrames at: i) rowNames.
 			y := x collect: [ :j | ((dataFrames at: i) row: j) contents first ].
 			p
-				x: x y: y;
-				color: d.
+				x: x y: y.
 			c addPlot: p ].
 	c addDecoration: RSVerticalTick new asFloat.
 	c
@@ -241,30 +203,22 @@ KEChart >> plotScatter [
 	lb container: c canvas.
 	self legends
 		do: [ :each | 
-			| d |
-			d := normalize rtValue: each.
-			lb text: each withBoxColor: d ].
+			lb text: each ].
 	lb build.
 	lb canvas open
 ]
 
 { #category : #'public - plots' }
 KEChart >> plotSqrt [
-	| c p x y lb normalize |
-	normalize := RTMultiLinearColorForIdentity new
-		objects: self legends;
-		colors: (RTColorPalette qualitative colors: 9 scheme: 'Set1').
+	| c p x y lb |
 	c := RSChart new.
 	self legends
 		withIndexDo: [ :each :i | 
-			| d |
-			d := normalize rtValue: each.
 			p := RSLinePlot new.
 			x := (dataFrames at: i) rowNames.
 			y := x collect: [ :j | ((dataFrames at: i) row: j) contents first ].
 			p
-				x: x y: y sqrt;
-				color: d.
+				x: x y: y sqrt.
 			c addPlot: p ].
 	c addDecoration: RSVerticalTick new asFloat.
 	c addDecoration: RSHorizontalTick new asFloat.
@@ -281,9 +235,7 @@ KEChart >> plotSqrt [
 	lb container: c canvas.
 	self legends
 		do: [ :each | 
-			| d |
-			d := normalize rtValue: each.
-			lb text: each withBoxColor: d ].
+			lb text: each ].
 	lb build.
 	lb canvas open
 ]
