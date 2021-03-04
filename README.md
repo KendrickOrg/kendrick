@@ -36,31 +36,6 @@ You will find documentation about Kendrick DSL in the wiki : https://github.com/
 
 Kendrick is also described in a chapter of the [Agile Visualization book](http://agilevisualization.com/).
 
-## How to install a stable version of Kendrick
-
-If you don't want to compile Kendrick on your machine, you can download pre-compiled versions of Kendrick for your platform of choice, follow the links below:
-
-* [Kendrick-0.42-Mac](https://gitlab.com/ird-ummisco-npapoylias/kendrick-extentions/raw/master/Kendrick-0.42-Mac.zip) (Double-click or invoke **KendrickUI** from bash)
-* [Kendrick-0.42-Linux](https://gitlab.com/ird-ummisco-npapoylias/kendrick-extentions/raw/master/Kendrick-0.42-Linux.zip) (Double-click or invoke **KendrickUI** from bash -- For prerequisites see: [Pharo-Linux](https://pharo.org/gnu-linux-installation) and below)
-* [Kendrick-0.42-Windows](https://gitlab.com/ird-ummisco-npapoylias/kendrick-extentions/raw/master/Kendrick-0.42-Windows.zip) (Double-click **KendrickWinLauncher** or invoke **KendrickUI from cygwin**)
-
-**Ubuntu and Debian-based systems, 32-bit libraries setup:**
-
-* apt-get -qq update
-* apt-get -y install wget
-* apt-get -y install unzip
-* dpkg --add-architecture i386 
-* apt-get update 
-* apt-get -y install libx11-6:i386 
-* apt-get -y install libgl1-mesa-glx:i386 
-* apt-get -y install libfontconfig1:i386 
-* apt-get -y install libssl1.0.0:i386 
-
-You can also install Kendrick 0.42 from source files. On systems with a bash cmd-line (this includes Linux, Mac and Windows with Cygwin and/or the Windows 10 Bash sub-system), you can compile Kendrick from sources using the following command:
-```shell
-wget -O- https://goo.gl/WUQxmp | bash
-````
-
 ## How to install the development version of Kendrick from github
 
 * Download Pharo 8.0 VM depending of your platform: http://pharo.org/download
