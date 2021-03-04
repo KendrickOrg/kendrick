@@ -56,14 +56,13 @@ Visualization >> canvas [
 	^ canvas
 		ifNil: [ simulation execute.
 			explicitDataSet
-				ifFalse: [ 
-				 simulation timeSeriesOutputs columnNames do: [ :each | diag addData: (simulation timeSeriesOutputsAt: each) ] ]
+				ifFalse: [ simulation timeSeriesOutputs columnNames
+						do: [ :each | diag addDataFrame: (simulation timeSeriesOutputsAt: each) ] ]
 				ifTrue: [ lazyDataBlock value ].
 			xLabel ifNotNil: [ diag xLabel: xLabel ].
 			KendrickInternalDSLEntities cleanUpForInteractiveSessions.
-
-			"self halt."
-			canvas := diag build build view canvas ]
+			self halt.
+			canvas := diag build open ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -138,7 +137,7 @@ Visualization >> dataWithCompositeCompartments: anArray [ "should be full math-e
 { #category : #'public-api' }
 Visualization >> dataWithOp: anArray [ "should be full math-expression"
 	^ lazyDataBlock := [
-			diag addData: 
+			diag addDataFrame:  
 				((simulation 
 					timeSeriesOutputsAt: 
 						(simulation model literalTransitionRefFor: anArray first))
@@ -164,9 +163,7 @@ Visualization >> dataWithSimpleCompartments: anArray [ "should be full math-expr
 
 { #category : #'as yet unclassified' }
 Visualization >> diagram [
-
-	^ self 
-		with: KEDiagramBuilder
+	^ self with: KEChart
 ]
 
 { #category : #'as yet unclassified' }
@@ -182,28 +179,28 @@ Visualization >> expand: prefix forLists: lists [
 
 { #category : #'public-api' }
 Visualization >> exportToPng [
-
-	|outDir filePath|
-
-	outDir := './Sources/', KendrickInternalDSLEntities currentProjectDir , '/Output/'. 
-	outDir asFileReference exists 
-		ifFalse: [ outDir := './Sources/Projects/', KendrickInternalDSLEntities currentProjectDir , '/Output/'].
-	filePath := (outDir , self id , '.png').
+	| outDir filePath |
+	outDir := './Sources/'
+		, KendrickInternalDSLEntities currentProjectDir , '/Output/'.
+	outDir asFileReference exists
+		ifFalse: [ outDir := './Sources/Projects/'
+				, KendrickInternalDSLEntities currentProjectDir , '/Output/' ].
+	filePath := outDir , self id , '.png'.
 
 	"[outDir asFileReference createDirectory] on: Error do: [  ]."
+	filePath asFileReference exists
+		ifTrue: [ filePath asFileReference delete ].
 
-	filePath asFileReference 
-		exists ifTrue: [ filePath asFileReference delete ].	
-
-	(RTCanvasExporter canvas: self canvas)
+"Export to PNG is desactivated right now, need to be replaced by call to RSPNGExporter class in Roassal 3"
+"https://github.com/ObjectProfile/Roassal3Exporters"
+"(RTCanvasExporter canvas: self canvas)
 		whole;
 		defaultScale;
 		oversizedBy: 20 @ 20;
 		format: #png;
 		fileName: filePath; 
 		ifNil: [ ^ nil ];
-		export.
-		
+		export."
 	^ self canvas
 ]
 
@@ -228,7 +225,7 @@ Visualization >> legendTitle: aString [
 { #category : #'public-api' }
 Visualization >> legends: anArray [
 
-	diag legends: anArray asOrderedCollection 
+	"diag legends: anArray asOrderedCollection "
 ]
 
 { #category : #'as yet unclassified' }

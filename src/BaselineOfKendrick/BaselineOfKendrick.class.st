@@ -65,8 +65,6 @@ BaselineOfKendrick >> baseline: spec [
 					with: [ spec repository: 'github://kursjan/petitparser2' ];
 				baseline: 'PetitParser'
 					with: [ spec repository: 'github://moosetechnology/PetitParser/src' ];
-				baseline: 'Roassal2'
-					with: [ spec repository: 'github://ObjectProfile/Roassal2/src' ];
 				baseline: 'Ston'
 					with: [ spec repository: 'github://svenvc/ston/repository' ];
 				baseline: 'Roassal3'
@@ -75,7 +73,7 @@ BaselineOfKendrick >> baseline: spec [
 				package: 'Kendrick'
 				with: [ spec
 						requires:
-							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'Roassal3' 'MooseAlgos') ] ].
+							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal3' 'MooseAlgos') ] ].
 	spec
 		for: #'pharo9.x'
 		do: [ spec
@@ -90,6 +88,5 @@ BaselineOfKendrick >> baseline: spec [
 			spec
 				package: 'Kendrick'
 				with: [ spec
-						requires:
-							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'MooseAlgos') ] ]
+						requires: #('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'MooseAlgos') ] ]
 ]
