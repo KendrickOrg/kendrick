@@ -312,6 +312,7 @@ KEModelTest >> testModelWithTwoCompartmentsOfSizeNineAneOneHasATotalSizeOfTen [
 
 { #category : #tests }
 KEModelTest >> testSIRModelBasedOnTransitionsHasThreeEquations [
+<expectedFailure>
 |model|
 model := KEModel new.
 	model

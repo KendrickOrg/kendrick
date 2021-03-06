@@ -52,6 +52,7 @@ KEErdosGNPContactNetworkTest >> testNumberOfPathssOfLengthOneInHexagonGridIsTwo 
 
 { #category : #tests }
 KEErdosGNPContactNetworkTest >> testNumberOfPathssOfLengthTwoInHexagonGridIsSix [
+
 	| network node |
 	network := KEErdosGNPContactNetwork new
 		nodes: (1 to: 100);
