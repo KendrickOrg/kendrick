@@ -392,6 +392,7 @@ KEDeterministicExamples >> exampleRK4SolverOnMultiStrainModel [
 
 { #category : #'as yet unclassified' }
 KEDeterministicExamples >> exampleRK4SolverOnMultiStrainModelWithPlotVisualization [
+"self new exampleRK4SolverOnMultiStrainModelWithPlotVisualization"
 	| model simulator chart |
 
 	model := KEModel new.
