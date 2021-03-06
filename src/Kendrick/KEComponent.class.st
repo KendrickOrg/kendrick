@@ -36,15 +36,20 @@ KEComponent >> addEquations: aCollectionOfEquations [
 
 { #category : #parameters }
 KEComponent >> addParameter: aSymbol value: aNumericalOrAnExpressionOrABlock [
-	|expression|
-	aNumericalOrAnExpressionOrABlock isNumber 
-	ifTrue: [ expression := (KENumerical new number: aNumericalOrAnExpressionOrABlock) ]
-	ifFalse: [ 
-		aNumericalOrAnExpressionOrABlock isString 
-		ifTrue: [ expression := (aNumericalOrAnExpressionOrABlock parseAsAnExpression) ]
-		ifFalse: [ expression := aNumericalOrAnExpressionOrABlock ]
-	].
-	parameters at: aSymbol put: (KEParameter new symbol: aSymbol; expression: expression)
+	| expression |
+	aNumericalOrAnExpressionOrABlock isNumber
+		ifTrue: [ expression := KENumerical new
+				number: aNumericalOrAnExpressionOrABlock ]
+		ifFalse: [ aNumericalOrAnExpressionOrABlock isString
+				ifTrue:
+					[ expression := aNumericalOrAnExpressionOrABlock parseAsAnExpression ]
+				ifFalse: [ expression := aNumericalOrAnExpressionOrABlock ] ].
+	parameters
+		at: aSymbol
+		put:
+			(KEParameter new
+				symbol: aSymbol;
+				expression: expression)
 ]
 
 { #category : #'as yet unclassified' }
@@ -88,28 +93,6 @@ KEComponent >> attributes: inputArray [
 	Should be deprecated because we should be able to add only one attributes. Multiple attributes are set when we sum multiple concerns."
 
 	attributes := Dictionary newFrom: inputArray
-]
-
-{ #category : #'as yet unclassified' }
-KEComponent >> buildEquations [
-	"Return the suitable Dictionary for KESimulatorDeterministic in order to solve the equations."
-	"This method should be merge with equations method in the same class: issue #40"
-	
-	"Seems to returns a Dictionary with keys are dictionary and values are orderedCollection ..."
-
-	| eq |
-	eq := Dictionary new.
-	self compartmentNames do: [ :k| eq at: k put: OrderedCollection new ].
-	self transitions do: [ :tr|
-		(tr from at: #status) = #empty ifTrue:
-			[ (eq at: tr to) add: (Array with: tr with: 1) ].
-		(tr to at: #status) = #empty ifTrue:
-			[ (eq at: tr from) add: (Array with: tr with: -1) ].
-		(((tr from at: #status) ~= #empty) and: [ (tr to at: #status) ~= #empty ]) ifTrue:[ 
-			(eq at: tr from) add: (Array with: tr with: -1).
-			(eq at: tr to) add: (Array with: tr with: 1) ]
-		 ].
-	^eq
 ]
 
 { #category : #parameters }
@@ -157,7 +140,7 @@ KEComponent >> compartmentNames [
 
 { #category : #accessing }
 KEComponent >> equations [
-	^ equations
+	^ equations ifEmpty: [ self transitionToEquations ]
 ]
 
 { #category : #accessing }
@@ -178,6 +161,7 @@ KEComponent >> equationsToTransitions [
 				ifTrue: [ #empty ]
 				ifFalse: [ Dictionary newFrom: {(#status -> each toStatus)} ].
 			self addTransitionFrom: from to: to probability: each rate ].
+		"Why initializing equations at the end?"
 	equations := OrderedCollection new
 ]
 
@@ -251,6 +235,31 @@ KEComponent >> transitionRates: anExpressionOrBlock [
 	self transitions do: [ :tr| 
 		tr probability: anExpressionOrBlock	
 	]
+]
+
+{ #category : #'as yet unclassified' }
+KEComponent >> transitionToEquations [
+	"Return the suitable Dictionary for KESimulatorDeterministic in order to solve the equations."
+
+	"This method should be merge with equations method in the same class: issue #40"
+
+	"Seems to returns a Dictionary with keys are dictionary and values are orderedCollection ..."
+
+	| eq |
+	eq := Dictionary new.
+	self compartmentNames
+		do: [ :k | eq at: k put: OrderedCollection new ].
+	self transitions
+		do: [ :tr | 
+			(tr from at: #status) = #empty
+				ifTrue: [ (eq at: tr to) add: (Array with: tr with: 1) ].
+			(tr to at: #status) = #empty
+				ifTrue: [ (eq at: tr from) add: (Array with: tr with: -1) ].
+			((tr from at: #status) ~= #empty
+				and: [ (tr to at: #status) ~= #empty ])
+				ifTrue: [ (eq at: tr from) add: (Array with: tr with: -1).
+					(eq at: tr to) add: (Array with: tr with: 1) ] ].
+	equations := eq
 ]
 
 { #category : #accessing }

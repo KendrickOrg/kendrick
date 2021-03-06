@@ -312,37 +312,34 @@ KEModelTest >> testModelWithTwoCompartmentsOfSizeNineAneOneHasATotalSizeOfTen [
 
 { #category : #tests }
 KEModelTest >> testNumberOfEquationsOfModelIsCorrect [
-| model |
-	model := KEModel new. 
+	| model |
+	model := KEModel new.
 	model
 		attributes: {(#status -> #(#S #I #R))};
-	 		addEquation: 'S:t=-beta*S*I';
-	 		addEquation: 'I:t=beta*S*I - gamma*I';
-	 		addEquation: 'R:t=gamma*I'.
-	 
-
-	self assert: model buildEquations size equals: 3
+		addEquation: 'S:t=-beta*S*I';
+		addEquation: 'I:t=beta*S*I - gamma*I';
+		addEquation: 'R:t=gamma*I'.
+	self assert: model equations size equals: 3
 ]
 
 { #category : #tests }
 KEModelTest >> testSIRModelBasedOnTransitionsHasThreeEquations [
-<expectedFailure>
-|model|
-model := KEModel new.
+	<expectedFailure>
+	| model |
+	model := KEModel new.
 	model
 		addTransition:
 			(KETransition
 				from: {(#status -> #S)}
 				to: {(#status -> #I)}
 				probability: 'beta*S*I' parseAsAnExpression).
-model
+	model
 		addTransition:
 			(KETransition
 				from: {(#status -> #I)}
 				to: {(#status -> #R)}
 				probability: 'gamma*I' parseAsAnExpression).
-
-self assert: model buildEquations size equals: 3
+	self assert: model equations size equals: 3
 ]
 
 { #category : #tests }
@@ -367,21 +364,20 @@ KEModelTest >> testSizeOfEachCompartmentSizeOfSIRModel [
 
 { #category : #tests }
 KEModelTest >> testVerifyNumberOfEquationsOfSumOfTwoConcerns [
-
-| model model1 multiHostConcern |
+	<expectedFailure>
+	| model model1 multiHostConcern |
 	model1 := KEModelPart new.
 	model1
 		attributes: {(#status -> #(#S #I #R))};
-	 		addEquation: 'S:t=-beta*S*I';
-	 		addEquation: 'I:t=beta*S*I - gamma*I';
-	 		addEquation: 'R:t=gamma*I'.
-	 
+		addEquation: 'S:t=-beta*S*I';
+		addEquation: 'I:t=beta*S*I - gamma*I';
+		addEquation: 'R:t=gamma*I'.
 	multiHostConcern := KEModelPart new.
 	multiHostConcern addAttribute: #species value: #(#human #bird).
 	model := KEModel new.
 	model integrate: model1.
 	model integrate: multiHostConcern.
-	self assert: model buildEquations size equals: 6
+	self assert: model equations size equals: 6
 ]
 
 { #category : #tests }
