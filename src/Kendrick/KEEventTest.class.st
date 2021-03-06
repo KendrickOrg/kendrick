@@ -118,6 +118,7 @@ KEEventTest >> testODEDemographyModelHas6Events [
 
 { #category : #tests }
 KEEventTest >> testVerifyNumberOfEventOfSumOfTwoConcerns [
+<expectedFailure>
 	| model model1 multiHostConcern |
 	model1 := KEModelPart new.
 	model1
