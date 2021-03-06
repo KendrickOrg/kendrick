@@ -29,7 +29,7 @@ KEDeterministicSimulator >> executeOn: aModel [
 
 	| st ks system c |
 	super executeOn: aModel.
-	model transitionToEquations.
+	model transitionsToEquations.
 	equations := model equations.
 	system := PMExplicitSystem
 		block: [ :x :t | 

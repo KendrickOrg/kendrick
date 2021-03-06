@@ -140,7 +140,7 @@ KEComponent >> compartmentNames [
 
 { #category : #accessing }
 KEComponent >> equations [
-	^ equations ifEmpty: [ self transitionToEquations ]
+	^ equations ifEmpty: [ self transitionsToEquations ]
 ]
 
 { #category : #accessing }
@@ -237,8 +237,28 @@ KEComponent >> transitionRates: anExpressionOrBlock [
 	]
 ]
 
+{ #category : #accessing }
+KEComponent >> transitions [
+	equations isNotEmpty
+		ifTrue: [ self equationsToTransitions ].
+
+	"generate a transition rate matrix of 0"
+		transitions isEmpty
+		ifTrue: [ self compartmentNames
+				do: [ :e | 
+					transitions
+						addAll: (self compartmentNames collect: [ :f | KETransition from: e to: f probability: 0 ]) ] ].
+
+	^ transitions
+]
+
 { #category : #'as yet unclassified' }
-KEComponent >> transitionToEquations [
+KEComponent >> transitions: aTransitionList [
+	transitions := aTransitionList 
+]
+
+{ #category : #'as yet unclassified' }
+KEComponent >> transitionsToEquations [
 	"Return the suitable Dictionary for KESimulatorDeterministic in order to solve the equations."
 
 	"This method should be merge with equations method in the same class: issue #40"
@@ -260,24 +280,4 @@ KEComponent >> transitionToEquations [
 				ifTrue: [ (eq at: tr from) add: (Array with: tr with: -1).
 					(eq at: tr to) add: (Array with: tr with: 1) ] ].
 	equations := eq
-]
-
-{ #category : #accessing }
-KEComponent >> transitions [
-	equations isNotEmpty
-		ifTrue: [ self equationsToTransitions ].
-
-	"generate a transition rate matrix of 0"
-		transitions isEmpty
-		ifTrue: [ self compartmentNames
-				do: [ :e | 
-					transitions
-						addAll: (self compartmentNames collect: [ :f | KETransition from: e to: f probability: 0 ]) ] ].
-
-	^ transitions
-]
-
-{ #category : #'as yet unclassified' }
-KEComponent >> transitions: aTransitionList [
-	transitions := aTransitionList 
 ]
