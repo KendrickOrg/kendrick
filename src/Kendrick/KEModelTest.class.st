@@ -311,6 +311,20 @@ KEModelTest >> testModelWithTwoCompartmentsOfSizeNineAneOneHasATotalSizeOfTen [
 ]
 
 { #category : #tests }
+KEModelTest >> testNumberOfEquationsOfModelIsCorrect [
+| model |
+	model := KEModel new. 
+	model
+		attributes: {(#status -> #(#S #I #R))};
+	 		addEquation: 'S:t=-beta*S*I';
+	 		addEquation: 'I:t=beta*S*I - gamma*I';
+	 		addEquation: 'R:t=gamma*I'.
+	 
+
+	self assert: model buildEquations size equals: 3
+]
+
+{ #category : #tests }
 KEModelTest >> testSIRModelBasedOnTransitionsHasThreeEquations [
 <expectedFailure>
 |model|
