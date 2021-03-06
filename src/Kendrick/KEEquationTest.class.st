@@ -19,20 +19,6 @@ KEEquationTest >> testEquationHasTwoEvents [
 ]
 
 { #category : #tests }
-KEEquationTest >> testNumberOfEquationsIsCorrect [
-| model |
-	model := KEModel new. 
-	model
-		attributes: {(#status -> #(#S #I #R))};
-	 		addEquation: 'S:t=-beta*S*I';
-	 		addEquation: 'I:t=beta*S*I - gamma*I';
-	 		addEquation: 'R:t=gamma*I'.
-	 
-
-	self assert: model buildEquations size equals: 3
-]
-
-{ #category : #tests }
 KEEquationTest >> testNumberOfTransitionsIsCorrect [
 	| model |
 	model := KEModel new.
