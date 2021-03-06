@@ -311,6 +311,20 @@ KEModelTest >> testModelWithTwoCompartmentsOfSizeNineAneOneHasATotalSizeOfTen [
 ]
 
 { #category : #tests }
+KEModelTest >> testNumberOfEquationsOfModelIsCorrect [
+| model |
+	model := KEModel new. 
+	model
+		attributes: {(#status -> #(#S #I #R))};
+	 		addEquation: 'S:t=-beta*S*I';
+	 		addEquation: 'I:t=beta*S*I - gamma*I';
+	 		addEquation: 'R:t=gamma*I'.
+	 
+
+	self assert: model buildEquations size equals: 3
+]
+
+{ #category : #tests }
 KEModelTest >> testSIRModelBasedOnTransitionsHasThreeEquations [
 <expectedFailure>
 |model|
@@ -349,6 +363,25 @@ KEModelTest >> testSizeOfEachCompartmentSizeOfSIRModel [
 	self assert: (model sizeOfPopulation: #(#S)) equals: 99999.
 	self assert: (model sizeOfPopulation: #(#I)) equals: 1.
 	self assert: (model sizeOfPopulation: #(#R)) equals: 0
+]
+
+{ #category : #tests }
+KEModelTest >> testVerifyNumberOfEquationsOfSumOfTwoConcerns [
+
+| model model1 multiHostConcern |
+	model1 := KEModelPart new.
+	model1
+		attributes: {(#status -> #(#S #I #R))};
+	 		addEquation: 'S:t=-beta*S*I';
+	 		addEquation: 'I:t=beta*S*I - gamma*I';
+	 		addEquation: 'R:t=gamma*I'.
+	 
+	multiHostConcern := KEModelPart new.
+	multiHostConcern addAttribute: #species value: #(#human #bird).
+	model := KEModel new.
+	model integrate: model1.
+	model integrate: multiHostConcern.
+	self assert: model buildEquations size equals: 6
 ]
 
 { #category : #tests }
