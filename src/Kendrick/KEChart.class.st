@@ -77,7 +77,7 @@ KEChart >> legends [
 
 { #category : #'public - plots' }
 KEChart >> plot [
-	| c p x y lb |
+	| c p x y lb|
 	c := RSChart new.
 	self legends
 		withIndexDo: [ :each :i | 
@@ -100,8 +100,8 @@ KEChart >> plot [
 	lb := RSLegend new.
 	lb container: c canvas.
 	self legends
-		do: [ :each | 
-			lb text: each].
+		doWithIndex: [ :lbl :index | 
+   lb text: lbl withBoxColor: (c plots at:index) computeColor].
 	lb build.
 	lb canvas open
 ]
@@ -135,8 +135,8 @@ KEChart >> plotHistogram [
 	lb := RSLegend new.
 	lb container: c canvas.
 	self legends
-		do: [ :each | 
-			lb text: each ].
+		doWithIndex: [ :lbl :index | 
+   lb text: lbl withBoxColor: (c plots at:index) computeColor].
 	lb build.
 	lb canvas open
 ]
@@ -167,8 +167,8 @@ KEChart >> plotLog [
 	lb := RSLegend new.
 	lb container: c canvas.
 	self legends
-		do: [ :each | 
-				lb text: each ].
+		doWithIndex: [ :lbl :index | 
+   lb text: lbl withBoxColor: (c plots at:index) computeColor].
 	lb build.
 	lb canvas open
 ]
@@ -202,8 +202,8 @@ KEChart >> plotScatter [
 	lb := RSLegend new.
 	lb container: c canvas.
 	self legends
-		do: [ :each | 
-			lb text: each ].
+		doWithIndex: [ :lbl :index | 
+   lb text: lbl withBoxColor: (c plots at:index) computeColor].
 	lb build.
 	lb canvas open
 ]
@@ -234,8 +234,8 @@ KEChart >> plotSqrt [
 	lb := RSLegend new.
 	lb container: c canvas.
 	self legends
-		do: [ :each | 
-			lb text: each ].
+		doWithIndex: [ :lbl :index | 
+   lb text: lbl withBoxColor: (c plots at:index) computeColor].
 	lb build.
 	lb canvas open
 ]
