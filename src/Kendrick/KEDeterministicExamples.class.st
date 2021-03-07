@@ -143,7 +143,10 @@ KEDeterministicExamples >> exampleRK4SolverOn2SEIRMeaslesModelWithVaccination [
 		step: 0.01.
 	simulator executeOn: model.
 	
-	chart := KEChart new addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)}).
+	chart := KEChart new 
+	addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #S)});
+	addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)});
+	addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
 	chart xLabel: 'Time (years)'.
 	chart legendTitle: 'Vaccination Rate'.
 	chart plotLog
@@ -244,7 +247,7 @@ spatialConcern
 	simulator := KESimulator
 		new: #RungeKutta
 		from: 0
-		to: 500
+		to: 150
 		step: 1.
 	simulator executeOn: model.
 	chart := KEChart new.
@@ -294,41 +297,27 @@ KEDeterministicExamples >> exampleRK4SolverOnMigrationOneSpeciesModel [
 	simulator executeOn: model.
 	chart := KEChart new.
 	chart
-		addDataFrame:
-			[ | tmp |
-			tmp := OrderedCollection new.
-			tmp
-				add:
-					(simulator
+		addDataFrame: (simulator
 						timeSeriesOutputsAt:
 							{#status -> #I.
-							#patch -> 1}).
-			tmp
-				add:
-					(simulator
+							#patch -> 1});
+		addDataFrame: (simulator
 						timeSeriesOutputsAt:
 							{(#status -> #I).
-							(#patch -> 2)}).
-			tmp
-				add:
-					(simulator
+							(#patch -> 2)});
+							addDataFrame: (simulator
 						timeSeriesOutputsAt:
 							{(#status -> #I).
-							(#patch -> 3)}).
-			tmp
-				add:
-					(simulator
+							(#patch -> 3)});
+							addDataFrame: (simulator
 						timeSeriesOutputsAt:
 							{(#status -> #I).
-							(#patch -> 4)}).
-			tmp
-				add:
-					(simulator
+							(#patch -> 4)});
+							addDataFrame: (simulator
 						timeSeriesOutputsAt:
 							{(#status -> #I).
 							(#patch -> 5)}).
-			tmp ] value.
-	
+
 	chart legendTitle: 'Infectious'.
 	chart plotHistogram 
 ]
