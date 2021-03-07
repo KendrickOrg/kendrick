@@ -234,8 +234,8 @@ KEChart >> plotSqrt [
 	lb := RSLegend new.
 	lb container: c canvas.
 	self legends
-		do: [ :each | 
-			lb text: each ].
+		doWithIndex: [ :lbl :index | 
+   lb text: lbl withBoxColor: (c plots at:index) computeColor].
 	lb build.
 	lb canvas open
 ]
