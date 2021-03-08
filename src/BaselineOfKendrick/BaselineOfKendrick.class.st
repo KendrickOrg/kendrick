@@ -21,43 +21,7 @@ BaselineOfKendrick >> baseline: spec [
 				baseline: 'MooseAlgos'
 					with: [ spec repository: 'github://moosetechnology/MooseAlgos:v1.1.8/src' ].
 			spec group: 'default' with: #(#Kendrick) ].
-	spec
-		for: #'pharo6.x'
-		do: [ spec
-				project: 'Roassal2'
-					with: [ spec
-						className: #ConfigurationOfRoassal2;
-						versionString: '1.59';
-						repository: 'http://smalltalkhub.com/mc/ObjectProfile/Roassal2/main/' ];
-				project: 'PetitParser'
-					with: [ spec
-						className: #ConfigurationOfPetitParser;
-						versionString: #development;
-						repository: 'http://www.smalltalkhub.com/mc/Moose/PetitParser/main' ];
-				project: 'Ston'
-					with: [ spec
-						className: #ConfigurationOfSton;
-						versionString: #stable;
-						repository: 'http://ss3.gemstone.com/ss/STON' ].
-			spec
-				package: 'Kendrick'
-				with: [ spec
-						requires: #('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'MooseAlgos') ] ].
-	spec
-		for: #'pharo7.x'
-		do: [ spec
-				baseline: 'PetitParser2Core'
-					with: [ spec repository: 'github://kursjan/petitparser2' ];
-				baseline: 'PetitParser'
-					with: [ spec repository: 'github://moosetechnology/PetitParser/src' ];
-				baseline: 'Roassal2'
-					with: [ spec repository: 'github://ObjectProfile/Roassal2/src' ];
-				baseline: 'Ston'
-					with: [ spec repository: 'github://svenvc/ston/repository' ].
-			spec
-				package: 'Kendrick'
-				with: [ spec
-						requires: #('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'MooseAlgos') ] ].
+	
 	spec
 		for: #'pharo8.x'
 		do: [ spec
@@ -70,12 +34,15 @@ BaselineOfKendrick >> baseline: spec [
 				baseline: 'Roassal3'
 					with: [ spec repository: 'github://ObjectProfile/Roassal3' ];
 				baseline: 'Roassal3Exporters'
-					with: [ spec repository: 'github://ObjectProfile/Roassal3Exporters' ].
+					with: [ spec repository: 'github://ObjectProfile/Roassal3Exporters' ];
+				baseline: 'GToolkitExamples'
+					with: [ spec repository: 'github://feenkcom/gtoolkit-examples/src' ].
+					
 			spec
 				package: 'Kendrick'
 				with: [ spec
 						requires:
-							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal3' 'Roassal3Exporters' 'MooseAlgos') ] ].
+							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal3' 'Roassal3Exporters' 'MooseAlgos' 'GToolkitExamples') ] ].
 	spec
 		for: #'pharo9.x'
 		do: [ spec
@@ -84,9 +51,11 @@ BaselineOfKendrick >> baseline: spec [
 				baseline: 'PetitParser'
 					with: [ spec repository: 'github://moosetechnology/PetitParser/src' ];
 				baseline: 'Ston'
-					with: [ spec repository: 'github://svenvc/ston/repository' ].
+					with: [ spec repository: 'github://svenvc/ston/repository' ];
+				baseline: 'GToolkitExamples'
+					with: [ spec repository: 'github://feenkcom/gtoolkit-examples/src' ].
 			spec
 				package: 'Kendrick'
 				with: [ spec
-						requires: #('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'MooseAlgos') ] ]
+						requires: #('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'MooseAlgos' 'GToolkitExamples') ] ]
 ]
