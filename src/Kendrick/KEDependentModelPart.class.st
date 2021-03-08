@@ -17,18 +17,16 @@ KEDependentModelPart >> addStatus: anArrayOfSymbol [
 
 { #category : #'as yet unclassified' }
 KEDependentModelPart >> generateSum: aTransitionList [
-	|result|
-	result := OrderedCollection new.
-	aTransitionList  do: [ :e| 
-		|tmp|
-		tmp := self transitions select: [ :tr| (tr from = e from) & (tr to = e to) ].
-		tmp isEmpty 
-		ifTrue: [ result add: e ]
-	].
-	result addAll: (self transitions select: [ :tr| tr probability ~= 0 ]).
+
+	| result |
+	result := aTransitionList select: [ :e | 
+		| tmp | 
+		tmp := self transitions select: [ :tr | 
+			       tr from = e from & (tr to = e to) ].
+		tmp isEmpty].
+	result addAll:
+		(self transitions select: [ :tr | tr probability ~= 0 ]).
 	^ result
-	
-	
 ]
 
 { #category : #'as yet unclassified' }
