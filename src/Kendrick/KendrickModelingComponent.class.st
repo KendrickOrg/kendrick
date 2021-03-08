@@ -187,14 +187,6 @@ KendrickModelingComponent >> parameters: anArray [
 	anArray do: [ :var | parameters at: var put: 0 ]
 ]
 
-{ #category : #'public-api' }
-KendrickModelingComponent >> transitionRates: anExpressionOrBlock [
-	"setting same rate for all transitions"
-	backEndEntity transitions do: [ :tr| 
-		tr probability: anExpressionOrBlock	
-	]
-]
-
 { #category : #protected }
 KendrickModelingComponent >> transitionRefFor: aCompartment [
 	
