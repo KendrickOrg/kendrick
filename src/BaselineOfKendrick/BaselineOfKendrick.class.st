@@ -53,11 +53,13 @@ BaselineOfKendrick >> baseline: spec [
 				baseline: 'Roassal2'
 					with: [ spec repository: 'github://ObjectProfile/Roassal2/src' ];
 				baseline: 'Ston'
-					with: [ spec repository: 'github://svenvc/ston/repository' ].
+					with: [ spec repository: 'github://svenvc/ston/repository' ];
+				baseline: 'GToolkitExamples'
+					with: [ spec repository: 'github://feenkcom/gtoolkit-examples/src' ].
 			spec
 				package: 'Kendrick'
 				with: [ spec
-						requires: #('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'MooseAlgos') ] ].
+						requires: #('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal2' 'MooseAlgos' 'GToolkitExamples') ] ].
 	spec
 		for: #'pharo8.x'
 		do: [ spec
@@ -70,12 +72,14 @@ BaselineOfKendrick >> baseline: spec [
 				baseline: 'Roassal3'
 					with: [ spec repository: 'github://ObjectProfile/Roassal3' ];
 				baseline: 'Roassal3Exporters'
-					with: [ spec repository: 'github://ObjectProfile/Roassal3Exporters' ].
+					with: [ spec repository: 'github://ObjectProfile/Roassal3Exporters' ];
+				baseline: 'GToolkitExamples'
+					with: [ spec repository: 'github://feenkcom/gtoolkit-examples/src' ].
 			spec
 				package: 'Kendrick'
 				with: [ spec
 						requires:
-							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal3' 'Roassal3Exporters' 'MooseAlgos') ] ].
+							#('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal3' 'Roassal3Exporters' 'MooseAlgos' 'GToolkitExamples') ] ].
 	spec
 		for: #'pharo9.x'
 		do: [ spec
@@ -84,9 +88,11 @@ BaselineOfKendrick >> baseline: spec [
 				baseline: 'PetitParser'
 					with: [ spec repository: 'github://moosetechnology/PetitParser/src' ];
 				baseline: 'Ston'
-					with: [ spec repository: 'github://svenvc/ston/repository' ].
+					with: [ spec repository: 'github://svenvc/ston/repository' ];
+				baseline: 'GToolkitExamples'
+					with: [ spec repository: 'github://feenkcom/gtoolkit-examples/src' ].
 			spec
 				package: 'Kendrick'
 				with: [ spec
-						requires: #('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'MooseAlgos') ] ]
+						requires: #('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'MooseAlgos' 'GToolkitExamples') ] ]
 ]
