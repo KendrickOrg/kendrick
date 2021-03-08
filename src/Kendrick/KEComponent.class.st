@@ -145,23 +145,28 @@ KEComponent >> equations [
 
 { #category : #accessing }
 KEComponent >> equationsToTransitions [
+
 	| events |
 	events := self generateEvents.
-	events
-		do: [ :e | 
-			e fromStatus = #empty
-				ifTrue: [ e rate: (e rate removeVariable: (KEVariable new symbol: #N)) ] ].
-	events
-		do: [ :each | 
-			| from to |
-			from := each fromStatus = #empty
-				ifTrue: [ #empty ]
-				ifFalse: [ Dictionary newFrom: {(#status -> each fromStatus)} ].
-			to := each toStatus = #empty
-				ifTrue: [ #empty ]
-				ifFalse: [ Dictionary newFrom: {(#status -> each toStatus)} ].
-			self addTransitionFrom: from to: to probability: each rate ].
-		"Why initializing equations at the end?"
+	
+	"Remove N variable in events rate. Why?"
+	events do: [ :e | 
+		e fromStatus = #empty ifTrue: [ 
+			e rate: (e rate removeVariable: (KEVariable new symbol: #N)) ] ].
+
+
+	events do: [ :each | 
+		| from to |
+		from := each fromStatus = #empty
+			        ifTrue: [ #empty ]
+			        ifFalse: [ 
+			        Dictionary newFrom: { (#status -> each fromStatus) } ].
+		to := each toStatus = #empty
+			      ifTrue: [ #empty ]
+			      ifFalse: [ 
+			      Dictionary newFrom: { (#status -> each toStatus) } ].
+		self addTransitionFrom: from to: to probability: each rate ].
+	"Why initializing equations at the end?"
 	equations := OrderedCollection new
 ]
 
@@ -195,7 +200,7 @@ KEComponent >> initialize [
 	parameters := Dictionary new
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 KEComponent >> initializeTransitionsWithZeroRate [
 
 		self compartmentNames
@@ -242,6 +247,9 @@ KEComponent >> parameters [
 KEComponent >> transitions [
 
 	equations isNotEmpty ifTrue: [ self equationsToTransitions ].
+	
+	"This is a bit strange, a model without transitions or equations ... 
+	This should not be a correctly initialized model"
 	transitions isEmpty ifTrue: [ self initializeTransitionsWithZeroRate ].
 	^ transitions
 ]
