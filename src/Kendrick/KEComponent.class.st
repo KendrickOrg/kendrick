@@ -238,14 +238,6 @@ KEComponent >> parameters [
 	^ parameters
 ]
 
-{ #category : #'as yet unclassified' }
-KEComponent >> transitionRates: anExpressionOrBlock [
-	"setting same rate for all transitions"
-	self transitions do: [ :tr| 
-		tr probability: anExpressionOrBlock	
-	]
-]
-
 { #category : #accessing }
 KEComponent >> transitions [
 
