@@ -195,6 +195,15 @@ KEComponent >> initialize [
 	parameters := Dictionary new
 ]
 
+{ #category : #'as yet unclassified' }
+KEComponent >> initializeTransitionsWithZeroRate [
+
+		self compartmentNames
+				do: [ :e | 
+					transitions
+						addAll: (self compartmentNames collect: [ :f | KETransition from: e to: f probability: 0 ]) ]
+]
+
 { #category : #'generating events' }
 KEComponent >> mergeEventsWithSameActionsIn: eventList [
 	"This function will find all events with same actions and merge their rate in one event"
@@ -239,16 +248,9 @@ KEComponent >> transitionRates: anExpressionOrBlock [
 
 { #category : #accessing }
 KEComponent >> transitions [
-	equations isNotEmpty
-		ifTrue: [ self equationsToTransitions ].
 
-	"generate a transition rate matrix of 0"
-		transitions isEmpty
-		ifTrue: [ self compartmentNames
-				do: [ :e | 
-					transitions
-						addAll: (self compartmentNames collect: [ :f | KETransition from: e to: f probability: 0 ]) ] ].
-
+	equations isNotEmpty ifTrue: [ self equationsToTransitions ].
+	transitions isEmpty ifTrue: [ self initializeTransitionsWithZeroRate ].
 	^ transitions
 ]
 
