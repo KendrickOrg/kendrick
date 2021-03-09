@@ -146,28 +146,29 @@ KEComponent >> equations [
 { #category : #accessing }
 KEComponent >> equationsToTransitions [
 
-	| events |
+	| events eq|
 	events := self generateEvents.
-	
+	eq := OrderedCollection new.
 	"Remove N variable in events rate. Why?"
 	events do: [ :e | 
 		e fromStatus = #empty ifTrue: [ 
 			e rate: (e rate removeVariable: (KEVariable new symbol: #N)) ] ].
 
-
+.
 	events do: [ :each | 
 		| from to |
+		
 		from := each fromStatus = #empty
-			        ifTrue: [ #empty ]
-			        ifFalse: [ 
-			        Dictionary newFrom: { (#status -> each fromStatus) } ].
+			       ifTrue: [ #empty ]
+			       ifFalse: [ 
+			       eq add: { (#status -> each fromStatus) } ].
 		to := each toStatus = #empty
-			      ifTrue: [ #empty ]
-			      ifFalse: [ 
-			      Dictionary newFrom: { (#status -> each toStatus) } ].
+			       ifTrue: [ #empty ]
+			       ifFalse: [ 
+			       eq add: { (#status -> each toStatus) } ].
 		self addTransitionFrom: from to: to probability: each rate ].
 	"Why initializing equations at the end?"
-	equations := OrderedCollection new
+	"equations := OrderedCollection new"
 ]
 
 { #category : #'generating events' }
