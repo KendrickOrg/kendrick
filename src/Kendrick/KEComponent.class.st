@@ -59,7 +59,11 @@ KEComponent >> addTransition: aTransition [
 
 { #category : #'as yet unclassified' }
 KEComponent >> addTransitionFrom: aCompartment to: anotherCompartment probability: aBlock [
-	self addTransition: (KETransition from: aCompartment to: anotherCompartment probability: aBlock)
+
+	self addTransition: (KETransition
+			 from: aCompartment
+			 to: anotherCompartment
+			 probability: aBlock)
 ]
 
 { #category : #accessing }
@@ -148,24 +152,19 @@ KEComponent >> equationsToTransitions [
 
 	| events |
 	events := self generateEvents.
-	
+
 	"Remove N variable in events rate. Why?"
 	events do: [ :e | 
 		e fromStatus = #empty ifTrue: [ 
 			e rate: (e rate removeVariable: (KEVariable new symbol: #N)) ] ].
 
 
-	events do: [ :each | 
-		| from to |
-		from := each fromStatus = #empty
-			        ifTrue: [ #empty ]
-			        ifFalse: [ 
-			        Dictionary newFrom: { (#status -> each fromStatus) } ].
-		to := each toStatus = #empty
-			      ifTrue: [ #empty ]
-			      ifFalse: [ 
-			      Dictionary newFrom: { (#status -> each toStatus) } ].
-		self addTransitionFrom: from to: to probability: each rate ].
+	events do: [ :each |
+		self
+			addTransitionFrom: { (#status -> each fromStatus) }
+			to: { (#status -> each toStatus) }
+			probability: each rate ].
+
 	"Why initializing equations at the end?"
 	equations := OrderedCollection new
 ]
