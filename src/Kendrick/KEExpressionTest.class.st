@@ -252,6 +252,17 @@ KEExpressionTest >> testRemoveAVariableFromAnUnaryExpression [
 ]
 
 { #category : #tests }
+KEExpressionTest >> testRemoveAVariableShouldNotModifyTheExpression [
+<expectedFailure>
+	| e n |
+	e := KEUnaryExpression new
+		     op: #-;
+		     expression: (KEVariable new symbol: #S).
+	n := e removeVariable: (KEVariable new symbol: #S).
+	self assert: e expression isNil equals: false
+]
+
+{ #category : #tests }
 KEExpressionTest >> testRemoveIndexedVariable1 [
 	|e n|
 	e := (KEVariable new symbol: #S).
