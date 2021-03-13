@@ -868,18 +868,18 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRModelWithSqrtVisualisationInRoas
 		probability: [ :aModel | aModel atParameter: #gamma ].
 	model
 		addTransitionFrom: {(#status -> #S)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #I)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #R)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: {(#status -> #empty)}
 		to: {(#status -> #S)}
 		probability: [ :aModel | aModel atParameter: #mu ].
 	simulator := KESimulator
