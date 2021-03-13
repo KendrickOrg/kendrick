@@ -178,7 +178,7 @@ eConcern
     probability: [ :aModel| aModel atParameter: #sigma ].
 eConcern 
     addTransitionFrom: { #status->#E } 
-    to: #empty 
+    to: { #status->#empty }  
     probability: [ :aModel| aModel atParameter: #mu ].
 eConcern addParameter: #sigma.
 model integrate: eConcern.
