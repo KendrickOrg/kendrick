@@ -416,22 +416,22 @@ KEDeterministicExamples >> exampleRK4SolverOnMultiStrainModelWithPlotVisualizati
 		probability: [ :m| (m atParameter: #gamma2) ].
 	model
 		addTransitionFrom: {#status -> #S}
-		to: #empty 
+		to: {(#status -> #empty)}
 		probability: [ :m| (m atParameter: #mu) ].
 	model 
 		addTransitionFrom: {#status -> #I1}
-		to: #empty 
+		to: {(#status -> #empty)} 
 		probability: [ :m| (m atParameter: #mu) ].
 	model 
 		addTransitionFrom: {#status -> #I2} 
-		to: #empty 
+		to: {(#status -> #empty)}
 		probability: [ :m| (m atParameter: #mu) ].
 	model
 		addTransitionFrom: {#status -> #R} 
-		to: #empty 
+		to: {(#status -> #empty)}
 		probability: [ :m| (m atParameter: #mu) ].
 	model
-		addTransitionFrom: #empty 
+		addTransitionFrom: {(#status -> #empty)}
 		to: {#status -> #S} 
 		probability: [ :m| (m atParameter: #mu) ].
 	
