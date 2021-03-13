@@ -1060,18 +1060,18 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRMultiHostModelTransitionByRate [
 		probability: 'gamma' parseAsAnExpression.
 	model 
 		addTransitionFrom: {#status -> #S}
-		to: #empty 
+		to: {(#status -> #empty)}
 		probability: 'mu' parseAsAnExpression.
 	model 
 		addTransitionFrom: {#status -> #I} 
-		to: #empty 
+		to: {(#status -> #empty)} 
 		probability: 'mu' parseAsAnExpression.
 	model 
 		addTransitionFrom: {#status -> #R}
-		to: #empty 
+		to: {(#status -> #empty)}
 		probability: 'mu' parseAsAnExpression.
 	model 
-		addTransitionFrom: #empty 
+		addTransitionFrom: {(#status -> #empty)} 
 		to: {#status -> #S} 
 		probability: 'mu' parseAsAnExpression.
 		
