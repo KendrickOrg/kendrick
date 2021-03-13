@@ -112,7 +112,7 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithPlotScatterViz
 
 	| model simulator chart |
 	model := KEModel new.
-	model attributes: {(#status -> #(#S #I #R))}.
+	model attributes: {(#status -> #(#S #I #R #empty))}.
 	model atCompartment: {(#status -> #S)} put: 4975 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 25.
 	model
@@ -132,18 +132,18 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithPlotScatterViz
 		probability: [ :aModel | aModel atParameter: #gamma ].
 	model
 		addTransitionFrom: {(#status -> #S)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #I)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #R)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: { #status->#empty }
 		to: {(#status -> #S)}
 		probability: [ :aModel | aModel atParameter: #mu ].
 	simulator := KESimulator
