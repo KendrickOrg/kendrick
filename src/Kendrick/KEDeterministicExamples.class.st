@@ -17,11 +17,11 @@ KEDeterministicExamples >> SEIRConcern [
 		probability: [ :aModel | (aModel atParameter: #beta) * (aModel atCompartment: {(#status -> #I)}) ].
 	SEIRConcern addTransitionFrom: {(#status -> #E)} to: {(#status -> #I)} probability: [ :aModel | aModel atParameter: #sigma ].
 	SEIRConcern addTransitionFrom: {(#status -> #I)} to: {(#status -> #R)} probability: [ :aModel | aModel atParameter: #gamma ].
-	SEIRConcern addTransitionFrom: {(#status -> #S)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
-	SEIRConcern addTransitionFrom: {(#status -> #I)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
-	SEIRConcern addTransitionFrom: {(#status -> #R)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
-	SEIRConcern addTransitionFrom: {(#status -> #E)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
-	SEIRConcern addTransitionFrom: #empty to: {(#status -> #S)} probability: [ :aModel | aModel atParameter: #mu ].
+	SEIRConcern addTransitionFrom: {(#status -> #S)} to: {(#status -> #empty)} probability: [ :aModel | aModel atParameter: #mu ].
+	SEIRConcern addTransitionFrom: {(#status -> #I)} to: {(#status -> #empty)} probability: [ :aModel | aModel atParameter: #mu ].
+	SEIRConcern addTransitionFrom: {(#status -> #R)} to: {(#status -> #empty)} probability: [ :aModel | aModel atParameter: #mu ].
+	SEIRConcern addTransitionFrom: {(#status -> #E)} to: {(#status -> #empty)} probability: [ :aModel | aModel atParameter: #mu ].
+	SEIRConcern addTransitionFrom: {(#status -> #empty)} to: {(#status -> #S)} probability: [ :aModel | aModel atParameter: #mu ].
 	^ SEIRConcern
 ]
 
