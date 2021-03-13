@@ -263,7 +263,7 @@ KEStochasticExamples >> exampleGillespieDirectOnSEIRMeaslesModel [
 
 	| model simulator chart |
 	model := KEModel new.
-	model attributes: {(#status -> #(#S #E #I #R))}.
+	model attributes: {(#status -> #(#S #E #I #R #empty ))}.
 	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 1.
 	model
@@ -286,22 +286,22 @@ KEStochasticExamples >> exampleGillespieDirectOnSEIRMeaslesModel [
 		probability: [ :m | m atParameter: #gamma ].
 	model
 		addTransitionFrom: {(#status -> #S)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #I)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #R)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #E)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :m | m atParameter: #mu ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: { #status->#empty }
 		to: {(#status -> #S)}
 		probability: [ :m | m atParameter: #mu ].
 	simulator := KESimulator
