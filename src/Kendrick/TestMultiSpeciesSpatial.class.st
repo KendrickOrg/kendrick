@@ -153,11 +153,11 @@ seirsConcern
     #(S E I R) do: [ :each| 
         seirsConcern 
             addTransitionFrom: {#status->each}
-            to: #empty 
+            to: { #status->#empty }  
             probability: [ :aModel | aModel atParameter: #mu ].
         ].
     seirsConcern 
-        addTransitionFrom: #empty 
+        addTransitionFrom: { #status->#empty }  
         to: {#status -> #S}
         probability: [ :aModel | aModel atParameter: #mu ].
 
