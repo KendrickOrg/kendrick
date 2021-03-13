@@ -616,7 +616,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSEIRSModelWithQuarantine [
 	QuarantineConcern addStatus: #(Q).
 	QuarantineConcern addTransitionFrom: {(#status -> #I)} to: {(#status -> #Q)} probability: 'delta'.
 	QuarantineConcern addTransitionFrom: {(#status -> #Q)} to: {(#status -> #R)} probability: 'epsilon'.
-	QuarantineConcern addTransitionFrom: {(#status -> #Q)} to: #empty probability: 'mu'.
+	QuarantineConcern addTransitionFrom: {(#status -> #Q)} to: {(#status -> #empty)} probability: 'mu'.
 	QuarantineConcern addParameters: {#delta . #epsilon}.
 	QuarantineConcern addParameter: #lambda value: 'beta*I/(N-Q)'.
 	model integrate: SEIRConcern.
