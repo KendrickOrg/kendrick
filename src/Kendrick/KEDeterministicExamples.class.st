@@ -1561,26 +1561,26 @@ KEDeterministicExamples >> modelRK4SolverOnSEIRMeaslesModelWithVaccination [
 		probability: [ :m | m atParameter: #gamma ].
 	model
 		addTransitionFrom: {(#status -> #S)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #I)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #R)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #E)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: {(#status -> #empty)}
 		to: {(#status -> #S)}
 		probability: [ :m | (m atParameter: #mu) * (1 - (m atParameter: #p)) ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: {(#status -> #empty)}
 		to: {(#status -> #R)}
 		probability: [ :m | (m atParameter: #mu) * (m atParameter: #p) ].
 	^ model
