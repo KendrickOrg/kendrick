@@ -367,10 +367,10 @@ KEStochasticExamples >> exampleGillespieDirectOnSIRMultiHostModel [
 	model addParameter: #lambda value: [ :aModel | (aModel atParameter: #beta) * (aModel atCompartment: {(#status -> #I)}) ].
 	model addTransitionFrom: {(#status -> #S)} to: {(#status -> #I)} probability: [ :m | m atParameter: #lambda ].
 	model addTransitionFrom: {(#status -> #I)} to: {(#status -> #R)} probability: [ :m | m atParameter: #gamma ].
-	model addTransitionFrom: {(#status -> #S)} to: #empty probability: [ :m | m atParameter: #mu ].
-	model addTransitionFrom: {(#status -> #I)} to: #empty probability: [ :m | m atParameter: #mu ].
-	model addTransitionFrom: {(#status -> #R)} to: #empty probability: [ :m | m atParameter: #mu ].
-	model addTransitionFrom: #empty to: {(#status -> #S)} probability: [ :m | m atParameter: #mu ].
+	model addTransitionFrom: {(#status -> #S)} to: { #status->#empty } probability: [ :m | m atParameter: #mu ].
+	model addTransitionFrom: {(#status -> #I)} to: { #status->#empty } probability: [ :m | m atParameter: #mu ].
+	model addTransitionFrom: {(#status -> #R)} to: { #status->#empty } probability: [ :m | m atParameter: #mu ].
+	model addTransitionFrom: { #status->#empty } to: {(#status -> #S)} probability: [ :m | m atParameter: #mu ].
 	model integrate: multiHostConcern.
 	model
 		atParameter: #mu
