@@ -149,6 +149,7 @@ KEComponent >> equations [
 
 { #category : #accessing }
 KEComponent >> equationsToTransitions [
+	"This is only working for status ODE equations, not general ODE equations"
 
 	| events |
 	events := self generateEvents.
@@ -158,8 +159,7 @@ KEComponent >> equationsToTransitions [
 		e fromStatus = #empty ifTrue: [ 
 			e rate: (e rate removeVariable: (KEVariable new symbol: #N)) ] ].
 
-
-	events do: [ :each |
+	events do: [ :each | 
 		self
 			addTransitionFrom: { (#status -> each fromStatus) }
 			to: { (#status -> each toStatus) }
@@ -259,22 +259,20 @@ KEComponent >> transitions: aTransitionList [
 ]
 
 { #category : #'as yet unclassified' }
-KEComponent >> transitionsToEquations [ 
-| eq |
+KEComponent >> transitionsToEquations [
 
-"This method should be merge with equations method in the same class: issue #40"
+	"Return the suitable Dictionary for KESimulatorDeterministic in order to solve the equations.
+	This method should be merge with equations method in the same class: issue #40
+	Seems to returns a Dictionary with keys are dictionary and values are orderedCollection ..."
 
-	"Seems to returns a Dictionary with keys are dictionary and values are orderedCollection ..."
+|eq|
 
 	eq := Dictionary new.
-	self compartmentNames
-		do: [ :k | eq at: k put: OrderedCollection new ].
-	self transitions
-		do: [ :tr | 
-			((tr from at: #status) ~= #empty and: [ (tr to at: #status) ~= #empty ])
-					ifTrue: 
-						[ 
-						  (eq at: tr from) add: (Array with: tr with: -1).
-						  (eq at: tr to) add: (Array with: tr with: 1)] ].
+	self compartmentNames do: [ :k | eq at: k put: OrderedCollection new ].
+	self transitions do: [ :tr | 
+		((tr from at: #status) ~= #empty and: [ 
+			 (tr to at: #status) ~= #empty ]) ifTrue: [ 
+			(eq at: tr from) add: (Array with: tr with: -1).
+			(eq at: tr to) add: (Array with: tr with: 1) ] ].
 	equations := eq
 ]
