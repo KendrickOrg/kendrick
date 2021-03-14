@@ -262,6 +262,9 @@ KEComponent >> transitions: aTransitionList [
 KEComponent >> transitionsToEquations [ 
 | eq |
 
+"This method should be merge with equations method in the same class: issue #40"
+
+	"Seems to returns a Dictionary with keys are dictionary and values are orderedCollection ..."
 
 	eq := Dictionary new.
 	self compartmentNames
