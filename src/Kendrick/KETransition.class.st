@@ -29,13 +29,13 @@ KETransition >> = aTransition [
 
 { #category : #accessing }
 KETransition >> executeOn: model times: times [
-	(from at: #status) = (#status -> #empty)
+	(from at: #status) = #empty
 		ifFalse: [ | old new |
 			old := model population compartments at: from.
 			new := old - times.
 			new := new max: 0.
 			model population compartments at: from put: new ].
-	(to at: #status) = (#status -> #empty)
+	(to at: #status) = #empty
 		ifFalse: [ | old new |
 			old := model population compartments at: to.
 			new := old + times.
@@ -52,8 +52,8 @@ KETransition >> from: aCompartment [
 	| reader |
 	aCompartment isDictionary
 		ifTrue: [ ^ from := aCompartment ].
-	aCompartment = (#status -> #empty)
-		ifTrue: [ ^ self from: {(#status -> (#status -> #empty))} ].
+	aCompartment = #empty
+		ifTrue: [ ^ self from: {(#status -> #empty)} ].
 	aCompartment isArray
 		ifTrue: [ ^ from := Dictionary newFrom: aCompartment ].
 	(reader := STONReader on: aCompartment readStream)
@@ -97,10 +97,12 @@ KETransition >> to [
 
 { #category : #accessing }
 KETransition >> to: aCompartment [
-	|reader|
-	(aCompartment isDictionary) "| (aCompartment isSymbol)" ifTrue: [ ^ to := aCompartment ].
-	aCompartment = (#status -> #empty) ifTrue: [ ^ self to: { #status -> (#status -> #empty) } ].
-	(aCompartment isArray) ifTrue: [ ^ to := Dictionary newFrom: aCompartment ].
-	(reader := STONReader on: aCompartment readStream) allowComplexMapKeys: true.
+
+	| reader |
+	aCompartment isDictionary ifTrue: [ ^ to := aCompartment ].
+	aCompartment isArray ifTrue: [ 
+		^ to := Dictionary newFrom: aCompartment ].
+	(reader := STONReader on: aCompartment readStream) 
+		allowComplexMapKeys: true.
 	^ to := reader next
 ]
