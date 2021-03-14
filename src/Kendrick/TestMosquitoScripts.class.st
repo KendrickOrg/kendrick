@@ -81,11 +81,11 @@ model
     #(#S #I #R) do: [ :each| 
         model 
             addTransitionFrom: {#status->each} 
-            to: #empty 
+            to: { #status->#empty }  
             probability: [ :m | m atParameter: #mu ].
         ].
 model 
-        addTransitionFrom: #empty 
+        addTransitionFrom: { #status->#empty }  
         to: {#status -> #S}
         probability: [ :m | m atParameter: #mu ].
 

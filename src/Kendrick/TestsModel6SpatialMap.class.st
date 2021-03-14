@@ -122,22 +122,22 @@ SEIRSConcern
 		probability: [ :aModel | aModel atParameter: #nu ].
 	SEIRSConcern 
 		addTransitionFrom: {#status -> #S}
-		to: #empty 
+		to: { #status->#empty } 
 		probability: [ :aModel | aModel atParameter: #mu ].
 	SEIRSConcern 
 		addTransitionFrom: {#status -> #I} 
-		to: #empty 
+		to: { #status->#empty }  
 		probability: [ :aModel | aModel atParameter: #mu ].
 	SEIRSConcern 
 		addTransitionFrom: {#status -> #R} 
-		to: #empty 
+		to: { #status->#empty }  
 		probability: [ :aModel | aModel atParameter: #mu ].
 	SEIRSConcern 
 		addTransitionFrom: {#status -> #E}
-		to: #empty 
+		to: { #status->#empty } 
 		probability: [ :aModel | aModel atParameter: #mu ].
 	SEIRSConcern 
-		addTransitionFrom: #empty 
+		addTransitionFrom: { #status->#empty } 
 		to: {#status -> #S} 
 		probability: [ :aModel | aModel atParameter: #mu ].
 		
@@ -169,7 +169,7 @@ quarantineConcern
 	probability: 'epsilon'.
 quarantineConcern 
 	addTransitionFrom: { #status->#Q } 
-	to: #empty 
+	to: { #status->#empty } 
 	probability: 'mu'.
 quarantineConcern addParameters: { #delta. #epsilon }.
 quarantineConcern addParameter: #lambda value: 'beta*I/(N-Q)'.

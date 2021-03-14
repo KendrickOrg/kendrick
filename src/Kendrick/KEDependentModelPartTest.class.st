@@ -39,17 +39,17 @@ KEDependentModelPartTest >> setUpSIRConcern [
 	sirConcern addTransitionFrom: {#status -> #I} 
 			to: {#status -> #R} 
 			probability: [ :aModel | aModel atParameter: #gamma ].
-	sirConcern addTransitionFrom: #empty 
+	sirConcern addTransitionFrom: {(#status -> #empty)} 
 			to: { #status -> #S } 
 			probability: [ :aModel | aModel atParameter: #mu ].
 	sirConcern addTransitionFrom: { #status -> #S } 
-			to: #empty 
+			to: {(#status -> #empty)}
 			probability: [ :aModel | aModel atParameter: #mu ].
 	sirConcern addTransitionFrom: { #status -> #I } 
-			to: #empty 
+			to: {(#status -> #empty)}
 			probability: [ :aModel | aModel atParameter: #mu ].
 	sirConcern addTransitionFrom: { #status -> #R } 
-			to: #empty 
+			to: {(#status -> #empty)}
 			probability: [ :aModel | aModel atParameter: #mu ]
 ]
 
@@ -86,7 +86,7 @@ KEDependentModelPartTest >> testAddStatus [
 	concern removeTransitionFrom: {(#status -> #S)} to: {(#status -> #I)}.
 	concern addTransitionFrom: {(#status -> #S)} to: {(#status -> #E)} probability: [ :aModel | aModel atParameter: #lambda ].
 	concern addTransitionFrom: {(#status -> #E)} to: {(#status -> #I)} probability: [ :aModel | aModel atParameter: #epsilon ].
-	concern addTransitionFrom: {(#status -> #E)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
+	concern addTransitionFrom: {(#status -> #E)} to: {(#status -> #empty)} probability: [ :aModel | aModel atParameter: #mu ].
 	concern addParameter: #epsilon.
 	sirTransitionMatrix := concern project: model transitions.
 	self assert: (concern generateSum: sirTransitionMatrix) size equals: 8
@@ -103,7 +103,7 @@ KEDependentModelPartTest >> testGenerateSum [
 	concern removeTransitionFrom: {(#status -> #S)} to: {(#status -> #I)}.
 	concern addTransitionFrom: {(#status -> #S)} to: {(#status -> #E)} probability: [ :aModel | aModel atParameter: #lambda ].
 	concern addTransitionFrom: {(#status -> #E)} to: {(#status -> #I)} probability: [ :aModel | aModel atParameter: #epsilon ].
-	concern addTransitionFrom: {(#status -> #E)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
+	concern addTransitionFrom: {(#status -> #E)} to: {(#status -> #empty)} probability: [ :aModel | aModel atParameter: #mu ].
 	concern addParameter: #epsilon.
 	sirTransitionMatrix := concern project: model transitions.
 	self assert: (concern generateSum: sirTransitionMatrix) size equals: 8
@@ -120,7 +120,7 @@ KEDependentModelPartTest >> testGenerateTensorSum [
 	concern removeTransitionFrom: {(#status -> #S)} to: {(#status -> #I)}.
 	concern addTransitionFrom: {(#status -> #S)} to: {(#status -> #E)} probability: [ :aModel | aModel atParameter: #lambda ].
 	concern addTransitionFrom: {(#status -> #E)} to: {(#status -> #I)} probability: [ :aModel | aModel atParameter: #epsilon ].
-	concern addTransitionFrom: {(#status -> #E)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
+	concern addTransitionFrom: {(#status -> #E)} to: {(#status -> #empty)} probability: [ :aModel | aModel atParameter: #mu ].
 	concern addParameter: #epsilon.
 	self assert: (concern generateTensorSum: model transitions) size equals: 60
 ]
@@ -166,7 +166,7 @@ KEDependentModelPartTest >> testRemoveTransitionFromTo [
 	concern removeTransitionFrom: {(#status -> #S)} to: {(#status -> #I)}.
 	concern addTransitionFrom: {(#status -> #S)} to: {(#status -> #E)} probability: [ :aModel | aModel atParameter: #lambda ].
 	concern addTransitionFrom: {(#status -> #E)} to: {(#status -> #I)} probability: [ :aModel | aModel atParameter: #epsilon ].
-	concern addTransitionFrom: {(#status -> #E)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
+	concern addTransitionFrom: {(#status -> #E)} to: {(#status -> #empty)} probability: [ :aModel | aModel atParameter: #mu ].
 	concern addParameter: #epsilon.
 	sirTransitionMatrix := concern project: model transitions.
 	self assert: (concern generateSum: sirTransitionMatrix) size equals: 8
@@ -234,7 +234,7 @@ KEDependentModelPartTest >> testUpdateTransitionFromToProbability [
 	concern updateTransitionFrom: {(#status -> #S)} to: {(#status -> #I)} probability: [ :aModel | aModel atParameter: #lambda ].
 	concern addTransitionFrom: {(#status -> #I)} to: {(#status -> #Q)} probability: [ :aModel | aModel atParameter: #nu ].
 	concern addTransitionFrom: {(#status -> #Q)} to: {(#status -> #R)} probability: [ :aModel | aModel atParameter: #epsilon ].
-	concern addTransitionFrom: {(#status -> #Q)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
+	concern addTransitionFrom: {(#status -> #Q)} to: {(#status -> #empty)} probability: [ :aModel | aModel atParameter: #mu ].
 	concern addParameters: #(#epsilon #nu #lambda).
 	sirTransitionMatrix := concern project: model transitions.
 	self assert: (concern generateSum: sirTransitionMatrix) size equals: 9

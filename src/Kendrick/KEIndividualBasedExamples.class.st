@@ -10,7 +10,7 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSEIRMeaslesModel [
 
 	| model simulator chart |
 	model := KEModel new.
-	model attributes: {#status -> #(S E I R)}.
+	model attributes: {#status -> #(S E I R empty)}.
 	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 1.
 	model
@@ -33,22 +33,22 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSEIRMeaslesModel [
 		probability: [ :m | m atParameter: #gamma ].
 	model
 		addTransitionFrom: {(#status -> #S)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #I)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #R)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #E)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :m | m atParameter: #mu ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: { #status->#empty }
 		to: {(#status -> #S)}
 		probability: [ :m | m atParameter: #mu ].
 	simulator := KESimulator
@@ -327,7 +327,7 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRMultiHostModel [
 		addAttribute: #species
 		value: #(#mosquito #reservoir1 #reservoir2).
 	model := KEModel new.
-	model attributes:{#status -> #(#S #I #R)}.
+	model attributes:{#status -> #(#S #I #R #empty)}.
 	model addParameter: #mu value: 12.17.
 	model addParameter: #gamma value: 52.
 	model addParameter: #beta value: 1.
@@ -346,18 +346,18 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRMultiHostModel [
 		probability: [ :m | m atParameter: #gamma ].
 	model
 		addTransitionFrom: {(#status -> #S)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #I)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #R)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :m | m atParameter: #mu ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: { #status->#empty }
 		to: {(#status -> #S)}
 		probability: [ :m | m atParameter: #mu ].
 	model integrate: multiHostConcern.

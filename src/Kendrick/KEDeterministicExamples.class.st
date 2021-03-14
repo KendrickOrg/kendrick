@@ -17,11 +17,11 @@ KEDeterministicExamples >> SEIRConcern [
 		probability: [ :aModel | (aModel atParameter: #beta) * (aModel atCompartment: {(#status -> #I)}) ].
 	SEIRConcern addTransitionFrom: {(#status -> #E)} to: {(#status -> #I)} probability: [ :aModel | aModel atParameter: #sigma ].
 	SEIRConcern addTransitionFrom: {(#status -> #I)} to: {(#status -> #R)} probability: [ :aModel | aModel atParameter: #gamma ].
-	SEIRConcern addTransitionFrom: {(#status -> #S)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
-	SEIRConcern addTransitionFrom: {(#status -> #I)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
-	SEIRConcern addTransitionFrom: {(#status -> #R)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
-	SEIRConcern addTransitionFrom: {(#status -> #E)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
-	SEIRConcern addTransitionFrom: #empty to: {(#status -> #S)} probability: [ :aModel | aModel atParameter: #mu ].
+	SEIRConcern addTransitionFrom: {(#status -> #S)} to: {(#status -> #empty)} probability: [ :aModel | aModel atParameter: #mu ].
+	SEIRConcern addTransitionFrom: {(#status -> #I)} to: {(#status -> #empty)} probability: [ :aModel | aModel atParameter: #mu ].
+	SEIRConcern addTransitionFrom: {(#status -> #R)} to: {(#status -> #empty)} probability: [ :aModel | aModel atParameter: #mu ].
+	SEIRConcern addTransitionFrom: {(#status -> #E)} to: {(#status -> #empty)} probability: [ :aModel | aModel atParameter: #mu ].
+	SEIRConcern addTransitionFrom: {(#status -> #empty)} to: {(#status -> #S)} probability: [ :aModel | aModel atParameter: #mu ].
 	^ SEIRConcern
 ]
 
@@ -39,11 +39,11 @@ KEDeterministicExamples >> SEIRSConcern [
 	SEIRSConcern addTransitionFrom: {(#status -> #E)} to: {(#status -> #I)} probability: [ :aModel | aModel atParameter: #sigma ].
 	SEIRSConcern addTransitionFrom: {(#status -> #I)} to: {(#status -> #R)} probability: [ :aModel | aModel atParameter: #gamma ].
 	SEIRSConcern addTransitionFrom: {(#status -> #R)} to: {(#status -> #S)} probability: [ :aModel | aModel atParameter: #v ].
-	SEIRSConcern addTransitionFrom: {(#status -> #S)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
-	SEIRSConcern addTransitionFrom: {(#status -> #I)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
-	SEIRSConcern addTransitionFrom: {(#status -> #R)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
-	SEIRSConcern addTransitionFrom: {(#status -> #E)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
-	SEIRSConcern addTransitionFrom: #empty to: {(#status -> #S)} probability: [ :aModel | aModel atParameter: #mu ].
+	SEIRSConcern addTransitionFrom: {(#status -> #S)} to: {(#status -> #empty)} probability: [ :aModel | aModel atParameter: #mu ].
+	SEIRSConcern addTransitionFrom: {(#status -> #I)} to: {(#status -> #empty)} probability: [ :aModel | aModel atParameter: #mu ].
+	SEIRSConcern addTransitionFrom: {(#status -> #R)} to: {(#status -> #empty)} probability: [ :aModel | aModel atParameter: #mu ].
+	SEIRSConcern addTransitionFrom: {(#status -> #E)} to: {(#status -> #empty)} probability: [ :aModel | aModel atParameter: #mu ].
+	SEIRSConcern addTransitionFrom: {(#status -> #empty)} to: {(#status -> #S)} probability: [ :aModel | aModel atParameter: #mu ].
 	^ SEIRSConcern
 ]
 
@@ -113,26 +113,26 @@ KEDeterministicExamples >> exampleRK4SolverOn2SEIRMeaslesModelWithVaccination [
 		probability: [ :m | m atParameter: #gamma ].
 	model
 		addTransitionFrom: {(#status -> #S)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #I)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #R)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #E)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :m | m atParameter: #mu ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: { #status->#empty }
 		to: {(#status -> #S)}
 		probability: [ :m | (m atParameter: #mu) * (1 - (m atParameter: #p)) ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: { #status->#empty }
 		to: {(#status -> #R)}
 		probability: [ :m | (m atParameter: #mu) * (m atParameter: #p) ].
 
@@ -180,7 +180,7 @@ spatialConcern
 	eConcern removeTransitionFrom: {(#status -> #S)} to: {(#status -> #I)}.
 	eConcern addTransitionFrom: {(#status -> #S)} to: {(#status -> #E)} probability: [ :aModel | aModel atParameter: #lambda ].
 	eConcern addTransitionFrom: {(#status -> #E)} to: {(#status -> #I)} probability: [ :aModel | aModel atParameter: #sigma ].
-	eConcern addTransitionFrom: {(#status -> #E)} to: #empty probability: [ :aModel | aModel atParameter: #mu ].
+	eConcern addTransitionFrom: {(#status -> #E)} to: { #status->#empty } probability: [ :aModel | aModel atParameter: #mu ].
 	eConcern addParameter: #sigma.
 	model integrate: eConcern.
 	model
@@ -416,22 +416,22 @@ KEDeterministicExamples >> exampleRK4SolverOnMultiStrainModelWithPlotVisualizati
 		probability: [ :m| (m atParameter: #gamma2) ].
 	model
 		addTransitionFrom: {#status -> #S}
-		to: #empty 
+		to: {(#status -> #empty)}
 		probability: [ :m| (m atParameter: #mu) ].
 	model 
 		addTransitionFrom: {#status -> #I1}
-		to: #empty 
+		to: {(#status -> #empty)} 
 		probability: [ :m| (m atParameter: #mu) ].
 	model 
 		addTransitionFrom: {#status -> #I2} 
-		to: #empty 
+		to: {(#status -> #empty)}
 		probability: [ :m| (m atParameter: #mu) ].
 	model
 		addTransitionFrom: {#status -> #R} 
-		to: #empty 
+		to: {(#status -> #empty)}
 		probability: [ :m| (m atParameter: #mu) ].
 	model
-		addTransitionFrom: #empty 
+		addTransitionFrom: {(#status -> #empty)}
 		to: {#status -> #S} 
 		probability: [ :m| (m atParameter: #mu) ].
 	
@@ -500,22 +500,22 @@ KEDeterministicExamples >> exampleRK4SolverOnSEIRMeaslesModel [
 		probability: [ :m | m atParameter: #gamma ].
 	model
 		addTransitionFrom: {(#status -> #S)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #I)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #R)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #E)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: {(#status -> #empty)}
 		to: {(#status -> #S)}
 		probability: [ :m | m atParameter: #mu ].
 	simulator := KESimulator
@@ -562,22 +562,22 @@ KEDeterministicExamples >> exampleRK4SolverOnSEIRMeaslesModelWithVaccination [
 		probability: [ :m | m atParameter: #gamma ].
 	model
 		addTransitionFrom: {(#status -> #S)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #I)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #R)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #E)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: {(#status -> #empty)}
 		to: {(#status -> #S)}
 		probability: [ :m | (m atParameter: #mu) * (1 - (m atParameter: #p)) ].
 	model
@@ -616,7 +616,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSEIRSModelWithQuarantine [
 	QuarantineConcern addStatus: #(Q).
 	QuarantineConcern addTransitionFrom: {(#status -> #I)} to: {(#status -> #Q)} probability: 'delta'.
 	QuarantineConcern addTransitionFrom: {(#status -> #Q)} to: {(#status -> #R)} probability: 'epsilon'.
-	QuarantineConcern addTransitionFrom: {(#status -> #Q)} to: #empty probability: 'mu'.
+	QuarantineConcern addTransitionFrom: {(#status -> #Q)} to: {(#status -> #empty)} probability: 'mu'.
 	QuarantineConcern addParameters: {#delta . #epsilon}.
 	QuarantineConcern addParameter: #lambda value: 'beta*I/(N-Q)'.
 	model integrate: SEIRConcern.
@@ -786,18 +786,18 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRModelWithLogVisualisationInRoass
 		probability: [ :aModel | aModel atParameter: #gamma ].
 	model
 		addTransitionFrom: {(#status -> #S)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #I)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #R)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: {(#status -> #empty)}
 		to: {(#status -> #S)}
 		probability: [ :aModel | aModel atParameter: #mu ].
 	simulator := KESimulator
@@ -868,18 +868,18 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRModelWithSqrtVisualisationInRoas
 		probability: [ :aModel | aModel atParameter: #gamma ].
 	model
 		addTransitionFrom: {(#status -> #S)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #I)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #R)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: {(#status -> #empty)}
 		to: {(#status -> #S)}
 		probability: [ :aModel | aModel atParameter: #mu ].
 	simulator := KESimulator
@@ -926,18 +926,18 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRMultiHostModel [
 		probability: [ :m | m atParameter: #gamma ].
 	model
 		addTransitionFrom: {(#status -> #S)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #I)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #R)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: {(#status -> #empty)}
 		to: {(#status -> #S)}
 		probability: [ :m | m atParameter: #mu ].
 	model integrate: multiHostConcern.
@@ -1060,18 +1060,18 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRMultiHostModelTransitionByRate [
 		probability: 'gamma' parseAsAnExpression.
 	model 
 		addTransitionFrom: {#status -> #S}
-		to: #empty 
+		to: {(#status -> #empty)}
 		probability: 'mu' parseAsAnExpression.
 	model 
 		addTransitionFrom: {#status -> #I} 
-		to: #empty 
+		to: {(#status -> #empty)} 
 		probability: 'mu' parseAsAnExpression.
 	model 
 		addTransitionFrom: {#status -> #R}
-		to: #empty 
+		to: {(#status -> #empty)}
 		probability: 'mu' parseAsAnExpression.
 	model 
-		addTransitionFrom: #empty 
+		addTransitionFrom: {(#status -> #empty)} 
 		to: {#status -> #S} 
 		probability: 'mu' parseAsAnExpression.
 		
@@ -1422,22 +1422,22 @@ KEDeterministicExamples >> modelRK4SolverOnMultiStrainModel [
 		probability: [ :m| (m atParameter: #gamma2) ].
 	model
 		addTransitionFrom: {#status -> #S}
-		to: #empty 
+		to: {(#status -> #empty)} 
 		probability: [ :m| (m atParameter: #mu) ].
 	model 
 		addTransitionFrom: {#status -> #I1}
-		to: #empty 
+		to: {(#status -> #empty)}
 		probability: [ :m| (m atParameter: #mu) ].
 	model 
 		addTransitionFrom: {#status -> #I2} 
-		to: #empty 
+		to:{(#status -> #empty)}
 		probability: [ :m| (m atParameter: #mu) ].
 	model
 		addTransitionFrom: {#status -> #R} 
-		to: #empty 
+		to: {(#status -> #empty)} 
 		probability: [ :m| (m atParameter: #mu) ].
 	model
-		addTransitionFrom: #empty 
+		addTransitionFrom: {(#status -> #empty)}
 		to: {#status -> #S} 
 		probability: [ :m| (m atParameter: #mu) ].
 	^ model
@@ -1510,22 +1510,22 @@ KEDeterministicExamples >> modelRK4SolverOnSEIRMeasles [
 		probability: [ :m | m atParameter: #gamma ].
 	model
 		addTransitionFrom: {(#status -> #S)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #I)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #R)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #E)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: {(#status -> #empty)}
 		to: {(#status -> #S)}
 		probability: [ :m | m atParameter: #mu ].
 	^ model
@@ -1561,26 +1561,26 @@ KEDeterministicExamples >> modelRK4SolverOnSEIRMeaslesModelWithVaccination [
 		probability: [ :m | m atParameter: #gamma ].
 	model
 		addTransitionFrom: {(#status -> #S)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #I)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #R)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #E)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: {(#status -> #empty)}
 		to: {(#status -> #S)}
 		probability: [ :m | (m atParameter: #mu) * (1 - (m atParameter: #p)) ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: {(#status -> #empty)}
 		to: {(#status -> #R)}
 		probability: [ :m | (m atParameter: #mu) * (m atParameter: #p) ].
 	^ model
@@ -1634,18 +1634,18 @@ KEDeterministicExamples >> modelRK4SolverOnSIRMultiHost [
 		probability: [ :m | m atParameter: #gamma ].
 	model
 		addTransitionFrom: {(#status -> #S)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #I)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #R)}
-		to: #empty
+		to: {(#status -> #empty)}
 		probability: [ :m | m atParameter: #mu ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: {(#status -> #empty)}
 		to: {(#status -> #S)}
 		probability: [ :m | m atParameter: #mu ].
 	model integrate: multiHostConcern.
@@ -1759,18 +1759,18 @@ KEDeterministicExamples >> modelRK4SolverOnSIRMultiHostModelTransitionByRate [
 		probability: 'gamma' parseAsAnExpression.
 	model 
 		addTransitionFrom: {#status -> #S}
-		to: #empty 
+		to: {(#status -> #empty)}
 		probability: 'mu' parseAsAnExpression.
 	model 
 		addTransitionFrom: {#status -> #I} 
-		to: #empty 
+		to: {(#status -> #empty)}
 		probability: 'mu' parseAsAnExpression.
 	model 
 		addTransitionFrom: {#status -> #R}
-		to: #empty 
+		to: {(#status -> #empty)}
 		probability: 'mu' parseAsAnExpression.
 	model 
-		addTransitionFrom: #empty 
+		addTransitionFrom: {(#status -> #empty)}
 		to: {#status -> #S} 
 		probability: 'mu' parseAsAnExpression.
 		

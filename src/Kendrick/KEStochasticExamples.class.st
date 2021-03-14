@@ -10,7 +10,7 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModel [
 
 	| model simulator chart |
 	model := KEModel new.
-	model attributes: {(#status -> #(#S #I #R))}.
+	model attributes: {(#status -> #(#S #I #R #empty))}.
 	model atCompartment: {(#status -> #S)} put: 4975 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 25.
 	model
@@ -30,18 +30,18 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModel [
 		probability: [ :aModel | aModel atParameter: #gamma ].
 	model
 		addTransitionFrom: {(#status -> #S)}
-		to: #empty
+		to: { #status->#empty } 
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #I)}
-		to: #empty
+		to: { #status->#empty } 
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #R)}
-		to: #empty
+		to: { #status->#empty } 
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: { #status->#empty } 
 		to: {(#status -> #S)}
 		probability: [ :aModel | aModel atParameter: #mu ].
 	simulator := KESimulator
@@ -60,7 +60,7 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithPlotHistogramV
 
 	| model simulator chart |
 	model := KEModel new.
-	model attributes: {(#status -> #(#S #I #R))}.
+	model attributes: {(#status -> #(#S #I #R #empty))}.
 	model atCompartment: {(#status -> #S)} put: 4975 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 25.
 	model
@@ -80,18 +80,18 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithPlotHistogramV
 		probability: [ :aModel | aModel atParameter: #gamma ].
 	model
 		addTransitionFrom: {(#status -> #S)}
-		to: #empty
+		to:{ #status->#empty }
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #I)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #R)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: { #status->#empty }
 		to: {(#status -> #S)}
 		probability: [ :aModel | aModel atParameter: #mu ].
 	simulator := KESimulator
@@ -112,7 +112,7 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithPlotScatterViz
 
 	| model simulator chart |
 	model := KEModel new.
-	model attributes: {(#status -> #(#S #I #R))}.
+	model attributes: {(#status -> #(#S #I #R #empty))}.
 	model atCompartment: {(#status -> #S)} put: 4975 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 25.
 	model
@@ -132,18 +132,18 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithPlotScatterViz
 		probability: [ :aModel | aModel atParameter: #gamma ].
 	model
 		addTransitionFrom: {(#status -> #S)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #I)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #R)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: { #status->#empty }
 		to: {(#status -> #S)}
 		probability: [ :aModel | aModel atParameter: #mu ].
 	simulator := KESimulator
@@ -164,7 +164,7 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithRoassal3 [
 
 	| model simulator chart |
 	model := KEModel new.
-	model attributes: {(#status -> #(#S #I #R))}.
+	model attributes: {(#status -> #(#S #I #R #empty ))}.
 	model atCompartment: {(#status -> #S)} put: 4975 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 25.
 	model
@@ -184,18 +184,18 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithRoassal3 [
 		probability: [ :aModel | aModel atParameter: #gamma ].
 	model
 		addTransitionFrom: {(#status -> #S)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #I)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #R)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :aModel | aModel atParameter: #mu ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: { #status->#empty }
 		to: {(#status -> #S)}
 		probability: [ :aModel | aModel atParameter: #mu ].
 	simulator := KESimulator
@@ -263,7 +263,7 @@ KEStochasticExamples >> exampleGillespieDirectOnSEIRMeaslesModel [
 
 	| model simulator chart |
 	model := KEModel new.
-	model attributes: {(#status -> #(#S #E #I #R))}.
+	model attributes: {(#status -> #(#S #E #I #R #empty ))}.
 	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
 	model atCompartment: {(#status -> #I)} put: 1.
 	model
@@ -286,22 +286,22 @@ KEStochasticExamples >> exampleGillespieDirectOnSEIRMeaslesModel [
 		probability: [ :m | m atParameter: #gamma ].
 	model
 		addTransitionFrom: {(#status -> #S)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #I)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #R)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :m | m atParameter: #mu ].
 	model
 		addTransitionFrom: {(#status -> #E)}
-		to: #empty
+		to: { #status->#empty }
 		probability: [ :m | m atParameter: #mu ].
 	model
-		addTransitionFrom: #empty
+		addTransitionFrom: { #status->#empty }
 		to: {(#status -> #S)}
 		probability: [ :m | m atParameter: #mu ].
 	simulator := KESimulator
@@ -367,10 +367,10 @@ KEStochasticExamples >> exampleGillespieDirectOnSIRMultiHostModel [
 	model addParameter: #lambda value: [ :aModel | (aModel atParameter: #beta) * (aModel atCompartment: {(#status -> #I)}) ].
 	model addTransitionFrom: {(#status -> #S)} to: {(#status -> #I)} probability: [ :m | m atParameter: #lambda ].
 	model addTransitionFrom: {(#status -> #I)} to: {(#status -> #R)} probability: [ :m | m atParameter: #gamma ].
-	model addTransitionFrom: {(#status -> #S)} to: #empty probability: [ :m | m atParameter: #mu ].
-	model addTransitionFrom: {(#status -> #I)} to: #empty probability: [ :m | m atParameter: #mu ].
-	model addTransitionFrom: {(#status -> #R)} to: #empty probability: [ :m | m atParameter: #mu ].
-	model addTransitionFrom: #empty to: {(#status -> #S)} probability: [ :m | m atParameter: #mu ].
+	model addTransitionFrom: {(#status -> #S)} to: { #status->#empty } probability: [ :m | m atParameter: #mu ].
+	model addTransitionFrom: {(#status -> #I)} to: { #status->#empty } probability: [ :m | m atParameter: #mu ].
+	model addTransitionFrom: {(#status -> #R)} to: { #status->#empty } probability: [ :m | m atParameter: #mu ].
+	model addTransitionFrom: { #status->#empty } to: {(#status -> #S)} probability: [ :m | m atParameter: #mu ].
 	model integrate: multiHostConcern.
 	model
 		atParameter: #mu
