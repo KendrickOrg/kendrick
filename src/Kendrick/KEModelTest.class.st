@@ -364,16 +364,16 @@ KEModelTest >> testSizeOfEachCompartmentSizeOfSIRModel [
 
 { #category : #tests }
 KEModelTest >> testVerifyNumberOfEquationsOfSumOfTwoConcerns [
-	<expectedFailure>
+
 	| model model1 multiHostConcern |
 	model1 := KEModelPart new.
 	model1
-		attributes: {(#status -> #(#S #I #R))};
+		attributes: { (#status -> #( #S #I #R )) };
 		addEquation: 'S:t=-beta*S*I';
 		addEquation: 'I:t=beta*S*I - gamma*I';
 		addEquation: 'R:t=gamma*I'.
 	multiHostConcern := KEModelPart new.
-	multiHostConcern addAttribute: #species value: #(#human #bird).
+	multiHostConcern addAttribute: #species value: #( #human #bird ).
 	model := KEModel new.
 	model integrate: model1.
 	model integrate: multiHostConcern.

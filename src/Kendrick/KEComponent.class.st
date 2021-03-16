@@ -144,7 +144,10 @@ KEComponent >> compartmentNames [
 
 { #category : #accessing }
 KEComponent >> equations [
-	^ equations ifEmpty: [ self transitionsToEquations ]
+
+	equations ifEmpty: [ 
+		  self transitionsToEquations].
+	^ equations
 ]
 
 { #category : #accessing }
@@ -265,8 +268,7 @@ KEComponent >> transitionsToEquations [
 	This method should be merge with equations method in the same class: issue #40
 	Seems to returns a Dictionary with keys are dictionary and values are orderedCollection ..."
 
-|eq|
-
+	| eq |
 	eq := Dictionary new.
 	self compartmentNames do: [ :k | eq at: k put: OrderedCollection new ].
 	self transitions do: [ :tr | 
