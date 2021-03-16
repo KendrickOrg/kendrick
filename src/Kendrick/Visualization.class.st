@@ -178,7 +178,11 @@ Visualization >> expand: prefix forLists: lists [
 
 { #category : #'public-api' }
 Visualization >> exportToPng [
-	| outDir filePath |
+	| outDir filePath c|
+	
+	c := RSCanvas new.
+	c @ RSCanvasController.
+	
 	outDir := './Sources/'
 		, KendrickInternalDSLEntities currentProjectDir , '/Output/'.
 	outDir asFileReference exists
@@ -192,15 +196,18 @@ Visualization >> exportToPng [
 
 "Export to PNG is desactivated right now, need to be replaced by call to RSPNGExporter class in Roassal 3"
 "https://github.com/ObjectProfile/Roassal3Exporters"
-"(RTCanvasExporter canvas: self canvas)
-		whole;
+RSPNGExporter new
+		"whole;
 		defaultScale;
 		oversizedBy: 20 @ 20;
 		format: #png;
 		fileName: filePath; 
 		ifNil: [ ^ nil ];
 		export."
-	^ self canvas
+		
+		canvas: c;
+		exportToFile: filePath asFileReference
+	"^ self canvas"
 ]
 
 { #category : #'public-api' }
