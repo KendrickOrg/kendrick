@@ -63,7 +63,7 @@ Simulation SEIRSInfluenzaRK rungeKutta
 	to: 500; 
 	step: 1.
 	
-Visualization SEIRSInfluenzaViz diagram 
+Visualization SEIRSInfluenzaViz chart  
 	for: 'SEIRSInfluenzaRK';
 	data: #(I_species);
 	legendTitle: 'Total of Infectious';
