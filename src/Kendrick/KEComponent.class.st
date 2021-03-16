@@ -269,10 +269,11 @@ KEComponent >> transitionsToEquations [
 
 	eq := Dictionary new.
 	self compartmentNames do: [ :k | eq at: k put: OrderedCollection new ].
-	self transitions do: [ :tr | 
-		((tr from at: #status) ~= #empty and: [ 
-			 (tr to at: #status) ~= #empty ]) ifTrue: [ 
+	self transitions collect: [ :tr | 
+		((tr from) ~= #empty and: [ 
+			 (tr to) ~= #empty ]) ifTrue: [ 
 			(eq at: tr from) add: (Array with: tr with: -1).
 			(eq at: tr to) add: (Array with: tr with: 1) ] ].
-	equations := eq
+	^ equations := eq
+
 ]
