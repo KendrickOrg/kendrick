@@ -161,11 +161,6 @@ Visualization >> dataWithSimpleCompartments: anArray [ "should be full math-expr
 ]
 
 { #category : #'as yet unclassified' }
-Visualization >> diagram [
-	^ self with: KEChart
-]
-
-{ #category : #'as yet unclassified' }
 Visualization >> expand: prefix forLists: lists [
 
   ^ lists isEmpty
