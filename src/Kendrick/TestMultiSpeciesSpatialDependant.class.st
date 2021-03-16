@@ -79,7 +79,7 @@ Simulation SpatialRungeKutta rungeKutta
 	to: 500; 
 	step: 1.
 	
-Visualization SpatialDiagramViz diagram 
+Visualization SpatialDiagramViz chart 
 	for: 'SpatialRungeKutta';
 	data: #(I_species);
 	legendTitle: 'Total of Infectious';
