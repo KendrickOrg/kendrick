@@ -364,7 +364,7 @@ KEModelTest >> testSizeOfEachCompartmentSizeOfSIRModel [
 
 { #category : #tests }
 KEModelTest >> testVerifyNumberOfEquationsOfSumOfTwoConcerns [
-	<expectedFailure>
+	"<expectedFailure>"
 	| model model1 multiHostConcern |
 	model1 := KEModelPart new.
 	model1
