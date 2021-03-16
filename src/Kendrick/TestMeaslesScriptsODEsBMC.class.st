@@ -47,7 +47,7 @@ Simulation MeaslesRKSim rungeKutta
 	to: 150; 
 	step: 1.
 	
-Visualization MeaslesDiagramViz diagram 
+Visualization MeaslesDiagramViz chart  
 	for: 'MeaslesRKSim';
 	xLabel: 'Time (days)'.
 ]
