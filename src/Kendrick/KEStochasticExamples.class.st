@@ -7,7 +7,8 @@ Class {
 { #category : #examples }
 KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModel [
 	"self new exampleExplicitTauLeapOnSIRSimpleModel"
-
+	<gtExample>
+	<subjectClass: #KEStochasticExamples>
 	| model simulator chart |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R #empty))}.
@@ -57,7 +58,7 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModel [
 { #category : #'as yet unclassified' }
 KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithPlotHistogramVizInRoassal3 [
 	"self new exampleExplicitTauLeapOnSIRSimpleModelWithPlotHistogramVizInRoassal3"
-
+	<gtExample>
 	| model simulator chart |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R #empty))}.
@@ -109,7 +110,8 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithPlotHistogramV
 { #category : #'as yet unclassified' }
 KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithPlotScatterVizInRoassal3 [
 	"self new exampleExplicitTauLeapOnSIRSimpleModelWithPlotScatterVizInRoassal3"
-
+	<gtExample>
+	<subjectClass: #KEStochasticExamples>
 	| model simulator chart |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R #empty))}.
@@ -161,7 +163,8 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithPlotScatterViz
 { #category : #examples }
 KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithRoassal3 [
 	"self new exampleExplicitTauLeapOnSIRSimpleModel"
-
+	<gtExample>
+	<subjectClass: #KEStochasticExamples>
 	| model simulator chart |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R #empty ))}.
@@ -213,7 +216,8 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSIRSimpleModelWithRoassal3 [
 { #category : #'as yet unclassified' }
 KEStochasticExamples >> exampleExplicitTauLeapOnSISWithDemographyModel [
 	"self new exampleExplicitTauLeapOnSIRSimpleModel"
-
+	<gtExample>
+	<subjectClass: #KEStochasticExamples>
 	| model simulator chart |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I))}.
@@ -260,7 +264,8 @@ KEStochasticExamples >> exampleExplicitTauLeapOnSISWithDemographyModel [
 { #category : #examples }
 KEStochasticExamples >> exampleGillespieDirectOnSEIRMeaslesModel [
 	"self new exampleGillespieDirectOnSEIRMeaslesModel"
-
+	<gtExample>
+	<subjectClass: #KEStochasticExamples>
 	| model simulator chart |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #E #I #R #empty ))}.
@@ -321,7 +326,8 @@ KEStochasticExamples >> exampleGillespieDirectOnSEIRMeaslesModel [
 { #category : #examples }
 KEStochasticExamples >> exampleGillespieDirectOnSIRBioPEPAModel [
 	"self new exampleGillespieDirectOnSIRBioPEPAModel"
-
+	<gtExample>
+	<subjectClass: #KEStochasticExamples>
 	| model simulator chart |
 	model := KEModel new.
 	model addAttribute: #status value: #(S I R).
@@ -355,7 +361,7 @@ KEStochasticExamples >> exampleGillespieDirectOnSIRBioPEPAModel [
 { #category : #examples }
 KEStochasticExamples >> exampleGillespieDirectOnSIRMultiHostModel [
 	"self new exampleGillespieDirectOnSIRMultiHostModel"
-
+	<gtExample>
 	| model multiHostConcern simulator chart |
 	multiHostConcern := KEModelPart new.
 	multiHostConcern addAttribute: #species value: #(#mosquito #reservoir1 #reservoir2).
@@ -440,7 +446,8 @@ KEStochasticExamples >> exampleGillespieDirectOnSIRMultiHostModel [
 { #category : #examples }
 KEStochasticExamples >> exampleGillespieDirectOnSIRSimpleModel [
 	"self new exampleGillespieDirectOnSIRSimpleModel"
-
+	<gtExample>
+	<subjectClass: #KEStochasticExamples>
 	| model simulator chart |
 	model := KEModel new.
 	model addAttribute: #status value: #(#S #I #R).
@@ -468,7 +475,8 @@ KEStochasticExamples >> exampleGillespieDirectOnSIRSimpleModel [
 { #category : #examples }
 KEStochasticExamples >> exampleGillespieDirectOnSIRSimpleModel3 [
 	"self new exampleGillespieDirectOnSIRSimpleModel3"
-
+	<gtExample>
+	<subjectClass: #KEStochasticExamples>
 	| model simulator chart  |
 	model := KEModel new.
 	model addAttribute: #status value: #(#S #I #R).
@@ -496,7 +504,8 @@ KEStochasticExamples >> exampleGillespieDirectOnSIRSimpleModel3 [
 { #category : #examples }
 KEStochasticExamples >> exampleGillespieDirectOnSIRSimpleModelWithODERepresentation [
 	"self new exampleGillespieDirectOnSIRSimpleModelWithODERepresentation"
-
+	<gtExample>
+	<subjectClass: #KEStochasticExamples>
 	| model simulator chart |
 	model := KEModel new.
 	model addAttribute: #status value: #(#S #I #R).
@@ -522,7 +531,8 @@ KEStochasticExamples >> exampleGillespieDirectOnSIRSimpleModelWithODERepresentat
 { #category : #examples }
 KEStochasticExamples >> exampleGillespieSimulatorOnSIREbolaModel [
 	"self new exampleGillespieSimulatorOnSIREbolaModel"
-
+	<gtExample>
+	<subjectClass: #KEStochasticExamples>
 	| model simulator chart spatialConcern countries |
 	spatialConcern := KEModelPart new.
 	spatialConcern
