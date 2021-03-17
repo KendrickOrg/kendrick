@@ -6,7 +6,7 @@ Class {
 
 { #category : #examples }
 KEDeterministicExamples >> SEIRConcern [
-
+	<gtExample>
 	| SEIRConcern |
 	SEIRConcern := KEModelPart new.
 	SEIRConcern attributes: {(#status -> #(#S #E #I #R))}.
@@ -27,7 +27,7 @@ KEDeterministicExamples >> SEIRConcern [
 
 { #category : #examples }
 KEDeterministicExamples >> SEIRSConcern [
-
+	<gtExample>
 	| SEIRSConcern |
 	SEIRSConcern := KEModelPart new.
 	SEIRSConcern attributes: {(#status -> #(#S #E #I #R))}.
@@ -49,7 +49,7 @@ KEDeterministicExamples >> SEIRSConcern [
 
 { #category : #examples }
 KEDeterministicExamples >> SIRConcern [
-
+	<gtExample>
 	| SIRConcern |
 	SIRConcern := KEModelPart new.
 	SIRConcern attributes: 
@@ -69,7 +69,7 @@ KEDeterministicExamples >> SIRConcern [
 
 { #category : #examples }
 KEDeterministicExamples >> SIRDemographyConcern [
-
+	<gtExample>
 	| SIRDemographyConcern |
 	SIRDemographyConcern := KEModelPart new.
 	SIRDemographyConcern attributes: 
@@ -1227,6 +1227,7 @@ KEDeterministicExamples >> exampleRK4SolverOnSeasonalForcingModel [
 { #category : #examples }
 KEDeterministicExamples >> modelRK4SolverOnMigrationOneSpeciesModel [
 	"self new exampleRK4SolverOnMigrationOneSpeciesModel"
+	<gtExample>
 	|model spatialConcern  SEIRSConcern|
 	SEIRSConcern := self SEIRSConcern.
 	spatialConcern := self spatialConcern.
@@ -1271,6 +1272,7 @@ KEDeterministicExamples >> modelRK4SolverOnMigrationOneSpeciesModel [
 { #category : #examples }
 KEDeterministicExamples >> modelRK4SolverOnMigrationTwoSpeciesModel [
 	"self new exampleRK4SolverOnMigrationTwoSpeciesModel"
+	<gtExample>
 	|model spatialConcern  SEIRSConcern multihostConcern|
 	spatialConcern := self spatialConcern.
 	SEIRSConcern := self SEIRSConcern.
@@ -1350,6 +1352,7 @@ KEDeterministicExamples >> modelRK4SolverOnMigrationTwoSpeciesModel [
 { #category : #examples }
 KEDeterministicExamples >> modelRK4SolverOnMultiInfectiousStatusModel [
 	"self new exampleRK4SolverOnMultiInfectiousStatusModel"
+	<gtExample>
 	|model|
 	model := KEModel new.
 	model attributes: {#status->#(S I Is R)}.
@@ -1389,6 +1392,7 @@ KEDeterministicExamples >> modelRK4SolverOnMultiInfectiousStatusModel [
 
 { #category : #examples }
 KEDeterministicExamples >> modelRK4SolverOnMultiStrainModel [
+	<gtExample>
 	|model|
 	model := KEModel new.
 	model attributes: {#status->#(#S #I1 #I2 #R)}.
@@ -1446,6 +1450,7 @@ KEDeterministicExamples >> modelRK4SolverOnMultiStrainModel [
 { #category : #examples }
 KEDeterministicExamples >> modelRK4SolverOnMultipleRiskGroupsModel [
 	"self new exampleRK4SolverOnMultipleRiskGroupsModel"
+	<gtExample>
 	| model riskGroupConcern |
 	riskGroupConcern := self riskGroupConcern.
 	model := KEModel new.
@@ -1484,7 +1489,7 @@ KEDeterministicExamples >> modelRK4SolverOnMultipleRiskGroupsModel [
 { #category : #examples }
 KEDeterministicExamples >> modelRK4SolverOnSEIRMeasles [
 	"self new modelRK4SolverOnSEIRMeasles"
-
+	<gtExample>
 	| model |
 	model := KEModel new.
 	model attributes: {(#status -> #(S E I R))}.
@@ -1534,7 +1539,7 @@ KEDeterministicExamples >> modelRK4SolverOnSEIRMeasles [
 { #category : #examples }
 KEDeterministicExamples >> modelRK4SolverOnSEIRMeaslesModelWithVaccination [
 	"self new modelRK4SolverOnSEIRMeaslesModelWithVaccination"
-
+	<gtExample>
 	| model |
 	model := KEModel new.
 	model attributes: {(#status -> #(S E I R))}.
@@ -1589,7 +1594,7 @@ KEDeterministicExamples >> modelRK4SolverOnSEIRMeaslesModelWithVaccination [
 { #category : #examples }
 KEDeterministicExamples >> modelRK4SolverOnSIRDemography [
 	"self new modelRK4SolverOnSIRDemography"
-
+	<gtExample>
 	| model |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R))}.
@@ -1608,7 +1613,7 @@ KEDeterministicExamples >> modelRK4SolverOnSIRDemography [
 { #category : #examples }
 KEDeterministicExamples >> modelRK4SolverOnSIRMultiHost [
 	"self new exampleRK4SolverOnSIRMultiHostModel"
-
+	<gtExample>
 	| model multiHostConcern |
 	multiHostConcern := KEModelPart new.
 	multiHostConcern
@@ -1735,7 +1740,7 @@ KEDeterministicExamples >> modelRK4SolverOnSIRMultiHost [
 { #category : #examples }
 KEDeterministicExamples >> modelRK4SolverOnSIRMultiHostModelTransitionByRate [
 	"self new exampleRK4SolverOnSIRMultiHostModelTransitionByRate"
-
+	<gtExample>
 	| model  multiHostConcern|
 	multiHostConcern := KEModelPart new.
 	multiHostConcern 
@@ -1817,6 +1822,7 @@ KEDeterministicExamples >> modelRK4SolverOnSIRMultiHostModelTransitionByRate [
 { #category : #examples }
 KEDeterministicExamples >> modelRK4SolverOnSIRMultiHostModelWithODERepresentation [
 	"self new exampleRK4SolverOnSIRMultiHostModelWithODERepresentation"
+	<gtExample>
 	| model  multiHostConcern|
 	multiHostConcern := KEModelPart new.
 	multiHostConcern 
@@ -1876,7 +1882,7 @@ KEDeterministicExamples >> modelRK4SolverOnSIRMultiHostModelWithODERepresentatio
 { #category : #examples }
 KEDeterministicExamples >> modelRK4SolverOnSIRSimpleModel [
 	"self new modelRK4SolverOnSIRSimpleModel"
-
+	<gtExample>
 	| model |
 	model := KEModel new.
 	model attributes: 
@@ -1900,7 +1906,7 @@ KEDeterministicExamples >> modelRK4SolverOnSIRSimpleModel [
 { #category : #examples }
 KEDeterministicExamples >> modelRK4SolverOnSIRSimpleModelWithODERepresentation [
 	"self new modelRK4SolverOnSIRSimpleModelWithODERepresentation"
-
+	<gtExample>
 	| model |
 	model := KEModel new.
 	model attributes: {#status->#(#S #I #R)}.
@@ -1918,6 +1924,7 @@ KEDeterministicExamples >> modelRK4SolverOnSIRSimpleModelWithODERepresentation [
 { #category : #examples }
 KEDeterministicExamples >> modelRK4SolverOnSIRSimpleModelWithTransitionProbabilityAsExpression [
 	"self new exampleRK4SolverOnSIRSimpleModel"
+	<gtExample>
 	| model |
 	model := KEModel new.
 	model attributes: {#status->#(#S #I #R)}.
@@ -1936,7 +1943,7 @@ KEDeterministicExamples >> modelRK4SolverOnSIRSimpleModelWithTransitionProbabili
 { #category : #examples }
 KEDeterministicExamples >> modelRK4SolverOnSeasonalForcingModel [
 	"self new exampleRK4SolverOnSeasonalForcingModel"
-
+	<gtExample>
 	| model |
 	model := KEModel new.
 	model attributes: { #status->#(#S #E #I #R) }.
@@ -1964,7 +1971,7 @@ KEDeterministicExamples >> modelRK4SolverOnSeasonalForcingModel [
 
 { #category : #examples }
 KEDeterministicExamples >> multiHostConcern [
-
+	<gtExample>
 	| multiHostConcern |
 	multiHostConcern := KEModelPart new.
 	multiHostConcern 
@@ -1976,7 +1983,7 @@ KEDeterministicExamples >> multiHostConcern [
 
 { #category : #examples }
 KEDeterministicExamples >> riskGroupConcern [
-
+	<gtExample>
 	| riskGroupConcern |
 	riskGroupConcern := KEModelPart new.
 	riskGroupConcern 
@@ -1989,6 +1996,7 @@ KEDeterministicExamples >> riskGroupConcern [
 { #category : #examples }
 KEDeterministicExamples >> spatialConcern [
 	"self new exampleRK4SolverOnMigrationMultiSpeciesModel"
+	<gtExample>
 	| spatialConcern|
 	spatialConcern := KEModelPart new.
 	spatialConcern addAttribute: #patch value: (1 to: 5) asArray.
