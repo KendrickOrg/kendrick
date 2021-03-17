@@ -52,10 +52,13 @@ BaselineOfKendrick >> baseline: spec [
 					with: [ spec repository: 'github://moosetechnology/PetitParser/src' ];
 				baseline: 'Ston'
 					with: [ spec repository: 'github://svenvc/ston/repository' ];
+				baseline: 'Roassal3Exporters'
+					with: [ spec repository: 'github://ObjectProfile/Roassal3Exporters' ]
+					;
 				baseline: 'GToolkitExamples'
 					with: [ spec repository: 'github://feenkcom/gtoolkit-examples/src' ].
 			spec
 				package: 'Kendrick'
 				with: [ spec
-						requires: #('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'MooseAlgos' 'GToolkitExamples') ] ]
+						requires: #('DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'MooseAlgos' 'Roassal3Exporters' 'GToolkitExamples') ] ]
 ]
