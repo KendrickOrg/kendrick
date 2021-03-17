@@ -62,7 +62,7 @@ Simulation SpatialRungeKutta rungeKutta
 	to: 500; 
 	step: 1.
 	
-Visualization SpatialDiagramViz diagram 
+Visualization SpatialDiagramViz chart 
 	for: 'SpatialRungeKutta';
 	data: #(I_patch);
 	legends: #('patch 1' 'patch 2' 'patch 3' 'patch 4' 'patch 5');

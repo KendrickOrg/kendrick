@@ -36,7 +36,7 @@ Simulation SIRInfluenzaRK rungeKutta
 	to: 500; 
 	step: 1.
 	
-Visualization SIRInfluenzaViz diagram 
+Visualization SIRInfluenzaViz chart  
 	for: 'SIRInfluenzaRK';
 	xLabel: 'Time (days)'.
 ]

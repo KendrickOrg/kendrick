@@ -52,7 +52,7 @@ Simulation MosquitoGillepsie gillespie
 	to: 0.5; 
 	step: 0.0027.
 	
-Visualization MosquitoDiagramViz diagram 
+Visualization MosquitoDiagramViz chart 
 	for: 'MosquitoGillepsie';
 	data: #(I sqrt);
 	xLabel: 'Time (days)'.
