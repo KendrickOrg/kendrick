@@ -362,6 +362,7 @@ KEStochasticExamples >> exampleGillespieDirectOnSIRBioPEPAModel [
 KEStochasticExamples >> exampleGillespieDirectOnSIRMultiHostModel [
 	"self new exampleGillespieDirectOnSIRMultiHostModel"
 	<gtExample>
+	<subjectClass: #KEStochasticExamples>
 	| model multiHostConcern simulator chart |
 	multiHostConcern := KEModelPart new.
 	multiHostConcern addAttribute: #species value: #(#mosquito #reservoir1 #reservoir2).
