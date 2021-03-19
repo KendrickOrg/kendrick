@@ -43,7 +43,6 @@ Scenario MeaslesParameters
     
 Scenario MeaslesPopulation
     on: 'Measles';
-    populationSize: 100000;
     S: 99999;
     I: 1;
     others: 0.

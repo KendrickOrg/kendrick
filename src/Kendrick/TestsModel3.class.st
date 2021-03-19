@@ -47,7 +47,7 @@ Composition SEIRSInfluenza
 	
 Scenario SEIRSInfluenza1
 	on: 'SEIRSInfluenza';
-	populationSize: 27500;
+
 	nu: 0.00274;
 	mu_species: #(0.0000365 0.00137);
 	sigma_species: #(0.5 0.67);

@@ -61,7 +61,7 @@ Composition SEIRSInfluenzaSpatial
 
 Scenario InfParameters1
 	on: 'SEIRSInfluenzaSpatial';
-   populationSize: 27500;
+ 
    mu_species: #(0.000365 0.00137);
    beta_species_country: #(
 			#(#(0 0.21) #(0 0.21) #(0 0.21) #(0 0.21) #(0 0.21))
