@@ -251,12 +251,6 @@ Scenario >> parameters: anArray [
 ]
 
 { #category : #'as yet unclassified' }
-Scenario >> populationSize: aNumber [
-
-	model population: aNumber
-]
-
-{ #category : #'as yet unclassified' }
 Scenario >> referencesFor: anAttribute [
 
 	|assoc|
