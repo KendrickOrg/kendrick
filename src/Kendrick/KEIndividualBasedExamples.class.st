@@ -7,7 +7,8 @@ Class {
 { #category : #examples }
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSEIRMeaslesModel [
 	"self new exampleIBMSimulatorOnSEIRMeaslesModel"
-
+	<gtExample>
+	<subjectClass: #KEIndividualBasedExamples>
 	| model simulator chart |
 	model := KEModel new.
 	model attributes: {#status -> #(S E I R empty)}.
@@ -64,7 +65,9 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSEIRMeaslesModel [
 { #category : #examples }
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSIREbolaModel [
 	"self new exampleIBMSimulatorOnSIREbolaModel"
-
+	<gtExample>
+	<subjectClass: #KEIndividualBasedExamples>
+	
 	| model simulator chart spatialConcern countries |
 	spatialConcern := KEModelPart new.
 	spatialConcern addAttribute: #country value: #(#Liberia #Guinea #SierraLeone #Nigeria #Senegal #Niger).
@@ -135,6 +138,8 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIREbolaModel [
 { #category : #examples }
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModel [
 	"self new exampleIBMSimulatorOnSIRModel"
+	<gtExample>
+	<subjectClass: #KEIndividualBasedExamples>
 
 	| model simulator chart |
 	model := KEModel new.
@@ -166,6 +171,8 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModel [
 { #category : #examples }
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModel2 [
 	"self new exampleIBMSimulatorOnSIRModel2"
+	<gtExample>
+	<subjectClass: #KEIndividualBasedExamples>
 
 	| model simulator chart |
 	model := KEModel new.
@@ -199,6 +206,8 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModel2 [
 { #category : #examples }
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithBansalIdea [
 	"self new exampleIBMSimulatorOnSIRModelWithBansalIdea"
+	<gtExample>
+	<subjectClass: #KEIndividualBasedExamples>
 
 	| model network spatialConcern sirConcern simulator chart |
 	model := KEModel new.
@@ -265,6 +274,8 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithBansalIdea [
 { #category : #examples }
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals [
 	"self new exampleIBMSimulatorOnSIRModelWithContactNetworkAmongIndividuals"
+	<gtExample>
+	<subjectClass: #KEIndividualBasedExamples>
 
 	| model network spatialConcern sirConcern simulator chart |
 	model := KEModel new.
@@ -320,6 +331,8 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRModelWithContactNetworkAmon
 { #category : #examples }
 KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRMultiHostModel [
 	"self new exampleIBMSimulatorOnSIRMultiHostModel"
+	<gtExample>
+	<subjectClass: #KEIndividualBasedExamples>
 
 	| model multiHostConcern simulator chart |
 	multiHostConcern := KEModelPart new.
@@ -453,6 +466,9 @@ KEIndividualBasedExamples >> exampleIBMSimulatorOnSIRMultiHostModel [
 
 { #category : #examples }
 KEIndividualBasedExamples >> exampleIBM_SIR_Bansal_ScaleFree [
+
+	<gtExample>
+	<subjectClass: #KEIndividualBasedExamples>
 	"self new exampleIBM_SIR_Bansal_ScaleFree"
 
 	"You can access the file network100.dat at: https://github.com/thanhbka85dn/kendrick/blob/master/network100.dat"
@@ -521,6 +537,8 @@ KEIndividualBasedExamples >> exampleIBM_SIR_Bansal_ScaleFree [
 
 { #category : #examples }
 KEIndividualBasedExamples >> exampleNetWorkSimulatorOnSIR [
+	<gtExample>
+	<subjectClass: #KEIndividualBasedExamples>
 "self new exampleNetWorkSimulatorOnSIR"
 "Problem to debug to this method due to Dataframe apparently"
 	| model network spatialConcern sirConcern simulator chart db|
