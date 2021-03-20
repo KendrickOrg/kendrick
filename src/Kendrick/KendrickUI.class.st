@@ -47,17 +47,17 @@ KendrickUI class >> openWithDependancies [
 
 ((SmalltalkImage current lastImagePath) asFileReference parent / 'Sources') exists ifFalse:[
 
-	ZnClient new url: 'https://gitlab.com/ird-ummisco-npapoylias/kendrick-extentions/raw/master/example.zip'; downloadTo: 'example.zip'.
+	ZnClient new url: 'https://github.com/UNU-Macau/kendrick/raw/master/assets/models-library.zip'; downloadTo: 'models-library.zip'.
 
 UIManager default informUserDuring: 
 		[ :bar | 
 	(ZipArchive new
-			readFrom: 'example.zip' asFileReference)
+			readFrom: 'models-library.zip' asFileReference)
 			extractAllTo: (SmalltalkImage current lastImagePath) asFileReference parent
 			informing: bar 
 			overwrite: true].
 
-'example.zip' asFileReference delete.
+'models-library.zip' asFileReference delete.
 ].
 	^ self open
 ]
