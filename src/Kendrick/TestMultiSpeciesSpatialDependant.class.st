@@ -126,7 +126,7 @@ KModel SEIR
 	delay: #(sigma , S -- lambda --> I  , E).
 		
 Composition MultiSpeciesSpatial
-	populationSize: 27500;
+	
 	model: 'Demographical';
 	model: 'Biological';
 	model: 'SEIR';

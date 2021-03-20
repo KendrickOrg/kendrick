@@ -54,7 +54,7 @@ Composition SEIIRSCombo
 	
 Scenario InfuenzaScenario1
 	on: 'SEIIRSCombo';
-	populationSize: 27500;
+	
 	beta1_species: #(#(0 0.21) #(0 0.42));
 	beta2_species: #(#(0 0.021) #(0 0.042));
 	nu: 0.00274;		
@@ -315,7 +315,7 @@ KModel Demographical
 		5 -- rho --> 1.).
 	
 Composition SEIIRSCombo
-	populationSize: 27500;
+	
 	model: 'SEIIRS';
 	model: 'Demographical';
 	model: 'Biological';
