@@ -670,10 +670,10 @@ KEDeterministicExamples >> exampleRK4SolverOnSEIRSModelWithTwoStrains [
 	SEIRConcern
 		addEquations:
 			{'S:t=mu*N - lambda*S - mu*S' . 'E:t=lambda*S - sigma*E - mu*E' . 'I:t=sigma*E - gamma*I - mu*I' . 'R:t=gamma*I - mu*R'}.
-	SEIRSConcern := KEModelPart extends: SEIRConcern.
+	SEIRSConcern := SEIRConcern copy.
 	SEIRSConcern addTransitionFrom: {(#status -> #R)} to: {(#status -> #S)} probability: 'nu'.
 	SEIRSConcern addParameter: #nu.
-	twoStrains := KEModelPart extends: SEIRSConcern.
+	twoStrains := SEIRSConcern copy.
 	twoStrains
 		splitStatus:
 			{#(I).
