@@ -160,6 +160,11 @@ Visualization >> dataWithSimpleCompartments: anArray [ "should be full math-expr
 			
 ]
 
+{ #category : #'public-api' }
+Visualization >> diagram [
+	^ self with: KEChart
+]
+
 { #category : #'as yet unclassified' }
 Visualization >> expand: prefix forLists: lists [
 
@@ -201,8 +206,8 @@ RSPNGExporter new
 		export."
 		
 		canvas: c;
-		exportToFile: filePath asFileReference
-	"^ self canvas"
+		exportToFile: filePath asFileReference.
+	^ self open
 ]
 
 { #category : #'public-api' }
