@@ -60,7 +60,11 @@ KEModel >> atCompartment: anObject [
 	key
 		at: #status
 		ifPresent: [ (key at: #status) = #empty
-				ifTrue: [ ^ self atParameter: #N ] ].
+				ifTrue: [ "^ self atParameter: #N"
+					|subpopulation|
+					subpopulation := Dictionary newFrom: (self currentCompartment).
+					subpopulation removeKey: #status.
+					^ self sizeOfPopulation: (subpopulation values) ] ].
 	c := self attributes keys reject: [ :a | key keys includes: a ].
 	c isEmpty
 		ifTrue: [ ^ self population sizeOfACompartment: key ]

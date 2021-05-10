@@ -35,6 +35,41 @@ KETransitionTest >> testEvaluateProbability [
 ]
 
 { #category : #tests }
+KETransitionTest >> testEvaluateProbabilityOfBirthTransition [
+	| tr model prob rate |
+	model := KEModel new.
+	model attributes: {(#status -> #(S I R))}.
+	model atCompartment: {(#status -> #S)} put: 99999 atOthersPut: 0.
+	model atCompartment: {(#status -> #I)} put: 1.
+	model addParameter:  (#mu -> 0.001).
+	tr := KETransition from: {#status -> #empty} to: {#status -> #S} probability: [ :m | (m atParameter: #mu) ].
+	
+	prob := tr probability value: model.
+	model currentCompartment: tr to.
+	rate := prob * (model atCompartment: tr from).
+	self assert: prob equals: 0.001.
+	self assert: rate equals: 100.
+]
+
+{ #category : #tests }
+KETransitionTest >> testEvaluateProbabilityOfBirthTransition2 [
+	| tr model prob rate |
+	model := KEModel new.
+	model attributes: { #status->#(S I R). #region->#(A B C) }.
+	model atCompartment: { #status->#S. #region->#A } put: 99999 atOthersPut: 0.
+	model atCompartment: { #status->#I. #region->#A } put: 1.
+	model addParameter:  (#mu -> 0.001).
+	
+	tr := KETransition from: {#status -> #empty. #region->#A} to: {#status -> #S. #region->#A} probability: [ :m | (m atParameter: #mu) ].
+	
+	prob := tr probability value: model.
+	model currentCompartment: tr to.
+	rate := prob * (model atCompartment: tr from).
+	self assert: prob equals: 0.001.
+	self assert: rate equals: 100.
+]
+
+{ #category : #tests }
 KETransitionTest >> testExecuteTransition [
 	| tr model |
 	tr := KETransition from: {#status -> #S} to: {#status -> #I} probability: [ :f :t :m | (m atParameter: #beta) * f * t ].

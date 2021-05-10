@@ -33,6 +33,21 @@ KEPopulationTest >> testRemoveIndividual [
 ]
 
 { #category : #tests }
+KEPopulationTest >> testSizeOfPopulation [
+	|model|
+	model := KEModel new.
+	model attributes: { #status->#(S I R). #region->#(A B C) }.
+	"model initializeCompartments."
+	model atCompartment: { #status->#S. #region->#A } put: 99999 atOthersPut: 0.
+	model atCompartment: { #status->#I. #region->#A } put: 1.
+	
+	self assert: (model population size) equals: 100000.
+	self assert: (model population sizeOfPopulation: {#A}) equals: 100000.
+	self assert: (model population sizeOfPopulation: {#A. #S}) equals: 99999.
+	self assert: (model population sizeOfPopulation: {#S}) equals: 99999.
+]
+
+{ #category : #tests }
 KEPopulationTest >> testSizeOfPopulationIsTheSameThanTheSumOfItsCompartment [
 	| model compartmentSSize compartmentISize compartmentRSize |
 	model := KEModel new attributes:{#status -> #(#S #I #R)}.

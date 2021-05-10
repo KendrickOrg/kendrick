@@ -363,6 +363,23 @@ KEModelTest >> testSizeOfEachCompartmentSizeOfSIRModel [
 ]
 
 { #category : #tests }
+KEModelTest >> testSizeOfPopulation [
+	|model subpopulation dict|
+	model := KEModel new.
+	model attributes: { #status->#(S I R). #region->#(A B C) }.
+	model atCompartment: { #status->#S. #region->#A } put: 99999 atOthersPut: 0.
+	model atCompartment: { #status->#I. #region->#A } put: 1.
+	
+	model currentCompartment: { #status->#I. #region->#A }.
+	dict := Dictionary newFrom: (model currentCompartment).
+	dict removeKey: #status.
+	subpopulation := dict values.
+	
+	self assert: subpopulation equals: { #A }.
+	self assert: (model sizeOfPopulation: subpopulation) equals: 100000.
+]
+
+{ #category : #tests }
 KEModelTest >> testVerifyNumberOfEquationsOfSumOfTwoConcerns [
 
 	| model model1 multiHostConcern |

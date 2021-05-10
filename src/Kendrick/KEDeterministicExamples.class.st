@@ -972,12 +972,12 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRMultiHostModel [
 			c = #reservoir2
 				ifTrue: [ val := 0.05 ].
 			val ].
-	model
+	"model
 		atParameter: #N
 		assignValue: [ :aModel | 
 			| c |
 			c := aModel currentCompartment at: #species.
-			aModel sizeOfPopulation: c ].
+			aModel sizeOfPopulation: c ]."
 	model
 		addParameter: #rho
 		value: [ :aModel | 
