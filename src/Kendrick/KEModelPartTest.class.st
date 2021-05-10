@@ -141,7 +141,7 @@ KEModelPartTest >> testGenerateTransitionsFromAnd [
 { #category : #tests }
 KEModelPartTest >> testSplitStatus [
 	| twoStrains |
-	twoStrains := KEModelPart extends: sirConcern.
+	twoStrains := sirConcern copy.
 	twoStrains
 		splitStatus:
 			{#(I).

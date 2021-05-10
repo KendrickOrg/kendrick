@@ -26,19 +26,19 @@ Class {
 	#category : #'Kendrick-Core'
 }
 
+{ #category : #copying }
+KEModelPart class >> copy: aConcern [
+	|c|
+	c := KEModelPart new.
+	c clones: aConcern.
+	^ c
+]
+
 { #category : #'as yet unclassified' }
 KEModelPart class >> dependOn: aConcern [
 	|c|
 	c := KEDependentModelPart new.
 	c attributes: aConcern attributes.
-	^ c
-]
-
-{ #category : #'as yet unclassified' }
-KEModelPart class >> extends: aConcern [
-	|c|
-	c := KEModelPart new.
-	c clones: aConcern.
 	^ c
 ]
 
