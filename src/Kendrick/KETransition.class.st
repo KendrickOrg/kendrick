@@ -52,6 +52,7 @@ KETransition >> from: aCompartment [
 
 	| reader |
 	aCompartment isDictionary ifTrue: [ ^ from := aCompartment ].
+	aCompartment = #empty ifTrue: [ ^ self from: { #status -> #empty } ].
 	aCompartment isArray ifTrue: [ 
 		^ from := Dictionary newFrom: aCompartment ].
 	(reader := STONReader on: aCompartment readStream) 
@@ -98,6 +99,7 @@ KETransition >> to: aCompartment [
 
 	| reader |
 	aCompartment isDictionary ifTrue: [ ^ to := aCompartment ].
+	aCompartment = #empty ifTrue: [ ^ self to: { #status -> #empty } ].
 	aCompartment isArray ifTrue: [ 
 		^ to := Dictionary newFrom: aCompartment ].
 	(reader := STONReader on: aCompartment readStream) 
