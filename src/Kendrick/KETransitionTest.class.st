@@ -50,3 +50,12 @@ KETransitionTest >> testExecuteTransition [
 	self assert: (model atCompartment: {(#status -> #S)}) equals: 9999.
 	self assert: (model atCompartment: {(#status -> #I)}) equals: 2
 ]
+
+{ #category : #tests }
+KETransitionTest >> testFromAsString [
+	| aTransition from to|
+	from := '{#status: #S}'.
+	to := '{#status: #I}'.
+	aTransition := KETransition from: from to: to probability: [ :f :t :m | (m atParameter: #beta) * f * t ].
+	self assert: aTransition asString equals: 'From: {#status->#S} To: {#status->#I}'
+]
