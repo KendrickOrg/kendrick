@@ -31,7 +31,9 @@ Class {
 	#instVars : [
 		'population',
 		'concerns',
-		't'
+		't',
+		'name',
+		'modelName'
 	],
 	#category : #'Kendrick-Core'
 }
@@ -184,6 +186,16 @@ KEModel >> integrate: aConcern [
 	"Need to reinitialize the compartments because integrate: change the compartments"
 	"If we have a tensor sums between 2 models that generate a new model should not be necessary anymore"
 	self initializeCompartments 
+]
+
+{ #category : #modelName }
+KEModel >> modelName [
+	^ modelName
+]
+
+{ #category : #'name:' }
+KEModel >> modelName: aString [ 
+	modelName := aString
 ]
 
 { #category : #accessing }
