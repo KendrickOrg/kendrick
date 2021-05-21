@@ -41,6 +41,30 @@ TensorRank2Test >> testHadamardProductWithDifferentShapes [
 ]
 
 { #category : #tests }
+TensorRank2Test >> testKroneckerProduct [
+|t1 t2|
+ t1 := TensorRank2 rows: #( #( 1 2 ) #( 3 1 )).
+ t2 := TensorRank2 rows: #( #( 0 3 ) #( 2 1 )).
+ self assert: (t1 kronockerProduct: t2) equals: (TensorRank2 rows:#( #( 0 3 0 6 ) #( 2 1 4 2 ) #( 0 9 0 3 ) #( 6 3 2 1 ) ))
+]
+
+{ #category : #tests }
+TensorRank2Test >> testOrdinaryProduct [
+|t1 t2|
+ t1 := TensorRank2 rows: #( #( 1 2 ) #( 3 4 )).
+ t2 := TensorRank2 rows: #( #( 4 3 ) #( 2 5 )).
+ self assert: (t1 ordinaryProductMatrix: t2) equals: (TensorRank2 rows:#( #( 8 13 ) #( 20 29 ) ))
+]
+
+{ #category : #tests }
+TensorRank2Test >> testOrdinaryProductWithTheNumberOFLineOfFirstTensorIsEqualsOfNumberOfColumnToSecondTensor [
+|t1 t2|
+ t1 := TensorRank2 rows: #( #( 1 2) #(3 4) #(5 6) ).
+ t2 := TensorRank2 rows: #( #( 4 3 2) #( 9 7 6) ).
+ self should: [t1 ordinaryProductMatrix: t2] raise: ShapeMismatch 
+]
+
+{ #category : #tests }
 TensorRank2Test >> testShape [
 
 	| t |
