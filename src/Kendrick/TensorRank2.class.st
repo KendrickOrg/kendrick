@@ -17,6 +17,35 @@ TensorRank2 class >> rows: anArray [
 			  (anArray at: 1) size }
 ]
 
+{ #category : #'instance creation' }
+TensorRank2 class >> zerosWithShape: aShape [
+
+	^ self new
+		  array: (Array new: aShape first * aShape second withAll:0)
+		  withShape: aShape
+]
+
+{ #category : #operations }
+TensorRank2 >> * aTensor [
+
+	(self checkProductMatrixSize: aTensor)
+		ifTrue: [ 
+			| t |
+			t := self class zerosWithShape: { 
+					     self numberOfLines.
+					     aTensor numberOfColumns }.
+
+			1 to: self numberOfLines do: [ :i | 
+				1 to: aTensor numberOfColumns do: [ :j | 
+					t
+						set: { i. j }
+						value:
+							((1 to: self numberOfColumns) inject: 0 into: [ :sum :k | 
+								 (self get: { i. k }) * (aTensor get: { k. j }) + sum ]) ] ].
+			^ t ]
+		ifFalse: [ ShapeMismatch signal ]
+]
+
 { #category : #comparing }
 TensorRank2 >> = aTensorRank2 [
 
@@ -34,6 +63,12 @@ TensorRank2 >> array: aFlatArray withShape: aShape [
 	shape := aShape
 ]
 
+{ #category : #'as yet unclassified' }
+TensorRank2 >> checkProductMatrixSize: aTensorRank2 [
+
+	^ self numberOfColumns = aTensorRank2 numberOfLines
+]
+
 { #category : #accessing }
 TensorRank2 >> get: coords [
 	| row column |
@@ -42,11 +77,11 @@ TensorRank2 >> get: coords [
 	^ array at: (row - 1) * (shape second) + column
 ]
 
-{ #category : #operation }
+{ #category : #operations }
 TensorRank2 >> hadamardProduct: aTensorRank2 [
 	(self hasSameShapeAs: aTensorRank2)
 	ifTrue:[
-		^ TensorRank2 new array: ((self array) with: (aTensorRank2 array) collect:[:a :b| a*b])
+		^ self class new array: ((self array) with: (aTensorRank2 array) collect:[:a :b| a*b])
 		withShape: self shape.
 		]
 	ifFalse:[ShapeMismatch signal ]
@@ -55,6 +90,25 @@ TensorRank2 >> hadamardProduct: aTensorRank2 [
 { #category : #testing }
 TensorRank2 >> hasSameShapeAs: aTensorRank2 [ 
 	^ self shape = aTensorRank2 shape
+]
+
+{ #category : #accessing }
+TensorRank2 >> numberOfColumns [
+	^ shape second
+]
+
+{ #category : #delegating }
+TensorRank2 >> numberOfLines [
+	^ shape first
+]
+
+{ #category : #accessing }
+TensorRank2 >> set: coords value: aValue [
+
+	| row column |
+	row := coords first.
+	column := coords second.
+	array at: row - 1 * shape second + column put: aValue
 ]
 
 { #category : #accessing }
