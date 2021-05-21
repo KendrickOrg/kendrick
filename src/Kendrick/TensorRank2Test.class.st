@@ -25,6 +25,20 @@ TensorRank2Test >> testCreateTensor [
 ]
 
 { #category : #tests }
+TensorRank2Test >> testCreateTensorFilledWithZeros [
+
+	| t |
+	t := TensorRank2 zerosWithShape: #( 10 10 ).
+	1 to: t numberOfColumns do: [ :i | 
+		1 to: t numberOfLines do: [ :j | 
+			self
+				assert: (t get: { 
+							 i.
+							 j })
+				equals: 0 ] ]
+]
+
+{ #category : #tests }
 TensorRank2Test >> testHadamardProduct [
 |t1 t2|
  t1 := TensorRank2 rows: #( #( 1 2 3 4 ) #( 5 6 7 8 ) ).
@@ -51,17 +65,20 @@ TensorRank2Test >> testKroneckerProduct [
 { #category : #tests }
 TensorRank2Test >> testOrdinaryProduct [
 |t1 t2|
- t1 := TensorRank2 rows: #( #( 1 2 ) #( 3 4 )).
- t2 := TensorRank2 rows: #( #( 4 3 ) #( 2 5 )).
- self assert: (t1 ordinaryProductMatrix: t2) equals: (TensorRank2 rows:#( #( 8 13 ) #( 20 29 ) ))
+ t1 := TensorRank2 rows: #( #( 1 2 )
+									#( 3 4 )).
+ t2 := TensorRank2 rows: #( #( 4 3 )
+									#( 2 5 )).
+ self assert: (t1 * t2) equals: (TensorRank2 rows:#( #( 8 13 ) #( 20 29 ) ))
 ]
 
 { #category : #tests }
 TensorRank2Test >> testOrdinaryProductWithTheNumberOFLineOfFirstTensorIsEqualsOfNumberOfColumnToSecondTensor [
-|t1 t2|
- t1 := TensorRank2 rows: #( #( 1 2) #(3 4) #(5 6) ).
- t2 := TensorRank2 rows: #( #( 4 3 2) #( 9 7 6) ).
- self should: [t1 ordinaryProductMatrix: t2] raise: ShapeMismatch 
+
+	| t1 t2 |
+	t1 := TensorRank2 rows: #( #( 1 2 ) #( 3 4 ) #( 5 6 ) ).
+	t2 := TensorRank2 rows: #( #( 4 3 2 ) #( 9 7 6 ) #(10 11 12)).
+	self should: [ t1 * t2 ] raise: ShapeMismatch
 ]
 
 { #category : #tests }
