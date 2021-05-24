@@ -92,6 +92,30 @@ TensorRank2 >> hasSameShapeAs: aTensorRank2 [
 	^ self shape = aTensorRank2 shape
 ]
 
+{ #category : #'as yet unclassified' }
+TensorRank2 >> kroneckerProduct: aTensor [
+
+			| t |
+			t := self class zerosWithShape: { 
+					     ((self numberOfLines) * (aTensor numberOfLines)).
+					     ((self numberOfColumns) * (aTensor numberOfColumns)) }.
+
+			1 to: self numberOfLines  do: [ :i | 
+				1 to: aTensor numberOfLines do: [ :k | 
+					1 to: self numberOfColumns do: [ :j | 
+						1 to: aTensor numberOfColumns do: [ :l |
+							t
+							set: { i*j. k*l}
+							value:   
+								((self get: { j. l }) * (aTensor get: { i. k }))  
+																	 ]
+															  ]
+															]
+														].
+											   ^ t 
+		
+]
+
 { #category : #accessing }
 TensorRank2 >> numberOfColumns [
 	^ shape second
