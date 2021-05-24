@@ -59,7 +59,7 @@ TensorRank2Test >> testKroneckerProduct [
 |t1 t2|
  t1 := TensorRank2 rows: #( #( 1 2 ) #( 3 1 )).
  t2 := TensorRank2 rows: #( #( 0 3 ) #( 2 1 )).
- self assert: (t1 kronockerProduct: t2) equals: (TensorRank2 rows:#( #( 0 3 0 6 ) #( 2 1 4 2 ) #( 0 9 0 3 ) #( 6 3 2 1 ) ))
+ self assert: (t1 kroneckerProduct: t2) equals: (TensorRank2 rows:#( #( 0 3 0 6 ) #( 2 1 4 2 ) #( 0 9 0 3 ) #( 6 3 2 1 ) ))
 ]
 
 { #category : #tests }
