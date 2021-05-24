@@ -57,9 +57,28 @@ TensorRank2Test >> testHadamardProductWithDifferentShapes [
 { #category : #tests }
 TensorRank2Test >> testKroneckerProduct [
 |t1 t2|
- t1 := TensorRank2 rows: #( #( 1 2 ) #( 3 1 )).
- t2 := TensorRank2 rows: #( #( 0 3 ) #( 2 1 )).
- self assert: (t1 kroneckerProduct: t2) equals: (TensorRank2 rows:#( #( 0 3 0 6 ) #( 2 1 4 2 ) #( 0 9 0 3 ) #( 6 3 2 1 ) ))
+ t1 := TensorRank2 rows: #( #( 1 2 )
+									#( 3 1 )).
+ t2 := TensorRank2 rows: #( #( 1 3 )
+									#( 2 1 )).
+ self assert: (t1 kroneckerProduct: t2) equals: (TensorRank2 rows:#(
+																		#( 1 3 2 6 ) 
+																		#( 2 1 4 2 )
+																		#( 3 9 1 3 )
+																		#( 6 3 2 1 ) )).
+ t1 := TensorRank2 rows: #( #( 1 2)
+									#(3 4)
+								  #( 1 0 )).
+ t2 := TensorRank2 rows: #( #( 0 5 2 )
+									#( 6 7 3)).
+ self assert: (t1 kroneckerProduct: t2) equals: (TensorRank2 rows:#(
+																		#( 0 5 2 0 10 4) 
+																		#( 6 7 3 12 14 6)
+																		#( 0 15 6 0 20 8)
+																		#( 18 21 9 24 28 12)
+																		#( 0 5 2 0 0 0)
+																		#( 6 7 3 0 0 0 )
+																		 ))
 ]
 
 { #category : #tests }

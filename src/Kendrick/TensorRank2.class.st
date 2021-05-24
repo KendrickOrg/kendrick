@@ -100,20 +100,17 @@ TensorRank2 >> kroneckerProduct: aTensor [
 					     ((self numberOfLines) * (aTensor numberOfLines)).
 					     ((self numberOfColumns) * (aTensor numberOfColumns)) }.
 
-			1 to: self numberOfLines  do: [ :i | 
-				1 to: aTensor numberOfLines do: [ :k | 
-					1 to: self numberOfColumns do: [ :j | 
-						1 to: aTensor numberOfColumns do: [ :l |
-							t
-							set: { i*j. k*l}
-							value:   
-								((self get: { j. l }) * (aTensor get: { i. k }))  
-																	 ]
-															  ]
+			1 to: self numberOfLines  do: [ :i1 | 
+				1 to: self numberOfColumns do: [ :j1 |
+					1 to: aTensor numberOfLines  do: [ :i2 | 
+						1 to: aTensor numberOfColumns do: [ :j2 |
+															t set: { (i1-1)*(aTensor numberOfLines)+i2. (j1-1)*(aTensor numberOfColumns)+j2 } 
+															 value: (self get:{i1. j1})* (aTensor get:{ i2.j2 })
 															]
-														].
-											   ^ t 
-		
+														]
+													]
+												].
+											^t
 ]
 
 { #category : #accessing }
