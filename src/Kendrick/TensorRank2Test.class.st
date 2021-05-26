@@ -101,6 +101,14 @@ TensorRank2Test >> testOrdinaryProductWithTheNumberOFLineOfFirstTensorIsEqualsOf
 ]
 
 { #category : #tests }
+TensorRank2Test >> testReShape [
+
+	| t |
+	t := TensorRank2 rows: #(#(0 1) #(2 3) #(4 5)).
+	self assert: (t reshape: #(2 3)) equals: (TensorRank2 rows:#(#(0 1 2) #(3 4 5)))
+]
+
+{ #category : #tests }
 TensorRank2Test >> testShape [
 
 	| t |
