@@ -124,6 +124,12 @@ TensorRank2 >> numberOfLines [
 ]
 
 { #category : #accessing }
+TensorRank2 >> reshape: aNewShape [
+
+shape := aNewShape 
+]
+
+{ #category : #accessing }
 TensorRank2 >> set: coords value: aValue [
 
 	| row column |
