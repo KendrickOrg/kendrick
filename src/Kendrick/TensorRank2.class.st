@@ -70,6 +70,12 @@ TensorRank2 >> checkProductMatrixSize: aTensorRank2 [
 ]
 
 { #category : #accessing }
+TensorRank2 >> checkReshapeIsPossibleWith: aNewShape [
+
+	^ (shape first * shape second) = ((aNewShape first) * (aNewShape second))
+]
+
+{ #category : #accessing }
 TensorRank2 >> get: coords [
 	| row column |
 	row := coords first.
@@ -126,7 +132,9 @@ TensorRank2 >> numberOfLines [
 { #category : #accessing }
 TensorRank2 >> reshape: aNewShape [
 
-shape := aNewShape 
+	(self checkReshapeIsPossibleWith: aNewShape)
+		ifTrue: [ shape := aNewShape ]
+		ifFalse: [ ShapeMismatch signal ]
 ]
 
 { #category : #accessing }

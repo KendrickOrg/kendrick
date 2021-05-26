@@ -109,6 +109,16 @@ TensorRank2Test >> testReShape [
 ]
 
 { #category : #tests }
+TensorRank2Test >> testReShapeNotPossible [
+
+	| t |
+	t := TensorRank2 rows: #( #( 0 1 ) #( 2 3 ) #( 4 5 ) ).
+	self
+		should: [t reshape: #( 5 3 )]
+		raise: ShapeMismatch 
+]
+
+{ #category : #tests }
 TensorRank2Test >> testShape [
 
 	| t |
