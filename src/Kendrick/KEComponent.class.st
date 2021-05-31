@@ -145,8 +145,7 @@ KEComponent >> compartmentNames [
 { #category : #accessing }
 KEComponent >> equations [
 
-	equations ifEmpty: [ 
-		  self transitionsToEquations].
+"	equations ifEmpty: [ self transitionsToEquations ]."
 	^ equations
 ]
 

@@ -26,7 +26,45 @@ KEDeterministicSimulator >> algorithm: aSymbol [
 { #category : #public }
 KEDeterministicSimulator >> executeOn: aModel [
 
-	"Ask a model its equations then solve them with an ODE solver"
+	"Allows to switch between models built from equations and models built from transitions
+	Temporary method, will be superceed by only the methods on KEEquations"
+
+aModel equations isEmpty
+		ifFalse: [ self executeOnWithKEEquations: aModel ]
+		ifTrue: [ self executeOnWithTransitions: aModel ]
+]
+
+{ #category : #SergeStinckwich }
+KEDeterministicSimulator >> executeOnWithKEEquations: aModel [
+
+	"Suppose that aModel is built from equations
+	Ask a model its equations then solve them with an ODE solver"
+
+	| keys values system |
+	super executeOn: aModel.
+	equations := model equations.
+	system := PMExplicitSystem block: [ :v :t | 
+		          equations collect: [ :each | 
+			          each evaluateWithModel: aModel ] ].
+	self stepper: (self algorithm onSystem: system).
+	keys := equations collect: [ :each | #status -> each variable symbol ].
+	values := keys collect: [ :each | 
+		          model population compartments at: (Dictionary with: each) ].
+	(tMin to: tMax by: step) do: [ :t | 
+		self saveCompartmentsValueAtTime: t.
+		model t: t.
+		values := stepper doStep: values time: t stepSize: step.
+		keys doWithIndex: [ :each :i | 
+			model population compartments
+				at: (Dictionary with: each)
+				put: (values at: i) ] ]
+]
+
+{ #category : #public }
+KEDeterministicSimulator >> executeOnWithTransitions: aModel [
+
+	"Suppose aModel is built from transitions
+	Ask a model its equations then solve them with an ODE solver"
 
 	| st ks system c |
 	super executeOn: aModel.
@@ -73,31 +111,6 @@ KEDeterministicSimulator >> executeOn: aModel [
 		st := stepper doStep: st time: t stepSize: step.
 		1 to: ks size do: [ :i | 
 		model population compartments at: (ks at: i) put: (st at: i) ] ]
-]
-
-{ #category : #SergeStinckwich }
-KEDeterministicSimulator >> executeOnWithKEEquations: aModel [
-
-	"Ask a model its equations then solve them with an ODE solver"
-
-	| keys values system |
-	super executeOn: aModel.
-	equations := model equations.
-	system := PMExplicitSystem block: [ :v :t | 
-		          equations collect: [ :each | 
-			          each evaluateWithModel: aModel ] ].
-	self stepper: (self algorithm onSystem: system).
-	keys := equations collect: [ :each | #status -> each variable symbol ].
-	values := keys collect: [ :each | 
-		          model population compartments at: (Dictionary with: each) ].
-	(tMin to: tMax by: step) do: [ :t | 
-		self saveCompartmentsValueAtTime: t.
-		model t: t.
-		values := stepper doStep: values time: t stepSize: step.
-		keys doWithIndex: [ :each :i | 
-			model population compartments
-				at: (Dictionary with: each)
-				put: (values at: i) ] ]
 ]
 
 { #category : #accessing }
