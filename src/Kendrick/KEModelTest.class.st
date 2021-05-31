@@ -377,6 +377,7 @@ KEModelTest >> testVerifyNumberOfEquationsOfSumOfTwoConcerns [
 	model := KEModel new.
 	model integrate: model1.
 	model integrate: multiHostConcern.
+	model transitionsToEquations.
 	self assert: model equations size equals: 6
 ]
 
