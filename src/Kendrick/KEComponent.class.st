@@ -265,12 +265,15 @@ KEComponent >> transitions: aTransitionList [
 KEComponent >> transitionsToEquations [
 
 	"Return the suitable Dictionary for KESimulatorDeterministic in order to solve the equations.
-	This method should be merge with equations method in the same class: issue #40
-	Seems to returns a Dictionary with keys are dictionary and values are orderedCollection ..."
+	This method should be merged with equations method in the same class: issue #40
+	Seems to return a Dictionary with keys are dictionary and values are orderedCollection ..."
 
 	| eq |
 	eq := Dictionary new.
+	
+	"Initialized for each compartment, an empty equation"
 	self compartmentNames do: [ :k | eq at: k put: OrderedCollection new ].
+	
 	self transitions do: [ :tr | 
 		((tr from at: #status) ~= #empty and: [ 
 			 (tr to at: #status) ~= #empty ]) ifTrue: [ 
