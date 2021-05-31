@@ -80,26 +80,24 @@ KEDeterministicSimulator >> executeOnWithKEEquations: aModel [
 
 	"Ask a model its equations then solve them with an ODE solver"
 
-	| st ks system result |
+	| keys values system |
 	super executeOn: aModel.
 	equations := model equations.
 	system := PMExplicitSystem block: [ :v :t | 
-					 result := equations collect: [ :each |each evaluateWithModel: aModel ].
-					result
-		].
-
+		          equations collect: [ :each | 
+			          each evaluateWithModel: aModel ] ].
 	self stepper: (self algorithm onSystem: system).
-	st := model population compartments values.
-	ks := model population compartments keys.
-	
+	keys := equations collect: [ :each | #status -> each variable symbol ].
+	values := keys collect: [ :each | 
+		          model population compartments at: (Dictionary with: each) ].
 	(tMin to: tMax by: step) do: [ :t | 
 		self saveCompartmentsValueAtTime: t.
 		model t: t.
-		st := stepper doStep: st time: t stepSize: step.
-		self halt.
-		1 to: ks size do: [ :i | 
-			self halt.
-		model population compartments at: (ks at: i) put: (st at: i) ] ]
+		values := stepper doStep: values time: t stepSize: step.
+		keys doWithIndex: [ :each :i | 
+			model population compartments
+				at: (Dictionary with: each)
+				put: (values at: i) ] ]
 ]
 
 { #category : #accessing }
