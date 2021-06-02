@@ -173,20 +173,20 @@ KEModelTest >> testAttributes [
 
 { #category : #tests }
 KEModelTest >> testCompartmentNames [
+
 	| model |
-	model := KEModel new
-		attributes:
-			{(#status -> #(#S #I #R)).
-			(#species -> #(#mosquito #reservoir1 #reservoir2))}.
-	self assert: model compartmentNames size equals: 9.
-	self assert: model compartmentNames first size equals: 2
+	model := KEModel new attributes: { 
+			         (#status -> #( #S #I #R )).
+			         (#species -> #( #mosquito #reservoir1 #reservoir2 )) }.
+	self assert: model finestCompartmentNames size equals: 9.
+	self assert: model finestCompartmentNames first size equals: 2
 ]
 
 { #category : #tests }
 KEModelTest >> testEmptyModelHasNoCompartmentNames [
 	| model |
 	model := KEModel new.
-	self assert: model compartmentNames isEmpty
+	self assert: model finestCompartmentNames isEmpty
 ]
 
 { #category : #tests }
@@ -284,7 +284,7 @@ KEModelTest >> testIntegrate [
 	self should: ((model parameters size)  >= 3).
 	self assert: (model transitions size) equals: 2.
 	self assert: (model attributes size) equals: 1.
-	self assert: (model compartmentNames size) equals: 3.  
+	self assert: (model finestCompartmentNames size) equals: 3.  
 ]
 
 { #category : #tests }
@@ -312,10 +312,11 @@ KEModelTest >> testModelWithTwoCompartmentsOfSizeNineAneOneHasATotalSizeOfTen [
 
 { #category : #tests }
 KEModelTest >> testNumberOfEquationsOfModelIsCorrect [
+
 	| model |
 	model := KEModel new.
 	model
-		attributes: {(#status -> #(#S #I #R))};
+		attributes: { (#status -> #( #S #I #R )) };
 		addEquation: 'S:t=-beta*S*I';
 		addEquation: 'I:t=beta*S*I - gamma*I';
 		addEquation: 'R:t=gamma*I'.
@@ -324,21 +325,19 @@ KEModelTest >> testNumberOfEquationsOfModelIsCorrect [
 
 { #category : #tests }
 KEModelTest >> testSIRModelBasedOnTransitionsHasThreeEquations [
+
 	<expectedFailure>
 	| model |
 	model := KEModel new.
-	model
-		addTransition:
-			(KETransition
-				from: {(#status -> #S)}
-				to: {(#status -> #I)}
-				probability: 'beta*S*I' parseAsAnExpression).
-	model
-		addTransition:
-			(KETransition
-				from: {(#status -> #I)}
-				to: {(#status -> #R)}
-				probability: 'gamma*I' parseAsAnExpression).
+	model addTransition: (KETransition
+			 from: { (#status -> #S) }
+			 to: { (#status -> #I) }
+			 probability: 'beta*S*I' parseAsAnExpression).
+	model addTransition: (KETransition
+			 from: { (#status -> #I) }
+			 to: { (#status -> #R) }
+			 probability: 'gamma*I' parseAsAnExpression).
+			model transitionsToEquations.
 	self assert: model equations size equals: 3
 ]
 
@@ -346,7 +345,7 @@ KEModelTest >> testSIRModelBasedOnTransitionsHasThreeEquations [
 KEModelTest >> testSIRModelHasThreeCompartments [
 	| model |
 	model := KEModel new attributes: {(#status -> #(#S #I #R))}.
-	self assert: model compartmentNames size equals: 3
+	self assert: model finestCompartmentNames size equals: 3
 ]
 
 { #category : #tests }
