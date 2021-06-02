@@ -76,32 +76,28 @@ KEModel >> atCompartment: anObject [
 
 { #category : #accessing }
 KEModel >> atCompartment: keyInput put: number [
+
 	| key |
-	keyInput isDictionary | keyInput isSymbol
-		ifTrue: [ key := keyInput ].
-	keyInput isArray
-		ifTrue: [ key := Dictionary newFrom: keyInput ].
-	population compartments
-		at: key
-		ifAbsent: [(self finestCompartmentNames includes: key)
-				ifFalse: [ ^ self error: 'No compartment names: ' , key asString ].
-		 ].
-		population compartments at:key put: number.
-	
+	keyInput isDictionary | keyInput isSymbol ifTrue: [
+		"Apparently we arrive here only from atCompartment:  put:  atOthersPut:"
+		"This typechecking should be removed !" 
+		key := keyInput ].
+	keyInput isArray ifTrue: [ key := Dictionary newFrom: keyInput ].
+	population compartments at: key ifAbsent: [ 
+		(self finestCompartmentNames includes: key) ifFalse: [ 
+			^ self error: 'No compartment names: ' , key asString ] ].
+	population compartments at: key put: number
 ]
 
 { #category : #accessing }
 KEModel >> atCompartment: keyInput put: aNumber1 atOthersPut: aNumber2 [
+
 	| key |
-	keyInput isDictionary | keyInput isSymbol
-		ifTrue: [ key := keyInput ].
-	keyInput isArray
-		ifTrue: [ key := Dictionary newFrom: keyInput ].
-		self finestCompartmentNames 
-		do: [ :k | 
-			k = key
-				ifTrue: [ self atCompartment: k put: aNumber1 ]
-				ifFalse: [ self atCompartment: k put: aNumber2 ] ]
+	key := Dictionary newFrom: keyInput.
+	self finestCompartmentNames do: [ :k | 
+		k = key
+			ifTrue: [ self atCompartment: k put: aNumber1 ]
+			ifFalse: [ self atCompartment: k put: aNumber2 ] ]
 ]
 
 { #category : #parameters }
