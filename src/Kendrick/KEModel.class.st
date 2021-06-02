@@ -31,7 +31,9 @@ Class {
 	#instVars : [
 		'population',
 		'concerns',
-		't'
+		't',
+		'name',
+		'modelName'
 	],
 	#category : #'Kendrick-Core'
 }
@@ -74,32 +76,28 @@ KEModel >> atCompartment: anObject [
 
 { #category : #accessing }
 KEModel >> atCompartment: keyInput put: number [
+
 	| key |
-	keyInput isDictionary | keyInput isSymbol
-		ifTrue: [ key := keyInput ].
-	keyInput isArray
-		ifTrue: [ key := Dictionary newFrom: keyInput ].
-	population compartments
-		at: key
-		ifAbsent: [(self compartmentNames includes: key)
-				ifFalse: [ ^ self error: 'No compartment names: ' , key asString ].
-		 ].
-		population compartments at:key put: number.
-	
+	keyInput isDictionary | keyInput isSymbol ifTrue: [
+		"Apparently we arrive here only from atCompartment:  put:  atOthersPut:"
+		"This typechecking should be removed !" 
+		key := keyInput ].
+	keyInput isArray ifTrue: [ key := Dictionary newFrom: keyInput ].
+	population compartments at: key ifAbsent: [ 
+		(self finestCompartmentNames includes: key) ifFalse: [ 
+			^ self error: 'No compartment names: ' , key asString ] ].
+	population compartments at: key put: number
 ]
 
 { #category : #accessing }
 KEModel >> atCompartment: keyInput put: aNumber1 atOthersPut: aNumber2 [
+
 	| key |
-	keyInput isDictionary | keyInput isSymbol
-		ifTrue: [ key := keyInput ].
-	keyInput isArray
-		ifTrue: [ key := Dictionary newFrom: keyInput ].
-		self compartmentNames 
-		do: [ :k | 
-			k = key
-				ifTrue: [ self atCompartment: k put: aNumber1 ]
-				ifFalse: [ self atCompartment: k put: aNumber2 ] ]
+	key := Dictionary newFrom: keyInput.
+	self finestCompartmentNames do: [ :k | 
+		k = key
+			ifTrue: [ self atCompartment: k put: aNumber1 ]
+			ifFalse: [ self atCompartment: k put: aNumber2 ] ]
 ]
 
 { #category : #parameters }
@@ -115,6 +113,13 @@ KEModel >> atParameter: aSymbol [
 KEModel >> atParameter: aSymbol assignValue: value [
 	self addParameter: aSymbol value: value 
 	
+]
+
+{ #category : #'as yet unclassified' }
+KEModel >> attributeFromValue: aString [
+
+	^ attributes keysDo: [ :key | 
+		 ( (attributes at: key) includes: aString) ifTrue: [ ^ key ] ]
 ]
 
 { #category : #accessing }
@@ -168,7 +173,7 @@ KEModel >> initializeCompartments [
 	"Initialize compartments with cardinalities at 0"
 
 	population compartments: (Dictionary
-		newFrom: (self compartmentNames collect: [ :c | c -> 0 ]))
+		newFrom: (self finestCompartmentNames collect: [ :c | c -> 0 ]))
 ]
 
 { #category : #accessing }
@@ -184,6 +189,16 @@ KEModel >> integrate: aConcern [
 	"Need to reinitialize the compartments because integrate: change the compartments"
 	"If we have a tensor sums between 2 models that generate a new model should not be necessary anymore"
 	self initializeCompartments 
+]
+
+{ #category : #modelName }
+KEModel >> modelName [
+	^ modelName
+]
+
+{ #category : #'name:' }
+KEModel >> modelName: aString [ 
+	modelName := aString
 ]
 
 { #category : #accessing }

@@ -831,32 +831,36 @@ KEDeterministicExamples >> exampleRK4SolverOnSIRModelWithLogVisualisationInRoass
 
 { #category : #'as yet unclassified' }
 KEDeterministicExamples >> exampleRK4SolverOnSIRModelWithRoassal3 [
+
 	"self new exampleRK4SolverOnSIRModelWithRoassal3"
+
 	<gtExample>
 	<subjectClass: #KEDeterministicExamples>
 	| model simulator chart |
 	model := KEModel new.
-	model addAttribute: #status value: #(#S #I #R).
-	model atCompartment: {(#status -> #S)} put: 0.7 atOthersPut: 0.
-	model atCompartment: {(#status -> #I)} put: 0.3.
-	model
-		addParameters:
-			{(#beta -> 1.4247).
-			(#gamma -> 0.14286)}.
+	model addAttribute: #status value: #( #S #I #R ).
+	model atCompartment: { (#status -> #S) } put: 0.7 atOthersPut: 0.
+	model atCompartment: { (#status -> #I) } put: 0.3.
+	model addParameters: { 
+			(#beta -> 1.4247).
+			(#gamma -> 0.14286) }.
 	model addEquation: 'S:t=-beta*S*I'.
 	model addEquation: 'I:t=beta*S*I - gamma*I'.
 	model addEquation: 'R:t=gamma*I'.
 	simulator := KESimulator
-		new: #RungeKutta
-		from: 0.0
-		to: 70
-		step: 0.1.
-	simulator executeOn: model.
+		             new: #RungeKutta
+		             from: 0.0
+		             to: 70
+		             step: 0.1.
+	simulator executeOnWithKEEquations: model.
 	chart := KEChart new
-		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #S)});
-		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)});
-		addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
-	chart plot 
+		         addDataFrame:
+			         (simulator timeSeriesOutputsAt: { (#status -> #S) });
+		         addDataFrame:
+			         (simulator timeSeriesOutputsAt: { (#status -> #I) });
+		         addDataFrame:
+			         (simulator timeSeriesOutputsAt: { (#status -> #R) }).
+	chart plot
 ]
 
 { #category : #'as yet unclassified' }

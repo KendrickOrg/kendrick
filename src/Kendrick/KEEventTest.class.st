@@ -33,29 +33,26 @@ KEEventTest >> testCreateAnEventThatRemoveAnIndividualFromStatusS [
 
 { #category : #tests }
 KEEventTest >> testEventsNumberOfTheSumfTwoConcernsAreTheProductOfTheirEventsNumber [
-<expectedFailure>
+
 	| model model1 multiHostConcern |
 	model1 := KEModelPart new.
-	model1
-		addTransition:
-			(KETransition
-				from: {(#status -> #S)}
-				to: {(#status -> #I)}
-				probability: 'beta*S*I' parseAsAnExpression).
-	model1
-		addTransition:
-			(KETransition
-				from: {(#status -> #I)}
-				to: {(#status -> #R)}
-				probability: 'gamma*I' parseAsAnExpression).
+	model1 addTransition: (KETransition
+			 from: { (#status -> #S) }
+			 to: { (#status -> #I) }
+			 probability: 'beta*S*I' parseAsAnExpression).
+	model1 addTransition: (KETransition
+			 from: { (#status -> #I) }
+			 to: { (#status -> #R) }
+			 probability: 'gamma*I' parseAsAnExpression).
 	multiHostConcern := KEModelPart new.
-	multiHostConcern addAttribute: #species value: #(#human #bird).
+	multiHostConcern addAttribute: #species value: #( #human #bird ).
 	model := KEModel new.
 	model integrate: model1.
 	model integrate: multiHostConcern.
 	self
 		assert: model generateEvents size
-		equals: model1 generateEvents size * multiHostConcern generateEvents size
+		equals:
+		model1 generateEvents size * multiHostConcern generateEvents size
 ]
 
 { #category : #tests }

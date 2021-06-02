@@ -116,37 +116,9 @@ KEComponent >> changeParameter: aSymbol value: aNumericalOrAnExpressionOrABlock 
 ]
 
 { #category : #accessing }
-KEComponent >> compartmentNames [
-	"Return an Array containing Dictionaries ...
-	What a mess !!!
-	The array is built only by doing a cross-product of attributes.
-	We should do that built using the compartments of the model instead.
-	"
-
-	| names expand keys |
-	names := OrderedCollection new.
-	self attributes
-		keysDo: [ :e | names add: ((self atAttribute: e) collect: [ :v | e -> v ]) ].
-	expand := [ :prefix :list | 
-	list isEmpty
-		ifTrue: [ Array with: prefix ]
-		ifFalse: [ | tail |
-			tail := list allButFirst: 1.
-			list first
-				inject: #()
-				into:
-					[ :all :each | all , (expand value: (prefix copyWith: each) value: tail) ] ] ].
-	keys := expand value: #() value: names.
-	keys = #(#())
-		ifTrue: [ keys := #() ].
-	^ keys collect: [ :e | Dictionary newFrom: e ]
-]
-
-{ #category : #accessing }
 KEComponent >> equations [
 
-	equations ifEmpty: [ 
-		  self transitionsToEquations].
+"	equations ifEmpty: [ self transitionsToEquations ]."
 	^ equations
 ]
 
@@ -170,6 +142,34 @@ KEComponent >> equationsToTransitions [
 
 	"Why initializing equations at the end?"
 	equations := OrderedCollection new
+]
+
+{ #category : #accessing }
+KEComponent >> finestCompartmentNames [
+
+	"Return the compartments names at the finest granularity"
+	"Return an Array containing Dictionaries ...
+	What a mess !!!
+	The array is built only by doing a cross-product of attributes.
+	We should do that built using the compartments of the model instead.
+	"
+
+	| names expand keys |
+	names := OrderedCollection new.
+	self attributes keysDo: [ :e | 
+		names add: ((self atAttribute: e) collect: [ :v | e -> v ]) ].
+	expand := [ :prefix :list | 
+	          list isEmpty
+		          ifTrue: [ Array with: prefix ]
+		          ifFalse: [ 
+			          | tail |
+			          tail := list allButFirst: 1.
+			          list first inject: #(  ) into: [ :all :each | 
+				          all
+				          , (expand value: (prefix copyWith: each) value: tail) ] ] ].
+	keys := expand value: #(  ) value: names.
+	keys = #( #(  ) ) ifTrue: [ keys := #(  ) ].
+	^ keys collect: [ :e | Dictionary newFrom: e ]
 ]
 
 { #category : #'generating events' }
@@ -205,10 +205,10 @@ KEComponent >> initialize [
 { #category : #initialization }
 KEComponent >> initializeTransitionsWithZeroRate [
 
-		self compartmentNames
+		self finestCompartmentNames
 				do: [ :e | 
 					transitions
-						addAll: (self compartmentNames collect: [ :f | KETransition from: e to: f probability: 0 ]) ]
+						addAll: (self finestCompartmentNames collect: [ :f | KETransition from: e to: f probability: 0 ]) ]
 ]
 
 { #category : #'generating events' }
@@ -265,12 +265,15 @@ KEComponent >> transitions: aTransitionList [
 KEComponent >> transitionsToEquations [
 
 	"Return the suitable Dictionary for KESimulatorDeterministic in order to solve the equations.
-	This method should be merge with equations method in the same class: issue #40
-	Seems to returns a Dictionary with keys are dictionary and values are orderedCollection ..."
+	This method should be merged with equations method in the same class: issue #40
+	Seems to return a Dictionary with keys are dictionary and values are orderedCollection ..."
 
 	| eq |
 	eq := Dictionary new.
-	self compartmentNames do: [ :k | eq at: k put: OrderedCollection new ].
+	
+	"Initialized for each compartment, an empty equation"
+	self finestCompartmentNames do: [ :k | eq at: k put: OrderedCollection new ].
+	
 	self transitions do: [ :tr | 
 		((tr from at: #status) ~= #empty and: [ 
 			 (tr to at: #status) ~= #empty ]) ifTrue: [ 
