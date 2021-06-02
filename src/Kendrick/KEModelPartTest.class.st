@@ -85,10 +85,10 @@ KEModelPartTest >> testAttributes [
 KEModelPartTest >> testCompartmentNames [
 	|concern|
 	concern := KEModelPart new.
-	self assert: (concern compartmentNames size) equals: 0.
+	self assert: (concern finestCompartmentNames size) equals: 0.
 	concern addAttribute: #species value: #(#mosquito #reservoir1 #reservoir2).
-	self assert: (concern compartmentNames size) equals: 3.
-	self assert: (concern compartmentNames first size) equals: 1
+	self assert: (concern finestCompartmentNames size) equals: 3.
+	self assert: (concern finestCompartmentNames first size) equals: 1
 ]
 
 { #category : #tests }
@@ -103,30 +103,52 @@ KEModelPartTest >> testEquationsToTransitions [
 
 { #category : #tests }
 KEModelPartTest >> testGenerateTensorSum [
-	|concern model|
+
+	| concern model |
 	concern := KEModelPart new.
-	concern addAttribute: #status value: #(S I R).
+	concern addAttribute: #status value: #( S I R ).
 	model := KEModel new.
 	"model addAttribute: #species value: #(mosquito reservoir1 reservoir2)."
-	concern addTransitionFrom: { #status->#S } to: { #status->#I } probability: [ :aModel| (aModel atParameter: #beta) * (aModel atCompartment: {#status->#I})].
-	concern addTransitionFrom: { #status->#I } to: { #status->#R } probability: [ :aModel| (aModel atParameter: #gamma)].
+	concern
+		addTransitionFrom: { (#status -> #S) }
+		to: { (#status -> #I) }
+		probability: [ :aModel | 
+			(aModel atParameter: #beta)
+			* (aModel atCompartment: { (#status -> #I) }) ].
+	concern
+		addTransitionFrom: { (#status -> #I) }
+		to: { (#status -> #R) }
+		probability: [ :aModel | aModel atParameter: #gamma ].
 	self assert: model transitions size equals: 0.
-	self assert: (concern generateTensorSum: model transitions) size equals: 2.
-	
+	self
+		assert: (concern generateTensorSum: model transitions) size
+		equals: 2
 ]
 
 { #category : #tests }
 KEModelPartTest >> testGenerateTensorSum2 [
-	|concern model|
+
+	| concern model |
 	concern := KEModelPart new.
-	concern addAttribute: #status value: #(S I R).
+	concern addAttribute: #status value: #( S I R ).
 	model := KEModel new.
-	model addAttribute: #species value: #(mosquito reservoir1 reservoir2).
-	concern addTransitionFrom: { #status->#S } to: { #status->#I } probability: [ :aModel| (aModel atParameter: #beta) * (aModel atCompartment: {#status->#I})].
-	concern addTransitionFrom: { #status->#I } to: { #status->#R } probability: [ :aModel| (aModel atParameter: #gamma)].
+	model
+		addAttribute: #species
+		value: #( mosquito reservoir1 reservoir2 ).
+	concern
+		addTransitionFrom: { (#status -> #S) }
+		to: { (#status -> #I) }
+		probability: [ :aModel | 
+			(aModel atParameter: #beta)
+			* (aModel atCompartment: { (#status -> #I) }) ].
+	concern
+		addTransitionFrom: { (#status -> #I) }
+		to: { (#status -> #R) }
+		probability: [ :aModel | aModel atParameter: #gamma ].
 	self assert: model transitions size equals: 9.
-	self assert: (concern generateTensorSum: model transitions) size equals: 6
-	
+	self
+		assert: (concern generateTensorSum: model transitions) size
+		equals: 6
 ]
 
 { #category : #tests }
