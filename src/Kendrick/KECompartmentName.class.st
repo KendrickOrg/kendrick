@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'fullName'
 	],
-	#category : #'Kendrick-Tests-Core'
+	#category : #'Kendrick-Core'
 }
 
 { #category : #accessing }
