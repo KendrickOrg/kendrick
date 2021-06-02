@@ -160,6 +160,20 @@ KEModelTest >> testAtParameterAssignValue [
 ]
 
 { #category : #tests }
+KEModelTest >> testAttributeFromValue [
+
+	| aModel |
+	aModel := KEModel new.
+	aModel attributes: { 
+			(#status -> #( #S #I #R )).
+			(#species -> #( human bird )) }.
+
+	self assert: (aModel attributeFromValue: #S) equals: #status.
+	self assert: (aModel attributeFromValue: #I) equals: #status.
+	self assert: (aModel attributeFromValue: #R) equals: #status
+]
+
+{ #category : #tests }
 KEModelTest >> testAttributes [
 	|model|
 	model := KEModel new.
