@@ -83,7 +83,7 @@ KEModel >> atCompartment: keyInput put: number [
 		ifTrue: [ key := Dictionary newFrom: keyInput ].
 	population compartments
 		at: key
-		ifAbsent: [(self compartmentNames includes: key)
+		ifAbsent: [(self finestCompartmentNames includes: key)
 				ifFalse: [ ^ self error: 'No compartment names: ' , key asString ].
 		 ].
 		population compartments at:key put: number.
@@ -97,7 +97,7 @@ KEModel >> atCompartment: keyInput put: aNumber1 atOthersPut: aNumber2 [
 		ifTrue: [ key := keyInput ].
 	keyInput isArray
 		ifTrue: [ key := Dictionary newFrom: keyInput ].
-		self compartmentNames 
+		self finestCompartmentNames 
 		do: [ :k | 
 			k = key
 				ifTrue: [ self atCompartment: k put: aNumber1 ]
@@ -117,6 +117,13 @@ KEModel >> atParameter: aSymbol [
 KEModel >> atParameter: aSymbol assignValue: value [
 	self addParameter: aSymbol value: value 
 	
+]
+
+{ #category : #'as yet unclassified' }
+KEModel >> attributeFromValue: aString [
+
+	^ attributes keysDo: [ :key | 
+		 ( (attributes at: key) includes: aString) ifTrue: [ ^ key ] ]
 ]
 
 { #category : #accessing }
@@ -170,7 +177,7 @@ KEModel >> initializeCompartments [
 	"Initialize compartments with cardinalities at 0"
 
 	population compartments: (Dictionary
-		newFrom: (self compartmentNames collect: [ :c | c -> 0 ]))
+		newFrom: (self finestCompartmentNames collect: [ :c | c -> 0 ]))
 ]
 
 { #category : #accessing }
