@@ -92,11 +92,14 @@ KEComponent >> attributes [
 ]
 
 { #category : #modifying }
-KEComponent >> attributes: inputArray [
-	"Input array is an array of associations like {#status->#(#S #I #R). #age->#(#child #adult)}
-	Should be deprecated because we should be able to add only one attributes. Multiple attributes are set when we sum multiple concerns."
+KEComponent >> attributes: attributesArray [
 
-	attributes := Dictionary newFrom: inputArray
+	"attributesArray is an array of associations like {#status->#(#S #I #R). #age->#(#child #adult)}"
+
+	(self
+		duplicateValues: attributesArray)
+		ifTrue: [ self error: 'Attributes are duplicated.' ]
+		ifFalse: [ attributes := Dictionary newFrom: attributesArray ]
 ]
 
 { #category : #parameters }
@@ -113,6 +116,15 @@ KEComponent >> changeParameter: aSymbol value: aNumericalOrAnExpressionOrABlock 
 	].
 ].
 	parameters at: aSymbol put: (KEParameter new symbol: aSymbol; expression: expression)
+]
+
+{ #category : #modifying }
+KEComponent >> duplicateValues: anArrayOfAssociations [
+
+	| values |
+	values := (anArrayOfAssociations collect:
+		          [ :each | each value ]) flatten.
+	^ (values asSet size) ~~ (values size)
 ]
 
 { #category : #accessing }
