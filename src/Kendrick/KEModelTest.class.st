@@ -170,7 +170,8 @@ KEModelTest >> testAttributeFromValue [
 
 	self assert: (aModel attributeFromValue: #S) equals: #status.
 	self assert: (aModel attributeFromValue: #I) equals: #status.
-	self assert: (aModel attributeFromValue: #R) equals: #status
+	self assert: (aModel attributeFromValue: #R) equals: #status.
+	self should: [ aModel attributeFromValue: #U ] raise: Error
 ]
 
 { #category : #tests }
@@ -194,6 +195,19 @@ KEModelTest >> testCompartmentNames [
 			         (#species -> #( #mosquito #reservoir1 #reservoir2 )) }.
 	self assert: model finestCompartmentNames size equals: 9.
 	self assert: model finestCompartmentNames first size equals: 2
+]
+
+{ #category : #tests }
+KEModelTest >> testCompartmentShouldExist [
+
+	| model |
+	model := KEModel new.
+	model attributes: { 
+			(#status -> #( S I R )).
+			(#region -> #( A B C )) }.
+	model populationCardinality: 300.
+	model cardinalityOf: { #S } setWith: 300.
+	self should: [ model cardinalityOf: { #U } ] raise: Error
 ]
 
 { #category : #tests }
@@ -299,6 +313,19 @@ KEModelTest >> testIntegrate [
 	self assert: (model transitions size) equals: 2.
 	self assert: (model attributes size) equals: 1.
 	self assert: (model finestCompartmentNames size) equals: 3.  
+]
+
+{ #category : #tests }
+KEModelTest >> testMissingPopCardinality [
+
+	| model |
+	model := KEModel new.
+	model attributes: { 
+			(#status -> #( S I R )).
+			(#region -> #( A B C D )) }.
+
+	self should:[model cardinalityOf: { #S }] raise:Error.
+
 ]
 
 { #category : #tests }

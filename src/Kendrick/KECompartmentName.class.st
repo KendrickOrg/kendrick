@@ -10,12 +10,19 @@ Class {
 { #category : #'as yet unclassified' }
 KECompartmentName >> = aKECompartmentName [
 
-	^ self fullName = aKECompartmentName fullName
+	self fullName with: aKECompartmentName fullName do: [ :e1 :e2 | 
+		e1 = e2 ifFalse: [ ^ false ] ].
+	^ true
 ]
 
 { #category : #accessing }
 KECompartmentName >> fullName [
 	^ fullName
+]
+
+{ #category : #'as yet unclassified' }
+KECompartmentName >> hash [ 
+^ fullName hash
 ]
 
 { #category : #'as yet unclassified' }
