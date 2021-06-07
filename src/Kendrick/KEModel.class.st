@@ -275,12 +275,12 @@ KEModel >> population: aPopulation [
 	population := aPopulation
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 KEModel >> populationCardinality [
 	^ populationCardinality 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 KEModel >> populationCardinality: aNumber [
 
 populationCardinality := aNumber
@@ -318,7 +318,7 @@ KEModel >> t: aNumber [
 	t := aNumber
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 KEModel >> visualize [
 		
 	|graph c nodes edges|

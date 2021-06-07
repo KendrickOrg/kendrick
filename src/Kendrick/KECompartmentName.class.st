@@ -7,7 +7,7 @@ Class {
 	#category : #'Kendrick-Core'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #comparing }
 KECompartmentName >> = aKECompartmentName [
 
 	self fullName with: aKECompartmentName fullName do: [ :e1 :e2 | 
@@ -20,7 +20,7 @@ KECompartmentName >> fullName [
 	^ fullName
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #comparing }
 KECompartmentName >> hash [ 
 ^ fullName hash
 ]
