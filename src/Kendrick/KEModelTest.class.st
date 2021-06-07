@@ -90,7 +90,7 @@ KEModelTest >> testAtAttribute [
 ]
 
 { #category : #tests }
-KEModelTest >> testAtCompartment [
+KEModelTest >> testAtCompartmentOld [
 	|model compartment|
 	model := KEModel new.
 	model attributes: { #status->#(S I R). #region->#(A B C) }.
@@ -100,7 +100,7 @@ KEModelTest >> testAtCompartment [
 ]
 
 { #category : #tests }
-KEModelTest >> testAtCompartment2 [
+KEModelTest >> testAtCompartmentOld2 [
 	|model |
 	model := KEModel new.
 	model attributes: { #status->#(S I R). #region->#(A B C) }.
