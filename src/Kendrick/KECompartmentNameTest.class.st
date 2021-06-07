@@ -86,7 +86,7 @@ KECompartmentNameTest >> testSameValuesShouldRaiseError [
 		should: [ 
 			aModel attributes: { 
 					(#status -> #( S I R )).
-					(#species -> #( S I R )) } ]
+					(#species -> #( S A B )) } ]
 		raise: Error.
 	self
 		should: [ 
