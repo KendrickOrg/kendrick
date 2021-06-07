@@ -33,7 +33,9 @@ Class {
 		'concerns',
 		't',
 		'name',
-		'modelName'
+		'modelName',
+		'cardinalities',
+		'populationCardinality'
 	],
 	#category : #'Kendrick-Core'
 }
@@ -118,8 +120,45 @@ KEModel >> atParameter: aSymbol assignValue: value [
 { #category : #'as yet unclassified' }
 KEModel >> attributeFromValue: aString [
 
-	^ attributes keysDo: [ :key | 
-		 ( (attributes at: key) includes: aString) ifTrue: [ ^ key ] ]
+attributes keysDo: [ :key | 
+		  ((attributes at: key) includes: aString) ifTrue: [ ^ key ] ].
+self error: aString, ' is not a value for any attribute'
+]
+
+{ #category : #accessing }
+KEModel >> cardinalityOf: aSimpleCompartmentName [
+
+	"Replaces atCompartment:"
+
+	| compartmentName |
+	populationCardinality isNotNil
+	ifTrue:[
+	compartmentName := KECompartmentName new
+		                   simpleName: aSimpleCompartmentName
+		                   withModel: self.
+
+	^ self computeCardinalityFrom: compartmentName]
+ifFalse: [ self error:'Cardinality population should be defined first' ]
+]
+
+{ #category : #accessing }
+KEModel >> cardinalityOf: simpleCompartmentName setWith: number [
+
+	"Replaces atCompartment:put:"
+
+	| compartmentName |
+	compartmentName := KECompartmentName new
+		                   simpleName: simpleCompartmentName
+		                   withModel: self.
+	^ cardinalities at: compartmentName put: number
+]
+
+{ #category : #'as yet unclassified' }
+KEModel >> computeCardinalityFrom: aKECompartmentName [
+
+	(cardinalities includesKey: aKECompartmentName) ifTrue: [ 
+		^ cardinalities at: aKECompartmentName ]
+	ifFalse:[^0]
 ]
 
 { #category : #accessing }
@@ -160,12 +199,14 @@ KEModel >> gtInspectorViewInRoassal3: composite [
 
 { #category : #initialization }
 KEModel >> initialize [
+
 	super initialize.
 	t := 0.
 	self addParameter: #N value: [ :aModel | aModel population size ].
 	self addParameter: #t value: [ :aModel | aModel t ].
 	concerns := OrderedCollection new.
 	population := KEPopulation new.
+	cardinalities := Dictionary new.
 ]
 
 { #category : #initialization }
@@ -232,6 +273,17 @@ KEModel >> population [
 { #category : #accessing }
 KEModel >> population: aPopulation [
 	population := aPopulation
+]
+
+{ #category : #'as yet unclassified' }
+KEModel >> populationCardinality [
+	^ populationCardinality 
+]
+
+{ #category : #'as yet unclassified' }
+KEModel >> populationCardinality: aNumber [
+
+populationCardinality := aNumber
 ]
 
 { #category : #accessing }

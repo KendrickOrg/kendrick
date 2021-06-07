@@ -34,33 +34,39 @@ KECompartmentNameTest >> testCompartmentNames [
 { #category : #tests }
 KECompartmentNameTest >> testEqualityOfCompartmentNames [
 
-	| aModel c1 c2 |
+	| aModel c1 c2 d |
 	aModel := KEModel new.
 	aModel attributes: { 
 			(#status -> #( #S #I #R )).
 			(#species -> #( human bird )) }.
 
-	c1 := KECompartmentName new
-		      simpleName: { #S }
-		      withModel: aModel.
-	c2 := KECompartmentName new
-		      simpleName: { #S }
-		      withModel: aModel.
+	c1 := KECompartmentName new simpleName: { #S } withModel: aModel.
+	c2 := KECompartmentName new simpleName: { #S } withModel: aModel.
 
 	self assert: c1 equals: c2.
+	self assert: c2 equals: c1.
 
 	c1 := KECompartmentName new
-		      simpleName: { 
-				      #S.
-				      #human }
+		      simpleName: { #S. #human }
 		      withModel: aModel.
 	c2 := KECompartmentName new
-		      simpleName: { 
-				      #human.
-				      #S}
+		      simpleName: { #human. #S }
 		      withModel: aModel.
 
 	self assert: c1 equals: c2
+]
+
+{ #category : #tests }
+KECompartmentNameTest >> testInitializePopulationCardinality [
+
+	| model |
+	model := KEModel new.
+	model attributes: { 
+			(#status -> #( S I R )).
+			(#region -> #( A B C D )) }.
+	model populationCardinality: 100.
+
+	self assert: (model populationCardinality ) equals: 100
 ]
 
 { #category : #tests }
@@ -93,5 +99,20 @@ KECompartmentNameTest >> testSameValuesShouldRaiseError [
 			aModel attributes: { 
 					(#status -> #( S I R )).
 					(#species -> #( human human )) } ]
+		raise: Error
+]
+
+{ #category : #tests }
+KECompartmentNameTest >> testUnExistingValues [
+
+	| aModel |
+	aModel := KEModel new.
+	aModel attributes: { 
+			(#status -> #( #S #I #R )).
+			(#species -> #( human bird )) }.
+
+	self
+		should: [ 
+		KECompartmentName new simpleName: { #U } withModel: aModel ]
 		raise: Error
 ]
