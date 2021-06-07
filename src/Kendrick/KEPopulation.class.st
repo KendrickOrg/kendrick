@@ -29,8 +29,6 @@ Class {
 	#superclass : #KEEntity,
 	#instVars : [
 		'compartments',
-		'diedIndList',
-		'individuals',
 		'initialSize'
 	],
 	#category : #'Kendrick-Core'
@@ -42,20 +40,6 @@ KEPopulation class >> size: aNumber [
 	population := self new.
 	population initialSize: aNumber.
 	^ population
-]
-
-{ #category : #adding }
-KEPopulation >> addIndividual: ind [
-	(self diedIndList isEmpty) 
-	ifFalse: [ 
-		ind id: (self diedIndList removeFirst).
-		self individuals at: (ind id) put: ind
-		]
-	ifTrue: [  
-		ind id: (self individuals size + 1).
-		self individuals add: ind
-		].
-	
 ]
 
 { #category : #adding }
@@ -73,43 +57,9 @@ KEPopulation >> compartments: aDictionary [
 	aDictionary keysAndValuesDo: [ :k :v | compartments at: k put: v ]
 ]
 
-{ #category : #accessing }
-KEPopulation >> diedIndList [
-	diedIndList ifNil: [ diedIndList := OrderedCollection new ].
-	^ diedIndList 
-	
-]
-
-{ #category : #accessing }
-KEPopulation >> individuals [
-	individuals
-		ifNil: [ | n |
-			n := 0.
-			individuals := OrderedCollection new.
-			self compartments
-				keysAndValuesDo: [ :k :v | 
-					v timesRepeat: [ 
-						| ind |
-						ind := KEIndividual new.
-						n := n + 1.
-						ind updateAttributes: k.
-						ind currentStatus: k.
-						ind id: n.
-						individuals add: ind ] ] ].
-	^ individuals
-]
-
 { #category : #initialization }
 KEPopulation >> initialize [
 	compartments := Dictionary new
-]
-
-{ #category : #adding }
-KEPopulation >> removeIndividual: ind [
-	ind attributes at: #alive put: false.
-	self diedIndList add: ind id.
-	self individuals at: (ind id) put: ind.
-	
 ]
 
 { #category : #accessing }
@@ -156,11 +106,4 @@ KEPopulation >> sizeOfPopulation: array [
 	self compartments keysAndValuesDo: [ :k :v | 
 		(k values includesAll: array) ifTrue: [ c := c + v ] ].
 	^ c
-]
-
-{ #category : #adding }
-KEPopulation >> updateIndividual: ind [
-	ind updateAttributes: ind nextStatus.
-	ind currentStatus: ind nextStatus.
-	ind nextStatus: nil
 ]

@@ -1,6 +1,6 @@
 Class {
 	#name : #KEContactNetworkSimulator,
-	#superclass : #KEIndividualBasedSimulator,
+	#superclass : #KEStochasticSimulator,
 	#instVars : [
 		'network',
 		'tau',
