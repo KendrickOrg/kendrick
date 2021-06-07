@@ -25,7 +25,9 @@ KECompartmentName >> simpleName: anArrayOfStrings withModel: aKEModel [
 		            | attributeName |
 		            attributeName := aKEModel attributeFromValue: aString.
 		            attributeName -> aString ].
+	
 	"Save the names following the order of attributes"
+	"keys on Dictionary returns an array that follows their introduction in the dictionary"
 	fullName := fullName sorted: [ :x :y | 
 		            (aKEModel attributes keys indexOf: x key)
 		            <= (aKEModel attributes keys indexOf: y key) ]
