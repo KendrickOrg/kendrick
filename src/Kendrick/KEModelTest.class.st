@@ -5,6 +5,14 @@ Class {
 }
 
 { #category : #tests }
+KEModelTest >> testAModelHasAName [
+
+| m |
+m := KEModel new modelName:'SIR'.
+m assert: m modelName equals: 'SIR'
+]
+
+{ #category : #tests }
 KEModelTest >> testANewModelHasTwoParameters [
 	| model |
 	model := KEModel new.

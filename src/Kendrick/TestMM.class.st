@@ -44,14 +44,6 @@ TestMM >> testIIsConvergingToZero [
 ]
 
 { #category : #tests }
-TestMM >> testKEModelHasAName [
-
-| m |
-m := KEModel new modelName:'SIR'.
-m assert: m modelName equals: 'SIR'
-]
-
-{ #category : #tests }
 TestMM >> testRIsConvergingToOne [
 
 	"R is increasing"
