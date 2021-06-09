@@ -5,21 +5,6 @@ Class {
 }
 
 { #category : #tests }
-TensorTest >> testCreateTensor [
-
-	| t1 t2 |
-	t1 := Tensor rows: #( #( 1 2 3 4 ) 
-								#( 5 6 7 8 ) ).
-	self assert: t1 shape equals: #( 2 4 ).
-
-	t2 := Tensor rows: #( #( #( 1 1 ) #( 2 2 ) )
-								#( #( 3 3 ) #( 4 4 ) )
-		         				#( #( 4 4 ) #( 4 4 ) )
-								#( #( 4 4 ) #( 4 4 ) ) ).
-	self assert: t2 shape equals: #( 4 2 2 )
-]
-
-{ #category : #tests }
 TensorTest >> testGet [
 
 	| t1 t2 |
@@ -32,6 +17,17 @@ TensorTest >> testGet [
 		         			#( #( 9 10 ) #( 11 12 ) )
 							#( #( 13 14 ) #( 15 16 ) ) ).
 	self assert: (t2 get: #( 3 2 1 )) equals: 11
+]
+
+{ #category : #test }
+TensorTest >> testGetPosition [
+| t1 t2 |
+	t1 := Tensor rows: #( #( 1 2 3 4 ) #( 5 6 7 8 ) ).
+	self assert: (t1 getPosition:#(1 2)) equals: 2.
+
+	t2 := Tensor rows: #( #( #( 1 2 ) #( 3 4 ) ) #( #( 5 6 ) #( 7 8 ) )
+		         #( #( 9 10 ) #( 11 12 ) ) #( #( 13 14 ) #( 15 16 ) ) ).
+	self assert: (t2 getPosition:#(1 2 2)) equals: 4
 ]
 
 { #category : #tests }
@@ -48,7 +44,23 @@ TensorTest >> testRank [
 ]
 
 { #category : #tests }
-TensorTest >> testSet [
+TensorTest >> testRows [
+
+	| t1 t2 |
+	t1 := Tensor rows: #( #( 1 2 3 4 ) 
+								#( 5 6 7 8 ) ).
+	self assert: t1 class equals: Tensor.
+	
+	t2 := Tensor rows: #( #( #( 1 1 ) #( 2 2 ) )
+								#( #( 3 3 ) #( 4 4 ) )
+		         				#( #( 4 4 ) #( 4 4 ) )
+								#( #( 4 4 ) #( 4 4 ) ) ).
+	self assert: t2 class equals: Tensor.
+	
+]
+
+{ #category : #tests }
+TensorTest >> testSetValue [
 
 	| t1 t2 |
 	t1 := Tensor rows: #( #( 1 2 3 4 ) #( 5 6 7 8 ) ).
@@ -61,6 +73,21 @@ TensorTest >> testSet [
 							#( #( 13 14 ) #( 15 16 ) ) ).
 	t2 set: #( 2 2 1) value: 10.
 	self assert: (t2 get: #( 2 2 1 )) equals: 10
+]
+
+{ #category : #tests }
+TensorTest >> testShape [
+
+	| t1 t2 |
+	t1 := Tensor rows: #( #( 1 2 3 4 ) 
+								#( 5 6 7 8 ) ).
+	self assert: t1 shape equals: #( 2 4 ).
+
+	t2 := Tensor rows: #( #( #( 1 1 ) #( 2 2 ) )
+								#( #( 3 3 ) #( 4 4 ) )
+		         				#( #( 4 4 ) #( 4 4 ) )
+								#( #( 4 4 ) #( 4 4 ) ) ).
+	self assert: t2 shape equals: #( 4 2 2 )
 ]
 
 { #category : #tests }

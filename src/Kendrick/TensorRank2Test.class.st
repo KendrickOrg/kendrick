@@ -8,37 +8,6 @@ Class {
 }
 
 { #category : #tests }
-TensorRank2Test >> testCreateTensor [
-
-	| t1 t2|
-	t1 := TensorRank2 rows: #( #( 1 2 3 4 ) #( 5 6 7 8 ) ).
-	self assert: (t1 get: #(1 1)) equals: 1.
-	self assert: (t1 get: #(2 1)) equals: 5.
-	self assert: (t1 get: #(2 4)) equals: 8.
-	t2 := TensorRank2 rows: #( #( 1 2) #(3 4) #( 5 6) #(7 8 )).
-	self assert: (t2 get: #(1 1)) equals: 1.
-	self assert: (t2 get: #(2 1)) equals: 3.
-	self assert: (t2 get: #(4 2)) equals: 8.
-	
-	
-
-]
-
-{ #category : #tests }
-TensorRank2Test >> testCreateTensorFilledWithZeros [
-
-	| t |
-	t := TensorRank2 zerosWithShape: #( 10 10 ).
-	1 to: t numberOfColumns do: [ :i | 
-		1 to: t numberOfLines do: [ :j | 
-			self
-				assert: (t get: { 
-							 i.
-							 j })
-				equals: 0 ] ]
-]
-
-{ #category : #tests }
 TensorRank2Test >> testHadamardProduct [
 |t1 t2|
  t1 := TensorRank2 rows: #( #( 1 2 3 4 ) #( 5 6 7 8 ) ).
@@ -119,9 +88,40 @@ TensorRank2Test >> testReShapeNotPossible [
 ]
 
 { #category : #tests }
+TensorRank2Test >> testRows [
+
+	| t1 t2|
+	t1 := TensorRank2 rows: #( #( 1 2 3 4 ) #( 5 6 7 8 ) ).
+	self assert: (t1 get: #(1 1)) equals: 1.
+	self assert: (t1 get: #(2 1)) equals: 5.
+	self assert: (t1 get: #(2 4)) equals: 8.
+	t2 := TensorRank2 rows: #( #( 1 2) #(3 4) #( 5 6) #(7 8 )).
+	self assert: (t2 get: #(1 1)) equals: 1.
+	self assert: (t2 get: #(2 1)) equals: 3.
+	self assert: (t2 get: #(4 2)) equals: 8.
+	
+	
+
+]
+
+{ #category : #tests }
 TensorRank2Test >> testShape [
 
 	| t |
 	t := TensorRank2 rows: #( #( 1 2 3 4 ) #( 5 6 7 8 ) ).
 	self assert: t shape equals: #( 2 4 )
+]
+
+{ #category : #tests }
+TensorRank2Test >> testZerosWithShape [
+
+	| t |
+	t := TensorRank2 zerosWithShape: #( 10 10 ).
+	1 to: t numberOfColumns do: [ :i | 
+		1 to: t numberOfLines do: [ :j | 
+			self
+				assert: (t get: { 
+							 i.
+							 j })
+				equals: 0 ] ]
 ]
