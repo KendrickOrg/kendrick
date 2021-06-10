@@ -70,6 +70,33 @@ TensorRank2Test >> testOrdinaryProductWithTheNumberOFLineOfFirstTensorIsEqualsOf
 ]
 
 { #category : #tests }
+TensorRank2Test >> testOuterProduct [
+|t1 t2|
+ t1 := TensorRank2 rows: #( #( 1 2 ) 
+									 #( 3 1 ) ).
+ t2 := TensorRank2 rows: #( #( 1 3 ) 
+									#( 2 1 ) ).
+ self assert: (t1 outerProduct: t2) equals: (TensorRank2 rows:#( #( 1 3 2 1 ) 
+           																		#( 2 6 4 2 ) 
+																					#( 3 9 6 3 ) 
+																					#(1 3 2 1))).
+
+t1 := TensorRank2 rows: #( #( 1 2)
+									#(3 4)
+								  #( 1 0 )).
+ t2 := TensorRank2 rows: #( #( 0 5 2 )
+									#( 6 7 3)).
+ self assert: (t1 outerProduct: t2) equals: (TensorRank2 rows:#(
+																		#( 0 5 2 6 7 3) 
+																		#( 0 10 4 12 14 6)
+																		#( 0 15 6 18 21 9)
+																		#( 0 20 8 24 28 12)
+																		#( 0 5 2 6 7 3)
+																		#( 0 0 0 0 0 0 )
+																		 ))
+]
+
+{ #category : #tests }
 TensorRank2Test >> testReShape [
 
 	| t |
