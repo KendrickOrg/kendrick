@@ -129,6 +129,27 @@ TensorRank2 >> numberOfLines [
 	^ shape first
 ]
 
+{ #category : #'as yet unclassified' }
+TensorRank2 >> outerProduct: aTensor [
+
+			| t |
+			t := self class zerosWithShape: { 
+					     ((self numberOfLines) * (aTensor numberOfLines)).
+					     ((self numberOfColumns) * (aTensor numberOfColumns)) }.
+
+			1 to: self numberOfLines  do: [ :i1 | 
+				1 to: self numberOfColumns do: [ :j1 |
+					1 to: aTensor numberOfLines  do: [ :i2 | 
+						1 to: aTensor numberOfColumns do: [ :j2 |
+															t set: { (i1-1)*(aTensor numberOfLines)+i2. (j1-1)*(aTensor numberOfColumns)+j2 } 
+															 value: (self get:{i1. i2}) * (aTensor get:{ j1. j2 })
+															]
+														]
+													]
+												].
+											^t
+]
+
 { #category : #accessing }
 TensorRank2 >> reshape: aNewShape [
 
