@@ -5,6 +5,20 @@ Class {
 }
 
 { #category : #tests }
+TensorTest >> testCreateScalarTensor [
+
+	| s |
+	s := Tensor newWith: 2.
+	self assert: (s get: #(  )) equals: 2.
+	self should: [ s get: #( 1 1 ) ] raise: Error.
+	self assert: s rank equals: 0.
+	s set: #(  ) value: 1.
+	self assert: (s get: #(  )) equals: 1.
+	self assert: s shape equals: #(  ).
+	self assert: s size equals: 1
+]
+
+{ #category : #tests }
 TensorTest >> testGet [
 
 	| t1 t2 |
