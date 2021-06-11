@@ -1,6 +1,6 @@
 Class {
 	#name : #KECompartmentName,
-	#superclass : #Object,
+	#superclass : #KEEntity,
 	#instVars : [
 		'fullName'
 	],
