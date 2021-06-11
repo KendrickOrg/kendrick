@@ -9,6 +9,12 @@ Class {
 }
 
 { #category : #'instance creation' }
+Tensor class >> newWith: anInteger [
+
+	^ self new array: {anInteger} withShape: #(  )
+]
+
+{ #category : #'instance creation' }
 Tensor class >> rows: anArray [
 
 	^ self new array: anArray flattened withShape: (self shape:anArray)
