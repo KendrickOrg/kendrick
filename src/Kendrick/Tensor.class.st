@@ -50,7 +50,7 @@ Tensor >> array: aFlatArray withShape: aShape [
 	array := aFlatArray.
 	shape := aShape.
 	self updateFirst.
-	self updateStrides
+	shape ifNotEmpty: [ self updateStrides]
 ]
 
 { #category : #accessing }
