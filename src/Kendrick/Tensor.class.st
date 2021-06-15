@@ -3,7 +3,9 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'array',
-		'shape'
+		'shape',
+		'first',
+		'strides'
 	],
 	#category : #'Kendrick-Tensor'
 }
@@ -30,11 +32,30 @@ ifTrue:[
 
 ]
 
+{ #category : #'as yet unclassified' }
+Tensor >> = aTensor [
+
+	^ array = aTensor array & (first = aTensor first)
+	  & (strides = aTensor strides) & (shape = aTensor shape)
+]
+
+{ #category : #accessing }
+Tensor >> array [ 
+^array
+]
+
 { #category : #accessing }
 Tensor >> array: aFlatArray withShape: aShape [
 
 	array := aFlatArray.
-	shape := aShape
+	shape := aShape.
+	self updateFirst.
+	self updateStrides
+]
+
+{ #category : #accessing }
+Tensor >> first [ 
+^first
 ]
 
 { #category : #accessing }
@@ -51,13 +72,22 @@ Tensor >> getPosition: coords [
 	| position |
 	position := 1.
 	coords withIndexDo: [ :elt :i | 
-		position := elt - 1 * (self sizeAtDepth: i) + position ].
+		position := elt - 1 * (strides at: i) + position ].
 	^ position
 ]
 
 { #category : #accessing }
 Tensor >> rank [
 	^ shape size
+]
+
+{ #category : #accessing }
+Tensor >> reshape: aNewShape [
+
+	shape := aNewShape.
+	self updateStrides.
+	self updateFirst 
+	
 ]
 
 { #category : #accessing }
@@ -90,4 +120,24 @@ Tensor >> sizeAtDepth: depth [
 	depth + 1 to: self rank do: [ :i | 
 			product := (shape at: i) * product ].
 	^ product
+]
+
+{ #category : #accessing }
+Tensor >> strides [ 
+^strides 
+]
+
+{ #category : #accessing }
+Tensor >> updateFirst [
+
+	first := Array new: shape size withAll: 1
+]
+
+{ #category : #accessing }
+Tensor >> updateStrides [
+
+	strides := Array new: shape size.
+	strides at: shape size put: 1.
+	((shape size -1) to: 1 by: -1) do: [ :i | 
+		strides at: i put: ((strides at: i + 1) * (shape at: i+1))]
 ]

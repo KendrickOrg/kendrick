@@ -5,6 +5,20 @@ Class {
 }
 
 { #category : #tests }
+TensorTest >> testArray [
+
+	| t1 t2 |
+	t1 := Tensor rows: #( #( 1 2 3 4 ) #( 5 6 7 8 ) ).
+	self assert: t1 array equals: #( 1 2 3 4 5 6 7 8 ).
+
+	t2 := Tensor rows: #( #( #( 1 2 ) #( 3 4 ) ) #( #( 5 6 ) #( 7 8 ) )
+		         #( #( 9 10 ) #( 11 12 ) ) #( #( 13 14 ) #( 15 16 ) ) ).
+	self
+		assert: t2 array
+		equals: #( 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 )
+]
+
+{ #category : #tests }
 TensorTest >> testCreateScalarTensor [
 
 	| s |
@@ -19,11 +33,20 @@ TensorTest >> testCreateScalarTensor [
 ]
 
 { #category : #tests }
+TensorTest >> testFirst [
+
+	| a b |
+	a := Tensor rows: (1 to: 6) asArray.
+	self assert: a first equals: #( 1).
+	b := a reshape: #( 3 2 ).
+	self assert: b first equals: #( 1 1 )
+]
+
+{ #category : #tests }
 TensorTest >> testGet [
 
 	| t1 t2 |
 	t1 := Tensor rows: #( #( 1 2 3 4 ) #( 5 6 7 8 ) ).
-
 	self assert: (t1 get: #( 2 2 )) equals: 6.
 
 	t2 := Tensor rows: #( #( #( 1 2 ) #( 3 4 ) )
@@ -55,6 +78,16 @@ TensorTest >> testRank [
 	t2 := Tensor rows: #( #( #( 1 2 ) #( 3 4 ) ) #( #( 5 6 ) #( 7 8 ) )
 		         #( #( 9 10 ) #( 11 12 ) ) #( #( 13 14 ) #( 15 16 ) ) ).
 	self assert: t2 rank equals: 3
+]
+
+{ #category : #tests }
+TensorTest >> testReshape [
+
+	| t |
+	t := Tensor rows: #( #( 0 1 ) #( 2 3 ) #( 4 5 ) ).
+	self
+		assert: (t reshape: #( 2 3 ))
+		equals: (Tensor rows: #( #( 0 1 2 ) #( 3 4 5 ) ))
 ]
 
 { #category : #tests }
@@ -137,4 +170,16 @@ TensorTest >> testSizeAtDepthError [
 	| t1 |
 	t1 := Tensor rows: #( #( 1 2 3 4 ) #( 5 6 7 8 ) ).
 	self should: [t1 sizeAtDepth: 3] raise: SubscriptOutOfBounds
+]
+
+{ #category : #tests }
+TensorTest >> testStrides [
+
+	| a b |
+	a := Tensor rows: (1 to: 6) asArray.
+	self assert: a strides equals: #(1).
+	b := a reshape: #(3 2).
+	self assert: b strides equals: #(2 1).
+	
+	
 ]
