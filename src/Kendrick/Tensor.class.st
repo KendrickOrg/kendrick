@@ -48,7 +48,7 @@ Tensor >> array [
 Tensor >> array: aFlatArray withShape: aShape [
 
 	array := aFlatArray.
-	shape := aShape.
+	shape := aShape copy.
 	self updateFirst.
 	shape ifNotEmpty: [ self updateStrides]
 ]
@@ -84,10 +84,8 @@ Tensor >> rank [
 { #category : #accessing }
 Tensor >> reshape: aNewShape [
 
-	shape := aNewShape.
-	self updateStrides.
-	self updateFirst 
-	
+	^ self viewWithShape: aNewShape.
+
 ]
 
 { #category : #accessing }
@@ -112,17 +110,6 @@ Tensor >> size [
 ]
 
 { #category : #accessing }
-Tensor >> sizeAtDepth: depth [
-
-	| product |
-	depth > self rank ifTrue:[SubscriptOutOfBounds signal].
-	product := 1.
-	depth + 1 to: self rank do: [ :i | 
-			product := (shape at: i) * product ].
-	^ product
-]
-
-{ #category : #accessing }
 Tensor >> strides [ 
 ^strides 
 ]
@@ -140,4 +127,19 @@ Tensor >> updateStrides [
 	strides at: shape size put: 1.
 	((shape size -1) to: 1 by: -1) do: [ :i | 
 		strides at: i put: ((strides at: i + 1) * (shape at: i+1))]
+]
+
+{ #category : #'as yet unclassified' }
+Tensor >> view [
+
+	"Share only the array"
+
+	^ self viewWithShape: shape
+]
+
+{ #category : #accessing }
+Tensor >> viewWithShape: aNewShape [
+
+	^ Tensor new array: self array withShape: aNewShape
+
 ]
