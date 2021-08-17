@@ -42,6 +42,15 @@ KEModelPart class >> dependOn: aConcern [
 	^ c
 ]
 
+{ #category : #operators }
+KEModelPart >> + anotherConcern [
+
+|model|
+model := KEModel new.
+model integrate: self.
+model integrate: anotherConcern.^ model
+]
+
 { #category : #parameters }
 KEModelPart >> addParameter: aSymbol [
 	"Apparently this is possible to have parameter with un-initialized value in KEModelPart (concern) but not for KEModel"
