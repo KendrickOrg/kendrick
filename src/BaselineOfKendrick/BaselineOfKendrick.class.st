@@ -1,3 +1,10 @@
+"
+In Kendrick, we have the following dependencies:
+
+- PolyMath in order to use the differential equation solver, n-array and RNGs
+- DataFrame in order to use tabular data: Kendrick simulations generate DataFrame that we can export as CSV or Excel files,
+- MooseAlgo is use to generate random graphs like Barabasi, etc ...
+"
 Class {
 	#name : #BaselineOfKendrick,
 	#superclass : #BaselineOf,
