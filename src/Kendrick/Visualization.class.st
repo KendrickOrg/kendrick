@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'simulation',
 		'xLabel',
+		'yLabel',
 		'diag',
 		'builder',
 		'explicitDataSet',
@@ -327,4 +328,10 @@ Visualization >> with: aBuilder [
 Visualization >> xLabel: aString [
 
 	xLabel := aString
+]
+
+{ #category : #accessing }
+Visualization >> yLabel: aString [
+
+	diag yLabel: aString
 ]
