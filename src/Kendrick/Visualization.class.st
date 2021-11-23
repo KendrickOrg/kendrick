@@ -61,7 +61,7 @@ Visualization >> canvas [
 				ifTrue: [ lazyDataBlock value ].
 			xLabel ifNotNil: [ diag xLabel: xLabel ].
 			KendrickInternalDSLEntities cleanUpForInteractiveSessions.
-			canvas := diag build open ]
+			canvas := diag plot ]
 ]
 
 { #category : #'as yet unclassified' }
