@@ -1,6 +1,6 @@
 Class {
 	#name : #KEKleinbergContactNetwork,
-	#superclass : #MalKleinbergGraphGenerator,
+	#superclass : #AIKleinbergGraphGenerator,
 	#traits : 'KETraitNetworkMetrics',
 	#classTraits : 'KETraitNetworkMetrics classTrait',
 	#category : #'Kendrick-Core-Network'

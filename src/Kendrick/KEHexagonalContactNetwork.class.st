@@ -1,6 +1,6 @@
 Class {
 	#name : #KEHexagonalContactNetwork,
-	#superclass : #MalHexagonalLatticeGenerator,
+	#superclass : #AIHexagonalLatticeGenerator,
 	#traits : 'KETraitNetworkMetrics',
 	#classTraits : 'KETraitNetworkMetrics classTrait',
 	#category : #'Kendrick-Core-Network'

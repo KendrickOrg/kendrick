@@ -1,6 +1,6 @@
 Class {
 	#name : #KEErdosGNPContactNetwork,
-	#superclass : #MalErdosRenyiGNPGraphGenerator,
+	#superclass : #AIErdosRenyiGNPGraphGenerator,
 	#traits : 'KETraitNetworkMetrics',
 	#classTraits : 'KETraitNetworkMetrics classTrait',
 	#category : #'Kendrick-Core-Network'

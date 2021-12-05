@@ -24,10 +24,8 @@ BaselineOfKendrick >> baseline: spec [
 					repository: 'github://PolyMathOrg/PolyMath';
 					loads: 'Core' ];
 			baseline: 'DataFrame'
-			with: [ spec repository: 'github://PolyMathOrg/DataFrame:v2.0' ];
-			baseline: 'MooseAlgos'
-			with: [ 
-			spec repository: 'github://moosetechnology/MooseAlgos:v1.1.8' ].
+			with: [ spec repository: 'github://PolyMathOrg/DataFrame:v2.0' ].
+
 		spec group: 'default' with: #( #Kendrick ) ].
 
 	spec for: #'pharo8.x' do: [ 
@@ -45,7 +43,8 @@ BaselineOfKendrick >> baseline: spec [
 			with: [ 
 				spec repository: 'github://ObjectProfile/Roassal3Exporters' ];
 			baseline: 'GToolkitExamples'
-			with: [ spec repository: 'github://feenkcom/gtoolkit-examples/src' ].
+			with: [ spec repository: 'github://feenkcom/gtoolkit-examples/src' ];
+			baseline: 'MooseAlgos' with: [ spec repository: 'github://moosetechnology/MooseAlgos:v1.1.8' ].
 
 		spec package: 'Kendrick' with: [ 
 			spec requires:
@@ -64,9 +63,11 @@ BaselineOfKendrick >> baseline: spec [
 			with: [ 
 				spec repository: 'github://ObjectProfile/Roassal3Exporters' ];
 			baseline: 'GToolkitExamples'
-			with: [ spec repository: 'github://feenkcom/gtoolkit-examples/src' ].
+			with: [ spec repository: 'github://feenkcom/gtoolkit-examples/src' ];
+			baseline: 'CollectionExtensions' with: [ spec repository: 'github://pharo-contributions/CollectionExtensions:v1.x.x/src' ];
+			baseline: 'AIGraphAlgorithms' with: [ spec repository: 'github://pharo-ai/graph-algorithms'; loads:'GraphGenerators' ].
 		spec package: 'Kendrick' with: [ 
 			spec requires:
-				#( 'DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'MooseAlgos'
+				#( 'DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'CollectionExtensions' 'AIGraphAlgorithms'
 				   'Roassal3Exporters' 'GToolkitExamples' ) ] ]
 ]
