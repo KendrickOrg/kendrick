@@ -64,7 +64,7 @@ BaselineOfKendrick >> baseline: spec [
 				spec repository: 'github://ObjectProfile/Roassal3Exporters' ];
 			baseline: 'GToolkitExamples'
 			with: [ spec repository: 'github://feenkcom/gtoolkit-examples/src' ];
-			baseline: 'AIGraphAlgorithms' with: [ spec repository: 'github://pharo-ai/graph-algorithms' ].
+			baseline: 'AIGraphAlgorithms' with: [ spec repository: 'github://pharo-ai/graph-algorithms'; loads:'GraphGenerators' ].
 		spec package: 'Kendrick' with: [ 
 			spec requires:
 				#( 'DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'AIGraphAlgorithms'
