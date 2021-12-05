@@ -13,7 +13,7 @@
 </p>
 
 
-[![Pharo version](https://img.shields.io/badge/Pharo-8.0-%23aac9ff.svg)](https://pharo.org/download)
+[![Pharo version](https://img.shields.io/badge/Pharo-9.0-%23aac9ff.svg)](https://pharo.org/download)
 ![CI](https://github.com/KendrickOrg/kendrick/workflows/CI/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/KendrickOrg/kendrick/badge.svg?branch=master)](https://coveralls.io/github/KendrickOrg/kendrick?branch=master)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/KendrickOrg/kendrick/master/LICENSE)
