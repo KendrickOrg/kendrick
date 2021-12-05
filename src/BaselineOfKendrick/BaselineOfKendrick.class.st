@@ -25,9 +25,9 @@ BaselineOfKendrick >> baseline: spec [
 					loads: 'Core' ];
 			baseline: 'DataFrame'
 			with: [ spec repository: 'github://PolyMathOrg/DataFrame:v2.0' ];
-			baseline: 'MooseAlgos'
-			with: [ 
-			spec repository: 'github://moosetechnology/MooseAlgos:v1.1.8' ].
+			baseline: 'MooseAlgos' with: [ spec repository: 'github://moosetechnology/MooseAlgos:v1.1.8' ];
+			baseline: 'AIGraphAlgorithms' with: [ spec repository: 'github://pharo-ai/graph-algorithms' ].
+			
 		spec group: 'default' with: #( #Kendrick ) ].
 
 	spec for: #'pharo8.x' do: [ 
@@ -67,6 +67,6 @@ BaselineOfKendrick >> baseline: spec [
 			with: [ spec repository: 'github://feenkcom/gtoolkit-examples/src' ].
 		spec package: 'Kendrick' with: [ 
 			spec requires:
-				#( 'DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'MooseAlgos'
+				#( 'DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'AIGraphAlgorithms'
 				   'Roassal3Exporters' 'GToolkitExamples' ) ] ]
 ]
