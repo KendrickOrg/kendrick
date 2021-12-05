@@ -1,6 +1,6 @@
 Class {
 	#name : #KETriangularContactNetwork,
-	#superclass : #MalTriangularLatticeGenerator,
+	#superclass : #AITriangularLatticeGenerator,
 	#traits : 'KETraitNetworkMetrics',
 	#classTraits : 'KETraitNetworkMetrics classTrait',
 	#category : #'Kendrick-Core-Network'

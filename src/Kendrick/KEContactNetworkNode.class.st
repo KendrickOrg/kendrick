@@ -1,6 +1,6 @@
 Class {
 	#name : #KEContactNetworkNode,
-	#superclass : #Mal2DGridNode,
+	#superclass : #AI2DGridNode,
 	#instVars : [
 		'currentStatus',
 		'nextStatus',
