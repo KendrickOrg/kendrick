@@ -108,6 +108,8 @@ Visualization >> dataWithCompartments: anArray [ "should be full math-expression
 { #category : #'public-api' }
 Visualization >> dataWithCompositeCompartments: anArray [ "should be full math-expression"
 		
+		"Return a KEChart filled with series as data"
+		
 		| tokens tSeries |
 		
 		tSeries := OrderedCollection new.
@@ -297,16 +299,17 @@ Visualization >> open [
 Visualization >> sumOverTimeSeries: name [
 
 	"refactor !!"
-	|d df ds|
+	"Answer a dataframe where we sum over name"
+	
+	|df ds|
     df := (simulation timeSeriesOutputsAt: ((STON fromString: name) associations)) collect: [ :e| e value ].
-"Sum elements on each rows of the dataFrame df"
 
-ds := df columnNames inject:0 into: [ :sum :each | sum + (df column: each) ].
+	"Sum elements on each rows of the dataFrame df"
+	ds := df columnNames inject:0 into: [ :sum :each | sum + (df column: each) ].
 
 "Create a new DataFrame with the previous sum with name"
-
 ds name: (STON fromString: name).
-^ds asDataFrame
+^ ds asDataFrame
 ]
 
 { #category : #protected }
