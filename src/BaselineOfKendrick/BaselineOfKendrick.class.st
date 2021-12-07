@@ -3,7 +3,7 @@ In Kendrick, we have the following dependencies:
 
 - PolyMath in order to use the differential equation solver, n-array and RNGs
 - DataFrame in order to use tabular data: Kendrick simulations generate DataFrame that we can export as CSV or Excel files,
-- MooseAlgo is use to generate random graphs like Barabasi, etc ...
+- Graph Algorithms is use to generate regular graphs (grids) and random graphs like Barabasi, etc ... https://github.com/pharo-ai/graph-algorithms
 "
 Class {
 	#name : #BaselineOfKendrick,
@@ -65,7 +65,7 @@ BaselineOfKendrick >> baseline: spec [
 			baseline: 'GToolkitExamples'
 			with: [ spec repository: 'github://feenkcom/gtoolkit-examples/src' ];
 			baseline: 'CollectionExtensions' with: [ spec repository: 'github://pharo-contributions/CollectionExtensions:v1.x.x/src' ];
-			baseline: 'AIGraphAlgorithms' with: [ spec repository: 'github://pharo-ai/graph-algorithms'; loads:'GraphGenerators' ].
+			baseline: 'AIGraphAlgorithms' with: [ spec repository: 'github://pharo-ai/graph-algorithms:v1.0.0'; loads:'GraphGeneratorsTests'].
 		spec package: 'Kendrick' with: [ 
 			spec requires:
 				#( 'DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'CollectionExtensions' 'AIGraphAlgorithms'
