@@ -65,8 +65,9 @@ KEDeterministicSimulator >> executeOnWithTransitions: aModel [
 
 	"Suppose aModel is built from transitions
 	Ask a model its equations then solve them with an ODE solver"
-
+	"One major problem here is that equations built from a model are not OO but built on arrays"
 	| st ks system c |
+
 	super executeOn: aModel.
 	model transitionsToEquations.
 	equations := model equations.
