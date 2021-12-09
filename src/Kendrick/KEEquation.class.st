@@ -64,10 +64,12 @@ KEEquation >> generateEvents [
 KEEquation >> printOn: aStream [
 
 	aStream
+		nextPutAll: 'd';
 		nextPutAll: variable asString;
-		nextPutAll: ':';
+		nextPutAll: '/';
+		nextPutAll: 'd';
 		nextPutAll: tVariable asString;
-		nextPutAll: '=';
+		nextPutAll: ' = ';
 		nextPutAll: expression asString
 ]
 

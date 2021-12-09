@@ -30,6 +30,14 @@ KEEquationTest >> testNumberOfTransitionsIsCorrect [
 ]
 
 { #category : #tests }
+KEEquationTest >> testPrintOn [
+
+	| equation |
+	equation := 'I:t=beta*S*I-gamma*I' parseAsAnEquation.
+	self assert: equation printString equals: 'dI/dt = beta*S*I-gamma*I'
+]
+
+{ #category : #tests }
 KEEquationTest >> testTransitionProbabilityIsCorrect [
 	| model |
 	model := KEModel new.
