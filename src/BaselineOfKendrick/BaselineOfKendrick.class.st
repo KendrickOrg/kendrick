@@ -42,14 +42,14 @@ BaselineOfKendrick >> baseline: spec [
 			baseline: 'Roassal3Exporters'
 			with: [ 
 				spec repository: 'github://ObjectProfile/Roassal3Exporters' ];
-			baseline: 'GToolkitExamples'
-			with: [ spec repository: 'github://feenkcom/gtoolkit-examples/src' ];
-			baseline: 'MooseAlgos' with: [ spec repository: 'github://moosetechnology/MooseAlgos:v1.1.8' ].
+			baseline: 'MooseAlgos'
+			with: [ 
+				spec repository: 'github://moosetechnology/MooseAlgos:v1.1.8' ].
 
 		spec package: 'Kendrick' with: [ 
 			spec requires:
 				#( 'DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal3'
-				   'Roassal3Exporters' 'MooseAlgos' 'GToolkitExamples' ) ] ].
+				   'Roassal3Exporters' 'MooseAlgos' ) ] ].
 	spec for: #'pharo9.x' do: [ 
 		spec
 			baseline: 'PetitParser2Core'
@@ -62,12 +62,15 @@ BaselineOfKendrick >> baseline: spec [
 			baseline: 'Roassal3Exporters'
 			with: [ 
 				spec repository: 'github://ObjectProfile/Roassal3Exporters' ];
-			baseline: 'GToolkitExamples'
-			with: [ spec repository: 'github://feenkcom/gtoolkit-examples/src' ];
-			baseline: 'CollectionExtensions' with: [ spec repository: 'github://pharo-contributions/CollectionExtensions:v1.x.x/src' ];
-			baseline: 'AIGraphAlgorithms' with: [ spec repository: 'github://pharo-ai/graph-algorithms:v1.0.0'; loads:'GraphGeneratorsTests'].
+			baseline: 'CollectionExtensions' with: [ 
+				spec repository:
+						'github://pharo-contributions/CollectionExtensions:v1.x.x/src' ];
+			baseline: 'AIGraphAlgorithms' with: [ 
+				spec
+					repository: 'github://pharo-ai/graph-algorithms:v1.0.0';
+					loads: 'GraphGeneratorsTests' ].
 		spec package: 'Kendrick' with: [ 
 			spec requires:
-				#( 'DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'CollectionExtensions' 'AIGraphAlgorithms'
-				   'Roassal3Exporters' 'GToolkitExamples' ) ] ]
+				#( 'DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'CollectionExtensions'
+				   'AIGraphAlgorithms' 'Roassal3Exporters'  ) ] ]
 ]
