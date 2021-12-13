@@ -22,7 +22,7 @@ Kendrick provides an embedded Domain-Specific Language and a Simulation Plaform 
 
 Kendrick is based extensively on several Pharo ecosystem tools including [PetitParser](http://www.moosetechnology.org/tools/petitparser) and [Roassal](http://agilevisualization.com/) visualization engine.
 
-[![Screenshot](images/screenshot.png)](https://raw.githubusercontent.com/UNU-Macau/kendrick/master/images/screenshot.png)
+[![Screenshot](images/screenshot.png)](https://raw.githubusercontent.com/KendrickOrg/kendrick/master/images/screenshot.png)
 
 ## Citation
 
@@ -44,7 +44,7 @@ Kendrick is also described in a chapter of the [Agile Visualization book](http:/
 
 ```Smalltalk
 Metacello new
-        repository: 'github://UNU-Macau/kendrick';
+        repository: 'github://KendrickOrg/kendrick';
         baseline: 'Kendrick';
         onWarningLog ;
         load
@@ -57,7 +57,7 @@ count := 1.
 Transcript open.
 [ true ] whileTrue: [ [
 		^ Metacello new
-        repository: 'github://UNU-Macau/kendrick';
+        repository: 'github://KendrickOrg/kendrick';
         baseline: 'Kendrick';
 		  onConflictUseLoaded;
         onWarningLog ;
