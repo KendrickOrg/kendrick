@@ -134,6 +134,22 @@ KEComponent >> equations [
 	^ equations
 ]
 
+{ #category : #'as yet unclassified' }
+KEComponent >> equations2 [ 
+	|equation |
+	
+	equation := Dictionary new.
+	self finestCompartmentNames do: [ :k | equation at: k put: OrderedCollection new ].
+	
+		self transitions do: [ :tr | 
+		((tr from at: #status) ~= #empty and: [ 
+			 (tr to at: #status) ~= #empty ]) ifTrue: [ 
+			(equation at: tr from) add: (Array with: tr with: -1).
+			(equation at: tr to) add: (Array with: tr with: 1) ] ].
+	
+	^ equation
+]
+
 { #category : #accessing }
 KEComponent >> equationsToTransitions [
 	"This is only working for status ODE equations, not general ODE equations"
