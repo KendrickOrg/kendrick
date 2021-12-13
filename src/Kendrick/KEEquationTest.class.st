@@ -19,6 +19,32 @@ KEEquationTest >> testEquationHasTwoEvents [
 ]
 
 { #category : #tests }
+KEEquationTest >> testNumberOfEquationsOfSIRModelIs3 [
+
+	| model simulator |
+	model := KEModel new.
+	model attributes: { (#status -> #( #S #I #R )) }.
+	model atCompartment: { (#status -> #S) } put: 99999.
+	model atCompartment: { (#status -> #I) } put: 1.
+	model atCompartment: { (#status -> #R) } put: 0.
+
+	model addParameters: { 
+			(#beta -> 0.0052).
+			(#gamma -> 52) }.
+	model addEquation: 'S:t = -beta*S*I'.
+	model addEquation: 'I:t = beta*S*I - gamma*I'.
+	model addEquation: 'R:t = gamma*I'.
+	simulator := KESimulator
+		             new: #RungeKutta
+		             from: 0.0
+		             to: 0.3
+		             step: 0.0027.
+	simulator executeOn: model.
+
+	self assert: model equations2 size equals: 3
+]
+
+{ #category : #tests }
 KEEquationTest >> testNumberOfTransitionsIsCorrect [
 	| model |
 	model := KEModel new.
@@ -35,6 +61,34 @@ KEEquationTest >> testPrintOn [
 	| equation |
 	equation := 'I:t=beta*S*I-gamma*I' parseAsAnEquation.
 	self assert: equation printString equals: 'dI/dt = beta*S*I-gamma*I'
+]
+
+{ #category : #tests }
+KEEquationTest >> testSIRMOdelEquationsContainSVariable [
+
+	| model simulator |
+	model := KEModel new.
+	model attributes: { (#status -> #( #S #I #R )) }.
+	model atCompartment: { (#status -> #S) } put: 99999.
+	model atCompartment: { (#status -> #I) } put: 1.
+	model atCompartment: { (#status -> #R) } put: 0.
+
+	model addParameters: { 
+			(#beta -> 0.0052).
+			(#gamma -> 52) }.
+	model addEquation: 'S:t = -beta*S*I'.
+	model addEquation: 'I:t = beta*S*I - gamma*I'.
+	model addEquation: 'R:t = gamma*I'.
+	simulator := KESimulator
+		             new: #RungeKutta
+		             from: 0.0
+		             to: 0.3
+		             step: 0.0027.
+	simulator executeOn: model.
+	self
+		assert: 
+		((model equations2 collect: [ :eq | eq variable ]) contains: #S)
+		equals: true
 ]
 
 { #category : #tests }
