@@ -189,25 +189,38 @@ KEModel >> equations2 [
 			            tVariable: #t.
 		expression := nil.
 		"TBD: we should build the expression here"
-		self transitions do: [ :tr|
-
-			"expression to be added from one compartment"
-			tr from associations = compartment associations ifTrue:[|exp|
-				exp := KEBinaryExpression new op:#*; leftHandSide: (tr probability); rightHandSide:  tr from associations.
-				expression isNil ifTrue:[expression := exp] ifFalse:
-				[expression := KEBinaryExpression new op:#+; leftHandSide: expression; rightHandSide: exp].
-				].
+		self transitions do: [ :tr | "expression to be added from one compartment"
+			tr from associations = compartment associations ifTrue: [ 
+				| exp |
+				exp := KEBinaryExpression new
+					       op: #*;
+					       leftHandSide: tr probability;
+					       rightHandSide: tr from associations.
+				expression isNil
+					ifTrue: [ expression := exp ]
+					ifFalse: [ 
+						expression := KEBinaryExpression new
+							              op: #+;
+							              leftHandSide: expression;
+							              rightHandSide: exp ] ].
 			"expression to be removed from one compartment"
-			tr to associations = compartment associations ifTrue:[|exp|
-				exp := KEBinaryExpression new op:#*; leftHandSide: (tr probability); rightHandSide: tr from associations.
-				expression isNil ifTrue:[expression := exp] ifFalse:
-				[expression := KEBinaryExpression new op:#+; leftHandSide: expression; rightHandSide: exp negated].
-				].
-			
-			 ].
+			tr to associations = compartment associations ifTrue: [ 
+				| exp |
+				exp := KEBinaryExpression new
+					       op: #*;
+					       leftHandSide: tr probability;
+					       rightHandSide: tr from associations.
+				expression isNil
+					ifTrue: [ expression := exp negated ]
+					ifFalse: [ 
+						expression := KEBinaryExpression new
+							              op: #+;
+							              leftHandSide: expression;
+							              rightHandSide: exp negated ] ] ].
 		equation expression: expression.
 		odeEquations add: equation ].
 
+	self halt.
 	^ odeEquations
 ]
 
