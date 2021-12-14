@@ -60,6 +60,12 @@ KEExpression >> negated [
 		expression: self
 ]
 
+{ #category : #evaluating }
+KEExpression >> normalize [
+
+	self subclassResponsibility
+]
+
 { #category : #testing }
 KEExpression >> removeVariable: aVariable [
 	self subclassResponsibility

@@ -60,11 +60,6 @@ KESigmaFunctionExpression >> isExpressionWithSigmaMathFunction [
 	^ true
 ]
 
-{ #category : #converting }
-KESigmaFunctionExpression >> normalize [
-	^ self
-]
-
 { #category : #printing }
 KESigmaFunctionExpression >> printOn: aStream [
 	aStream
