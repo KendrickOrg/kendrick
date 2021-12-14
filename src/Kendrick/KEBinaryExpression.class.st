@@ -219,9 +219,9 @@ KEBinaryExpression >> normalize [
 			]
 		]
     ifFalse: [
-		l2 isUnaryExpression 
+		l1 isUnaryExpression 
 		ifTrue:[
-			k expression: (KEBinaryExpression new op: self op; leftHandSide: l1; rightHandSide: l2 expression).
+			k expression: (KEBinaryExpression new op: self op; leftHandSide: l2; rightHandSide: l1 expression).
 			^ k	
 	    	]
 		ifFalse:[
