@@ -182,6 +182,12 @@ KEBinaryExpression >> isSeparable [
 ]
 
 { #category : #accessing }
+KEBinaryExpression >> isSimple [ 
+
+^ false
+]
+
+{ #category : #accessing }
 KEBinaryExpression >> leftHandSide [
 	^ leftHandSide
 ]
@@ -237,10 +243,26 @@ KEBinaryExpression >> op: aString [
 
 { #category : #printing }
 KEBinaryExpression >> printOn: aStream [
+
+	leftHandSide isSimple
+		ifTrue: [ aStream nextPutAll: leftHandSide asString ]
+		ifFalse: [ 
+			aStream
+				nextPutAll: '(';
+				nextPutAll: leftHandSide asString;
+				nextPutAll: ')' ].
+
 	aStream
-		nextPutAll: leftHandSide asString;
-		nextPutAll: op asString;
-		nextPutAll: rightHandSide asString
+		nextPutAll: op asString.
+		
+	rightHandSide  isSimple
+		ifTrue: [ aStream nextPutAll: rightHandSide asString ]
+		ifFalse: [ 
+			aStream
+				nextPutAll: '(';
+				nextPutAll: rightHandSide asString;
+				nextPutAll: ')' ].
+
 ]
 
 { #category : #evaluating }
