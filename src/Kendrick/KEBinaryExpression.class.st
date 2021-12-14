@@ -244,25 +244,30 @@ KEBinaryExpression >> op: aString [
 { #category : #printing }
 KEBinaryExpression >> printOn: aStream [
 
-	leftHandSide isSimple
-		ifTrue: [ aStream nextPutAll: leftHandSide asString ]
+	op = #*
 		ifFalse: [ 
 			aStream
-				nextPutAll: '(';
 				nextPutAll: leftHandSide asString;
-				nextPutAll: ')' ].
+				nextPutAll: op asString;
+				nextPutAll: rightHandSide asString ]
+		ifTrue: [ 
+			(leftHandSide isSimple or: [ leftHandSide op = #* ])
+				ifTrue: [ aStream nextPutAll: leftHandSide asString ]
+				ifFalse: [ 
+					aStream
+						nextPutAll: '(';
+						nextPutAll: leftHandSide asString;
+						nextPutAll: ')' ].
 
-	aStream
-		nextPutAll: op asString.
-		
-	rightHandSide  isSimple
-		ifTrue: [ aStream nextPutAll: rightHandSide asString ]
-		ifFalse: [ 
-			aStream
-				nextPutAll: '(';
-				nextPutAll: rightHandSide asString;
-				nextPutAll: ')' ].
+			aStream nextPutAll: op asString.
 
+			(rightHandSide isSimple or: [ rightHandSide op = #* ])
+				ifTrue: [ aStream nextPutAll: rightHandSide asString ]
+				ifFalse: [ 
+					aStream
+						nextPutAll: '(';
+						nextPutAll: rightHandSide asString;
+						nextPutAll: ')' ] ]
 ]
 
 { #category : #evaluating }
