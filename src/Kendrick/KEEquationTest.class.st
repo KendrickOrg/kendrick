@@ -40,7 +40,8 @@ KEEquationTest >> testNumberOfEquationsOfSIRModelIs3 [
 		             to: 0.3
 		             step: 0.0027.
 	simulator executeOn: model.
-
+	"We need to transform ODE to transitions, because at the moment this is not done explicitely every time you execute a model that is based on ODE equations."
+	model equationsToTransitions.
 	self assert: model equations2 size equals: 3
 ]
 
@@ -85,8 +86,10 @@ KEEquationTest >> testSIRMOdelEquationsContainSVariable [
 		             to: 0.3
 		             step: 0.0027.
 	simulator executeOn: model.
+	"We need to transform ODE to transitions, because at the moment this is not done explicitely every time you execute a model that is based on ODE equations."
+	model equationsToTransitions.
 	self
-		assert: 
+		assert:
 		((model equations2 collect: [ :eq | eq variable ]) contains: #S)
 		equals: true
 ]

@@ -177,6 +177,25 @@ KEModel >> currentCompartment: aCompartment [
 ]
 
 { #category : #'as yet unclassified' }
+KEModel >> equations2 [
+
+	| odeEquations |
+	"equations2 is a temp name, we will rename it as equations later"
+	odeEquations := OrderedCollection new.
+	self finestCompartmentNames do: [ :compartment | 
+		| equation expression |
+		equation := KEEquation new
+			            variable: compartment associations;
+			            tVariable: #t.
+		expression := KEExpression new.
+		"TBD: we should build the expression here"
+
+		odeEquations add: equation ].
+
+	^ odeEquations
+]
+
+{ #category : #'as yet unclassified' }
 KEModel >> executeEventAtRateIndex: anInteger [
 
 (self transitions at: anInteger ) executeOn: self times: 1.
