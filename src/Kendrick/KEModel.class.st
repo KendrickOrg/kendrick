@@ -220,7 +220,6 @@ KEModel >> equations2 [
 		equation expression: expression.
 		odeEquations add: equation ].
 
-	self halt.
 	^ odeEquations
 ]
 
