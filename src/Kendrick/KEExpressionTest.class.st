@@ -133,10 +133,9 @@ KEExpressionTest >> testNegatedABinaryExpression [
 KEExpressionTest >> testNormalizeAnUnaryExpression [
 
 	| expr |
-	expr := 's=-(-A*(B+C))' parseAsAnEquation.
+	expr := 'X:t = -(-A*(B+C))' parseAsAnEquation.
 	self assert: expr expression isUnaryExpression.
-	self
-		deny: expr expression normalize isUnaryExpression
+	self deny: expr expression normalize isUnaryExpression
 ]
 
 { #category : #tests }
