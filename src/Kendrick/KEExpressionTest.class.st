@@ -164,6 +164,28 @@ KEExpressionTest >> testNormalizeKEExpression [
 ]
 
 { #category : #tests }
+KEExpressionTest >> testNormalizeReturnCorrectExpression [
+
+	| expr result|
+	
+	expr := 'X:t=-(-A)' parseAsAnEquation.
+	result := 'A' parseAsAnEquation.
+	self assert: expr expression normalize equals: result.
+	
+	expr := 'X:t=A+(-B)' parseAsAnEquation.
+	result := 'A+-B' parseAsAnEquation.
+	self assert: expr expression normalize equals: result.
+	
+	expr := 'X:t = -(-A*(B+C))' parseAsAnEquation.
+	result := 'A*(B+C)' parseAsAnEquation.
+	self assert: expr expression normalize equals: result.
+	
+	
+	
+	 
+]
+
+{ #category : #tests }
 KEExpressionTest >> testPrintABinaryExpression [
 	| e a b |
 	
