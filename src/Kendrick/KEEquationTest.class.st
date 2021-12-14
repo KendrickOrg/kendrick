@@ -99,6 +99,14 @@ KEEquationTest >> testPrintOn [
 ]
 
 { #category : #tests }
+KEEquationTest >> testPrintOnPreserveMultiplicationPriority [
+
+	| equation |
+	equation := 'X:t = A*(B+C)' parseAsAnEquation.
+	self assert: equation printString equals: 'dX/dt = A*(B+C)'
+]
+
+{ #category : #tests }
 KEEquationTest >> testSIRMOdelEquationsContainSVariable [
 
 	| model simulator |

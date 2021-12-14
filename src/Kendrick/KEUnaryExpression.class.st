@@ -88,6 +88,12 @@ KEUnaryExpression >> isSeparable [
 	^ (expression isSeparable)
 ]
 
+{ #category : #'as yet unclassified' }
+KEUnaryExpression >> isSimple [ 
+^ true
+
+]
+
 { #category : #testing }
 KEUnaryExpression >> isUnaryExpression [
 	^ true

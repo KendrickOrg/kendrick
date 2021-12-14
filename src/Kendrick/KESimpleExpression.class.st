@@ -7,3 +7,10 @@ Class {
 	#superclass : #KEExpression,
 	#category : #'Kendrick-Core'
 }
+
+{ #category : #testing }
+KESimpleExpression >> isSimple [
+
+^ true
+
+]
