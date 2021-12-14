@@ -90,7 +90,7 @@ KEEquationTest >> testSIRMOdelEquationsContainSVariable [
 	model equationsToTransitions.
 	self
 		assert:
-		((model equations2 collect: [ :eq | eq variable ]) contains: #S)
+		((model equations2 collect: [ :eq | eq variable ]) includes: {#status -> #S})
 		equals: true
 ]
 
