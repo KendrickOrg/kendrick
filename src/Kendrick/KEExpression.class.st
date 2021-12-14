@@ -8,14 +8,6 @@ Class {
 	#category : #'Kendrick-Core'
 }
 
-{ #category : #testing }
-KEExpression >> addExpression: anExpression [
-	^ KEBinaryExpression new
-		op: #+;
-		leftHandSide: self;
-		rightHandSide: anExpression
-]
-
 { #category : #evaluating }
 KEExpression >> evaluateWithModel: aModel [
 	self subclassResponsibility
