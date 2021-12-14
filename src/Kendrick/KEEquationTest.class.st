@@ -19,6 +19,40 @@ KEEquationTest >> testEquationHasTwoEvents [
 ]
 
 { #category : #tests }
+KEEquationTest >> testNumberOfEquationsOfSEIRSIs4 [
+
+	| model simulator |
+	model := KEModel new.
+	model attributes: { (#status -> #( #S #E #I #R )) }.
+	model atCompartment: { (#status -> #S) } put: 99999.
+	model atCompartment: { (#status -> #E) } put: 1.
+	model atCompartment: { (#status -> #I) } put: 0.
+	model atCompartment: { (#status -> #R) } put: 0.
+
+	model addParameters: { 
+			(#mu -> (1 / (76 * 365))).
+			(#beta -> 0.21).
+			(#gamma -> (1 / 14)).
+			(#sigma -> (1 / 7)).
+			(#nu -> (1 / 365)) }.
+	model addEquation: 'S:t=mu*N - beta*S*I/N - mu*S + nu*R'.
+	model addEquation: 'E:t=beta*S*I/N - sigma*E - mu*E.'.
+	model addEquation: 'I:t=sigma*E - gamma*I - mu*I'.
+	model addEquation: 'R:t=gamma*I - mu*R - nu*R.'.
+
+	simulator := KESimulator
+		             new: #RungeKutta
+		             from: 0.0
+		             to: 1000
+		             step: 1.
+	simulator executeOn: model.
+	"We need to transform ODE to transitions, because at the moment this is not done explicitely every time you execute a model that is based on ODE equations."
+	model equationsToTransitions.
+
+	self assert: model equations2 size equals: 4
+]
+
+{ #category : #tests }
 KEEquationTest >> testNumberOfEquationsOfSIRModelIs3 [
 
 	| model simulator |
