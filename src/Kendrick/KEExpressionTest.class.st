@@ -131,12 +131,12 @@ KEExpressionTest >> testNegatedABinaryExpression [
 
 { #category : #tests }
 KEExpressionTest >> testNormalizeAnUnaryExpression [
+
 	| expr |
-	
 	expr := 's=-(-A*(B+C))' parseAsAnEquation.
-	self assert: true equals: expr expression isUnaryExpression.
-	self assert: false equals: expr expression normalize isUnaryExpression.
-	
+	self assert: expr expression isUnaryExpression.
+	self
+		deny: expr expression normalize isUnaryExpression
 ]
 
 { #category : #tests }
@@ -144,7 +144,7 @@ KEExpressionTest >> testNormalizeKEExpression [
 
 	| e s beta minusBeta k minusS |
 	e := KEBinaryExpression new.
-	s := KEVariable symbol: #S.
+	s := KEVariable symbol: #status -> #S.
 	beta := KEVariable new symbol: #beta.
 	minusS := KEUnaryExpression new op: #-.
 	minusS expression: s.
@@ -155,13 +155,13 @@ KEExpressionTest >> testNormalizeKEExpression [
 		leftHandSide: s;
 		rightHandSide: minusBeta.
 	k := e normalize.
-	self assert: true equals: k isUnaryExpression.
+	self assert: k isUnaryExpression.
 	e
 		op: #*;
 		leftHandSide: minusS;
 		rightHandSide: minusBeta.
 	k := e normalize.
-	self assert: false equals: k isUnaryExpression
+	self deny: k isUnaryExpression
 ]
 
 { #category : #tests }
@@ -264,23 +264,23 @@ KEExpressionTest >> testRemoveAVariableShouldNotModifyTheExpression [
 
 { #category : #tests }
 KEExpressionTest >> testRemoveIndexedVariable1 [
-	|e n|
-	e := (KEVariable new symbol: #S).
+
+	| e n |
+	e := KEVariable new symbol: #S.
 	n := e removeIndexedVariable.
-	self assert: n isAVariable equals: true.
-	
+	self assert: n isAVariable
 ]
 
 { #category : #tests }
 KEExpressionTest >> testRemoveIndexedVariable2 [
-	|e n|
-	e := (KEIndexedVariable new symbol: #S).
+
+	| e n |
+	e := KEIndexedVariable new symbol: #S.
 	e addIndex: (KEVariable new symbol: #i).
 	e addIndex: (KEVariable new symbol: #j).
 	n := e removeIndexedVariable.
-	self assert: n isAnIndexedVariable equals: false.
-	self assert: n symbol equals: #S.
-	
+	self deny: n isAnIndexedVariable.
+	self assert: n symbol equals: #S
 ]
 
 { #category : #tests }
