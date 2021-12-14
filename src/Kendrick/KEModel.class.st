@@ -187,9 +187,25 @@ KEModel >> equations2 [
 		equation := KEEquation new
 			            variable: compartment associations;
 			            tVariable: #t.
-		expression := KEExpression new.
+		expression := nil.
 		"TBD: we should build the expression here"
+		self transitions do: [ :tr|
 
+			"expression to be added from one compartment"
+			tr from associations = compartment associations ifTrue:[|exp|
+				exp := KEBinaryExpression new op:#*; leftHandSide: (tr probability); rightHandSide:  tr from associations.
+				expression isNil ifTrue:[expression := exp] ifFalse:
+				[expression := KEBinaryExpression new op:#+; leftHandSide: expression; rightHandSide: exp].
+				].
+			"expression to be removed from one compartment"
+			tr to associations = compartment associations ifTrue:[|exp|
+				exp := KEBinaryExpression new op:#*; leftHandSide: (tr probability); rightHandSide: tr from associations.
+				expression isNil ifTrue:[expression := exp] ifFalse:
+				[expression := KEBinaryExpression new op:#+; leftHandSide: expression; rightHandSide: exp negated].
+				].
+			
+			 ].
+		equation expression: expression.
 		odeEquations add: equation ].
 
 	^ odeEquations
