@@ -218,7 +218,7 @@ KEModel >> equations2 [
 							              op: #+;
 							              leftHandSide: expression;
 							              rightHandSide: exp negated normalize ] ] ].
-		equation expression: expression.
+		equation expression: expression normalize.
 		odeEquations add: equation ].
 
 	^ odeEquations
