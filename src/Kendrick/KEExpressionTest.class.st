@@ -61,6 +61,24 @@ self assert:true equals: (a = b)
 ]
 
 { #category : #tests }
+KEExpressionTest >> testIsASumOfProductsForBinaryExpression [
+
+    | s1 s2 s3 s4 s5 s6|
+    s1 := 's=-(A+B+C)*E*D' parseAsAnEquation.
+    s2 := 's=-(A+B)*(-C)' parseAsAnEquation.
+    s3 := 's=(-E)*D*F*(A+B)' parseAsAnEquation.
+    s4 := 's=-A*B' parseAsAnEquation.
+    s5 := 's=(A+B)*(C+D)' parseAsAnEquation.
+    s6 := 's=(-E)*D*F' parseAsAnEquation.
+    self assert: s1 expression expanse.
+    self assert: s2 expression expanse.
+    self assert: s3 expression expanse.
+    self deny: s4 expression expanse.
+    self assert: s5 expression expanse.
+    self deny: s6 expression expanse
+]
+
+{ #category : #tests }
 KEExpressionTest >> testIsSeparableForBinaryExpression [
 
 	| s1 s2 s3 s4 s5 |
