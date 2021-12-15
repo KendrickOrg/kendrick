@@ -164,21 +164,25 @@ KEBinaryExpression >> isBinaryExpression [
 
 { #category : #testing }
 KEBinaryExpression >> isSeparable [
-	|c c1 c2|
+
+	| c c1 c2 |
 	c1 := leftHandSide isSeparable.
 	c2 := rightHandSide isSeparable.
 	c := false.
-	(op = #*)"|(op = #/)" ifTrue: [
-		|c3 c4 f|
+	op = #* ifTrue: [ 
+		| c3 c4 f |
 		c3 := false.
 		c4 := false.
-		"f := [ :x | (x isBinaryExpression) ifTrue: [((x op = #+)|(x op = #-))] ifFalse: [false] ]."
-		f := [ :x| x isBinaryExpression ifTrue: [ x op = #+ ] ifFalse: [ false ] ].
-		leftHandSide isUnaryExpression ifTrue: [c3 := (f value: (leftHandSide expression))].			
-		rightHandSide isUnaryExpression ifTrue: [c4 := (f value: (rightHandSide expression))].
-		c := (f value: leftHandSide)|(f value: rightHandSide)|c3|c4
-		].
-	^ c|c1|c2
+		f := [ :x | 
+		     x isBinaryExpression
+			     ifTrue: [ x op = #+ ]
+			     ifFalse: [ false ] ].
+		leftHandSide isUnaryExpression ifTrue: [ 
+			c3 := f value: leftHandSide expression ].
+		rightHandSide isUnaryExpression ifTrue: [ 
+			c4 := f value: rightHandSide expression ].
+		c := (f value: leftHandSide) | (f value: rightHandSide) | c3 | c4 ].
+	^ c | c1 | c2
 ]
 
 { #category : #accessing }
@@ -199,36 +203,34 @@ KEBinaryExpression >> leftHandSide: anExpression [
 
 { #category : #converting }
 KEBinaryExpression >> normalize [
-	"If the expression is negative, put the minus on the top"
-	|l1 l2 k | 
-	l1 := leftHandSide normalize.
-	l2 := rightHandSide normalize.
-	k := KEUnaryExpression new.
-	k op:#-.
-	l1 isUnaryExpression 
-	ifTrue:[
-		l2 isUnaryExpression 
-		ifTrue:[
-			self leftHandSide: l1 expression.
-			self rightHandSide: l2 expression.
-			^ self
-			]
-		ifFalse: [
-			k expression: (KEBinaryExpression new op: self op; leftHandSide: l1 expression; rightHandSide: l2).
-			^ k	
-			]
-		]
-    ifFalse: [
-		l2 isUnaryExpression 
-		ifTrue:[
-			k expression: (KEBinaryExpression new op: self op; leftHandSide: l1; rightHandSide: l2 expression).
-			^ k	
-	    	]
-		ifFalse:[
-			^ self
-	 	]
-	]
 
+	"If the expression is negative, put the minus on the top"
+
+	| lhs rhs k |
+	lhs := leftHandSide normalize.
+	rhs := rightHandSide normalize.
+	k := KEUnaryExpression new.
+	k op: #-.
+	lhs isUnaryExpression
+		ifTrue: [ 
+			rhs isUnaryExpression
+				ifTrue: [ 
+					self leftHandSide: lhs expression.
+					self rightHandSide: rhs expression ]
+				ifFalse: [ 
+					k expression: (KEBinaryExpression new
+							 op: self op;
+							 leftHandSide: lhs expression;
+							 rightHandSide: rhs).
+					^ k ] ]
+		ifFalse: [ 
+			rhs isUnaryExpression
+				ifTrue: [ 
+					k expression: (KEBinaryExpression new
+							 op: self op;
+							 leftHandSide: lhs;
+							 rightHandSide: rhs expression).
+					^ k ]]
 ]
 
 { #category : #accessing }
@@ -348,7 +350,8 @@ KEBinaryExpression >> separateExpression [
 
 { #category : #testing }
 KEBinaryExpression >> sign [
-	op = #*
-		ifTrue: [ ^ rightHandSide sign * leftHandSide sign ]
-		ifFalse: [ ^ 1 ]
+"Return -1 if binary expression is negative, 1 if positive"
+
+	op = #* ifTrue: [ ^ rightHandSide sign * leftHandSide sign ].
+	^ 1
 ]
