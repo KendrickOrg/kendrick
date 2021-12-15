@@ -170,15 +170,23 @@ KEExpressionTest >> testNormalizeReturnCorrectExpression [
 	
 	expr := 'X:t=-(-A)' parseAsAnEquation.
 	result := 'A' parseAsAnEquation.
-	self assert: expr expression normalize equals: result.
+	self assert: expr expression normalize equals: result normalize.
 	
 	expr := 'X:t=A+(-B)' parseAsAnEquation.
-	result := 'A+-B' parseAsAnEquation.
-	self assert: expr expression normalize equals: result.
+	result := '-B+A' parseAsAnEquation.
+	self assert: expr expression normalize equals: result normalize.
+	
+	expr := 'X:t=(A*C)+-B*C' parseAsAnEquation.
+	result := '-B*C+A*C' parseAsAnEquation.
+	self assert: expr expression normalize equals: result normalize.
+	
+	expr := 'X:t=A*C*Z+-B*C' parseAsAnEquation.
+	result := '-B*C+A*C*Z' parseAsAnEquation.
+	self assert: expr expression normalize equals: result normalize. 
 	
 	expr := 'X:t = -(-A*(B+C))' parseAsAnEquation.
 	result := 'A*(B+C)' parseAsAnEquation.
-	self assert: expr expression normalize equals: result.
+	self assert: expr expression normalize equals: result normalize.
 	
 	
 	
