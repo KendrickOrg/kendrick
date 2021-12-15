@@ -62,20 +62,18 @@ self assert:true equals: (a = b)
 
 { #category : #tests }
 KEExpressionTest >> testIsSeparableForBinaryExpression [
+
 	| s1 s2 s3 s4 s5 |
 	s1 := 's=-(A+B+C)*E*D' parseAsAnEquation.
 	s2 := 's=-(A+B)*(-C)' parseAsAnEquation.
 	s3 := 's=(-E)*D*F*(A+B)' parseAsAnEquation.
 	s4 := 's=-A*B' parseAsAnEquation.
 	s5 := 's=(A+B)*(C+D)' parseAsAnEquation.
-	self assert: s1 expression isSeparable equals: true.
-	self assert: s2 expression isSeparable equals: true.
-	self assert:   s3 expression isSeparable equals: true.
-	self assert:  s4 expression isSeparable equals: false.
-	self
-		assert: s5 expression isSeparable
-		equals: true
-		
+	self assert: s1 expression isSeparable.
+	self assert: s2 expression isSeparable.
+	self assert: s3 expression isSeparable.
+	self deny: s4 expression isSeparable.
+	self assert: s5 expression isSeparable
 ]
 
 { #category : #tests }

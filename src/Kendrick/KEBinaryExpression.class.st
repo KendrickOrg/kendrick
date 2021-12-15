@@ -117,44 +117,40 @@ op = #'^' ifTrue:[
 
 { #category : #'as yet unclassified' }
 KEBinaryExpression >> generateEvents [
-|list |
-list := OrderedCollection new.
-(op = #*)|(op  = #/)|(op   = #'^') ifTrue:[
-	self isSeparable ifTrue: [
-		|l|
-		l := self separateExpression.
-		l do: [:each|
-			|e|
-			e := KEEvent new.
-			e rate: each normalize.
-			list add:e
-			]
-		]
-	ifFalse: [
-		|e|
-		e := (KEEvent new) rate: self normalize.
-		list add: e.
-		]
-	].
 
-(op   = #+)
-ifTrue:[
-	|l1 l2|
-l1 := leftHandSide generateEvents.	
-l2 := rightHandSide generateEvents.
-list addAll:l1.
-list addAll:l2.
-].
+	| events |
+	events := OrderedCollection new.
+	((op = #* or: [ op = #/ ]) or: [ op = #'^' ]) ifTrue: [ 
+		self isSeparable
+			ifTrue: [ 
+				| l |
+				l := self separateExpression.
+				l do: [ :each | 
+					| e |
+					e := KEEvent new.
+					e rate: each normalize.
+					events add: e ] ]
+			ifFalse: [ 
+				| e |
+				e := KEEvent new rate: self normalize.
+				events add: e ] ].
 
-(op   = #-)
-ifTrue:[
-	|l1 l2|
-	l1 := leftHandSide generateEvents.
-	l2 := ((KEUnaryExpression new) op: #-; expression: rightHandSide) generateEvents.
-	l1 ifNotNil:[list addAll:l1].
-	list addAll:l2.
-	].
-^list
+	op = #+ ifTrue: [ 
+		| l1 l2 |
+		l1 := leftHandSide generateEvents.
+		l2 := rightHandSide generateEvents.
+		events addAll: l1; addAll:l2.
+		].
+
+	op = #- ifTrue: [ 
+		| l1 l2 |
+		l1 := leftHandSide generateEvents.
+		l2 := (KEUnaryExpression new
+			       op: #-;
+			       expression: rightHandSide) generateEvents.
+		l1 ifNotNil: [ events addAll: l1 ].
+		events addAll: l2 ].
+	^ events
 ]
 
 { #category : #testing }
@@ -209,8 +205,7 @@ KEBinaryExpression >> normalize [
 	| lhs rhs k |
 	lhs := leftHandSide normalize.
 	rhs := rightHandSide normalize.
-	k := KEUnaryExpression new.
-	k op: #-.
+	k := KEUnaryExpression new op: #-.
 	lhs isUnaryExpression
 		ifTrue: [ 
 			rhs isUnaryExpression
@@ -224,13 +219,12 @@ KEBinaryExpression >> normalize [
 							 rightHandSide: rhs).
 					^ k ] ]
 		ifFalse: [ 
-			rhs isUnaryExpression
-				ifTrue: [ 
-					k expression: (KEBinaryExpression new
-							 op: self op;
-							 leftHandSide: lhs;
-							 rightHandSide: rhs expression).
-					^ k ]]
+			rhs isUnaryExpression ifTrue: [ 
+				k expression: (KEBinaryExpression new
+						 op: self op;
+						 leftHandSide: lhs;
+						 rightHandSide: rhs expression).
+				^ k ] ]
 ]
 
 { #category : #accessing }
@@ -318,34 +312,42 @@ KEBinaryExpression >> rightHandSide: anExpression [
 
 { #category : #'as yet unclassified' }
 KEBinaryExpression >> separateExpression [
-	|list|
-	list := OrderedCollection new.
-	(leftHandSide isSeparable) ifTrue: [
-		|l|
-		l := OrderedCollection new.
-		list := leftHandSide doSeparation.
-		list do: [:each| 
-			|e|
-			e := (KEBinaryExpression new) op: op; leftHandSide: each; rightHandSide: rightHandSide.
-			e isSeparable ifTrue: [l addAll: (e doSeparation)] ifFalse: [l add: e].
-			].
-		^ l
-		]
-	ifFalse: [
-		rightHandSide isSeparable ifTrue: [
-			|l|
+
+	| expressions |
+	expressions := OrderedCollection new.
+	leftHandSide isSeparable
+		ifTrue: [ 
+			| l |
 			l := OrderedCollection new.
-			list := rightHandSide doSeparation.
-			list do: [:each| 
-				|e|
-				e := (KEBinaryExpression new) op: op; leftHandSide: leftHandSide; rightHandSide: each.
-				e isSeparable ifTrue: [l addAll: (e doSeparation)] ifFalse: [l add: e].
-				].
-			^ l
-			]
-		ifFalse: [list := self doSeparation.]
-		].
-	^ list
+			expressions := leftHandSide doSeparation.
+			expressions do: [ :each | 
+				| e |
+				e := KEBinaryExpression new
+					     op: op;
+					     leftHandSide: each;
+					     rightHandSide: rightHandSide.
+				e isSeparable
+					ifTrue: [ l addAll: e doSeparation ]
+					ifFalse: [ l add: e ] ].
+			^ l ]
+		ifFalse: [ 
+			rightHandSide isSeparable
+				ifTrue: [ 
+					| l |
+					l := OrderedCollection new.
+					expressions := rightHandSide doSeparation.
+					expressions do: [ :each | 
+						| e |
+						e := KEBinaryExpression new
+							     op: op;
+							     leftHandSide: leftHandSide;
+							     rightHandSide: each.
+						e isSeparable
+							ifTrue: [ l addAll: e doSeparation ]
+							ifFalse: [ l add: e ] ].
+					^ l ]
+				ifFalse: [ expressions := self doSeparation ] ].
+	^ expressions
 ]
 
 { #category : #testing }
