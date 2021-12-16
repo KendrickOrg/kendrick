@@ -362,8 +362,8 @@ KEExpressionTest >> testSeparateABinaryExpression [
 	s2 := 's=-(A+B)*(-C)' parseAsAnEquation.
 	s3 := 's=(-E)*D*F*(A+B)' parseAsAnEquation.
 	s4 := 's=(A+B)*(C+D)' parseAsAnEquation.
-	self assert: 3 equals: s1 expression separateExpression size.
-	self assert: 2 equals: s2 expression separateExpression size.
-	self assert: 2 equals: s3 expression separateExpression size.
-	self assert: 4 equals: s4 expression separateExpression size
+	self assert: 3 equals: s1 expression expand size.
+	self assert: 2 equals: s2 expression expand size.
+	self assert: 2 equals: s3 expression expand size.
+	self assert: 4 equals: s4 expression expand size
 ]
