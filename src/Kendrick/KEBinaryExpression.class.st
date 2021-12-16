@@ -120,7 +120,7 @@ KEBinaryExpression >> generateEvents [
 
 	| events |
 	events := OrderedCollection new.
-	((op = #* or: [ op = #/ ]) or: [ op = #'^' ]) ifTrue: [ 
+	(#( #* #/ #'^' ) includes: op) ifTrue: [ 
 		self isSeparable
 			ifTrue: [ 
 				| exprs |
@@ -141,9 +141,11 @@ KEBinaryExpression >> generateEvents [
 		| lhs rhs |
 		lhs := leftHandSide generateEvents.
 		rhs := (KEUnaryExpression new
-			       op: #-;
-			       expression: rightHandSide) generateEvents.
-		events addAll: lhs; addAll:rhs ].
+			        op: #-;
+			        expression: rightHandSide) generateEvents.
+		events
+			addAll: lhs;
+			addAll: rhs ].
 	^ events
 ]
 
