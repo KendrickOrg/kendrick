@@ -123,33 +123,27 @@ KEBinaryExpression >> generateEvents [
 	((op = #* or: [ op = #/ ]) or: [ op = #'^' ]) ifTrue: [ 
 		self isSeparable
 			ifTrue: [ 
-				| l |
-				l := self separateExpression.
-				l do: [ :each | 
-					| e |
-					e := KEEvent new.
-					e rate: each normalize.
-					events add: e ] ]
-			ifFalse: [ 
-				| e |
-				e := KEEvent new rate: self normalize.
-				events add: e ] ].
+				| exprs |
+				exprs := self separateExpression.
+				events := exprs collect: [ :each | 
+					          KEEvent new rate: each normalize ] ]
+			ifFalse: [ events add: (KEEvent new rate: self normalize) ] ].
 
 	op = #+ ifTrue: [ 
-		| l1 l2 |
-		l1 := leftHandSide generateEvents.
-		l2 := rightHandSide generateEvents.
-		events addAll: l1; addAll:l2.
-		].
+		| lhs rhs |
+		lhs := leftHandSide generateEvents.
+		rhs := rightHandSide generateEvents.
+		events
+			addAll: lhs;
+			addAll: rhs ].
 
 	op = #- ifTrue: [ 
-		| l1 l2 |
-		l1 := leftHandSide generateEvents.
-		l2 := (KEUnaryExpression new
+		| lhs rhs |
+		lhs := leftHandSide generateEvents.
+		rhs := (KEUnaryExpression new
 			       op: #-;
 			       expression: rightHandSide) generateEvents.
-		l1 ifNotNil: [ events addAll: l1 ].
-		events addAll: l2 ].
+		events addAll: lhs; addAll:rhs ].
 	^ events
 ]
 
