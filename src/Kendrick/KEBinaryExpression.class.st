@@ -116,6 +116,48 @@ op = #'^' ifTrue:[
 ]
 
 { #category : #'as yet unclassified' }
+KEBinaryExpression >> expand [
+
+	"This method express an expression as a sum of factors (the reverse of the factorization)."
+
+	| expressions |
+	expressions := OrderedCollection new.
+	leftHandSide isSeparable
+		ifTrue: [ 
+			| l |
+			l := OrderedCollection new.
+			expressions := leftHandSide doSeparation.
+			expressions do: [ :each | 
+				| exp |
+				exp := KEBinaryExpression new
+					       op: op;
+					       leftHandSide: each;
+					       rightHandSide: rightHandSide.
+				exp isSeparable
+					ifTrue: [ l addAll: exp doSeparation ]
+					ifFalse: [ l add: exp ] ].
+			^ l ]
+		ifFalse: [ 
+			rightHandSide isSeparable
+				ifTrue: [ 
+					| l |
+					l := OrderedCollection new.
+					expressions := rightHandSide doSeparation.
+					expressions do: [ :each | 
+						| e |
+						e := KEBinaryExpression new
+							     op: op;
+							     leftHandSide: leftHandSide;
+							     rightHandSide: each.
+						e isSeparable
+							ifTrue: [ l addAll: e doSeparation ]
+							ifFalse: [ l add: e ] ].
+					^ l ]
+				ifFalse: [ expressions := self doSeparation ] ].
+	^ expressions
+]
+
+{ #category : #'as yet unclassified' }
 KEBinaryExpression >> generateEvents [
 
 	| events |
@@ -124,7 +166,7 @@ KEBinaryExpression >> generateEvents [
 		self isSeparable
 			ifTrue: [ 
 				| exprs |
-				exprs := self separateExpression.
+				exprs := self expand.
 				events := exprs collect: [ :each | 
 					          KEEvent new rate: each normalize ] ]
 			ifFalse: [ events add: (KEEvent new rate: self normalize) ] ].
@@ -306,46 +348,6 @@ KEBinaryExpression >> rightHandSide [
 { #category : #accessing }
 KEBinaryExpression >> rightHandSide: anExpression [
 	rightHandSide := anExpression
-]
-
-{ #category : #'as yet unclassified' }
-KEBinaryExpression >> separateExpression [
-
-	| expressions |
-	expressions := OrderedCollection new.
-	leftHandSide isSeparable
-		ifTrue: [ 
-			| l |
-			l := OrderedCollection new.
-			expressions := leftHandSide doSeparation.
-			expressions do: [ :each | 
-				| exp |
-				exp := KEBinaryExpression new
-					       op: op;
-					       leftHandSide: each;
-					       rightHandSide: rightHandSide.
-				exp isSeparable
-					ifTrue: [ l addAll: exp doSeparation ]
-					ifFalse: [ l add: exp ] ].
-			^ l ]
-		ifFalse: [ 
-			rightHandSide isSeparable
-				ifTrue: [ 
-					| l |
-					l := OrderedCollection new.
-					expressions := rightHandSide doSeparation.
-					expressions do: [ :each | 
-						| e |
-						e := KEBinaryExpression new
-							     op: op;
-							     leftHandSide: leftHandSide;
-							     rightHandSide: each.
-						e isSeparable
-							ifTrue: [ l addAll: e doSeparation ]
-							ifFalse: [ l add: e ] ].
-					^ l ]
-				ifFalse: [ expressions := self doSeparation ] ].
-	^ expressions
 ]
 
 { #category : #testing }
