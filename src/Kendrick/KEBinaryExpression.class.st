@@ -207,11 +207,11 @@ KEBinaryExpression >> normalize [
 	rhs := rightHandSide normalize.
 	k := KEUnaryExpression new op: #-.
 	lhs isUnaryExpression
-		ifTrue: [ 
-			rhs isUnaryExpression
+		ifTrue: [
+			rhs isUnaryExpression 
 				ifTrue: [ 
 					self leftHandSide: lhs expression.
-					self rightHandSide: rhs expression ]
+					self rightHandSide: rhs expression]
 				ifFalse: [ 
 					k expression: (KEBinaryExpression new
 							 op: self op;
@@ -222,8 +222,8 @@ KEBinaryExpression >> normalize [
 			rhs isUnaryExpression ifTrue: [ 
 				k expression: (KEBinaryExpression new
 						 op: self op;
-						 leftHandSide: lhs;
-						 rightHandSide: rhs expression).
+						 leftHandSide: rhs expression;
+						 rightHandSide:  lhs).
 				^ k ] ]
 ]
 
