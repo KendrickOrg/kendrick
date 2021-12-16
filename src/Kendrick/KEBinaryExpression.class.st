@@ -161,6 +161,8 @@ KEBinaryExpression >> isBinaryExpression [
 { #category : #testing }
 KEBinaryExpression >> isSeparable [
 
+	"Apparently returns true is the expression can be expressed as a sum of factors"
+
 	| c c1 c2 |
 	c1 := leftHandSide isSeparable.
 	c2 := rightHandSide isSeparable.
@@ -321,14 +323,14 @@ KEBinaryExpression >> separateExpression [
 			l := OrderedCollection new.
 			expressions := leftHandSide doSeparation.
 			expressions do: [ :each | 
-				| e |
-				e := KEBinaryExpression new
-					     op: op;
-					     leftHandSide: each;
-					     rightHandSide: rightHandSide.
-				e isSeparable
-					ifTrue: [ l addAll: e doSeparation ]
-					ifFalse: [ l add: e ] ].
+				| exp |
+				exp := KEBinaryExpression new
+					       op: op;
+					       leftHandSide: each;
+					       rightHandSide: rightHandSide.
+				exp isSeparable
+					ifTrue: [ l addAll: exp doSeparation ]
+					ifFalse: [ l add: exp ] ].
 			^ l ]
 		ifFalse: [ 
 			rightHandSide isSeparable
