@@ -42,22 +42,21 @@ KEExpressionTest >> testBuildABinaryExpression [
 { #category : #tests }
 KEExpressionTest >> testCompare2NumericalsWithSameValue [
 
-| a b |
-a := KENumerical number:6.
-b := KENumerical number:6.
+	| a b |
+	a := KENumerical number: 6.
+	b := KENumerical number: 6.
 
-self assert:true equals: (a = b)
-	
+	self assert: a equals: b
 ]
 
 { #category : #tests }
 KEExpressionTest >> testCompare2VariablesWithSameName [
 
-| a b |
-a := KEVariable symbol: #S.
-b := KEVariable symbol: #S.
+	| a b |
+	a := KEVariable symbol: #S.
+	b := KEVariable symbol: #S.
 
-self assert:true equals: (a = b)
+	self assert: a equals: b
 ]
 
 { #category : #tests }
@@ -78,20 +77,20 @@ KEExpressionTest >> testIsSeparableForBinaryExpression [
 
 { #category : #tests }
 KEExpressionTest >> testIsUnaryExpression [
+
 	| beta minusBeta s betaS |
-	
 	beta := KEVariable symbol: #beta.
-	minusBeta := (KEUnaryExpression new) op:#-.
+	minusBeta := KEUnaryExpression new op: #-.
 	minusBeta expression: beta.
-	
+
 	s := KEVariable symbol: #S.
-	
-	betaS := (KEBinaryExpression new) op:#*.
+
+	betaS := KEBinaryExpression new op: #*.
 	betaS rightHandSide: s.
 	betaS leftHandSide: beta.
-	
-	self assert: true equals: minusBeta isUnaryExpression.
-	self assert: false equals: betaS isUnaryExpression.
+
+	self assert: minusBeta isUnaryExpression.
+	self deny: betaS isUnaryExpression
 ]
 
 { #category : #tests }
@@ -366,7 +365,5 @@ KEExpressionTest >> testSeparateABinaryExpression [
 	self assert: 3 equals: s1 expression separateExpression size.
 	self assert: 2 equals: s2 expression separateExpression size.
 	self assert: 2 equals: s3 expression separateExpression size.
-	self assert: 4 equals: s4 expression separateExpression size.
-
-
+	self assert: 4 equals: s4 expression separateExpression size
 ]
