@@ -47,12 +47,8 @@ KEVariable >> evaluateWithModel: model [
 
 { #category : #'as yet unclassified' }
 KEVariable >> generateEvents [
-	| list e |
-	list := OrderedCollection new.
-	e := KEEvent new.
-	e rate: self.
-	list add: e.
-	^ list
+
+^ OrderedCollection newFrom: { (KEEvent new rate: self) }
 ]
 
 { #category : #testing }
