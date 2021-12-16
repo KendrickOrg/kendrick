@@ -70,12 +70,8 @@ KEMathFunctionExpression >> functionName: aValue [
 
 { #category : #'as yet unclassified' }
 KEMathFunctionExpression >> generateEvents [
-	| list e |
-	list := OrderedCollection new.
-	e := KEEvent new.
-	e rate: functionExpr.
-	list add: e.
-	^ list
+
+	^ OrderedCollection newFrom: { (KEEvent new rate: functionExpr) }
 ]
 
 { #category : #checking }
