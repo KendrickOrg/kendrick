@@ -158,9 +158,7 @@ KEBinaryExpression >> generateEvents [
 	op = #- ifTrue: [ 
 		| lhs rhs |
 		lhs := leftHandSide generateEvents.
-		rhs := (KEUnaryExpression new
-			        op: #-;
-			        expression: rightHandSide) generateEvents.
+		rhs := rightHandSide negated generateEvents.
 		events
 			addAll: lhs;
 			addAll: rhs ].
@@ -218,29 +216,26 @@ KEBinaryExpression >> normalize [
 
 	"If the expression is negative, put the minus on the top"
 
-	| lhs rhs k |
+	| lhs rhs  |
 	lhs := leftHandSide normalize.
 	rhs := rightHandSide normalize.
-	k := KEUnaryExpression new op: #-.
 	lhs isUnaryExpression
-		ifTrue: [
-			rhs isUnaryExpression 
+		ifTrue: [ 
+			rhs isUnaryExpression
 				ifTrue: [ 
 					self leftHandSide: lhs expression.
-					self rightHandSide: rhs expression]
+					self rightHandSide: rhs expression ]
 				ifFalse: [ 
-					k expression: (KEBinaryExpression new
-							 op: self op;
-							 leftHandSide: lhs expression;
-							 rightHandSide: rhs).
-					^ k ] ]
+					^ (KEBinaryExpression new
+						   op: self op;
+						   leftHandSide: lhs expression;
+						   rightHandSide: rhs) negated ] ]
 		ifFalse: [ 
 			rhs isUnaryExpression ifTrue: [ 
-				k expression: (KEBinaryExpression new
-						 op: self op;
-						 leftHandSide: rhs expression;
-						 rightHandSide:  lhs).
-				^ k ] ]
+				^ (KEBinaryExpression new
+					   op: self op;
+					   leftHandSide: rhs expression;
+					   rightHandSide: lhs) negated ] ]
 ]
 
 { #category : #accessing }
