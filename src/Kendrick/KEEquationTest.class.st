@@ -48,7 +48,7 @@ KEEquationTest >> testNumberOfEquationsOfSEIRSIs4 [
 	simulator executeOn: model.
 	"We need to transform ODE to transitions, because at the moment this is not done explicitely every time you execute a model that is based on ODE equations."
 	model equationsToTransitions.
-
+	
 	self assert: model equations2 size equals: 4
 ]
 
@@ -76,6 +76,37 @@ KEEquationTest >> testNumberOfEquationsOfSIRModelIs3 [
 	simulator executeOn: model.
 	"We need to transform ODE to transitions, because at the moment this is not done explicitely every time you execute a model that is based on ODE equations."
 	model equationsToTransitions.
+
+	self assert: model equations2 size equals: 3
+]
+
+{ #category : #tests }
+KEEquationTest >> testNumberOfEquationsOfSIRModelWithTransitions [
+
+	| model simulator |
+	model := KEModel new.
+	model attributes: { (#status -> #( #S #I #R )) }.
+	model atCompartment: { (#status -> #S) } put: 99999.
+	model atCompartment: { (#status -> #I) } put: 1.
+	model atCompartment: { (#status -> #R) } put: 0.
+	model addParameters: { 
+			(#beta -> 0.0052).
+			(#gamma -> 52) }.
+	model
+		addTransitionFrom: { (#status -> #S) }
+		to: { (#status -> #I) }
+		probability: [ :m | 
+			(m atParameter: #beta) * (m atCompartment: { (#status -> #I) }) ].
+	model
+		addTransitionFrom: { (#status -> #I) }
+		to: { (#status -> #R) }
+		probability: [ :m | m atParameter: #gamma ].
+	simulator := KESimulator
+		             new: #RungeKutta
+		             from: 0.0
+		             to: 0.20
+		             step: 0.001.
+	simulator executeOn: model.
 	self assert: model equations2 size equals: 3
 ]
 

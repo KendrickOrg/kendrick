@@ -57,33 +57,23 @@ KEEventTest >> testEventsNumberOfTheSumfTwoConcernsAreTheProductOfTheirEventsNum
 
 { #category : #tests }
 KEEventTest >> testEventsWithOppositeRate [
-	| e1 e2 si s i beta minusBetaSI betaSI listEvents |
+
+	| e1 e2 si s i beta minusBetaSI betaSI events |
 	e1 := KEEvent new.
 	e2 := KEEvent new.
 	s := KEVariable new symbol: #S.
 	i := KEVariable new symbol: #I.
 	beta := KEVariable new symbol: #beta.
-	minusBetaSI := KEUnaryExpression new.
-	si := KEBinaryExpression new.
-	si
-		op: #*;
-		leftHandSide: s;
-		rightHandSide: i.
-	betaSI := KEBinaryExpression new.
-	betaSI
-		op: #*;
-		leftHandSide: beta;
-		rightHandSide: si.
-	minusBetaSI
-		op: #-;
-		expression: betaSI.
+	si := s * i.
+	betaSI := beta * si.
+	minusBetaSI := betaSI negated.
 	e1 rate: minusBetaSI normalize.
 	e2 rate: betaSI normalize.
-	listEvents := OrderedCollection new.
-	listEvents add: e1.
+	events := OrderedCollection new.
+	events add: e1.
 	self
 		assert: true
-		equals: (e2 hasAnEventWithOppositeRateIn: listEvents)
+		equals: (e2 hasAnEventWithOppositeRateIn: events)
 ]
 
 { #category : #tests }

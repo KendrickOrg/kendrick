@@ -23,6 +23,23 @@ KEExpressionTest >> test3Plus7Is10 [
 ]
 
 { #category : #tests }
+KEExpressionTest >> testAddingExpressions [
+
+	| e1 e2 e3 |
+	e1 := 'x' parseAsAnExpression.
+	e2 := '1' parseAsAnExpression.
+	e3 := 'u+v' parseAsAnExpression.
+
+	self assert: e1 + e2 equals: 'x+1' parseAsAnExpression.
+	self assert: e2 + e1 equals: '1+x' parseAsAnExpression.
+	"At the moment, we test they have the same printString. We will need some equality between expression later."
+	self
+		assert: (e1 + e3) printString
+		equals: 'x+u+v' parseAsAnExpression printString.
+	self assert: e3 + e1 equals: 'u+v+x' parseAsAnExpression
+]
+
+{ #category : #tests }
 KEExpressionTest >> testBuildABinaryExpression [
 	| e a b o |
 	
