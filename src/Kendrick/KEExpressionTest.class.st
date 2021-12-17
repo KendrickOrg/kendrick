@@ -375,6 +375,7 @@ KEExpressionTest >> testRemoveIndexedVariable5 [
 KEExpressionTest >> testSeparateABinaryExpression [
 
 	| s1 s2 s3 s4 |
+	
 	s1 := 's=-(A+B+C)*E*D' parseAsAnEquation.
 	s2 := 's=-(A+B)*(-C)' parseAsAnEquation.
 	s3 := 's=(-E)*D*F*(A+B)' parseAsAnEquation.
