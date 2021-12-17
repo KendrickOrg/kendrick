@@ -72,8 +72,7 @@ KEBinaryExpression >> doSeparation [
 				      op: op;
 				      rightHandSide: right.
 			left op = #-
-				ifTrue: [ 
-					e2 leftHandSide: left rightHandSide negated ]
+				ifTrue: [ e2 leftHandSide: left rightHandSide negated ]
 				ifFalse: [ e2 leftHandSide: left rightHandSide ].
 			e1 isSeparable
 				ifTrue: [ list addAll: e1 doSeparation ]
@@ -93,10 +92,7 @@ KEBinaryExpression >> doSeparation [
 						      op: op;
 						      leftHandSide: left.
 					right op = #-
-						ifTrue: [ 
-							e2 rightHandSide: (KEUnaryExpression new
-									 op: #-;
-									 expression: right rightHandSide) ]
+						ifTrue: [ e2 rightHandSide: right rightHandSide negated ]
 						ifFalse: [ e2 rightHandSide: right rightHandSide ].
 					e1 isSeparable
 						ifTrue: [ list addAll: e1 doSeparation ]
@@ -113,14 +109,8 @@ KEBinaryExpression >> doSeparation [
 		ifTrue: [ ^ list ]
 		ifFalse: [ 
 			leftHandSide isUnaryExpression | rightHandSide isUnaryExpression 
-				ifTrue: [ 
-					| l |
-					l := OrderedCollection new.
-					list do: [ :each | 
-						l add: (KEUnaryExpression new
-								 op: #-;
-								 expression: each) ].
-					^ l ] ].
+				ifTrue: [ ^ list collect:[:each| each negated]].
+		].
 	^ list
 ]
 

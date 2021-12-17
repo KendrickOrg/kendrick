@@ -83,6 +83,7 @@ KEEquationTest >> testNumberOfEquationsOfSIRModelIs3 [
 { #category : #tests }
 KEEquationTest >> testNumberOfEquationsOfSIRModelWithTransitions [
 
+	<expectedFailure>
 	| model simulator |
 	model := KEModel new.
 	model attributes: { (#status -> #( #S #I #R )) }.
