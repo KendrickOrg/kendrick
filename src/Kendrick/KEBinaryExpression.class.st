@@ -126,7 +126,7 @@ KEBinaryExpression >> expand [
 	leftHandSide isSeparable
 		ifTrue: [ 
 			expressions := leftHandSide doSeparation.
-			expressions collect: [ :each | 
+			expressions do: [ :each | 
 				| lhs |
 				lhs := KEBinaryExpression new
 					       op: op;
@@ -139,7 +139,7 @@ KEBinaryExpression >> expand [
 			rightHandSide isSeparable
 				ifTrue: [ 
 					expressions := rightHandSide doSeparation.
-					expressions collect: [ :each | 
+					expressions do: [ :each | 
 						| rhs |
 						rhs := KEBinaryExpression new
 							     op: op;
