@@ -115,36 +115,37 @@ KEContactNetworkSimulator class >> example3 [
 
 { #category : #examples }
 KEContactNetworkSimulator class >> exampleErdos1 [
-	| v g nodes edges nbNodes n |
-	n := KEContactNetworkSimulator
-		fromNetwork:
-			(KEErdosGNMContactNetwork new
-				nodes: (1 to: 100);
-				edgesNumber: 70).
+
+	| v g nodes edges n |
+	n := self fromNetwork: (KEErdosGNMContactNetwork new
+			      nodes: (1 to: 200);
+			      edgesNumber: 200).
 	g := n network.
 	10 timesRepeat: [ n step ].
-	v := RTView new.
-	nbNodes := g nodes size.
-	nodes := (RTEllipse new
-		color: (Color purple alpha: 0.3);
-		size: 10) elementsOn: g nodes.
-	nodes := (RTEllipse new
-		color: [ :e | 
-			e currentStatus == #I
-				ifTrue: [ Color red ]
-				ifFalse: [ e currentStatus == #S
-						ifTrue: [ Color green ]
-						ifFalse: [ Color blue ] ] ];
-		size: 10) elementsOn: g nodes.
-	nodes @ RTDraggable.
+	v := RSCanvas new.
+	nodes := g nodes collect: [ :node | 
+		         RSEllipse new
+			         model: node;
+			         draggable;
+			         color: (node currentStatus == #I
+					          ifTrue: [ Color red ]
+					          ifFalse: [ 
+						          node currentStatus == #S
+							          ifTrue: [ Color green ]
+							          ifFalse: [ Color blue ] ]);
+			         size: 10;
+			         yourself ].
 	v addAll: nodes.
-	edges := RTEdgeBuilder new
-		view: v;
-		shape: (RTLine new color: (Color red alpha: 0.5));
-		source: g edges connectFrom: #from to: #to.
-	edges do: [ :e | e trachelShape pushBack ].
-	v addAnimation: (RTSpringLayoutStepping new view: v).
-	v @ RTDraggableView.
+	edges := RSLineBuilder line
+		         canvas: v;
+		         shape: (RSLine new color: (Color red alpha: 0.5));
+		         source: g edges connectFrom: #from to: #to.
+	layout := RSForceBasedLayout new
+		          nodes: nodes;
+		          edges: edges;
+		          start;
+		          yourself.
+	v newAnimation repeat onStepDo: [ :t | layout step ].
 	v open
 ]
 
