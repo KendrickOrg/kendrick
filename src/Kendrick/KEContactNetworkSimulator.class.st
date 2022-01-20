@@ -116,7 +116,7 @@ KEContactNetworkSimulator class >> example3 [
 { #category : #examples }
 KEContactNetworkSimulator class >> exampleErdos1 [
 
-	| v g nodes edges n |
+	| v g nodes edges n l|
 	n := self fromNetwork: (KEErdosGNMContactNetwork new
 			      nodes: (1 to: 200);
 			      edgesNumber: 200).
@@ -140,12 +140,12 @@ KEContactNetworkSimulator class >> exampleErdos1 [
 		         canvas: v;
 		         shape: (RSLine new color: (Color red alpha: 0.5));
 		         source: g edges connectFrom: #from to: #to.
-	layout := RSForceBasedLayout new
+	l := RSForceBasedLayout new
 		          nodes: nodes;
 		          edges: edges;
 		          start;
 		          yourself.
-	v newAnimation repeat onStepDo: [ :t | layout step ].
+	v newAnimation repeat onStepDo: [ :t | l step ].
 	v open
 ]
 
