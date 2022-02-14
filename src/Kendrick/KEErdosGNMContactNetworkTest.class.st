@@ -5,12 +5,13 @@ Class {
 }
 
 { #category : #tests }
-KEErdosGNMContactNetworkTest >> testNumberOfPathssOfLengthTwoInErdosGNMIsSix [
+KEErdosGNMContactNetworkTest >> testNumberOfPathsOfLengthTwoInErdosGNMIsSix [
+
 	| network node |
 	network := KEErdosGNMContactNetwork new
-		nodes: (1 to: 100);
-		edgesNumber: 70.
+		           nodes: (1 to: 100);
+		           edgesNumber: 70.
 	network run.
 	node := network nodes at: 1.
-	self assert: (network p2: node) >=0
+	self assert: (network p2: node) >= 0
 ]
