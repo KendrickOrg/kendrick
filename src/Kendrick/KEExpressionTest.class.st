@@ -113,17 +113,17 @@ KEExpressionTest >> testIsUnaryExpression [
 { #category : #tests }
 KEExpressionTest >> testKENumberPrintAsNumber [
 
-|n|
-n := KENumerical number: 10.
-self assert: '10' equals: n asString.
+	| n |
+	n := KENumerical number: 10.
+	self assert: n printString equals: '10'
 ]
 
 { #category : #tests }
 KEExpressionTest >> testKEVariablePrintAsItsName [
 
-|beta|
-beta := KEVariable symbol:#beta.
-self assert: 'beta' equals: beta asString.
+	| beta |
+	beta := KEVariable symbol: #beta.
+	self assert:  beta printString equals: 'beta'
 ]
 
 { #category : #tests }
@@ -209,29 +209,35 @@ KEExpressionTest >> testNormalizeReturnCorrectExpression [
 
 { #category : #tests }
 KEExpressionTest >> testPrintABinaryExpression [
+
 	| e a b |
-	
 	e := KEBinaryExpression new.
-	a := KENumerical number:3.
-	b := KENumerical number:4.
+	a := KENumerical number: 3.
+	b := KENumerical number: 4.
 	e
 		op: #+;
 		leftHandSide: a;
 		rightHandSide: b.
 
-	self assert: '3+4' equals: e asString
+	self assert: e printString equals: '3+4'
 ]
 
 { #category : #tests }
 KEExpressionTest >> testPrintKEUnaryExpression [
 
-|beta minusBeta|
+	| beta minusBeta |
+	beta := KEVariable symbol: #beta.
+	minusBeta := KEUnaryExpression new
+		             op: #-;
+		             expression: beta.
 
-beta := KEVariable symbol:#beta.
-minusBeta := KEUnaryExpression op:#-.
-minusBeta expression: beta.
+	self assert: minusBeta printString equals: '-(beta)'
+]
 
-self assert: '-beta' equals: minusBeta asString.
+{ #category : #tests }
+KEExpressionTest >> testPrintUnaryExpression [
+
+	self assert: '-(A+B)' parseAsAnExpression printString equals: '-(A+B)'
 ]
 
 { #category : #tests }
@@ -374,14 +380,13 @@ KEExpressionTest >> testRemoveIndexedVariable5 [
 { #category : #tests }
 KEExpressionTest >> testSeparateABinaryExpression [
 
-	| s1 s2 s3 s4 |
-	
-	s1 := 's=-(A+B+C)*E*D' parseAsAnEquation.
-	s2 := 's=-(A+B)*(-C)' parseAsAnEquation.
-	s3 := 's=(-E)*D*F*(A+B)' parseAsAnEquation.
-	s4 := 's=(A+B)*(C+D)' parseAsAnEquation.
-	self assert: 3 equals: s1 expression separateExpression size.
-	self assert: 2 equals: s2 expression separateExpression size.
-	self assert: 2 equals: s3 expression separateExpression size.
-	self assert: 4 equals: s4 expression separateExpression size
+	| e1 e2 e3 e4 |
+	e1 := '-(A+B+C)*E*D' parseAsAnExpression.
+	e2 := '-(A+B)*(-C)' parseAsAnExpression.
+	e3 := '(-E)*D*F*(A+B)' parseAsAnExpression.
+	e4 := '(A+B)*(C+D)' parseAsAnExpression.
+	self assert: e1 separateExpression size equals: 3.
+	self assert: e2 separateExpression size equals: 2.
+	self assert: e3 separateExpression size equals: 2.
+	self assert: e4 separateExpression size equals: 4
 ]

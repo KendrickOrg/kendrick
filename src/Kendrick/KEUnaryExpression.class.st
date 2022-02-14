@@ -127,9 +127,12 @@ KEUnaryExpression >> op: anOperator [
 
 { #category : #printing }
 KEUnaryExpression >> printOn: aStream [
-	aStream 
-		nextPutAll: '-';
-		nextPutAll: expression asString
+
+	aStream
+		nextPutAll: '-(';
+
+		nextPutAll: expression asString;
+		nextPutAll: ')'
 ]
 
 { #category : #evaluating }
