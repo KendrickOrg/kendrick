@@ -31,11 +31,6 @@ KEMathFunctionExpression >> = aMathExp [
 	^ false
 ]
 
-{ #category : #checking }
-KEMathFunctionExpression >> checkNil [
-	^ functionExpr isNil
-]
-
 { #category : #evaluating }
 KEMathFunctionExpression >> evaluateWithModel: aModel [
 

@@ -37,11 +37,6 @@ anExpression isNumber ifTrue: [ ^ self = (KENumerical new number: anExpression) 
 ifFalse:[^false]
 ]
 
-{ #category : #printing }
-KEUnaryExpression >> checkNil [
-	^ expression isNil
-]
-
 { #category : #'as yet unclassified' }
 KEUnaryExpression >> evaluateWithModel: aModel [
 	|value|
