@@ -31,11 +31,6 @@ anExpression isAVariable
 ^false
 ]
 
-{ #category : #testing }
-KEVariable >> checkNil [
-	^ (symbol isNil)
-]
-
 { #category : #'as yet unclassified' }
 KEVariable >> evaluateWithModel: model [
 	((model attributes at: #status ifAbsent: [ OrderedCollection new ])

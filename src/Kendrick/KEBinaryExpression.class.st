@@ -39,11 +39,6 @@ anExpression isBinaryExpression ifTrue:[
 ^false
 ]
 
-{ #category : #printing }
-KEBinaryExpression >> checkNil [
-	^ (leftHandSide isNil) & (rightHandSide isNil)
-]
-
 { #category : #'as yet unclassified' }
 KEBinaryExpression >> doSeparation [
 
@@ -289,25 +284,30 @@ KEBinaryExpression >> removeIndexedVariable [
 
 { #category : #removing }
 KEBinaryExpression >> removeVariable: aVariable [
+
 	"This function is reserved for the reformulation of rate expression to probability of contact of an event generated from an equation"
 
 	| new |
 	new := self class new
-		op: op;
-		leftHandSide: (leftHandSide removeVariable: aVariable);
-		rightHandSide: (rightHandSide removeVariable: aVariable).
-	new checkNil
-		ifTrue: [ ^ nil ].
+		       op: op;
+		       leftHandSide: (leftHandSide removeVariable: aVariable);
+		       rightHandSide: (rightHandSide removeVariable: aVariable).
+
+	new rightHandSide isNil & new leftHandSide isNil ifTrue: [ ^ nil ].
 	new leftHandSide ifNil: [ ^ rightHandSide ].
 	new rightHandSide ifNil: [ ^ leftHandSide ].
-	new leftHandSide isUnaryExpression & new leftHandSide checkNil
-		ifTrue: [ ^ KEUnaryExpression new
-				op: #-;
-				expression: rightHandSide ].
-	new rightHandSide isUnaryExpression & new rightHandSide checkNil
-		ifTrue: [ ^ KEUnaryExpression new
-				op: #-;
-				expression: leftHandSide ].
+
+	(new leftHandSide isUnaryExpression and: [ new leftHandSide expression isNil ]) 
+		ifTrue: [ 
+			^ KEUnaryExpression new
+				  op: #-;
+				  expression: rightHandSide ].
+			
+	(new rightHandSide isUnaryExpression and: [ 
+		 new rightHandSide expression isNil ]) ifTrue: [ 
+		^ KEUnaryExpression new
+			  op: #-;
+			  expression: leftHandSide ].
 	^ new
 ]
 

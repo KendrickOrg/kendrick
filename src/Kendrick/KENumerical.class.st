@@ -33,11 +33,6 @@ KENumerical >> = aNumerical [
 ]
 
 { #category : #evaluating }
-KENumerical >> checkNil [
-	^ number isNil
-]
-
-{ #category : #evaluating }
 KENumerical >> evaluateWithModel: aModel [
 	^ number
 ]
