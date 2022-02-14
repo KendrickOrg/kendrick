@@ -41,6 +41,18 @@ KEHexagonalContactNetworkTest >> testNumberOfCyclesOfLengthTreeInHexagonGridIsZe
 ]
 
 { #category : #tests }
+KEHexagonalContactNetworkTest >> testNumberOfPathsOfLengthTwoInHexagonGridIsSix [
+	| network node |
+	network := KEHexagonalContactNetwork new
+		nodes: (1 to: 6 * 6);
+		n: 6;
+		m: 6.
+	network run.
+	node := network nodes at: 16.
+	self assert: (network p2: node) equals: 6
+]
+
+{ #category : #tests }
 KEHexagonalContactNetworkTest >> testNumberOfPathssOfLengthOneInHexagonGridIsTree [
 	| gridTriang node |
 	gridTriang := KEHexagonalContactNetwork new
@@ -50,16 +62,4 @@ KEHexagonalContactNetworkTest >> testNumberOfPathssOfLengthOneInHexagonGridIsTre
 	gridTriang run.
 	node := gridTriang nodes at: 16.
 	self assert: (gridTriang pathOfLength: 1 startingFrom: node) size equals: 3
-]
-
-{ #category : #tests }
-KEHexagonalContactNetworkTest >> testNumberOfPathssOfLengthTwoInHexagonGridIsSix [
-	| network node |
-	network := KEHexagonalContactNetwork new
-		nodes: (1 to: 6 * 6);
-		n: 6;
-		m: 6.
-	network run.
-	node := network nodes at: 16.
-	self assert: (network p2: node) equals: 6
 ]

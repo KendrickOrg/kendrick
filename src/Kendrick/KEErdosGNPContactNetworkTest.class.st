@@ -36,28 +36,3 @@ KEErdosGNPContactNetworkTest >> testNumberOfCyclesOfLengthTreeInErdosGNPIsZero [
 	node := network nodes at: 10.
 	self assert: (network c3: node) >= 0
 ]
-
-{ #category : #tests }
-KEErdosGNPContactNetworkTest >> testNumberOfPathssOfLengthOneInHexagonGridIsTwo [
-	"To fix: sometimes not green"
-
-	| network node |
-	network := KEErdosGNPContactNetwork new
-		nodes: (1 to: 100);
-		probability: 0.02.
-	network run.
-	node := network nodes at: 1.
-	self assert: (network pathOfLength: 1 startingFrom: node) size >= 2
-]
-
-{ #category : #tests }
-KEErdosGNPContactNetworkTest >> testNumberOfPathssOfLengthTwoInHexagonGridIsSix [
-
-	| network node |
-	network := KEErdosGNPContactNetwork new
-		nodes: (1 to: 100);
-		probability: 0.02.
-	network run.
-	node := network nodes at: 1.
-	self assert: (network p2: node) >= 4 
-]
