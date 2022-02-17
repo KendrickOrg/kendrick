@@ -20,6 +20,12 @@ Model *-- Transition : transitions
 #+end_src
 
 * Kendrick Meta-model description
+The core of the MM is the concept of SAN: a composite automaton.
+
+The UMM (User MM) deals with high-level functionality and what services are served to users.
+It must match the high-level DSL.
+
+The IMM (Implementation MM) specifies the low level implementation and interacts with low-level service-providers such as ODE solvers (RK4...) and stochastic simulation algorithms (Gillespie, Tau leap ...).
 
 The abstract syntax of Kendrick is based on the mathematical definitions of Kendrick
 and relies on an object-oriented meta-model.
