@@ -6,11 +6,15 @@ Class {
 
 { #category : #tests }
 KEIndividualTest >> testUpdateAttributes [
+	<gtExample>
+	<subjectClass: #KECompartmentNameTest>
 	|ind|
 	ind := KEIndividual new currentStatus: (Dictionary newFrom:{#status->#S. #region->#A}).
 	ind nextStatus: (Dictionary newFrom: {#status->#I. #region->#A}).
 	ind updateAttributes: ind nextStatus.
 	
 	self assert: (ind attributes at: #status) equals: #I.
-	self assert: (ind attributes at: #region) equals: #A
+	self assert: (ind attributes at: #region) equals: #A.
+	^ind
+	
 ]
