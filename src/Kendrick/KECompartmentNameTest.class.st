@@ -1,12 +1,13 @@
 Class {
 	#name : #KECompartmentNameTest,
 	#superclass : #TestCase,
-	#category : #'Kendrick-Tests-Core'
+	#category : #'Kendrick-Examples-Core'
 }
 
 { #category : #tests }
 KECompartmentNameTest >> testCompartmentNames [
-
+	<gtExample>
+	<subjectClass: #KECompartmentNameTest>
 	| c1 c2 c3 aModel |
 	aModel := KEModel new.
 	aModel attributes: { 
@@ -28,12 +29,15 @@ KECompartmentNameTest >> testCompartmentNames [
 		      withModel: aModel.
 	self assert: c3 fullName equals: { 
 			(#status -> #S).
-			(#species -> #human) }
+			(#species -> #human) }.
+	^ aModel
+			
 ]
 
 { #category : #tests }
 KECompartmentNameTest >> testCompartmentWithSameValuesShouldBeIdentical [
-
+	<gtExample>
+	<subjectClass: #KECompartmentNameTest>
 	| aModel c1 c2 |
 	aModel := KEModel new.
 	aModel attributes: { 
@@ -45,23 +49,27 @@ KECompartmentNameTest >> testCompartmentWithSameValuesShouldBeIdentical [
 
 	self assert: c1 equals: c2.
 	self assert: c2 equals: c1.
-
+	^ aModel
 ]
 
 { #category : #tests }
 KECompartmentNameTest >> testCreatingCompartment [
+	<gtExample>
+	<subjectClass: #KECompartmentNameTest>
 	| c |
 	c := KECompartment new
 		compartmentName: {(#status -> #S)};
 		cardinality: 1000; 
 		yourself.
 	self assert: c compartmentName equals: {(#status -> #S)}.
-	self assert: c cardinality equals: 1000
+	self assert: c cardinality equals: 1000.
+	^ c
 ]
 
 { #category : #tests }
 KECompartmentNameTest >> testCreatingMoreComplexCompartmentName [
-
+	<gtExample>
+	<subjectClass: #KECompartmentNameTest>
 	| c |
 	c := KECompartment new
 		     compartmentName: { 
@@ -72,12 +80,14 @@ KECompartmentNameTest >> testCreatingMoreComplexCompartmentName [
 	self assert: c compartmentName equals: { 
 			(#status -> #S).
 			(#species -> #human) }.
-	self assert: c cardinality equals: 1000
+	self assert: c cardinality equals: 1000.
+	^c
 ]
 
 { #category : #tests }
 KECompartmentNameTest >> testInitializePopulationCardinality [
-
+	<gtExample>
+	<subjectClass: #KECompartmentNameTest>
 	| model |
 	model := KEModel new.
 	model attributes: { 
@@ -85,12 +95,15 @@ KECompartmentNameTest >> testInitializePopulationCardinality [
 			(#region -> #( A B C D )) }.
 	model populationCardinality: 100.
 
-	self assert: (model populationCardinality ) equals: 100
+	self assert: (model populationCardinality ) equals: 100.
+	^model
+	
 ]
 
 { #category : #tests }
 KECompartmentNameTest >> testOrderOfValuesIsNotImportantForCompartmentNames [
-
+	<gtExample>
+	<subjectClass: #KECompartmentNameTest>
 	| aModel c1 c2 |
 	aModel := KEModel new.
 	aModel attributes: { 
@@ -104,12 +117,14 @@ KECompartmentNameTest >> testOrderOfValuesIsNotImportantForCompartmentNames [
 		      simpleName: { #human. #S }
 		      withModel: aModel.
 
-	self assert: c1 equals: c2
+	self assert: c1 equals: c2.
+	^aModel
 ]
 
 { #category : #tests }
 KECompartmentNameTest >> testSameAttributesShouldRaiseError [
-
+	<gtExample>
+	<subjectClass: #KECompartmentNameTest>
 	| aModel |
 	aModel := KEModel new.
 	self
@@ -117,12 +132,14 @@ KECompartmentNameTest >> testSameAttributesShouldRaiseError [
 			aModel attributes: { 
 					(#status -> #( #S #I #R )).
 					(#status -> #( human bird )) } ]
-		raise: Error
+		raise: Error.
+	^aModel
 ]
 
 { #category : #tests }
 KECompartmentNameTest >> testSameValuesShouldRaiseError [
-
+	<gtExample>
+	<subjectClass: #KECompartmentNameTest>
 	| aModel |
 	aModel := KEModel new.
 
@@ -137,12 +154,14 @@ KECompartmentNameTest >> testSameValuesShouldRaiseError [
 			aModel attributes: { 
 					(#status -> #( S I R )).
 					(#species -> #( human human )) } ]
-		raise: Error
+		raise: Error.
+	^aModel
 ]
 
 { #category : #tests }
 KECompartmentNameTest >> testUnExistingValues [
-
+ 	<gtExample>
+	<subjectClass: #KECompartmentNameTest>
 	| aModel |
 	aModel := KEModel new.
 	aModel attributes: { 
@@ -152,5 +171,6 @@ KECompartmentNameTest >> testUnExistingValues [
 	self
 		should: [ 
 		KECompartmentName new simpleName: { #U } withModel: aModel ]
-		raise: Error
+		raise: Error.
+ 	^aModel 
 ]
