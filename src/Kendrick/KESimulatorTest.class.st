@@ -1,11 +1,13 @@
 Class {
 	#name : #KESimulatorTest,
 	#superclass : #TestCase,
-	#category : #'Kendrick-Tests-Core'
+	#category : #'Kendrick-Examples-Core'
 }
 
 { #category : #tests }
 KESimulatorTest >> testAfterSimulationOfSIRModelThereAreThreeTimeSeries [
+	<gtExample>
+	<subjectClass: #KESimulatorTest>
 	| model simulator |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R))}.
@@ -31,12 +33,14 @@ KESimulatorTest >> testAfterSimulationOfSIRModelThereAreThreeTimeSeries [
 		to: 1.0
 		step: 0.001.
 	simulator executeOn: model.
-	self assert: simulator timeSeriesOutputs numberOfColumns equals: 3
+	self assert: simulator timeSeriesOutputs numberOfColumns equals: 3.
+	^model
 ]
 
 { #category : #tests }
 KESimulatorTest >> testKEDeterministicSimulationGiveAlwaysSameMax [
-
+	<gtExample>
+	<subjectClass: #KESimulatorTest>
 |model simulator |
 	model := KEModel new.
 	model attributes: 
@@ -56,5 +60,6 @@ KESimulatorTest >> testKEDeterministicSimulationGiveAlwaysSameMax [
 			probability: [ :m | m atParameter: #gamma ].
 	simulator := KESimulator new: #RungeKutta from: 0.0 to: 0.3 step: 0.001.
 	simulator executeOn: model.
-self assert: (simulator timeSeriesOutputsAt: {#status -> #I}) contents max closeTo: 66921.97353327252
+self assert: (simulator timeSeriesOutputsAt: {#status -> #I}) contents max closeTo: 66921.97353327252.
+^model
 ]
