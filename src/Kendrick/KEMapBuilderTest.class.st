@@ -1,11 +1,13 @@
 Class {
 	#name : #KEMapBuilderTest,
 	#superclass : #TestCase,
-	#category : #'Kendrick-Tests-Core'
+	#category : #'Kendrick-Examples-Core'
 }
 
 { #category : #tests }
 KEMapBuilderTest >> testRoutesToTransitions [
+	<gtExample>
+	<subjectClass: #KEMapBuilderTest>
 	| m |
 	m := KEMapBuilder new.
 	m countries: #(#MyanmarBurma #Cambodia #Laos #Malaysia #Thailand #Vietnam).
@@ -13,5 +15,6 @@ KEMapBuilderTest >> testRoutesToTransitions [
 	m routesFrom: #Laos toAll: #(#Vietnam #Thailand #Cambodia).
 	m routesFrom: #Cambodia toAll: #(Vietnam #Laos #Thailand).
 	m routesFrom: #Thailand toAll: #(#Laos #Cambodia #MyanmarBurma #Malaysia).
-	self assert: (m routesToTransitions: 'rho') size equals: 12
+	self assert: (m routesToTransitions: 'rho') size equals: 12.
+	^m
 ]
