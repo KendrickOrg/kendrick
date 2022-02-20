@@ -1,11 +1,13 @@
 Class {
 	#name : #KEExpressionTest,
 	#superclass : #TestCase,
-	#category : #'Kendrick-Tests-Core'
+	#category : #'Kendrick-Examples-Core'
 }
 
 { #category : #tests }
 KEExpressionTest >> test3Plus7Is10 [
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| e a b o m |
 	
 	m := KEModel new.
@@ -20,11 +22,16 @@ KEExpressionTest >> test3Plus7Is10 [
 		leftHandSide: a;
 		rightHandSide: b.
 	self assert: (e evaluateWithModel: m) equals: 10.
+	^m
+
+
+
 ]
 
 { #category : #tests }
 KEExpressionTest >> testAddingExpressions [
-
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| e1 e2 e3 |
 	e1 := 'x' parseAsAnExpression.
 	e2 := '1' parseAsAnExpression.
@@ -41,6 +48,8 @@ KEExpressionTest >> testAddingExpressions [
 
 { #category : #tests }
 KEExpressionTest >> testBuildABinaryExpression [
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| e a b o |
 	
 	e := KEBinaryExpression new.
@@ -53,32 +62,39 @@ KEExpressionTest >> testBuildABinaryExpression [
 		op: o;
 		leftHandSide: a;
 		rightHandSide: b.
-	self assert: e op equals: #+
+	self assert: e op equals: #+.
+	^e
+
 ]
 
 { #category : #tests }
 KEExpressionTest >> testCompare2NumericalsWithSameValue [
-
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| a b |
 	a := KENumerical number: 6.
 	b := KENumerical number: 6.
 
-	self assert: a equals: b
+	self assert: a equals: b.
+	^a
 ]
 
 { #category : #tests }
 KEExpressionTest >> testCompare2VariablesWithSameName [
-
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| a b |
 	a := KEVariable symbol: #S.
 	b := KEVariable symbol: #S.
 
-	self assert: a equals: b
+	self assert: a equals: b.
+	^a
 ]
 
 { #category : #tests }
 KEExpressionTest >> testIsSeparableForBinaryExpression [
-
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| s1 s2 s3 s4 s5 |
 	s1 := 's=-(A+B+C)*E*D' parseAsAnEquation.
 	s2 := 's=-(A+B)*(-C)' parseAsAnEquation.
@@ -89,12 +105,13 @@ KEExpressionTest >> testIsSeparableForBinaryExpression [
 	self assert: s2 expression isSeparable.
 	self assert: s3 expression isSeparable.
 	self deny: s4 expression isSeparable.
-	self assert: s5 expression isSeparable
+	self assert: s5 expression isSeparable.
 ]
 
 { #category : #tests }
 KEExpressionTest >> testIsUnaryExpression [
-
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| beta minusBeta s betaS |
 	beta := KEVariable symbol: #beta.
 	minusBeta := KEUnaryExpression new op: #-.
@@ -107,27 +124,34 @@ KEExpressionTest >> testIsUnaryExpression [
 	betaS leftHandSide: beta.
 
 	self assert: minusBeta isUnaryExpression.
-	self deny: betaS isUnaryExpression
+	self deny: betaS isUnaryExpression.
+	^minusBeta 
 ]
 
 { #category : #tests }
 KEExpressionTest >> testKENumberPrintAsNumber [
-
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| n |
 	n := KENumerical number: 10.
-	self assert: n printString equals: '10'
+	self assert: n printString equals: '10'.
+	^n
 ]
 
 { #category : #tests }
 KEExpressionTest >> testKEVariablePrintAsItsName [
-
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| beta |
 	beta := KEVariable symbol: #beta.
-	self assert:  beta printString equals: 'beta'
+	self assert:  beta printString equals: 'beta'.
+	^beta 
 ]
 
 { #category : #tests }
 KEExpressionTest >> testNegatedABinaryExpression [
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| e a b o |
 	
 	e := KEBinaryExpression new.
@@ -140,21 +164,25 @@ KEExpressionTest >> testNegatedABinaryExpression [
 		op: o;
 		leftHandSide: a;
 		rightHandSide: b.
-	self assert: e negated op equals: #-
+	self assert: e negated op equals: #-.
+	^e
 ]
 
 { #category : #tests }
 KEExpressionTest >> testNormalizeAnUnaryExpression [
-
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| expr |
 	expr := 'X:t = -(-A*(B+C))' parseAsAnEquation.
 	self assert: expr expression isUnaryExpression.
-	self deny: expr expression normalize isUnaryExpression
+	self deny: expr expression normalize isUnaryExpression.
+	^expr
 ]
 
 { #category : #tests }
 KEExpressionTest >> testNormalizeKEExpression [
-
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| e s beta minusBeta k minusS |
 	e := KEBinaryExpression new.
 	s := KEVariable symbol: #status -> #S.
@@ -174,12 +202,17 @@ KEExpressionTest >> testNormalizeKEExpression [
 		leftHandSide: minusS;
 		rightHandSide: minusBeta.
 	k := e normalize.
-	self deny: k isUnaryExpression
+	self deny: k isUnaryExpression.
+	^e
+
+
+
 ]
 
 { #category : #tests }
 KEExpressionTest >> testNormalizeReturnCorrectExpression [
-
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| expr result|
 	
 	expr := 'X:t=-(-A)' parseAsAnEquation.
@@ -201,6 +234,7 @@ KEExpressionTest >> testNormalizeReturnCorrectExpression [
 	expr := 'X:t = -(-A*(B+C))' parseAsAnEquation.
 	result := 'A*(B+C)' parseAsAnEquation.
 	self assert: expr expression normalize equals: result normalize.
+	^expr
 	
 	
 	
@@ -209,7 +243,8 @@ KEExpressionTest >> testNormalizeReturnCorrectExpression [
 
 { #category : #tests }
 KEExpressionTest >> testPrintABinaryExpression [
-
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| e a b |
 	e := KEBinaryExpression new.
 	a := KENumerical number: 3.
@@ -219,29 +254,36 @@ KEExpressionTest >> testPrintABinaryExpression [
 		leftHandSide: a;
 		rightHandSide: b.
 
-	self assert: e printString equals: '3+4'
+	self assert: e printString equals: '3+4'.
+	^e
 ]
 
 { #category : #tests }
 KEExpressionTest >> testPrintKEUnaryExpression [
-
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| beta minusBeta |
 	beta := KEVariable symbol: #beta.
 	minusBeta := KEUnaryExpression new
 		             op: #-;
 		             expression: beta.
 
-	self assert: minusBeta printString equals: '-(beta)'
+	self assert: minusBeta printString equals: '-(beta)'.
+	^beta 
 ]
 
 { #category : #tests }
 KEExpressionTest >> testPrintUnaryExpression [
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 
 	self assert: '-(A+B)' parseAsAnExpression printString equals: '-(A+B)'
 ]
 
 { #category : #tests }
 KEExpressionTest >> testRemoveAVariableFromABinaryExpression [
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| e n |
 	e := KEBinaryExpression new
 		op: #*;
@@ -257,30 +299,42 @@ KEExpressionTest >> testRemoveAVariableFromABinaryExpression [
 		equals:
 			(KEMathFunctionExpression new
 				functionName: #cos;
-				functionExpr: (KEVariable new symbol: #t))
+				functionExpr: (KEVariable new symbol: #t)).
+				
+	^e
+				
+			
+		
+	
 ]
 
 { #category : #tests }
 KEExpressionTest >> testRemoveAVariableFromANumber [
 	"don't understand the meaning of this test"
-
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| e n |
 	e := KENumerical new number: 200.
 	n := e removeVariable: (KEVariable new symbol: #S).
-	self assert: n equals: (KENumerical new number: 200)
+	self assert: n equals: (KENumerical new number: 200).
+	^e
 ]
 
 { #category : #tests }
 KEExpressionTest >> testRemoveAVariableFromAVariable [
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| e n |
 	e := KEVariable new symbol: #S.
 	n := e removeVariable: (KEVariable new symbol: #S).
-	self assert: n equals: nil
+	self assert: n equals: nil.
+	^e
 ]
 
 { #category : #tests }
 KEExpressionTest >> testRemoveAVariableFromAnUnaryExpression [
-
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| e n |
 	e := KEUnaryExpression new
 		     op: #-;
@@ -297,43 +351,56 @@ KEExpressionTest >> testRemoveAVariableFromAnUnaryExpression [
 				      rightHandSide: (KEVariable new symbol: #I)).
 	n := e removeVariable: (KEVariable new symbol: #S).
 	self assert: n isUnaryExpression equals: true.
-	self assert: n expression equals: (KEVariable new symbol: #I)
+	self assert: n expression equals: (KEVariable new symbol: #I).
+
+	^e
+
+
 ]
 
 { #category : #tests }
 KEExpressionTest >> testRemoveAVariableShouldNotModifyTheExpression [
-<expectedFailure>
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
+   <expectedFailure>
 	| e n |
 	e := KEUnaryExpression new
 		     op: #-;
 		     expression: (KEVariable new symbol: #S).
 	n := e removeVariable: (KEVariable new symbol: #S).
-	self assert: e expression isNil equals: false
+	self assert: e expression isNil equals: false.
+	^e
 ]
 
 { #category : #tests }
 KEExpressionTest >> testRemoveIndexedVariable1 [
-
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| e n |
 	e := KEVariable new symbol: #S.
 	n := e removeIndexedVariable.
-	self assert: n isAVariable
+	self assert: n isAVariable.
+	^e
 ]
 
 { #category : #tests }
 KEExpressionTest >> testRemoveIndexedVariable2 [
-
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| e n |
 	e := KEIndexedVariable new symbol: #S.
 	e addIndex: (KEVariable new symbol: #i).
 	e addIndex: (KEVariable new symbol: #j).
 	n := e removeIndexedVariable.
 	self deny: n isAnIndexedVariable.
-	self assert: n symbol equals: #S
+	self assert: n symbol equals: #S.
+	^e
 ]
 
 { #category : #tests }
 KEExpressionTest >> testRemoveIndexedVariable3 [
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	|e f n|
 	e := (KEMathFunctionExpression new functionName: #cos).
 	e functionExpr: (KEVariable new symbol: #t).
@@ -344,18 +411,22 @@ KEExpressionTest >> testRemoveIndexedVariable3 [
 	self assert: n asString equals: 'cos(t)'.
 	self assert: f asString equals: 'cos(S[i])'.
 	self assert: f removeIndexedVariable asString equals: 'cos(S)'.
+	^e
 	
 	
 ]
 
 { #category : #tests }
 KEExpressionTest >> testRemoveIndexedVariable4 [
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	|e n|
 	e := (KESigmaFunctionExpression new functionName: #sum).
 	e functionExpr: (KEIndexedVariable new symbol: #S).
 	e functionExpr addIndex: (KEVariable new symbol: #i).
 	n := e removeIndexedVariable.
 	self assert: n asString equals: 'S'.
+	^e
 	
 	
 	
@@ -363,6 +434,8 @@ KEExpressionTest >> testRemoveIndexedVariable4 [
 
 { #category : #tests }
 KEExpressionTest >> testRemoveIndexedVariable5 [
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	|e n|
 	e := KEBinaryExpression new op: #*.
 	e leftHandSide: (KEIndexedVariable new symbol: #S).
@@ -372,6 +445,7 @@ KEExpressionTest >> testRemoveIndexedVariable5 [
 	self assert: e asString equals: 'S[i]*beta[i-1]'.
 	n := e removeIndexedVariable.
 	self assert: n asString equals: 'S*beta'.
+	^e
 	
 	
 	
@@ -379,7 +453,8 @@ KEExpressionTest >> testRemoveIndexedVariable5 [
 
 { #category : #tests }
 KEExpressionTest >> testSeparateABinaryExpression [
-
+	<gtExample>
+	<subjectClass: #KEExpressionTest>
 	| e1 e2 e3 e4 |
 	e1 := '-(A+B+C)*E*D' parseAsAnExpression.
 	e2 := '-(A+B)*(-C)' parseAsAnExpression.
@@ -388,5 +463,7 @@ KEExpressionTest >> testSeparateABinaryExpression [
 	self assert: e1 separateExpression size equals: 3.
 	self assert: e2 separateExpression size equals: 2.
 	self assert: e3 separateExpression size equals: 2.
-	self assert: e4 separateExpression size equals: 4
+	self assert: e4 separateExpression size equals: 4.
+	^e1
+	
 ]
