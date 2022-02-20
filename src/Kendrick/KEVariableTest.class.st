@@ -1,11 +1,13 @@
 Class {
 	#name : #KEVariableTest,
 	#superclass : #TestCase,
-	#category : #'Kendrick-Tests-Core'
+	#category : #'Kendrick-Examples-Core'
 }
 
 { #category : #tests }
 KEVariableTest >> testEvaluateWithModel [
+	<gtExample>
+	<subjectClass: #KEVariableTest>
 	|model expr|
 	model := KEModel new.
 	model attributes: { #status->#(S I R) }.
@@ -13,10 +15,13 @@ KEVariableTest >> testEvaluateWithModel [
 	model atCompartment: { #status->#I } put: 1.
 	expr := 'S' parseAsAnExpression.
 	self assert: (expr evaluateWithModel: model) equals: 99999.
+	^model
 ]
 
 { #category : #tests }
 KEVariableTest >> testEvaluateWithModel2 [
+	<gtExample>
+	<subjectClass: #KEVariableTest>
 	|model expr|
 	model := KEModel new.
 	model attributes: { #status->#(S I R) }.
@@ -25,11 +30,13 @@ KEVariableTest >> testEvaluateWithModel2 [
 	model addParameters: {#beta->0.0052. #gamma->52}.
 	expr := 'beta*S*I' parseAsAnExpression.
 	self assert: (expr evaluateWithModel: model) equals: 52.
+	^model
 ]
 
 { #category : #tests }
 KEVariableTest >> testEvaluateWithModel3 [
-
+	<gtExample>
+	<subjectClass: #KEVariableTest>
 	| model expr |
 	model := KEModel new.
 	model attributes: { (#status -> #( S I R )) }.
@@ -39,28 +46,36 @@ KEVariableTest >> testEvaluateWithModel3 [
 			(#beta -> 0.0052).
 			(#gamma -> 52) }.
 	expr := '-beta*S*I' parseAsAnExpression.
-	self assert: (expr evaluateWithModel: model) equals: -52
+	self assert: (expr evaluateWithModel: model) equals: -52.
+	^model
 ]
 
 { #category : #tests }
 KEVariableTest >> testGenerateEvents [
+	<gtExample>
+	<subjectClass: #KEVariableTest>
 	| g |
 	g := KEVariable new.
 	g symbol: #gamma.
-	self assert: g generateEvents size equals:1
+	self assert: g generateEvents size equals:1.
+	^g
 ]
 
 { #category : #tests }
 KEVariableTest >> testName [
+	<gtExample>
+	<subjectClass: #KEVariableTest>
 	| g |
 	g := KEVariable new.
 	g symbol: #gamma.
-	self assert: g symbol equals: #gamma
+	self assert: g symbol equals: #gamma.
+	^g
 ]
 
 { #category : #tests }
 KEVariableTest >> testWithSIRModel [
-
+	<gtExample>
+	<subjectClass: #KEVariableTest>
 	| model |
 	model := KEModel new.
 	model addAttribute: #status value: #( #S #I #R ).
@@ -81,5 +96,8 @@ KEVariableTest >> testWithSIRModel [
 			- ((model atParameter: #gamma) * 0.3).
 	self
 		assert: ((model equations at: 3) evaluateWithModel: model)
-		closeTo: (model atParameter: #gamma) * 0.3
+		closeTo: (model atParameter: #gamma) * 0.3.
+	^model	
+	
+
 ]
