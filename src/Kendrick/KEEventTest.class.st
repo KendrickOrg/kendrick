@@ -1,39 +1,49 @@
 Class {
 	#name : #KEEventTest,
 	#superclass : #TestCase,
-	#category : #'Kendrick-Tests-Core'
+	#category : #'Kendrick-Examples-Core'
 }
 
 { #category : #tests }
 KEEventTest >> testCompareActionsOf2Events [
+	<gtExample>
+	<subjectClass: #KEventTest>
 	| e1 e2 |
     e1 := KEEvent new fromStatus:#S; toStatus:#I.
 	e2 := KEEvent new fromStatus: #S; toStatus:#I.
 	
 	self assert: e1 fromStatus equals: e2 fromStatus.
-	self assert: e1 toStatus equals: e2 toStatus
+	self assert: e1 toStatus equals: e2 toStatus.
+	^ e1
 ]
 
 { #category : #tests }
 KEEventTest >> testCreateAnEventThatAddAnIndividualFromStatusS [
+	<gtExample>
+	<subjectClass: #KEventTest>
 	|e|
 	e := KEEvent new.
 	e addOneIndividualTo: #S.
-	self assert: (e toStatus) equals: #S
+	self assert: (e toStatus) equals: #S.
+	^e
 
 ]
 
 { #category : #tests }
 KEEventTest >> testCreateAnEventThatRemoveAnIndividualFromStatusS [
+	<gtExample>
+	<subjectClass: #KEventTest>
 	| e |
 	e := KEEvent new.
 	e removeOneIndividualFrom: #S.
-	self assert: (e fromStatus) equals: #S
+	self assert: (e fromStatus) equals: #S.
+	^e
 ]
 
 { #category : #tests }
 KEEventTest >> testEventsNumberOfTheSumfTwoConcernsAreTheProductOfTheirEventsNumber [
-
+	<gtExample>
+	<subjectClass: #KEventTest>
 	| model model1 multiHostConcern |
 	model1 := KEModelPart new.
 	model1 addTransition: (KETransition
@@ -47,17 +57,19 @@ KEEventTest >> testEventsNumberOfTheSumfTwoConcernsAreTheProductOfTheirEventsNum
 	multiHostConcern := KEModelPart new.
 	multiHostConcern addAttribute: #species value: #( #human #bird ).
 	model := KEModel new.
-	model integrate: model1.
-	model integrate: multiHostConcern.
+	model :=  model1 + multiHostConcern.
 	self
 		assert: model generateEvents size
 		equals:
-		model1 generateEvents size * multiHostConcern generateEvents size
+		model1 generateEvents size * multiHostConcern generateEvents size.
+	^model 	
+	
 ]
 
 { #category : #tests }
 KEEventTest >> testEventsWithOppositeRate [
-
+	<gtExample>
+	<subjectClass: #KEventTest>
 	| e1 e2 si s i beta minusBetaSI betaSI events |
 	e1 := KEEvent new.
 	e2 := KEEvent new.
@@ -73,11 +85,15 @@ KEEventTest >> testEventsWithOppositeRate [
 	events add: e1.
 	self
 		assert: true
-		equals: (e2 hasAnEventWithOppositeRateIn: events)
+		equals: (e2 hasAnEventWithOppositeRateIn: events).
+		
+	^e1
 ]
 
 { #category : #tests }
 KEEventTest >> testEventsWithSameActions [
+	<gtExample>
+	<subjectClass: #KEventTest>
 	| e1 e2 listEvents |
 	e1 := KEEvent new
 		fromStatus: #S;
@@ -89,11 +105,15 @@ KEEventTest >> testEventsWithSameActions [
 	listEvents add: e1.
 	self
 		assert: true
-		equals: (e2 hasAnEventWithSameActionsIn: listEvents)
+		equals: (e2 hasAnEventWithSameActionsIn: listEvents).
+		
+	^e1
 ]
 
 { #category : #tests }
 KEEventTest >> testODEDemographyModelHas6Events [
+	<gtExample>
+	<subjectClass: #KEventTest>
 	| model |
 	model := KEModelPart new.
 	model attributes: {(#status -> #(#S #I #R))}.
@@ -101,11 +121,17 @@ KEEventTest >> testODEDemographyModelHas6Events [
 	model addEquation: 'S:t=mu*N-beta*S*I-mu*S'.
 	model addEquation: 'I:t=beta*S*I-gamma*I-mu*I'.
 	model addEquation: 'R:t=gamma*I-mu*R'.
-	self assert: model generateEvents size equals: 6
+	self assert: model generateEvents size equals: 6.
+	
+	^ model
+
+
 ]
 
 { #category : #tests }
 KEEventTest >> testVerifyNumberOfEventOfSumOfTwoConcerns [
+	<gtExample>
+	<subjectClass: #KEventTest>
 <expectedFailure>
 	| model model1 multiHostConcern |
 	model1 := KEModelPart new.
@@ -124,7 +150,8 @@ KEEventTest >> testVerifyNumberOfEventOfSumOfTwoConcerns [
 	multiHostConcern := KEModelPart new.
 	multiHostConcern addAttribute: #species value: #(#human #bird).
 	model := KEModel new.
-	model integrate: model1.
-	model integrate: multiHostConcern.
-	self assert: model generateEvents size equals: 4
+	model := model1 + multiHostConcern.
+	self assert: model generateEvents size equals: 4.
+	
+	^ model
 ]
