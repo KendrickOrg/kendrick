@@ -1,46 +1,59 @@
 Class {
 	#name : #KEModelTest,
 	#superclass : #TestCase,
-	#category : #'Kendrick-Tests-Core'
+	#category : #'Kendrick-Examples-Core'
 }
 
 { #category : #tests }
 KEModelTest >> testAModelHasAName [
-
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| m |
 	m := KEModel new modelName: 'SIR'.
-	self assert: m modelName equals: 'SIR'
+	self assert: m modelName equals: 'SIR'.
+	^m
 ]
 
 { #category : #tests }
 KEModelTest >> testANewModelHasTwoParameters [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model |
 	model := KEModel new.
-	self assert: model parameters size equals: 2
+	self assert: model parameters size equals: 2.
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testAddNewAttributeAfterInitialOnes [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R))}.
 	model addAttribute: #species value: #(#reservoir1 #reservoir2 #mosquito).
 	self assert: (model attributes size) equals: 2.
 	self assert: (model attributes at: #status) size equals: 3.
-	self assert: (model attributes at: #species) size equals: 3
+	self assert: (model attributes at: #species) size equals: 3.
+	^model 
 ]
 
 { #category : #tests }
 KEModelTest >> testAddParameter [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model |
 	model := KEModel new.
 	model addParameter: #beta -> 0.02.
 	model addParameter: #gamma -> 0.01.
-	self assert: model parameters size equals: 4
+	self assert: model parameters size equals: 4.
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testAddParameterExpression [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	|model |
 	model := KEModel new.
 	"two ways to specify a parameter as an expression"
@@ -49,15 +62,19 @@ KEModelTest >> testAddParameterExpression [
 	model t: 60.
 	self assert: (((model parameters) at: #beta) value: model) equals: (60 cos).
 	self assert: (((model parameters) at: #gamma) value: model) equals: (60 cos).
+	^model 
 ]
 
 { #category : #tests }
 KEModelTest >> testAddParameterValue [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	|model |
 	model := KEModel new.
 	model addParameter: #beta value: 0.02.
 
 	self assert: (model atParameter: #beta) equals: 0.02.
+	^model
 ]
 
 { #category : #tests }
@@ -67,26 +84,35 @@ KEModelTest >> testAddParameters [
 	model addParameters: {#beta->0.02. #gamma->0.01}.
 	model addParameters: {#epsilon->0.01. #sigma->0.02}.
 	self assert: (model atParameter: #beta) equals: 0.02.
-	self assert: (model atParameter: #epsilon) equals: 0.01
+	self assert: (model atParameter: #epsilon) equals: 0.01.
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testAddTransition [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model |
 	model := KEModel new.
 	model addTransition: (KETransition from: {#status -> #S} to: {#status -> #I} probability: 'beta*I' parseAsAnExpression).
-	self assert: model transitions size equals: 1
+	self assert: model transitions size equals: 1.
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testAnEmpyModelHasNoTransitions [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model |
 	model := KEModel new.
-	self assert: model transitions size equals: 0
+	self assert: model transitions size equals: 0.
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testAtAttribute [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	|model|
 	model := KEModel new.
 	model attributes: { 
@@ -94,21 +120,27 @@ KEModelTest >> testAtAttribute [
 		}.
 	model addAttribute: #species value: #(#reservoir1 #reservoir2 #mosquito).
 	self assert: (model atAttribute: #status) size equals: 3.
-	self assert: (model atAttribute: #species) size equals: 3
+	self assert: (model atAttribute: #species) size equals: 3.
+	^model 
 ]
 
 { #category : #tests }
 KEModelTest >> testAtCompartmentOld [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	|model compartment|
 	model := KEModel new.
 	model attributes: { #status->#(S I R). #region->#(A B C) }.
 	model atCompartment: { #status->#S. #region->#A } put: 99999 atOthersPut: 0.
 	compartment := model atCompartment: { #status -> #S. #region -> #A.}.
-	self assert: compartment equals: 99999
+	self assert: compartment equals: 99999.
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testAtCompartmentOld2 [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	|model |
 	model := KEModel new.
 	model attributes: { #status->#(S I R). #region->#(A B C) }.
@@ -118,39 +150,51 @@ KEModelTest >> testAtCompartmentOld2 [
 	self assert: (model atCompartment: {#region->#A. #status->#S}) equals: 99999.
 	self assert: (model atCompartment: {#region->#A}) equals: #(99999 1 0).
 	self assert: (model atCompartment: {#status->#S}) equals: #(99999 0 0).
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testAtCompartmentPut [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model |
 	model := KEModel new.
 	model attributes:{#status ->  #(S I R)}.
 	model atCompartment: {(#status -> #S)} put: 100000.
-	self assert: (model atCompartment: {(#status -> #S)}) equals: 100000
+	self assert: (model atCompartment: {(#status -> #S)}) equals: 100000.
+	^model 
 ]
 
 { #category : #tests }
 KEModelTest >> testAtCompartmentPutAtOthersPut [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model |
 	model := KEModel new.
 	model attributes:{#status -> #(S I R)}.
 	model atCompartment: {(#status -> #S)} put: 100000 atOthersPut: 0.
-	self assert: (model atCompartment: {(#status -> #S)}) equals: 100000
+	self assert: (model atCompartment: {(#status -> #S)}) equals: 100000.
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testAtParameter [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	|model |
 	model := KEModel new.
 	model addParameter: #beta->0.02.
 	model addParameter: #gamma->0.01.
 	self assert: (model atParameter: #gamma) equals: 0.01.
-	self assert: (model atParameter: #beta) equals: 0.02
+	self assert: (model atParameter: #beta) equals: 0.02.
+	^model
 	
 ]
 
 { #category : #tests }
 KEModelTest >> testAtParameterAssignValue [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	|model|
 	model := KEModel new.
 	model addParameters: { #beta->0.01. #gamma->0.02 }.
@@ -165,11 +209,13 @@ KEModelTest >> testAtParameterAssignValue [
 			].
 	model currentCompartment: (Dictionary newFrom: {#status->#S. #species->#mosquito}).
 	self assert: (model atParameter: #beta) equals: 0.03.
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testAttributeFromValue [
-
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| aModel |
 	aModel := KEModel new.
 	aModel attributes: { 
@@ -179,11 +225,14 @@ KEModelTest >> testAttributeFromValue [
 	self assert: (aModel attributeFromValue: #S) equals: #status.
 	self assert: (aModel attributeFromValue: #I) equals: #status.
 	self assert: (aModel attributeFromValue: #R) equals: #status.
-	self should: [ aModel attributeFromValue: #U ] raise: Error
+	self should: [ aModel attributeFromValue: #U ] raise: Error.
+	^aModel 
 ]
 
 { #category : #tests }
 KEModelTest >> testAttributes [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	|model|
 	model := KEModel new.
 	model attributes: { 
@@ -191,23 +240,27 @@ KEModelTest >> testAttributes [
 		#species->#(#mosquito #reservoir1 #reservoir2) }.
 	
 	self assert: (model attributes at: #status) size equals: 3.
-	self assert: (model attributes at: #species) size equals: 3
+	self assert: (model attributes at: #species) size equals: 3.
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testCompartmentNames [
-
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model |
 	model := KEModel new attributes: { 
 			         (#status -> #( #S #I #R )).
 			         (#species -> #( #mosquito #reservoir1 #reservoir2 )) }.
 	self assert: model finestCompartmentNames size equals: 9.
-	self assert: model finestCompartmentNames first size equals: 2
+	self assert: model finestCompartmentNames first size equals: 2.
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testCompartmentShouldExist [
-
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model |
 	model := KEModel new.
 	model attributes: { 
@@ -215,29 +268,37 @@ KEModelTest >> testCompartmentShouldExist [
 			(#region -> #( A B C )) }.
 	model populationCardinality: 300.
 	model cardinalityOf: { #S } setWith: 300.
-	self should: [ model cardinalityOf: { #U } ] raise: Error
+	self should: [ model cardinalityOf: { #U } ] raise: Error.
+	^model 
 ]
 
 { #category : #tests }
 KEModelTest >> testEmptyModelHasNoCompartmentNames [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model |
 	model := KEModel new.
-	self assert: model finestCompartmentNames isEmpty
+	self assert: model finestCompartmentNames isEmpty.
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testEquationsToTransitions [
-
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model |
 	model := KEModel new.
 	model addEquation: 'S:t=mu*N - beta*S*I - mu*S'.
 	model addEquation: 'I:t=beta*S*I - gamma*I - mu*I'.
 	model addEquation: 'R:t=gamma*I - mu*R'.
-	self assert: model transitions size equals: 6
+	self assert: model transitions size equals: 6.
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testGenerateEvents1 [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model events |
 	model := KEModel new.
 	events := model
@@ -245,11 +306,14 @@ KEModelTest >> testGenerateEvents1 [
 		addEquation: 'E:t=betaI*S*I+betaH*S*H+betaF*S*F-alpha*E';
 		addEquation: 'I:t=alpha*E';
 		generateEvents.
-	self assert: events size equals: 2
+	self assert: events size equals: 2.
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testGenerateEventsOfMultiDiseasesModel [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model events |
 	model := KEModel new.
 	model
@@ -263,11 +327,14 @@ KEModelTest >> testGenerateEventsOfMultiDiseasesModel [
 		addEquation: 'IR:t=beta1*SR*(IS+II+IR)+sigma2*II-(mu+sigma1)*IR';
 		addEquation: 'RR:t=sigma1*IR+sigma2*RI-mu*RR'.
 	events := model generateEvents.
-	self assert: events size equals: 22
+	self assert: events size equals: 22.
+	^model 
 ]
 
 { #category : #tests }
 KEModelTest >> testGenerateEventsOfMultiHostsModel [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model  events dsdt didt |
 	model := KEModel new.
 	dsdt := 'S[i]:t=mu[i]*N[i]-sum(j, beta[i][j]*I[j])*S[i]-mu[i]*S[i]'.
@@ -275,22 +342,28 @@ KEModelTest >> testGenerateEventsOfMultiHostsModel [
 	model addEquation: dsdt.
 	model addEquation: didt.
 	events := model generateEvents.
-	self assert: events size equals: 4
+	self assert: events size equals: 4.
+	^model 
 ]
 
 { #category : #tests }
 KEModelTest >> testGenerateEventsOfSIRMetapopulationModel [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model events |
 	model := KEModel new.
 	model addEquation: 'S:t=mu*N-beta*S*I-mu*S'.
 	model addEquation: 'I:t=beta*S*I-v*I-mu*I'.
 	model addEquation: 'R:t=v*I-mu*R'.
 	events := model generateEvents.
-	self assert: events size equals: 6
+	self assert: events size equals: 6.
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testGenerateEventsOfSIRModel [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model events |
 	model := KEModel new.
 	model
@@ -298,11 +371,14 @@ KEModelTest >> testGenerateEventsOfSIRModel [
 		addEquation: 'I:t=beta*S*I-gamma*I';
 		addEquation: 'R:t=gamma*I'.
 	events := model generateEvents.
-	self assert: events size equals: 2
+	self assert: events size equals: 2.
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testIntegrate [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	|model concern|
 	model := KEModel new.
 	concern := KEModelPart new.
@@ -322,11 +398,13 @@ KEModelTest >> testIntegrate [
 	self assert: (model transitions size) equals: 2.
 	self assert: (model attributes size) equals: 1.
 	self assert: (model finestCompartmentNames size) equals: 3.  
+	^model 
 ]
 
 { #category : #tests }
 KEModelTest >> testMissingPopCardinality [
-
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model |
 	model := KEModel new.
 	model attributes: { 
@@ -334,22 +412,28 @@ KEModelTest >> testMissingPopCardinality [
 			(#region -> #( A B C D )) }.
 
 	self should:[model cardinalityOf: { #S }] raise:Error.
+	^model
 
 ]
 
 { #category : #tests }
 KEModelTest >> testModelWithSixCompartments [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 |model|
 model := KEModel new.
 model addAttribute: #status value: #(S I R).
 model addAttribute: #country value: #(Vietnam France).
 model initializeCompartments.
-self assert: model population compartments size equals:6
+self assert: model population compartments size equals:6.
+^model
 
 ]
 
 { #category : #tests }
 KEModelTest >> testModelWithTwoCompartmentsOfSizeNineAneOneHasATotalSizeOfTen [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R))}.
@@ -357,12 +441,14 @@ KEModelTest >> testModelWithTwoCompartmentsOfSizeNineAneOneHasATotalSizeOfTen [
 	model atCompartment: {(#status -> #S)} put: 9.
 	model atCompartment: {(#status -> #I)} put: 1.
 	model atCompartment: {(#status -> #R)} put: 0.
-	self assert: model population size equals: 10
+	self assert: model population size equals: 10.
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testNumberOfEquationsOfModelIsCorrect [
-
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model |
 	model := KEModel new.
 	model
@@ -370,12 +456,14 @@ KEModelTest >> testNumberOfEquationsOfModelIsCorrect [
 		addEquation: 'S:t=-beta*S*I';
 		addEquation: 'I:t=beta*S*I - gamma*I';
 		addEquation: 'R:t=gamma*I'.
-	self assert: model equations size equals: 3
+	self assert: model equations size equals: 3.
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testSIRModelBasedOnTransitionsHasThreeEquations [
-
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	<expectedFailure>
 	| model |
 	model := KEModel new.
@@ -388,18 +476,24 @@ KEModelTest >> testSIRModelBasedOnTransitionsHasThreeEquations [
 			 to: { (#status -> #R) }
 			 probability: 'gamma*I' parseAsAnExpression).
 			model transitionsToEquations.
-	self assert: model equations size equals: 3
+	self assert: model equations size equals: 3.
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testSIRModelHasThreeCompartments [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model |
 	model := KEModel new attributes: {(#status -> #(#S #I #R))}.
-	self assert: model finestCompartmentNames size equals: 3
+	self assert: model finestCompartmentNames size equals: 3.
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testSizeOfEachCompartmentSizeOfSIRModel [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R))}.
@@ -408,12 +502,14 @@ KEModelTest >> testSizeOfEachCompartmentSizeOfSIRModel [
 	model atCompartment: {(#status -> #I)} put: 1.
 	self assert: (model sizeOfPopulation: #(#S)) equals: 99999.
 	self assert: (model sizeOfPopulation: #(#I)) equals: 1.
-	self assert: (model sizeOfPopulation: #(#R)) equals: 0
+	self assert: (model sizeOfPopulation: #(#R)) equals: 0.
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testVerifyNumberOfEquationsOfSumOfTwoConcerns [
-
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model model1 multiHostConcern |
 	model1 := KEModelPart new.
 	model1
@@ -427,11 +523,14 @@ KEModelTest >> testVerifyNumberOfEquationsOfSumOfTwoConcerns [
 	model integrate: model1.
 	model integrate: multiHostConcern.
 	model transitionsToEquations.
-	self assert: model equations size equals: 6
+	self assert: model equations size equals: 6.
+	^model
 ]
 
 { #category : #tests }
 KEModelTest >> testWhenCompartmentDoesNotExistRaiseAnError [
+	<gtExample>
+	<subjectClass: #KEModelTest>
 	| model |
 	model := KEModel new.
 	model addAttribute: #status value: #(S I R).
@@ -439,5 +538,6 @@ KEModelTest >> testWhenCompartmentDoesNotExistRaiseAnError [
 	model initializeCompartments.
 	self
 		should: [ model atCompartment: {(#status -> #S)} put: 100 ]
-		raise: Error
+		raise: Error.
+	^model
 ]
