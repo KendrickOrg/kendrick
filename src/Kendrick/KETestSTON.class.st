@@ -1,11 +1,13 @@
 Class {
 	#name : #KETestSTON,
 	#superclass : #TestCase,
-	#category : #'Kendrick-Tests-Core'
+	#category : #'Kendrick-Examples-Core'
 }
 
 { #category : #tests }
 KETestSTON >> testParserSTONReader [
+	<gtExample>
+	<subjectClass: #KETestSton>
 	|reader aCollection dataOfComps compartments|
 	aCollection := #(S I R).
 	compartments := Dictionary new.
