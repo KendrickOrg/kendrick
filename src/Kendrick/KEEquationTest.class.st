@@ -1,26 +1,33 @@
 Class {
 	#name : #KEEquationTest,
 	#superclass : #TestCase,
-	#category : #'Kendrick-Tests-Core'
+	#category : #'Kendrick-Examples-Core'
 }
 
 { #category : #tests }
 KEEquationTest >> testEquationHasOneEvent [
+	<gtExample>
+	<subjectClass: #KEEquationTest>
 	| equation |
 	equation := 'S:t=beta*S*I' parseAsAnEquation.
-	self assert: (equation generateEvents) size equals: 1
+	self assert: (equation generateEvents) size equals: 1.
+	^equation 
 ]
 
 { #category : #tests }
 KEEquationTest >> testEquationHasTwoEvents [
+	<gtExample>
+	<subjectClass: #KEEquationTest>
 	| equation |
 	equation := 'I:t=beta*S*I-gamma*I' parseAsAnEquation.
-	self assert: (equation generateEvents) size equals: 2
+	self assert: (equation generateEvents) size equals: 2.
+	^ equation 
 ]
 
 { #category : #tests }
 KEEquationTest >> testNumberOfEquationsOfSEIRSIs4 [
-
+	<gtExample>
+	<subjectClass: #KEEquationTest>
 	| model simulator |
 	model := KEModel new.
 	model attributes: { (#status -> #( #S #E #I #R )) }.
@@ -49,12 +56,18 @@ KEEquationTest >> testNumberOfEquationsOfSEIRSIs4 [
 	"We need to transform ODE to transitions, because at the moment this is not done explicitely every time you execute a model that is based on ODE equations."
 	model equationsToTransitions.
 	
-	self assert: model equations2 size equals: 4
+	self assert: model equations2 size equals: 4.
+	^ model
+
+
+
+
 ]
 
 { #category : #tests }
 KEEquationTest >> testNumberOfEquationsOfSIRModelIs3 [
-
+	<gtExample>
+	<subjectClass: #KEEquationTest>
 	| model simulator |
 	model := KEModel new.
 	model attributes: { (#status -> #( #S #I #R )) }.
@@ -77,12 +90,14 @@ KEEquationTest >> testNumberOfEquationsOfSIRModelIs3 [
 	"We need to transform ODE to transitions, because at the moment this is not done explicitely every time you execute a model that is based on ODE equations."
 	model equationsToTransitions.
 
-	self assert: model equations2 size equals: 3
+	self assert: model equations2 size equals: 3.
+	^ model
 ]
 
 { #category : #tests }
 KEEquationTest >> testNumberOfEquationsOfSIRModelWithTransitions [
-
+	<gtExample>
+	<subjectClass: #KEEquationTest>
 	<expectedFailure>
 	| model simulator |
 	model := KEModel new.
@@ -108,39 +123,48 @@ KEEquationTest >> testNumberOfEquationsOfSIRModelWithTransitions [
 		             to: 0.20
 		             step: 0.001.
 	simulator executeOn: model.
-	self assert: model equations2 size equals: 3
+	self assert: model equations2 size equals: 3.
+	^model
 ]
 
 { #category : #tests }
 KEEquationTest >> testNumberOfTransitionsIsCorrect [
+	<gtExample>
+	<subjectClass: #KEEquationTest>
 	| model |
 	model := KEModel new.
 	model attributes: {(#status -> #(#S #I #R))};
 	 addEquation: 'S:t=-beta*S*I + B - mu*S';
 	 addEquation: 'I:t=beta*S*I - gamma*I - mu*I';
 	 addEquation: 'R:t=gamma*I'.
-	self assert: model transitions size equals: 5
+	self assert: model transitions size equals: 5.
+	^model
 ]
 
 { #category : #tests }
 KEEquationTest >> testPrintOn [
-
+	<gtExample>
+	<subjectClass: #KEEquationTest>
 	| equation |
 	equation := 'I:t=beta*S*I-gamma*I' parseAsAnEquation.
-	self assert: equation printString equals: 'dI/dt = beta*S*I-gamma*I'
+	self assert: equation printString equals: 'dI/dt = beta*S*I-gamma*I'.
+	^equation 
 ]
 
 { #category : #tests }
 KEEquationTest >> testPrintOnPreserveMultiplicationPriority [
-
+	<gtExample>
+	<subjectClass: #KEEquationTest>
 	| equation |
 	equation := 'X:t = A*(B+C)' parseAsAnEquation.
-	self assert: equation printString equals: 'dX/dt = A*(B+C)'
+	self assert: equation printString equals: 'dX/dt = A*(B+C)'.
+	^ equation 
 ]
 
 { #category : #tests }
 KEEquationTest >> testSIRMOdelEquationsContainSVariable [
-
+	<gtExample>
+	<subjectClass: #KEEquationTest>
 	| model simulator |
 	model := KEModel new.
 	model attributes: { (#status -> #( #S #I #R )) }.
@@ -165,7 +189,9 @@ KEEquationTest >> testSIRMOdelEquationsContainSVariable [
 	self
 		assert:
 		((model equations2 collect: [ :eq | eq variable ]) includes: {#status -> #S})
-		equals: true
+		equals: true.
+		
+	^ model
 ]
 
 { #category : #tests }
@@ -177,5 +203,6 @@ KEEquationTest >> testTransitionProbabilityIsCorrect [
 		addEquation: 'S:t=-beta*S*I';
 		addEquation: 'I:t=beta*S*I - gamma*I';
 		addEquation: 'R:t=gamma*I'.
-	self assert: model transitions first probability sign equals: -1
+	self assert: model transitions first probability sign equals: -1.
+	^ model
 ]
