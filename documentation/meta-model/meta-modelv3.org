@@ -6,6 +6,28 @@
 
 This document is in .org a markdown-like language that eases the introduction of a UML diagram using PlantUML
 
+* High level Tests (specification of the MM)
+The core of the MM is the concept of SAN: a composite automaton.
+
+To specify composition we rely on a very simple examples
+https://github.com/KendrickOrg/kendrick/tree/master/documentation/formal-SoC-models
+
+The first example is 
+https://github.com/KendrickOrg/kendrick/blob/master/documentation/formal-SoC-models/m1.md
+
+m1 is a SEIRS model
+the attributes of m1 are in this order
+status
+
+Pop is the root compartment
+"Pop" its name
+its compartment names are in this order Pop Pop/E Pop/I Pop/R Pop/S
+
+in m1 POP/E = E 
+
+m2 is a model with 2 concenrs
+its compartment names are Pop Pop/E ... Pop/S Pop/E/birds Pop/E/humans
+
 * Kendrick Meta-Model Diagram
 #+begin_src plantuml :file meta-modelv3.png
 namespace KE #DDDDD {
