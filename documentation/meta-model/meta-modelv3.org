@@ -31,6 +31,10 @@ The abstract syntax of Kendrick is based on the mathematical definitions of Kend
 and relies on an object-oriented meta-model.
 We use the UML graphical modelling language to describe the Kendrick meta-model.
 
+** (New version) Model
+A model is a SAN i.e. a composite automaton.
+
+
 ** Model
 A Kendrick *model* (instance of KEModel) is defined by a collection of *transitions*, a collection of *parameters*, a collection of *attributes*, a collection of *equations* and one *population*.
 
