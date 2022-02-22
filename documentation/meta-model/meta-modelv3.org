@@ -4,6 +4,8 @@
 #+TAGS: WRiTE READ
 #+OPTIONS: toc:nil
 
+This document is in .org a markdown-like language that eases the introduction of a UML diagram using PlantUML
+
 * Kendrick Meta-Model Diagram
 #+begin_src plantuml :file meta-modelv3.png
 namespace KE #DDDDD {
