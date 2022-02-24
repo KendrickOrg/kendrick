@@ -8,9 +8,25 @@ This document is in .org a markdown-like language that eases the introduction of
 
 * High level Tests (specification of the MM)
 The core of the MM is the concept of SAN: a composite automaton.
+However ODEs are also central in Kendrick and must be reified too.
 
 To specify composition we rely on a very simple examples
 https://github.com/KendrickOrg/kendrick/tree/master/documentation/formal-SoC-models
+
+The high level test are there
+https://github.com/KendrickOrg/kendrick/blob/master/src/Kendrick/TestMM.class.st
+
+The old tests of the Model class are there
+https://github.com/KendrickOrg/kendrick/blob/master/src/Kendrick/KEModelTest.class.st
+
+Some high level tests on a solver are there
+https://github.com/KendrickOrg/kendrick/blob/master/src/Kendrick/TestMM.class.st
+
+Other examples
+https://github.com/KendrickOrg/kendrick/blob/master/src/Kendrick/KEDeterministicExamples.class.st
+
+All the Kendrick classes are there
+https://github.com/KendrickOrg/kendrick/tree/master/src/Kendrick
 
 The first example is 
 https://github.com/KendrickOrg/kendrick/blob/master/documentation/formal-SoC-models/m1.md
