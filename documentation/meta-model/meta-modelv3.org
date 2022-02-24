@@ -19,8 +19,6 @@ https://github.com/KendrickOrg/kendrick/blob/master/src/Kendrick/TestMM.class.st
 The old tests of the Model class are there
 https://github.com/KendrickOrg/kendrick/blob/master/src/Kendrick/KEModelTest.class.st
 
-Some high level tests on a solver are there
-https://github.com/KendrickOrg/kendrick/blob/master/src/Kendrick/TestMM.class.st
 
 Other examples
 https://github.com/KendrickOrg/kendrick/blob/master/src/Kendrick/KEDeterministicExamples.class.st
