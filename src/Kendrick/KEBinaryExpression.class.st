@@ -128,6 +128,20 @@ op = #'^' ifTrue:[
 		^left raisedTo: right]
 ]
 
+{ #category : #evaluating }
+KEBinaryExpression >> evaluateWithParameters: parameters [
+
+	| left right |
+	left := leftHandSide evaluateWithParameters: parameters.
+	right := rightHandSide evaluateWithParameters: parameters.
+
+	op = #+ ifTrue: [ ^ left + right ].
+	op = #* ifTrue: [ ^ left * right ].
+	op = #/ ifTrue: [ ^ left / right ].
+	op = #- ifTrue: [ ^ left - right ].
+	op = #'^' ifTrue: [ ^ left raisedTo: right ]
+]
+
 { #category : #'as yet unclassified' }
 KEBinaryExpression >> generateEvents [
 

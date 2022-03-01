@@ -23,5 +23,9 @@ initialState := anInteger
 { #category : #initialization }
 KEODESystem >> state: aState time: anInteger [
 
-	^ equation expression
+	| parameters |
+	parameters := Dictionary new.
+	parameters at: #state put: aState.
+	parameters at: #time put: anInteger.
+	^ equation expression evaluateWithParameters: parameters
 ]
