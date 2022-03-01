@@ -31,6 +31,12 @@ KEExpression >> evaluateWithModel: aModel [
 	self subclassResponsibility
 ]
 
+{ #category : #evaluating }
+KEExpression >> evaluateWithParameters: parameters [
+
+	self subclassResponsibility
+]
+
 { #category : #testing }
 KEExpression >> isAVariable [
 	^ false

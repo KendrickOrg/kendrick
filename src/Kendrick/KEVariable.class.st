@@ -41,6 +41,13 @@ KEVariable >> evaluateWithModel: model [
 ]
 
 { #category : #'as yet unclassified' }
+KEVariable >> evaluateWithParameters: parameters [
+
+	symbol = #t ifTrue: [ ^ parameters at: #time ].
+	^ parameters at: #state
+]
+
+{ #category : #'as yet unclassified' }
 KEVariable >> generateEvents [
 
 ^ OrderedCollection newFrom: { (KEEvent new rate: self) }

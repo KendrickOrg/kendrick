@@ -37,6 +37,12 @@ KENumerical >> evaluateWithModel: aModel [
 	^ number
 ]
 
+{ #category : #evaluating }
+KENumerical >> evaluateWithParameters: parameters [
+
+	^ number
+]
+
 { #category : #printing }
 KENumerical >> isNumerical [
 	^ true
