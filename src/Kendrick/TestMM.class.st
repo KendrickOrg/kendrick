@@ -8,54 +8,55 @@ Class {
 TestMM >> testThanSolvingMultipleODEsWithKEODESystemReturnsSameResultThanWithPMODESystem [
 
 	| system1 initialState stepper1 system2 stepper2 stepSize state1 state2 startTime solver1 solver2 endTime b sigma r|
-	
-	sigma := 10.0.
-	r := 28.
-	b := 8.0/3.0.
-	stepSize := 0.1.
-	startTime := 1.0.
-	endTime := 10.0.
-	
-	system1 := PMExplicitSystem block: [ :x :t| | c |
-   		c:= Array new: 3.
-   		c at: 1 put: sigma * ((x at: 2) - (x at: 1)).
-   		c at: 2 put: r * (x at: 1) - (x at: 2) - ((x at: 1) * (x at: 3)).
-   		c at: 3 put: (b negated * (x at: 3) + ((x at: 1) * (x at: 2))).
-   		c].
-	stepper1 := PMRungeKuttaStepper onSystem: system1.
-	initialState := #(10.0 10.0 10.0).
 
-	system2 := KEODESystem new
-		           initialState: initialState;
-		           equation:
-			           'x:t = sigma * ((x at: 2) - (x at: 1))'.
-						  'y:t = r * (x at: 1) - (x at: 2) - ((x at: 1) * (x at: 3))'.
-						  'z:t = (b negated * (x at: 3) + ((x at: 1) * (x at: 2)))'.
-	stepper2 := PMRungeKuttaStepper onSystem: system2.
-	
+    sigma := 10.0.
+    r := 28.
+    b := 8.0/3.0.
+    stepSize := 0.1.
+    startTime := 1.0.
+    endTime := 10.0.
 
+    system1 := PMExplicitSystem block: [ :x :t| | c |
+           c:= Array new: 3.
+           c at: 1 put: sigma * ((x at: 2) - (x at: 1)).
+           c at: 2 put: r * (x at: 1) - (x at: 2) - ((x at: 1) * (x at: 3)).
+           c at: 3 put: (b negated * (x at: 3) + ((x at: 1) * (x at: 2))).
+           c].
+    stepper1 := PMRungeKuttaStepper onSystem: system1.
+    initialState := #((x 10.0) (y 10.0)  (z 10.0)).
 
-	solver1 := PMExplicitSolver new
-		           stepper: stepper1;
-		           system: system1;
-		           dt: stepSize.
-	state1 := solver1
-		          solve: system1
-		          startState: initialState
-		          startTime: startTime
-		          endTime: endTime.
+    system2 := KEODESystem new
+                   initialState: initialState;
+                    at:#sigma put: sigma;
+                    at:#b put: b;
+                    at:#r put: r;
+              equations:
+                       {'x:t = sigma * (y - x)'.
+                   'y:t = r * x - y - (x * z)'.
+                'z:t = (-b * z) + (x * y)'}.
+    stepper2 := PMRungeKuttaStepper onSystem: system2.
 
-	solver2 := PMExplicitSolver new
-		           stepper: stepper2;
-		           system: system2;
-		           dt: stepSize.
-	state2 := solver2
-		          solve: system2
-		          startState: initialState
-		          startTime: startTime
-		          endTime: endTime.
+    solver1 := PMExplicitSolver new
+                   stepper: stepper1;
+                   system: system1;
+                   dt: stepSize.
+    state1 := solver1
+                  solve: system1
+                  startState: initialState
+                  startTime: startTime
+                  endTime: endTime.
 
-	self assert: state1 equals: state2
+    solver2 := PMExplicitSolver new
+                   stepper: stepper2;
+                   system: system2;
+                   dt: stepSize.
+    state2 := solver2
+                  solve: system2
+                  startState: initialState
+                  startTime: startTime
+                  endTime: endTime.
+
+    self assert: state1 equals: state2
 ]
 
 { #category : #tests }
