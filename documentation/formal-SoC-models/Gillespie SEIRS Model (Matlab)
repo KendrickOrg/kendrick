@@ -1,0 +1,64 @@
+global mu gamma beta N nu sigma;
+mu = 0.00137;
+gamma = 0.233;
+beta = 0.42;
+sigma = 0.67;
+nu = 0.00274;
+N = 5000;
+S = 4990;
+I = 10;
+E = 0;
+R = 0;
+
+tMax = 500;
+options = [];
+[T,Y]=Gillespie_Iteration([0 tMax],[S E I R]);
+plot(T,Y(:,3));
+xlabel('Time');
+ylabel('Infectious');
+
+function [T,P]=Gillespie_Iteration(Time,Initial)
+loop = 1;
+P(1,:) = Initial;
+T(1) = 0;
+old = Initial;
+while (T(loop) < Time(2))
+   [step,new]=Iterate(old);
+   loop = loop + 1;
+   T(loop)=T(loop-1) + step;
+   P(loop,:)=new;
+   old = new;
+end
+
+function [step, new_value] = Iterate(old)
+global mu gamma beta N nu sigma;
+S = old(1);
+E = old(2);
+I = old(3);
+R = old(4);
+nbOfEvents = 9;
+rate = zeros(1,nbOfEvents);
+change = zeros(nbOfEvents,4);
+rate(1) = mu*N;
+change(1,:)=[+1 0 0 0];
+rate(2) = mu*S;
+change(2,:)=[-1 0 0 0];
+rate(3) = mu*I;
+change(3,:)=[0 0 -1 0];
+rate(4) = mu*R;
+change(4,:)=[0 0 0 -1];
+rate(5) = gamma*I;
+change(5,:)=[0 0 -1 +1];
+rate(6) = beta*S*I/N;
+change(6,:)=[-1 +1 0 0];
+rate(7) = sigma*E;
+change(7,:)=[0 -1 +1 0];
+rate(8) = mu*E;
+change(8,:)=[0 -1 0 0];
+rate(9) = nu*R;
+change(9,:)=[+1 0 0 -1];
+rand1 = rand(1,1);
+rand2 = rand(1,1);
+step = -log(rand2)/(sum(rate));
+m=min(find(cumsum(rate)>=rand1*sum(rate)));
+new_value = old+change(m,:);
