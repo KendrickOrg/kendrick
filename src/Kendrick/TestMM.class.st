@@ -7,7 +7,9 @@ Class {
 { #category : #tests }
 TestMM >> testThanSolvingMultipleODEsWithKEODESystemReturnsSameResultThanWithPMODESystem [
 
-	| system1 initialState stepper1 system2 stepper2 stepSize state1 state2 startTime solver1 solver2 endTime b sigma r|
+"This test is based on the Lorenz equations https://en.wikipedia.org/wiki/Lorenz_system"
+
+| system1 initialState stepper1 system2 stepper2 stepSize state1 state2 startTime solver1 solver2 endTime b sigma r|
 
     sigma := 10.0.
     r := 28.
@@ -31,9 +33,9 @@ TestMM >> testThanSolvingMultipleODEsWithKEODESystemReturnsSameResultThanWithPMO
                     at:#b put: b;
                     at:#r put: r;
               equations:
-                       {'x:t = sigma * (y - x)'.
-                   'y:t = r * x - y - (x * z)'.
-                'z:t = (-b * z) + (x * y)'}.
+                       'x:t = sigma * (y - x)'.
+                   	  'y:t = r * x - y - (x * z)'.
+               			  'z:t = (-b * z) + (x * y)'.
     stepper2 := PMRungeKuttaStepper onSystem: system2.
 
     solver1 := PMExplicitSolver new
