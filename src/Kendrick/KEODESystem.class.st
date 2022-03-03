@@ -2,7 +2,6 @@ Class {
 	#name : #KEODESystem,
 	#superclass : #Object,
 	#instVars : [
-		'initialState',
 		'bindings',
 		'equations'
 	],
@@ -20,7 +19,6 @@ KEODESystem >> equations: aStringArray [
 { #category : #initialization }
 KEODESystem >> initialState: aVector [
 
-	initialState := aVector.
 	self updateBindingsWithState: aVector
 ]
 
@@ -43,9 +41,9 @@ KEODESystem >> state: aState time: anInteger [
 ]
 
 { #category : #initialization }
-KEODESystem >> updateBindingsWithState: aVector [ 
-
-equations
+KEODESystem >> updateBindingsWithState: aVector [
+"Update values of variables in the order of the equations provided by user"
+	equations
 		with: aVector
 		do: [ :eq :value | bindings at: eq variable symbol put: value ]
 ]

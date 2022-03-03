@@ -15,7 +15,7 @@ TestMM >> testThanSolvingODEsWithKEODESystemReturnsSameResultThanWithPMODESystem
 
 	system2 := KEODESystem new
 		           equations:
-			           { 'x:t = 3.0 / ( 2.0 * t * t ) + ( x / ( 2.0 * t ) ) )' };
+			           { 'x:t = 3.0 / ( 2.0 * t * t ) + ( x / ( 2.0 * t ) )' };
 		           initialState: initialState.
 	stepper2 := PMRungeKuttaStepper onSystem: system2.
 
@@ -42,7 +42,6 @@ TestMM >> testThanSolvingODEsWithKEODESystemReturnsSameResultThanWithPMODESystem
 		          startState: initialState
 		          startTime: startTime
 		          endTime: endTime.
-
 	self assert: state1 equals: state2
 ]
 
