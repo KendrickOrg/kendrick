@@ -3,29 +3,38 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'initialState',
-		'equation'
+		'bindings',
+		'equations'
 	],
 	#category : #'Kendrick-Tests-MM'
 }
 
 { #category : #initialization }
-KEODESystem >> equation: aString [
+KEODESystem >> equations: aStringArray [
 
-	equation := aString  parseAsAnExpression
+	equations := aStringArray collect: [ :each | 
+		             each parseAsAnExpression ].
+	
 ]
 
 { #category : #initialization }
-KEODESystem >> initialState: anInteger [
+KEODESystem >> initialState: aVector [
 
-initialState := anInteger
+	initialState := aVector.
+	equations
+		with: initialState
+		do: [ :eq :value | bindings at: eq variable symbol put: value ]
+]
+
+{ #category : #initialization }
+KEODESystem >> initialize [
+
+bindings := Dictionary new
 ]
 
 { #category : #initialization }
 KEODESystem >> state: aState time: anInteger [
 
-	| parameters |
-	parameters := Dictionary new.
-	parameters at: #state put: aState.
-	parameters at: #time put: anInteger.
-	^ equation expression evaluateWithParameters: parameters
+	bindings at: #time put: anInteger.
+	^ equations collect:[:each| each expression evaluateWithParameters: bindings]
 ]
