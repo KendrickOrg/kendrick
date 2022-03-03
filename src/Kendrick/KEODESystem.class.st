@@ -2,30 +2,46 @@ Class {
 	#name : #KEODESystem,
 	#superclass : #Object,
 	#instVars : [
-		'initialState',
-		'equation'
+		'bindings',
+		'equations'
 	],
 	#category : #'Kendrick-Tests-MM'
 }
 
 { #category : #initialization }
-KEODESystem >> equation: aString [
+KEODESystem >> equations: aStringArray [
 
-	equation := aString  parseAsAnExpression
+	equations := aStringArray collect: [ :each | 
+		             each parseAsAnExpression ].
+	
 ]
 
 { #category : #initialization }
-KEODESystem >> initialState: anInteger [
+KEODESystem >> initialState: aVector [
 
-initialState := anInteger
+	self updateBindingsWithState: aVector
+]
+
+{ #category : #initialization }
+KEODESystem >> initialize [
+
+bindings := Dictionary new
 ]
 
 { #category : #initialization }
 KEODESystem >> state: aState time: anInteger [
 
-	| parameters |
-	parameters := Dictionary new.
-	parameters at: #state put: aState.
-	parameters at: #time put: anInteger.
-	^ equation expression evaluateWithParameters: parameters
+
+	bindings at: #time put: anInteger.
+	self updateBindingsWithState: aState.
+	^ equations collect: [ :each | 
+		         each expression evaluateWithParameters: bindings ]
+]
+
+{ #category : #initialization }
+KEODESystem >> updateBindingsWithState: aVector [
+"Update values of variables in the order of the equations provided by user"
+	equations
+		with: aVector
+		do: [ :eq :value | bindings at: eq variable symbol put: value ]
 ]

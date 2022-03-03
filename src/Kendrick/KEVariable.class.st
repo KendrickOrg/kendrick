@@ -44,7 +44,7 @@ KEVariable >> evaluateWithModel: model [
 KEVariable >> evaluateWithParameters: parameters [
 
 	symbol = #t ifTrue: [ ^ parameters at: #time ].
-	^ parameters at: #state
+	^ parameters at: symbol
 ]
 
 { #category : #'as yet unclassified' }
