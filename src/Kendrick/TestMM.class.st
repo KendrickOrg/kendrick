@@ -11,13 +11,12 @@ TestMM >> testThanSolvingODEsWithKEODESystemReturnsSameResultThanWithPMODESystem
 	system1 := PMExplicitSystem block: [ :x :t | 
 		           3.0 / (2.0 * t * t) + (x / (2.0 * t)) ].
 	stepper1 := PMRungeKuttaStepper onSystem: system1.
-	initialState := #(0).
+	initialState := #( 0 ).
 
 	system2 := KEODESystem new
 		           equations:
 			           { 'x:t = 3.0 / ( 2.0 * t * t ) + ( x / ( 2.0 * t ) ) )' };
 		           initialState: initialState.
-		self halt.
 	stepper2 := PMRungeKuttaStepper onSystem: system2.
 
 	stepSize := 0.1.
