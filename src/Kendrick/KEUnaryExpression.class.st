@@ -45,6 +45,14 @@ KEUnaryExpression >> evaluateWithModel: aModel [
 ]
 
 { #category : #accessing }
+KEUnaryExpression >> evaluateWithParameters: parameters [
+
+	| value |
+	value := expression evaluateWithParameters: parameters.
+	op = #- ifTrue: [ ^ value negated ]
+]
+
+{ #category : #accessing }
 KEUnaryExpression >> expression [
 	^ expression
 ]
