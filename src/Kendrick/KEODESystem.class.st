@@ -9,6 +9,12 @@ Class {
 }
 
 { #category : #initialization }
+KEODESystem >> at: name put: value [
+
+bindings at: name put: value
+]
+
+{ #category : #initialization }
 KEODESystem >> equations: aStringArray [
 
 	equations := aStringArray collect: [ :each | 
