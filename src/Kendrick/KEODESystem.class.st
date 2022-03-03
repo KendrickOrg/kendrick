@@ -31,13 +31,11 @@ bindings := Dictionary new
 { #category : #initialization }
 KEODESystem >> state: aState time: anInteger [
 
-	| state |
-	bindings at: #time put: anInteger.
 
-	state := equations collect: [ :each | 
-		         each expression evaluateWithParameters: bindings ].
-	self updateBindingsWithState: state.
-	^ state
+	bindings at: #time put: anInteger.
+	self updateBindingsWithState: aState.
+	^ equations collect: [ :each | 
+		         each expression evaluateWithParameters: bindings ]
 ]
 
 { #category : #initialization }
