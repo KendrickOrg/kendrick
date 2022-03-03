@@ -21,9 +21,7 @@ KEODESystem >> equations: aStringArray [
 KEODESystem >> initialState: aVector [
 
 	initialState := aVector.
-	equations
-		with: initialState
-		do: [ :eq :value | bindings at: eq variable symbol put: value ]
+	self updateBindingsWithState: aVector
 ]
 
 { #category : #initialization }
@@ -40,8 +38,14 @@ KEODESystem >> state: aState time: anInteger [
 
 	state := equations collect: [ :each | 
 		         each expression evaluateWithParameters: bindings ].
-	equations
-		with: state
-		do: [ :eq :value | bindings at: eq variable symbol put: value ].
+	self updateBindingsWithState: state.
 	^ state
+]
+
+{ #category : #initialization }
+KEODESystem >> updateBindingsWithState: aVector [ 
+
+equations
+		with: aVector
+		do: [ :eq :value | bindings at: eq variable symbol put: value ]
 ]
