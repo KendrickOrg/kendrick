@@ -1,11 +1,11 @@
 Class {
-	#name : #TestMM,
+	#name : #KEODESystemTest,
 	#superclass : #TestCase,
 	#category : #'Kendrick-Tests-MM'
 }
 
 { #category : #tests }
-TestMM >> testThanSolvingODEsOfSIRModelWithKEODESystemReturnsSameResultThanWithPMODESystem [
+KEODESystemTest >> testThanSolvingODEsOfSIRModelWithKEODESystemReturnsSameResultThanWithPMODESystem [
 	"The test is inspired by a SIR compartmental model"
 	| system1 initialState stepper1 system2 stepper2 stepSize state1 state2 startTime solver1 solver2 endTime beta gamma|
 	
@@ -58,7 +58,7 @@ TestMM >> testThanSolvingODEsOfSIRModelWithKEODESystemReturnsSameResultThanWithP
 ]
 
 { #category : #tests }
-TestMM >> testThanSolvingODEsWithKEODESystemReturnsSameResultThanWithPMODESystem [
+KEODESystemTest >> testThanSolvingODEsWithKEODESystemReturnsSameResultThanWithPMODESystem [
 
 	| system1 initialState stepper1 system2 stepper2 stepSize state1 state2 startTime solver1 solver2 endTime |
 	system1 := PMExplicitSystem block: [ :x :t | 
@@ -99,7 +99,7 @@ TestMM >> testThanSolvingODEsWithKEODESystemReturnsSameResultThanWithPMODESystem
 ]
 
 { #category : #tests }
-TestMM >> testWithMultipleEquations [
+KEODESystemTest >> testWithMultipleEquations [
 
 	"Lorenz equations https://en.wikipedia.org/wiki/Lorenz_system"
 
@@ -155,7 +155,7 @@ TestMM >> testWithMultipleEquations [
 ]
 
 { #category : #tests }
-TestMM >> testWithMultipleEquationsAndParameters [
+KEODESystemTest >> testWithMultipleEquationsAndParameters [
 
 	"Lorenz equations https://en.wikipedia.org/wiki/Lorenz_system"
 	
