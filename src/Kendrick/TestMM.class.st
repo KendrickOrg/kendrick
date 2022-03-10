@@ -99,7 +99,7 @@ TestMM >> testThanSolvingODEsWithKEODESystemReturnsSameResultThanWithPMODESystem
 ]
 
 { #category : #tests }
-TestMM >> testWithMulitpleEquations [
+TestMM >> testWithMultipleEquations [
 
 	"Lorenz equations https://en.wikipedia.org/wiki/Lorenz_system"
 
@@ -155,7 +155,7 @@ TestMM >> testWithMulitpleEquations [
 ]
 
 { #category : #tests }
-TestMM >> testWithMulitpleEquationsAndParameters [
+TestMM >> testWithMultipleEquationsAndParameters [
 
 	"Lorenz equations https://en.wikipedia.org/wiki/Lorenz_system"
 	
