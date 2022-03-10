@@ -131,7 +131,7 @@ Visualization >> dataWithCompositeCompartments: anArray [ "should be full math-e
 							compositeComp add: comp.
 							tSeries add: (self sumOverTimeSeries: compositeComp) ] ] ] ].
 
-	^ diag data: tSeries.
+	^ diag addDataFrame: tSeries.
 					
 			
 ]
@@ -292,7 +292,7 @@ Visualization >> open [
 
 	self canvas. "to generate / simulate"
 
-	^ diag.
+	^ diag
 ]
 
 { #category : #'public-api' }
@@ -302,14 +302,14 @@ Visualization >> sumOverTimeSeries: name [
 	"Answer a dataframe where we sum over name"
 	
 	|df ds|
-    df := (simulation timeSeriesOutputsAt: ((STON fromString: name) associations)) collect: [ :e| e value ].
+    df := (simulation timeSeriesOutputsAt: (name asArray )) collect: [ :e| e value ].
 
 	"Sum elements on each rows of the dataFrame df"
 	ds := df columnNames inject:0 into: [ :sum :each | sum + (df column: each) ].
 
-"Create a new DataFrame with the previous sum with name"
-ds name: (STON fromString: name).
-^ ds asDataFrame
+	"Create a new DataFrame with the previous sum with name"
+	ds name: name.
+^ ds "asDataFrame"
 ]
 
 { #category : #protected }
