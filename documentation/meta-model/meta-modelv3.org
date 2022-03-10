@@ -69,6 +69,19 @@ The abstract syntax of Kendrick is based on the mathematical definitions of Kend
 and relies on an object-oriented meta-model.
 We use the UML graphical modelling language to describe the Kendrick meta-model.
 
+* MM-related Issues
+
+A systematic test approach is needed
+
+Support for composition must be clarified. For instance a KModel section in the DSL does not describe a SAN but an atomic automaton.
+Can compositions be composed?
+
+The equivalence between ODEs and automata must be clarified. When is it possible? What are the assumptions?
+
+What is the name of a compartment in a composite automaton (different possible granularity levels)
+
+
+
 ** (New version) Model
 A model is a SAN i.e. a composite automaton.
 
