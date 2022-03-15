@@ -28,6 +28,12 @@ KEChart >> addDataFrame: aDataFrame [
 	dataFrames add: aDataFrame
 ]
 
+{ #category : #accessing }
+KEChart >> dataFrames [
+
+^ dataFrames
+]
+
 { #category : #initialization }
 KEChart >> initialize [
 	dataFrames := OrderedCollection new.

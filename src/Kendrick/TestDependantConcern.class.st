@@ -377,12 +377,12 @@ TestDependantConcern >> tearDown [
 { #category : #tests }
 TestDependantConcern >> testEquivalence [
 
-
 	| resultsBefore resultsAfter |
 	self createModels.
 
-	resultsBefore := (beforeDiagram data collect: [ :ts | ts max floor ]) collect: [: each| each values ].
-	resultsAfter := (afterDiagram data collect: [ :ts | ts max floor ]) collect: [: each| each values ].
-	self assert: resultsBefore = resultsAfter
-	
+	resultsBefore := (beforeDiagram data collect: [ :ts | ts max floor ]) 
+		                 collect: [ :each | each values ].
+	resultsAfter := (afterDiagram data collect: [ :ts | ts max floor ]) 
+		                collect: [ :each | each values ].
+	self assert: resultsBefore equals: resultsAfter
 ]

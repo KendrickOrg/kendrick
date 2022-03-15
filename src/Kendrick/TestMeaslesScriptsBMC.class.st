@@ -199,14 +199,15 @@ TestMeaslesScriptsBMC >> tearDown [
 	KendrickInternalDSLEntities clearAll.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 TestMeaslesScriptsBMC >> testEquivalence [
-
 
 	| resultsBefore resultsAfter |
 	self createModels.
-	
-	resultsBefore := ((beforeDiagram data collect: [ :ts | ts max floor ]) collect: [: each| each values ]) sorted.
-	resultsAfter := ((afterDiagram data collect: [ :ts | ts max floor ]) collect: [: each| each values ]) sorted.
-	self assert: resultsBefore = resultsAfter
+
+	resultsBefore := ((beforeDiagram data collect: [ :ts | ts max floor ]) 
+		                  collect: [ :each | each values ]) sorted.
+	resultsAfter := ((afterDiagram data collect: [ :ts | ts max floor ]) 
+		                 collect: [ :each | each values ]) sorted.
+	self assert: resultsBefore equals: resultsAfter
 ]
