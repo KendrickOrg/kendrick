@@ -70,10 +70,12 @@ Simulation >> gillespie [
 { #category : #protected }
 Simulation >> init [
 
-	algo = #testGillespie
-		ifTrue: [ simulator := (KEGillespieSimulatorForTesting new). 
-							simulator tMin: from; tMax: to; step: step ]
-		ifFalse: [  simulator := KESimulator new: algo from: from to: to step: step ]
+
+			simulator := KESimulator
+				             new: algo
+				             from: from
+				             to: to
+				             step: step
 ]
 
 { #category : #protected }
@@ -97,10 +99,10 @@ Simulation >> scenario: aScenarioID [
 ]
 
 { #category : #'public-api' }
-Simulation >> scenarios: aScenarioIDArray [
-	
-	scenarios := aScenarioIDArray collect: [ :sId | Scenario withId: sId ].
-	combo := scenarios last composition.
+Simulation >> scenarios: scenarioIDs [
+
+	scenarios := scenarioIDs collect: [ :sId | Scenario withId: sId ].
+	combo := scenarios last composition
 ]
 
 { #category : #'public-api' }
@@ -114,13 +116,6 @@ Simulation >> tauleap [
 
 	^ self  
 		with: #TauLeap 
-]
-
-{ #category : #'public-api' }
-Simulation >> testGillespie [
-
-	^ self  
-		with: #testGillespie
 ]
 
 { #category : #protected }
