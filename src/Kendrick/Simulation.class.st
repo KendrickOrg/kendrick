@@ -68,14 +68,14 @@ Simulation >> gillespie [
 ]
 
 { #category : #protected }
-Simulation >> init [
+Simulation >> initialize [
 
-
-			simulator := KESimulator
-				             new: algo
-				             from: from
-				             to: to
-				             step: step
+super initialize.
+	simulator := KESimulator
+		             new: algo
+		             from: from
+		             to: to
+		             step: step
 ]
 
 { #category : #protected }
