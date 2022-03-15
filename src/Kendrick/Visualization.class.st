@@ -1,3 +1,7 @@
+"
+Visualization is one of the Kendrick DSL element that allows to visualize results of simulation.
+
+"
 Class {
 	#name : #Visualization,
 	#superclass : #KendrickInternalDSLEntities,
