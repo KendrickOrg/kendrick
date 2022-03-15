@@ -225,7 +225,7 @@ Scenario >> initialize [
 	compartments := Dictionary new. 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'public-api' }
 Scenario >> on: aComposition [
 
 	composition := Composition withId: aComposition.
@@ -235,19 +235,12 @@ Scenario >> on: aComposition [
 	concerns := composition concerns.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'public-api' }
 Scenario >> others: anInteger [
 
 	model others: anInteger given: explicitelySetCompartments. "TODO: propagate to concerns as well"
 
 	
-]
-
-{ #category : #accessing }
-Scenario >> parameters: anArray [
-	anArray do: [ :p| 
-		parameters at: p put: 0.
-		model parameters at: p put: 0 ]
 ]
 
 { #category : #'as yet unclassified' }
