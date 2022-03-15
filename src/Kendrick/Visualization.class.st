@@ -112,34 +112,38 @@ Visualization >> dataWithCompartments: compartmentNames [
 ]
 
 { #category : #protected }
-Visualization >> dataWithCompositeCompartments: anArray [ "should be full math-expression"
-		
-		"Return a KEChart filled with series as data"
-		
-		| tokens tSeries |
-		
-		tSeries := OrderedCollection new.
-		
-		anArray do: [:attributeKeyOrValue | 
-			|attKeys attValues compartmentName|
-			tokens := attributeKeyOrValue findTokens: '_'.
-			attKeys := tokens select: [ :t| simulation model attributes keys includes: t ].
-			attValues := tokens reject: [ :t| simulation model attributes keys includes: t ].
-			compartmentName := OrderedCollection new.
-			attValues do: [ :v| compartmentName addAll: (simulation model literalTransitionRefFor: v) ].
-			attKeys isEmpty 
-				ifTrue: [ tSeries add: (self sumOverTimeSeries: compartmentName) ]
-				ifFalse: [ 
-					attKeys do: [ :k| 
-						(simulation model allLiteralTransitionRefsForAttribute: k) do: [ :comp| 
-							|compositeComp|
-							compositeComp := compartmentName copy.
-							compositeComp add: comp.
-							tSeries add: (self sumOverTimeSeries: compositeComp) ] ] ] ].
+Visualization >> dataWithCompositeCompartments: anArray [
 
-	^ diag addDataFrame: tSeries.
-					
-			
+	"should be full math-expression"
+
+	"Return a KEChart filled with series as data"
+
+	| tokens tSeries |
+	tSeries := OrderedCollection new.
+	anArray do: [ :compName | 
+		| attKeys attValues compartmentName |
+		tokens := compName findTokens: '_'.
+		attKeys := tokens select: [ :t | 
+			           simulation model attributes keys includes: t ].
+		attValues := tokens reject: [ :t | 
+			             simulation model attributes keys includes: t ].
+		compartmentName := OrderedCollection new.
+		attValues do: [ :v | 
+			compartmentName addAll:
+				(simulation model literalTransitionRefFor: v) ].
+		attKeys isEmpty
+			ifTrue: [ 
+			tSeries add: (simulation timeSeriesOutputsAt: compartmentName)]
+			ifFalse: [ 
+				attKeys do: [ :k | 
+					(simulation model allLiteralTransitionRefsForAttribute: k) do: [ 
+						:comp | 
+						| compositeComp |
+						compositeComp := compartmentName copy.
+						compositeComp add: comp.
+						tSeries add: (self sumOverTimeSeries: compositeComp) ] ] ] ].
+	tSeries do: [ :df | diag addDataFrame: df ].
+	^ diag
 ]
 
 { #category : #protected }
@@ -295,26 +299,30 @@ Visualization >> map: anArray [
 { #category : #protected }
 Visualization >> open [
 
-	self canvas. "to generate / simulate"
-
+	self canvas.
 	^ diag
 ]
 
 { #category : #protected }
 Visualization >> sumOverTimeSeries: name [
 
-	"refactor !!"
 	"Answer a dataframe where we sum over name"
-	
-	|df ds|
-    df := (simulation timeSeriesOutputsAt: (name asArray )) collect: [ :e| e value ].
+
+	"At the moment this method does not work because we return a time series instead of a dataframe"
+
+	| df ds |
+
+	df := (simulation timeSeriesOutputsAt: name asArray) collect: [ :e | 
+		      e value ].
 
 	"Sum elements on each rows of the dataFrame df"
-	ds := df columnNames inject:0 into: [ :sum :each | sum + (df column: each) ].
+	ds := df columnNames
+		      inject: 0
+		      into: [ :sum :each | sum + (df column: each) ].
 
 	"Create a new DataFrame with the previous sum with name"
 	ds name: name.
-^ ds "asDataFrame"
+	^ ds "asDataFrame"
 ]
 
 { #category : #protected }
