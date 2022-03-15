@@ -54,15 +54,17 @@ Visualization >> buildMapFrom: attribute given: compositeCompartments [
 
 { #category : #protected }
 Visualization >> canvas [
-	^ canvas
-		ifNil: [ simulation execute.
-			explicitDataSet
-				ifFalse: [ simulation timeSeriesOutputs columnNames
-						do: [ :each | diag addDataFrame: (simulation timeSeriesOutputsAt: each) ] ]
-				ifTrue: [ lazyDataBlock value ].
-			xLabel ifNotNil: [ diag xLabel: xLabel ].
-			KendrickInternalDSLEntities cleanUpForInteractiveSessions.
-			canvas := diag plot ]
+
+	^ canvas ifNil: [ 
+		  simulation execute.
+		  explicitDataSet
+			  ifFalse: [ 
+				  simulation timeSeriesOutputs columnNames do: [ :eachName | 
+					diag addDataFrame: (simulation timeSeriesOutputsAt: eachName) ] ]
+			  ifTrue: [ lazyDataBlock value ].
+		  xLabel ifNotNil: [ diag xLabel: xLabel ].
+		  KendrickInternalDSLEntities cleanUpForInteractiveSessions.
+		  canvas := diag plot ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -94,18 +96,21 @@ Visualization >> data: anArray [ "should be full math-expression"
 	]
 ]
 
-{ #category : #'public-api' }
-Visualization >> dataWithCompartments: anArray [ "should be full math-expression"
-		^ lazyDataBlock := [		
-				(anArray first asString includes: $_)
-						ifTrue: [self dataWithCompositeCompartments: anArray]
-						ifFalse: [self dataWithSimpleCompartments: anArray]
-			]
-					
-			
+{ #category : #protected }
+Visualization >> dataWithCompartments: anArray [
+
+	"should be full math-expression"
+	"We consider two possibilities: composite and simple compartments"
+
+	^ lazyDataBlock := [ 
+	                   (anArray first asString includes: $_)
+		                   ifTrue: [ 
+		                   self dataWithCompositeCompartments: anArray ]
+		                   ifFalse: [ 
+		                   self dataWithSimpleCompartments: anArray ] ]
 ]
 
-{ #category : #'public-api' }
+{ #category : #protected }
 Visualization >> dataWithCompositeCompartments: anArray [ "should be full math-expression"
 		
 		"Return a KEChart filled with series as data"
@@ -136,7 +141,7 @@ Visualization >> dataWithCompositeCompartments: anArray [ "should be full math-e
 			
 ]
 
-{ #category : #'public-api' }
+{ #category : #protected }
 Visualization >> dataWithOp: anArray [ "should be full math-expression"
 	^ lazyDataBlock := [
 			diag addDataFrame:  
@@ -147,20 +152,20 @@ Visualization >> dataWithOp: anArray [ "should be full math-expression"
 			]
 ]
 
-{ #category : #'public-api' }
-Visualization >> dataWithSimpleCompartments: anArray [ "should be full math-expression"
-	
-		|tSeries|
-		
-		tSeries := OrderedCollection new.
-		
-		anArray do: [ :comp| 
-			tSeries addAll: (simulation timeSeriesOutputsAt: (simulation model literalTransitionRefFor: comp)) ].
-		^ diag data: tSeries
-			
+{ #category : #protected }
+Visualization >> dataWithSimpleCompartments: anArray [
 
-					
-			
+	"should be full math-expression"
+
+	"anArray is composed of names of simple compartments like #I or #S"
+
+	| tSeries |
+	tSeries := OrderedCollection new.
+
+	anArray do: [ :comp | 
+		tSeries addAll: (simulation timeSeriesOutputsAt:
+				 (simulation model literalTransitionRefFor: comp)) ].
+	^ diag data: tSeries
 ]
 
 { #category : #'public-api' }
@@ -181,35 +186,28 @@ Visualization >> expand: prefix forLists: lists [
 
 { #category : #'public-api' }
 Visualization >> exportToPng [
-	| outDir filePath c|
-	
+
+	| outDir filePath c |
 	c := RSCanvas new.
 	c @ RSCanvasController.
-	
+
 	outDir := './Sources/'
-		, KendrickInternalDSLEntities currentProjectDir , '/Output/'.
-	outDir asFileReference exists
-		ifFalse: [ outDir := './Sources/Projects/'
-				, KendrickInternalDSLEntities currentProjectDir , '/Output/' ].
+	          , KendrickInternalDSLEntities currentProjectDir
+	          , '/Output/'.
+	outDir asFileReference exists ifFalse: [ 
+		outDir := './Sources/Projects/'
+		          , KendrickInternalDSLEntities currentProjectDir
+		          , '/Output/' ].
 	filePath := outDir , self id , '.png'.
 
 	"[outDir asFileReference createDirectory] on: Error do: [  ]."
-	filePath asFileReference exists
-		ifTrue: [ filePath asFileReference delete ].
+	filePath asFileReference exists ifTrue: [ 
+		filePath asFileReference delete ].
 
-"Export to PNG is desactivated right now, need to be replaced by call to RSPNGExporter class in Roassal 3"
-"https://github.com/ObjectProfile/Roassal3Exporters"
-RSPNGExporter new
-		"whole;
-		defaultScale;
-		oversizedBy: 20 @ 20;
-		format: #png;
-		fileName: filePath; 
-		ifNil: [ ^ nil ];
-		export."
-		
+	RSPNGExporter new
 		canvas: c;
 		exportToFile: filePath asFileReference.
+
 	^ self open
 ]
 
@@ -219,10 +217,13 @@ Visualization >> for: simulationID [
 	simulation := (Simulation withId: simulationID) init.
 ]
 
-{ #category : #'public-api' }
+{ #category : #initialization }
 Visualization >> initialize [
 
+	"explicitDataSet is set to true when the user specify the compartments to plot"
+	
 	explicitDataSet := false
+	
 ]
 
 { #category : #'public-api' }
@@ -237,7 +238,7 @@ Visualization >> legends: anArray [
 	"diag legends: anArray asOrderedCollection "
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'public-api' }
 Visualization >> map [
 
 	^ self 
@@ -248,29 +249,35 @@ Visualization >> map [
 Visualization >> map: anArray [
 
 	"assume composite"
-	
-	| tSeries tokens computedCompartments compositeCompartments attribute |
+
+	| tSeries computedCompartments compositeCompartments attribute |
 	explicitDataSet := true.
-	
+
 	tSeries := OrderedCollection new.
 	attribute := anArray first.
-	
-	computedCompartments := (anArray second findTokens: '_') collect: [:token | (simulation model allLiteralTransitionRefsForAttribute: token)]. 
 
-	compositeCompartments := self expand: #() forLists: computedCompartments.
+	computedCompartments := (anArray second findTokens: '_') collect: [ 
+		                        :token | 
+		                        simulation model 
+			                        allLiteralTransitionRefsForAttribute: token ].
 
-	self buildMapFrom: attribute given: compositeCompartments.	
-	
-	tSeries := compositeCompartments 
-		collect: [:compartment | (simulation timeSeriesOutputsAt: compartment)]. 
-	
-	(#(sum sqrt size log peakOfEpidemic) includes: anArray last) ifTrue: [  
+	compositeCompartments := self
+		                         expand: #(  )
+		                         forLists: computedCompartments.
+
+	self buildMapFrom: attribute given: compositeCompartments.
+
+	tSeries := compositeCompartments collect: [ :compartment | 
+		           simulation timeSeriesOutputsAt: compartment ].
+
+	(#( sum sqrt size log peakOfEpidemic ) includes: anArray last) 
+		ifTrue: [ 
 			tSeries := tSeries collect: [ :ts | 
-				anArray last = #peakOfEpidemic ifTrue: [( ts perform: #max ) values first] 
-				ifFalse: [(ts perform: anArray last) values first ]].
-	].
-	
-"		anArray do: [:name | 
+				           anArray last = #peakOfEpidemic
+					           ifTrue: [ (ts perform: #max) values first ]
+					           ifFalse: [ (ts perform: anArray last) values first ] ] ].
+
+	"		anArray do: [:name | 
 				tokens := name findTokens: '_'.
 				
 					(simulation model allTransitionRefsForAttribute: tokens second) do: [:comp |  
@@ -282,9 +289,7 @@ Visualization >> map: anArray [
 					]	
 				]."
 
-	^ diag data: tSeries.
-	
-	
+	^ diag data: tSeries
 ]
 
 { #category : #protected }
@@ -295,7 +300,7 @@ Visualization >> open [
 	^ diag
 ]
 
-{ #category : #'public-api' }
+{ #category : #protected }
 Visualization >> sumOverTimeSeries: name [
 
 	"refactor !!"
