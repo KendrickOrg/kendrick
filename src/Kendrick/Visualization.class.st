@@ -78,12 +78,6 @@ Visualization >> chart [
 		with: KEChart 
 ]
 
-{ #category : #protected }
-Visualization >> cleanUpForInteractiveSessions [
-
-	KendrickInternalDSLEntities clearAllInstances
-]
-
 { #category : #'public-api' }
 Visualization >> data: anArray [ "should be full math-expression"
 
@@ -101,17 +95,20 @@ Visualization >> data: anArray [ "should be full math-expression"
 ]
 
 { #category : #protected }
-Visualization >> dataWithCompartments: anArray [
+Visualization >> dataWithCompartments: compartmentNames [
 
 	"should be full math-expression"
+
 	"We consider two possibilities: composite and simple compartments"
 
 	^ lazyDataBlock := [ 
-	                   (anArray first asString includes: $_)
+	                   (compartmentNames first asString includes: $_)
 		                   ifTrue: [ 
-		                   self dataWithCompositeCompartments: anArray ]
+		                   self dataWithCompositeCompartments:
+			                   compartmentNames ]
 		                   ifFalse: [ 
-		                   self dataWithSimpleCompartments: anArray ] ]
+		                   self dataWithSimpleCompartments:
+			                   compartmentNames ] ]
 ]
 
 { #category : #protected }
@@ -157,14 +154,14 @@ Visualization >> dataWithOp: anArray [ "should be full math-expression"
 ]
 
 { #category : #protected }
-Visualization >> dataWithSimpleCompartments: compartmentsNames [
+Visualization >> dataWithSimpleCompartments: compartmentNames [
 
 	"compartmentsNames is a collection of names of simple compartments like I or S"
 
 	"Returns the chart where these compartments values are plotted"
 
 	| tSeries |
-	tSeries := compartmentsNames collect: [ :comp | 
+	tSeries := compartmentNames collect: [ :comp | 
 		           simulation timeSeriesOutputsAt:
 			           (simulation model literalTransitionRefFor: comp) ].
 	tSeries do: [ :df | diag addDataFrame: df ].

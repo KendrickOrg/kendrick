@@ -157,15 +157,14 @@ KendrickModelingComponent >> isAttribute: attribute [
 
 { #category : #protected }
 KendrickModelingComponent >> literalTransitionRefFor: aCompartment [
-	
-	|assoc|
 
-	
-	aCompartment = 'Empty'
-		ifTrue: [ ^ #empty ].
-	assoc := (attributes associations select: [ :pair | pair value includes: aCompartment ]) first.
-	^ {   assoc key -> aCompartment }.
-	
+"Returns the name of the compartment"
+
+	| assoc |
+	aCompartment = 'Empty' ifTrue: [ ^ #empty ].
+	assoc := (attributes associations select: [ :pair | 
+		          pair value includes: aCompartment ]) first.
+	^ { (assoc key -> aCompartment) }
 ]
 
 { #category : #'public-api' }
