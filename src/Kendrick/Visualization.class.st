@@ -218,7 +218,7 @@ Visualization >> exportToPng [
 { #category : #'public-api' }
 Visualization >> for: simulationID [
 
-	simulation := (Simulation withId: simulationID) init.
+	simulation := (Simulation withId: simulationID) initialize
 ]
 
 { #category : #initialization }
