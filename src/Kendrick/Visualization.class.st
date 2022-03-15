@@ -157,19 +157,18 @@ Visualization >> dataWithOp: anArray [ "should be full math-expression"
 ]
 
 { #category : #protected }
-Visualization >> dataWithSimpleCompartments: anArray [
+Visualization >> dataWithSimpleCompartments: compartmentsNames [
 
-	"should be full math-expression"
+	"compartmentsNames is a collection of names of simple compartments like I or S"
 
-	"anArray is composed of names of simple compartments like #I or #S"
+	"Returns the chart where these compartments values are plotted"
 
 	| tSeries |
-	tSeries := OrderedCollection new.
-
-	anArray do: [ :comp | 
-		tSeries addAll: (simulation timeSeriesOutputsAt:
-				 (simulation model literalTransitionRefFor: comp)) ].
-	^ diag data: tSeries
+	tSeries := compartmentsNames collect: [ :comp | 
+		           simulation timeSeriesOutputsAt:
+			           (simulation model literalTransitionRefFor: comp) ].
+	tSeries do: [ :df | diag addDataFrame: df ].
+	^ diag
 ]
 
 { #category : #'public-api' }
