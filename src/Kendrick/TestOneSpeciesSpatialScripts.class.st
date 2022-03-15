@@ -201,14 +201,15 @@ TestOneSpeciesSpatialScripts >> tearDown [
 	KendrickInternalDSLEntities clearAll.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 TestOneSpeciesSpatialScripts >> testEquivalence [
-
 
 	| resultsBefore resultsAfter |
 	self createModels.
 
-	resultsBefore := (beforeDiagram data collect: [ :ts | ts max floor ]) collect: [: each| each values ].
-	resultsAfter := (afterDiagram data collect: [ :ts | ts max floor ]) collect: [: each| each values ].
-	self assert: resultsBefore = resultsAfter
+	resultsBefore := (beforeDiagram dataFrames collect: [ :ts | 
+		                  ts max floor ]) collect: [ :each | each values ].
+	resultsAfter := (afterDiagram dataFrames collect: [ :ts | 
+		                 ts max floor ]) collect: [ :each | each values ].
+	self assert: resultsBefore equals: resultsAfter
 ]

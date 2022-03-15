@@ -276,7 +276,6 @@ TestMultiSpeciesSpatial >> tearDown [
 { #category : #'as yet unclassified' }
 TestMultiSpeciesSpatial >> testEquivalence [
 
-
 	| resultsBefore resultsAfter |
 	self createModels.
 
@@ -285,8 +284,17 @@ TestMultiSpeciesSpatial >> testEquivalence [
 
 	"correct (check inspector) -- but timeseries are presented in different order fix"
 
-	resultsBefore := (beforeDiagram data collect: [ :ts | ts peakOfEpidemic floor ]) sorted asOrderedCollection.
-	resultsAfter := (afterDiagram data collect: [ :ts | ts peakOfEpidemic floor ]) sorted asOrderedCollection.
-	Transcript show: resultsBefore; cr; show: resultsAfter; cr; cr.
-	self assert: resultsBefore = resultsAfter.
+	resultsBefore := (beforeDiagram dataFrames collect: [ :ts | 
+		                  ts peakOfEpidemic floor ]) sorted
+		                 asOrderedCollection.
+	resultsAfter := (afterDiagram dataFrames collect: [ :ts | 
+		                 ts peakOfEpidemic floor ]) sorted
+		                asOrderedCollection.
+	Transcript
+		show: resultsBefore;
+		cr;
+		show: resultsAfter;
+		cr;
+		cr.
+	self assert: resultsBefore = resultsAfter
 ]
