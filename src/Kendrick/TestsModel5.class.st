@@ -354,9 +354,8 @@ Visualization SEIIRSInfluenzaViz chart
 	xLabel: 'Time (days)'.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 TestsModel5 >> testEquivalence [
-
 
 	| resultsBefore resultsAfter |
 	self createModels.
@@ -366,10 +365,13 @@ TestsModel5 >> testEquivalence [
 
 	"correct (check inspector) -- but timeseries are presented in different order fix"
 
-	resultsBefore := (beforeDiagram data collect: [ :ts | ts peakOfEpidemic floor ]) sorted asOrderedCollection.
-	resultsAfter := (afterDiagram data collect: [ :ts | ts peakOfEpidemic floor ]) sorted asOrderedCollection.
-	Transcript show: resultsBefore; cr; show: resultsAfter; cr; cr.
-	self assert: resultsBefore = resultsAfter.
+	resultsBefore := (beforeDiagram dataFrames collect: [ :ts | 
+		                  ts peakOfEpidemic floor ]) sorted
+		                 asOrderedCollection.
+	resultsAfter := (afterDiagram dataFrames collect: [ :ts | 
+		                 ts peakOfEpidemic floor ]) sorted
+		                asOrderedCollection.
+	self assert: resultsBefore equals: resultsAfter
 ]
 
 { #category : #'as yet unclassified' }

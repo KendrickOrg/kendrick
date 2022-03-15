@@ -277,20 +277,20 @@ TestsModel6SpatialMapWithEntity >> createModels [
 	afterDiagram := (Visualization withId: 'SEIRSInfluenzaViz') open.	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 TestsModel6SpatialMapWithEntity >> testEquivalence [
 
-
-	| resultsBefore resultsAfter beforeResults afterResults |
+	| beforeResults afterResults |
 	self createModels.
 
 	beforeModel inspect.
-	afterModel keModel inspect. 
+	afterModel keModel inspect.
 
 	"correct (check inspector) -- but timeseries are presented in different order fix"
 	"roundDownTo: 0.001"
-	beforeResults := beforeDiagram data sorted collect: [ :val | val roundDownTo: 0.001 ].
-	afterResults :=  afterDiagram data sorted collect: [ :val | val roundDownTo: 0.001 ].
-	Transcript show: beforeResults; cr; show: afterResults; cr; cr.
-	self assert: beforeResults = afterResults.
+	beforeResults := beforeDiagram dataFrames sorted collect: [ :val | 
+		                 val roundDownTo: 0.001 ].
+	afterResults := afterDiagram dataFrames sorted collect: [ :val | 
+		                val roundDownTo: 0.001 ].
+	self assert: beforeResults equals: afterResults
 ]
