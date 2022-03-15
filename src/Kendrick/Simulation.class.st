@@ -14,7 +14,7 @@ Class {
 	#category : #'Kendrick-DSL-Internal'
 }
 
-{ #category : #'public-api' }
+{ #category : #protected }
 Simulation >> compo [
 
 	^ combo
@@ -76,7 +76,7 @@ Simulation >> init [
 		ifFalse: [  simulator := KESimulator new: algo from: from to: to step: step ]
 ]
 
-{ #category : #'public-api' }
+{ #category : #protected }
 Simulation >> model [
 
 	^ combo model
@@ -109,7 +109,7 @@ Simulation >> step: aNumber [
 	step := aNumber
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #protected }
 Simulation >> tauleap [
 
 	^ self  
