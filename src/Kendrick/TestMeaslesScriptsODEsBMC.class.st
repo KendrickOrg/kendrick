@@ -103,8 +103,11 @@ model addParameters: {
         #sigma->0.125 }.
 simulator := KESimulator new: #RungeKutta from: 0.0 to: 150 step: 1.
 simulator executeOn: model.
-chart := KEChart new addDataFrame: (simulator timeSeriesOutputs).
-
+chart := KEChart new 
+					addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #S)});
+					addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #E)});
+				   addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #I)});
+	            addDataFrame: (simulator timeSeriesOutputsAt: {(#status -> #R)}).
 chart plot.
 
 ^ {simulator . model . chart}
