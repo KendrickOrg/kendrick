@@ -43,6 +43,9 @@ m2 is a model with 2 concenrs
 its compartment names are Pop Pop/E ... Pop/S Pop/E/birds Pop/E/humans
 
 * Kendrick Meta-Model Diagram
+
+See //www.plantuml.com/plantuml/png/RSzD2i9030NWVKwHjT0Bk6hHhiGVg1T8RHO3pKnDCeA8TtSKhIxSlNbyRo2rEQbd6I6Ii4rqOjoqU8Dj6dZ4HLNXWPI4dHMNE7so_O36NKEVdM6_RhkhESkhRy-PFAHOTloE1dEPYbWbcKXTE7f15z90_SXmL8eM_YdecjtpwwyeEvyV1dUeEGxbdWS0
+
 #+begin_src plantuml :file meta-modelv3.png
 namespace KE #DDDDD {
 Model *-- Parameter : parameters
