@@ -55,7 +55,6 @@ Equation o-- Compartment : variable
 Transition o-- Compartment
 SAN*-- Transition : transitions
 }
-}
 #+end_src
 
 * Kendrick Meta-model description
