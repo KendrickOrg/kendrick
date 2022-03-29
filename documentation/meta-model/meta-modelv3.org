@@ -48,20 +48,28 @@ See //www.plantuml.com/
 
 #+begin_src plantuml :file meta-modelv3.png
 namespace kendrick {
-Model o-- Parameter : parameters
-Model o-- Attribute : attributes
-Model o-- markov.SAN : san
-Model -- odes.ODESystem : equations
+Model o-- "1" markov.SAN
+Model -- "1" odes.ODESystem
+Model o-- "0..*" Parameter 
+Model o-- "1..*" Attribute
+Model o-- "1..*" Compartment
+Attribute o-- AttDomain
+Attribute "1" o-- "1" AttName
+AttDomain "1" o-- "1..*" AttValue
+Compartment "1" o-- "1" CompName 
+AttValuation o-- "1" AttName
+AttValuation o-- "1" AttValue
+CompName o-- "1..*" AttValuation 
 }
 
 namespace odes {
-ODESystem o-- Equation : equations
+ODESystem o-- "1..*" Equation
 
 }
 
 namespace markov {
 MarkovProcess <|-- SAN
-SAN o-- Transition : transitions
+SAN o-- "0..*" Transition 
 }
 #+end_src
 
