@@ -47,13 +47,21 @@ its compartment names are Pop Pop/E ... Pop/S Pop/E/birds Pop/E/humans
 See //www.plantuml.com/plantuml/png/RSzD2i9030NWVKwHjT0Bk6hHhiGVg1T8RHO3pKnDCeA8TtSKhIxSlNbyRo2rEQbd6I6Ii4rqOjoqU8Dj6dZ4HLNXWPI4dHMNE7so_O36NKEVdM6_RhkhESkhRy-PFAHOTloE1dEPYbWbcKXTE7f15z90_SXmL8eM_YdecjtpwwyeEvyV1dUeEGxbdWS0
 
 #+begin_src plantuml :file meta-modelv3.png
-namespace KE {
-Model *-- Parameter : parameters
-Model *-- Attribute
-ODESystem *-- Equation : equations
-Equation o-- Compartment : variable
-Transition o-- Compartment
-SAN*-- Transition : transitions
+namespace kendrick {
+Model o-- Parameter : parameters
+Model o-- Attribute : attributes
+Model o-- markov.SAN : san
+Model -- odes.ODESystem : equations
+}
+
+namespace odes {
+ODESystem o-- Equation : equations
+
+}
+
+namespace markov {
+MarkovProcess <|-- SAN
+SAN o-- Transition : transitions
 }
 #+end_src
 
