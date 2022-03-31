@@ -24,7 +24,6 @@ ModelComponent	Measles
       I:t=sigma*E - gamma*I - mu*I.
       R:t=gamma*I - mu*R.
 	);
-	population: 100000;
 	S: 99999;
 	I: 1;
 	others: 0;
