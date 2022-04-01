@@ -83,7 +83,10 @@ Expression <|-- value
 Expression <|-- Variable
 Expression <|-- OperatorExp 
 OperatorExp o-- "1" Operator
+OperatorExp o-- "1..*" Expression : operand
 Operator <|-- Equals
+Operator <|-- Plus
+Operator <|-- Sum
 }
 
 namespace algebra  {
