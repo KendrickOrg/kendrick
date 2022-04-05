@@ -52,6 +52,7 @@ namespace kendrick {
 Model o-- "1" SAN
 Model -- "1" ODESystem
 Model o-- "0..*" Parameter 
+Parameter <|-- Rate
 Model o-- "0..*" Attribute
 Model o-- "1..*" Compartment
 Model o-- "1" Status
@@ -76,6 +77,8 @@ Automaton o-- "0..*" Transition
 Automaton o-- "1..*" State
 Transition o-- "1..1" Rate
 State o-- "1..1" SimpleEquivalenceRelation
+Transition o-- "*..1" State : from
+Transition o-- "*..1" State : to
 }
 
 namespace expressions {
