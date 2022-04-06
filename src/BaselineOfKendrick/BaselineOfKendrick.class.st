@@ -17,7 +17,7 @@ BaselineOfKendrick >> baseline: spec [
 	<baseline>
 	spec for: #common do: [ 
 		spec blessing: #baseline.
-		spec repository: 'https://github.com/UMMISCO/Kendrick'.
+		spec repository: 'https://github.com/KendrickOrg/Kendrick'.
 		spec
 			baseline: 'PolyMath' with: [ 
 				spec
