@@ -50,7 +50,7 @@ BaselineOfKendrick >> baseline: spec [
 			spec requires:
 				#( 'DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal3'
 				   'Roassal3Exporters' 'MooseAlgos' ) ] ].
-	spec for: #'pharo9.x' do: [ 
+	spec for: #('pharo9.x' 'pharo10.x') do: [ 
 		spec
 			baseline: 'PetitParser2Core'
 			with: [ spec repository: 'github://kursjan/petitparser2' ];
