@@ -17,7 +17,7 @@ BaselineOfKendrick >> baseline: spec [
 	<baseline>
 	spec for: #common do: [ 
 		spec blessing: #baseline.
-		spec repository: 'https://github.com/UMMISCO/Kendrick'.
+		spec repository: 'https://github.com/KendrickOrg/kendrick'.
 		spec
 			baseline: 'PolyMath' with: [ 
 				spec
@@ -50,7 +50,7 @@ BaselineOfKendrick >> baseline: spec [
 			spec requires:
 				#( 'DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal3'
 				   'Roassal3Exporters' 'MooseAlgos' ) ] ].
-	spec for: #'pharo9.x' do: [ 
+	spec for: #('pharo9.x' 'pharo10.x') do: [ 
 		spec
 			baseline: 'PetitParser2Core'
 			with: [ spec repository: 'github://kursjan/petitparser2' ];

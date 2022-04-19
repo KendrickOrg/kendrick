@@ -47,30 +47,62 @@ its compartment names are Pop Pop/E ... Pop/S Pop/E/birds Pop/E/humans
 See //www.plantuml.com/
 
 #+begin_src plantuml :file meta-modelv3.png
+@startuml
 namespace kendrick {
-Model o-- "1" markov.SAN
-Model -- "1" odes.ODESystem
+Model o-- "1" SAN
+Model -- "1" ODESystem
 Model o-- "0..*" Parameter 
-Model o-- "1..*" Attribute
+Parameter <|-- Rate
+Model o-- "0..*" Attribute
 Model o-- "1..*" Compartment
-Attribute o-- AttDomain
-Attribute "1" o-- "1" AttName
-AttDomain "1" o-- "1..*" AttValue
+Model o-- "1" Status
 Compartment "1" o-- "1" CompName 
-AttValuation o-- "1" AttName
-AttValuation o-- "1" AttValue
-CompName o-- "1..*" AttValuation 
+CompName o-- "1..1" SimpleEquivalenceRelation 
+Attribute <|-- Status
 }
 
 namespace odes {
-ODESystem o-- "1..*" Equation
+ODESystem o-- "1..*" ODE
+ODESystem o-- "1..*" Variable
+ODE o-- "1" Variable : leftHandSide
+ODE o-- "1" Expression: rightHandSide
 
 }
 
-namespace markov {
+namespace automata {
+Automaton <|-- MarkovProcess
+Automaton o-- "1..*" Attribute 
 MarkovProcess <|-- SAN
-SAN o-- "0..*" Transition 
+Automaton o-- "0..*" Transition 
+Automaton o-- "1..*" State
+Transition o-- "1..1" Rate
+State o-- "1..1" SimpleEquivalenceRelation
+Transition o-- "*..1" State : from
+Transition o-- "*..1" State : to
 }
+
+namespace expressions {
+Expression <|-- value
+Expression <|-- Variable
+Expression <|-- OperatorExp 
+OperatorExp o-- "1" Operator
+OperatorExp o-- "1..*" Expression : operand
+Operator <|-- Equals
+Operator <|-- Plus
+Operator <|-- Sum
+}
+
+namespace algebra  {
+   SimpleEquivalenceRelation o-- "1..*" AttValuation
+   AttValuation o-- "1" AttName
+   AttValuation o-- "1" Value
+   Attribute o-- AttDomain
+   Attribute "1" o-- "1" AttName
+   Domain "1" o-- "1..*" Value
+OperatorExp <|-- AttValuation 
+Variable <|-- AttName
+}
+@enduml
 #+end_src
 
 * Kendrick Meta-model description
