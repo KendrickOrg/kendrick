@@ -21,7 +21,7 @@
 
 *This file is currently not complete but will be improve step by step.*
 
-In order to contribute to Kendrick on github we are using Pharo 8.0 and Iceberg.
+In order to contribute to Kendrick on github we are using Pharo 9.0 and Iceberg.
 
 ## Setup Iceberg
 
@@ -35,7 +35,7 @@ Go to Kendrick github's repository and click on the fork button on the top right
 
 ## Load your fork version of Kendrick in your image
 
-In your Pharo 8.0 image, load now the last development version of Kendrick :
+In your Pharo 9.0 image, load now the last development version of Kendrick :
 
 ```Smalltalk
 Metacello new

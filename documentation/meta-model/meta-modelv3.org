@@ -80,16 +80,21 @@ State o-- "1..1" SimpleEquivalenceRelation
 Transition o-- "*..1" State : from
 Transition o-- "*..1" State : to
 }
-
 namespace expressions {
 Expression <|-- value
 Expression <|-- Variable
+Variable  <|-- Parameter
 Expression <|-- OperatorExp 
+Variable<|-- LHS
 OperatorExp o-- "1" Operator
-OperatorExp o-- "1..*" Expression : operand
+OperatorExp o-- "1..*" Expression : operands
 Operator <|-- Equals
 Operator <|-- Plus
 Operator <|-- Sum
+Operator <|-- AssignmentOp
+Assignement  o-- "1" AssignmentOp
+Assignement o-- "1" LHS
+Assignement o-- "1" Expression : rhs
 }
 
 namespace algebra  {
