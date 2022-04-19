@@ -368,40 +368,46 @@ KEModel >> t: aNumber [
 
 { #category : #accessing }
 KEModel >> visualize [
-		
-	|graph c nodes edges|
+
+	| graph c nodes edges |
 	c := RSCanvas new.
 	c color: Color gray.
-	
+
 	graph := (KEGraphFromCompartments on: self) run.
-	nodes := graph nodes collect: [ :l | 
-	| label box |
-	label := RSLabel new 
-		text: l;
-		color: Color white;
-		yourself.
-	
-	box := RSBox new
-		extent: label extent + 5;
-		color: '#235959';
-		model: l;
-		border: (RSBorder new color: '#2c80ff'; yourself);
-		yourself.
-		
-	{ box. label } asGroup asShapeFor: l] as: RSGroup.
+	nodes := graph nodes
+		         collect: [ :l | 
+			         | label ellipse |
+			         label := RSLabel new
+				                  text: l model asArray;
+				                  color: Color white;
+				                  yourself.
+
+			         ellipse := RSEllipse new
+				                    extent: label extent + 5;
+				                    color: Color darkGray;
+				                    model: l;
+				                    border: (RSBorder new
+						                     color: '#2c80ff';
+						                     yourself);
+				                    yourself.
+
+			         { 
+				         ellipse.
+				         label } asGroup asShapeFor: l ]
+		         as: RSGroup.
 	nodes @ RSDraggable.
 	c addAll: nodes.
-	
-   RSFlowLayout on: nodes. 
- 
-	edges := RSEdgeBuilder arrowedDirectedBezier 
-			color: Color red;
-			canvas: c;
-			shapes: c shapes;
-			withBorderAttachPoint;
-			attachPoint: (RSHorizontalAttachPoint new );
-	source: graph edges connectFrom: #from to: #to. 
-				
+
+	RSFlowLayout on: nodes.
+
+	edges := RSEdgeBuilder arrowedDirectedBezier
+		         color: Color red;
+		         canvas: c;
+		         shapes: c shapes;
+		         withBorderAttachPoint;
+		         attachPoint: RSHorizontalAttachPoint new;
+		         source: graph edges connectFrom: #from to: #to.
+
 	c @ RSCanvasController.
-   ^c 
+	^ c
 ]
