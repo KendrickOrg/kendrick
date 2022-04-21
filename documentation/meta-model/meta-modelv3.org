@@ -66,7 +66,6 @@ ODESystem o-- "1..*" ODE
 ODESystem o-- "1..*" Variable
 ODE o-- "1" Variable : leftHandSide
 ODE o-- "1" Expression: rightHandSide
-
 }
 
 namespace automata {
@@ -79,7 +78,9 @@ Transition o-- "1..1" Rate
 State o-- "1..1" SimpleEquivalenceRelation
 Transition o-- "*..1" State : from
 Transition o-- "*..1" State : to
+SAN o-- "1..*" Automaton : subautomata
 }
+
 namespace expressions {
 Expression <|-- value
 Expression <|-- Variable
