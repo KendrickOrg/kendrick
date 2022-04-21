@@ -7,18 +7,6 @@ Class {
 	#category : #'Kendrick-DSL-Internal'
 }
 
-{ #category : #openning }
-KendrickFullScreenUI class >> inspect: anObject label: aString [
-
-	| instance |
-	instance := self new.
-	instance 
-		title: aString;
-		openOn: anObject.
-	self splashLogo.
-	^ instance
-]
-
 { #category : #'instance creation' }
 KendrickFullScreenUI >> openOn: aPage [
 	| w |
