@@ -67,6 +67,11 @@ KendrickModelingComponent >> allTransitionsFor: aFromToList [
 	
 ]
 
+{ #category : #accessing }
+KendrickModelingComponent >> atAttribute: aSymbol [
+	^ attributes at: aSymbol
+]
+
 { #category : #'public-api' }
 KendrickModelingComponent >> attribute: anArray [
 	|attVals|
