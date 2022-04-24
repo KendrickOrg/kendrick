@@ -5,6 +5,26 @@ Class {
 }
 
 { #category : #tests }
+DSLExamples >> testAtAttributeOfMetapopulationExample [ 
+
+	<gtExample>
+	| patchExample |
+	patchExample := KModel new.
+	patchExample 
+		attribute: #(patch -> 1  2  3);
+		parameters: #(rho);
+		transitions: #(
+			1 -- rho --> 2.
+			2 -- rho --> 3.
+			3 -- rho --> 1.).
+	 self assert: (patchExample atAttribute: #patch) size equals: 3.
+
+	^patchExample
+
+
+]
+
+{ #category : #tests }
 DSLExamples >> testAtAttributeOfSIRExample [ 
 	<gtExample>
 	|sirExample|
