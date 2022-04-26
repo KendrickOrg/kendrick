@@ -52,6 +52,7 @@ namespace kendrick {
 Model o-- "1" SAN
 Model -- "1" ODESystem
 Model o-- "0..*" Parameter 
+Model o-- "0..*" Model : submodels
 Parameter <|-- Rate
 Model o-- "0..*" Attribute
 Model o-- "1..*" Compartment
