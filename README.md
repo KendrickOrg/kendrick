@@ -32,14 +32,14 @@ If you are using Kendrick for research, please cite our work as:
 https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-2843-0
 
 ## Documentation
-You will find documentation about Kendrick meta=model and DSL here: https://github.com/KendrickOrg/kendrick/blob/master/documentation/meta-model/meta-modelv3.org
+You will find documentation about Kendrick meta-model and DSL here: https://github.com/KendrickOrg/kendrick/blob/master/documentation/meta-model/meta-modelv3.org
 
 A previous version of Kendrick is also described in a chapter of the [Agile Visualization book](http://agilevisualization.com/).
 
 ## How to install the development version of Kendrick from github
 
-* Download Pharo 9.0 VM depending of your platform: http://pharo.org/download
-* Load Kendrick: Open Pharo 9.0 image then right-click anywhere to open the main menu. Choose Playground to execute script. Paste the script below in Playground, select all then right-click and choose Do it to execute this.
+* Download Pharo 10.0 VM depending of your platform: http://pharo.org/download
+* Load Kendrick: Open Pharo 10.0 image then right-click anywhere to open the main menu. Choose Playground to execute script. Paste the script below in Playground, select all then right-click and choose Do it to execute this.
 * You need first to update the Iceberg version in your image. See CONTRIBUTING.md for more details.
 
 ```Smalltalk
