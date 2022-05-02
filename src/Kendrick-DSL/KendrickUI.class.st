@@ -1,6 +1,6 @@
 Class {
 	#name : #KendrickUI,
-	#superclass : #GTInspector,
+	#superclass : #EyeInspector,
 	#category : #'Kendrick-DSL-Internal'
 }
 
