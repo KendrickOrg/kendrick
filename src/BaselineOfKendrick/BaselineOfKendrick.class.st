@@ -56,12 +56,15 @@ BaselineOfKendrick >> baseline: spec [
 				spec requires:
 					#( 'DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal3'
 					   'Roassal3Exporters' 'MooseAlgos' ) ] ];
-		package: 'Kendrick-DSL';
-		package: 'Kendrick-Tests';
-		package: 'Kendrick-Examples'.
+		package: 'Kendrick-DSL'
+		with: [ spec requires: #( 'Kendrick-Core' ) ];
+		package: 'Kendrick-Tests'
+		with: [ spec requires: #( 'Kendrick-Core' 'Kendrick-DSL' ) ];
+		package: 'Kendrick-Examples'
+		with: [ spec requires: #( 'Kendrick-Core' 'Kendrick-DSL' ) ].
 
 	spec
-		for: #( 'pharo9.x' 'pharo10.x' ) do: [
+		for: #( 'pharo9.x' 'pharo10.x' ) do: [ 
 			spec
 				baseline: 'PetitParser2Core'
 				with: [ spec repository: 'github://kursjan/petitparser2' ];
@@ -84,7 +87,11 @@ BaselineOfKendrick >> baseline: spec [
 				spec requires:
 					#( 'DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'CollectionExtensions'
 					   'AIGraphAlgorithms' 'Roassal3Exporters' ) ] ];
-		package: 'Kendrick-DSL';
-		package: 'Kendrick-Tests';
+		package: 'Kendrick-DSL'
+		with: [ spec requires: #( 'Kendrick-Core' ) ];
+		package: 'Kendrick-Tests'
+		with: [ spec requires: #( 'Kendrick-Core' 'Kendrick-DSL' ) ];
 		package: 'Kendrick-Examples'
+		with: [ spec requires: #( 'Kendrick-Core' 'Kendrick-DSL' ) ].
+
 ]
