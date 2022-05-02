@@ -21,56 +21,70 @@ BaselineOfKendrick >> baseline: spec [
 		spec
 			baseline: 'PolyMath' with: [ 
 				spec
-					repository: 'github://PolyMathOrg/PolyMath';
+					repository: 'github://PolyMathOrg/PolyMath:v1.0.4';
 					loads: 'Core' ];
 			baseline: 'DataFrame'
 			with: [ spec repository: 'github://PolyMathOrg/DataFrame:v2.0' ].
 
-		spec group: 'default' with: #( #Kendrick ) ].
-
-	spec for: #'pharo8.x' do: [ 
 		spec
-			baseline: 'PetitParser2Core'
-			with: [ spec repository: 'github://kursjan/petitparser2' ];
-			baseline: 'PetitParser'
-			with: [ 
-				spec repository: 'github://moosetechnology/PetitParser/src' ];
-			baseline: 'Ston'
-			with: [ spec repository: 'github://svenvc/ston/repository' ];
-			baseline: 'Roassal3'
-			with: [ spec repository: 'github://ObjectProfile/Roassal3' ];
-			baseline: 'Roassal3Exporters'
-			with: [ 
-				spec repository: 'github://ObjectProfile/Roassal3Exporters' ];
-			baseline: 'MooseAlgos'
-			with: [ 
-				spec repository: 'github://moosetechnology/MooseAlgos:v1.1.8' ].
+			group: 'Core' with: #( 'Kendrick-Core' );
+			group: 'Examples' with: #( 'Kendrick-Examples' );
+			group: 'DSL' with: #( 'Kendrick-DSL' );
+			group: 'Tests' with: #( 'Kendrick-Tests' );
+			group: 'default' with: #( 'Core' 'Examples' 'DSL' 'Tests' ) ].
 
-		spec package: 'Kendrick' with: [ 
-			spec requires:
-				#( 'DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal3'
-				   'Roassal3Exporters' 'MooseAlgos' ) ] ].
-	spec for: #('pharo9.x' 'pharo10.x') do: [ 
-		spec
-			baseline: 'PetitParser2Core'
-			with: [ spec repository: 'github://kursjan/petitparser2' ];
-			baseline: 'PetitParser'
-			with: [ 
-				spec repository: 'github://moosetechnology/PetitParser/src' ];
-			baseline: 'Ston'
-			with: [ spec repository: 'github://svenvc/ston/repository' ];
-			baseline: 'Roassal3Exporters'
-			with: [ 
-				spec repository: 'github://ObjectProfile/Roassal3Exporters' ];
-			baseline: 'CollectionExtensions' with: [ 
-				spec repository:
-						'github://pharo-contributions/CollectionExtensions:v1.x.x/src' ];
-			baseline: 'AIGraphAlgorithms' with: [ 
-				spec
-					repository: 'github://pharo-ai/graph-algorithms:v1.0.0';
-					loads: 'GraphGeneratorsTests' ].
-		spec package: 'Kendrick' with: [ 
-			spec requires:
-				#( 'DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'CollectionExtensions'
-				   'AIGraphAlgorithms' 'Roassal3Exporters'  ) ] ]
+	spec
+		for: #'pharo8.x' do: [ 
+			spec
+				baseline: 'PetitParser2Core'
+				with: [ spec repository: 'github://kursjan/petitparser2' ];
+				baseline: 'PetitParser'
+				with: [ 
+					spec repository: 'github://moosetechnology/PetitParser/src' ];
+				baseline: 'Ston'
+				with: [ spec repository: 'github://svenvc/ston/repository' ];
+				baseline: 'Roassal3'
+				with: [ spec repository: 'github://ObjectProfile/Roassal3' ];
+				baseline: 'Roassal3Exporters'
+				with: [ 
+					spec repository: 'github://ObjectProfile/Roassal3Exporters' ];
+				baseline: 'MooseAlgos'
+				with: [ 
+					spec repository: 'github://moosetechnology/MooseAlgos:v1.1.8' ].
+
+			spec package: 'Kendrick-Core' with: [ 
+				spec requires:
+					#( 'DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'Roassal3'
+					   'Roassal3Exporters' 'MooseAlgos' ) ] ];
+		package: 'Kendrick-DSL';
+		package: 'Kendrick-Tests';
+		package: 'Kendrick-Examples'.
+
+	spec
+		for: #( 'pharo9.x' 'pharo10.x' ) do: [
+			spec
+				baseline: 'PetitParser2Core'
+				with: [ spec repository: 'github://kursjan/petitparser2' ];
+				baseline: 'PetitParser'
+				with: [ 
+					spec repository: 'github://moosetechnology/PetitParser/src' ];
+				baseline: 'Ston'
+				with: [ spec repository: 'github://svenvc/ston/repository' ];
+				baseline: 'Roassal3Exporters'
+				with: [ 
+					spec repository: 'github://ObjectProfile/Roassal3Exporters' ];
+				baseline: 'CollectionExtensions' with: [ 
+					spec repository:
+							'github://pharo-contributions/CollectionExtensions:v1.x.x/src' ];
+				baseline: 'AIGraphAlgorithms' with: [ 
+					spec
+						repository: 'github://pharo-ai/graph-algorithms:v1.0.0';
+						loads: 'GraphGeneratorsTests' ].
+			spec package: 'Kendrick-Core' with: [ 
+				spec requires:
+					#( 'DataFrame' 'PolyMath' 'Ston' 'PetitParser' 'CollectionExtensions'
+					   'AIGraphAlgorithms' 'Roassal3Exporters' ) ] ];
+		package: 'Kendrick-DSL';
+		package: 'Kendrick-Tests';
+		package: 'Kendrick-Examples'
 ]
