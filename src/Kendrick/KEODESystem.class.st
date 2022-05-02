@@ -5,7 +5,7 @@ Class {
 		'bindings',
 		'equations'
 	],
-	#category : #'Kendrick-Tests-MM'
+	#category : #'Kendrick-Core'
 }
 
 { #category : #initialization }
