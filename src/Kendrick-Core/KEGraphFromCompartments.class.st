@@ -3,7 +3,7 @@ Build a graph of compartments from a KEModel
 "
 Class {
 	#name : #KEGraphFromCompartments,
-	#superclass : #MalGraphAlgorithm,
+	#superclass : #AIGraphAlgorithm,
 	#instVars : [
 		'model'
 	],
