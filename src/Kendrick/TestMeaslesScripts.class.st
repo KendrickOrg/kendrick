@@ -15,7 +15,7 @@ Class {
 { #category : #'as yet unclassified' }
 TestMeaslesScripts >> after [
 
-ModelComponent	Measles
+KModel	 Measles
 	attribute: #(status -> S E I R);
 	parameters: #(beta gamma mu sigma); 
 	equations: #(
