@@ -39,3 +39,38 @@ DSLExamples >> testAtAttributeOfSIRExample [
 	self assert: (sirExample atAttribute: #status) size equals: 3.
 	^sirExample 
 ]
+
+{ #category : #tests }
+DSLExamples >> testVerifyAllStatesOfSIRExample [ 
+	<gtExample>
+	|sirExample allStatesOfModel|
+	sirExample := KModel new.
+	sirExample 
+		attribute: #(status -> S I R);
+		parameters: #(beta lambda gamma mu);
+		transitions: #(
+			S -- lambda --> I.
+			I -- gamma --> R.);
+		lambda: #(beta*I/N).
+		
+	allStatesOfModel := #(#S #I #R) asOrderedCollection.
+	self assert: (sirExample atAttribute: #status) equals: allStatesOfModel.
+	^sirExample 
+]
+
+{ #category : #tests }
+DSLExamples >> testVerifyNumberOfTransitionsOfSIRExampleIs2 [ 
+	<gtExample>
+	|sirExample|
+	sirExample := KModel new.
+	sirExample 
+		attribute: #(status -> S I R);
+		parameters: #(beta lambda gamma mu);
+		transitions: #(
+			S -- lambda --> I.
+			I -- gamma --> R.);
+		lambda: #(beta*I/N).
+
+	self assert: (sirExample allTransitions size) equals: 2.
+	^sirExample 
+]
