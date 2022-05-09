@@ -11,3 +11,10 @@ Class {
 K2Attribute >> atAttribute: aSymbol [
 	^ attribute at: aSymbol
 ]
+
+{ #category : #accessing }
+K2Attribute >> attribute: aAttribute [
+	attribute := aAttribute 
+
+	
+]
