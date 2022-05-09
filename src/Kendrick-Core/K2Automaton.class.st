@@ -8,3 +8,8 @@ Class {
 K2Automaton >> addTransition: aTransition [
 	self subclassResponsibility 
 ]
+
+{ #category : #adding }
+K2Automaton >> addTransitionFrom: aState to: anotherState probability: aRate [
+	self subclassResponsibility 
+]
