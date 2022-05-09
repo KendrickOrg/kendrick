@@ -19,3 +19,43 @@ K2AttributeExample >> testSameAttributesShouldRaiseErrorExample [
 		
 	^aAttribute 
 ]
+
+{ #category : #tests }
+K2AttributeExample >> testSameValuesShouldRaiseErrorExample [
+	
+	<gtExample>
+	| aAttribute |
+	aAttribute := K2SAN new.
+
+	self
+		should: [ 
+			aAttribute attributes: { 
+					(#aState -> #( S I R )).
+					(#aState -> #( S A B )) } ]
+		raise: Error.
+	self
+		should: [ 
+			aAttribute attribute: { 
+					(#aState -> #( S I R )).
+					(#aState -> #( human human )) } ]
+		raise: Error.
+		
+	^aAttribute 
+]
+
+{ #category : #tests }
+K2AttributeExample >> testUnExistingValuesExample [
+	<gtExample>
+	| aAttribute |
+	aAttribute := K2Attribute new.
+	aAttribute attribute: { 
+			(#aState -> #( #S #I #R )).
+			(#species -> #( human bird )) }.
+
+	self
+		should: [ 
+		K2State new simpleName: { #U } withModel: aAttribute ]
+		raise: Error.
+		
+	^aAttribute	
+]
