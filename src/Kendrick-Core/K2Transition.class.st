@@ -9,6 +9,14 @@ Class {
 	#category : #'Kendrick-Core-MM2'
 }
 
+{ #category : #'instance creation' }
+K2Transition class >> from: firstState to: secondState probability: aRate [
+	^ self new
+		from: firstState ;
+		to: secondState ;
+		probability: aRate
+]
+
 { #category : #comparing }
 K2Transition >> = aTransition [
 	^ (from = aTransition from) & (to = aTransition to) & (probability = aTransition probability)
