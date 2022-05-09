@@ -26,6 +26,12 @@ K2Attribute >> atAttribute: aSymbol add: aValue [
 ]
 
 { #category : #accessing }
+K2Attribute >> attribute [
+
+	^ attribute
+]
+
+{ #category : #accessing }
 K2Attribute >> attribute: aAttribute [
 	attribute := aAttribute 
 
