@@ -13,3 +13,8 @@ K2Automaton >> addTransition: aTransition [
 K2Automaton >> addTransitionFrom: aState to: anotherState probability: aRate [
 	self subclassResponsibility 
 ]
+
+{ #category : #accessing }
+K2Automaton >> attributes: attributesArray [
+	self subclassResponsibility 
+]
