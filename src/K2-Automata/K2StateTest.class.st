@@ -8,6 +8,6 @@ Class {
 K2StateTest >> testStateIsNamed [
 
 	| state |
-	state := K2State new name: #A.
+	state := K2State named: #A.
 	self assert: state name equals: #A
 ]

@@ -8,6 +8,14 @@ Class {
 	#category : #'K2-Automata'
 }
 
+{ #category : #'instance creation' }
+K2Transition class >> named: aString [
+
+	^ self new
+		  name: aString;
+		  yourself
+]
+
 { #category : #accessing }
 K2Transition >> from [ 
 ^ from
