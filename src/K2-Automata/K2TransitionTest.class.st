@@ -8,8 +8,8 @@ Class {
 K2TransitionTest >> testTransitionBetween2States [
 
 	| stateA stateB transition |
-	stateA := K2State new name: #A.
-	stateB := K2State new name: #B.
+	stateA := K2State named: #A.
+	stateB := K2State named: #B.
 	transition := K2Transition new
 		              from: stateA;
 		              to: stateB.
