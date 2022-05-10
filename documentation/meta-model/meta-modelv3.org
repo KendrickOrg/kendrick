@@ -71,12 +71,10 @@ ODE o-- "1" Expression: rightHandSide
 
 namespace automata {
 Automaton <|-- MarkovProcess
-Automaton o-- "1..*" Attribute 
 MarkovProcess <|-- SAN
 Automaton o-- "0..*" Transition 
 Automaton o-- "1..*" State
 Transition o-- "1..1" Rate
-State o-- "1..1" SimpleEquivalenceRelation
 Transition o-- "*..1" State : from
 Transition o-- "*..1" State : to
 SAN o-- "1..*" Automaton : subautomata
