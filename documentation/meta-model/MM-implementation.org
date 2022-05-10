@@ -2,5 +2,65 @@
 
 
 ** Legacy considerations
+
+#+DOWNLOADED: file:/Users/stinckwich/Downloads/ReHab_Pharo.st @ 2020-07-16 17:49:49
+[[file:Kendrick_Meta-model_description/2020-07-16_17-49-49_ReHab_Pharo.st]]
+
+*** Model
+An instance of KEModel is defined by a collection of *transitions*, a collection of *parameters*, a collection of *attributes*, a collection of *equations* and one *population*.
+
+*** Population
+A Kendrick *population* (instance of KEPopulation) is defined by a collection of *compartments* i.e. of equivalence classes.
+A population has a method size (number of individuals of that population).
+The size of the population is the sum of the sizes of each compartment.
+A new population is empty (size = 0).
+
+*** Parameter
+   A Kendrick *parameter* (instance of KEParameter) represent parameters in an epidemiological model.
+A parameter is defined with a name (symbol) and an expression.
+By default, a Kendrick model got a **N** parameter initialized with the cardinality of the whole population of a model.
+
+*** Variable
+   A Kendrick *variable* (instance of KEVariable) represent a mathematical variable in an equation.
+A variable is defined with a name (symbol).
+
+*** Functional rates 
+represented as lexical closure in Smalltalk.
+
+*** Compartment
+At the moment, we have no class *compartment*, this is bit weird because compartment are represented as Dictionary.
+  
+  
+*** Equation
+A Kendrick *equation* (instance of KEEquation) represent an ODE (Ordinary Differential Equation). It is defined by a *variable* that depends on time 
+
+*** Attribute
+An attribute is not defined by a class.
+   Attributes are Smalltalk symbol (immutable String).
+    Examples of attributes are: #species, #status.
+   Domain associated to attributes are defined as Smalltalk symbol also.
+You add all the attributes with attributes: method
+
+#+begin_src smalltalk
+	model := KEModel new.
+	model attributes: {(#status -> #(#S #I #R). (#species -> #(#human #bird))}.
+#+end_src
+
+or add attributes one by one with: addAttribute:value:
+#+begin_src smalltalk
+	model := KEModel new.
+	model addAttribute: #status value: #(#S #I #R).
+	model addAttribute: #species value: #(#human #bird).
+#+end_src
+
+
 *** Issues to be solved:
 - Represent compartment as object and not Dictionary (issue 89).
+    - variable name is called symbol in the implementation that is not really informative.
+    - there is no dependency between variables. In order to know the dependency we have to look at the *equation* that contains the variable.
+      A variable should have a list of dependencies.
+      - https://github.com/UMMISCO/kendrick/issues/99
+    - This is not really clear why we separated variables and parameters. Apparently parameter are not depending on another variable.
+    - Why compartments are represented as a set of dictionaries with a specific structure (linked to the fact that there is no compartment class).
+- Why we can add/remove individuals or have access to the individuals from population ?
+- What is diedInList ?
