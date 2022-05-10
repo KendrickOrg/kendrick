@@ -77,7 +77,7 @@ Automaton o-- "1..*" State
 Transition o-- "1..1" Rate
 Transition o-- "*..1" State : from
 Transition o-- "*..1" State : to
-SAN o-- "1..*" Automaton : subautomata
+SAN o-- "1..*" Automaton : subAutomata
 }
 
 namespace expressions {
