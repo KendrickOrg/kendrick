@@ -2,6 +2,7 @@ Class {
 	#name : #K2Transition,
 	#superclass : #Object,
 	#instVars : [
+		'name',
 		'from',
 		'to'
 	],
@@ -25,6 +26,18 @@ K2Transition >> from [
 K2Transition >> from: aState [
 
 from := aState
+]
+
+{ #category : #accessing }
+K2Transition >> name [
+
+	^ name
+]
+
+{ #category : #accessing }
+K2Transition >> name: aSymbol [
+
+	name := aSymbol
 ]
 
 { #category : #accessing }
