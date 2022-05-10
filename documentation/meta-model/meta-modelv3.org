@@ -6,6 +6,9 @@
 
 This document is in .org a markdown-like language that eases the introduction of a UML diagram using PlantUML
 
+Implemenation of this MM and issues with the previous version are discussed in this document:
+https://github.com/KendrickOrg/kendrick/edit/master/documentation/meta-model/MM-implementation.org
+
 * High level Tests (specification of the MM)
 The core of the MM is the concept of SAN: a composite automaton.
 However ODEs are also central in Kendrick and must be reified too.
@@ -41,6 +44,46 @@ in m1 POP/E = E
 
 m2 is a model with 2 concenrs
 its compartment names are Pop Pop/E ... Pop/S Pop/E/birds Pop/E/humans
+
+* Kendrick Meta-model description
+The core of the MM is the concept of SAN: a composite automaton.
+
+The UMM (User MM) deals with high-level functionality and what services are served to users.
+It must match the high-level DSL.
+
+The IMM (Implementation MM) specifies the low level implementation and interacts with low-level service-providers such as ODE solvers (RK4...) and stochastic simulation algorithms (Gillespie, Tau leap ...).
+
+The abstract syntax of Kendrick is based on the mathematical definitions of Kendrick
+and relies on an object-oriented meta-model.
+We use the UML graphical modelling language to describe the Kendrick meta-model.
+
+* MM-related Issues
+
+Support for composition must be clarified. For instance a KModel section in the DSL does not describe a SAN but an atomic automaton.
+Can compositions be composed?
+
+The equivalence between ODEs and automata must be clarified. When is it possible? What are the assumptions?
+
+What is the name of a compartment in a composite automaton (different possible granularity levels)
+
+
+** Model
+
+Equivalence relations are restricted to equalities on individuals' attributes.
+This guarantees that each equivalence class (the individuals with the same values for a given set of attributes) has a known name: the ordered set of attribute names used in the equality.
+
+An attribute is a function on the population to any domain with equality.
+When models are combined, attributes must remain unique in the whole population (name clashes must be avoided).
+
+
+** Attribute
+An *attribute* has a name and a domain.
+
+** Functional rates
+Apparently there is no representation of functional rates in the K meta-model.
+Do we need to introduce it ?
+
+  
 
 * Kendrick Meta-Model Diagram
 
@@ -110,115 +153,3 @@ Variable <|-- AttName
 @enduml
 #+end_src
 
-* Kendrick Meta-model description
-The core of the MM is the concept of SAN: a composite automaton.
-
-The UMM (User MM) deals with high-level functionality and what services are served to users.
-It must match the high-level DSL.
-
-The IMM (Implementation MM) specifies the low level implementation and interacts with low-level service-providers such as ODE solvers (RK4...) and stochastic simulation algorithms (Gillespie, Tau leap ...).
-
-The abstract syntax of Kendrick is based on the mathematical definitions of Kendrick
-and relies on an object-oriented meta-model.
-We use the UML graphical modelling language to describe the Kendrick meta-model.
-
-* MM-related Issues
-
-A systematic test approach is needed
-
-Support for composition must be clarified. For instance a KModel section in the DSL does not describe a SAN but an atomic automaton.
-Can compositions be composed?
-
-The equivalence between ODEs and automata must be clarified. When is it possible? What are the assumptions?
-
-What is the name of a compartment in a composite automaton (different possible granularity levels)
-
-
-
-** (New version) Model
-A model is a SAN i.e. a composite automaton.
-
-
-** Model
-A Kendrick *model* (instance of KEModel) is defined by a collection of *transitions*, a collection of *parameters*, a collection of *attributes*, a collection of *equations* and one *population*.
-
-In the implementation, equivalence relations are restricted to equalities on individuals' attributes.
-This guarantees that each equivalence class (the individuals with the same values for a given set of attributes) has a known name: the ordered set of attribute names used in the equality.
-An attribute is simply a partial function on the population to any domain with equality. The function is assumed total on the compartments it defines.
-When models are combined, attribute names must stay unique in the whole population (name clashes must be avoided).
-
-** Concern
-Do we need to introduce *concern* concept in the meta-model ?
- 
-** Population
-A Kendrick *population* (instance of KEPopulation) is defined by a collection of *compartments* i.e. of equivalence classes.
-A population has a method size (number of individuals of that population).
-The size of the population is the sum of the sizes of each compartment.
-A new population is empty (size = 0).
-
-*** Issues to be solved:
-- Why compartments are represented as a set of dictionaries with a specific structure (linked to the fact that there is no compartment class).
-- Why we can add/remove individuals or have access to the individuals from population ?
-- What is diedInList ?
-
-** Compartment
-At the moment, we have no class *compartment*, this is bit weird because compartment are represented as Dictionary.
-
-*** Issues to be solved:
-- Represent compartment as object and not Dictionary (issue 89).
-
-** Attribute
-An attribute is not defined by a class. Examples of attributes are: #species, #status.
-A Kendrick *attribute* has a name and a domain.
-
-** Functional rates
-Apparently there is no representation of functional rates in the K meta-model.
-Do we need to introduce it ?
-
-The following concepts are not fondamental to Kendrick, but allow to represents ODEs.
-** Equation
-A Kendrick *equation* (instance of KEEquation) represent an ODE (Ordinary Differential Equation). It is defined by a *variable* that depends on time 
-
-*** Issues to be solved:
-    - Do we need equation and transition, because normally they can be generated from each others ?
-
-** Variable
-   A Kendrick *variable* (instance of KEVariable) represent a mathematical variable in an equation.
-A variable is defined with a name (symbol).
-
-*** Issues to be solved:
-    - variable name is called symbol in the implementation that is not really informative.
-    - there is no dependency between variables. In order to know the dependency we have to look at the *equation* that contains the variable.
-      A variable should have a list of dependencies.
-
-#+DOWNLOADED: file:/Users/stinckwich/Downloads/ReHab_Pharo.st @ 2020-07-16 17:49:49
-[[file:Kendrick_Meta-model_description/2020-07-16_17-49-49_ReHab_Pharo.st]]
-
-** Parameter
-   A Kendrick *parameter* (instance of KEParameter) represent parameters in an epidemiological model.
-A parameter is defined with a name (symbol) and an expression.
-By default, a Kendrick model got a **N** parameter initialized with the cardinality of the whole population of a model.
-
-*** Issues to be solved:
-    - https://github.com/UMMISCO/kendrick/issues/99
-    - This is not really clear why we separated variables and parameters. Apparently parameter are not depending on another variable.
-
-* Kendrick Workflow Meta-model description
-* Smalltalk implementation
-  Functional rates are represented as lexical closure in Smalltalk.
-  
-** Attribute
-   Attributes are Smalltalk symbol (immutable String).
-   Domain associated to attributes are defined as Smalltalk symbol also.
-You add all the attributes with attributes: method
-#+begin_src smalltalk
-	model := KEModel new.
-	model attributes: {(#status -> #(#S #I #R). (#species -> #(#human #bird))}.
-#+end_src
-
-or add attributes one by one with: addAttribute:value:
-#+begin_src smalltalk
-	model := KEModel new.
-	model addAttribute: #status value: #(#S #I #R).
-	model addAttribute: #species value: #(#human #bird).
-#+end_src
