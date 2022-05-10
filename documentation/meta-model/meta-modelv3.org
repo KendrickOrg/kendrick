@@ -48,7 +48,7 @@ See //www.plantuml.com/
 
 #+begin_src plantuml :file meta-modelv3.png
 @startuml
-namespace kendrick {
+namespace epi {
 Model o-- "1" SAN
 Model -- "1" ODESystem
 Model o-- "0..*" Parameter 
