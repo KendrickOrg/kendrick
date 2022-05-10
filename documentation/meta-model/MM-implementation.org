@@ -1,6 +1,6 @@
-****Implementation of the Kendrick Meta-Model
+* Implementation of the Kendrick Meta-Model
 
 
-#Legacy considerations
+** Legacy considerations
 *** Issues to be solved:
 - Represent compartment as object and not Dictionary (issue 89).
