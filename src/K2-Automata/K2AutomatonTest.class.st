@@ -5,9 +5,9 @@ Class {
 }
 
 { #category : #tests }
-K2AutomatonTest >> testANewAutomatonHasNoStates [
+K2AutomatonTest >> testANewAutomatonHasNoStatesExample [
 
-		<gtExample>
+	<gtExample>
 	| a |
 	a := K2Automaton new.
 	self assert: a states isEmpty.
