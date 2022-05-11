@@ -33,3 +33,14 @@ K2AutomatonTest >> testNewAutomatonHasNoInitialStateExample [
 	self assert: a initialState isEmpty.
 	^a
 ]
+
+{ #category : #tests }
+K2AutomatonTest >> testNewAutomatonHasNoTransitionsExample [
+
+	<gtExample>
+	|a|
+	a := K2Automaton new.
+	self assert: a transitions isEmpty.
+	^a
+	
+]
