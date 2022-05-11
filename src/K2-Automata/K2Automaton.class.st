@@ -25,7 +25,10 @@ K2Automaton >> initialState [
 
 { #category : #accessing }
 K2Automaton >> initialize [ 
-states := OrderedCollection new
+states := OrderedCollection new.
+transitions := OrderedCollection new.
+initialState := OrderedCollection new.
+finalStates := OrderedCollection new
 ]
 
 { #category : #accessing }
