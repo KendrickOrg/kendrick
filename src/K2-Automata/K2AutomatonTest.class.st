@@ -23,3 +23,13 @@ K2AutomatonTest >> testNewAutomatonHasNoFinalStatesExample [
 	self assert: a finalStates  isEmpty.
 	^a
 ]
+
+{ #category : #tests }
+K2AutomatonTest >> testNewAutomatonHasNoInitialStateExample [
+
+	<gtExample>
+	|a|
+	a := K2Automaton new.
+	self assert: a initialState isEmpty.
+	^a
+]
