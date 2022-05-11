@@ -21,6 +21,12 @@ K2State class >> named: aString [
 ]
 
 { #category : #accessing }
+K2State >> isFinalState: aBoolean [ 
+	isFinalState := aBoolean.
+	self changed
+]
+
+{ #category : #accessing }
 K2State >> isInitialState [ 
 	^true
 ]
