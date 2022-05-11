@@ -5,6 +5,15 @@ Class {
 }
 
 { #category : #tests }
+K2StateTest >> testStateIsInitialStateExistExample [
+	<gtExample>
+	| state |
+	state := K2State new.
+	self assert: state isInitialState equals: true.
+	^state
+]
+
+{ #category : #tests }
 K2StateTest >> testStateIsNamedExample [
 	<gtExample>
 	| state |
