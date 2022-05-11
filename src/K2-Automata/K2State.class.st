@@ -31,6 +31,11 @@ K2State >> isInitialState [
 	^true
 ]
 
+{ #category : #testing }
+K2State >> isNormalState [ 
+	^ isFinalState not
+]
+
 { #category : #accessing }
 K2State >> name [
 ^ name
