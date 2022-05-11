@@ -21,3 +21,12 @@ K2StateTest >> testStateIsNamedExample [
 	self assert: state name equals: #A.
 	^state
 ]
+
+{ #category : #tests }
+K2StateTest >> testStateIsNormalStateExistExample [
+	<gtExample>
+	| state |
+	state := K2State new.
+	self assert: state isNormalState equals: true.
+	^state
+]
