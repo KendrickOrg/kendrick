@@ -1,5 +1,5 @@
 Class {
-	#name : #K2Transition,
+	#name : #K2FSMTransition,
 	#superclass : #Object,
 	#instVars : [
 		'name',
@@ -10,7 +10,7 @@ Class {
 }
 
 { #category : #'instance creation' }
-K2Transition class >> named: aString [
+K2FSMTransition class >> named: aString [
 
 	^ self new
 		  name: aString;
@@ -18,34 +18,34 @@ K2Transition class >> named: aString [
 ]
 
 { #category : #accessing }
-K2Transition >> from [ 
+K2FSMTransition >> from [ 
 ^ from
 ]
 
 { #category : #accessing }
-K2Transition >> from: aState [
+K2FSMTransition >> from: aState [
 
 from := aState
 ]
 
 { #category : #accessing }
-K2Transition >> name [
+K2FSMTransition >> name [
 
 	^ name
 ]
 
 { #category : #accessing }
-K2Transition >> name: aSymbol [
+K2FSMTransition >> name: aSymbol [
 
 	name := aSymbol
 ]
 
 { #category : #accessing }
-K2Transition >> to [ ^ to
+K2FSMTransition >> to [ ^ to
 ]
 
 { #category : #accessing }
-K2Transition >> to: aState [
+K2FSMTransition >> to: aState [
 
 	to := aState
 ]

@@ -2,7 +2,7 @@
 We create a class K2State with 3 instance variables name, isInitialState and isFinalState representing respectively the name, the fact that the state can be initial and so that it can be in a final state
 "
 Class {
-	#name : #K2State,
+	#name : #K2FSMState,
 	#superclass : #Object,
 	#instVars : [
 		'name',
@@ -13,7 +13,7 @@ Class {
 }
 
 { #category : #'instance creation' }
-K2State class >> named: aString [
+K2FSMState class >> named: aString [
 	^ self new
 		name: aString;
 		yourself
@@ -21,28 +21,24 @@ K2State class >> named: aString [
 ]
 
 { #category : #accessing }
-K2State >> isFinalState: aBoolean [ 
-	isFinalState := aBoolean.
-	self changed
+K2FSMState >> beFinal [
+
+self become: (K2FSMFinalState named: self name)
 ]
 
 { #category : #accessing }
-K2State >> isInitialState [ 
-	^true
-]
+K2FSMState >> beInitial [
 
-{ #category : #testing }
-K2State >> isNormalState [ 
-	^ isFinalState not
+	self become: (K2FSMInitialState named: self name)
 ]
 
 { #category : #accessing }
-K2State >> name [
+K2FSMState >> name [
 ^ name
 ]
 
 { #category : #accessing }
-K2State >> name: aSymbol [
+K2FSMState >> name: aSymbol [
 
 name := aSymbol
 ]

@@ -1,8 +1,10 @@
 "
-We create a class `K2Automaton` with 4 instance variables `initialState`, `finalState`, `states` and `transitions` representing respectively the initial state, the possible final states, the states and the transitions of the automaton
+I represent a finite state automaton defined as a set of states and transitions.
+One of my state is an initial state and a subset are final states.
+
 "
 Class {
-	#name : #K2Automaton,
+	#name : #K2FSMAutomaton,
 	#superclass : #Object,
 	#instVars : [
 		'initialState',
@@ -14,17 +16,17 @@ Class {
 }
 
 { #category : #accessing }
-K2Automaton >> finalStates [
+K2FSMAutomaton >> finalStates [
 	^finalStates 
 ]
 
 { #category : #accessing }
-K2Automaton >> initialState [ 
+K2FSMAutomaton >> initialState [ 
 	^initialState 
 ]
 
 { #category : #accessing }
-K2Automaton >> initialize [ 
+K2FSMAutomaton >> initialize [ 
 states := OrderedCollection new.
 transitions := OrderedCollection new.
 initialState := OrderedCollection new.
@@ -32,11 +34,11 @@ finalStates := OrderedCollection new
 ]
 
 { #category : #accessing }
-K2Automaton >> states [ 
+K2FSMAutomaton >> states [ 
 ^states
 ]
 
 { #category : #accessing }
-K2Automaton >> transitions [
+K2FSMAutomaton >> transitions [
 	^transitions 
 ]
