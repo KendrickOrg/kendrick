@@ -5,9 +5,28 @@ Class {
 }
 
 { #category : #tests }
-K2StateTest >> testStateIsNamed [
+K2StateTest >> testStateIsInitialStateExistExample [
+	<gtExample>
+	| state |
+	state := K2State new.
+	self assert: state isInitialState equals: true.
+	^state
+]
 
+{ #category : #tests }
+K2StateTest >> testStateIsNamedExample [
+	<gtExample>
 	| state |
 	state := K2State named: #A.
-	self assert: state name equals: #A
+	self assert: state name equals: #A.
+	^state
+]
+
+{ #category : #tests }
+K2StateTest >> testStateIsNormalStateExistExample [
+	<gtExample>
+	| state |
+	state := K2State new.
+	self assert: state isNormalState equals: true.
+	^state
 ]
