@@ -1,16 +1,16 @@
 Class {
-	#name : #K2TransitionTest,
+	#name : #K2FSMTransitionTest,
 	#superclass : #TestCase,
 	#category : #'K2-Automata'
 }
 
 { #category : #tests }
-K2TransitionTest >> testTransitionBetween2States [
+K2FSMTransitionTest >> testTransitionBetween2States [
 
 	| stateA stateB transition |
-	stateA := K2State named: #A.
-	stateB := K2State named: #B.
-	transition := (K2Transition
+	stateA := K2FSMState named: #A.
+	stateB := K2FSMState named: #B.
+	transition := (K2FSMTransition
 		              named: #t) from: stateA;
 		              to: stateB.
 	self assert: transition from equals: stateA.
