@@ -5,42 +5,72 @@ Class {
 }
 
 { #category : #tests }
-K2FSMAutomatonTest >> testANewAutomatonHasNoStatesExample [
+K2FSMAutomatonTest >> example1 [
 
 	<gtExample>
-	| a |
-	a := K2FSMAutomaton new.
-	self assert: a states isEmpty.
-	^ a
+	| automaton initial final state firstTransition secondTransition selfTransition |
+	automaton := K2FSMAutomaton named: 'Automata'.
+	initial := K2FSMInitialState named: 'initial'.
+	(final := K2FSMFinalState named: 'final') beFinal.
+	state := K2FSMState named: 'state'.
+	firstTransition := K2FSMTransition
+		                   from: initial
+		                   to: state
+		                   named: 'first'.
+	secondTransition := K2FSMTransition
+		                    from: state
+		                    to: final
+		                    named: 'second'.
+	selfTransition := K2FSMTransition from: state to: state named: 'self'
 ]
 
 { #category : #tests }
-K2FSMAutomatonTest >> testNewAutomatonHasNoFinalStatesExample [
+K2FSMAutomatonTest >> testANewAutomatonHasNoStates [
 
 	<gtExample>
-	|a|
-	a := K2FSMAutomaton new.
-	self assert: a finalStates  isEmpty.
-	^a
+	| automaton |
+	automaton := K2FSMAutomaton new.
+	self assert: automaton states isEmpty.
+	^ automaton
 ]
 
 { #category : #tests }
-K2FSMAutomatonTest >> testNewAutomatonHasNoInitialStateExample [
+K2FSMAutomatonTest >> testName [
 
-	<gtExample>
-	|a|
-	a := K2FSMAutomaton new.
-	self assert: a initialState isEmpty.
-	^a
-]
-
-{ #category : #tests }
-K2FSMAutomatonTest >> testNewAutomatonHasNoTransitionsExample [
-
-	<gtExample>
-	|a|
-	a := K2FSMAutomaton new.
-	self assert: a transitions isEmpty.
-	^a
 	
+	<gtExample>
+	| state |
+	state := K2FSMAutomaton named:'A'.
+	self assert: state name equals: 'A'.
+	^ state
+]
+
+{ #category : #tests }
+K2FSMAutomatonTest >> testNewAutomatonHasNoFinalStates [
+
+	<gtExample>
+	| automaton |
+	automaton := K2FSMAutomaton new.
+	self assert: automaton finalStates isEmpty.
+	^ automaton
+]
+
+{ #category : #tests }
+K2FSMAutomatonTest >> testNewAutomatonHasNoInitialState [
+
+	<gtExample>
+	| automaton |
+	automaton := K2FSMAutomaton new.
+	self assert: automaton initialState isEmpty.
+	^ automaton
+]
+
+{ #category : #tests }
+K2FSMAutomatonTest >> testNewAutomatonHasNoTransitions [
+
+	<gtExample>
+	| automaton |
+	automaton := K2FSMAutomaton new.
+	self assert: automaton transitions isEmpty.
+	^ automaton
 ]

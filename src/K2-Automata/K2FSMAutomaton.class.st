@@ -10,10 +10,19 @@ Class {
 		'initialState',
 		'finalStates',
 		'states',
-		'transitions'
+		'transitions',
+		'name'
 	],
 	#category : #'K2-Automata'
 }
+
+{ #category : #'instance creation' }
+K2FSMAutomaton class >> named: aString [
+
+	^ self new
+		  name: aString;
+		  yourself
+]
 
 { #category : #accessing }
 K2FSMAutomaton >> finalStates [
@@ -31,6 +40,18 @@ states := OrderedCollection new.
 transitions := OrderedCollection new.
 initialState := OrderedCollection new.
 finalStates := OrderedCollection new
+]
+
+{ #category : #accessing }
+K2FSMAutomaton >> name [
+
+	^ name
+]
+
+{ #category : #accessing }
+K2FSMAutomaton >> name: aString [
+
+name := aString
 ]
 
 { #category : #accessing }
