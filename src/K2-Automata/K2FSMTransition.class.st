@@ -10,6 +10,16 @@ Class {
 }
 
 { #category : #'instance creation' }
+K2FSMTransition class >> from: aState1 to: aState2 named: aString [
+
+	^ self new
+		  from: aState1;
+		  to: aState2;
+		  name: aString;
+		  yourself
+]
+
+{ #category : #'instance creation' }
 K2FSMTransition class >> named: aString [
 
 	^ self new
