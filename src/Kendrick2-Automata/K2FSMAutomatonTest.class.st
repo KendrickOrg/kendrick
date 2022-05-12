@@ -1,7 +1,7 @@
 Class {
 	#name : #K2FSMAutomatonTest,
 	#superclass : #TestCase,
-	#category : #'K2-Automata'
+	#category : #'Kendrick2-Automata'
 }
 
 { #category : #tests }
@@ -11,7 +11,7 @@ K2FSMAutomatonTest >> example1 [
 	| automaton initial final state firstTransition secondTransition selfTransition |
 	automaton := K2FSMAutomaton named: 'Automata'.
 	initial := K2FSMInitialState named: 'initial'.
-	(final := K2FSMFinalState named: 'final') beFinal.
+	(final := K2FSMState named: 'final') beFinal.
 	state := K2FSMState named: 'state'.
 	firstTransition := K2FSMTransition
 		                   from: initial

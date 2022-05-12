@@ -9,7 +9,7 @@ Class {
 		'isInitialState',
 		'isFinalState'
 	],
-	#category : #'K2-Automata'
+	#category : #'Kendrick2-Automata'
 }
 
 { #category : #'instance creation' }
