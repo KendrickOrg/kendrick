@@ -5,39 +5,49 @@ Class {
 }
 
 { #category : #tests }
-DSLExamples >> testAtAttributeOfMetapopulationExample [ 
+DSLExamples >> testAtAttributeOfMetapopulationExample [
 
 	<gtExample>
 	| patchExample |
 	patchExample := KModel new.
-	patchExample 
-		attribute: #(patch -> 1  2  3);
-		parameters: #(rho);
-		transitions: #(
-			1 -- rho --> 2.
-			2 -- rho --> 3.
-			3 -- rho --> 1.).
-	 self assert: (patchExample atAttribute: #patch) size equals: 3.
+	patchExample
+		attribute: #( patch -> 1 2 3 );
+		parameters: #( rho );
+		transitions:
+			#( 1 -- rho --> 2 #'.' 2 -- rho --> 3 #'.' 3 -- rho --> 1 #'.' ).
+	self assert: (patchExample backEndModel atAttribute: #patch) size equals: 3.
 
-	^patchExample
-
-
+	^ patchExample backEndModel
 ]
 
 { #category : #tests }
-DSLExamples >> testAtAttributeOfSIRExample [ 
+DSLExamples >> testAtAttributeOfSIRExample [
+
 	<gtExample>
-	|sirExample|
+	| sirExample |
 	sirExample := KModel new.
-	sirExample 
-		attribute: #(status -> S I R);
-		parameters: #(beta lambda gamma mu);
-		transitions: #(
-			S -- lambda --> I.
-			I -- gamma --> R.);
-		lambda: #(beta*I/N).
-	self assert: (sirExample atAttribute: #status) size equals: 3.
-	^sirExample 
+	sirExample
+		attribute: #( status -> S I R );
+		parameters: #( beta lambda gamma mu );
+		transitions: #( S -- lambda --> I #'.' I -- gamma --> R #'.' );
+		lambda: #( beta * I / N ).
+	self assert: (sirExample backEndModel atAttribute: #status) size equals: 3.
+	^ sirExample backEndModel
+]
+
+{ #category : #tests }
+DSLExamples >> testAtAttributeOfSIRMetapopulationExample [
+
+	<gtExample>
+	| sirMetapopExample |
+	sirMetapopExample := self testAtAttributeOfMetapopulationExample
+	                     + self testAtAttributeOfSIRExample.
+	self
+		assert:
+		(sirMetapopExample  atAttribute: #( #status #patch ))
+			size
+		equals: 9.
+	^ sirMetapopExample 
 ]
 
 { #category : #tests }

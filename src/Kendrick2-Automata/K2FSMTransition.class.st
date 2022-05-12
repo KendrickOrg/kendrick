@@ -6,7 +6,7 @@ Class {
 		'from',
 		'to'
 	],
-	#category : #'K2-Automata'
+	#category : #'Kendrick2-Automata'
 }
 
 { #category : #'instance creation' }
