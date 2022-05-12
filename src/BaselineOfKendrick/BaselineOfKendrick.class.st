@@ -92,6 +92,7 @@ BaselineOfKendrick >> baseline: spec [
 		package: 'Kendrick-Tests'
 		with: [ spec requires: #( 'Kendrick-Core' 'Kendrick-DSL' ) ];
 		package: 'Kendrick-Examples'
-		with: [ spec requires: #( 'Kendrick-Core' 'Kendrick-DSL' ) ].
-
+		with: [ spec requires: #( 'Kendrick-Core' 'Kendrick-DSL' ) ];
+		package: 'Kendrick2-Automata'
+		with: [ spec requires: #( 'Kendrick-Core'  ) ].
 ]
