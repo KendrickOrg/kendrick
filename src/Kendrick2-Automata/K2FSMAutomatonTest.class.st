@@ -21,7 +21,15 @@ K2FSMAutomatonTest >> example1 [
 		                    from: state
 		                    to: final
 		                    named: 'second'.
-	selfTransition := K2FSMTransition from: state to: state named: 'self'
+	selfTransition := K2FSMTransition from: state to: state named: 'self'.
+	automaton addAll: { 
+			initial.
+			state.
+			final }.
+	self assert: automaton states size equals: 3.
+	self assert: automaton initialState equals: initial.
+	self assert: automaton finalStates size equals: 1.
+	^ automaton
 ]
 
 { #category : #tests }
