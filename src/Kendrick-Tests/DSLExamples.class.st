@@ -36,21 +36,6 @@ DSLExamples >> testAtAttributeOfSIRExample [
 ]
 
 { #category : #tests }
-DSLExamples >> testAtAttributeOfSIRMetapopulationExample [
-
-	<gtExample>
-	| sirMetapopExample |
-	sirMetapopExample := self testAtAttributeOfMetapopulationExample
-	                     + self testAtAttributeOfSIRExample.
-	self
-		assert:
-		(sirMetapopExample  atAttribute: #( #status #patch ))
-			size
-		equals: 9.
-	^ sirMetapopExample 
-]
-
-{ #category : #tests }
 DSLExamples >> testVerifyAllStatesOfSIRExample [ 
 	<gtExample>
 	|sirExample allStatesOfModel|
