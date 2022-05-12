@@ -1,7 +1,14 @@
 * Implementation of the Kendrick Meta-Model
 
+See
+https://github.com/KendrickOrg/kendrick/tree/master/src/Kendrick2-Automata
 
-** Legacy considerations
+
+
+
+
+
+* LEGACY considerations
 
 #+DOWNLOADED: file:/Users/stinckwich/Downloads/ReHab_Pharo.st @ 2020-07-16 17:49:49
 [[file:Kendrick_Meta-model_description/2020-07-16_17-49-49_ReHab_Pharo.st]]
