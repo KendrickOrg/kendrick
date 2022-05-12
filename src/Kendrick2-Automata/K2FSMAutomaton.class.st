@@ -11,7 +11,8 @@ Class {
 		'finalStates',
 		'states',
 		'transitions',
-		'name'
+		'name',
+		'initialStates'
 	],
 	#category : #'Kendrick2-Automata'
 }
@@ -25,6 +26,17 @@ K2FSMAutomaton class >> named: aString [
 ]
 
 { #category : #accessing }
+K2FSMAutomaton >> addAll: aCollectionOfStates [
+
+	states addAll: aCollectionOfStates.
+	finalStates addAll:
+		(aCollectionOfStates select: [ :each | 
+			 each class == K2FSMFinalState ]).
+	initialState := (aCollectionOfStates select: [ :each | 
+		                each class == K2FSMInitialState ]) first
+]
+
+{ #category : #accessing }
 K2FSMAutomaton >> finalStates [
 	^finalStates 
 ]
@@ -35,11 +47,12 @@ K2FSMAutomaton >> initialState [
 ]
 
 { #category : #accessing }
-K2FSMAutomaton >> initialize [ 
-states := OrderedCollection new.
-transitions := OrderedCollection new.
-initialState := OrderedCollection new.
-finalStates := OrderedCollection new
+K2FSMAutomaton >> initialize [
+
+	states := OrderedCollection new.
+	transitions := OrderedCollection new.
+	initialState := nil.
+	finalStates := OrderedCollection new
 ]
 
 { #category : #accessing }
