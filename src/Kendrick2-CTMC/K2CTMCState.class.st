@@ -28,3 +28,13 @@ K2CTMCState >> nextState [
 	probs := transitionArray collect: [ :e | e probability  ].
 	probs withIndexDo: [ :e :i | randomNum  := randomNum  - e. (randomNum  < 0) ifTrue: [ ^ (transitionArray at: i) to ] ]
 ]
+
+{ #category : #accessing }
+K2CTMCState >> transitionArray [
+	^transitionArray 
+]
+
+{ #category : #accessing }
+K2CTMCState >> transitionArray: anObject [
+	transitionArray := anObject 
+]
