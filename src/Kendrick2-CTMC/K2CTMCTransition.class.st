@@ -12,6 +12,11 @@ Class {
 	#category : #'Kendrick2-CTMC-Core'
 }
 
+{ #category : #converting }
+K2CTMCTransition >> asString [
+	^ 'Transition from ' , (from name), 'to ', (to name), 'probability ', (probability asString).
+]
+
 { #category : #accessing }
 K2CTMCTransition >> from [
 	^from
