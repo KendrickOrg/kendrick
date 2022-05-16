@@ -68,3 +68,23 @@ self assert: (ctmc probabilityFrom: 4 to: 4)  equals: -10.
 
 ^ctmc
 ]
+
+{ #category : #tests }
+K2CMTCWithFourStatesTest >> testSumCulumnsRateOfCTMCForFourStatesisZero [
+
+<gtExample>
+| ctmc |
+
+ctmc := self createCTMCWithFourStates.
+
+self assert: ((ctmc probabilityFrom: 1 to: 1) + (ctmc probabilityFrom: 1 to: 2) +  (ctmc probabilityFrom: 1 to: 3) + (ctmc probabilityFrom: 1 to: 4)) equals: 0.
+
+
+self assert: ((ctmc probabilityFrom: 2 to: 1) + (ctmc probabilityFrom: 2 to: 2) + (ctmc probabilityFrom: 2 to: 3) + (ctmc probabilityFrom: 2 to: 4))  equals: 0.
+
+self assert: ((ctmc probabilityFrom: 3 to: 1) + (ctmc probabilityFrom: 3 to: 2) + (ctmc probabilityFrom: 3 to: 3) + (ctmc probabilityFrom: 3 to: 4))  equals: 0.
+
+self assert: ((ctmc probabilityFrom: 4 to: 1) + (ctmc probabilityFrom: 4 to: 2) + (ctmc probabilityFrom: 4 to: 3) + (ctmc probabilityFrom: 4 to: 4))  equals: 0.
+
+^ctmc
+]
