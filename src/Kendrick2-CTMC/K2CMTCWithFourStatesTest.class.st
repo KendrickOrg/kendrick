@@ -14,3 +14,15 @@ K2CMTCWithFourStatesTest >> createCTMCWithFourStates [
 [ 0, 0, 10, -10 ]
 ] asCTMC.
 ]
+
+{ #category : #tests }
+K2CMTCWithFourStatesTest >> testCreateCTMCofFourStates [
+
+<gtExample>
+| ctmc |
+
+ctmc :=self createCTMCWithFourStates.
+
+self assert: (ctmc class  = K2CTMC).
+^ctmc
+]
