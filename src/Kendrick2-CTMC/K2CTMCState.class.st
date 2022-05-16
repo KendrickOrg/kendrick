@@ -20,3 +20,11 @@ K2CTMCState >> name [
 K2CTMCState >> name: anObject [
 	name := anObject 
 ]
+
+{ #category : #accessing }
+K2CTMCState >> nextState [
+	| randomNum probs|
+	randomNum  := (Random new)next .
+	probs := transitionArray collect: [ :e | e probability  ].
+	probs withIndexDo: [ :e :i | randomNum  := randomNum  - e. (randomNum  < 0) ifTrue: [ ^ (transitionArray at: i) to ] ]
+]
