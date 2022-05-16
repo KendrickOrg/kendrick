@@ -42,3 +42,16 @@ ctmc :=self createCTMCWithTwoStates .
 self assert: (ctmc class  = K2CTMC).
 ^ctmc
 ]
+
+{ #category : #tests }
+K2CMTCWithTwoStatesTest >> testNumberOfStatesofCTMC [
+
+<gtExample>
+| ctmc |
+
+ctmc :=self createCTMCWithTwoStates.
+
+self assert: (ctmc states size)  equals: 2.
+^ctmc
+
+]
