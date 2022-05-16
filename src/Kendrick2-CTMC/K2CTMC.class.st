@@ -21,6 +21,11 @@ K2CTMC >> currentState: anObject [
 	currentState := anObject
 ]
 
+{ #category : #'as yet unclassified' }
+K2CTMC >> goToNextState [
+	currentState := currentState nextState.
+]
+
 { #category : #accessing }
 K2CTMC >> states [
 	^ states
