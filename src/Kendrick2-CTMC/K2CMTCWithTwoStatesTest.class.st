@@ -21,3 +21,12 @@ K2CMTCWithTwoStatesTest >> testANewCTMCHasNoStates [
 	self assert: ctmc states isEmpty.
 	^ctmc 
 ]
+
+{ #category : #tests }
+K2CMTCWithTwoStatesTest >> testANewCTMCHaveCurrentStateInitilizeToNil [
+	<gtExample>
+	| ctmc |
+	ctmc := K2CTMC new.
+	self assert: ctmc currentState isNil.
+	^ctmc 
+]
