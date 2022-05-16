@@ -70,3 +70,16 @@ self assert: (ctmc probabilityFrom: 2 to: 2)  equals: -0.7.
 
 ^ctmc
 ]
+
+{ #category : #tests }
+K2CMTCWithTwoStatesTest >> testSumColumnsRateOfCTMCisZero [
+<gtExample>
+| ctmc |
+
+ctmc := self createCTMCWithTwoStates .
+
+self assert: ((ctmc probabilityFrom: 1 to: 1) + (ctmc probabilityFrom: 1 to: 2))  equals: 0.
+self assert: ((ctmc probabilityFrom: 2 to: 1) + (ctmc probabilityFrom: 2 to: 2)) equals: 0.
+
+^ctmc
+]
