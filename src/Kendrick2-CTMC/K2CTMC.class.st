@@ -12,6 +12,16 @@ Class {
 }
 
 { #category : #accessing }
+K2CTMC >> currentState [
+	^ currentState
+]
+
+{ #category : #accessing }
+K2CTMC >> currentState: anObject [
+	currentState := anObject
+]
+
+{ #category : #accessing }
 K2CTMC >> states [
 	^ states
 ]
