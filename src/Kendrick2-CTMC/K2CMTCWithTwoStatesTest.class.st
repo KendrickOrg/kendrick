@@ -55,3 +55,18 @@ self assert: (ctmc states size)  equals: 2.
 ^ctmc
 
 ]
+
+{ #category : #tests }
+K2CMTCWithTwoStatesTest >> testRateOfCTMC [
+<gtExample>
+| ctmc |
+
+ctmc := self createCTMCWithTwoStates .
+
+self assert: (ctmc probabilityFrom: 1 to: 1)  equals: -0.4.
+self assert: (ctmc probabilityFrom: 1 to: 2)  equals: 0.4.
+self assert: (ctmc probabilityFrom: 2 to: 1)  equals: 0.7.
+self assert: (ctmc probabilityFrom: 2 to: 2)  equals: -0.7.
+
+^ctmc
+]
