@@ -12,3 +12,12 @@ K2CMTCWithTwoStatesTest >> createCTMCWithTwoStates [
 [ 0.7, -0.7 ]
 ] asCTMC.
 ]
+
+{ #category : #tests }
+K2CMTCWithTwoStatesTest >> testANewCTMCHasNoStates [
+	<gtExample>
+	| ctmc |
+	ctmc := K2CTMC new.
+	self assert: ctmc states isEmpty.
+	^ctmc 
+]
