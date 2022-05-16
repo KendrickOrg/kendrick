@@ -13,6 +13,16 @@ Class {
 }
 
 { #category : #accessing }
+K2CTMCTransition >> from [
+	^from
+]
+
+{ #category : #accessing }
+K2CTMCTransition >> from: anObject [
+	from:= anObject 
+]
+
+{ #category : #accessing }
 K2CTMCTransition >> to [
 	^to
 ]
