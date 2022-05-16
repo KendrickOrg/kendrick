@@ -11,6 +11,13 @@ Class {
 	#category : #'Kendrick2-CTMC-Core'
 }
 
+{ #category : #initialization }
+K2CTMCState >> initialize [
+	super initialize.
+	name := ''.
+	transitionArray := OrderedCollection new.
+]
+
 { #category : #accessing }
 K2CTMCState >> name [
 	^name
