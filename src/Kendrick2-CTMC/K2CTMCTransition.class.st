@@ -23,6 +23,16 @@ K2CTMCTransition >> from: anObject [
 ]
 
 { #category : #accessing }
+K2CTMCTransition >> probability [
+	^ probability
+]
+
+{ #category : #accessing }
+K2CTMCTransition >> probability: anObject [
+	probability := anObject 
+]
+
+{ #category : #accessing }
 K2CTMCTransition >> to [
 	^to
 ]
