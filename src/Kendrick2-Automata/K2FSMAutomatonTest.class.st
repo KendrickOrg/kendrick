@@ -69,7 +69,7 @@ K2FSMAutomatonTest >> testNewAutomatonHasNoInitialState [
 	<gtExample>
 	| automaton |
 	automaton := K2FSMAutomaton new.
-	self assert: automaton initialState isEmpty.
+	self assert: automaton initialState isNil.
 	^ automaton
 ]
 
