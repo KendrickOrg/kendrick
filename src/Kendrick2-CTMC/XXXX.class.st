@@ -34,7 +34,7 @@ Common blocks (2/3 of the blocks) are optimized directly in the compiler and hav
 
 "
 Class {
-	#name : #BlockClosure,
+	#name : #XXXX,
 	#superclass : #Object,
 	#type : #variable,
 	#instVars : [
