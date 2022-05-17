@@ -11,6 +11,23 @@ Class {
 	#category : #'Kendrick2-CTMC-Core'
 }
 
+{ #category : #'instance creation' }
+K2CTMC class >> newFromMatrix: matrix [
+| ctmc |
+ctmc := K2CTMC new.
+
+(1 to: matrix columnCount) do: [ :e |
+		|s|
+		s := K2CTMCState new.
+		s name: ((ctmc  states size + 1) asString).
+		ctmc states add: s.
+		].
+	
+	matrix withIndicesDo: [ :e :i :j | ctmc fromState: i toAnotherState: j probability: e ].
+	ctmc  currentState: (ctmc states first).
+	^ ctmc
+]
+
 { #category : #accessing }
 K2CTMC >> currentState [
 	^ currentState
