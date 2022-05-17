@@ -47,7 +47,6 @@ K2FSMAutomaton >> initialState [
 K2FSMAutomaton >> initialize [
 
 	super initialize.
-
 	transitions := OrderedCollection new.
 	finalStates := OrderedCollection new
 ]

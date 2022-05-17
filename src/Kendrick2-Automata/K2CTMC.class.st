@@ -12,35 +12,36 @@ Class {
 
 { #category : #'instance creation' }
 K2CTMC class >> newFromMatrix: matrix [
-| ctmc |
-ctmc := K2CTMC new.
 
-(1 to: matrix columnCount) do: [ :e |
-		|s|
+	| ctmc |
+	ctmc := self new.
+
+	1 to: matrix columnCount do: [ :e | 
+		| s |
 		s := K2CTMCState new.
-		s name: ((ctmc  states size + 1) asString).
-		ctmc states add: s.
-		].
-	
-	matrix withIndicesDo: [ :e :i :j | ctmc fromState: i toAnotherState: j probability: e ].
-	ctmc  currentState: (ctmc states first).
+		s name: (ctmc states size + 1) asString.
+		ctmc states add: s ].
+
+	matrix withIndicesDo: [ :e :i :j | 
+		ctmc fromState: i toAnotherState: j probability: e ].
+	ctmc currentState: ctmc states first.
 	^ ctmc
 ]
 
 { #category : #'instance creation' }
 K2CTMC class >> newFromMatrix: matrix withStates: aCollectionOfStates [
-| ctmc |
 
-(aCollectionOfStates size = matrix rowCount ) ifFalse: [ K2StateSizeDoesNotMachMatrixSizeExceptions new signal. ] .
+	| ctmc |
+	aCollectionOfStates size = matrix rowCount ifFalse: [ 
+		K2StateSizeDoesNotMachMatrixSizeExceptions new signal ].
 
-ctmc := K2CTMC new.
+	ctmc := self new.
 
-aCollectionOfStates do: [ :e |
-		ctmc states add: e.
-		].
-	matrix withIndicesDo: [ :e :i :j | ctmc fromState: i toAnotherState: j  probability: e ].
-	ctmc currentState: (ctmc states first).
-	^ctmc
+	aCollectionOfStates do: [ :e | ctmc states add: e ].
+	matrix withIndicesDo: [ :e :i :j | 
+		ctmc fromState: i toAnotherState: j probability: e ].
+	ctmc currentState: ctmc states first.
+	^ ctmc
 ]
 
 { #category : #accessing }
@@ -49,8 +50,9 @@ K2CTMC >> currentState [
 ]
 
 { #category : #accessing }
-K2CTMC >> currentState: anObject [
-	currentState := anObject
+K2CTMC >> currentState: aState [
+
+	currentState := aState
 ]
 
 { #category : #'instance creation' }
