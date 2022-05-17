@@ -77,33 +77,3 @@ Transcript open.
 	count := count + 1 ]
 ```
 
-## How to invoke Kendrick from the command-line
-
-### DSL Editor
-After compiling from source or downloading the pre-compiled versions of Kendrick, you can run the 
-dedicated Kendrick editor (using the Kendrick DSL), by invoking:
-```shell
-./KendrickUI
-```
-
-### Development Environmement
-
-To run Kendrick with the full Pharo environment (allowing to use both the DSL and the Pharo API of Kendrick),
-you can invoke:
-```shell
-./KendrickDevUI
-```
-
-### Using External Tools
-
-Finally, to use Kendrick with an editor of your choice, you only need to navigate in the Sources directory
-of your installation, edit / add files for your project and invoke the non-interactive kendric executable 
-as follows (example for simulating and visualizing the results described in Influenza1Viz.kendrick):
-```shell
-./Kendrick Sources/Projects/Infuenza/Visualization/Influenza1Viz.kendrick
-```
-
-In the above example you can then find the results in: 
-```shell
-Sources/Projects/Infuenza/Output/Influenza1Viz.png
-```
