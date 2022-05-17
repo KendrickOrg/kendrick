@@ -5,7 +5,7 @@ One of my state is an initial state and a subset are final states.
 "
 Class {
 	#name : #K2FSMAutomaton,
-	#superclass : #Object,
+	#superclass : #K2Automaton,
 	#instVars : [
 		'initialState',
 		'finalStates',

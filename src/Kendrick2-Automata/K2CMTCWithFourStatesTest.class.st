@@ -18,25 +18,21 @@ K2CMTCWithFourStatesTest >> createCTMCWithFourStates [
 { #category : #tests }
 K2CMTCWithFourStatesTest >> testCreateCTMCofFourStates [
 
-<gtExample>
-| ctmc |
-
-ctmc :=self createCTMCWithFourStates.
-
-self assert: (ctmc class  = K2CTMC).
-^ctmc
+	<gtExample>
+	| ctmc |
+	ctmc := self createCTMCWithFourStates.
+	self assert: ctmc class equals: K2CTMC.
+	^ ctmc
 ]
 
 { #category : #tests }
 K2CMTCWithFourStatesTest >> testNumberOfStatesofCTMCs [
 
-<gtExample>
-| ctmc |
-
-ctmc :=self createCTMCWithFourStates.
-
-self assert: (ctmc states size)  equals: 4.
-^ctmc
+	<gtExample>
+	| ctmc |
+	ctmc := self createCTMCWithFourStates.
+	self assert: ctmc states size equals: 4.
+	^ ctmc
 ]
 
 { #category : #tests }
@@ -70,7 +66,7 @@ self assert: (ctmc probabilityFrom: 4 to: 4)  equals: -10.
 ]
 
 { #category : #tests }
-K2CMTCWithFourStatesTest >> testSumCulumnsRateOfCTMCForFourStatesisZero [
+K2CMTCWithFourStatesTest >> testSumColumnsRateOfCTMCForFourStatesisZero [
 
 <gtExample>
 | ctmc |

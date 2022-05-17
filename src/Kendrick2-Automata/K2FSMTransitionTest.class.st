@@ -8,8 +8,8 @@ Class {
 K2FSMTransitionTest >> testTransitionBetween2States [
 
 	| stateA stateB transition |
-	stateA := K2FSMState named: #A.
-	stateB := K2FSMState named: #B.
+	stateA := K2FSMState2 named: #A.
+	stateB := K2FSMState2 named: #B.
 	transition := (K2FSMTransition
 		              named: #t) from: stateA;
 		              to: stateB.
