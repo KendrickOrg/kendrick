@@ -21,6 +21,14 @@ K2CTMC >> currentState: anObject [
 	currentState := anObject
 ]
 
+{ #category : #'instance creation' }
+K2CTMC >> fromState: anInteger toAnotherState: anInteger2 probability: aNumber [ 
+	|transition|
+	transition := K2CTMCTransition new.
+	transition from: (states at: anInteger);to: (states at: anInteger2 );probability: aNumber.
+	(states at: anInteger) transitionArray add: transition .
+]
+
 { #category : #'as yet unclassified' }
 K2CTMC >> goToNextState [
 	currentState := currentState nextState.
