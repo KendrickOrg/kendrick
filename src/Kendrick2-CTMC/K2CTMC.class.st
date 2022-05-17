@@ -28,6 +28,22 @@ ctmc := K2CTMC new.
 	^ ctmc
 ]
 
+{ #category : #'instance creation' }
+K2CTMC class >> newFromMatrix: matrix withStates: aCollectionOfStates [
+| ctmc |
+
+(aCollectionOfStates size = matrix rowCount ) ifFalse: [ K2StateSizeDoesNotMachMatrixSizeExceptions new signal. ] .
+
+ctmc := K2CTMC new.
+
+aCollectionOfStates do: [ :e |
+		ctmc states add: e.
+		].
+	matrix withIndicesDo: [ :e :i :j | ctmc fromState: i toAnotherState: j  probability: e ].
+	ctmc currentState: (ctmc states first).
+	^ctmc
+]
+
 { #category : #accessing }
 K2CTMC >> currentState [
 	^ currentState
