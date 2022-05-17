@@ -34,6 +34,12 @@ K2CTMC >> goToNextState [
 	currentState := currentState nextState.
 ]
 
+{ #category : #initialization }
+K2CTMC >> initialize [
+	super initialize.
+	states := OrderedCollection new.
+]
+
 { #category : #'as yet unclassified' }
 K2CTMC >> probabilityFrom: aFromStateIndex to: aToStateIndex [
 
