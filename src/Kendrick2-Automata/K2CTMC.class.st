@@ -61,10 +61,10 @@ K2CTMC >> fromState: anInteger toAnotherState: anInteger2 probability: aNumber [
 	(states at: anInteger) transitionArray add: transition .
 ]
 
-{ #category : #initialization }
+{ #category : #'as yet unclassified' }
 K2CTMC >> initialize [
-	super initialize.
-	states := OrderedCollection new.
+
+	super initialize
 ]
 
 { #category : #'as yet unclassified' }
@@ -73,18 +73,7 @@ K2CTMC >> probabilityFrom: aFromStateIndex to: aToStateIndex [
 	^ ((self states at: aFromStateIndex ) transitionArray at: aToStateIndex ) probability .
 ]
 
-{ #category : #accessing }
-K2CTMC >> states [
-	^ states
-]
-
-{ #category : #accessing }
-K2CTMC >> states: aCollectionOfStates [
-
-	states := aCollectionOfStates
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #stepping }
 K2CTMC >> step [
 
 "Next step is determined based on transition probabilities of the current state."
