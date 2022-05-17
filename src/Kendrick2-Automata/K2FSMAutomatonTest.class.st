@@ -11,8 +11,8 @@ K2FSMAutomatonTest >> example1 [
 	| automaton initial final state firstTransition secondTransition selfTransition |
 	automaton := K2FSMAutomaton named: 'Automata'.
 	initial := K2FSMInitialState named: 'initial'.
-	(final := K2FSMState named: 'final') beFinal.
-	state := K2FSMState named: 'state'.
+	(final := K2FSMState2 named: 'final') beFinal.
+	state := K2FSMState2 named: 'state'.
 	firstTransition := K2FSMTransition
 		                   from: initial
 		                   to: state

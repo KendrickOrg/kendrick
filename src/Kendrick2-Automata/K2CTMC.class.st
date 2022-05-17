@@ -3,7 +3,7 @@ The principal class of `CTMC`
 "
 Class {
 	#name : #K2CTMC,
-	#superclass : #Object,
+	#superclass : #K2Automaton,
 	#instVars : [
 		'states',
 		'currentState'
@@ -62,11 +62,6 @@ K2CTMC >> fromState: anInteger toAnotherState: anInteger2 probability: aNumber [
 	(states at: anInteger) transitionArray add: transition .
 ]
 
-{ #category : #'as yet unclassified' }
-K2CTMC >> goToNextState [
-	currentState := currentState nextState.
-]
-
 { #category : #initialization }
 K2CTMC >> initialize [
 	super initialize.
@@ -85,6 +80,14 @@ K2CTMC >> states [
 ]
 
 { #category : #accessing }
-K2CTMC >> states: anObject [
-	states := anObject
+K2CTMC >> states: aCollectionOfStates [
+
+	states := aCollectionOfStates
+]
+
+{ #category : #'as yet unclassified' }
+K2CTMC >> step [
+
+"Next step is determined based on transition probabilities of the current state."
+	currentState := currentState nextState
 ]

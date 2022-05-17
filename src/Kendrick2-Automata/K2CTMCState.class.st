@@ -13,9 +13,9 @@ Class {
 
 { #category : #initialization }
 K2CTMCState >> initialize [
+
 	super initialize.
-	name := ''.
-	transitionArray := OrderedCollection new.
+	transitionArray := OrderedCollection new
 ]
 
 { #category : #accessing }
@@ -29,11 +29,14 @@ K2CTMCState >> name: anObject [
 ]
 
 { #category : #accessing }
-K2CTMCState >> nextState [
-	| randomNum probs|
-	randomNum  := (Random new)next .
-	probs := transitionArray collect: [ :e | e probability  ].
-	probs withIndexDo: [ :e :i | randomNum  := randomNum  - e. (randomNum  < 0) ifTrue: [ ^ (transitionArray at: i) to ] ]
+K2CTMCState >> step [
+
+	| randomNum probs |
+	randomNum := Random new next.
+	probs := transitionArray collect: [ :e | e probability ].
+	probs withIndexDo: [ :e :i | 
+		randomNum := randomNum - e.
+		randomNum < 0 ifTrue: [ ^ (transitionArray at: i) to ] ]
 ]
 
 { #category : #accessing }
@@ -42,6 +45,7 @@ K2CTMCState >> transitionArray [
 ]
 
 { #category : #accessing }
-K2CTMCState >> transitionArray: anObject [
-	transitionArray := anObject 
+K2CTMCState >> transitionArray: anArray [
+
+	transitionArray := anArray
 ]
