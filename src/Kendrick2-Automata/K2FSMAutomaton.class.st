@@ -14,7 +14,7 @@ Class {
 		'name',
 		'initialStates'
 	],
-	#category : #'Kendrick2-Automata'
+	#category : #'Kendrick2-Automata-Core'
 }
 
 { #category : #'instance creation' }

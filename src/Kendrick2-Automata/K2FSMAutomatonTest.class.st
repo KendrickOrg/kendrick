@@ -1,7 +1,7 @@
 Class {
 	#name : #K2FSMAutomatonTest,
 	#superclass : #TestCase,
-	#category : #'Kendrick2-Automata'
+	#category : #'Kendrick2-Automata-Tests'
 }
 
 { #category : #tests }

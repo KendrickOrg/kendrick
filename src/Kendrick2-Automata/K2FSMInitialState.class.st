@@ -1,5 +1,5 @@
 Class {
 	#name : #K2FSMInitialState,
 	#superclass : #K2FSMState,
-	#category : #'Kendrick2-Automata'
+	#category : #'Kendrick2-Automata-Core'
 }
