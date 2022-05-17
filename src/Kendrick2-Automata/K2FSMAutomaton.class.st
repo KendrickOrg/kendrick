@@ -46,27 +46,10 @@ K2FSMAutomaton >> initialState [
 { #category : #accessing }
 K2FSMAutomaton >> initialize [
 
-	states := OrderedCollection new.
+	super initialize.
+
 	transitions := OrderedCollection new.
-	initialState := nil.
 	finalStates := OrderedCollection new
-]
-
-{ #category : #accessing }
-K2FSMAutomaton >> name [
-
-	^ name
-]
-
-{ #category : #accessing }
-K2FSMAutomaton >> name: aString [
-
-name := aString
-]
-
-{ #category : #accessing }
-K2FSMAutomaton >> states [ 
-^states
 ]
 
 { #category : #accessing }
