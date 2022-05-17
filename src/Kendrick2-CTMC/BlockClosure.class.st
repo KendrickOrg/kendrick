@@ -57,6 +57,46 @@ BlockClosure >> argumentNames [
 	^ self sourceNode argumentNames
 ]
 
+{ #category : #CTMC }
+BlockClosure >> asCTMC [
+	| matrix input  |
+	
+	input := ((((self 
+		asString copyReplaceAll: ' ' with: '') "remove spaces" 
+		copyReplaceAll: Character cr asString with: '') "remove cr"
+		copyReplaceAll: Character tab asString	with: '') "remove tabs"
+			findTokens: '[]') reject: [ :e | e = ',' ]. "split to lines"
+	input do: [ :inputLine | (input size - 1) == (inputLine count: [ :char | char == $, ]) ifFalse: [K2InputMatrixNotSquareException signal.]].
+	matrix := Array2D new: (input size).
+	input withIndexDo: [ :e :i | 
+			(e findTokens: ',') withIndexDo: [ :probString :j | matrix at:i at: j put: (probString asNumber )]
+		 ].
+	
+	^ K2CTMC newFromMatrix: matrix.
+	
+
+	
+	
+]
+
+{ #category : #CTMC }
+BlockClosure >> asCTMCWithStates: aCollectionOfStates [
+	| matrix input  |
+	
+	input := ((((self 
+		asString copyReplaceAll: ' ' with: '') "remove spaces" 
+		copyReplaceAll: Character cr asString with: '') "remove cr"
+		copyReplaceAll: Character tab asString	with: '') "remove tabs"
+			findTokens: '[]') reject: [ :e | e = ',' ]. "split to lines"
+	matrix := Array2D new: (input size).
+	input withIndexDo: [ :e :i | 
+			(e findTokens: ',') withIndexDo: [ :probString :j | matrix at:i at: j put: (probString asNumber )]
+		 ].
+	
+	^ K2CTMC newFromMatrix: matrix withStates: aCollectionOfStates .
+
+]
+
 { #category : #scheduling }
 BlockClosure >> asContext [
 	"Create a MethodContext that is ready to execute self.  Assumes self takes no args (if it does the args will be nil)"
