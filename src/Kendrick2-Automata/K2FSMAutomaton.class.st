@@ -1,17 +1,14 @@
 "
-I represent a finite state automaton defined as a set of states and transitions.
-One of my state is an initial state and a subset are final states.
+I represent a finite state machine (FSM).
+A subset of my states are final states.
 
 "
 Class {
 	#name : #K2FSMAutomaton,
 	#superclass : #K2Automaton,
 	#instVars : [
-		'initialState',
 		'finalStates',
-		'states',
 		'transitions',
-		'name',
 		'initialStates'
 	],
 	#category : #'Kendrick2-Automata-Core'

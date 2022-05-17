@@ -1,9 +1,15 @@
 "
-I'm the abstract class of Automaton
+I'm the abstract class of Automaton.
+An abstract Automaton is defined with a collection of states and an initial state.
 "
 Class {
 	#name : #K2Automaton,
 	#superclass : #Object,
+	#instVars : [
+		'name',
+		'states',
+		'initialState'
+	],
 	#category : #'Kendrick2-Automata-Core'
 }
 
