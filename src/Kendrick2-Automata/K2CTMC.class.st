@@ -1,11 +1,10 @@
 "
-The principal class of `CTMC`
+I'm representing Continuous Time Markov Chain.
 "
 Class {
 	#name : #K2CTMC,
 	#superclass : #K2Automaton,
 	#instVars : [
-		'states',
 		'currentState'
 	],
 	#category : #'Kendrick2-Automata-Core'
