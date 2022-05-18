@@ -23,7 +23,7 @@ K2CTMC class >> newFromMatrix: matrix [
 		ctmc states add: s ].
 
 	matrix withIndicesDo: [ :e :i :j | 
-		ctmc fromState: i toAnotherState: j probability: e ].
+		ctmc fromState: i toAnotherState: j rate: e ].
 	ctmc currentState: ctmc states first.
 	^ ctmc
 ]
@@ -39,7 +39,7 @@ K2CTMC class >> newFromMatrix: matrix withStates: aCollectionOfStates [
 
 	aCollectionOfStates do: [ :e | ctmc states add: e ].
 	matrix withIndicesDo: [ :e :i :j | 
-		ctmc fromState: i toAnotherState: j probability: e ].
+		ctmc fromState: i toAnotherState: j rate: e ].
 	ctmc currentState: ctmc states first.
 	^ ctmc
 ]
