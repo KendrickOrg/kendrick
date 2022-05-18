@@ -56,10 +56,10 @@ K2CTMC >> currentState: aState [
 ]
 
 { #category : #'instance creation' }
-K2CTMC >> fromState: anInteger toAnotherState: anInteger2 probability: aNumber [ 
+K2CTMC >> fromState: anInteger toAnotherState: anInteger2 rate: aNumber [ 
 	|transition|
 	transition := K2CTMCTransition new.
-	transition from: (states at: anInteger);to: (states at: anInteger2 );probability: aNumber.
+	transition from: (states at: anInteger);to: (states at: anInteger2 );rate: aNumber.
 	(states at: anInteger) transitionArray add: transition .
 ]
 
