@@ -11,6 +11,13 @@ Class {
 	#category : #'Kendrick2-Automata-Core'
 }
 
+{ #category : #'instance creation' }
+K2CTMCState class >> named: aString [
+	^ self new
+		name: aString;
+		yourself
+]
+
 { #category : #initialization }
 K2CTMCState >> initialize [
 
