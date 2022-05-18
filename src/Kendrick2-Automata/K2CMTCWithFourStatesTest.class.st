@@ -51,58 +51,89 @@ K2CMTCWithFourStatesTest >> testCreateCTMCofFourStates [
 K2CMTCWithFourStatesTest >> testNumberOfStatesofCTMCs [
 
 	<gtExample>
-	| ctmc |
-	ctmc := self createCTMCWithFourStates.
-	self assert: ctmc states size equals: 4.
-	^ ctmc
+	| ctmc1 ctmc2 |
+	ctmc1 := self createCTMCWithFourStates.
+	ctmc2 := self otherWaycreateCTMCWithFourStates.
+	self assert: ctmc1 states size equals: 4.
+	self assert: ctmc2 states size equals: 4.
+	
 ]
 
 { #category : #tests }
 K2CMTCWithFourStatesTest >> testRateOfCTMC [
 <gtExample>
-| ctmc |
+| ctmc1 ctmc2 |
 
-ctmc := self createCTMCWithFourStates.
+ctmc1 := self createCTMCWithFourStates.
+ctmc2 := self otherWaycreateCTMCWithFourStates.
 
-self assert: (ctmc probabilityFrom: 1 to: 1)  equals: -1.
-self assert: (ctmc probabilityFrom: 1 to: 2)  equals: 1.
-self assert: (ctmc probabilityFrom: 1 to: 3)  equals: 0.
-self assert: (ctmc probabilityFrom: 1 to: 4)  equals: 0.
+self assert: (ctmc1 rateFrom: 1 to: 1)  equals: -1.
+self assert: (ctmc1 rateFrom: 1 to: 2)  equals: 1.
+self assert: (ctmc1 rateFrom: 1 to: 3)  equals: 0.
+self assert: (ctmc1 rateFrom: 1 to: 4)  equals: 0.
 
-self assert: (ctmc probabilityFrom: 2 to: 1)  equals: 5.
-self assert: (ctmc probabilityFrom: 2 to: 2)  equals: -10.
-self assert: (ctmc probabilityFrom: 2 to: 3)  equals: 5.
-self assert: (ctmc probabilityFrom: 2 to: 4)  equals: 0.
+self assert: (ctmc1 rateFrom: 2 to: 1)  equals: 5.
+self assert: (ctmc1 rateFrom: 2 to: 2)  equals: -10.
+self assert: (ctmc1 rateFrom: 2 to: 3)  equals: 5.
+self assert: (ctmc1 rateFrom: 2 to: 4)  equals: 0.
 
-self assert: (ctmc probabilityFrom: 3 to: 1)  equals: 0.
-self assert: (ctmc probabilityFrom: 3 to: 2)  equals: 8.
-self assert: (ctmc probabilityFrom: 3 to: 3)  equals: -12.
-self assert: (ctmc probabilityFrom: 3 to: 4)  equals: 4.
+self assert: (ctmc1 rateFrom: 3 to: 1)  equals: 0.
+self assert: (ctmc1 rateFrom: 3 to: 2)  equals: 8.
+self assert: (ctmc1 rateFrom: 3 to: 3)  equals: -12.
+self assert: (ctmc1 rateFrom: 3 to: 4)  equals: 4.
 
-self assert: (ctmc probabilityFrom: 4 to: 1)  equals: 0.
-self assert: (ctmc probabilityFrom: 4 to: 2)  equals: 0.
-self assert: (ctmc probabilityFrom: 4 to: 3)  equals: 10.
-self assert: (ctmc probabilityFrom: 4 to: 4)  equals: -10.
+self assert: (ctmc1 rateFrom: 4 to: 1)  equals: 0.
+self assert: (ctmc1 rateFrom: 4 to: 2)  equals: 0.
+self assert: (ctmc1 rateFrom: 4 to: 3)  equals: 10.
+self assert: (ctmc1 rateFrom: 4 to: 4)  equals: -10.
 
-^ctmc
+self assert: (ctmc2 rateFrom: 1 to: 1)  equals: -1.
+self assert: (ctmc2 rateFrom: 1 to: 2)  equals: 1.
+self assert: (ctmc2 rateFrom: 1 to: 3)  equals: 0.
+self assert: (ctmc2 rateFrom: 1 to: 4)  equals: 0.
+
+self assert: (ctmc2 rateFrom: 2 to: 1)  equals: 5.
+self assert: (ctmc2 rateFrom: 2 to: 2)  equals: -10.
+self assert: (ctmc2 rateFrom: 2 to: 3)  equals: 5.
+self assert: (ctmc2 rateFrom: 2 to: 4)  equals: 0.
+
+self assert: (ctmc2 rateFrom: 3 to: 1)  equals: 0.
+self assert: (ctmc2 rateFrom: 3 to: 2)  equals: 8.
+self assert: (ctmc2 rateFrom: 3 to: 3)  equals: -12.
+self assert: (ctmc2 rateFrom: 3 to: 4)  equals: 4.
+
+self assert: (ctmc2 rateFrom: 4 to: 1)  equals: 0.
+self assert: (ctmc2 rateFrom: 4 to: 2)  equals: 0.
+self assert: (ctmc2 rateFrom: 4 to: 3)  equals: 10.
+self assert: (ctmc2 rateFrom: 4 to: 4)  equals: -10.
+
+
 ]
 
 { #category : #tests }
 K2CMTCWithFourStatesTest >> testSumColumnsRateOfCTMCForFourStatesisZero [
 
 <gtExample>
-| ctmc |
+| ctmc1 ctmc2 |
 
-ctmc := self createCTMCWithFourStates.
+ctmc1 := self createCTMCWithFourStates.
+ctmc2 := self otherWaycreateCTMCWithFourStates.
 
-self assert: ((ctmc probabilityFrom: 1 to: 1) + (ctmc probabilityFrom: 1 to: 2) +  (ctmc probabilityFrom: 1 to: 3) + (ctmc probabilityFrom: 1 to: 4)) equals: 0.
+self assert: ((ctmc1 rateFrom: 1 to: 1) + (ctmc1 rateFrom: 1 to: 2) +  (ctmc1 rateFrom: 1 to: 3) + (ctmc1 rateFrom: 1 to: 4)) equals: 0.
+
+self assert: ((ctmc1 rateFrom: 2 to: 1) + (ctmc1 rateFrom: 2 to: 2) + (ctmc1 rateFrom: 2 to: 3) + (ctmc1 rateFrom: 2 to: 4))  equals: 0.
+
+self assert: ((ctmc1 rateFrom: 3 to: 1) + (ctmc1 rateFrom: 3 to: 2) + (ctmc1 rateFrom: 3 to: 3) + (ctmc1 rateFrom: 3 to: 4))  equals: 0.
+
+self assert: ((ctmc1 rateFrom: 4 to: 1) + (ctmc1 rateFrom: 4 to: 2) + (ctmc1 rateFrom: 4 to: 3) + (ctmc1 rateFrom: 4 to: 4))  equals: 0.
+
+self assert: ((ctmc2 rateFrom: 1 to: 1) + (ctmc2 rateFrom: 1 to: 2) +  (ctmc2 rateFrom: 1 to: 3) + (ctmc2 rateFrom: 1 to: 4)) equals: 0.
+
+self assert: ((ctmc2 rateFrom: 2 to: 1) + (ctmc2 rateFrom: 2 to: 2) + (ctmc2 rateFrom: 2 to: 3) + (ctmc2 rateFrom: 2 to: 4))  equals: 0.
+
+self assert: ((ctmc2 rateFrom: 3 to: 1) + (ctmc2 rateFrom: 3 to: 2) + (ctmc2 rateFrom: 3 to: 3) + (ctmc2 rateFrom: 3 to: 4))  equals: 0.
+
+self assert: ((ctmc2 rateFrom: 4 to: 1) + (ctmc2 rateFrom: 4 to: 2) + (ctmc2 rateFrom: 4 to: 3) + (ctmc2 rateFrom: 4 to: 4))  equals: 0.
 
 
-self assert: ((ctmc probabilityFrom: 2 to: 1) + (ctmc probabilityFrom: 2 to: 2) + (ctmc probabilityFrom: 2 to: 3) + (ctmc probabilityFrom: 2 to: 4))  equals: 0.
-
-self assert: ((ctmc probabilityFrom: 3 to: 1) + (ctmc probabilityFrom: 3 to: 2) + (ctmc probabilityFrom: 3 to: 3) + (ctmc probabilityFrom: 3 to: 4))  equals: 0.
-
-self assert: ((ctmc probabilityFrom: 4 to: 1) + (ctmc probabilityFrom: 4 to: 2) + (ctmc probabilityFrom: 4 to: 3) + (ctmc probabilityFrom: 4 to: 4))  equals: 0.
-
-^ctmc
 ]
