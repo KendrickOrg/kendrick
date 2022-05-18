@@ -50,12 +50,15 @@ K2CMTCWithTwoStatesTest >> testANewCTMCHaveCurrentStateInitilizeToNil [
 K2CMTCWithTwoStatesTest >> testCreateCTMC [
 
 <gtExample>
-| ctmc |
+| ctmc1 ctmc2 |
 
-ctmc :=self createCTMCWithTwoStates .
+ctmc1 := self createCTMCWithTwoStates.
+ctmc2 := self otherWayToCreateCTMCWithTwoStates.
 
-self assert: (ctmc class  = K2CTMC).
-^ctmc
+
+self assert: (ctmc1 class  = K2CTMC).
+self assert: (ctmc2 class  = K2CTMC)
+
 ]
 
 { #category : #tests }
