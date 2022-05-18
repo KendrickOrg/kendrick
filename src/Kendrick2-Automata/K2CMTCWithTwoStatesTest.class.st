@@ -78,12 +78,13 @@ self assert: (ctmc1 class) equals: ctmc2 class.
 K2CMTCWithTwoStatesTest >> testNumberOfStatesofCTMC [
 
 <gtExample>
-| ctmc |
+| ctmc1 ctmc2 |
 
-ctmc :=self createCTMCWithTwoStates.
+ctmc1 := self createCTMCWithTwoStates.
+ctmc2 := self otherWayToCreateCTMCWithTwoStates.
 
-self assert: (ctmc states size)  equals: 2.
-^ctmc
+self assert: (ctmc1 states size)  equals: 2.
+self assert: (ctmc2 states size)  equals: 2.
 
 ]
 
@@ -94,10 +95,10 @@ K2CMTCWithTwoStatesTest >> testRateOfCTMC [
 
 ctmc := self createCTMCWithTwoStates .
 
-self assert: (ctmc probabilityFrom: 1 to: 1)  equals: -0.4.
-self assert: (ctmc probabilityFrom: 1 to: 2)  equals: 0.4.
-self assert: (ctmc probabilityFrom: 2 to: 1)  equals: 0.7.
-self assert: (ctmc probabilityFrom: 2 to: 2)  equals: -0.7.
+self assert: (ctmc rateFrom: 1 to: 1)  equals: -0.4.
+self assert: (ctmc rateFrom: 1 to: 2)  equals: 0.4.
+self assert: (ctmc rateFrom: 2 to: 1)  equals: 0.7.
+self assert: (ctmc rateFrom: 2 to: 2)  equals: -0.7.
 
 ^ctmc
 ]
@@ -105,12 +106,16 @@ self assert: (ctmc probabilityFrom: 2 to: 2)  equals: -0.7.
 { #category : #tests }
 K2CMTCWithTwoStatesTest >> testSumColumnsRateOfCTMCisZero [
 <gtExample>
-| ctmc |
+| ctmc1 ctmc2 |
 
-ctmc := self createCTMCWithTwoStates .
+ctmc1 := self createCTMCWithTwoStates.
+ctmc2 := self otherWayToCreateCTMCWithTwoStates.
 
-self assert: ((ctmc probabilityFrom: 1 to: 1) + (ctmc probabilityFrom: 1 to: 2))  equals: 0.
-self assert: ((ctmc probabilityFrom: 2 to: 1) + (ctmc probabilityFrom: 2 to: 2)) equals: 0.
+self assert: ((ctmc1 rateFrom: 1 to: 1) + (ctmc1 rateFrom: 1 to: 2)) equals: 0.
+self assert: ((ctmc1 rateFrom: 2 to: 1) + (ctmc1 rateFrom: 2 to: 2)) equals: 0.
 
-^ctmc
+self assert: ((ctmc2 rateFrom: 1 to: 1) + (ctmc2 rateFrom: 1 to: 2)) equals: 0.
+self assert: ((ctmc2 rateFrom: 2 to: 1) + (ctmc2 rateFrom: 2 to: 2)) equals: 0.
+
+
 ]
