@@ -13,6 +13,21 @@ K2CMTCWithTwoStatesTest >> createCTMCWithTwoStates [
 ] asCTMC.
 ]
 
+{ #category : #'as yet unclassified' }
+K2CMTCWithTwoStatesTest >> otherWayToCreateCTMCWithTwoStates [
+
+| s |
+
+s := Set new.
+s add: K2CTMCState new.
+s add: K2CTMCState new.
+
+^ [  
+[ -0.4, 0.4 ],
+[ 0.7, -0.7 ]
+] asCTMCWithStates: s.
+]
+
 { #category : #tests }
 K2CMTCWithTwoStatesTest >> testANewCTMCHasNoStates [
 	<gtExample>
