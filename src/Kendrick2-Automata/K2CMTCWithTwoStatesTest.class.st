@@ -62,6 +62,19 @@ self assert: (ctmc2 class  = K2CTMC)
 ]
 
 { #category : #tests }
+K2CMTCWithTwoStatesTest >> testCreateCTMCInTwoDifferentWaysIsSame [
+
+<gtExample>
+| ctmc1 ctmc2|
+
+ctmc1 := self createCTMCWithTwoStates.
+ctmc2 := self otherWayToCreateCTMCWithTwoStates.
+
+self assert: (ctmc1 class) equals: ctmc2 class.
+
+]
+
+{ #category : #tests }
 K2CMTCWithTwoStatesTest >> testNumberOfStatesofCTMC [
 
 <gtExample>
