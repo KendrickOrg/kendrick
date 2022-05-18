@@ -15,6 +15,25 @@ K2CMTCWithFourStatesTest >> createCTMCWithFourStates [
 ] asCTMC.
 ]
 
+{ #category : #'as yet unclassified' }
+K2CMTCWithFourStatesTest >> otherWaycreateCTMCWithFourStates [
+
+| s |
+
+s := Set new.
+s add: K2CTMCState new.
+s add: K2CTMCState new.
+s add: K2CTMCState new.
+s add: K2CTMCState new.
+
+^ [  
+[ -1, 1, 0, 0 ],
+[ 5, -10, 5, 0 ],
+[ 0, 8, -12, 4 ],
+[ 0, 0, 10, -10 ]
+] asCTMCWithStates: s.
+]
+
 { #category : #tests }
 K2CMTCWithFourStatesTest >> testCreateCTMCofFourStates [
 
