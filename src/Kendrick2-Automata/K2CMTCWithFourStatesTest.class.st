@@ -38,10 +38,13 @@ s add: K2CTMCState new.
 K2CMTCWithFourStatesTest >> testCreateCTMCofFourStates [
 
 	<gtExample>
-	| ctmc |
-	ctmc := self createCTMCWithFourStates.
-	self assert: ctmc class equals: K2CTMC.
-	^ ctmc
+	| ctmc1 ctmc2 |
+	ctmc1 := self createCTMCWithFourStates.
+	ctmc2 := self otherWaycreateCTMCWithFourStates.
+	
+	self assert: ctmc1 class equals: K2CTMC.
+	self assert: ctmc2 class equals: K2CTMC.
+	
 ]
 
 { #category : #tests }
