@@ -70,9 +70,9 @@ K2CTMC >> initialize [
 ]
 
 { #category : #'as yet unclassified' }
-K2CTMC >> probabilityFrom: aFromStateIndex to: aToStateIndex [
+K2CTMC >> rateFrom: aFromStateIndex to: aToStateIndex [
 
-	^ ((self states at: aFromStateIndex ) transitionArray at: aToStateIndex ) probability .
+	^ ((self states at: aFromStateIndex ) transitionArray at: aToStateIndex ) rate .
 ]
 
 { #category : #stepping }
