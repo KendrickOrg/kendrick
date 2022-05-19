@@ -8,8 +8,7 @@ Class {
 	#superclass : #K2Automaton,
 	#instVars : [
 		'finalStates',
-		'transitions',
-		'initialStates'
+		'transitions'
 	],
 	#category : #'Kendrick2-Automata-Core'
 }
