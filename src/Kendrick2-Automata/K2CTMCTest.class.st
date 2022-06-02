@@ -16,3 +16,15 @@ K2CTMCTest >> testStep [
 	automata step.
 	self assert: (#( 1 2) includes: (automata currentState))
 ]
+
+{ #category : #tests }
+K2CTMCTest >> testStep1 [
+
+	| automata |
+	automata := K2CTMC
+		            newFromArray:
+		            #( #(0) )
+		            initialState: 1.
+	automata step.
+	self assert: (automata currentState) equals:1
+]

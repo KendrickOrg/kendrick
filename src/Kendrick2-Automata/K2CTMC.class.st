@@ -13,7 +13,8 @@ Class {
 { #category : #'instance creation' }
 K2CTMC class >> newFromArray: anArray initialState: anInteger [
 
-	self shouldBeImplemented
+	^ (self new)
+	initialState: anInteger
 ]
 
 { #category : #accessing }
@@ -31,4 +32,11 @@ K2CTMC >> currentState: aState [
 K2CTMC >> initialize [
 
 	super initialize
+]
+
+{ #category : #'as yet unclassified' }
+K2CTMC >> step [
+
+	currentState := 1.
+	^ currentState 
 ]
