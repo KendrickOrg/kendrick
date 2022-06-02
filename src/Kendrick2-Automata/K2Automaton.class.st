@@ -13,6 +13,12 @@ Class {
 	#category : #'Kendrick2-Automata-Core'
 }
 
+{ #category : #accessing }
+K2Automaton >> initialState: anInteger [
+
+initialState := anInteger 
+]
+
 { #category : #stepping }
 K2Automaton >> initialize [ 
 
@@ -47,5 +53,5 @@ K2Automaton >> step [
 
 	"Performs a single step on the automaton changing its current state."
 
-	self subclassResponsibility
+	^ 1
 ]

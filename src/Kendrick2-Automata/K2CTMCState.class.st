@@ -31,12 +31,12 @@ K2CTMCState >> name: anObject [
 { #category : #accessing }
 K2CTMCState >> step [
 
-	| randomNum probs |
+	| randomNum rates |
 	randomNum := Random new next.
-	probs := transitionArray collect: [ :e | e probability ].
-	probs withIndexDo: [ :e :i | 
-		randomNum := randomNum - e.
-		randomNum < 0 ifTrue: [ ^ (transitionArray at: i) to ] ]
+	rates := transitionArray collect: [ :each | each rate ].
+	rates withIndexDo: [ :each :index | 
+		randomNum := randomNum - each.
+		randomNum < 0 ifTrue: [ ^ (transitionArray at: index) to ] ]
 ]
 
 { #category : #accessing }

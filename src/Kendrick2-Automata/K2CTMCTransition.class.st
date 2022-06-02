@@ -12,11 +12,6 @@ Class {
 	#category : #'Kendrick2-Automata-Core'
 }
 
-{ #category : #converting }
-K2CTMCTransition >> asString [
-	^ 'Transition from ' , (from name), 'to ', (to name), 'probability ', (probability asString).
-]
-
 { #category : #accessing }
 K2CTMCTransition >> from [
 	^from
@@ -28,13 +23,15 @@ K2CTMCTransition >> from: anObject [
 ]
 
 { #category : #accessing }
-K2CTMCTransition >> probability [
+K2CTMCTransition >> rate [
+
 	^ probability
 ]
 
 { #category : #accessing }
-K2CTMCTransition >> probability: anObject [
-	probability := anObject 
+K2CTMCTransition >> rate: aFloat [
+
+	probability := aFloat 
 ]
 
 { #category : #accessing }
