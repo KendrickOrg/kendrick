@@ -29,6 +29,23 @@ K2CTMCTest >> testANewCTMCHaveCurrentStateInitilizeToNil [
 ]
 
 { #category : #tests }
+K2CTMCTest >> testCreateCTMCofFourStates [ 
+
+<gtExample>
+| automata |
+
+automata := K2CTMC
+		            newFromArray:
+		            #( #( -1 1 0 0 ) #( 5 -10 5 0 ) #( 0 8 -12 4 )
+		               #( 0 0 10 -10 ) )
+		            initialState: 1.
+automata step.
+
+self assert: (automata  class  = K2CTMC).
+^automata 
+]
+
+{ #category : #tests }
 K2CTMCTest >> testStep [
 
 	| automata |
