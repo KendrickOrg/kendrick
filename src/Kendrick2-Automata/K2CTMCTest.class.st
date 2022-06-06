@@ -5,6 +5,20 @@ Class {
 }
 
 { #category : #tests }
+K2CTMCTest >> testANewCTMCHasNoStates [ 
+	<gtExample>
+
+	| automata |
+	automata := K2CTMC
+		            newFromArray:
+		            #( #(0) )
+		            initialState: 1.
+	automata step.
+	self assert: automata states isEmpty.
+	^ automata 
+]
+
+{ #category : #tests }
 K2CTMCTest >> testStep [
 
 	| automata |
