@@ -19,6 +19,16 @@ K2CTMCTest >> testANewCTMCHasNoStates [
 ]
 
 { #category : #tests }
+K2CTMCTest >> testANewCTMCHaveCurrentStateInitilizeToNil [ 
+	<gtExample>
+	| ctmc |
+	ctmc := K2CTMC new.
+	self assert: ctmc currentState isNil.
+	^ctmc 
+
+]
+
+{ #category : #tests }
 K2CTMCTest >> testStep [
 
 	| automata |
