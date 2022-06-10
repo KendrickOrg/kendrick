@@ -11,6 +11,11 @@ Class {
 	#category : #'Kendrick2-Automata-Core'
 }
 
+{ #category : #'accessing - structure variables' }
+K2Event class >> stateName: aSymbol [
+	^self stateName: aSymbol events: nil
+]
+
 { #category : #accessing }
 K2Event >> events [
 	events isNil ifTrue:[events := Array new].
