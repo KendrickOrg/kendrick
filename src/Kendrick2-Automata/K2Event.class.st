@@ -16,6 +16,11 @@ K2Event class >> stateName: aSymbol [
 	^self stateName: aSymbol events: nil
 ]
 
+{ #category : #'as yet unclassified' }
+K2Event class >> stateName: aSymbol events: events [
+	^self new stateName: aSymbol; events: events; yourself
+]
+
 { #category : #accessing }
 K2Event >> events [
 	events isNil ifTrue:[events := Array new].
