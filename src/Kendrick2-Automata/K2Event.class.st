@@ -21,3 +21,13 @@ K2Event >> events [
 K2Event >> events: anArray [
 	events := anArray
 ]
+
+{ #category : #accessing }
+K2Event >> stateName [
+	^stateName
+]
+
+{ #category : #accessing }
+K2Event >> stateName: aNameState [
+	stateName := aNameState
+]
