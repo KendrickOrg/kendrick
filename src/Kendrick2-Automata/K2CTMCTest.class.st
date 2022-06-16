@@ -37,6 +37,37 @@ self assert: (automaton3  class = K2CTMC).
 ]
 
 { #category : #tests }
+K2CTMCTest >> testNumberStatesOfCTMC [
+	<gtExample>
+	| automata1 automata2 automata3 |
+	
+	automata1 := K2CTMC
+		            newFromArray:
+		            #( #(0) ).
+	
+		
+	automata2 := K2CTMC
+		            newFromArray:
+		            #( #( -1 1 0 0 ) 
+		               #( 5 -10 5 0 ) 
+		               #( 0 8 -12 4 )
+		               #( 0 0 10 -10 ) 
+		             ).
+		
+	automata3 := K2CTMC
+		            newFromArray:
+		            #( #( -1 1 0  ) 
+		               #( 5 -10 5 ) 
+		               #( 0 8 -12 )
+		             ).
+		
+		
+	self assert: (automata1 states size) equals: 1.
+	self assert: (automata2 states size) equals: 4.
+	self assert: (automata3 states size) equals: 3.
+]
+
+{ #category : #tests }
 K2CTMCTest >> testStep [
 
 	| automata |
