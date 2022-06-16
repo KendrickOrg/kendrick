@@ -34,3 +34,13 @@ K2Event >> fromState [
 K2Event >> fromState: aState [
 	fromState := aState
 ]
+
+{ #category : #accessing }
+K2Event >> toState [
+	^ toState
+]
+
+{ #category : #accessing }
+K2Event >> toState: aState [
+	toState := aState
+]
