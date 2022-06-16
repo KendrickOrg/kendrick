@@ -14,6 +14,14 @@ Class {
 	#category : #'Kendrick2-Automata-Core'
 }
 
+{ #category : #'instance creation' }
+K2Event class >> fromState: firstState toState: secondState rate: aBlockOrAnExpression [
+	^ self new
+		fromState: firstState ;
+		toState: secondState ;
+		rate: aBlockOrAnExpression
+]
+
 { #category : #adding }
 K2Event >> addOneIndividualTo: aState [
 	toState := aState
