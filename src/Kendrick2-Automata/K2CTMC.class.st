@@ -47,7 +47,8 @@ K2CTMC >> currentState: aState [
 { #category : #'as yet unclassified' }
 K2CTMC >> initialize [
 
-	super initialize
+	super initialize.
+	states := OrderedCollection new.
 ]
 
 { #category : #'as yet unclassified' }
