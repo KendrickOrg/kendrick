@@ -51,6 +51,16 @@ K2CTMC >> initialize [
 	states := OrderedCollection new.
 ]
 
+{ #category : #accessing }
+K2CTMC >> states [
+	^states
+]
+
+{ #category : #accessing }
+K2CTMC >> states: anObject [
+  states:= anObject 
+]
+
 { #category : #'as yet unclassified' }
 K2CTMC >> step [
 
