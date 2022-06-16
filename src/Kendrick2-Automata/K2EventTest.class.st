@@ -5,6 +5,16 @@ Class {
 }
 
 { #category : #tests }
+K2EventTest >> testCreateAnEventThatAddAnIndividualFromSusceptibleState [
+	<gtExample>
+	|event|
+	event := K2Event new.
+	event addOneIndividualTo: #stateS.
+	self assert: (event toState) equals: #stateS.
+	^event
+]
+
+{ #category : #tests }
 K2EventTest >> testGenerateElementsOfEvents [ 
 
 	 <gtExample>
