@@ -14,6 +14,11 @@ Class {
 	#category : #'Kendrick2-Automata-Core'
 }
 
+{ #category : #adding }
+K2Event >> addOneIndividualTo: aState [
+	toState := aState
+]
+
 { #category : #accessing }
 K2Event >> events [ 
 	events isNil ifTrue:[events := Array new].
