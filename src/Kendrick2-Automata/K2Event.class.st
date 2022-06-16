@@ -50,6 +50,11 @@ K2Event >> rate: aRate [
 	rate := aRate
 ]
 
+{ #category : #removing }
+K2Event >> removeOneIndividualFrom: aState [
+	fromState := aState
+]
+
 { #category : #accessing }
 K2Event >> toState [
 	^ toState
