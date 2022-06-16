@@ -15,6 +15,16 @@ K2EventTest >> testCreateAnEventThatAddAnIndividualFromSusceptibleState [
 ]
 
 { #category : #tests }
+K2EventTest >> testCreateAnEventThatRemoveAnIndividualFromSusceptibleState [
+	<gtExample>
+	| event |
+	event := K2Event new.
+	event removeOneIndividualFrom: #stateS.
+	self assert: (event fromState) equals: #stateS.
+	^event 
+]
+
+{ #category : #tests }
 K2EventTest >> testGenerateElementsOfEvents [ 
 
 	 <gtExample>
