@@ -36,6 +36,16 @@ K2Event >> fromState: aState [
 ]
 
 { #category : #accessing }
+K2Event >> rate [
+	^ rate
+]
+
+{ #category : #accessing }
+K2Event >> rate: aRate [
+	rate := aRate
+]
+
+{ #category : #accessing }
 K2Event >> toState [
 	^ toState
 ]
