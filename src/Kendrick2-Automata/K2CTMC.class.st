@@ -11,6 +11,22 @@ Class {
 }
 
 { #category : #'instance creation' }
+K2CTMC class >> newFromArray: anArray [
+	|automaton |	
+automaton := K2CTMC new.
+
+(1 to: anArray size) do: [ :e |
+		|state|
+		state := K2CTMCState new.
+		state name: ((automaton  states size + 1) asString).
+		automaton states add: state.
+		].
+
+	automaton currentState: (automaton states first).
+	^ automaton 
+]
+
+{ #category : #'instance creation' }
 K2CTMC class >> newFromArray: anArray initialState: anInteger [
 
 	^ (self new)
