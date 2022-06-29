@@ -33,3 +33,13 @@ KE2CTMC >> fromState [
 KE2CTMC >> fromState: aNumber [
 	fromState := aNumber 
 ]
+
+{ #category : #accessing }
+KE2CTMC >> toState [
+	^ toState
+]
+
+{ #category : #accessing }
+KE2CTMC >> toState: aNumber [
+	toState := aNumber 
+]
