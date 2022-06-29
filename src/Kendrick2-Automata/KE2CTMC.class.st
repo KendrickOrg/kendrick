@@ -45,6 +45,17 @@ KE2CTMC >> fromState: anInteger toState: anInteger2 rate: aNumberOrExpression [
 
 ]
 
+{ #category : #initialization }
+KE2CTMC >> initialize [
+	super initialize.
+	states := OrderedCollection new.
+	currentState := OrderedCollection new.
+	self fromState: 0.
+	self toState: 0.
+
+
+]
+
 { #category : #accessing }
 KE2CTMC >> toState [
 	^ toState
