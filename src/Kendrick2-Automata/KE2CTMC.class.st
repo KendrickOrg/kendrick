@@ -71,6 +71,16 @@ KE2CTMC >> rate: aBlockOrAnExpressionOrAnNumber [
 ]
 
 { #category : #accessing }
+KE2CTMC >> states [
+	^ states
+]
+
+{ #category : #accessing }
+KE2CTMC >> states: aNumber [
+	states := aNumber
+]
+
+{ #category : #accessing }
 KE2CTMC >> toState [
 	^ toState
 ]
