@@ -57,6 +57,20 @@ KE2CTMC >> initialize [
 ]
 
 { #category : #accessing }
+KE2CTMC >> rate [
+	^rate
+]
+
+{ #category : #accessing }
+KE2CTMC >> rate: aBlockOrAnExpressionOrAnNumber [
+	
+	|prob|
+	prob := aBlockOrAnExpressionOrAnNumber.
+	aBlockOrAnExpressionOrAnNumber isString ifTrue: [ prob := aBlockOrAnExpressionOrAnNumber parseAsAnExpression ].
+	rate := prob 
+]
+
+{ #category : #accessing }
 KE2CTMC >> toState [
 	^ toState
 ]
