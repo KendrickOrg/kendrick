@@ -34,6 +34,17 @@ KE2CTMC >> fromState: aNumber [
 	fromState := aNumber 
 ]
 
+{ #category : #'as yet unclassified' }
+KE2CTMC >> fromState: anInteger toState: anInteger2 rate: aNumberOrExpression [
+	|transition|
+	transition := KE2CTMC new.
+	transition 
+				fromState: (self fromState:  anInteger - 1);
+				toState:  (self toState:  anInteger2 + 1);
+				rate: (self rate: aNumberOrExpression).
+
+]
+
 { #category : #accessing }
 KE2CTMC >> toState [
 	^ toState
