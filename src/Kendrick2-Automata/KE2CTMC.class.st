@@ -23,3 +23,13 @@ KE2CTMC >> currentState [
 KE2CTMC >> currentState: aNumber [
 	currentState := aNumber
 ]
+
+{ #category : #accessing }
+KE2CTMC >> fromState [
+	^ fromState
+]
+
+{ #category : #accessing }
+KE2CTMC >> fromState: aNumber [
+	fromState := aNumber 
+]
