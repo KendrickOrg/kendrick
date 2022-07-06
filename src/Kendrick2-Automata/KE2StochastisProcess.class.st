@@ -100,6 +100,11 @@ KE2StochastisProcess >> parameters [
 	^ parameters
 ]
 
+{ #category : #accessing }
+KE2StochastisProcess >> rates [
+	^self subclassResponsibility 
+]
+
 { #category : #'as yet unclassified' }
 KE2StochastisProcess >> sizeOfAState:  aStateName [
 	^ self states at: aStateName ifAbsent: [ ^ self error: 'No state name: ', aStateName asString ]
