@@ -94,3 +94,14 @@ KE2EpiCTMC >> currentState [
 KE2EpiCTMC >> currentState: aState [
 	self parameters at: #currentState put: aState
 ]
+
+{ #category : #accessing }
+KE2EpiCTMC >> population [
+	population ifNil: [ population := KE2Population new ].
+	
+]
+
+{ #category : #accessing }
+KE2EpiCTMC >> population: aPopulation [
+	population := aPopulation
+]
