@@ -84,3 +84,13 @@ KE2EpiCTMC >> atState: keyInput put: aNumber1 atOthersPut: aNumber2 [
 			ifTrue: [ self atState: k put: aNumber1 ]
 			ifFalse: [ self atState: k put: aNumber2 ] ]
 ]
+
+{ #category : #accessing }
+KE2EpiCTMC >> currentState [
+	^ self parameters at: #currentState ifAbsent: [ nil ]
+]
+
+{ #category : #accessing }
+KE2EpiCTMC >> currentState: aState [
+	self parameters at: #currentState put: aState
+]
