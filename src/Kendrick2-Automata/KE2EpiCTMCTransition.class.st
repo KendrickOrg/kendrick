@@ -32,6 +32,19 @@ KE2EpiCTMCTransition >> fromState: aState [
 ]
 
 { #category : #accessing }
+KE2EpiCTMCTransition >> rate [ 
+	^rate
+]
+
+{ #category : #accessing }
+KE2EpiCTMCTransition >> rate: aBlockOrAnExpressionOrAnNumber [
+	|prob|
+	prob := aBlockOrAnExpressionOrAnNumber.
+	aBlockOrAnExpressionOrAnNumber isString ifTrue: [ prob := aBlockOrAnExpressionOrAnNumber parseAsAnExpression ].
+	rate := prob 
+]
+
+{ #category : #accessing }
 KE2EpiCTMCTransition >> toState [
 	^toState 
 ]
