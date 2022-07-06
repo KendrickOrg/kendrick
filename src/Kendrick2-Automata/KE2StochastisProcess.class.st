@@ -121,6 +121,16 @@ KE2StochastisProcess >> finestStateNames [
 	^ keys collect: [ :e | Dictionary newFrom: e ]
 ]
 
+{ #category : #initialization }
+KE2StochastisProcess >> initialize [
+	super initialize.
+	attributes := Dictionary new.
+	transitions := OrderedCollection new.
+	parameters := Dictionary new.
+	states := Dictionary new.
+	
+]
+
 { #category : #accessing }
 KE2StochastisProcess >> parameters [
 
