@@ -131,6 +131,15 @@ KE2StochastisProcess >> initialize [
 	
 ]
 
+{ #category : #initialization }
+KE2StochastisProcess >> initializeTransitionsWithZeroRate [
+
+		self finestStateNames 
+				do: [ :e | 
+					transitions
+						addAll: (self finestStateNames collect: [ :f | KE2EpiCTMCTransition  fromState: e toState: f rate: 0 ]) ]
+]
+
 { #category : #accessing }
 KE2StochastisProcess >> parameters [
 
