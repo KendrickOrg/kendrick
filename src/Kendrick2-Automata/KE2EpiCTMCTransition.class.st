@@ -31,6 +31,23 @@ KE2EpiCTMCTransition >> fromState: aState [
 	^ fromState := reader next
 ]
 
+{ #category : #printing }
+KE2EpiCTMCTransition >> printOn: aStream [
+	| f t |
+	f := fromState isSymbol
+		ifTrue: [ fromState asString ]
+		ifFalse: [ fromState associations asString ].
+	t := toState isSymbol
+		ifTrue: [ toState asString ]
+		ifFalse: [ toState associations asString ].
+	aStream
+		nextPutAll: '';
+		nextPutAll: f;
+		nextPutAll: '->';
+		nextPutAll: '';
+		nextPutAll: t
+]
+
 { #category : #accessing }
 KE2EpiCTMCTransition >> rate [ 
 	^rate
