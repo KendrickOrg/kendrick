@@ -33,3 +33,54 @@ KE2EpiCTMC >> atParameter: aSymbol [
 KE2EpiCTMC >> atParameter: aSymbol assignValue: value [
 	self addParameter: aSymbol value: value
 ]
+
+{ #category : #accessing }
+KE2EpiCTMC >> atState: anObject [
+	"Return cardinality of a state"
+
+	| key c |
+	anObject isDictionary
+		ifTrue: [ key := anObject].
+	anObject isArray
+		ifTrue: [ key := Dictionary newFrom: anObject ].
+	key
+		at: #status
+		ifPresent: [ (key at: #status) = #empty
+				ifTrue: [ ^ self atParameter: #N ] ].
+	c := self attributes keys reject: [ :a | key keys includes: a ].
+	
+	c isEmpty
+		ifTrue: [ ^ self population sizeOfAState: key ]
+		ifFalse: [ ^ (self atAttribute: c first)
+				collect: [ :e | 
+					| tmp |
+					tmp := key copy.
+					tmp at: c first put: e.
+					self population sizeOfAState: tmp ] ]
+]
+
+{ #category : #accessing }
+KE2EpiCTMC >> atState: keyInput put: number [
+
+
+	| key |
+	keyInput isDictionary | keyInput isSymbol ifTrue: [
+		
+		key := keyInput ].
+	keyInput isArray ifTrue: [ key := Dictionary newFrom: keyInput ].
+	 states at: key ifAbsent: [ 
+		(self finestStateNames includes: key) ifFalse: [ 
+			^ self error: 'No state names: ' , key asString ] ].
+	 states at: key put: number
+]
+
+{ #category : #accessing }
+KE2EpiCTMC >> atState: keyInput put: aNumber1 atOthersPut: aNumber2 [
+
+	| key |
+	key := Dictionary newFrom: keyInput.
+	self finestStateNames do: [ :k | 
+		k = key
+			ifTrue: [ self atState: k put: aNumber1 ]
+			ifFalse: [ self atState: k put: aNumber2 ] ]
+]
