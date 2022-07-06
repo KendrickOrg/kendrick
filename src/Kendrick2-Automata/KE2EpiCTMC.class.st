@@ -95,6 +95,13 @@ KE2EpiCTMC >> currentState: aState [
 	self parameters at: #currentState put: aState
 ]
 
+{ #category : #'as yet unclassified' }
+KE2EpiCTMC >> executeEventAtRateIndex: anInteger [
+
+(self transitions at: anInteger ) executeOn: self times: 1.
+^ states 
+]
+
 { #category : #initialization }
 KE2EpiCTMC >> initialize [
 
