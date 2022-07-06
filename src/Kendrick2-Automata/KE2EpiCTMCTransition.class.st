@@ -13,6 +13,21 @@ Class {
 }
 
 { #category : #accessing }
+KE2EpiCTMCTransition >> executeOn: model times: times [
+	(fromState at: #status) = #empty
+		ifFalse: [ | old new |
+			old := model population states at: fromState.
+			new := old - times.
+			new := new max: 0.
+			model population states at: fromState put: new ].
+	(toState at: #status) = #empty
+		ifFalse: [ | old new |
+			old := model population states at: toState.
+			new := old + times.
+			model population states at: toState put: new ]
+]
+
+{ #category : #accessing }
 KE2EpiCTMCTransition >> fromState [
 	^fromState 
 ]
