@@ -96,6 +96,17 @@ KE2EpiCTMC >> currentState: aState [
 ]
 
 { #category : #accessing }
+KE2EpiCTMC >> nextState [
+
+	^ self parameters at: #nextState ifAbsent: [ nil ]
+]
+
+{ #category : #'as yet unclassified' }
+KE2EpiCTMC >> nextState: aState [
+	self parameters at: #nextState put: aState
+]
+
+{ #category : #accessing }
 KE2EpiCTMC >> population [
 	population ifNil: [ population := KE2Population new ].
 	
