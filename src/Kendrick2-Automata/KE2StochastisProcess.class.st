@@ -94,6 +94,12 @@ KE2StochastisProcess >> duplicateValues: anArrayOfAssociations [
 	^ (values asSet size) ~~ (values size)
 ]
 
+{ #category : #'as yet unclassified' }
+KE2StochastisProcess >> executeEventAtRateIndex: anInteger [
+
+	^self subclassResponsibility 
+]
+
 { #category : #accessing }
 KE2StochastisProcess >> parameters [
 
