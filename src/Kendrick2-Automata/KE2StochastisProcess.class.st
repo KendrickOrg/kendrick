@@ -101,6 +101,19 @@ KE2StochastisProcess >> parameters [
 ]
 
 { #category : #accessing }
+KE2StochastisProcess >> states [
+	^states
+]
+
+{ #category : #accessing }
+KE2StochastisProcess >> states: aDictionary [
+
+	self states ifNil: [ states := Dictionary new ]. 
+
+	aDictionary keysAndValuesDo: [ :k :v | states at: k put: v ]
+]
+
+{ #category : #accessing }
 KE2StochastisProcess >> transitions [
 
 	"transitions isEmpty ifTrue: [ self initializeTransitionsWithZeroRate ]."
