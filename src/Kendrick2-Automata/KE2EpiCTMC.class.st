@@ -116,3 +116,16 @@ KE2EpiCTMC >> population [
 KE2EpiCTMC >> population: aPopulation [
 	population := aPopulation
 ]
+
+{ #category : #accessing }
+KE2EpiCTMC >> rates [
+	^ transitions
+		collect: [ :tr | 
+			| prob |
+			(tr fromState at: #status) = #empty
+				ifTrue: [ self currentState: tr toState ]
+				ifFalse: [ self currentState: tr fromState ].
+			self nextState: tr toState.
+			prob := (tr rate value: self) abs.
+			prob * (self atState: tr fromState)]
+]
