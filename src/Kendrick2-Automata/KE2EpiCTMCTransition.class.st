@@ -12,6 +12,14 @@ Class {
 	#category : #'Kendrick2-Automata-Core'
 }
 
+{ #category : #'instance creation' }
+KE2EpiCTMCTransition class >> fromState: firstState toState: secondState rate: aBlockOrAnExpressionOrAnNumber [
+	^ self new
+		fromState: firstState ;
+		toState: secondState ;
+		rate: aBlockOrAnExpressionOrAnNumber
+]
+
 { #category : #accessing }
 KE2EpiCTMCTransition >> executeOn: model times: times [
 	(fromState at: #status) = #empty
