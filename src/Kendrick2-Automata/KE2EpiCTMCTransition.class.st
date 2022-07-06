@@ -30,3 +30,21 @@ KE2EpiCTMCTransition >> fromState: aState [
 		allowComplexMapKeys: true.
 	^ fromState := reader next
 ]
+
+{ #category : #accessing }
+KE2EpiCTMCTransition >> toState [
+	^toState 
+]
+
+{ #category : #accessing }
+KE2EpiCTMCTransition >> toState: aState [
+
+	| reader |
+	aState isDictionary ifTrue: [ ^ toState := aState ].
+		aState = #empty ifTrue: [ ^ self toState: { #status -> #empty } ].
+	aState isArray ifTrue: [ 
+		^ toState := Dictionary newFrom: aState ].
+	(reader := STONReader on: aState readStream) 
+		allowComplexMapKeys: true.
+	^ toState := reader next
+]
