@@ -21,6 +21,24 @@ KE2StochastisProcess >> addAttribute: aSymbol value: aDomain [
 ]
 
 { #category : #adding }
+KE2StochastisProcess >> addParameter: aSymbol value: aNumericalOrAnExpressionOrABlock [
+	| expression |
+	aNumericalOrAnExpressionOrABlock isNumber
+		ifTrue: [ expression := KENumerical new
+				number: aNumericalOrAnExpressionOrABlock ]
+		ifFalse: [ aNumericalOrAnExpressionOrABlock isString
+				ifTrue:
+					[ expression := aNumericalOrAnExpressionOrABlock parseAsAnExpression ]
+				ifFalse: [ expression := aNumericalOrAnExpressionOrABlock ] ].
+	parameters
+		at: aSymbol
+		put:
+			(KEParameter new
+				symbol: aSymbol;
+				expression: expression)
+]
+
+{ #category : #adding }
 KE2StochastisProcess >> addTransition: aTransition [
 	transitions add: aTransition
 ]
@@ -65,6 +83,21 @@ KE2StochastisProcess >> attributes: attributesArray [
 	(self duplicateValues: attributesArray)
 		ifTrue: [ self error: 'Attributes are duplicated.' ]
 		ifFalse: [ attributes := Dictionary newFrom: attributesArray ]
+]
+
+{ #category : #modifying }
+KE2StochastisProcess >> duplicateValues: anArrayOfAssociations [
+
+	| values |
+	values := (anArrayOfAssociations collect:
+		          [ :each | each value ]) flatten.
+	^ (values asSet size) ~~ (values size)
+]
+
+{ #category : #accessing }
+KE2StochastisProcess >> parameters [
+
+	^ parameters
 ]
 
 { #category : #accessing }
