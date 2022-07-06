@@ -95,6 +95,17 @@ KE2EpiCTMC >> currentState: aState [
 	self parameters at: #currentState put: aState
 ]
 
+{ #category : #initialization }
+KE2EpiCTMC >> initialize [
+
+	super initialize.t := 0.
+	self addParameter: #t value: [ :aModel | aModel t ].
+	
+	
+	
+
+]
+
 { #category : #accessing }
 KE2EpiCTMC >> nextState [
 
