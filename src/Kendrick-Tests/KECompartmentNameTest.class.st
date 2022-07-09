@@ -141,7 +141,7 @@ KECompartmentNameTest >> testSameValuesShouldRaiseError [
 ]
 
 { #category : #tests }
-KECompartmentNameTest >> testUnExistingValues [
+KECompartmentNameTest >> testUnexistingValues [
 
 	| aModel |
 	aModel := KEModel new.
