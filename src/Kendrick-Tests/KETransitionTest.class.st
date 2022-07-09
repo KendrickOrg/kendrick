@@ -20,18 +20,27 @@ KETransitionTest >> testAsStringWithEmptyCompartment [
 
 { #category : #tests }
 KETransitionTest >> testEvaluateProbability [
-	| tr model rs |
+
+	| transition model result |
 	model := KEModel new.
-	model attributes: {(#status -> #(S I R))}.
-	model atCompartment: {(#status -> #S)} put: 10000 atOthersPut: 0.
-	model atCompartment: {(#status -> #I)} put: 1.
-	tr := KETransition from: {#status -> #S} to: {#status -> #I} probability: [ :fr :to :t | (model atParameter: #beta) * fr * to ].
-	model
-		addParameters:
-			{(#beta -> 0.0052).
-			(#gamma -> 52)}.
-	rs := tr probability value: (model atCompartment: tr from) value: (model atCompartment: tr to) value: 0.
-	self assert: rs equals: 52
+	model attributes: { (#status -> #( S I R )) }.
+	model atCompartment: { (#status -> #S) } put: 10000.
+	model atCompartment: { (#status -> #I) } put: 1.
+	model atCompartment: { (#status -> #R) } put: 0.
+	model addParameters: { 
+			(#beta -> 0.0052).
+			(#gamma -> 52) }.
+	transition := KETransition
+		              from: { (#status -> #S) }
+		              to: { (#status -> #I) }
+		              probability: [ :fr :to :t | 
+		              (model atParameter: #beta) * fr * to ].
+	result := transition probability
+		          value: (model atCompartment: transition from)
+		          value: (model atCompartment: transition to)
+		          value: 0.
+	self assert: result equals: (model atParameter: #beta)
+		* (model atCompartment: { (#status -> #S) })
 ]
 
 { #category : #tests }
@@ -40,8 +49,9 @@ KETransitionTest >> testExecuteTransition [
 	tr := KETransition from: {#status -> #S} to: {#status -> #I} probability: [ :f :t :m | (m atParameter: #beta) * f * t ].
 	model := KEModel new.
 	model attributes: {(#status -> #(S I R))}.
-	model atCompartment: {(#status -> #S)} put: 10000 atOthersPut: 0.
+	model atCompartment: {(#status -> #S)} put: 10000.
 	model atCompartment: {(#status -> #I)} put: 1.
+	model atCompartment: {(#status -> #R)} put: 0.
 	model
 		addParameters:
 			{(#beta -> 0.0052).
