@@ -50,30 +50,3 @@ Metacello new
         load
 ```
 
-If you have errors due low bandwidth or github access, use the following script instead:
-```Smalltalk
-| count |
-count := 1.
-Transcript open.
-[ true ] whileTrue: [ [
-		^ Metacello new
-        repository: 'github://KendrickOrg/kendrick';
-        baseline: 'Kendrick';
-		  onConflictUseLoaded;
-        onWarningLog ;
-        load.
-	]
-	on: IceGenericError "Failed to connect to github.com: Interrupted system call"
-	do: [ : ex |
-		Notification signal:
-	        	String cr ,
-			ex description,
-			String cr ,
-			'RETRYING ',
-			count asString.
-		(Delay forSeconds: 2) wait.
-		ex retry
-	].
-	count := count + 1 ]
-```
-
