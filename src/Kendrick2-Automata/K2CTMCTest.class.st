@@ -5,7 +5,7 @@ Class {
 }
 
 { #category : #tests }
-K2CTMCTest >> testStep [
+K2CTMCTest >> testSteadyStates [
 
 	| automata |
 	automata := K2CTMC

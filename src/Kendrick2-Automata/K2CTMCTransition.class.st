@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'from',
 		'to',
-		'probability'
+		'rate'
 	],
 	#category : #'Kendrick2-Automata-Core'
 }
@@ -18,20 +18,21 @@ K2CTMCTransition >> from [
 ]
 
 { #category : #accessing }
-K2CTMCTransition >> from: anObject [
-	from:= anObject 
+K2CTMCTransition >> from: aState [
+
+	from := aState
 ]
 
 { #category : #accessing }
 K2CTMCTransition >> rate [
 
-	^ probability
+	^ rate
 ]
 
 { #category : #accessing }
 K2CTMCTransition >> rate: aFloat [
 
-	probability := aFloat 
+	rate := aFloat 
 ]
 
 { #category : #accessing }
@@ -40,6 +41,7 @@ K2CTMCTransition >> to [
 ]
 
 { #category : #accessing }
-K2CTMCTransition >> to: anObject [
- 	to:= anObject 
+K2CTMCTransition >> to: aState [
+
+	to := aState
 ]
