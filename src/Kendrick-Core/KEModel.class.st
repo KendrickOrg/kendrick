@@ -28,11 +28,12 @@ temporalParameters
 Class {
 	#name : #KEModel,
 	#superclass : #KEComponent,
+	#traits : 'K2TGillespieSimulation',
+	#classTraits : 'K2TGillespieSimulation classTrait',
 	#instVars : [
 		'population',
 		'concerns',
 		't',
-		'name',
 		'modelName',
 		'cardinalities',
 		'populationCardinality'
