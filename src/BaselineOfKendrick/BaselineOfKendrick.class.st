@@ -21,7 +21,7 @@ BaselineOfKendrick >> baseline: spec [
 		spec
 			baseline: 'PolyMath' with: [ 
 				spec
-					repository: 'github://PolyMathOrg/PolyMath:v1.0.4';
+					repository: 'github://PolyMathOrg/PolyMath:v1.0.5';
 					loads: 'Core' ];
 			baseline: 'DataFrame'
 			with: [ spec repository: 'github://PolyMathOrg/DataFrame:v2.0' ].
@@ -94,5 +94,5 @@ BaselineOfKendrick >> baseline: spec [
 		package: 'Kendrick-Examples'
 		with: [ spec requires: #( 'Kendrick-Core' 'Kendrick-DSL' ) ];
 		package: 'Kendrick2-Automata'
-		with: [ spec requires: #( 'Kendrick-Core'  ) ].
+		with: [ spec requires: #( 'Kendrick-Core' ) ]
 ]
