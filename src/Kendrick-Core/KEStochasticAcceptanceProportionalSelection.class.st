@@ -1,6 +1,6 @@
 Class {
-	#name : #StochasticAcceptanceProportionalSelection,
-	#superclass : #ProportionalSelection,
+	#name : #KEStochasticAcceptanceProportionalSelection,
+	#superclass : #KEProportionalSelection,
 	#instVars : [
 		'maxValue'
 	],
@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #accessing }
-StochasticAcceptanceProportionalSelection >> at: index put: value [
+KEStochasticAcceptanceProportionalSelection >> at: index put: value [
 	| lastX |
 	lastX := frequencies at: index.
 	maxValue := maxValue max: value.
@@ -18,19 +18,19 @@ StochasticAcceptanceProportionalSelection >> at: index put: value [
 ]
 
 { #category : #initialization }
-StochasticAcceptanceProportionalSelection >> initialize: size [  
+KEStochasticAcceptanceProportionalSelection >> initialize: size [  
 	
 	super initialize: size.
 	maxValue := 0
 ]
 
 { #category : #'as yet unclassified' }
-StochasticAcceptanceProportionalSelection >> normalize [ 
+KEStochasticAcceptanceProportionalSelection >> normalize [ 
 	"nothing"
 ]
 
 { #category : #accessing }
-StochasticAcceptanceProportionalSelection >> sample [
+KEStochasticAcceptanceProportionalSelection >> sample [
 	| rng n |
 	rng := Random new.
 	n := frequencies size.

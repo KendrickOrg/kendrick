@@ -32,7 +32,7 @@ KEGillespieSimulator >> executeOn: aModel [
 	| t previousT |
 	super executeOn: aModel.
 	self
-		proportionalSelectionClass: StochasticAcceptanceProportionalSelection.
+		proportionalSelectionClass: KEStochasticAcceptanceProportionalSelection.
 	t := tMin.
 	previousT := t.
 	rand1 := Random new.
