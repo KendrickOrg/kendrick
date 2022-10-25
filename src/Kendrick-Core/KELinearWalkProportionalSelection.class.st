@@ -7,13 +7,13 @@ Class {
 	#category : #'Kendrick-Core-Simulations'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 KELinearWalkProportionalSelection >> at: index put: value [
 total := total + value - frequencies at:index.
 frequencies at: index  put: value
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 KELinearWalkProportionalSelection >> initialize: size [
 
 super initialize: size.
