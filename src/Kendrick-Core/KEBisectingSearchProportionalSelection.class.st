@@ -1,6 +1,6 @@
 Class {
-	#name : #BisectingSearchProportionalSelection,
-	#superclass : #ProportionalSelection,
+	#name : #KEBisectingSearchProportionalSelection,
+	#superclass : #KEProportionalSelection,
 	#instVars : [
 		'total',
 		'cumulativeDensityFunction'
@@ -9,19 +9,19 @@ Class {
 }
 
 { #category : #accessing }
-BisectingSearchProportionalSelection >> at: index put: value [
+KEBisectingSearchProportionalSelection >> at: index put: value [
 	total := total + value - frequencies at: index.
 	frequencies at: index put: value
 ]
 
 { #category : #initialization }
-BisectingSearchProportionalSelection >> initialize: size [
+KEBisectingSearchProportionalSelection >> initialize: size [
 	super initialize: size.
 	total := 0
 ]
 
 { #category : #'as yet unclassified' }
-BisectingSearchProportionalSelection >> normalize [
+KEBisectingSearchProportionalSelection >> normalize [
 	| accumulator |
 	total := frequencies sum.
 	accumulator := 0.
@@ -30,7 +30,7 @@ BisectingSearchProportionalSelection >> normalize [
 ]
 
 { #category : #accessing }
-BisectingSearchProportionalSelection >> sample [
+KEBisectingSearchProportionalSelection >> sample [
 	| middle begin end value |
 	value := Random new next.
 	begin := 1.

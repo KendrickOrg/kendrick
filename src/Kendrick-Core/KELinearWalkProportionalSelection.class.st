@@ -1,6 +1,6 @@
 Class {
-	#name : #LinearWalkProportionalSelection,
-	#superclass : #ProportionalSelection,
+	#name : #KELinearWalkProportionalSelection,
+	#superclass : #KEProportionalSelection,
 	#instVars : [
 		'total'
 	],
@@ -8,25 +8,25 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-LinearWalkProportionalSelection >> at: index put: value [
+KELinearWalkProportionalSelection >> at: index put: value [
 total := total + value - frequencies at:index.
 frequencies at: index  put: value
 ]
 
 { #category : #'as yet unclassified' }
-LinearWalkProportionalSelection >> initialize: size [
+KELinearWalkProportionalSelection >> initialize: size [
 
 super initialize: size.
 total := 0
 ]
 
 { #category : #'as yet unclassified' }
-LinearWalkProportionalSelection >> normalize [
+KELinearWalkProportionalSelection >> normalize [
 	"do nothing"
 ]
 
 { #category : #'as yet unclassified' }
-LinearWalkProportionalSelection >> sample [
+KELinearWalkProportionalSelection >> sample [
 	| accumulator cumulativeDensityPoint |
 	accumulator := 0.
 	cumulativeDensityPoint :=  (Random new next)*total.
