@@ -3,6 +3,11 @@ Abstract class for proportional selection
 
 Based on code from: [https://web.archive.org/web/20210424164451/https://thoughts.johnbnelson.com/fast_proportional_selection/](https://web.archive.org/web/20210424164451/https://thoughts.johnbnelson.com/fast_proportional_selection/)
 
+# Methods 
+`at:` returns the frequencies according to the position in the selection
+`from:` initializes the proportional selection with a new collection of frequencies
+
+`at:put:`, `normalize` and `sample` are abstract methods.
 
 "
 Class {
@@ -36,7 +41,7 @@ aCollection doWithIndex:[:each :i| self at: i put: each]
 	 
 ]
 
-{ #category : #initialize }
+{ #category : #initialization }
 KEProportionalSelection >> initialize: size [
 	frequencies := Array new: size withAll:0
 ]
