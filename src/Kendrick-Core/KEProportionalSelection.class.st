@@ -1,6 +1,9 @@
 "
 Abstract class for proportional selection 
 
+Based on code from: [https://web.archive.org/web/20210424164451/https://thoughts.johnbnelson.com/fast_proportional_selection/](https://web.archive.org/web/20210424164451/https://thoughts.johnbnelson.com/fast_proportional_selection/)
+
+
 "
 Class {
 	#name : #KEProportionalSelection,

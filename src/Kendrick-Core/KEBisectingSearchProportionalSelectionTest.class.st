@@ -10,9 +10,9 @@ Class {
 { #category : #tests }
 KEBisectingSearchProportionalSelectionTest >> testSampleReturnOneValueLessOrEqualsThanSize [
 
-	| values selection |
-	values := #( 10 2 3 4 5 6 7 8 9 10 ).
-	selection := KEBisectingSearchProportionalSelection from: values.
+	| frequencies selection |
+	frequencies := #( 10 2 3 4 5 6 7 8 9 10 ).
+	selection := KEBisectingSearchProportionalSelection from: frequencies.
 	selection normalize.
-	self assert: selection sample <= values size
+	self assert: selection sample <= frequencies size
 ]
