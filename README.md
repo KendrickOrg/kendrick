@@ -32,6 +32,9 @@ If you are using Kendrick for research, please cite our work as:
 https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-2843-0
 
 ## Documentation
+
+DeepWiki documentation of Kendrick: https://deepwiki.com/KendrickOrg/kendrick
+
 You will find documentation about Kendrick meta-model and DSL here: https://github.com/KendrickOrg/kendrick/blob/master/documentation/meta-model/meta-modelv3.org
 
 A previous version of Kendrick is also described in a chapter of the [Agile Visualization book](http://agilevisualization.com/).
